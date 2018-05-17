@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		3BB472962D5E529D96075E59 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */; };
 		90309D2A4532B7A930C5A0B5 /* Pods_UmbrellaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E7691B86B48D0956C3E803 /* Pods_UmbrellaUITests.framework */; };
+		A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9220AC47E800CE99E1 /* SQLManager.swift */; };
+		A064CE9620AC497D00CE99E1 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = A064CE9520AC497D00CE99E1 /* database.db */; };
+		A064CE9820AC883900CE99E1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9720AC883900CE99E1 /* Category.swift */; };
+		A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787020ADA12B00A287C8 /* TableProtocol.swift */; };
+		A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */; };
+		A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */; };
 		A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42920AAE03600B2B796 /* Main.storyboard */; };
 		A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42C20AAE03900B2B796 /* Assets.xcassets */; };
 		A0B9D43020AAE03900B2B796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42E20AAE03900B2B796 /* LaunchScreen.storyboard */; };
@@ -37,12 +43,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0295A615E60C71FE1399AFF0 /* Pods-Umbrella.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.appstore.xcconfig"; sourceTree = "<group>"; };
+		04D925499B8AEB466D8718D6 /* Pods-UmbrellaUITests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaUITests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaUITests/Pods-UmbrellaUITests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		0DFB77FD1C93E25EB830AD63 /* Pods-UmbrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		24297CB845AEF494BD4A0415 /* Pods-UmbrellaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests.release.xcconfig"; sourceTree = "<group>"; };
+		36EF15B7B1FD29338A95E3CE /* Pods-UmbrellaTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaTests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		4E0DEE1B3526F08322F4A48E /* Pods-UmbrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaUITests/Pods-UmbrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5AF087A949C8033824447827 /* Pods-UmbrellaUITests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaUITests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaUITests/Pods-UmbrellaUITests.appstore.xcconfig"; sourceTree = "<group>"; };
+		5BA1038E1B50B8AC755878C7 /* Pods-Umbrella.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.adhoc.xcconfig"; sourceTree = "<group>"; };
 		6A1EFF726C4C7E44324B782A /* Pods-Umbrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.release.xcconfig"; sourceTree = "<group>"; };
 		9386F5AC361BF2292BED1D62 /* Pods-Umbrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.debug.xcconfig"; sourceTree = "<group>"; };
 		98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A064CE9220AC47E800CE99E1 /* SQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
+		A064CE9520AC497D00CE99E1 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
+		A064CE9720AC883900CE99E1 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
+		A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
+		A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoProtocol.swift; sourceTree = "<group>"; };
 		A0B9D42220AAE03600B2B796 /* Umbrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umbrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B9D42A20AAE03600B2B796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0B9D42C20AAE03900B2B796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +75,7 @@
 		A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4ADF593BBEE416EA8DEFB5E /* Pods-UmbrellaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaUITests/Pods-UmbrellaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B8E7691B86B48D0956C3E803 /* Pods_UmbrellaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UmbrellaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAA3F4584FA3E3C23C5613F5 /* Pods-UmbrellaTests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaTests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests.appstore.xcconfig"; sourceTree = "<group>"; };
 		F8A451277F7D2051F95F3ED5 /* Pods_UmbrellaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UmbrellaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,6 +116,12 @@
 				24297CB845AEF494BD4A0415 /* Pods-UmbrellaTests.release.xcconfig */,
 				4E0DEE1B3526F08322F4A48E /* Pods-UmbrellaUITests.debug.xcconfig */,
 				A4ADF593BBEE416EA8DEFB5E /* Pods-UmbrellaUITests.release.xcconfig */,
+				0295A615E60C71FE1399AFF0 /* Pods-Umbrella.appstore.xcconfig */,
+				5BA1038E1B50B8AC755878C7 /* Pods-Umbrella.adhoc.xcconfig */,
+				BAA3F4584FA3E3C23C5613F5 /* Pods-UmbrellaTests.appstore.xcconfig */,
+				36EF15B7B1FD29338A95E3CE /* Pods-UmbrellaTests.adhoc.xcconfig */,
+				5AF087A949C8033824447827 /* Pods-UmbrellaUITests.appstore.xcconfig */,
+				04D925499B8AEB466D8718D6 /* Pods-UmbrellaUITests.adhoc.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -110,6 +134,23 @@
 				B8E7691B86B48D0956C3E803 /* Pods_UmbrellaUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A064CE9420AC497D00CE99E1 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A064CE9520AC497D00CE99E1 /* database.db */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		A0B9787320ADC79800A287C8 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */,
+				A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */,
+			);
+			path = Dao;
 			sourceTree = "<group>";
 		};
 		A0B9D41920AAE03600B2B796 = {
@@ -180,6 +221,9 @@
 		A0B9D45420AAE1CE00B2B796 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0B9787320ADC79800A287C8 /* Dao */,
+				A064CE9720AC883900CE99E1 /* Category.swift */,
+				A0B9787020ADA12B00A287C8 /* TableProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +239,7 @@
 		A0B9D45720AAE1CE00B2B796 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A064CE9220AC47E800CE99E1 /* SQLManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -240,6 +285,7 @@
 		A0B9D45D20AAE1CF00B2B796 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A064CE9420AC497D00CE99E1 /* Database */,
 				A0B9D43120AAE03900B2B796 /* Info.plist */,
 				A0B9D42C20AAE03900B2B796 /* Assets.xcassets */,
 			);
@@ -293,6 +339,7 @@
 				A0B9D43220AAE03900B2B796 /* Sources */,
 				A0B9D43320AAE03900B2B796 /* Frameworks */,
 				A0B9D43420AAE03900B2B796 /* Resources */,
+				015C1FF0E3D6E55A3ABD3876 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,7 +359,6 @@
 				A0B9D43D20AAE03900B2B796 /* Sources */,
 				A0B9D43E20AAE03900B2B796 /* Frameworks */,
 				A0B9D43F20AAE03900B2B796 /* Resources */,
-				098E2796379236BEDEBD32ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -372,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A064CE9620AC497D00CE99E1 /* database.db in Resources */,
 				A0B9D43020AAE03900B2B796 /* LaunchScreen.storyboard in Resources */,
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,
 				A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */,
@@ -395,13 +442,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		098E2796379236BEDEBD32ED /* [CP] Embed Pods Frameworks */ = {
+		015C1FF0E3D6E55A3ABD3876 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaUITests/Pods-UmbrellaUITests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -412,7 +459,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaUITests/Pods-UmbrellaUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2B7A9F0D719E81B72708DE6A /* [CP] Check Pods Manifest.lock */ = {
@@ -440,10 +487,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLCipher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +534,7 @@
 		};
 		A0B9D46620AB9CC300B2B796 /* Run Script - Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -522,8 +571,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
+				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* ViewController.swift in Sources */,
+				A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */,
+				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
+				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,8 +753,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6CG326ELR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Umbrella/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -721,6 +777,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6CG326ELR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Umbrella/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -818,6 +875,242 @@
 			};
 			name = Release;
 		};
+		A0B9D46720ABA0B700B2B796 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Adhoc;
+		};
+		A0B9D46820ABA0B700B2B796 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA1038E1B50B8AC755878C7 /* Pods-Umbrella.adhoc.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CG326ELR9;
+				INFOPLIST_FILE = "$(SRCROOT)/Umbrella/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Adhoc;
+		};
+		A0B9D46920ABA0B700B2B796 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36EF15B7B1FD29338A95E3CE /* Pods-UmbrellaTests.adhoc.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CG326ELR9;
+				INFOPLIST_FILE = UmbrellaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
+			};
+			name = Adhoc;
+		};
+		A0B9D46A20ABA0B700B2B796 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04D925499B8AEB466D8718D6 /* Pods-UmbrellaUITests.adhoc.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CG326ELR9;
+				INFOPLIST_FILE = UmbrellaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Umbrella;
+			};
+			name = Adhoc;
+		};
+		A0B9D46B20ABA0C200B2B796 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Appstore;
+		};
+		A0B9D46C20ABA0C200B2B796 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0295A615E60C71FE1399AFF0 /* Pods-Umbrella.appstore.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CG326ELR9;
+				INFOPLIST_FILE = "$(SRCROOT)/Umbrella/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Appstore;
+		};
+		A0B9D46D20ABA0C200B2B796 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAA3F4584FA3E3C23C5613F5 /* Pods-UmbrellaTests.appstore.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CG326ELR9;
+				INFOPLIST_FILE = UmbrellaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
+			};
+			name = Appstore;
+		};
+		A0B9D46E20ABA0C200B2B796 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AF087A949C8033824447827 /* Pods-UmbrellaUITests.appstore.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CG326ELR9;
+				INFOPLIST_FILE = UmbrellaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Umbrella;
+			};
+			name = Appstore;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -826,6 +1119,8 @@
 			buildConfigurations = (
 				A0B9D44820AAE03900B2B796 /* Debug */,
 				A0B9D44920AAE03900B2B796 /* Release */,
+				A0B9D46B20ABA0C200B2B796 /* Appstore */,
+				A0B9D46720ABA0B700B2B796 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -835,6 +1130,8 @@
 			buildConfigurations = (
 				A0B9D44B20AAE03900B2B796 /* Debug */,
 				A0B9D44C20AAE03900B2B796 /* Release */,
+				A0B9D46C20ABA0C200B2B796 /* Appstore */,
+				A0B9D46820ABA0B700B2B796 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -844,6 +1141,8 @@
 			buildConfigurations = (
 				A0B9D44E20AAE03900B2B796 /* Debug */,
 				A0B9D44F20AAE03900B2B796 /* Release */,
+				A0B9D46D20ABA0C200B2B796 /* Appstore */,
+				A0B9D46920ABA0B700B2B796 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -853,6 +1152,8 @@
 			buildConfigurations = (
 				A0B9D45120AAE03900B2B796 /* Debug */,
 				A0B9D45220AAE03900B2B796 /* Release */,
+				A0B9D46E20ABA0C200B2B796 /* Appstore */,
+				A0B9D46A20ABA0B700B2B796 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

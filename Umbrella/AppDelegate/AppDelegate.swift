@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import SQLite
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
