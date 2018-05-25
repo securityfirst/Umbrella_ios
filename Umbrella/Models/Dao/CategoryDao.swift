@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CategoryDao: DaoProtocol {
+struct CategoryDao: DaoProtocol {
     
     func createTable() -> Bool {
         return SQLManager.shared.create(table: Category())
