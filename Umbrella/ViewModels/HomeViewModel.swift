@@ -12,43 +12,51 @@ import Result
 
 class HomeViewModel {
     
+    //
+    // MARK: - Functions
     func parseTent() -> String {
         var mark: String = ""
-        //Category
-        var categoryParse = CategoryParse(documentsFolder: documentsFolder)
-        categoryParse.parse(completion: { title, index, parent, categoryFolder in
-            print("Category: \(title) \(index) \(parent)")
+        
+        //Language
+        var languageParse = LanguageParse(documentsFolder: documentsFolder)
+        languageParse.parse { title, _, _, languageFolder in
             
-            //SubCategory
-            let subCategoryParse = SubCategoryParse(categoryFolder: categoryFolder)
-            subCategoryParse.parse(completion: { title, index, parent, difficultyFolder in
-                print("SubCategory: \(title) \(index) \(parent)")
+//            //Category
+//            var categoryParse = CategoryParse(languageFolder: languageFolder)
+//            categoryParse.parse { title, index, parent, categoryFolder in
+//                print("Category: \(title) \(index) \(parent)")
                 
-                //Difficulty
-                let difficultyParse = DifficultyParse(subCategoryFolder: difficultyFolder)
-                difficultyParse.parse(completion: { title, index, description in
-                    print("Difficulty: \(title) \(index) \(description)")
-                })
-                
-                //Segment
-                let segmentParse = SegmentParse(subCategoryFolder: difficultyFolder)
-                segmentParse.parse(completion: { segments in
-                
-                    for (title, index, markdown) in segments {
-                        print("Segment: \(index) \(title)")
-                        // FIXME: Test of markdown
-                        mark = markdown
-                    }
-                })
-            })
-        })
+//                //SubCategory
+//                let subCategoryParse = SubCategoryParse(categoryFolder: categoryFolder)
+//                subCategoryParse.parse { title, index, parent, subCategoryFolder in
+//                    print("SubCategory: \(title) \(index) \(parent)")
+//
+//                    //Difficulty
+//                    let difficultyParse = DifficultyParse(subCategoryFolder: subCategoryFolder)
+//                    difficultyParse.parse { title, index, description, folder in
+//                        print("Difficulty: \(title) \(index) \(description) Subcategory: \(folder.name)")
+//                    }
+//
+//                    //Segment
+//                    let segmentParse = SegmentParse(subCategoryFolder: subCategoryFolder)
+//                    segmentParse.parse { segments, folder in
+//
+//                        for (title, index, markdown) in segments {
+//                            print("Segment: \(index) \(title) Subcategory: \(folder.name)")
+//                            // FIXME: Test of markdown
+//                            mark = markdown
+//                        }
+//                    }
+//                }
+//            }
+        }
         
         return mark
     }
     
-    func clone(completion: @escaping (Float) -> Void) {
+    func clone(witUrl url: String, completion: @escaping (Float) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            GitManager.shared.clone(witUrl: kGitBaseURL, completion: { (totalBytesWritten, totalBytesExpectedToWrite) in
+            GitManager.shared.clone(witUrl: url, completion: { (totalBytesWritten, totalBytesExpectedToWrite) in
                 let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
                 completion(progress)
             }, failure: { error in

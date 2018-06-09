@@ -21,28 +21,35 @@ class GitManager {
     
     //
     // MARK: - Functions
-    func clone(witUrl: String, completion: @escaping ((Int, Int) -> Void), failure: @escaping ((Error) -> Void)) {
+    func clone(witUrl: String, completion: @escaping ((Float, Float) -> Void), failure: @escaping ((Error) -> Void)) {
         
         //Remove folder before a clone
-        removeFolder()
-        
-        let fileManager = FileManager.default
-        let documentsUrl = fileManager.urls(for: .documentDirectory,
-                                            in: .userDomainMask)
-        
-        let url: URL = URL(string: witUrl)!
-        Repository.clone(from: url, to: documentsUrl.first!, localClone: true, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Force) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
-            completion(totalBytesWritten, totalBytesExpectedToWrite)
-            }.analysis(ifSuccess: { _ in },
-                       ifFailure: {error in
-                        print(error)
-                        failure(error)
-            })
+        if !debug {
+            removeFolder()
+            
+            let fileManager = FileManager.default
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                in: .userDomainMask)
+            let url: URL = URL(string: witUrl)!
+            
+            //Create a clone of the Tent
+            Repository.clone(from: url, to: documentsUrl.first!, localClone: true, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Force) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
+                completion(Float(totalBytesWritten), Float(totalBytesExpectedToWrite))
+                }.analysis(ifSuccess: { _ in },
+                           ifFailure: {error in
+                            print(error)
+                            failure(error)
+                })
+        } else {
+            completion(1,1)
+        }
     }
 }
 
 extension GitManager {
     
+    //
+    // MARK: - Functions Extension
     fileprivate func removeFolder() {
         let fileManager = FileManager.default
         let documentsUrl = fileManager.urls(for: .documentDirectory,

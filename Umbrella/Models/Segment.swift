@@ -1,28 +1,22 @@
 //
-//  Category.swift
+//  Segment.swift
 //  Umbrella
 //
-//  Created by Lucas Correa on 16/05/2018.
+//  Created by Lucas Correa on 06/06/2018.
 //  Copyright © 2018 Security First. All rights reserved.
 //
 
 import Foundation
 
-class Category: Codable, TableProtocol {
+class Segment: Codable {
     let name: String?
     let index: Float?
-    var folderName: String?
-    var categories: [Category]
-    var segments: [Segment]
-    var checkList: [CheckItem]
+    var content: String?
     
     init() {
         name = ""
         index = 0
-        folderName = ""
-        categories = []
-        segments = []
-        checkList = []
+        content = ""
     }
     
     enum CodingKeys: String, CodingKey {
@@ -34,10 +28,7 @@ class Category: Codable, TableProtocol {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
         index = try container.decode(Float.self, forKey: .index)
-        folderName = ""
-        categories = []
-        segments = []
-        checkList = []
+        content = ""
     }
     
     func encode(to encoder: Encoder) throws {
@@ -46,17 +37,4 @@ class Category: Codable, TableProtocol {
         try container.encode(index, forKey: .index)
     }
     
-    //
-    // MARK: - TableProtocol
-    var tableName: String = "category"
-    
-    func columns() -> [String : String] {
-        let array = [
-            "id":"Primary",
-            "name": "String",
-            "index": "Int",
-            "parent":"Int"
-        ]
-        return array
-    }
 }

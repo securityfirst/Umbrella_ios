@@ -16,6 +16,7 @@ PODS:
   - SwiftGen (5.3.0)
   - SwiftLint (0.25.1)
   - Yaml (3.4.3)
+  - Yams (0.7.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - SwiftGen
   - SwiftLint
   - Yaml
+  - Yams
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -41,6 +43,7 @@ SPEC REPOS:
     - SwiftGen
     - SwiftLint
     - Yaml
+    - Yams
 
 EXTERNAL SOURCES:
   SQLite.swift:
@@ -63,7 +66,8 @@ SPEC CHECKSUMS:
   SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
   Yaml: 9f32854890c54304772f02380c3899c8db739800
+  Yams: 9dfe90be5b942df6fa42ead8e6f0313e05600755
 
-PODFILE CHECKSUM: 616a5aaa55d8dba482ad0d180e0a4c925fbc8937
+PODFILE CHECKSUM: 2bdcd3902684dc1def9bb1d47e472e95ad040f77
 
 COCOAPODS: 1.5.0.beta.1

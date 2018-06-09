@@ -9,6 +9,8 @@
 import Foundation
 import Files
 
+//
+// MARK: - Property
 var documentsFolder: Folder = {
     let system = FileSystem()
     let path = system.homeFolder.path

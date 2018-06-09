@@ -1,4 +1,3 @@
-
 //
 //  ViewController.swift
 //  Umbrella
@@ -31,9 +30,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        homeViewModel.clone { progress in
-            print(progress)
-            Thread.sleep(forTimeInterval: 0.2)
+        homeViewModel.clone(witUrl: kGitBaseURL, completion: { progress in
             DispatchQueue.main.async {
                 self.progressView.setProgress(progress, animated: true)
             }
@@ -44,7 +41,7 @@ class ViewController: UIViewController {
                     self.markDownView.load(markdown: self.homeViewModel.parseTent())
                 }
             }
-        }
+        })
     }
     
     override func didReceiveMemoryWarning() {
