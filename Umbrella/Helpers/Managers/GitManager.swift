@@ -21,6 +21,13 @@ class GitManager {
     
     //
     // MARK: - Functions
+    
+    /// Clone of repository
+    ///
+    /// - Parameters:
+    ///   - witUrl: url of repository
+    ///   - completion: return totalBytesWritten, totalBytesExpectedToWrite
+    ///   - failure: return error
     func clone(witUrl: String, completion: @escaping ((Float, Float) -> Void), failure: @escaping ((Error) -> Void)) {
         
         //Remove folder before a clone
@@ -50,6 +57,8 @@ extension GitManager {
     
     //
     // MARK: - Functions Extension
+    
+    /// Remove all directory recusively
     fileprivate func removeFolder() {
         let fileManager = FileManager.default
         let documentsUrl = fileManager.urls(for: .documentDirectory,

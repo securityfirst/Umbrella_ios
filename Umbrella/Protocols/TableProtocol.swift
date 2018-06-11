@@ -9,8 +9,6 @@
 import Foundation
 
 protocol TableProtocol {
-
     var tableName: String { get }
     func columns() -> [String:String]
-    
 }

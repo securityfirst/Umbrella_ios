@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Language {
+class Language: FolderProtocol {
     let name: String
     var categories: [Category]
     var folderName: String?

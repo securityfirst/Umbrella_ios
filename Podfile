@@ -11,7 +11,6 @@ target 'Umbrella' do
   pod 'Crashlytics'
   pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git'
   pod 'Files'
-  pod 'Yaml'
   pod 'Yams'
   pod 'MarkdownView'
   

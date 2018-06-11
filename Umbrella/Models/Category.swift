@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Category: Codable, TableProtocol {
+class Category: Codable, TableProtocol, FolderProtocol {
     let name: String?
     let index: Float?
     var folderName: String?
     var categories: [Category]
     var segments: [Segment]
-    var checkList: [CheckItem]
+    var checkList: [CheckList]
     
     init() {
         name = ""

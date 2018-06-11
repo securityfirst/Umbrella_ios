@@ -10,4 +10,4 @@ import Foundation
 
 //var kGitBaseURL: String = "https://github.com/lucascorrea/tent-sample"
 var kGitBaseURL: String = "https://github.com/klaidliadon/umbrella-content"
-var debug: Bool = true
+var debug: Bool = false

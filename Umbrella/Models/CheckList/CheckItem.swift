@@ -2,13 +2,13 @@
 //  CheckItem.swift
 //  Umbrella
 //
-//  Created by Lucas Correa on 16/05/2018.
+//  Created by Lucas Correa on 11/06/2018.
 //  Copyright © 2018 Security First. All rights reserved.
 //
 
 import Foundation
 
-class Item: Codable {
+class CheckItem: Codable {
     let name: String
     let isChecked: Bool?
     
@@ -32,27 +32,5 @@ class Item: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(isChecked, forKey: .isChecked)
-    }
-}
-
-class CheckItem: Codable {
-    let index: Float?
-    let items: [Item]
-    
-    enum CodingKeys: String, CodingKey {
-        case index
-        case items = "list"
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        index = try container.decode(Float.self, forKey: .index)
-        items = try container.decode([Item].self, forKey: .items)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(items, forKey: .items)
-        try container.encode(index, forKey: .index)
     }
 }

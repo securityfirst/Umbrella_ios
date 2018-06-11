@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             if progress == 1.0 {
                 DispatchQueue.main.async {
                     self.progressView.isHidden = true
-                    self.markDownView.load(markdown: self.homeViewModel.parseTent())
+                    self.homeViewModel.parseTent()
                 }
             }
         })

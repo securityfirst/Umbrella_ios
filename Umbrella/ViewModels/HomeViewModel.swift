@@ -7,53 +7,53 @@
 //
 
 import Foundation
-import SwiftGit2
-import Result
+import Files
 
 class HomeViewModel {
     
     //
-    // MARK: - Functions
-    func parseTent() -> String {
-        var mark: String = ""
-        
-        //Language
-        var languageParse = LanguageParse(documentsFolder: documentsFolder)
-        languageParse.parse { title, _, _, languageFolder in
-            
-//            //Category
-//            var categoryParse = CategoryParse(languageFolder: languageFolder)
-//            categoryParse.parse { title, index, parent, categoryFolder in
-//                print("Category: \(title) \(index) \(parent)")
-                
-//                //SubCategory
-//                let subCategoryParse = SubCategoryParse(categoryFolder: categoryFolder)
-//                subCategoryParse.parse { title, index, parent, subCategoryFolder in
-//                    print("SubCategory: \(title) \(index) \(parent)")
-//
-//                    //Difficulty
-//                    let difficultyParse = DifficultyParse(subCategoryFolder: subCategoryFolder)
-//                    difficultyParse.parse { title, index, description, folder in
-//                        print("Difficulty: \(title) \(index) \(description) Subcategory: \(folder.name)")
-//                    }
-//
-//                    //Segment
-//                    let segmentParse = SegmentParse(subCategoryFolder: subCategoryFolder)
-//                    segmentParse.parse { segments, folder in
-//
-//                        for (title, index, markdown) in segments {
-//                            print("Segment: \(index) \(title) Subcategory: \(folder.name)")
-//                            // FIXME: Test of markdown
-//                            mark = markdown
-//                        }
-//                    }
-//                }
-//            }
+    // MARK: - Properties
+    var languages: [Language]
+    var forms: [Form]
+    var documentsFolder: Folder = {
+        let system = FileSystem()
+        let path = system.homeFolder.path
+        var documents: Folder?
+        do {
+            let folder = try Folder(path: path)
+            documents = try folder.subfolder(named: "Documents")
+        } catch {
+            print(error)
         }
-        
-        return mark
+        return documents!
+    }()
+    
+    //
+    // MARK: - Init
+    init() {
+        languages = []
+        forms = []
     }
     
+    //
+    // MARK: - Functions
+    
+    /// Parse of tent
+    func parseTent() {
+        
+        //Umbrella Parse Tent
+        let umbrellaParse = UmbrellaParse(documentsFolder: documentsFolder)
+        umbrellaParse.parse { languages, forms in
+            self.languages = languages
+            self.forms = forms
+        }
+    }
+    
+    /// Clone of repository of the tent
+    ///
+    /// - Parameters:
+    ///   - url: url of repository
+    ///   - completion: closure of progress
     func clone(witUrl url: String, completion: @escaping (Float) -> Void) {
         DispatchQueue.global(qos: .background).async {
             GitManager.shared.clone(witUrl: url, completion: { (totalBytesWritten, totalBytesExpectedToWrite) in

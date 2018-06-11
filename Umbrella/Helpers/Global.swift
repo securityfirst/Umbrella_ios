@@ -7,28 +7,17 @@
 //
 
 import Foundation
-import Files
-
-//
-// MARK: - Property
-var documentsFolder: Folder = {
-    let system = FileSystem()
-    let path = system.homeFolder.path
-    var documents: Folder?
-    do {
-        let folder = try Folder(path: path)
-        documents = try folder.subfolder(named: "Documents")
-    } catch {
-        print(error)
-    }
-    return documents!
-}()
 
 //
 // MARK: - Function
+
+/// Execute a function in a closure with a interval
+///
+/// - Parameters:
+///   - delay: interval
+///   - closure: closure
 func delay(_ delay: Double, closure: @escaping () -> Void) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
         closure()
     }
-    
 }
