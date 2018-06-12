@@ -9,7 +9,7 @@
 import Foundation
 
 class Category: Codable, TableProtocol, FolderProtocol {
-    let name: String?
+    var name: String?
     let index: Float?
     var folderName: String?
     var categories: [Category]
@@ -32,8 +32,14 @@ class Category: Codable, TableProtocol, FolderProtocol {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
         index = try container.decode(Float.self, forKey: .index)
+        
+        if container.contains(.name) {
+            name = try container.decode(String.self, forKey: .name)
+        } else {
+            name = ""
+        }
+        
         folderName = ""
         categories = []
         segments = []

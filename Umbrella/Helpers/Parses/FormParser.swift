@@ -1,5 +1,5 @@
 //
-//  FormParse.swift
+//  FormParser.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 11/06/2018.
@@ -10,7 +10,7 @@ import Foundation
 import Files
 import Yams
 
-struct FormParse {
+struct FormParser {
     
     //
     // MARK: - Properties

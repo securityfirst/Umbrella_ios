@@ -1,5 +1,5 @@
 //
-//  SegmentParse.swift
+//  SegmentParser.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 24/05/2018.
@@ -10,7 +10,7 @@ import Foundation
 import Files
 import Yams
 
-struct SegmentParse {
+struct SegmentParser {
     
     //
     // MARK: - Properties
@@ -27,10 +27,10 @@ struct SegmentParse {
     ///   - folder: folder of category
     ///   - file: file of parse
     ///   - array: list of language
-    init(folder: Folder, file: File, array: [Language]) {
+    init(folder: Folder, file: File, list: [Language]) {
         self.folder = folder
         self.file = file
-        self.array = array
+        self.array = list
     }
     
     //
@@ -58,10 +58,16 @@ struct SegmentParse {
             
             //List of the Segments
             lines.removeFirst(4)
+            
             var markdown: String = ""
+            
             for line in lines {
-                var lineReplaced = line.replacingOccurrences(of: "![image](", with: "![image](\(folder.path)")
-                lineReplaced = line.replacingOccurrences(of: "![](", with: "![](\(folder.path)") + "\n"
+                var lineReplaced = ""
+                if line.contains("![image](") {
+                    lineReplaced = line.replacingOccurrences(of: "![image](", with: "![image](\(folder.path)") + "\n"
+                } else if line.contains("![](") {
+                    lineReplaced = line.replacingOccurrences(of: "![](", with: "![](\(folder.path)") + "\n"
+                }
                 markdown += lineReplaced
             }
             
@@ -71,6 +77,7 @@ struct SegmentParse {
                 let category = object as? Category
                 category?.segments.append(segment!)
             }
+            
         } catch {
             print(error)
         }

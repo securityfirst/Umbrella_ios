@@ -12,7 +12,7 @@
 		A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9220AC47E800CE99E1 /* SQLManager.swift */; };
 		A064CE9620AC497D00CE99E1 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = A064CE9520AC497D00CE99E1 /* database.db */; };
 		A064CE9820AC883900CE99E1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9720AC883900CE99E1 /* Category.swift */; };
-		A0659CD220C0353D0060F812 /* UmbrellaParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0659CD120C0353D0060F812 /* UmbrellaParse.swift */; };
+		A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0659CD120C0353D0060F812 /* UmbrellaParser.swift */; };
 		A075248820C824B300E91A4A /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248720C824B300E91A4A /* Segment.swift */; };
 		A075248A20C824E200E91A4A /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248920C824E200E91A4A /* CheckList.swift */; };
 		A075248C20C8290300E91A4A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248B20C8290300E91A4A /* Language.swift */; };
@@ -31,14 +31,14 @@
 		A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CE9B20B1EBB8005BC111 /* Global.swift */; };
 		A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */; };
 		A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CE9F20B5ABB6005BC111 /* Constants.swift */; };
-		A0C6CEA620B6D14C005BC111 /* CategoryParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA520B6D14C005BC111 /* CategoryParse.swift */; };
+		A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */; };
 		A0C6CEAA20B70CC0005BC111 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA920B70CC0005BC111 /* HomeViewModel.swift */; };
-		A0C6CEAE20B70F1E005BC111 /* SegmentParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEAD20B70F1E005BC111 /* SegmentParse.swift */; };
+		A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */; };
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
-		A0FFE4F220CEA7BB0026C0C7 /* CheckListParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParse.swift */; };
-		A0FFE4F420CEA7C50026C0C7 /* FormParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParse.swift */; };
+		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
+		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
 		A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F720CED3A20026C0C7 /* Form.swift */; };
 		A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4FC20CEEA7E0026C0C7 /* Screen.swift */; };
@@ -95,7 +95,7 @@
 		A064CE9220AC47E800CE99E1 /* SQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
 		A064CE9520AC497D00CE99E1 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
 		A064CE9720AC883900CE99E1 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		A0659CD120C0353D0060F812 /* UmbrellaParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParse.swift; sourceTree = "<group>"; };
+		A0659CD120C0353D0060F812 /* UmbrellaParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParser.swift; sourceTree = "<group>"; };
 		A075248720C824B300E91A4A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		A075248920C824E200E91A4A /* CheckList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		A075248B20C8290300E91A4A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -120,14 +120,14 @@
 		A0C6CE9B20B1EBB8005BC111 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitManager.swift; sourceTree = "<group>"; };
 		A0C6CE9F20B5ABB6005BC111 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A0C6CEA520B6D14C005BC111 /* CategoryParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParse.swift; sourceTree = "<group>"; };
+		A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParser.swift; sourceTree = "<group>"; };
 		A0C6CEA920B70CC0005BC111 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		A0C6CEAD20B70F1E005BC111 /* SegmentParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentParse.swift; sourceTree = "<group>"; };
+		A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentParser.swift; sourceTree = "<group>"; };
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
-		A0FFE4F120CEA7BB0026C0C7 /* CheckListParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParse.swift; sourceTree = "<group>"; };
-		A0FFE4F320CEA7C50026C0C7 /* FormParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParse.swift; sourceTree = "<group>"; };
+		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
+		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		A0FFE4F720CED3A20026C0C7 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		A0FFE4FC20CEEA7E0026C0C7 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
@@ -394,11 +394,11 @@
 		A0C6CEA420B6D135005BC111 /* Parses */ = {
 			isa = PBXGroup;
 			children = (
-				A0659CD120C0353D0060F812 /* UmbrellaParse.swift */,
-				A0C6CEA520B6D14C005BC111 /* CategoryParse.swift */,
-				A0FFE4F120CEA7BB0026C0C7 /* CheckListParse.swift */,
-				A0C6CEAD20B70F1E005BC111 /* SegmentParse.swift */,
-				A0FFE4F320CEA7C50026C0C7 /* FormParse.swift */,
+				A0659CD120C0353D0060F812 /* UmbrellaParser.swift */,
+				A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */,
+				A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */,
+				A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */,
+				A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */,
 			);
 			path = Parses;
 			sourceTree = "<group>";
@@ -695,7 +695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
-				A0FFE4F420CEA7C50026C0C7 /* FormParse.swift in Sources */,
+				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
@@ -707,21 +707,21 @@
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
-				A0C6CEA620B6D14C005BC111 /* CategoryParse.swift in Sources */,
+				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* HomeViewModel.swift in Sources */,
-				A0C6CEAE20B70F1E005BC111 /* SegmentParse.swift in Sources */,
+				A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* HomeViewController.swift in Sources */,
 				A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
-				A0659CD220C0353D0060F812 /* UmbrellaParse.swift in Sources */,
+				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
-				A0FFE4F220CEA7BB0026C0C7 /* CheckListParse.swift in Sources */,
+				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

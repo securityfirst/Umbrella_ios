@@ -41,9 +41,9 @@ class HomeViewModel {
     /// Parse of tent
     func parseTent() {
         
-        //Umbrella Parse Tent
-        let umbrellaParse = UmbrellaParse(documentsFolder: documentsFolder)
-        umbrellaParse.parse { languages, forms in
+        //Umbrella Parse of Tent
+        var umbrellaParser = UmbrellaParser(documentsFolder: documentsFolder)
+        umbrellaParser.parse { languages, forms in
             self.languages = languages
             self.forms = forms
         }

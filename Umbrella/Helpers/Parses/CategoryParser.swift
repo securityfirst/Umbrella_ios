@@ -1,5 +1,5 @@
 //
-//  CategoryParse.swift
+//  CategoryParser.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 24/05/2018.
@@ -10,7 +10,7 @@ import Foundation
 import Files
 import Yams
 
-struct CategoryParse {
+struct CategoryParser {
     
     //
     // MARK: - Properties
@@ -27,10 +27,10 @@ struct CategoryParse {
     ///   - folder: folder of category
     ///   - file: file of parse
     ///   - array: list of language
-    init(folder: Folder, file: File, array: [Language]) {
+    init(folder: Folder, file: File, list: [Language]) {
         self.folder = folder
         self.file = file
-        self.array = array
+        self.array = list
     }
     
     //
@@ -41,6 +41,14 @@ struct CategoryParse {
         do {
             let category = try YAMLDecoder().decode(Category.self, from: file.readAsString())
             category.folderName = folder.path
+            
+            if category.name == "" {
+                category.name = folder.name
+            }
+            
+            if category.name == "forms" {
+                return
+            }
             
             if let object = array.searchParent(folderName: (folder.parent?.path)!) {
                 

@@ -42,8 +42,9 @@ class GitManager {
             //Create a clone of the Tent
             Repository.clone(from: url, to: documentsUrl.first!, localClone: true, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Force) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
                 completion(Float(totalBytesWritten), Float(totalBytesExpectedToWrite))
-                }.analysis(ifSuccess: { _ in },
-                           ifFailure: {error in
+                }.analysis(ifSuccess: { result in
+                   print(result)
+                }, ifFailure: {error in
                             print(error)
                             failure(error)
                 })

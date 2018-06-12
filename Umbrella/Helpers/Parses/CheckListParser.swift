@@ -1,5 +1,5 @@
 //
-//  CheckListParse.swift
+//  CheckListParser.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 11/06/2018.
@@ -10,7 +10,7 @@ import Foundation
 import Files
 import Yams
 
-struct CheckListParse {
+struct CheckListParser {
     
     //
     // MARK: - Properties
@@ -27,10 +27,10 @@ struct CheckListParse {
     ///   - folder: folder of category
     ///   - file: file of parse
     ///   - array: list of language
-    init(folder: Folder, file: File, array: [Language]) {
+    init(folder: Folder, file: File, list: [Language]) {
         self.folder = folder
         self.file = file
-        self.array = array
+        self.array = list
     }
     
     //
