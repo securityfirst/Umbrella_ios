@@ -13,7 +13,7 @@ extension Array {
     /// Search for a list recursive the folderName and return the category with same path
     ///
     /// - Parameter folderName: path of file
-    /// - Returns: a category
+    /// - Return: a category
     func searchParent(folderName: String) -> Any? {
         for view in self {
             

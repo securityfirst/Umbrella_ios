@@ -9,28 +9,47 @@
 import Foundation
 
 class CheckItem: Codable {
-    let name: String
-    let isChecked: Bool?
+    
+    //Name and label are same information (the title of checkbox), so a label is used to when the checkbox is checked and as I need to save the name, I create the attribute label only to get data.
+    var name: String
+    private let label: String
+    
+    var isChecked: Bool?
+    
+    init() {
+        name = ""
+        label = ""
+        isChecked = false
+    }
     
     enum CodingKeys: String, CodingKey {
-        case name = "text"
-        case isChecked = "label"
+        case name = "check"
+        case label = "label"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
         
-        if container.contains(.isChecked) {
-            isChecked = try container.decode(Bool.self, forKey: .isChecked)
+        if container.contains(.name) {
+            name = try container.decode(String.self, forKey: .name)
+        } else {
+            name = ""
+        }
+        
+        if container.contains(.label) {
+            // Get the title of tag ".label"
+            name = try container.decode(String.self, forKey: .label)
+            isChecked = true
         } else {
             isChecked = false
         }
+        
+        label = ""
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encode(isChecked, forKey: .isChecked)
+        try container.encode(label, forKey: .label)
     }
 }

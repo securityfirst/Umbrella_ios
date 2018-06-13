@@ -15,6 +15,14 @@ class ItemForm: Codable {
     let hint: String
     let options: [OptionItem]
     
+    init() {
+        name = ""
+        type = ""
+        label = ""
+        hint = ""
+        options = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case type

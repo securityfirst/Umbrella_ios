@@ -47,6 +47,7 @@ class HomeViewModel {
             self.languages = languages
             self.forms = forms
         }
+        
     }
     
     /// Clone of repository of the tent
@@ -56,7 +57,9 @@ class HomeViewModel {
     ///   - completion: closure of progress
     func clone(witUrl url: String, completion: @escaping (Float) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            GitManager.shared.clone(witUrl: url, completion: { (totalBytesWritten, totalBytesExpectedToWrite) in
+            
+            let gitManager = GitManager(urlString: url, pathDirectory: .documentDirectory)
+            gitManager.clone(completion: { (totalBytesWritten, totalBytesExpectedToWrite) in
                 let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
                 completion(progress)
             }, failure: { error in

@@ -12,6 +12,11 @@ class OptionItem: Codable {
     let label: String
     let value: String
     
+    init() {
+        label = ""
+        value = ""
+    }
+    
     enum CodingKeys: String, CodingKey {
         case label
         case value

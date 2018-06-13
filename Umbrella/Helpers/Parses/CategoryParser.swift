@@ -36,9 +36,10 @@ struct CategoryParser {
     //
     // MARK: - Functions
 
-    /// Parse of category
+    /// Parse of the category
     func parse() {
         do {
+            
             let category = try YAMLDecoder().decode(Category.self, from: file.readAsString())
             category.folderName = folder.path
             
@@ -65,7 +66,7 @@ struct CategoryParser {
             }
             
         } catch {
-            print(error)
+            print("CategoryParser: \(error)")
         }
     }
 }

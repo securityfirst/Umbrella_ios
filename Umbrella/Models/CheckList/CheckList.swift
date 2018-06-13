@@ -12,6 +12,11 @@ class CheckList: Codable {
     let index: Float?
     let items: [CheckItem]
     
+    init() {
+        index = 0
+        items = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case index
         case items = "list"

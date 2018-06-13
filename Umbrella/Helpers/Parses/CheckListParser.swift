@@ -36,7 +36,7 @@ struct CheckListParser {
     //
     // MARK: - Functions
     
-    /// Parse of CheckList
+    /// Parse of the CheckList
     func parse() {
         do {
             let checkItem = try YAMLDecoder().decode(CheckList.self, from: file.readAsString())
@@ -46,7 +46,7 @@ struct CheckListParser {
                 categ?.checkList.append(checkItem)
             }
         } catch {
-            print(error)
+            print("CheckListParser: \(error)")
         }
     }
 }

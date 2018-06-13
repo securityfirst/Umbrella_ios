@@ -27,7 +27,13 @@ class Segment: Codable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
-        index = try container.decode(Float.self, forKey: .index)
+        
+        if container.contains(.index) {
+            index = try container.decode(Float.self, forKey: .index)
+        } else {
+            index = 0
+        }
+        
         content = ""
     }
     

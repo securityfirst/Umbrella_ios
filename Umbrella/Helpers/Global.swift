@@ -7,7 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
+class Global {
+    internal static var dateFormatter: DateFormatter = DateFormatter()
+}
 //
 // MARK: - Function
 

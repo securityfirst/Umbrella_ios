@@ -12,6 +12,11 @@ class Screen: Codable {
     let name: String
     let items: [ItemForm]
     
+    init() {
+        name = ""
+        items = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case items
         case name

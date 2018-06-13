@@ -27,7 +27,7 @@ struct UmbrellaParser {
     //
     // MARK: - Functions
     
-    /// Parse of tent
+    /// Parse of the tent
     ///
     /// - Parameter completion: return languages and forms
     mutating func parse(completion: ([Language], [Form]) -> Void) {

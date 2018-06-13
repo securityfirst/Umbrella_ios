@@ -25,6 +25,15 @@ class Category: Codable, TableProtocol, FolderProtocol {
         checkList = []
     }
     
+    init(name: String, index: Float, folderName: String = "") {
+        self.name = name
+        self.index = index
+        self.folderName = folderName
+        categories = []
+        segments = []
+        checkList = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name = "title"
         case index
@@ -32,7 +41,12 @@ class Category: Codable, TableProtocol, FolderProtocol {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        index = try container.decode(Float.self, forKey: .index)
+        
+        if container.contains(.index) {
+            index = try container.decode(Float.self, forKey: .index)
+        } else {
+            index = 0
+        }
         
         if container.contains(.name) {
             name = try container.decode(String.self, forKey: .name)

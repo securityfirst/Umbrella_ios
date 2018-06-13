@@ -36,7 +36,7 @@ struct SegmentParser {
     //
     // MARK: - Functions
     
-    /// Parse of Segment
+    /// Parse of the Segment
     func parse() {
         
         do {
@@ -46,9 +46,9 @@ struct SegmentParser {
             var lines = fileString.components(separatedBy: "\n")
             
             // Get Header are 4 lines
-            var headerLines = lines.prefix(4)
-            headerLines.removeFirst(1)
-            headerLines.removeLast()
+            var headerLines: [String] = []
+            
+            removeHeader(&lines, &headerLines)
             
             //Title and Index of the Segment
             if let first = headerLines.first, let last = headerLines.last {
@@ -57,7 +57,6 @@ struct SegmentParser {
             }
             
             //List of the Segments
-            lines.removeFirst(4)
             
             var markdown: String = ""
             
@@ -79,7 +78,30 @@ struct SegmentParser {
             }
             
         } catch {
-            print(error)
+            print("SegmentParser: \(error)")
+        }
+    }
+    
+    /// Remove the header of the file
+    ///
+    /// - Parameters:
+    ///   - lines: array of lines
+    ///   - headerLines: array to store the header
+    fileprivate func removeHeader(_ lines: inout [String], _ headerLines: inout [String]) {
+        var count = 0
+        for item in lines {
+            
+            if count == 2 {
+                break
+            }
+            
+            if item.contains("---") {
+                count+=1
+                lines.remove(at: 0)
+            } else {
+                headerLines.append(item)
+                lines.remove(at: 0)
+            }
         }
     }
 }

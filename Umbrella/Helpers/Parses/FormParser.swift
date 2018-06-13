@@ -38,7 +38,7 @@ struct FormParser {
             let form = try YAMLDecoder().decode(Form.self, from: self.file.readAsString())
             return form
         } catch {
-            print(error)
+            print("FormParser: \(error)")
         }
         
         return nil
