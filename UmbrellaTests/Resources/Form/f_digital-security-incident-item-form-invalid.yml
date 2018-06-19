@@ -1,0 +1,18 @@
+screens:
+- name: Digital Security Incident
+  items:
+  - name: name
+    type: text_input
+    label: 'Name:'
+  - name: title
+    type: text_input
+    label: 'Title:'
+ name: phone
+type: text_input
+label: 'Phone:'
+  - name: email-address
+    type: text_input
+    label: 'Email address:'
+  - name: secure-communication-method-e-g-signal-safety-number-pgp-email-id
+    type: text_input
+    label: 'Secure Communication Method (e.g Signal Safety Number, PGP Email ID):'

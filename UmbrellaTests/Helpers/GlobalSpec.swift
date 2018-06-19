@@ -23,7 +23,7 @@ class GlobalSpec: QuickSpec {
         describe("Global") {
             it("should wait for 2 seconds") {
                 let dateFormatter = Global.dateFormatter
-                dateFormatter.dateFormat = "mmss"
+                dateFormatter.dateFormat = "HHmmss"
                 
                 let seconds = dateFormatter.string(from: Date())
                 waitUntil(timeout: 4) { done in

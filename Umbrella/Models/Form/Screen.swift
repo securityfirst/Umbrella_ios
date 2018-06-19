@@ -13,8 +13,13 @@ class Screen: Codable {
     let items: [ItemForm]
     
     init() {
-        name = ""
-        items = []
+        self.name = ""
+        self.items = []
+    }
+    
+    init(name: String, items: [ItemForm]) {
+        self.name = name
+        self.items = items
     }
     
     enum CodingKeys: String, CodingKey {
@@ -24,13 +29,17 @@ class Screen: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
-        items = try container.decode([ItemForm].self, forKey: .items)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(items, forKey: .items)
+        
+        if container.contains(.name) {
+            self.name = try container.decode(String.self, forKey: .name)
+        } else {
+            self.name = ""
+        }
+        
+        if container.contains(.items) {
+            self.items = try container.decode([ItemForm].self, forKey: .items)
+        } else {
+            self.items = []
+        }
     }
 }

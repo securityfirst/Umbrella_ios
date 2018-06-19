@@ -1,0 +1,7 @@
+index: 100
+list:
+- check: Install KeePassXC
+- check: Create strong password for KeePassXC
+- check: Back up KeePassXC database
+- check: Ensure computer has no malware
+- check: Install two-step authentication

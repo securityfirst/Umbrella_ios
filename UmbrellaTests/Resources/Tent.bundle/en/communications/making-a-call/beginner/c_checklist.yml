@@ -1,0 +1,12 @@
+index: 100
+list:
+- check: Avoid regular phone calls for sensitive conversations
+- check: Use Signal for secure calls
+- check: Use JitsiMeet for video conferencing
+- label: If you must use less secure options
+- check: Download from official website
+- check: Change password regularly
+- check: Adjust settings so you don't keep chat history
+- check: Verify who you're speaking to
+- check: Consider using anonymous username
+- check: Use codes for sensitive topics

@@ -1,0 +1,76 @@
+index: 100
+list:
+- check: WEAR A SEATBELT
+- check: Park in well lit, busy places
+- check: Close windows and lock doors on leaving
+- check: Have keys in hand returning to vehicle
+- check: Lock doors on entry
+- check: Open windows no more than 5cm
+- check: Do not speed
+- check: Observe local driving regulations
+- check: Avoid driving at night/alone
+- check: Avoid letting fuel tank fall below half full
+- check: Keep spare key in office
+- check: Don't carry unauthorized passengers unless threatened
+- check: Meet incoming staff on arrival
+- check: Vary regular journey times/routes
+- check: Have alternate routes planned
+- check: Avoid criminal areas and chokepoints
+- check: Consult with other agencies
+- check: Notify team of travel plans
+- check: Mark vehicles appropriately
+- check: Avoid transporting sensitive items through volatile areas
+- label: Journey considerations
+- check: Recent incidents
+- check: Weather
+- check: Length
+- check: Communications
+- check: Checkpoints/ other dangerous points
+- check: Safe 'waypoints'
+- check: Refuelling stops
+- check: Food stops
+- check: Plan in case of breakdown
+- check: Appropriate vehicle type
+- check: Ethnicity of driver if dangerous area
+- label: Checks
+- check: Tyres
+- check: Seatbelts
+- check: Fuel
+- check: Brakes
+- check: Oil
+- check: Steering
+- check: Loading
+- label: Keep in vehicle
+- check: Communication equipment and key telephone numbers
+- check: Additional fuel & oil
+- check: Water
+- check: Maps
+- check: GPS
+- check: Spare parts for car
+- check: Spare wheel (x2) and jack
+- check: Basic tools
+- check: Fluorescent warning triangle
+- check: Tow rope
+- check: First aid kit
+- check: Torch
+- check: Permission to travel, if required
+- check: Visas
+- check: Car documents
+- check: Driver's licence & insurance
+- check: Personal ID
+- check: Organisational ID if possible
+- check: Medical vaccination certificates
+- check: Food
+- check: Water
+- check: Cold/ hot weather clothing
+- check: Blankets/ shade structure
+- label: In case of accident
+- check: Ascertain risk of staying
+- check: Do not leave site unless at risk
+- check: If at risk, drive to nearest police/military post
+- check: Make site safe and visible to others
+- check: Provide assistance as appropriate
+- check: Contact and cooperate with authorities
+- check: Contact your office
+- check: Take pictures of scene and details of those involved
+- check: Complete accident report form in log book if applicable

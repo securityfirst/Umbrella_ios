@@ -1,0 +1,33 @@
+index: 100
+list:
+- label: Phase One
+- check: Plan the who/what/when/where/how of potential evacuation
+- label: Phase Two
+- check: Brief staff
+- check: Test communications system
+- check: Prepare all payments
+- check: Back up/ safely delete files
+- check: Staff and families should carry personal documentation
+- check: Prepare grab bags
+- check: Stock the safe-house
+- check: Inventory assets
+- check: Assign and prepare vehicles
+- label: Phase Three
+- check: Keep staff informed
+- check: Coordinate with embassies and agencies
+- check: Pay all salaries
+- check: Hide high-value assets
+- check: Remove logos from vehicles remaining
+- check: Give clear responsibility to staff staying
+- label: Phase Four
+- check: Consider disabling equipment
+- check: Leave safes empty and open
+- check: Ensure effective communication with national staff
+- check: Evacuate by safest means possible
+- check: Upon evacuation, inform national staff, embassies etc
+- label: Safe-houses
+- check: Should be secure building in safe neighbourhood
+- check: Should be lived in / serviced
+- check: Should be stocked with emergency goods
+- check: Waste should be securely disposed of
+- check: Grab bags should be placed by escape routes

@@ -1,0 +1,38 @@
+index: 100
+list:
+- check: Do not use regular phone for sensitive calls
+- check: Do not use regular phone for sensitive SMS messages
+- check: Use a code if necessary
+- check: Encrypt your phone
+- check: Don't store sensitive information on phone
+- check: Regularly erase call records, messages, photos etc.
+- check: Back up your phone
+- check: Don't leave your SIM card at the repair shop with your phone
+- check: Only use trusted repair shops/ dealers
+- check: Delete data from phone before handing on
+- check: Don't hand on SIM card or memory card
+- check: Use ObscuraCam for sensitive photos
+- check: Leave phone in different room when having sensitive meetings
+- check: Don't have sensitive phone calls in public place
+- check: Always keep your phone with you
+- check: Keep your phone locked
+- check: Always change voicemail PIN code from default setting
+- check: Mark your phone, battery and SIM card
+- check: Use tamper-proof security tape
+- check: Get your phone unlocked
+- check: Write down your IMEI number
+- check: Think carefully whether or not you should register your phone
+- check: Regularly update software
+- check: Never accept unexpected programmes
+- check: Only connect phone to malware-free computer
+- check: Only give location permissions to apps you trust
+- check: Disable or uninstall applications you don't use
+- check: Avoid WIFI that is not password protected
+- check: Keep WIFI, Bluetooth and Infrared off when not in use
+- check: Only use WIFI, Bluetooth and Infrared in trusted locations
+- label: For burner phones
+- check: Use unregistered pre-paid phone, paid for with cash
+- check: Use unregistered pre-paid SIM, paid for with cash
+- check: Do not reuse phone or SIM card for different contacts
+- check: Do not turn on when with your regular phone
+- check: Do not turn on in location associated with you

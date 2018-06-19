@@ -1,0 +1,6 @@
+---
+title: Man-in-the-middle attack (MITM)
+---
+# Man-in-the-middle attack (MITM)
+
+Suppose you believe you were speaking to your friend, Bahram, via encrypted instant messenger. To check it's really him, you ask him to tell you the city where you first met. "Istanbul" comes the reply. That's correct! Unfortunately, without you or Bahram knowing, someone else online has been intercepting all your communications. When you first connected to Bahram, you actually connected to this person, and she, in turn, connected to Bahram. When you think you are asking Bahram a question, she receives your message, relays the question to Bahram, receives his answer back, and then sends it to you. Even though you think you are communicating securely with Bahram, you are, in fact, only communicating securely with the spy, who is also communicating securely to Bahram! This is the man-in-the-middle attack. Men-in-the-middle can spy on communications or even insert false or misleading messages into your communications. Security-focused internet communications software needs to defend against the man-in-the-middle attack to be safe against attackers who have control of any part of the Internet between two communicators.

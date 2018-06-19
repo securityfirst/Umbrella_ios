@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		3BB472962D5E529D96075E59 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */; };
 		90309D2A4532B7A930C5A0B5 /* Pods_UmbrellaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E7691B86B48D0956C3E803 /* Pods_UmbrellaUITests.framework */; };
+		A064107020D80E360044ADAB /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064106F20D80E360044ADAB /* InputFileReader.swift */; };
+		A064107220D80FFD0044ADAB /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064106F20D80E360044ADAB /* InputFileReader.swift */; };
+		A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */; };
+		A0641EE520D903050044ADAB /* Tent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0641EE420D903040044ADAB /* Tent.bundle */; };
+		A0641EE920D90E9D0044ADAB /* f_digital-security-incident.yml in Resources */ = {isa = PBXBuildFile; fileRef = A0641EE720D90E9D0044ADAB /* f_digital-security-incident.yml */; };
+		A0641EEA20D90E9D0044ADAB /* f_digital-security-incident-item-form-invalid.yml in Resources */ = {isa = PBXBuildFile; fileRef = A0641EE820D90E9D0044ADAB /* f_digital-security-incident-item-form-invalid.yml */; };
+		A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641EEB20D90F970044ADAB /* InputFileReaderSpec.swift */; };
+		A0641EEE20D911FD0044ADAB /* tool_cobian1.png in Resources */ = {isa = PBXBuildFile; fileRef = A0641EED20D911FC0044ADAB /* tool_cobian1.png */; };
 		A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9220AC47E800CE99E1 /* SQLManager.swift */; };
 		A064CE9620AC497D00CE99E1 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = A064CE9520AC497D00CE99E1 /* database.db */; };
 		A064CE9820AC883900CE99E1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9720AC883900CE99E1 /* Category.swift */; };
@@ -102,6 +110,13 @@
 		6A1EFF726C4C7E44324B782A /* Pods-Umbrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.release.xcconfig"; sourceTree = "<group>"; };
 		9386F5AC361BF2292BED1D62 /* Pods-Umbrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.debug.xcconfig"; sourceTree = "<group>"; };
 		98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A064106F20D80E360044ADAB /* InputFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputFileReader.swift; path = ../../../Gilt/Gilt/Helpers/InputFileReader.swift; sourceTree = "<group>"; };
+		A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParserSpec.swift; sourceTree = "<group>"; };
+		A0641EE420D903040044ADAB /* Tent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Tent.bundle; sourceTree = "<group>"; };
+		A0641EE720D90E9D0044ADAB /* f_digital-security-incident.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "f_digital-security-incident.yml"; sourceTree = "<group>"; };
+		A0641EE820D90E9D0044ADAB /* f_digital-security-incident-item-form-invalid.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "f_digital-security-incident-item-form-invalid.yml"; sourceTree = "<group>"; };
+		A0641EEB20D90F970044ADAB /* InputFileReaderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFileReaderSpec.swift; sourceTree = "<group>"; };
+		A0641EED20D911FC0044ADAB /* tool_cobian1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_cobian1.png; sourceTree = "<group>"; };
 		A064CE9220AC47E800CE99E1 /* SQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
 		A064CE9520AC497D00CE99E1 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
 		A064CE9720AC883900CE99E1 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -219,6 +234,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A064106A20D80D9A0044ADAB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A0641EEF20D912030044ADAB /* Images */,
+				A0641EE620D90E9D0044ADAB /* Form */,
+				A0641EE420D903040044ADAB /* Tent.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A0641EE620D90E9D0044ADAB /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				A0641EE720D90E9D0044ADAB /* f_digital-security-incident.yml */,
+				A0641EE820D90E9D0044ADAB /* f_digital-security-incident-item-form-invalid.yml */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		A0641EEF20D912030044ADAB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A0641EED20D911FC0044ADAB /* tool_cobian1.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		A064CE9420AC497D00CE99E1 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,10 +321,10 @@
 		A0B9D43920AAE03900B2B796 /* UmbrellaTests */ = {
 			isa = PBXGroup;
 			children = (
+				A064106A20D80D9A0044ADAB /* Resources */,
 				A0FFE51D20D020DD0026C0C7 /* Extensions */,
 				A0FFE51A20D020DD0026C0C7 /* Helpers */,
 				A0FFE51F20D020DE0026C0C7 /* Networking */,
-				A0FFE51920D020DD0026C0C7 /* Protocols */,
 				A0FFE50720D01D1C0026C0C7 /* Models */,
 				A0FFE52120D020DE0026C0C7 /* ViewControllers */,
 				A0FFE51820D020DC0026C0C7 /* ViewModels */,
@@ -337,7 +379,8 @@
 			children = (
 				A0C6CE9F20B5ABB6005BC111 /* Constants.swift */,
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
-				A0C6CEA420B6D135005BC111 /* Parses */,
+				A064106F20D80E360044ADAB /* InputFileReader.swift */,
+				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 			);
 			path = Helpers;
@@ -418,16 +461,16 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		A0C6CEA420B6D135005BC111 /* Parses */ = {
+		A0C6CEA420B6D135005BC111 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
 				A0659CD120C0353D0060F812 /* UmbrellaParser.swift */,
 				A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */,
-				A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */,
 				A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */,
+				A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */,
 				A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */,
 			);
-			path = Parses;
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		A0FFE4FB20CEEA660026C0C7 /* Form */ = {
@@ -473,20 +516,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		A0FFE51920D020DD0026C0C7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		A0FFE51A20D020DD0026C0C7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				A0FFE52220D0211E0026C0C7 /* GlobalSpec.swift */,
-				A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */,
+				A0641EEB20D90F970044ADAB /* InputFileReaderSpec.swift */,
 				A0FFE51B20D020DD0026C0C7 /* Managers */,
-				A0FFE51C20D020DD0026C0C7 /* Parses */,
+				A0FFE51C20D020DD0026C0C7 /* Parsers */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -494,15 +530,17 @@
 		A0FFE51B20D020DD0026C0C7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		A0FFE51C20D020DD0026C0C7 /* Parses */ = {
+		A0FFE51C20D020DD0026C0C7 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */,
 			);
-			path = Parses;
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		A0FFE51D20D020DD0026C0C7 /* Extensions */ = {
@@ -664,6 +702,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0641EE920D90E9D0044ADAB /* f_digital-security-incident.yml in Resources */,
+				A0641EEE20D911FD0044ADAB /* tool_cobian1.png in Resources */,
+				A0641EEA20D90E9D0044ADAB /* f_digital-security-incident-item-form-invalid.yml in Resources */,
+				A0641EE520D903050044ADAB /* Tent.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +881,7 @@
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
+				A064107020D80E360044ADAB /* InputFileReader.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,9 +897,12 @@
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
 				A0FFE51520D01E520026C0C7 /* ItemFormSpec.swift in Sources */,
 				A0FFE51320D01E470026C0C7 /* ScreenSpec.swift in Sources */,
+				A064107220D80FFD0044ADAB /* InputFileReader.swift in Sources */,
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
+				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,
 				A0FFE51120D01E390026C0C7 /* FormSpec.swift in Sources */,
+				A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */,
 				A0FFE50D20D01E1C0026C0C7 /* CheckListSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

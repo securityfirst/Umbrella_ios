@@ -1,0 +1,7 @@
+index: 100
+list:
+- check: Install and use PGP
+- check: If you need to protect your metadata, use Tor
+- check: Consider using pseudonym with your public key
+- check: To disguise contact completely, both parties use anonymous email accounts,
+    Tor and PGP

@@ -1,0 +1,14 @@
+index: 100
+list:
+- check: Implement a 'need to know' policy
+- check: Delete unnecessary sensitive information
+- check: Note information that you keep, where it's kept, who has access to it, and
+    what stops others from accessing it
+- check: List possible adversaries
+- check: Note what your adversary might want to do with your information
+- check: Note the likelihood of your adversaries attacking
+- check: Note the capability of your adversaries to attack
+- check: Note the consequences if the attack succeeds
+- check: Note what you are you willing to do to prevent them
+- check: If appropriate for your threat model, destroy or secure your assessment notes
+- check: Set a future calendar reminder to review your threat model

@@ -13,8 +13,13 @@ class OptionItem: Codable {
     let value: String
     
     init() {
-        label = ""
-        value = ""
+        self.label = ""
+        self.value = ""
+    }
+    
+    init(label: String, value: String) {
+        self.label = label
+        self.value = value
     }
     
     enum CodingKeys: String, CodingKey {
@@ -24,13 +29,17 @@ class OptionItem: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        label = try container.decode(String.self, forKey: .label)
-        value = try container.decode(String.self, forKey: .value)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(label, forKey: .label)
-        try container.encode(value, forKey: .value)
+        
+        if container.contains(.label) {
+            self.label = try container.decode(String.self, forKey: .label)
+        } else {
+            self.label = ""
+        }
+        
+        if container.contains(.label) {
+            self.value = try container.decode(String.self, forKey: .value)
+        } else {
+            self.value = ""
+        }
     }
 }

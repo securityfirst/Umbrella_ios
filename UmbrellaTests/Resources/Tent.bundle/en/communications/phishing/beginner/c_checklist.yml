@@ -1,0 +1,24 @@
+index: 100
+list:
+- label: 'To prevent phishing:'
+- check: Who is message from—could it be fake?
+- check: Is anything wrong or odd, like spelling or logo?
+- check: Does message make promises or require urgent action?
+- check: Does message include attachment or link?
+- check: In messages from contacts, do they sound like themselves?
+- check: Mouseover links to check URLs.
+- check: Unshorten URLs at https://unshorten.it/.
+- check: Type out URLs yourself, especially before logging in.
+- check: Open attachments through Google Drive, or at the very least, a program on
+    your computer
+- check: Contact the sender through a different, secure channel to confirm they sent
+    unusual messages
+- check: Check links and attachments at VirusTotal
+- label: 'If you''ve been phished:'
+- check: Disconnect and shut down malware-infected devices
+- check: Change passwords
+- check: Warn contacts
+- check: Report the attack to IT or security expert
+- check: Consider reinstalling your operating system on malware-infected devices
+- label: 'TIP: Share this checklist with yourself by email and print a copy to post
+    in your workspace.'

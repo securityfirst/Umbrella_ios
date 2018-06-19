@@ -16,11 +16,19 @@ class ItemForm: Codable {
     let options: [OptionItem]
     
     init() {
-        name = ""
-        type = ""
-        label = ""
-        hint = ""
-        options = []
+        self.name = ""
+        self.type = ""
+        self.label = ""
+        self.hint = ""
+        self.options = []
+    }
+    
+    init(name: String, type: String, label: String, hint: String, options: [OptionItem]) {
+        self.name = name
+        self.type = type
+        self.label = label
+        self.hint = hint
+        self.options = options
     }
     
     enum CodingKeys: String, CodingKey {
@@ -33,33 +41,36 @@ class ItemForm: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
-        type = try container.decode(String.self, forKey: .type)
+        
+        if container.contains(.name) {
+            self.name = try container.decode(String.self, forKey: .name)
+        } else {
+            self.name = ""
+        }
+        
+        if container.contains(.type) {
+            self.type = try container.decode(String.self, forKey: .type)
+        } else {
+            self.type = ""
+        }
         
         if container.contains(.hint) {
-            hint = try container.decode(String.self, forKey: .hint)
+            self.hint = try container.decode(String.self, forKey: .hint)
         } else {
-            hint = ""
+            self.hint = ""
         }
         
         if container.contains(.label) {
-            label = try container.decode(String.self, forKey: .label)
+            self.label = try container.decode(String.self, forKey: .label)
         } else {
-            label = ""
+            self.label = ""
         }
         
         if container.contains(.options) {
-            options = try container.decode([OptionItem].self, forKey: .options)
+            self.options = try container.decode([OptionItem].self, forKey: .options)
         } else {
-            options = []
+            self.options = []
         }
         
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(type, forKey: .type)
-        try container.encode(label, forKey: .label)
     }
 }

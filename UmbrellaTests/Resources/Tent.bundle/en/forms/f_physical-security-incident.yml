@@ -1,0 +1,100 @@
+screens:
+- name: Physical Security Incident
+  items:
+  - name: name
+    type: text_input
+    label: 'Name:'
+  - name: title
+    type: text_input
+    label: 'Title:'
+  - name: phone
+    type: text_input
+    label: 'Phone:'
+  - name: email-address
+    type: text_input
+    label: 'Email address:'
+  - name: secure-communication-method-e-g-signal-safety-number-pgp-email-id
+    type: text_input
+    label: 'Secure Communication Method (e.g Signal Safety Number, PGP Email ID):'
+- name: Physical Security Incident
+  items:
+  - name: provide-brief-description
+    type: text_area
+    label: 'Provide a brief description:'
+- name: Physical Security Incident
+  items:
+  - name: type-incident
+    type: multiple_choice
+    label: Type of Incident
+    options:
+    - label: Threat / Harassment
+      value: Threat / Harassment
+    - label: Difficult encounter with authorities/ military forces
+      value: Difficult encounter with authorities/ military forces
+    - label: Detention / Arrest
+      value: Detention / Arrest
+    - label: Robbery / Ambush
+      value: Robbery / Ambush
+    - label: Carjacking
+      value: Carjacking
+    - label: Personal Assault
+      value: Personal Assault
+    - label: Sexual Assault
+      value: Sexual Assault
+    - label: Kidnap / Abduction
+      value: Kidnap / Abduction
+    - label: Shooting
+      value: Shooting
+    - label: Bombardment / Crossfire
+      value: Bombardment / Crossfire
+    - label: Landmine
+      value: Landmine
+    - label: Other
+      value: Other
+  - name: type-incident-other
+    type: text_input
+- name: Physical Security Incident
+  items:
+  - name: nature-injuries-damage-threats-property-stolen
+    type: text_area
+    label: 'Nature of injuries or damage/ threats made/ Property stolen etc.:'
+- name: Physical Security Incident
+  items:
+  - name: provide-brief-description-2
+    type: text_area
+- name: Physical Security Incident
+  items:
+  - name: provide-brief-description-3
+    type: text_area
+- name: Physical Security Incident
+  items:
+  - name: incident-reported-locally
+    type: text_area
+    label: Who Has The Incident Been Reported To Locally?
+- name: Physical Security Incident
+  items:
+  - name: security-guidelines-cover-type-incident-guidelines-followed
+    type: text_area
+    label: Do Your Security Guidelines Cover This Type Of Incident? Were The Guidelines
+      Followed?
+- name: Physical Security Incident
+  items:
+  - name: guidelines-aspect-security-management-need-revised-way
+    type: text_area
+    label: Do The Guidelines Or Any Other Aspect Of Security Management Need To Be
+      Revised In Any Way?
+- name: Physical Security Incident
+  items:
+  - name: lessons-learned
+    type: text_area
+    label: 'Lessons learned:'
+- name: Physical Security Incident
+  items:
+  - name: action-requested
+    type: text_area
+    label: Any Action Requested?
+- name: Physical Security Incident
+  items:
+  - name: supporting-information
+    type: text_area
+    label: Any supporting information?

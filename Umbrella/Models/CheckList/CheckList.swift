@@ -13,8 +13,13 @@ class CheckList: Codable {
     let items: [CheckItem]
     
     init() {
-        index = 0
-        items = []
+        self.index = 0
+        self.items = []
+    }
+    
+    init(index: Float, items: [CheckItem]) {
+        self.index = index
+        self.items = items
     }
     
     enum CodingKeys: String, CodingKey {
@@ -24,13 +29,17 @@ class CheckList: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        index = try container.decode(Float.self, forKey: .index)
-        items = try container.decode([CheckItem].self, forKey: .items)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(items, forKey: .items)
-        try container.encode(index, forKey: .index)
+        
+        if container.contains(.index) {
+            self.index = try container.decode(Float.self, forKey: .index)
+        } else {
+            self.index = 0
+        }
+        
+        if container.contains(.items) {
+            self.items = try container.decode([CheckItem].self, forKey: .items)
+        } else {
+            self.items = []
+        }
     }
 }

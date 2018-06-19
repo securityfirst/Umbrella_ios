@@ -17,21 +17,21 @@ class Category: Codable, TableProtocol, FolderProtocol {
     var checkList: [CheckList]
     
     init() {
-        name = ""
-        index = 0
-        folderName = ""
-        categories = []
-        segments = []
-        checkList = []
+        self.name = ""
+        self.index = 0
+        self.folderName = ""
+        self.categories = []
+        self.segments = []
+        self.checkList = []
     }
     
     init(name: String, index: Float, folderName: String = "") {
         self.name = name
         self.index = index
         self.folderName = folderName
-        categories = []
-        segments = []
-        checkList = []
+        self.categories = []
+        self.segments = []
+        self.checkList = []
     }
     
     enum CodingKeys: String, CodingKey {
@@ -43,27 +43,21 @@ class Category: Codable, TableProtocol, FolderProtocol {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         if container.contains(.index) {
-            index = try container.decode(Float.self, forKey: .index)
-        } else {
-            index = 0
+            self.index = try container.decode(Float.self, forKey: .index)
+        } else {            
+            self.index = 0
         }
         
         if container.contains(.name) {
-            name = try container.decode(String.self, forKey: .name)
+            self.name = try container.decode(String.self, forKey: .name)
         } else {
-            name = ""
+            self.name = ""
         }
         
-        folderName = ""
-        categories = []
-        segments = []
-        checkList = []
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(index, forKey: .index)
+        self.folderName = ""
+        self.categories = []
+        self.segments = []
+        self.checkList = []
     }
     
     //

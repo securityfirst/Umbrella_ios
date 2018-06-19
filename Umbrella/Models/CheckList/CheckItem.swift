@@ -17,9 +17,15 @@ class CheckItem: Codable {
     var isChecked: Bool?
     
     init() {
-        name = ""
-        label = ""
-        isChecked = false
+        self.name = ""
+        self.label = ""
+        self.isChecked = false
+    }
+    
+    init(name: String) {
+        self.name = name
+        self.label = ""
+        self.isChecked = false
     }
     
     enum CodingKeys: String, CodingKey {
@@ -31,25 +37,19 @@ class CheckItem: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         if container.contains(.name) {
-            name = try container.decode(String.self, forKey: .name)
+            self.name = try container.decode(String.self, forKey: .name)
         } else {
-            name = ""
+            self.name = ""
         }
         
         if container.contains(.label) {
             // Get the title of tag ".label"
-            name = try container.decode(String.self, forKey: .label)
-            isChecked = true
+            self.name = try container.decode(String.self, forKey: .label)
+            self.isChecked = true
         } else {
-            isChecked = false
+            self.isChecked = false
         }
         
-        label = ""
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(label, forKey: .label)
+        self.label = ""
     }
 }

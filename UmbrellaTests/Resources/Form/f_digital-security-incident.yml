@@ -1,0 +1,161 @@
+screens:
+- name: Digital Security Incident
+  items:
+  - name: name
+    type: text_input
+    label: 'Name:'
+  - name: title
+    type: text_input
+    label: 'Title:'
+  - name: phone
+    type: text_input
+    label: 'Phone:'
+  - name: email-address
+    type: text_input
+    label: 'Email address:'
+  - name: secure-communication-method-e-g-signal-safety-number-pgp-email-id
+    type: text_input
+    label: 'Secure Communication Method (e.g Signal Safety Number, PGP Email ID):'
+- name: Digital Security Incident
+  items:
+  - name: provide-brief-description
+    type: text_area
+    label: 'Provide a brief description:'
+- name: Digital Security Incident
+  items:
+  - name: impact-potential-impact-check-following-apply-incident
+    type: multiple_choice
+    label: Impact / Potential Impact Check all of the following that apply to this
+      incident.
+    options:
+    - label: Outside access to data
+      value: Outside access to data
+    - label: Loss of access to account
+      value: Loss of access to account
+    - label: Phishing / Malware attacks on contacts
+      value: Phishing / Malware attacks on contacts
+    - label: Loss / Compromise of Data
+      value: Loss / Compromise of Data
+    - label: Damage to Systems
+      value: Damage to Systems
+    - label: Website down
+      value: Website down
+    - label: Financial Loss
+      value: Financial Loss
+    - label: Other Organizations’ Systems/ Data Affected
+      value: Other Organizations’ Systems/ Data Affected
+    - label: Damage to the Integrity or Delivery of Critical Services or Information
+      value: Damage to the Integrity or Delivery of Critical Services or Information
+    - label: Unknown at this time
+      value: Unknown at this time
+    - label: Public
+      value: Public
+    - label: Internal Use Only
+      value: Internal Use Only
+    - label: Restricted / Confidential (Privacy violation)
+      value: Restricted / Confidential (Privacy violation)
+    - label: 'Unknown / Other – please describe:'
+      value: 'Unknown / Other – please describe:'
+  - name: provide-brief-description-2
+    type: text_area
+- name: Digital Security Incident
+  items:
+  - name: sensitivity-data-information-involved-check-following-apply-incident
+    type: multiple_choice
+    label: Sensitivity of Data/Information Involved Check all of the following that
+      apply to this incident.
+  - name: provide-brief-description-data-compromised
+    type: text_area
+    label: 'Provide a brief description of data that may be compromised:'
+- name: Digital Security Incident
+  items:
+  - name: accounts-possibly-compromised-including-individuals-maybe-risk-need-contacted-compromised-account
+    type: text_area
+    label: Are accounts possibly compromised? Please name all, including any individuals
+      who maybe at risk and need to be contacted by the compromised account.
+- name: Digital Security Incident
+  items:
+  - name: inclination-motive-perpetrators
+    type: text_area
+    label: Do You Have an Inclination As To What The Motive Was Or Who The Perpetrators
+      Were?
+- name: Digital Security Incident
+  items:
+  - name: notified
+    type: text_area
+    hint: 'Provide Person and Title:'
+    label: 'Who Else Has Been Notified? '
+- name: Digital Security Incident
+  items:
+  - name: steps-taken-far-check-following-apply-incident
+    type: multiple_choice
+    label: What Steps Have Been Taken So Far? Check all of the following that apply
+      to this incident.
+    options:
+    - label: No action taken
+      value: No action taken
+    - label: System/ Device Disconnected from network & taken offline
+      value: System/ Device Disconnected from network & taken offline
+    - label: Updated virus definitions & scanned system
+      value: Updated virus definitions & scanned system
+    - label: Contacts alerted
+      value: Contacts alerted
+    - label: Restored backup
+      value: Restored backup
+    - label: Log files examined (saved & secured)
+      value: Log files examined (saved & secured)
+    - label: Account passwords of all on network changed
+      value: Account passwords of all on network changed
+    - label: 'Other – please describe:'
+      value: 'Other – please describe:'
+  - name: provide-brief-description-3
+    type: text_area
+- name: Digital Security Incident
+  items:
+  - name: date-time-incident-discovered
+    type: text_input
+    label: 'Date and Time the Incident was discovered:'
+  - name: incident-resolved
+    type: text_input
+    label: Has the incident been resolved?
+  - name: physical-location-affected-device-s
+    type: text_input
+    label: 'Physical location of affected device/ system(s):'
+  - name: number-sites-affected-incident
+    type: text_input
+    label: 'Number of sites affected by the incident:'
+  - name: approximate-number-users-affected-incident
+    type: text_input
+    label: 'Approximate number of users affected by the incident:'
+  - name: provide-additional-information-feel-important-provided-form
+    type: text_input
+    label: Please provide any additional information that you feel is important but
+      has not been provided elsewhere on this form.
+- name: Digital Security Incident
+  items:
+  - name: security-guidelines-cover-type-incident-guidelines-followed
+    type: text_area
+    label: Do Your Security Guidelines Cover This Type Of Incident? Were The Guidelines
+      Followed?
+- name: Digital Security Incident
+  items:
+  - name: guidelines-aspect-security-management-need-revised-way
+    type: text_area
+    label: Do The Guidelines Or Any Other Aspect Of Security Management Need To Be
+      Revised In Any Way?
+- name: Digital Security Incident
+  items:
+  - name: lessons-learnt
+    type: text_area
+    label: Lessons Learnt?
+- name: Digital Security Incident
+  items:
+  - name: action-requested
+    type: text_area
+    label: Any Action Requested?
+- name: Digital Security Incident
+  items:
+  - name: supporting-information-screenshots-suspicious-attachment-emails
+    type: text_area
+    label: Any supporting information? (Screenshots, suspicious attachment, emails
+      etc.)

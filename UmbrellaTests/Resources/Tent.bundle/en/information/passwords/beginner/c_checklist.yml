@@ -1,0 +1,14 @@
+index: 100
+list:
+- label: Create a strong password
+- check: Make it long
+- check: Make it complex
+- check: Make sure it's not personal
+- check: Keep it secret
+- check: Make it unique
+- check: Change it regularly
+- check: Make it memorable
+- check: Give fake answers to security questions
+- check: Check the strength of passwords on Passfault
+- check: Change old or weak passwords
+- check: Change weak answers to security questions

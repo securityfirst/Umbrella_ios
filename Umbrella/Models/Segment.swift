@@ -14,9 +14,15 @@ class Segment: Codable {
     var content: String?
     
     init() {
-        name = ""
-        index = 0
-        content = ""
+        self.name = ""
+        self.index = 0
+        self.content = ""
+    }
+    
+    init(name: String, index: Float, content: String) {
+        self.name = name
+        self.index = index
+        self.content = content
     }
     
     enum CodingKeys: String, CodingKey {
@@ -26,21 +32,19 @@ class Segment: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
         
-        if container.contains(.index) {
-            index = try container.decode(Float.self, forKey: .index)
+        if container.contains(.name) {
+            self.name = try container.decode(String.self, forKey: .name)
         } else {
-            index = 0
+            self.name = ""
         }
         
-        content = ""
+        if container.contains(.index) {
+            self.index = try container.decode(Float.self, forKey: .index)
+        } else {
+            self.index = 0
+        }
+        
+       self.content = ""
     }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(index, forKey: .index)
-    }
-    
 }

@@ -1,0 +1,6 @@
+index: 100
+list:
+- check: Check if rooting your phone is right for you
+- check: Install alternative firmware
+- check: Encrypt volumes with Luks Manager
+- check: Encrypt files and emails with APG

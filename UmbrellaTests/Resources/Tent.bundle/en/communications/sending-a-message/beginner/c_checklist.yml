@@ -1,0 +1,7 @@
+index: 100
+list:
+- check: Avoid regular SMS messages for sensitive texts
+- check: Use Signal for the most secure method of sending messages on your phone
+- check: Use WhatsApp
+- check: Use Pidgin, Adium, or Signal for desktop instead of Skype to instant message
+    on your computer

@@ -1,0 +1,41 @@
+screens:
+- name: Proof of Life Form
+  items:
+  - name: write-questions-known-close
+    type: label
+    label: Write down four questions known only to you or someone close to you
+  - name: question
+    type: text_input
+    label: 'Question 1:'
+  - name: answer
+    type: text_input
+    label: 'Answer 1:'
+- name: Proof of Life Form
+  items:
+  - name: question-2
+    type: text_input
+    label: 'Question 2:'
+  - name: answer-2
+    type: text_input
+    label: 'Answer 2:'
+- name: Proof of Life Form
+  items:
+  - name: question-3
+    type: text_input
+    label: 'Question 3:'
+  - name: answer-3
+    type: text_input
+    label: 'Answer 3:'
+- name: Proof of Life Form
+  items:
+  - name: question-4
+    type: text_input
+    label: 'Question 4:'
+  - name: answer-4
+    type: text_input
+    label: 'Answer 4:'
+- name: Proof of Life Form
+  items:
+  - name: personal-duress-word
+    type: text_input
+    label: Personal Duress Word

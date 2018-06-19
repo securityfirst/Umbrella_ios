@@ -9,10 +9,21 @@
 import Foundation
 
 class Form: Codable {
+    var name: String {
+        if screens.count > 0 {
+            return screens.first!.name
+        }
+        return ""
+    }
+    
     let screens: [Screen]
     
     init() {
-        screens = []
+        self.screens = []
+    }
+    
+    init(screens: [Screen]) {
+        self.screens = screens
     }
     
     enum CodingKeys: String, CodingKey {
@@ -21,11 +32,11 @@ class Form: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        screens = try container.decode([Screen].self, forKey: .screens)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(screens, forKey: .screens)
+        
+        if container.contains(.screens) {
+            self.screens = try container.decode([Screen].self, forKey: .screens)
+        } else {
+            self.screens = []
+        }
     }
 }

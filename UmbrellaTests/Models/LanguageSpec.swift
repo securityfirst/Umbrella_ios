@@ -15,20 +15,20 @@ import Nimble
 class LanguageSpec: QuickSpec {
     
     override func spec() {
-        
-        beforeEach {
-            
-        }
-        
         describe("Language") {
+            
+            beforeEach {
+                
+            }
+            
             it("should create a new Language") {
                 let language = Language(name: "en")
                 expect(language).toNot(beNil())
             }
-        }
-        
-        afterEach {
             
+            afterEach {
+                
+            }
         }
     }
 }

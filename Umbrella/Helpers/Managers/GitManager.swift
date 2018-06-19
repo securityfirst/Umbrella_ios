@@ -56,7 +56,6 @@ class GitManager {
                 
             } catch {
                 failure(error)
-                print("GitManager: \(error)")
             }
         } else {
             completion(1,1)

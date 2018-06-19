@@ -1,0 +1,11 @@
+index: 100
+list:
+- check: Set up VeraCrypt
+- check: Dismount your VeraCrypt volume when not using files
+- check: Create a secret volume for most sensitive material
+- check: Rename your VeraCrypt volume with a different file extension
+- label: If encryption is illegal...
+- check: Store only non-confidential information
+- check: Use code words
+- check: Store sensitive information in a secure webmail account
+- check: Store sensitive information securely off your computer

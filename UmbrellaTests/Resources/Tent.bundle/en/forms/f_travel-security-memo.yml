@@ -1,0 +1,65 @@
+screens:
+- name: Travel Security Memo
+  items:
+  - name: s
+    type: text_area
+    label: Name(s)
+  - name: travel-dates
+    type: text_area
+    label: Travel Dates
+- name: Travel Security Memo
+  items:
+  - name: destination-s
+    type: text_area
+    label: Destination(s)
+  - name: purpose
+    type: text_area
+    label: Purpose
+- name: Travel Security Memo
+  items:
+  - name: itinerary
+    type: text_area
+    label: Itinerary
+  - name: travel-flight-information
+    type: text_area
+    label: Travel/Flight Information
+- name: Travel Security Memo
+  items:
+  - name: immigration-requirements
+    type: text_area
+    label: Immigration Requirements
+  - name: important-phone-numbers
+    type: text_area
+    label: Important Phone Numbers
+- name: Travel Security Memo
+  items:
+  - name: organisational-emergency-contact-s
+    type: text_area
+    label: Organisational Emergency Contact(s)
+  - name: check-in-procedure
+    type: text_area
+    label: Check-in Procedure
+- name: Travel Security Memo
+  items:
+  - name: personal-emergency-contact-s
+    type: text_area
+    label: Personal Emergency Contact(s)
+  - name: medical-information
+    type: text_area
+    label: Medical Information
+- name: Travel Security Memo
+  items:
+  - name: physical-security-situation
+    type: text_area
+    label: Physical Security Situation
+  - name: digital-security-situation
+    type: text_area
+    label: Digital Security Situation
+- name: Travel Security Memo
+  items:
+  - name: key-contacts-embassy-insurance
+    type: text_area
+    label: Key Contacts (Embassy, Insurance etc)
+  - name: notes
+    type: text_area
+    label: Other/Notes

@@ -63,7 +63,7 @@ class HomeViewModel {
                 let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
                 completion(progress)
             }, failure: { error in
-                print(error)
+                print("GitManager: \(error)")
             })
         }
     }

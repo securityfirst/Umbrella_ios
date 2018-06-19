@@ -1,0 +1,21 @@
+index: 100
+list:
+- label: For individuals
+- check: Learn about stress
+- check: Know yourself
+- check: Eat well and exercise
+- check: Get rest and relaxation
+- check: Practice belief systems
+- check: Maintain humour and perspective
+- check: Be informed
+- check: Talk to people
+- check: Change the stressful environment
+- check: Think positive
+- label: For managers
+- check: Acknowledge your limitations
+- check: Get support from your manager
+- check: Delegate
+- check: Buddy up
+- check: Recognise staff efforts
+- check: Regular time off
+- check: Provide a good example

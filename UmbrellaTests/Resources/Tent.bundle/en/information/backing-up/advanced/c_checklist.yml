@@ -1,0 +1,10 @@
+index: 100
+list:
+- check: Make a table with info type, device and location
+- check: Identify your vulnerable information
+- check: Figure out what storage device is right for you
+- check: Install Cobian Backup
+- check: Organise your files to back up
+- check: Back up information on regular schedule
+- check: Install Recuva
+- check: If recovering files, do as little as possible before using Recuva
