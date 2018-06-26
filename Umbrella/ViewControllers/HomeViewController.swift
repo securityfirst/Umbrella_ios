@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        homeViewModel.clone(witUrl: kGitBaseURL, completion: { progress in
+        homeViewModel.clone(witUrl: Config.gitBaseURL, completion: { progress in
             DispatchQueue.main.async {
                 self.progressView.setProgress(progress, animated: true)
             }

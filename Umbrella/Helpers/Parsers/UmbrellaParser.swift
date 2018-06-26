@@ -19,7 +19,7 @@ struct UmbrellaParser {
     var formArray =  [Form]()
     
     //
-    // MARK: - Init
+    // MARK: - Initializers
     init(documentsFolder: Folder) {
         self.documentsFolder = documentsFolder
     }

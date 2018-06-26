@@ -22,8 +22,11 @@ class SQLManager {
     
     //
     // MARK: - Functions
-    
-    // SELECT
+
+    /// Select in SQLite database
+    ///
+    /// - Parameter query: string of query
+    /// - Returns: return list of object
     func select<T: Decodable>(withQuery query:String) -> [T] {
         
         let db = openConnection()
@@ -54,31 +57,43 @@ class SQLManager {
         return []
     }
     
-    // CREATE
+    /// Create a table on SQLite
+    ///
+    /// - Parameter tableProtocol: object that implement the tableProtocol
+    /// - Returns: boolean if it was created a table
     func create(table tableProtocol: TableProtocol) -> Bool {
         let db = openConnection()
         do {
             let table = Table(tableProtocol.tableName)
-            try db?.run(table.create { tableColumn in
+            try db?.run(table.create(ifNotExists: true) { tableColumn in
 
-                for dic in tableProtocol.columns() {
+                for column in tableProtocol.columns() {
 
-                    switch (dic.value) {
-                    case "Int":
-                        let exp = Expression<Int64>(dic.key)
+                    switch (column.type) {
+                    case .int?:
+                        let exp = Expression<Int64>(column.name!)
                         tableColumn.column(exp)
-                    case "String":
-                        let exp = Expression<String>(dic.key)
+                    case .real?:
+                        let exp = Expression<Float64>(column.name!)
                         tableColumn.column(exp)
-                    case "Primary":
-                        let exp = Expression<Int64>(dic.key)
+                    case .string?:
+                        let exp = Expression<String>(column.name!)
+                        tableColumn.column(exp)
+                    case .primaryKey?:
+                        let exp = Expression<Int64>(column.name!)
                         tableColumn.column(exp, primaryKey: .autoincrement)
+                    case .foreignKey?:
+                        
+                        let foreignKey = Expression<Int64>((column.foreignKey?.key)!)
+                        tableColumn.column(foreignKey)
+                        let key = Expression<Int64>((column.foreignKey?.tableKey)!)
+                        tableColumn.foreignKey(foreignKey, references: (column.foreignKey?.table)!, key, delete: .setNull)
                     default:
                         break
                     }
                 }
             })
-            
+
             return true
         } catch {
             print(error)
@@ -86,19 +101,25 @@ class SQLManager {
         }
     }
     
-    // INSERT
-    func insert(withQuery query:String) -> Bool {
+    /// Insert a row on table
+    ///
+    /// - Parameter query: string with a query
+    /// - Returns: rowId of insertion
+    func insert(withQuery query:String) -> Int64 {
         let db = openConnection()
         do {
             try db?.prepare(query).run()
-            return true
+            return (db?.lastInsertRowid)!
         } catch {
             print(error)
-            return false
+            return -1
         }
     }
     
-    // DROP
+    /// Drop a table
+    ///
+    /// - Parameter table: table name
+    /// - Returns: boolean if it was dropped
     func drop(tableName table: String) -> Bool {
         let db = openConnection()
         do {
@@ -115,6 +136,9 @@ class SQLManager {
 
 extension SQLManager {
     
+    /// Open connection with the database
+    ///
+    /// - Returns: Connection
     func openConnection() -> Connection? {
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
@@ -122,6 +146,7 @@ extension SQLManager {
         do {
             let connect = try Connection("\(path)/database.db")
             try connect.key("umbrella")
+            try connect.execute("PRAGMA foreign_keys = ON;")
             return connect
         } catch {
             print(error)
@@ -129,6 +154,7 @@ extension SQLManager {
         return nil
     }
     
+    /// Copy the database if needed
     fileprivate func copyDatabaseIfNeeded() {
         
         let fileManager = FileManager.default
@@ -143,6 +169,8 @@ extension SQLManager {
         if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
             
             let documentsURL = Bundle.main.resourceURL?.appendingPathComponent("database.db")
+            
+            print(documentsURL ?? "")
             
             do {
                 try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)

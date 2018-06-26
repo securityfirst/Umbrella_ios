@@ -23,10 +23,10 @@ class GitManagerSpec: QuickSpec {
         describe("GitManager") {
             xit("should create a clone of a repository") {
                 waitUntil(timeout: 600) { done in
-                    let url = kGitBaseURL
+                    let url = Config.gitBaseURL
 
-                    debug = false
-                    let gitManager = GitManager(urlString: url, pathDirectory: .downloadsDirectory)
+                    Config.debug = false
+                    let gitManager = GitManager(url: url, pathDirectory: .downloadsDirectory)
                     gitManager.clone(completion: { (totalBytesWritten, totalBytesExpectedToWrite) in
                         let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
 
@@ -42,12 +42,12 @@ class GitManagerSpec: QuickSpec {
             }
 
             it("should remove the folder of the clone") {
-                let url = kGitBaseURL
+                let url = Config.gitBaseURL
 
                 do {
 
-                    debug = false
-                    let gitManager = GitManager(urlString: url, pathDirectory: .downloadsDirectory)
+                    Config.debug = false
+                    let gitManager = GitManager(url: url, pathDirectory: .downloadsDirectory)
                     try gitManager.deleteCloneInFolder(pathDirectory: gitManager.pathDirectory)
 
                     let documentsUrl = gitManager.fileManager.urls(for: .downloadsDirectory,
@@ -63,10 +63,10 @@ class GitManagerSpec: QuickSpec {
 
             it("should create a clone of a repository that doesn't exist") {
                 waitUntil(timeout: 600) { done in
-                    let url = "http://securityfirst.org"
+                    let url = URL(string: "http://securityfirst.org")
 
-                    debug = false
-                    let gitManager = GitManager(urlString: url, pathDirectory: .downloadsDirectory)
+                    Config.debug = false
+                    let gitManager = GitManager(url: url!, pathDirectory: .downloadsDirectory)
                     gitManager.clone(completion: { (_, _) in
                     }, failure: { error in
                         expect(error).notTo(beNil())
@@ -77,10 +77,10 @@ class GitManagerSpec: QuickSpec {
             
             it("should test the catch of the method deleteCloneInFolder") {
                 waitUntil(timeout: 600) { done in
-                    let url = "http://securityfirst.org"
+                    let url = URL(string: "http://securityfirst.org")
                     
-                    debug = false
-                    let gitManager = GitManager(urlString: url, pathDirectory: .adminApplicationDirectory)
+                    Config.debug = false
+                    let gitManager = GitManager(url: url!, pathDirectory: .adminApplicationDirectory)
                     gitManager.clone(completion: { (_, _) in
                     }, failure: { error in
                         expect(error).notTo(beNil())

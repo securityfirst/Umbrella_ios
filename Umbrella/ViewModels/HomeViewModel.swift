@@ -46,6 +46,8 @@ class HomeViewModel {
         umbrellaParser.parse { languages, forms in
             self.languages = languages
             self.forms = forms
+            
+            UmbrellaDatabase(languages: self.languages, forms: self.forms).objectToDatabase()
         }
         
     }
@@ -55,10 +57,10 @@ class HomeViewModel {
     /// - Parameters:
     ///   - url: url of repository
     ///   - completion: closure of progress
-    func clone(witUrl url: String, completion: @escaping (Float) -> Void) {
+    func clone(witUrl url: URL, completion: @escaping (Float) -> Void) {
         DispatchQueue.global(qos: .background).async {
             
-            let gitManager = GitManager(urlString: url, pathDirectory: .documentDirectory)
+            let gitManager = GitManager(url: url, pathDirectory: .documentDirectory)
             gitManager.clone(completion: { (totalBytesWritten, totalBytesExpectedToWrite) in
                 let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
                 completion(progress)

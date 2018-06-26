@@ -1,14 +1,14 @@
 //
-//  CategoryDao.swift
+//  SegmentDao.swift
 //  Umbrella
 //
-//  Created by Lucas Correa on 17/05/2018.
+//  Created by Lucas Correa on 25/06/2018.
 //  Copyright © 2018 Security First. All rights reserved.
 //
 
 import Foundation
 
-struct CategoryDao: DaoProtocol {
+struct SegmentDao: DaoProtocol {
     
     //
     // MARK: - DaoProtocol
@@ -17,29 +17,29 @@ struct CategoryDao: DaoProtocol {
     ///
     /// - Returns: boolean if it was created
     func createTable() -> Bool {
-        return SQLManager.shared.create(table: Category())
+        return SQLManager.shared.create(table: Segment())
     }
     
     /// List of object
     ///
     /// - Returns: a list of object
-    func list() -> [Category] {
-        return [Category]()
+    func list() -> [Segment] {
+        return SQLManager.shared.select(withQuery: "SELECT * FROM \(Segment.table)")
     }
     
     /// Drop the table
     ///
     /// - Returns: boolean if it was dropped
     func dropTable() -> Bool {
-        return SQLManager.shared.drop(tableName: Category.table)
+        return SQLManager.shared.drop(tableName: Segment.table)
     }
     
     /// Insert a object in database
     ///
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
-    func insert(_ object: Category) -> Int64 {
-        let rowId = SQLManager.shared.insert(withQuery: "INSERT INTO \(Category.table) ('name', 'index', 'folder_name', 'parent', 'language_id') VALUES (\"\(object.name ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', \(object.parent), \(object.languageId))")
+    func insert(_ object: Segment) -> Int64 {
+        let rowId = SQLManager.shared.insert(withQuery: "INSERT INTO \(Segment.table) ('name', 'index', 'content', 'category_id') VALUES (\"\(object.name ?? "")\", \(object.index ?? -1), \"\(object.content!.toBase64())\", \(object.categoryId))")
         return rowId
     }
     

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3BB472962D5E529D96075E59 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */; };
 		90309D2A4532B7A930C5A0B5 /* Pods_UmbrellaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E7691B86B48D0956C3E803 /* Pods_UmbrellaUITests.framework */; };
+		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
+		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
+		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
+		A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */; };
+		A05BA80120E1408600482003 /* SegmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA80020E1408600482003 /* SegmentDao.swift */; };
 		A064107020D80E360044ADAB /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064106F20D80E360044ADAB /* InputFileReader.swift */; };
 		A064107220D80FFD0044ADAB /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064106F20D80E360044ADAB /* InputFileReader.swift */; };
 		A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */; };
@@ -45,6 +50,12 @@
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
+		A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA020E243120052028F /* CheckListDao.swift */; };
+		A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA220E246840052028F /* CheckItemDao.swift */; };
+		A0D8BCA520E246930052028F /* FormDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA420E246930052028F /* FormDao.swift */; };
+		A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA620E2469F0052028F /* ScreenDao.swift */; };
+		A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA820E246AD0052028F /* ItemFormDao.swift */; };
+		A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCAC20E246C90052028F /* OptionItemDao.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -110,6 +121,11 @@
 		6A1EFF726C4C7E44324B782A /* Pods-Umbrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.release.xcconfig"; sourceTree = "<group>"; };
 		9386F5AC361BF2292BED1D62 /* Pods-Umbrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.debug.xcconfig"; sourceTree = "<group>"; };
 		98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
+		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
+		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
+		A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaDatabase.swift; sourceTree = "<group>"; };
+		A05BA80020E1408600482003 /* SegmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentDao.swift; sourceTree = "<group>"; };
 		A064106F20D80E360044ADAB /* InputFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputFileReader.swift; path = ../../../Gilt/Gilt/Helpers/InputFileReader.swift; sourceTree = "<group>"; };
 		A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParserSpec.swift; sourceTree = "<group>"; };
 		A0641EE420D903040044ADAB /* Tent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Tent.bundle; sourceTree = "<group>"; };
@@ -151,6 +167,12 @@
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
+		A0D8BCA020E243120052028F /* CheckListDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListDao.swift; sourceTree = "<group>"; };
+		A0D8BCA220E246840052028F /* CheckItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemDao.swift; sourceTree = "<group>"; };
+		A0D8BCA420E246930052028F /* FormDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDao.swift; sourceTree = "<group>"; };
+		A0D8BCA620E2469F0052028F /* ScreenDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDao.swift; sourceTree = "<group>"; };
+		A0D8BCA820E246AD0052028F /* ItemFormDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormDao.swift; sourceTree = "<group>"; };
+		A0D8BCAC20E246C90052028F /* OptionItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItemDao.swift; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -234,6 +256,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A05BA7FB20E11B5700482003 /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				A05BA7F720E116FC00482003 /* Column.swift */,
+				A05BA7F920E1188700482003 /* ForeignKey.swift */,
+				A064CE9220AC47E800CE99E1 /* SQLManager.swift */,
+				A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */,
+			);
+			path = SQL;
+			sourceTree = "<group>";
+		};
 		A064106A20D80D9A0044ADAB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,7 +306,14 @@
 			isa = PBXGroup;
 			children = (
 				A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */,
-				A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */,
+				A05BA7FC20E11F6D00482003 /* LanguageDao.swift */,
+				A05BA80020E1408600482003 /* SegmentDao.swift */,
+				A0D8BCA020E243120052028F /* CheckListDao.swift */,
+				A0D8BCA220E246840052028F /* CheckItemDao.swift */,
+				A0D8BCA420E246930052028F /* FormDao.swift */,
+				A0D8BCA620E2469F0052028F /* ScreenDao.swift */,
+				A0D8BCA820E246AD0052028F /* ItemFormDao.swift */,
+				A0D8BCAC20E246C90052028F /* OptionItemDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -406,6 +446,7 @@
 			children = (
 				A0B9787020ADA12B00A287C8 /* TableProtocol.swift */,
 				A0D170BE20CE93C000758A8D /* FolderProtocol.swift */,
+				A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -455,8 +496,8 @@
 		A0C6CEA320B5ADF3005BC111 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				A064CE9220AC47E800CE99E1 /* SQLManager.swift */,
 				A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */,
+				A05BA7FB20E11B5700482003 /* SQL */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -855,16 +896,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
+				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
+				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
+				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
+				A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */,
+				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
+				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
+				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
+				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
@@ -876,12 +925,15 @@
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
+				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
+				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A064107020D80E360044ADAB /* InputFileReader.swift in Sources */,
+				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,17 @@
 //
 
 import Foundation
+import SQLite
 
 class Category: Codable, TableProtocol, FolderProtocol {
+    
+    // Used in parser from the database to object
+    var id: Int
+    var parent: Int
+    var languageId: Int
+    
+    //
+    // MARK: - Properties
     var name: String?
     let index: Float?
     var folderName: String?
@@ -16,7 +25,13 @@ class Category: Codable, TableProtocol, FolderProtocol {
     var segments: [Segment]
     var checkList: [CheckList]
     
+    //
+    // MARK: - Initializers
     init() {
+        self.id = -1
+        self.parent = 0
+        self.languageId = -1
+        
         self.name = ""
         self.index = 0
         self.folderName = ""
@@ -26,6 +41,10 @@ class Category: Codable, TableProtocol, FolderProtocol {
     }
     
     init(name: String, index: Float, folderName: String = "") {
+        self.id = -1
+        self.parent = 0
+        self.languageId = -1
+        
         self.name = name
         self.index = index
         self.folderName = folderName
@@ -34,13 +53,36 @@ class Category: Codable, TableProtocol, FolderProtocol {
         self.checkList = []
     }
     
+    //
+    // MARK: - Codable
     enum CodingKeys: String, CodingKey {
+        case id
+        case parent
+        case languageId
         case name = "title"
         case index
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.id) {
+            self.id = try container.decode(Int.self, forKey: .id)
+        } else {
+            self.id = -1
+        }
+        
+        if container.contains(.parent) {
+            self.parent = try container.decode(Int.self, forKey: .parent)
+        } else {
+            self.parent = 0
+        }
+        
+        if container.contains(.languageId) {
+            self.languageId = try container.decode(Int.self, forKey: .languageId)
+        } else {
+            self.languageId = -1
+        }
         
         if container.contains(.index) {
             self.index = try container.decode(Float.self, forKey: .index)
@@ -62,14 +104,19 @@ class Category: Codable, TableProtocol, FolderProtocol {
     
     //
     // MARK: - TableProtocol
-    var tableName: String = "category"
+    static var table: String = "category"
+    var tableName: String {
+        return Category.table
+    }
     
-    func columns() -> [String : String] {
+    func columns() -> [Column] {
         let array = [
-            "id":"Primary",
-            "name": "String",
-            "index": "Int",
-            "parent":"Int"
+            Column(name: "id", type: .primaryKey),
+            Column(name: "name", type: .string),
+            Column(name: "index", type: .real),
+            Column(name: "folder_name", type: .string),
+            Column(name: "parent", type: .int),
+            Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array
     }

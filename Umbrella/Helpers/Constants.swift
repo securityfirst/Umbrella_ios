@@ -8,6 +8,7 @@
 
 import Foundation
 
-//var kGitBaseURL: String = "https://github.com/lucascorrea/tent-sample"
-var kGitBaseURL: String = "https://github.com/klaidliadon/umbrella-content"
-var debug: Bool = true
+enum Config {
+    static var gitBaseURL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
+    static var debug: Bool = true
+}

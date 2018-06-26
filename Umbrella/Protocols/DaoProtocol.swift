@@ -14,5 +14,5 @@ protocol DaoProtocol {
     func createTable() -> Bool
     func list() -> [TYPE]
     func dropTable() -> Bool
-    func insert(_ object: TYPE) -> Bool
+    func insert(_ object: TYPE) -> Int64
 }

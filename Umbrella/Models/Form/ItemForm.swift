@@ -7,15 +7,27 @@
 //
 
 import Foundation
+import SQLite
 
-class ItemForm: Codable {
+class ItemForm: Codable, TableProtocol {
+    
+    // Used in parser from the database to object
+    var id: Int
+    var screenId: Int
+    
+    //
+    // MARK: - Properties
     let name: String
     let type: String
     let label: String
     let hint: String
     let options: [OptionItem]
     
+    //
+    // MARK: - Initializers
     init() {
+        self.id = -1
+        self.screenId = -1
         self.name = ""
         self.type = ""
         self.label = ""
@@ -24,6 +36,8 @@ class ItemForm: Codable {
     }
     
     init(name: String, type: String, label: String, hint: String, options: [OptionItem]) {
+        self.id = -1
+        self.screenId = -1
         self.name = name
         self.type = type
         self.label = label
@@ -31,7 +45,11 @@ class ItemForm: Codable {
         self.options = options
     }
     
+    //
+    // MARK: - Codable
     enum CodingKeys: String, CodingKey {
+        case id
+        case screenId
         case name
         case type
         case label
@@ -41,6 +59,18 @@ class ItemForm: Codable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.id) {
+            self.id = try container.decode(Int.self, forKey: .id)
+        } else {
+            self.id = -1
+        }
+        
+        if container.contains(.screenId) {
+            self.screenId = try container.decode(Int.self, forKey: .screenId)
+        } else {
+            self.screenId = -1
+        }
         
         if container.contains(.name) {
             self.name = try container.decode(String.self, forKey: .name)
@@ -71,6 +101,24 @@ class ItemForm: Codable {
         } else {
             self.options = []
         }
-        
+    }
+    
+    //
+    // MARK: - TableProtocol
+    static var table: String = "item_form"
+    var tableName: String {
+        return ItemForm.table
+    }
+    
+    func columns() -> [Column] {
+        let array = [
+            Column(name: "id", type: .primaryKey),
+            Column(name: "name", type: .string),
+            Column(name: "type", type: .string),
+            Column(name: "label", type: .string),
+            Column(name: "hint", type: .string),
+            Column(foreignKey: ForeignKey(key: "screen_id", table: Table("screen"), tableKey: "id"))
+        ]
+        return array
     }
 }

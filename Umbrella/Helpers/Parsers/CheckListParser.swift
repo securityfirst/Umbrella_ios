@@ -19,7 +19,7 @@ struct CheckListParser {
     let array: [Language]
     
     //
-    // MARK: - Init
+    // MARK: - Initializers
     
     /// Initializer
     ///

@@ -16,16 +16,18 @@ class GitManager {
     // MARK: - Properties
     let fileManager: FileManager
     let pathDirectory: FileManager.SearchPathDirectory
-    let urlString: String
+    let url: URL
+    
+    //
+    // MARK: - Initializers
+    init(fileManager: FileManager = FileManager.default, url: URL, pathDirectory: FileManager.SearchPathDirectory) {
+        self.fileManager = fileManager
+        self.url = url
+        self.pathDirectory = pathDirectory
+    }
     
     //
     // MARK: - Functions
-    
-    init(fileManager: FileManager = FileManager.default, urlString:String, pathDirectory: FileManager.SearchPathDirectory) {
-        self.fileManager = fileManager
-        self.urlString = urlString
-        self.pathDirectory = pathDirectory
-    }
     
     /// Clone of repository
     ///
@@ -35,17 +37,16 @@ class GitManager {
     ///   - failure: return error
     func clone(completion: @escaping ((Float, Float) -> Void), failure: @escaping ((Error) -> Void)) {
         
-        if !debug {
+        if !Config.debug {
             
             do {
                 //Remove the folder before a clone
                 try deleteCloneInFolder(pathDirectory: self.pathDirectory)
                 
                 let documentsUrl = self.fileManager.urls(for: self.pathDirectory, in: .userDomainMask)
-                let url: URL = URL(string: self.urlString)!
                 
                 //Create a clone of the Tent
-                Repository.clone(from: url, to: documentsUrl.first!, localClone: true, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Force) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
+                Repository.clone(from: self.url, to: documentsUrl.first!, localClone: true, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Force) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
                     completion(Float(totalBytesWritten), Float(totalBytesExpectedToWrite))
                     }.analysis(ifSuccess: { result in
                         print(result)

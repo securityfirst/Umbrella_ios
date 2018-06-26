@@ -11,3 +11,24 @@ import Foundation
 extension String: Error {
     
 }
+
+extension String {
+    
+    /// Convert String to base64
+    ///
+    /// - Returns: Base64
+    func fromBase64() -> String? {
+        guard let data = Data(base64Encoded: self) else {
+            return nil
+        }
+        
+        return String(data: data, encoding: .utf8)
+    }
+    
+    /// Convert base64 to String
+    ///
+    /// - Returns: String
+    func toBase64() -> String {
+        return Data(self.utf8).base64EncodedString()
+    }
+}

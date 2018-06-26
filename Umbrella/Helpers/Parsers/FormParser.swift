@@ -17,7 +17,7 @@ struct FormParser {
     let file: File
     
     //
-    // MARK: - Init
+    // MARK: - Initializers
     
     /// Initializer
     ///
