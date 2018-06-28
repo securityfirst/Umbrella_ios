@@ -43,9 +43,10 @@ class Segment: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case categoryId
+        case categoryId = "category_id"
         case name = "title"
         case index
+        case content
     }
     
     required init(from decoder: Decoder) throws {
@@ -75,7 +76,11 @@ class Segment: Codable, TableProtocol {
             self.index = 0
         }
         
-       self.content = ""
+        if container.contains(.content) {
+            self.content = try container.decode(String.self, forKey: .content).fromBase64()
+        } else {
+            self.content = ""
+        }
     }
     
     //

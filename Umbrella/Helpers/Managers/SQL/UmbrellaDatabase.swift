@@ -37,16 +37,65 @@ struct UmbrellaDatabase {
     /// Convert from object to database
     func objectToDatabase() {
         DispatchQueue.global(qos: .background).async {
+            self.dropTables()
             self.createTables()
             self.insertAllLessons()
             self.insertAllForms()
         }
     }
     
-    
     /// Convert from database to object
     func databaseToObject() {
         
+        let languages = self.languageDao.list()
+        let categories = self.categoryDao.list()
+        let segments = self.segmentDao.list()
+        let checkLists = self.checkListDao.list()
+        let checkItems = self.checkItemDao.list()
+        let forms = self.formDao.list()
+        let screens = self.screenDao.list()
+        let itemforms = self.itemFormDao.list()
+        let optionItems = self.optionItemDao.list()
+        
+        var languageArray = [Language]()
+        
+        // Languages
+        for language in languages {
+            
+            language.categories = categories.filter { $0.languageId == language.id && $0.parent == 0 }
+            
+            //Categories
+            for category in language.categories {
+                category.categories = categories.filter { $0.languageId == language.id && $0.parent == category.id }
+                
+                //Segments1
+                category.segments = segments.filter { $0.categoryId == category.id }
+                
+                //Recursively
+                convertSubCategory(category, categories, language, segments, checkLists, checkItems)
+            }
+            
+            languageArray.append(language)
+        }
+        
+        //Forms
+        
+        // Screen
+        for form in forms {
+            form.screens = screens.filter { $0.formId == form.id }
+            
+            //ItemForm
+            for screen in form.screens {
+                screen.items = itemforms.filter { $0.screenId == screen.id }
+                
+                // OptionItem
+                for itemForm in screen.items {
+                    itemForm.options = optionItems.filter { $0.itemFormId == itemForm.id }
+                }
+            }
+        }
+        
+        print("")
     }
 }
 
@@ -64,6 +113,19 @@ extension UmbrellaDatabase {
         _ = self.screenDao.createTable()
         _ = self.itemFormDao.createTable()
         _ = self.optionItemDao.createTable()
+    }
+    
+    fileprivate func dropTables() {
+        _ = self.optionItemDao.dropTable()
+        _ = self.itemFormDao.dropTable()
+        _ = self.screenDao.dropTable()
+        _ = self.formDao.dropTable()
+        
+        _ = self.checkItemDao.dropTable()
+        _ = self.checkListDao.dropTable()
+        _ = self.segmentDao.dropTable()
+        _ = self.categoryDao.dropTable()
+        _ = self.languageDao.dropTable()
     }
     
     /// Insert all the lessons of languages, categories, segments and checkList
@@ -143,6 +205,7 @@ extension UmbrellaDatabase {
         // SubCategories
         for index in 0..<category.categories.count {
             let subCategory = category.categories[index]
+            
             subCategory.parent = Int(categoryRowId)
             subCategory.languageId = Int(languageRowId)
             let subCategoryRowId = self.categoryDao.insert(subCategory)
@@ -168,13 +231,42 @@ extension UmbrellaDatabase {
                 for index in 0..<checkList.items.count {
                     let checkItem = checkList.items[index]
                     
-                    checkItem.categoryId = Int(subCategoryRowId)
+                    checkItem.checkListId = Int(checkList.id)
                     let checkListRowId = self.checkItemDao.insert(checkItem)
                     checkItem.id = Int(checkListRowId)
                 }
             }
             
-            insertSubCategory(category: subCategory, categoryRowId: categoryRowId, languageRowId: languageRowId)
+            insertSubCategory(category: subCategory, categoryRowId: subCategoryRowId, languageRowId: languageRowId)
+        }
+    }
+    
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - category: <#category description#>
+    ///   - categories: <#categories description#>
+    ///   - language: <#language description#>
+    ///   - segments: <#segments description#>
+    ///   - checkLists: <#checkLists description#>
+    ///   - checkItems: <#checkItems description#>
+    fileprivate func convertSubCategory(_ category: Category, _ categories: [Category], _ language: Language, _ segments: [Segment], _ checkLists: [CheckList], _ checkItems: [CheckItem]) {
+        
+        // Subcategories
+        for subcategory in category.categories {
+            subcategory.categories = categories.filter { $0.languageId == language.id && $0.parent == subcategory.id }
+            
+            //Segments2
+            subcategory.segments = segments.filter { $0.categoryId == subcategory.id }
+            
+            //CheckList
+            subcategory.checkList = checkLists.filter { $0.categoryId == subcategory.id }
+            
+            for checkList in subcategory.checkList {
+                checkList.items = checkItems.filter { $0.checkListId == checkList.id }
+            }
+            
+            convertSubCategory(subcategory, categories, language, segments, checkLists, checkItems)
         }
     }
 }

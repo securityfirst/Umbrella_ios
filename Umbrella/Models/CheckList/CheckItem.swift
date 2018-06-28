@@ -13,7 +13,7 @@ class CheckItem: Codable, TableProtocol {
     
     // Used in parser from the database to object
     var id: Int
-    var categoryId: Int
+    var checkListId: Int
     
     //
     // MARK: - Properties
@@ -28,7 +28,7 @@ class CheckItem: Codable, TableProtocol {
     // MARK: - Initializers
     init() {
         self.id = -1
-        self.categoryId = -1
+        self.checkListId = -1
         self.name = ""
         self.label = ""
         self.isChecked = false
@@ -36,7 +36,7 @@ class CheckItem: Codable, TableProtocol {
     
     init(name: String) {
         self.id = -1
-        self.categoryId = -1
+        self.checkListId = -1
         self.name = name
         self.label = ""
         self.isChecked = false
@@ -46,9 +46,10 @@ class CheckItem: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case categoryId
+        case checkListId = "check_list_id"
         case name = "check"
         case label = "label"
+        case isChecked = "is_checked"
     }
     
     required init(from decoder: Decoder) throws {
@@ -60,10 +61,10 @@ class CheckItem: Codable, TableProtocol {
             self.id = -1
         }
         
-        if container.contains(.categoryId) {
-            self.categoryId = try container.decode(Int.self, forKey: .categoryId)
+        if container.contains(.checkListId) {
+            self.checkListId = try container.decode(Int.self, forKey: .checkListId)
         } else {
-            self.categoryId = -1
+            self.checkListId = -1
         }
         
         if container.contains(.name) {
@@ -72,12 +73,17 @@ class CheckItem: Codable, TableProtocol {
             self.name = ""
         }
         
+        // This attribute is used when it is decoding from the database
+        if container.contains(.isChecked) {
+            self.isChecked = try container.decode(Int.self, forKey: .isChecked) == 1 ? true : false
+        } else {
+            self.isChecked = false
+        }
+        
         if container.contains(.label) {
             // Get the title of tag ".label"
             self.name = try container.decode(String.self, forKey: .label)
             self.isChecked = true
-        } else {
-            self.isChecked = false
         }
         
         self.label = ""
@@ -95,7 +101,7 @@ class CheckItem: Codable, TableProtocol {
             Column(name: "id", type: .primaryKey),
             Column(name: "name", type: .string),
             Column(name: "is_checked", type: .int),
-            Column(foreignKey: ForeignKey(key: "category_id", table: Table("category"), tableKey: "id"))
+            Column(foreignKey: ForeignKey(key: "check_list_id", table: Table(CheckList.table), tableKey: "id"))
         ]
         return array
     }

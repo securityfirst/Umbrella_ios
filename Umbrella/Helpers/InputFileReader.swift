@@ -1,17 +1,29 @@
 //
 //  InputFileReader.swift
-//  Gilt
+//  Umbrella
 //
-//  Created by Lucas Correa on 13/08/2017.
-//  Copyright © 2017 SiriusCode. All rights reserved.
+//  Created by Lucas Correa on 18/06/2018.
+//  Copyright © 2018 Security First. All rights reserved.
 //
 
 import Foundation
 
+enum InputFileReaderError: Error {
+    case inputFileNotFound
+    case invalidFileFormat
+}
+
 class InputFileReader {
     
+    //
+    // MARK: - Functions
+    
+    /// Read file
+    ///
+    /// - Parameter fileName: name of file
+    /// - Returns: return content of file in string
+    /// - Throws: error
     func readFileAt(_ fileName: String) throws -> String {
-        
         guard let path = Bundle(for: type(of: self)).path(forResource: fileName, ofType: "") else {
             throw InputFileReaderError.inputFileNotFound
         }
@@ -21,9 +33,4 @@ class InputFileReader {
         }
         return content
     }
-}
-
-enum InputFileReaderError: Error {
-    case inputFileNotFound
-    case invalidFileFormat
 }

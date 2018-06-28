@@ -47,7 +47,9 @@ class HomeViewModel {
             self.languages = languages
             self.forms = forms
             
-            UmbrellaDatabase(languages: self.languages, forms: self.forms).objectToDatabase()
+            let umbrellaDatabase = UmbrellaDatabase(languages: self.languages, forms: self.forms)
+//            umbrellaDatabase.objectToDatabase()
+            umbrellaDatabase.databaseToObject()
         }
         
     }

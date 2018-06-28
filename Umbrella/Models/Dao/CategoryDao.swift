@@ -24,7 +24,7 @@ struct CategoryDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func list() -> [Category] {
-        return [Category]()
+        return SQLManager.shared.select(withQuery: "SELECT id, name as title, [index], folder_name, language_id, parent FROM \(Category.table)")
     }
     
     /// Drop the table

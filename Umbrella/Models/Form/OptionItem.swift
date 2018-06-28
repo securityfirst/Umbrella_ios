@@ -40,7 +40,7 @@ class OptionItem: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case itemFormId
+        case itemFormId = "item_form_id"
         case label
         case value
     }

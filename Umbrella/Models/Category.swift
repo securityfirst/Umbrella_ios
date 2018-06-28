@@ -58,9 +58,10 @@ class Category: Codable, TableProtocol, FolderProtocol {
     enum CodingKeys: String, CodingKey {
         case id
         case parent
-        case languageId
+        case languageId = "language_id"
         case name = "title"
         case index
+        case folderName = "folder_name"
     }
     
     required init(from decoder: Decoder) throws {
@@ -96,7 +97,12 @@ class Category: Codable, TableProtocol, FolderProtocol {
             self.name = ""
         }
         
-        self.folderName = ""
+        if container.contains(.folderName) {
+            self.folderName = try container.decode(String.self, forKey: .folderName)
+        } else {
+            self.folderName = ""
+        }
+        
         self.categories = []
         self.segments = []
         self.checkList = []

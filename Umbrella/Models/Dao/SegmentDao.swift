@@ -24,7 +24,7 @@ struct SegmentDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func list() -> [Segment] {
-        return SQLManager.shared.select(withQuery: "SELECT * FROM \(Segment.table)")
+        return SQLManager.shared.select(withQuery: "SELECT id, name as title, [index], content, category_id FROM \(Segment.table)")
     }
     
     /// Drop the table

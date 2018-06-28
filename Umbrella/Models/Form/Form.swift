@@ -23,7 +23,7 @@ class Form: Codable, TableProtocol {
         return ""
     }
     
-    let screens: [Screen]
+    var screens: [Screen]
     
     //
     // MARK: - Initializers

@@ -56,7 +56,7 @@ struct UmbrellaParser {
     /// - Parameters:
     ///   - folder: folder of category
     ///   - file: file of parse
-    private mutating func parseOf(folder: Folder, file: File) {
+    fileprivate mutating func parseOf(folder: Folder, file: File) {
         switch file.type {
             
         // Category

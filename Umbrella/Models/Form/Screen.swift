@@ -18,7 +18,7 @@ class Screen: Codable, TableProtocol {
     //
     // MARK: - Properties
     let name: String
-    let items: [ItemForm]
+    var items: [ItemForm]
     
     //
     // MARK: - Initializers
@@ -40,7 +40,7 @@ class Screen: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case formId
+        case formId = "form_id"
         case items
         case name
     }

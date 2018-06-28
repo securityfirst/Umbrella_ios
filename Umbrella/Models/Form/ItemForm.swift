@@ -21,7 +21,7 @@ class ItemForm: Codable, TableProtocol {
     let type: String
     let label: String
     let hint: String
-    let options: [OptionItem]
+    var options: [OptionItem]
     
     //
     // MARK: - Initializers
@@ -49,7 +49,7 @@ class ItemForm: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case screenId
+        case screenId = "screen_id"
         case name
         case type
         case label

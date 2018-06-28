@@ -29,6 +29,10 @@ extension String {
     ///
     /// - Returns: String
     func toBase64() -> String {
-        return Data(self.utf8).base64EncodedString()
+        guard let data = self.data(using: String.Encoding.utf8) else {
+            return ""
+        }
+        
+        return data.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
     }
 }

@@ -14,8 +14,6 @@
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
 		A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */; };
 		A05BA80120E1408600482003 /* SegmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA80020E1408600482003 /* SegmentDao.swift */; };
-		A064107020D80E360044ADAB /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064106F20D80E360044ADAB /* InputFileReader.swift */; };
-		A064107220D80FFD0044ADAB /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064106F20D80E360044ADAB /* InputFileReader.swift */; };
 		A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */; };
 		A0641EE520D903050044ADAB /* Tent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0641EE420D903040044ADAB /* Tent.bundle */; };
 		A0641EE920D90E9D0044ADAB /* f_digital-security-incident.yml in Resources */ = {isa = PBXBuildFile; fileRef = A0641EE720D90E9D0044ADAB /* f_digital-security-incident.yml */; };
@@ -56,6 +54,7 @@
 		A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA620E2469F0052028F /* ScreenDao.swift */; };
 		A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA820E246AD0052028F /* ItemFormDao.swift */; };
 		A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCAC20E246C90052028F /* OptionItemDao.swift */; };
+		A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -126,7 +125,6 @@
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
 		A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaDatabase.swift; sourceTree = "<group>"; };
 		A05BA80020E1408600482003 /* SegmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentDao.swift; sourceTree = "<group>"; };
-		A064106F20D80E360044ADAB /* InputFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputFileReader.swift; path = ../../../Gilt/Gilt/Helpers/InputFileReader.swift; sourceTree = "<group>"; };
 		A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParserSpec.swift; sourceTree = "<group>"; };
 		A0641EE420D903040044ADAB /* Tent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Tent.bundle; sourceTree = "<group>"; };
 		A0641EE720D90E9D0044ADAB /* f_digital-security-incident.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "f_digital-security-incident.yml"; sourceTree = "<group>"; };
@@ -173,6 +171,7 @@
 		A0D8BCA620E2469F0052028F /* ScreenDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDao.swift; sourceTree = "<group>"; };
 		A0D8BCA820E246AD0052028F /* ItemFormDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormDao.swift; sourceTree = "<group>"; };
 		A0D8BCAC20E246C90052028F /* OptionItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItemDao.swift; sourceTree = "<group>"; };
+		A0D8BCB220E508190052028F /* InputFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputFileReader.swift; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -419,7 +418,7 @@
 			children = (
 				A0C6CE9F20B5ABB6005BC111 /* Constants.swift */,
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
-				A064106F20D80E360044ADAB /* InputFileReader.swift */,
+				A0D8BCB220E508190052028F /* InputFileReader.swift */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 			);
@@ -906,6 +905,7 @@
 				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
 				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
+				A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
@@ -932,7 +932,6 @@
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
-				A064107020D80E360044ADAB /* InputFileReader.swift in Sources */,
 				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 			);
@@ -949,7 +948,6 @@
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
 				A0FFE51520D01E520026C0C7 /* ItemFormSpec.swift in Sources */,
 				A0FFE51320D01E470026C0C7 /* ScreenSpec.swift in Sources */,
-				A064107220D80FFD0044ADAB /* InputFileReader.swift in Sources */,
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
 				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,

@@ -18,7 +18,7 @@ class CheckList: Codable, TableProtocol {
     //
     // MARK: - Properties
     let index: Float?
-    let items: [CheckItem]
+    var items: [CheckItem]
     
     //
     // MARK: - Initializers
@@ -40,7 +40,7 @@ class CheckList: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case categoryId
+        case categoryId = "category_id"
         case index
         case items = "list"
     }
