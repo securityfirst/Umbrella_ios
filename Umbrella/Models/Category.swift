@@ -13,13 +13,13 @@ class Category: Codable, TableProtocol, FolderProtocol {
     
     // Used in parser from the database to object
     var id: Int
-    var parent: Int
     var languageId: Int
     
     //
     // MARK: - Properties
     var name: String?
     let index: Float?
+    var parent: Int
     var folderName: String?
     var categories: [Category]
     var segments: [Segment]

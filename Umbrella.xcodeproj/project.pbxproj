@@ -55,6 +55,7 @@
 		A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA820E246AD0052028F /* ItemFormDao.swift */; };
 		A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCAC20E246C90052028F /* OptionItemDao.swift */; };
 		A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
+		A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -948,6 +949,7 @@
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
 				A0FFE51520D01E520026C0C7 /* ItemFormSpec.swift in Sources */,
 				A0FFE51320D01E470026C0C7 /* ScreenSpec.swift in Sources */,
+				A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */,
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
 				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,
