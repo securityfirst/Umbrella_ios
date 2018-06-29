@@ -347,10 +347,8 @@
 				A0B9D45C20AAE1CF00B2B796 /* Storyboards */,
 				A0B9D45320AAE1CD00B2B796 /* Extensions */,
 				A0B9D45720AAE1CE00B2B796 /* Helpers */,
-				A0B9D45920AAE1CE00B2B796 /* Networking */,
 				A0B9D45A20AAE1CE00B2B796 /* Protocols */,
 				A0B9D45420AAE1CE00B2B796 /* Models */,
-				A0B9D45820AAE1CE00B2B796 /* Views */,
 				A0B9D45520AAE1CE00B2B796 /* ViewControllers */,
 				A0B9D45B20AAE1CE00B2B796 /* ViewModels */,
 				A0B9D45D20AAE1CF00B2B796 /* Resources */,
@@ -362,13 +360,10 @@
 			isa = PBXGroup;
 			children = (
 				A064106A20D80D9A0044ADAB /* Resources */,
-				A0FFE51D20D020DD0026C0C7 /* Extensions */,
 				A0FFE51A20D020DD0026C0C7 /* Helpers */,
-				A0FFE51F20D020DE0026C0C7 /* Networking */,
 				A0FFE50720D01D1C0026C0C7 /* Models */,
 				A0FFE52120D020DE0026C0C7 /* ViewControllers */,
 				A0FFE51820D020DC0026C0C7 /* ViewModels */,
-				A0FFE51E20D020DD0026C0C7 /* Views */,
 				A0B9D43C20AAE03900B2B796 /* Info.plist */,
 			);
 			path = UmbrellaTests;
@@ -426,21 +421,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		A0B9D45820AAE1CE00B2B796 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A0B9D45920AAE1CE00B2B796 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				A0B9D46220AAE1F000B2B796 /* Services */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		A0B9D45A20AAE1CE00B2B796 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,13 +464,6 @@
 				A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */,
 			);
 			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		A0B9D46220AAE1F000B2B796 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		A0C6CEA320B5ADF3005BC111 /* Managers */ = {
@@ -582,35 +555,6 @@
 				A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */,
 			);
 			path = Parsers;
-			sourceTree = "<group>";
-		};
-		A0FFE51D20D020DD0026C0C7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		A0FFE51E20D020DD0026C0C7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A0FFE51F20D020DE0026C0C7 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				A0FFE52020D020DE0026C0C7 /* Services */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		A0FFE52020D020DE0026C0C7 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		A0FFE52120D020DE0026C0C7 /* ViewControllers */ = {
