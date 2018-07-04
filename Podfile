@@ -22,10 +22,6 @@ target 'Umbrella' do
     
   end
 
-  target 'UmbrellaUITests' do
-    inherit! :search_paths
-  end
-
 end
 
 post_install do |installer_representation|

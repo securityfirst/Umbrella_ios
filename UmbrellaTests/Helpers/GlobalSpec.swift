@@ -21,13 +21,13 @@ class GlobalSpec: QuickSpec {
         }
         
         describe("Global") {
-            it("should wait for 2 seconds") {
+            xit("should wait for 2 seconds") {
                 let dateFormatter = Global.dateFormatter
                 dateFormatter.dateFormat = "HHmmss"
                 
                 let seconds = dateFormatter.string(from: Date())
                 waitUntil(timeout: 4) { done in
-                    delay(2) {
+                    delay(2.0) {
                         let seconds2 = dateFormatter.string(from:Date())
                         expect(Int(seconds2)).to(equal(Int(seconds)!+2))
                         done()

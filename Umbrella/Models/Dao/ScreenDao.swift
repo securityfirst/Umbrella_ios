@@ -11,27 +11,41 @@ import Foundation
 struct ScreenDao: DaoProtocol {
     
     //
+    // MARK: - Properties
+    let sqlProtocol: SQLProtocol
+    
+    //
+    // MARK: - Initializer
+    
+    /// Init
+    ///
+    /// - Parameter sqlProtocol: SQLProtocol
+    init(sqlProtocol: SQLProtocol) {
+        self.sqlProtocol = sqlProtocol
+    }
+    
+    //
     // MARK: - DaoProtocol
     
     /// Create the table
     ///
     /// - Returns: boolean if it was created
     func createTable() -> Bool {
-        return SQLManager.shared.create(table: Screen())
+        return self.sqlProtocol.create(table: Screen())
     }
     
     /// List of object
     ///
     /// - Returns: a list of object
     func list() -> [Screen] {
-        return SQLManager.shared.select(withQuery: "SELECT * FROM \(Screen.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT * FROM \(Screen.table)")
     }
     
     /// Drop the table
     ///
     /// - Returns: boolean if it was dropped
     func dropTable() -> Bool {
-        return SQLManager.shared.drop(tableName: Screen.table)
+        return self.sqlProtocol.drop(tableName: Screen.table)
     }
     
     /// Insert a object in database
@@ -39,7 +53,7 @@ struct ScreenDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Screen) -> Int64 {
-        let rowId = SQLManager.shared.insert(withQuery: "INSERT INTO \(Screen.table) ('name', 'form_id') VALUES (\"\(object.name)\", \(object.formId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Screen.table) ('name', 'form_id') VALUES (\"\(object.name)\", \(object.formId))")
         return rowId
     }
     

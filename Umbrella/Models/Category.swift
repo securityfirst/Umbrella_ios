@@ -127,3 +127,9 @@ class Category: Codable, TableProtocol, FolderProtocol {
         return array
     }
 }
+
+extension Category: CustomStringConvertible {
+    var description: String {
+        return "\(name ?? "")"
+    }
+}

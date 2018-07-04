@@ -10,19 +10,35 @@ import Foundation
 import SQLite
 import SQLCipher
 
-class SQLManager {
+class SQLManager: SQLProtocol {
     
     //
-    // MARK: - Singleton
-    static let shared: SQLManager = {
-        let sqlmanager = SQLManager()
-        sqlmanager.copyDatabaseIfNeeded()
-        return sqlmanager
-    }()
+    // MARK: - Properties
+    let fileManager: FileManager
+    let databaseName: String
+    let password: String
+    var connect: Connection?
+    static let timeout = 60.0
+    
+    //
+    // MARK: - Initializers
+    
+    /// Init
+    ///
+    /// - Parameters:
+    ///   - fileManager: FileManager
+    ///   - databaseName: database name
+    ///   - password: password of database
+    init(fileManager: FileManager = FileManager.default, databaseName: String, password: String) {
+        self.fileManager = fileManager
+        self.databaseName = databaseName
+        self.password = password
+        self.copyDatabaseIfNeeded()
+    }
     
     //
     // MARK: - Functions
-
+    
     /// Select in SQLite database
     ///
     /// - Parameter query: string of query
@@ -31,6 +47,7 @@ class SQLManager {
         
         let db = openConnection()
         var array = [[String: Any]]()
+        db?.busyTimeout = SQLManager.timeout
         
         do {
             if let stmt = try db?.prepare(query) {
@@ -63,12 +80,13 @@ class SQLManager {
     /// - Returns: boolean if it was created a table
     func create(table tableProtocol: TableProtocol) -> Bool {
         let db = openConnection()
+        db?.busyTimeout = SQLManager.timeout
         do {
             let table = Table(tableProtocol.tableName)
             try db?.run(table.create(ifNotExists: true) { tableColumn in
-
+                
                 for column in tableProtocol.columns() {
-
+                    
                     switch (column.type) {
                     case .int?:
                         let exp = Expression<Int64>(column.name!)
@@ -93,7 +111,7 @@ class SQLManager {
                     }
                 }
             })
-
+            
             return true
         } catch {
             print(error)
@@ -107,6 +125,7 @@ class SQLManager {
     /// - Returns: rowId of insertion
     func insert(withQuery query:String) -> Int64 {
         let db = openConnection()
+        db?.busyTimeout = SQLManager.timeout
         do {
             try db?.prepare(query).run()
             return (db?.lastInsertRowid)!
@@ -122,6 +141,7 @@ class SQLManager {
     /// - Returns: boolean if it was dropped
     func drop(tableName table: String) -> Bool {
         let db = openConnection()
+        db?.busyTimeout = SQLManager.timeout
         do {
             let tab = Table(table)
             try db?.run(tab.drop(ifExists: true))
@@ -129,6 +149,26 @@ class SQLManager {
         } catch {
             print(error)
             return false
+        }
+    }
+    
+    /// Check if the database exists
+    ///
+    /// - Returns: boolean
+    func checkIfTheDatabaseExists() -> Bool {
+        let fileManager = FileManager.default
+        let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                            in: .userDomainMask)
+        guard documentsUrl.count != 0 else {
+            return false
+        }
+        
+        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent(self.databaseName)
+        
+        if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
+            return false
+        } else {
+            return true
         }
     }
     
@@ -144,10 +184,24 @@ extension SQLManager {
             .documentDirectory, .userDomainMask, true
             ).first!
         do {
-            let connect = try Connection("\(path)/database.db")
-            try connect.key("umbrella")
-            try connect.execute("PRAGMA foreign_keys = ON;")
-            return connect
+            if self.connect == nil {
+                self.connect = try Connection("\(path)/\(self.databaseName)")
+                try self.connect?.key(self.password)
+                try self.connect?.execute("PRAGMA foreign_keys = ON;")
+                self.connect?.busyTimeout = SQLManager.timeout
+                self.connect?.busyHandler({ tries in
+                    if tries >= 3 {
+                        return false
+                    }
+                    return true
+                })
+            }
+            
+            
+//            #if DEBUG
+//            connect.trace { print($0) }
+//            #endif
+            return self.connect
         } catch {
             print(error)
         }
@@ -164,11 +218,11 @@ extension SQLManager {
             return
         }
         
-        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent("database.db")
+        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent(self.databaseName)
         
         if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
             
-            let documentsURL = Bundle.main.resourceURL?.appendingPathComponent("database.db")
+            let documentsURL = Bundle.main.resourceURL?.appendingPathComponent(self.databaseName)
             
             print(documentsURL ?? "")
             

@@ -20,6 +20,13 @@ class GitManager {
     
     //
     // MARK: - Initializers
+    
+    /// Init
+    ///
+    /// - Parameters:
+    ///   - fileManager: FileManager
+    ///   - url: url
+    ///   - pathDirectory: path
     init(fileManager: FileManager = FileManager.default, url: URL, pathDirectory: FileManager.SearchPathDirectory) {
         self.fileManager = fileManager
         self.url = url
@@ -38,7 +45,7 @@ class GitManager {
     func clone(completion: @escaping ((Float, Float) -> Void), failure: @escaping ((Error) -> Void)) {
         
         if !Config.debug {
-            
+            print("Clone: \(Date())")
             do {
                 //Remove the folder before a clone
                 try deleteCloneInFolder(pathDirectory: self.pathDirectory)
@@ -50,6 +57,7 @@ class GitManager {
                     completion(Float(totalBytesWritten), Float(totalBytesExpectedToWrite))
                     }.analysis(ifSuccess: { result in
                         print(result)
+                        print("Clone: \(Date())")
                     }, ifFailure: {error in
                         print(error)
                         failure(error)

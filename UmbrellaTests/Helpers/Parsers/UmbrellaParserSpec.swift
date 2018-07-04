@@ -36,12 +36,15 @@ class UmbrellaParserSpec: QuickSpec {
         
         describe("UmbrellaParser") {
             it("should do the parser of the tent") {
-                var umbrellaParser = UmbrellaParser(documentsFolder: tentBundleFolder)
-                umbrellaParser.parse(completion: { languages, forms in
-                    expect(languages.count).to(equal(1))
-                    expect(languages.first?.categories.count).to(equal(9))
-                    expect(forms.count).to(equal(4))
-                })
+                waitUntil(timeout: 60) { done in
+                    var umbrellaParser = UmbrellaParser(documentsFolder: tentBundleFolder)
+                    umbrellaParser.parse(completion: { languages, forms in
+                        expect(languages.count).to(equal(1))
+                        expect(languages.first?.categories.count).to(equal(9))
+                        expect(forms.count).to(equal(4))
+                        done()
+                    })
+                }
             }
         }
         

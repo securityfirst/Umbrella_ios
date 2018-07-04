@@ -15,6 +15,7 @@ class HomeViewModel {
     // MARK: - Properties
     var languages: [Language]
     var forms: [Form]
+    var sqlManager: SQLManager
     var documentsFolder: Folder = {
         let system = FileSystem()
         let path = system.homeFolder.path
@@ -31,27 +32,29 @@ class HomeViewModel {
     //
     // MARK: - Init
     init() {
-        languages = []
-        forms = []
+        self.languages = []
+        self.forms = []
+        self.sqlManager = SQLManager(databaseName: "database.db", password: "umbrella")
     }
     
     //
     // MARK: - Functions
     
     /// Parse of tent
-    func parseTent() {
+    func parseTent(completion: @escaping (Float) -> Void) {
         
         //Umbrella Parse of Tent
+        
         var umbrellaParser = UmbrellaParser(documentsFolder: documentsFolder)
         umbrellaParser.parse { languages, forms in
             self.languages = languages
             self.forms = forms
-            
-            let umbrellaDatabase = UmbrellaDatabase(languages: self.languages, forms: self.forms)
-//            umbrellaDatabase.objectToDatabase()
-            umbrellaDatabase.databaseToObject()
+            let umbrellaDatabase = UmbrellaDatabase(languages: self.languages, forms: self.forms, sqlProtocol: sqlManager)
+            _ = umbrellaDatabase.dropTables()
+            umbrellaDatabase.objectToDatabase(completion: { progress in
+                completion(progress)
+            })
         }
-        
     }
     
     /// Clone of repository of the tent

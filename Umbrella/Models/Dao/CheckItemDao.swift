@@ -11,27 +11,41 @@ import Foundation
 struct CheckItemDao: DaoProtocol {
     
     //
+    // MARK: - Properties
+    let sqlProtocol: SQLProtocol
+    
+    //
+    // MARK: - Initializer
+    
+    /// Init
+    ///
+    /// - Parameter sqlProtocol: SQLProtocol
+    init(sqlProtocol: SQLProtocol) {
+        self.sqlProtocol = sqlProtocol
+    }
+    
+    //
     // MARK: - DaoProtocol
     
     /// Create the table
     ///
     /// - Returns: boolean if it was created
     func createTable() -> Bool {
-        return SQLManager.shared.create(table: CheckItem())
+        return self.sqlProtocol.create(table: CheckItem())
     }
     
     /// List of object
     ///
     /// - Returns: a list of object
     func list() -> [CheckItem] {
-        return SQLManager.shared.select(withQuery: "SELECT id, name as [check], is_checked, check_list_id FROM \(CheckItem.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as [check], is_checked, check_list_id FROM \(CheckItem.table)")
     }
     
     /// Drop the table
     ///
     /// - Returns: boolean if it was dropped
     func dropTable() -> Bool {
-        return SQLManager.shared.drop(tableName: CheckItem.table)
+        return self.sqlProtocol.drop(tableName: CheckItem.table)
     }
     
     /// Insert a object in database
@@ -39,7 +53,7 @@ struct CheckItemDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: CheckItem) -> Int64 {
-        let rowId = SQLManager.shared.insert(withQuery: "INSERT INTO \(CheckItem.table) ('name', 'is_checked', 'check_list_id') VALUES (\"\(object.name)\", \(object.isChecked ?? false ? 1 : 0), \(object.checkListId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckItem.table) ('name', 'is_checked', 'check_list_id') VALUES (\"\(object.name)\", \(object.isChecked ?? false ? 1 : 0), \(object.checkListId))")
         return rowId
     }
     

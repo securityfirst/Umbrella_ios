@@ -12,41 +12,111 @@ struct UmbrellaDatabase {
     
     //
     // MARK: - Properties
-    let languageDao = LanguageDao()
-    let categoryDao = CategoryDao()
-    let segmentDao = SegmentDao()
-    let checkListDao = CheckListDao()
-    let checkItemDao = CheckItemDao()
-    let formDao = FormDao()
-    let screenDao = ScreenDao()
-    let itemFormDao = ItemFormDao()
-    let optionItemDao = OptionItemDao()
+    let sqlProtocol: SQLProtocol
+    let languageDao: LanguageDao
+    let categoryDao: CategoryDao
+    let segmentDao: SegmentDao
+    let checkListDao: CheckListDao
+    let checkItemDao: CheckItemDao
+    let formDao: FormDao
+    let screenDao: ScreenDao
+    let itemFormDao: ItemFormDao
+    let optionItemDao: OptionItemDao
     let languages: [Language]
     let forms: [Form]
     
     //
     // MARK: - Initializers
-    init(languages: [Language], forms: [Form]) {
+    
+    init(sqlProtocol: SQLProtocol) {
+        self.languages = []
+        self.forms = []
+        self.sqlProtocol = sqlProtocol
+        
+        self.languageDao = LanguageDao(sqlProtocol: self.sqlProtocol)
+        self.categoryDao = CategoryDao(sqlProtocol: self.sqlProtocol)
+        self.segmentDao = SegmentDao(sqlProtocol: self.sqlProtocol)
+        self.checkListDao = CheckListDao(sqlProtocol: self.sqlProtocol)
+        self.checkItemDao = CheckItemDao(sqlProtocol: self.sqlProtocol)
+        self.formDao = FormDao(sqlProtocol: self.sqlProtocol)
+        self.screenDao = ScreenDao(sqlProtocol: self.sqlProtocol)
+        self.itemFormDao = ItemFormDao(sqlProtocol: self.sqlProtocol)
+        self.optionItemDao = OptionItemDao(sqlProtocol: self.sqlProtocol)
+    }
+    
+    init(languages: [Language], forms: [Form], sqlProtocol: SQLProtocol) {
         self.languages = languages
         self.forms = forms
+        self.sqlProtocol = sqlProtocol
+        
+        self.languageDao = LanguageDao(sqlProtocol: self.sqlProtocol)
+        self.categoryDao = CategoryDao(sqlProtocol: self.sqlProtocol)
+        self.segmentDao = SegmentDao(sqlProtocol: self.sqlProtocol)
+        self.checkListDao = CheckListDao(sqlProtocol: self.sqlProtocol)
+        self.checkItemDao = CheckItemDao(sqlProtocol: self.sqlProtocol)
+        self.formDao = FormDao(sqlProtocol: self.sqlProtocol)
+        self.screenDao = ScreenDao(sqlProtocol: self.sqlProtocol)
+        self.itemFormDao = ItemFormDao(sqlProtocol: self.sqlProtocol)
+        self.optionItemDao = OptionItemDao(sqlProtocol: self.sqlProtocol)
     }
     
     //
     // MARK: - Functions
     
+    /// Create all tables
+    func createTables() -> Bool {
+        let languageSuccess = self.languageDao.createTable()
+        let categorySuccess = self.categoryDao.createTable()
+        let segmentSuccess = self.segmentDao.createTable()
+        let checkListSuccess = self.checkListDao.createTable()
+        let checkItemSuccess = self.checkItemDao.createTable()
+        
+        let formSuccess = self.formDao.createTable()
+        let screenSuccess = self.screenDao.createTable()
+        let itemFormSuccess = self.itemFormDao.createTable()
+        let optionItemSuccess = self.optionItemDao.createTable()
+        
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func dropTables() -> Bool {
+        let optionItemSuccess = self.optionItemDao.dropTable()
+        let itemFormSuccess = self.itemFormDao.dropTable()
+        let screenSuccess = self.screenDao.dropTable()
+        let formSuccess = self.formDao.dropTable()
+        
+        let checkItemSuccess = self.checkItemDao.dropTable()
+        let checkListSuccess = self.checkListDao.dropTable()
+        let segmentSuccess = self.segmentDao.dropTable()
+        let categorySuccess = self.categoryDao.dropTable()
+        let languageSuccess = self.languageDao.dropTable()
+        
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     /// Convert from object to database
-    func objectToDatabase() {
-        DispatchQueue.global(qos: .background).async {
-            self.dropTables()
-            self.createTables()
-            self.insertAllLessons()
+    func objectToDatabase(completion: @escaping (Float) -> Void) {
+        DispatchQueue.global(qos: .default).async {
+            _ = self.dropTables()
+            _ = self.createTables()
+//            print("objectToDatabase: \(Date())")
+            self.insertAllLanguages(completion: completion)
+//            print("objectToDatabase: \(Date())")
             self.insertAllForms()
+            print("Finalized objectToDatabase")
         }
     }
     
     /// Convert from database to object
     func databaseToObject() {
-        
         let languages = self.languageDao.list()
         let categories = self.categoryDao.list()
         let segments = self.segmentDao.list()
@@ -72,7 +142,7 @@ struct UmbrellaDatabase {
                 category.segments = segments.filter { $0.categoryId == category.id }
                 
                 //Recursively
-                convertSubCategory(category, categories, language, segments, checkLists, checkItems)
+                convertToObject(category, categories, language, segments, checkLists, checkItems)
             }
             
             languageArray.append(language)
@@ -94,42 +164,18 @@ struct UmbrellaDatabase {
                 }
             }
         }
-        
-        print("")
+        print("Finalized databaseToObject")
+    }
+    
+    func checkIfTheDatabaseExists() -> Bool {
+        return self.sqlProtocol.checkIfTheDatabaseExists()
     }
 }
 
 extension UmbrellaDatabase {
     
-    /// Create all tables
-    fileprivate func createTables() {
-        _ = self.languageDao.createTable()
-        _ = self.categoryDao.createTable()
-        _ = self.segmentDao.createTable()
-        _ = self.checkListDao.createTable()
-        _ = self.checkItemDao.createTable()
-        
-        _ = self.formDao.createTable()
-        _ = self.screenDao.createTable()
-        _ = self.itemFormDao.createTable()
-        _ = self.optionItemDao.createTable()
-    }
-    
-    fileprivate func dropTables() {
-        _ = self.optionItemDao.dropTable()
-        _ = self.itemFormDao.dropTable()
-        _ = self.screenDao.dropTable()
-        _ = self.formDao.dropTable()
-        
-        _ = self.checkItemDao.dropTable()
-        _ = self.checkListDao.dropTable()
-        _ = self.segmentDao.dropTable()
-        _ = self.categoryDao.dropTable()
-        _ = self.languageDao.dropTable()
-    }
-    
-    /// Insert all the lessons of languages, categories, segments and checkList
-    fileprivate func insertAllLessons() {
+    /// Insert all the languages, categories, segments and checkList
+    fileprivate func insertAllLanguages(completion: @escaping (Float) -> Void) {
         // Language
         for language in self.languages {
             
@@ -140,6 +186,7 @@ extension UmbrellaDatabase {
             for index in 0..<language.categories.count {
                 let category = language.categories[index]
                 
+//                print("1 - \(category)")
                 category.languageId = Int(languageRowId)
                 let categoryRowId = self.categoryDao.insert(category)
                 category.id = Int(categoryRowId)
@@ -147,14 +194,16 @@ extension UmbrellaDatabase {
                 //Segments
                 for index in 0..<category.segments.count {
                     let segment = category.segments[index]
-                    
+
                     segment.categoryId = Int(categoryRowId)
                     let segmentRowId = self.segmentDao.insert(segment)
                     segment.id = Int(segmentRowId)
                 }
                 
                 // Add whole subCategories recursively
-                self.insertSubCategory(category: category, categoryRowId: categoryRowId, languageRowId: languageRowId)
+                self.insertIntoDatabase(category: category, categoryRowId: categoryRowId, languageRowId: languageRowId)
+                
+                completion(Float(index+1)/Float(language.categories.count))
             }
         }
     }
@@ -194,18 +243,19 @@ extension UmbrellaDatabase {
         }
     }
     
-    /// Insert all the categories recursively
+    /// Insert categories from object to database recursively
     ///
     /// - Parameters:
     ///   - category: category parent
     ///   - categoryRowId: rowId of category parent inserted
     ///   - languageRowId: rowId of language inserted
-    func insertSubCategory(category: Category, categoryRowId: Int64, languageRowId: Int64) {
+    func insertIntoDatabase(category: Category, categoryRowId: Int64, languageRowId: Int64) {
         
         // SubCategories
         for index in 0..<category.categories.count {
             let subCategory = category.categories[index]
             
+//            print("2 - \(subCategory)")
             subCategory.parent = Int(categoryRowId)
             subCategory.languageId = Int(languageRowId)
             let subCategoryRowId = self.categoryDao.insert(subCategory)
@@ -213,7 +263,7 @@ extension UmbrellaDatabase {
             //Segments
             for index in 0..<subCategory.segments.count {
                 let segment = subCategory.segments[index]
-                
+
                 segment.categoryId = Int(subCategoryRowId)
                 let segmentRowId = self.segmentDao.insert(segment)
                 segment.id = Int(segmentRowId)
@@ -222,35 +272,35 @@ extension UmbrellaDatabase {
             //Checklist
             for index in 0..<subCategory.checkList.count {
                 let checkList = subCategory.checkList[index]
-                
+
                 checkList.categoryId = Int(subCategoryRowId)
                 let checkListRowId = self.checkListDao.insert(checkList)
                 checkList.id = Int(checkListRowId)
-                
+
                 //CheckItem
                 for index in 0..<checkList.items.count {
                     let checkItem = checkList.items[index]
-                    
+
                     checkItem.checkListId = Int(checkList.id)
                     let checkListRowId = self.checkItemDao.insert(checkItem)
                     checkItem.id = Int(checkListRowId)
                 }
             }
             
-            insertSubCategory(category: subCategory, categoryRowId: subCategoryRowId, languageRowId: languageRowId)
+            insertIntoDatabase(category: subCategory, categoryRowId: subCategoryRowId, languageRowId: languageRowId)
         }
     }
     
-    /// <#Description#>
+    /// Convert categories from database to object recursively
     ///
     /// - Parameters:
-    ///   - category: <#category description#>
-    ///   - categories: <#categories description#>
-    ///   - language: <#language description#>
-    ///   - segments: <#segments description#>
-    ///   - checkLists: <#checkLists description#>
-    ///   - checkItems: <#checkItems description#>
-    fileprivate func convertSubCategory(_ category: Category, _ categories: [Category], _ language: Language, _ segments: [Segment], _ checkLists: [CheckList], _ checkItems: [CheckItem]) {
+    ///   - category: category
+    ///   - categories: list of category
+    ///   - language: language
+    ///   - segments: list of segment
+    ///   - checkLists: list of checkList
+    ///   - checkItems: list of checkItem
+    fileprivate func convertToObject(_ category: Category, _ categories: [Category], _ language: Language, _ segments: [Segment], _ checkLists: [CheckList], _ checkItems: [CheckItem]) {
         
         // Subcategories
         for subcategory in category.categories {
@@ -266,7 +316,7 @@ extension UmbrellaDatabase {
                 checkList.items = checkItems.filter { $0.checkListId == checkList.id }
             }
             
-            convertSubCategory(subcategory, categories, language, segments, checkLists, checkItems)
+            convertToObject(subcategory, categories, language, segments, checkLists, checkItems)
         }
     }
 }

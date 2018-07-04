@@ -30,18 +30,28 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        homeViewModel.clone(witUrl: Config.gitBaseURL, completion: { progress in
+        #if !TESTING
+        homeViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
             DispatchQueue.main.async {
-                self.progressView.setProgress(progress, animated: true)
+                self.progressView.setProgress(gitProgress/2.0, animated: true)
             }
             
-            if progress == 1.0 {
-                DispatchQueue.main.async {
-                    self.progressView.isHidden = true
-                    self.homeViewModel.parseTent()
-                }
+            if gitProgress == 1.0 {
+                self.homeViewModel.parseTent(completion: { progress in
+                    print(progress)
+                    DispatchQueue.main.async {
+                        self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
+                    }
+                    if gitProgress + progress == 2.0 {
+                        DispatchQueue.main.async {
+                            self.progressView.isHidden = true
+                        }
+                    }
+                })
             }
         })
+        
+        #endif
     }
     
     override func didReceiveMemoryWarning() {

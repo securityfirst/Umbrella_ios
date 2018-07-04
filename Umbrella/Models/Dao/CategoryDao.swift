@@ -11,27 +11,41 @@ import Foundation
 struct CategoryDao: DaoProtocol {
     
     //
+    // MARK: - Properties
+    let sqlProtocol: SQLProtocol
+    
+    //
+    // MARK: - Initializer
+    
+    /// Init
+    ///
+    /// - Parameter sqlProtocol: SQLProtocol
+    init(sqlProtocol: SQLProtocol) {
+        self.sqlProtocol = sqlProtocol
+    }
+    
+    //
     // MARK: - DaoProtocol
     
     /// Create the table
     ///
     /// - Returns: boolean if it was created
     func createTable() -> Bool {
-        return SQLManager.shared.create(table: Category())
+        return self.sqlProtocol.create(table: Category())
     }
     
     /// List of object
     ///
     /// - Returns: a list of object
     func list() -> [Category] {
-        return SQLManager.shared.select(withQuery: "SELECT id, name as title, [index], folder_name, language_id, parent FROM \(Category.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as title, [index], folder_name, language_id, parent FROM \(Category.table)")
     }
     
     /// Drop the table
     ///
     /// - Returns: boolean if it was dropped
     func dropTable() -> Bool {
-        return SQLManager.shared.drop(tableName: Category.table)
+        return self.sqlProtocol.drop(tableName: Category.table)
     }
     
     /// Insert a object in database
@@ -39,7 +53,7 @@ struct CategoryDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Category) -> Int64 {
-        let rowId = SQLManager.shared.insert(withQuery: "INSERT INTO \(Category.table) ('name', 'index', 'folder_name', 'parent', 'language_id') VALUES (\"\(object.name ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', \(object.parent), \(object.languageId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Category.table) ('name', 'index', 'folder_name', 'parent', 'language_id') VALUES (\"\(object.name ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', \(object.parent), \(object.languageId))")
         return rowId
     }
     
