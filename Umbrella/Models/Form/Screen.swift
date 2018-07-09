@@ -42,7 +42,7 @@ class Screen: Codable, TableProtocol {
         case id
         case formId = "form_id"
         case items
-        case name
+        case name = "title"
     }
     
     required init(from decoder: Decoder) throws {

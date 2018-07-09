@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fxq-H5-mXI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Lessons-->
+        <scene sceneID="wwD-Hz-Bzg">
+            <objects>
+                <viewController storyboardIdentifier="LessonViewController" id="4dF-MN-S27" customClass="LessonViewController" customModule="Umbrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zV5-wv-gOL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lessons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8U-Qt-IV7">
+                                <rect key="frame" x="156" y="323" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="r8U-Qt-IV7" firstAttribute="centerY" secondItem="zV5-wv-gOL" secondAttribute="centerY" id="1JU-oV-iXm"/>
+                            <constraint firstItem="r8U-Qt-IV7" firstAttribute="centerX" secondItem="zV5-wv-gOL" secondAttribute="centerX" id="Qjy-Dy-Zk1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IJo-xM-Qev"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Lessons" id="PmF-gL-Sc9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pz-vO-grM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="1952"/>
+        </scene>
+        <!--Lessons-->
+        <scene sceneID="sqv-t6-YvZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fxq-H5-mXI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Lessons" image="icLocalLibrary" id="8t3-eJ-RmT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hkb-lr-mal">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4dF-MN-S27" kind="relationship" relationship="rootViewController" id="wzs-yh-tjM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XlY-GY-Nha" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342" y="1952"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icLocalLibrary" width="24" height="24"/>
+    </resources>
+</document>

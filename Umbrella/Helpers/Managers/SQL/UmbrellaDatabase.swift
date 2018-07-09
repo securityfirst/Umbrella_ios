@@ -107,9 +107,7 @@ struct UmbrellaDatabase {
         DispatchQueue.global(qos: .default).async {
             _ = self.dropTables()
             _ = self.createTables()
-//            print("objectToDatabase: \(Date())")
             self.insertAllLanguages(completion: completion)
-//            print("objectToDatabase: \(Date())")
             self.insertAllForms()
             print("Finalized objectToDatabase")
         }
@@ -186,7 +184,6 @@ extension UmbrellaDatabase {
             for index in 0..<language.categories.count {
                 let category = language.categories[index]
                 
-//                print("1 - \(category)")
                 category.languageId = Int(languageRowId)
                 let categoryRowId = self.categoryDao.insert(category)
                 category.id = Int(categoryRowId)
@@ -254,8 +251,7 @@ extension UmbrellaDatabase {
         // SubCategories
         for index in 0..<category.categories.count {
             let subCategory = category.categories[index]
-            
-//            print("2 - \(subCategory)")
+        
             subCategory.parent = Int(categoryRowId)
             subCategory.languageId = Int(languageRowId)
             let subCategoryRowId = self.categoryDao.insert(subCategory)

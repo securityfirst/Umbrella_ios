@@ -44,7 +44,6 @@ class HomeViewModel {
     func parseTent(completion: @escaping (Float) -> Void) {
         
         //Umbrella Parse of Tent
-        
         var umbrellaParser = UmbrellaParser(documentsFolder: documentsFolder)
         umbrellaParser.parse { languages, forms in
             self.languages = languages
@@ -62,7 +61,7 @@ class HomeViewModel {
     /// - Parameters:
     ///   - url: url of repository
     ///   - completion: closure of progress
-    func clone(witUrl url: URL, completion: @escaping (Float) -> Void) {
+    func clone(witUrl url: URL, completion: @escaping (Float) -> Void, failure: @escaping ((Error) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             
             let gitManager = GitManager(url: url, pathDirectory: .documentDirectory)
@@ -71,6 +70,7 @@ class HomeViewModel {
                 completion(progress)
             }, failure: { error in
                 print("GitManager: \(error)")
+                failure(error)
             })
         }
     }

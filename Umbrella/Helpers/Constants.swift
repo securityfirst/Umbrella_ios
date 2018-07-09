@@ -10,5 +10,5 @@ import Foundation
 
 enum Config {
     static var gitBaseURL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
-    static var debug: Bool = true
+    static var debug: Bool = false
 }

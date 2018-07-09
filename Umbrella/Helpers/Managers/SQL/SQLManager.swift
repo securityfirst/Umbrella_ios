@@ -197,7 +197,6 @@ extension SQLManager {
                 })
             }
             
-            
 //            #if DEBUG
 //            connect.trace { print($0) }
 //            #endif
@@ -235,6 +234,5 @@ extension SQLManager {
         } else {
             print("Database file found at path: \(finalDatabaseURL.path)")
         }
-        
     }
 }

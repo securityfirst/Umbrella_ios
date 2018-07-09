@@ -12,7 +12,7 @@ import Nimble
 
 @testable import Umbrella
 
-class XHomeViewModelSpec: QuickSpec {
+class HomeViewModelSpec: QuickSpec {
     
     override func spec() {
         describe("HomeViewModel") {
@@ -31,6 +31,8 @@ class XHomeViewModelSpec: QuickSpec {
                             expect(progress).to(equal(1.0))
                             done()
                         }
+                    }, failure: { error in
+                        print("GitManager: \(error)")
                     })
                 }
             }

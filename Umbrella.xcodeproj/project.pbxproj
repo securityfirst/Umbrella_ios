@@ -39,13 +39,24 @@
 		A0B0AA3F20EBC98B00933759 /* LanguageDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA3720EBC98B00933759 /* LanguageDaoSpec.swift */; };
 		A0B0AA4220EBDEC100933759 /* UmbrellaDatabaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA4120EBDEC100933759 /* UmbrellaDatabaseSpec.swift */; };
 		A0B0AA4720ECF9F400933759 /* HomeViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA4620ECF9F400933759 /* HomeViewModelSpec.swift */; };
+		A0B0AA6920EE575500933759 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA6820EE575400933759 /* TabBar.swift */; };
+		A0B0AA6D20EE605600933759 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA6C20EE605500933759 /* Feed.storyboard */; };
+		A0B0AA6F20EE60B900933759 /* Form.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA6E20EE60B800933759 /* Form.storyboard */; };
+		A0B0AA7120EE60E300933759 /* CheckList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7020EE60E300933759 /* CheckList.storyboard */; };
+		A0B0AA7320EE610A00933759 /* Lesson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7220EE610A00933759 /* Lesson.storyboard */; };
+		A0B0AA7520EE612900933759 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7420EE612900933759 /* Account.storyboard */; };
+		A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */; };
+		A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7820EE6EA000933759 /* FormViewController.swift */; };
+		A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7A20EE6EB500933759 /* CheckListViewController.swift */; };
+		A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */; };
+		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
 		A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787020ADA12B00A287C8 /* TableProtocol.swift */; };
 		A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */; };
 		A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */; };
 		A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42920AAE03600B2B796 /* Main.storyboard */; };
 		A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42C20AAE03900B2B796 /* Assets.xcassets */; };
 		A0B9D43020AAE03900B2B796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42E20AAE03900B2B796 /* LaunchScreen.storyboard */; };
-		A0B9D46020AAE1CF00B2B796 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45620AAE1CE00B2B796 /* HomeViewController.swift */; };
+		A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45620AAE1CE00B2B796 /* LoadingViewController.swift */; };
 		A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */; };
 		A0C6CE9720B1E66B005BC111 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0C6CE9920B1E66B005BC111 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -156,6 +167,17 @@
 		A0B0AA3720EBC98B00933759 /* LanguageDaoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageDaoSpec.swift; sourceTree = "<group>"; };
 		A0B0AA4120EBDEC100933759 /* UmbrellaDatabaseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaDatabaseSpec.swift; sourceTree = "<group>"; };
 		A0B0AA4620ECF9F400933759 /* HomeViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelSpec.swift; sourceTree = "<group>"; };
+		A0B0AA6820EE575400933759 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		A0B0AA6C20EE605500933759 /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		A0B0AA6E20EE60B800933759 /* Form.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Form.storyboard; sourceTree = "<group>"; };
+		A0B0AA7020EE60E300933759 /* CheckList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckList.storyboard; sourceTree = "<group>"; };
+		A0B0AA7220EE610A00933759 /* Lesson.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Lesson.storyboard; sourceTree = "<group>"; };
+		A0B0AA7420EE612900933759 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		A0B0AA7820EE6EA000933759 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		A0B0AA7A20EE6EB500933759 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
+		A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
+		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
 		A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoProtocol.swift; sourceTree = "<group>"; };
@@ -166,7 +188,7 @@
 		A0B9D43120AAE03900B2B796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0B9D43620AAE03900B2B796 /* UmbrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmbrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B9D43C20AAE03900B2B796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0B9D45620AAE1CE00B2B796 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A0B9D45620AAE1CE00B2B796 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftGit2.framework; sourceTree = "<group>"; };
 		A0C6CE9320B1E5D6005BC111 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
@@ -334,6 +356,54 @@
 			path = SQL;
 			sourceTree = "<group>";
 		};
+		A0B0AA8020EE707D00933759 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A0B0AA8120EE708500933759 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0AA7820EE6EA000933759 /* FormViewController.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		A0B0AA8220EE709100933759 /* CheckList */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0AA7A20EE6EB500933759 /* CheckListViewController.swift */,
+			);
+			path = CheckList;
+			sourceTree = "<group>";
+		};
+		A0B0AA8320EE709A00933759 /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		A0B0AA8420EE70A200933759 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		A0B0AA8520F375A000933759 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				A0B9D45620AAE1CE00B2B796 /* LoadingViewController.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		A0B9787320ADC79800A287C8 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,7 +495,12 @@
 		A0B9D45520AAE1CE00B2B796 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A0B9D45620AAE1CE00B2B796 /* HomeViewController.swift */,
+				A0B0AA8520F375A000933759 /* Loading */,
+				A0B0AA8020EE707D00933759 /* Feed */,
+				A0B0AA8120EE708500933759 /* Form */,
+				A0B0AA8220EE709100933759 /* CheckList */,
+				A0B0AA8320EE709A00933759 /* Lesson */,
+				A0B0AA8420EE70A200933759 /* Account */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -436,6 +511,7 @@
 				A0C6CE9F20B5ABB6005BC111 /* Constants.swift */,
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
+				A0B0AA6820EE575400933759 /* TabBar.swift */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 			);
@@ -466,6 +542,11 @@
 			children = (
 				A0B9D42E20AAE03900B2B796 /* LaunchScreen.storyboard */,
 				A0B9D42920AAE03600B2B796 /* Main.storyboard */,
+				A0B0AA6C20EE605500933759 /* Feed.storyboard */,
+				A0B0AA6E20EE60B800933759 /* Form.storyboard */,
+				A0B0AA7020EE60E300933759 /* CheckList.storyboard */,
+				A0B0AA7220EE610A00933759 /* Lesson.storyboard */,
+				A0B0AA7420EE612900933759 /* Account.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -677,10 +758,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B0AA7320EE610A00933759 /* Lesson.storyboard in Resources */,
+				A0B0AA6D20EE605600933759 /* Feed.storyboard in Resources */,
 				A064CE9620AC497D00CE99E1 /* database.db in Resources */,
 				A0B9D43020AAE03900B2B796 /* LaunchScreen.storyboard in Resources */,
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,
+				A0B0AA6F20EE60B900933759 /* Form.storyboard in Resources */,
 				A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */,
+				A0B0AA7520EE612900933759 /* Account.storyboard in Resources */,
+				A0B0AA7120EE60E300933759 /* CheckList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +905,7 @@
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
+				A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
 				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
@@ -838,22 +925,27 @@
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
+				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* HomeViewModel.swift in Sources */,
 				A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
-				A0B9D46020AAE1CF00B2B796 /* HomeViewController.swift in Sources */,
+				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
 				A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */,
+				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
+				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
+				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
+				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 			);

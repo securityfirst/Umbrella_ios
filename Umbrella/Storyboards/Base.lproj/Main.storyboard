@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xWb-aa-Jbo">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,42 +10,148 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Tab Bar Controller-->
+        <scene sceneID="oBA-yM-LOJ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Umbrella" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tabBarController id="xWb-aa-Jbo" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dO6-z7-V6w" customClass="TabBar" customModule="Umbrella" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBar>
+                    <connections>
+                        <segue destination="6S4-Tq-ANZ" kind="relationship" relationship="viewControllers" id="Wsi-Hc-7Z1"/>
+                        <segue destination="gde-92-yBu" kind="relationship" relationship="viewControllers" id="nhI-so-RlN"/>
+                        <segue destination="pl9-Ep-k5U" kind="relationship" relationship="viewControllers" id="MnX-z5-Qe5"/>
+                        <segue destination="Hv1-Qw-3Pg" kind="relationship" relationship="viewControllers" id="yfH-ry-gG5"/>
+                        <segue destination="tCL-2E-0dL" kind="relationship" relationship="viewControllers" id="MEc-xS-sbv"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDD-XY-RB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-694" y="1054"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="0Ln-Qb-N8O">
+            <objects>
+                <viewController storyboardIdentifier="LoadingViewController" id="9dr-gm-E9m" customClass="LoadingViewController" customModule="Umbrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2ZU-ei-AeR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OF-Cc-Ogm" customClass="MarkdownView" customModule="MarkdownView">
-                                <rect key="frame" x="16" y="36" width="343" height="611"/>
-                                <color key="backgroundColor" red="0.97428883120493237" green="0.97428883120493237" blue="0.97428883120493237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76A-4f-Rcx">
+                                <rect key="frame" x="63" y="309.66666666666669" width="249" height="193"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJ6-0c-0ll">
+                                        <rect key="frame" x="8" y="183" width="233" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clone of tent" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="9du-fN-06n">
+                                        <rect key="frame" x="0.0" y="154" width="249" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="d6y-wM-WHq">
+                                        <rect key="frame" x="114" y="126" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhZ-VD-W19">
+                                        <rect key="frame" x="26" y="88" width="201" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Retry again!"/>
+                                        <connections>
+                                            <action selector="retryAction:" destination="9dr-gm-E9m" eventType="touchUpInside" id="elt-gq-bpP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="193" id="Erg-gR-l1C"/>
+                                    <constraint firstAttribute="width" constant="249" id="rvc-F3-DiH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EAX-M0-WbS">
-                                <rect key="frame" x="16" y="655" width="343" height="2"/>
-                            </progressView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EAX-M0-WbS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="8S1-9Y-8rf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6OF-Cc-Ogm" secondAttribute="bottom" constant="20" id="BjK-DO-Ruc"/>
-                            <constraint firstItem="6OF-Cc-Ogm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="UqY-xL-R2t"/>
-                            <constraint firstItem="6OF-Cc-Ogm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WNI-OC-dFg"/>
-                            <constraint firstAttribute="trailing" secondItem="EAX-M0-WbS" secondAttribute="trailing" constant="16" id="aEo-db-KYE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EAX-M0-WbS" secondAttribute="bottom" constant="10" id="cXE-Ng-Yoy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6OF-Cc-Ogm" secondAttribute="trailing" constant="16" id="yQb-1A-dmb"/>
+                            <constraint firstItem="76A-4f-Rcx" firstAttribute="centerY" secondItem="2ZU-ei-AeR" secondAttribute="centerY" id="Z0B-R1-lKg"/>
+                            <constraint firstItem="76A-4f-Rcx" firstAttribute="centerX" secondItem="2ZU-ei-AeR" secondAttribute="centerX" id="n0h-gS-dAB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="s2e-ld-haF"/>
                     </view>
                     <connections>
-                        <outlet property="markDownView" destination="6OF-Cc-Ogm" id="n4E-PK-4Zi"/>
-                        <outlet property="progressView" destination="EAX-M0-WbS" id="n8B-kb-uRZ"/>
+                        <outlet property="activityIndicatorView" destination="d6y-wM-WHq" id="gUI-x8-wza"/>
+                        <outlet property="messageLabel" destination="9du-fN-06n" id="15l-7H-h0R"/>
+                        <outlet property="progressView" destination="tJ6-0c-0ll" id="1Ym-iK-N7d"/>
+                        <outlet property="retryButton" destination="xhZ-VD-W19" id="jwJ-pE-uJ9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ljl-1U-wlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="122.78860569715144"/>
+            <point key="canvasLocation" x="-695.20000000000005" y="269.70443349753697"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="1Zz-47-OB4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" id="6S4-Tq-ANZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3oP-hM-gh3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MI8-zO-fZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14" y="921"/>
+        </scene>
+        <!--Form-->
+        <scene sceneID="D96-ry-sdl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Form" id="gde-92-yBu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Rfn-7H-BwQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tee-wP-62U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21" y="992"/>
+        </scene>
+        <!--CheckList-->
+        <scene sceneID="Qjn-w1-dPd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CheckList" id="pl9-Ep-k5U" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="PeI-cV-J3h"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sE4-GT-nPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45" y="1054"/>
+        </scene>
+        <!--Lesson-->
+        <scene sceneID="Arj-eA-UXg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Lesson" id="Hv1-Qw-3Pg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="lsq-Wg-QFh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PqC-Hp-yna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="1117"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="mz6-Qz-iUy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="tCL-2E-0dL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="R5C-GL-o5c"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l3E-sA-ure" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31" y="1179"/>
         </scene>
     </scenes>
 </document>
