@@ -16,24 +16,20 @@ class Form: Codable, TableProtocol {
     
     //
     // MARK: - Properties
-    var name: String {
-        if screens.count > 0 {
-            return screens.first!.name
-        }
-        return ""
-    }
-    
+    var name: String
     var screens: [Screen]
     
     //
     // MARK: - Initializers
     init() {
         self.id = -1
+        self.name = ""
         self.screens = []
     }
     
     init(screens: [Screen]) {
         self.id = -1
+        self.name = ""
         self.screens = screens
     }
     
@@ -41,6 +37,7 @@ class Form: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
+        case name = "title"
         case screens
     }
     
@@ -51,6 +48,12 @@ class Form: Codable, TableProtocol {
             self.id = try container.decode(Int.self, forKey: .id)
         } else {
             self.id = -1
+        }
+        
+        if container.contains(.name) {
+            self.name = try container.decode(String.self, forKey: .name)
+        } else {
+            self.name = ""
         }
         
         if container.contains(.screens) {
@@ -70,7 +73,7 @@ class Form: Codable, TableProtocol {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
-            Column(name: "name", type: .string)
+            Column(name: "title", type: .string)
         ]
         return array
     }

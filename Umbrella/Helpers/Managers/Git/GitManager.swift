@@ -36,6 +36,17 @@ class GitManager {
     //
     // MARK: - Functions
     
+    /// Check if there is a clone
+    ///
+    /// - Parameter url: url of documents
+    /// - Returns: boolean
+    func checkIfExistClone() -> Bool {
+        if Repository.at(self.url).error == nil {
+            return true
+        }
+        return false
+    }
+    
     /// Clone of repository
     ///
     /// - Parameters:

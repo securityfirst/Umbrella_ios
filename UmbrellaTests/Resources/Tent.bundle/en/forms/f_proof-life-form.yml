@@ -1,5 +1,5 @@
 screens:
-- name: Proof of Life Form
+- title: ""
   items:
   - name: write-questions-known-close
     type: label
@@ -10,7 +10,7 @@ screens:
   - name: answer
     type: text_input
     label: 'Answer 1:'
-- name: Proof of Life Form
+- title: ""
   items:
   - name: question-2
     type: text_input
@@ -18,7 +18,7 @@ screens:
   - name: answer-2
     type: text_input
     label: 'Answer 2:'
-- name: Proof of Life Form
+- title: ""
   items:
   - name: question-3
     type: text_input
@@ -26,7 +26,7 @@ screens:
   - name: answer-3
     type: text_input
     label: 'Answer 3:'
-- name: Proof of Life Form
+- title: ""
   items:
   - name: question-4
     type: text_input
@@ -34,8 +34,9 @@ screens:
   - name: answer-4
     type: text_input
     label: 'Answer 4:'
-- name: Proof of Life Form
+- title: ""
   items:
   - name: personal-duress-word
     type: text_input
     label: Personal Duress Word
+title: Proof of Life Form

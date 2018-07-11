@@ -53,7 +53,7 @@ struct FormDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Form) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Form.table) ('name') VALUES (\"\(object.name)\")")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Form.table) ('title') VALUES (\"\(object.name)\")")
         return rowId
     }
     

@@ -101,7 +101,6 @@ class SQLManager: SQLProtocol {
                         let exp = Expression<Int64>(column.name!)
                         tableColumn.column(exp, primaryKey: .autoincrement)
                     case .foreignKey?:
-                        
                         let foreignKey = Expression<Int64>((column.foreignKey?.key)!)
                         tableColumn.column(foreignKey)
                         let key = Expression<Int64>((column.foreignKey?.tableKey)!)

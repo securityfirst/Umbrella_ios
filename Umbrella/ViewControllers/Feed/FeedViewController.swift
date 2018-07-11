@@ -10,6 +10,8 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    //
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         

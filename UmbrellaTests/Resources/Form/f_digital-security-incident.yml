@@ -1,5 +1,5 @@
 screens:
-- name: Digital Security Incident
+- title: Contact Information for this Incident
   items:
   - name: name
     type: text_input
@@ -16,12 +16,12 @@ screens:
   - name: secure-communication-method-e-g-signal-safety-number-pgp-email-id
     type: text_input
     label: 'Secure Communication Method (e.g Signal Safety Number, PGP Email ID):'
-- name: Digital Security Incident
+- title: Incident Description
   items:
   - name: provide-brief-description
     type: text_area
     label: 'Provide a brief description:'
-- name: Digital Security Incident
+- title: Impact / Potential Impact Check all of the following that apply to this incident.
   items:
   - name: impact-potential-impact-check-following-apply-incident
     type: multiple_choice
@@ -58,7 +58,8 @@ screens:
       value: 'Unknown / Other – please describe:'
   - name: provide-brief-description-2
     type: text_area
-- name: Digital Security Incident
+- title: Sensitivity of Data/Information Involved Check all of the following that
+    apply to this incident.
   items:
   - name: sensitivity-data-information-involved-check-following-apply-incident
     type: multiple_choice
@@ -67,25 +68,28 @@ screens:
   - name: provide-brief-description-data-compromised
     type: text_area
     label: 'Provide a brief description of data that may be compromised:'
-- name: Digital Security Incident
+- title: Are accounts possibly compromised? Please name all, including any individuals
+    who maybe at risk and need to be contacted by the compromised account.
   items:
   - name: accounts-possibly-compromised-including-individuals-maybe-risk-need-contacted-compromised-account
     type: text_area
     label: Are accounts possibly compromised? Please name all, including any individuals
       who maybe at risk and need to be contacted by the compromised account.
-- name: Digital Security Incident
+- title: Do You Have an Inclination As To What The Motive Was Or Who The Perpetrators
+    Were?
   items:
   - name: inclination-motive-perpetrators
     type: text_area
     label: Do You Have an Inclination As To What The Motive Was Or Who The Perpetrators
       Were?
-- name: Digital Security Incident
+- title: 'Who Else Has Been Notified? '
   items:
   - name: notified
     type: text_area
     hint: 'Provide Person and Title:'
     label: 'Who Else Has Been Notified? '
-- name: Digital Security Incident
+- title: What Steps Have Been Taken So Far? Check all of the following that apply
+    to this incident.
   items:
   - name: steps-taken-far-check-following-apply-incident
     type: multiple_choice
@@ -110,7 +114,7 @@ screens:
       value: 'Other – please describe:'
   - name: provide-brief-description-3
     type: text_area
-- name: Digital Security Incident
+- title: Incident Details
   items:
   - name: date-time-incident-discovered
     type: text_input
@@ -131,31 +135,34 @@ screens:
     type: text_input
     label: Please provide any additional information that you feel is important but
       has not been provided elsewhere on this form.
-- name: Digital Security Incident
+- title: Do Your Security Guidelines Cover This Type Of Incident? Were The Guidelines
+    Followed?
   items:
   - name: security-guidelines-cover-type-incident-guidelines-followed
     type: text_area
     label: Do Your Security Guidelines Cover This Type Of Incident? Were The Guidelines
       Followed?
-- name: Digital Security Incident
+- title: Do The Guidelines Or Any Other Aspect Of Security Management Need To Be Revised
+    In Any Way?
   items:
   - name: guidelines-aspect-security-management-need-revised-way
     type: text_area
     label: Do The Guidelines Or Any Other Aspect Of Security Management Need To Be
       Revised In Any Way?
-- name: Digital Security Incident
+- title: Lessons Learnt?
   items:
   - name: lessons-learnt
     type: text_area
     label: Lessons Learnt?
-- name: Digital Security Incident
+- title: Any Action Requested?
   items:
   - name: action-requested
     type: text_area
     label: Any Action Requested?
-- name: Digital Security Incident
+- title: Any supporting information? (Screenshots, suspicious attachment, emails etc.)
   items:
   - name: supporting-information-screenshots-suspicious-attachment-emails
     type: text_area
     label: Any supporting information? (Screenshots, suspicious attachment, emails
       etc.)
+title: Digital Security Incident

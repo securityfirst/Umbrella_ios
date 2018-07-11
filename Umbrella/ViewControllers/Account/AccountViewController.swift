@@ -10,6 +10,8 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+    //
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
     }

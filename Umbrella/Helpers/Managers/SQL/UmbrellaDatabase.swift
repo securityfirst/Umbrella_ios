@@ -22,8 +22,8 @@ struct UmbrellaDatabase {
     let screenDao: ScreenDao
     let itemFormDao: ItemFormDao
     let optionItemDao: OptionItemDao
-    let languages: [Language]
-    let forms: [Form]
+    var languages: [Language]
+    var forms: [Form]
     
     //
     // MARK: - Initializers
@@ -114,53 +114,53 @@ struct UmbrellaDatabase {
     }
     
     /// Convert from database to object
-    func databaseToObject() {
-        let languages = self.languageDao.list()
-        let categories = self.categoryDao.list()
-        let segments = self.segmentDao.list()
-        let checkLists = self.checkListDao.list()
-        let checkItems = self.checkItemDao.list()
-        let forms = self.formDao.list()
-        let screens = self.screenDao.list()
-        let itemforms = self.itemFormDao.list()
-        let optionItems = self.optionItemDao.list()
-        
-        var languageArray = [Language]()
+    mutating func databaseToObject() {
+        let languageArray = self.languageDao.list()
+        let categoryArray = self.categoryDao.list()
+        let segmentArray = self.segmentDao.list()
+        let checkListArray = self.checkListDao.list()
+        let checkItemArray = self.checkItemDao.list()
+        let formArray = self.formDao.list()
+        let screenArray = self.screenDao.list()
+        let itemformArray = self.itemFormDao.list()
+        let optionItemArray = self.optionItemDao.list()
         
         // Languages
-        for language in languages {
+        for language in languageArray {
             
-            language.categories = categories.filter { $0.languageId == language.id && $0.parent == 0 }
+            language.categories = categoryArray.filter { $0.languageId == language.id && $0.parent == 0 }
             
             //Categories
             for category in language.categories {
-                category.categories = categories.filter { $0.languageId == language.id && $0.parent == category.id }
+                category.categories = categoryArray.filter { $0.languageId == language.id && $0.parent == category.id }
                 
-                //Segments1
-                category.segments = segments.filter { $0.categoryId == category.id }
+                //Segments
+                category.segments = segmentArray.filter { $0.categoryId == category.id }
                 
                 //Recursively
-                convertToObject(category, categories, language, segments, checkLists, checkItems)
+                convertToObject(category, categoryArray, language, segmentArray, checkListArray, checkItemArray)
             }
             
-            languageArray.append(language)
+            self.languages.append(language)
         }
         
         //Forms
         
         // Screen
-        for form in forms {
-            form.screens = screens.filter { $0.formId == form.id }
+        for form in formArray {
+            form.screens = screenArray.filter { $0.formId == form.id }
             
             //ItemForm
             for screen in form.screens {
-                screen.items = itemforms.filter { $0.screenId == screen.id }
+                screen.items = itemformArray.filter { $0.screenId == screen.id }
                 
                 // OptionItem
                 for itemForm in screen.items {
-                    itemForm.options = optionItems.filter { $0.itemFormId == itemForm.id }
+                    itemForm.options = optionItemArray.filter { $0.itemFormId == itemForm.id }
                 }
             }
+            
+            self.forms.append(form)
         }
         print("Finalized databaseToObject")
     }

@@ -1,5 +1,5 @@
 screens:
-- name: Travel Security Memo
+- title: Names / Dates
   items:
   - name: s
     type: text_area
@@ -7,7 +7,7 @@ screens:
   - name: travel-dates
     type: text_area
     label: Travel Dates
-- name: Travel Security Memo
+- title: Destination / Purpose
   items:
   - name: destination-s
     type: text_area
@@ -15,7 +15,7 @@ screens:
   - name: purpose
     type: text_area
     label: Purpose
-- name: Travel Security Memo
+- title: Itinerary / Travel
   items:
   - name: itinerary
     type: text_area
@@ -23,7 +23,7 @@ screens:
   - name: travel-flight-information
     type: text_area
     label: Travel/Flight Information
-- name: Travel Security Memo
+- title: Immigration / Phone Numbers
   items:
   - name: immigration-requirements
     type: text_area
@@ -31,7 +31,7 @@ screens:
   - name: important-phone-numbers
     type: text_area
     label: Important Phone Numbers
-- name: Travel Security Memo
+- title: Organisational / Procedures
   items:
   - name: organisational-emergency-contact-s
     type: text_area
@@ -39,7 +39,7 @@ screens:
   - name: check-in-procedure
     type: text_area
     label: Check-in Procedure
-- name: Travel Security Memo
+- title: Personal / Medical
   items:
   - name: personal-emergency-contact-s
     type: text_area
@@ -47,7 +47,7 @@ screens:
   - name: medical-information
     type: text_area
     label: Medical Information
-- name: Travel Security Memo
+- title: Physical / Digital
   items:
   - name: physical-security-situation
     type: text_area
@@ -55,7 +55,7 @@ screens:
   - name: digital-security-situation
     type: text_area
     label: Digital Security Situation
-- name: Travel Security Memo
+- title: Key Contacts / Other
   items:
   - name: key-contacts-embassy-insurance
     type: text_area
@@ -63,3 +63,4 @@ screens:
   - name: notes
     type: text_area
     label: Other/Notes
+title: Travel Security Memo

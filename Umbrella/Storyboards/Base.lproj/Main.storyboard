@@ -14,6 +14,7 @@
         <scene sceneID="oBA-yM-LOJ">
             <objects>
                 <tabBarController id="xWb-aa-Jbo" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dO6-z7-V6w" customClass="TabBar" customModule="Umbrella" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

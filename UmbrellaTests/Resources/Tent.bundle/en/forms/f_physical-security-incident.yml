@@ -1,5 +1,5 @@
 screens:
-- name: Physical Security Incident
+- title: Contact Information
   items:
   - name: name
     type: text_input
@@ -16,12 +16,12 @@ screens:
   - name: secure-communication-method-e-g-signal-safety-number-pgp-email-id
     type: text_input
     label: 'Secure Communication Method (e.g Signal Safety Number, PGP Email ID):'
-- name: Physical Security Incident
+- title: Incident Description
   items:
   - name: provide-brief-description
     type: text_area
     label: 'Provide a brief description:'
-- name: Physical Security Incident
+- title: Type of Incident
   items:
   - name: type-incident
     type: multiple_choice
@@ -53,48 +53,52 @@ screens:
       value: Other
   - name: type-incident-other
     type: text_input
-- name: Physical Security Incident
+- title: Impact / Potential Impact
   items:
   - name: nature-injuries-damage-threats-property-stolen
     type: text_area
     label: 'Nature of injuries or damage/ threats made/ Property stolen etc.:'
-- name: Physical Security Incident
+- title: Response Steps Taken?
   items:
   - name: provide-brief-description-2
     type: text_area
-- name: Physical Security Incident
+- title: Motive Or Perpetrators?
   items:
   - name: provide-brief-description-3
     type: text_area
-- name: Physical Security Incident
+- title: Who Has The Incident Been Reported To Locally?
   items:
   - name: incident-reported-locally
     type: text_area
     label: Who Has The Incident Been Reported To Locally?
-- name: Physical Security Incident
+- title: Do Your Security Guidelines Cover This Type Of Incident? Were The Guidelines
+    Followed?
   items:
   - name: security-guidelines-cover-type-incident-guidelines-followed
     type: text_area
     label: Do Your Security Guidelines Cover This Type Of Incident? Were The Guidelines
       Followed?
-- name: Physical Security Incident
+- title: Do The Guidelines Or Any Other Aspect Of Security Management Need To Be Revised
+    In Any Way?
   items:
   - name: guidelines-aspect-security-management-need-revised-way
     type: text_area
     label: Do The Guidelines Or Any Other Aspect Of Security Management Need To Be
       Revised In Any Way?
-- name: Physical Security Incident
+- title: Please suggest specific measures that may help avoid this type of incident
+    in the future.
   items:
   - name: lessons-learned
     type: text_area
     label: 'Lessons learned:'
-- name: Physical Security Incident
+- title: Any Action Requested?
   items:
   - name: action-requested
     type: text_area
     label: Any Action Requested?
-- name: Physical Security Incident
+- title: Any supporting information?
   items:
   - name: supporting-information
     type: text_area
     label: Any supporting information?
+title: Physical Security Incident

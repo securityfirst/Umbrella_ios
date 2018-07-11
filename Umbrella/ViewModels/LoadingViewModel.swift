@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  LoadingViewModel.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 24/05/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import Files
 
-class HomeViewModel {
+class LoadingViewModel {
     
     //
     // MARK: - Properties
@@ -54,6 +54,31 @@ class HomeViewModel {
                 completion(progress)
             })
         }
+    }
+    
+    /// Load whole object from database to object
+    func loadUmbrellaOfDatabase() {
+        var umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
+        umbrellaDatabase.databaseToObject()
+        self.languages = umbrellaDatabase.languages
+        self.forms = umbrellaDatabase.forms
+        
+        NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.languages, forms: self.forms))
+    }
+    
+    /// Check if there is a clone
+    ///
+    /// - Parameter url: url of documents
+    /// - Returns: boolean
+    func checkIfExistClone(fileManager: FileManager = FileManager.default, url: URL, pathDirectory: FileManager.SearchPathDirectory) -> Bool {
+        let documentsUrl = fileManager.urls(for: pathDirectory, in: .userDomainMask)
+        guard let url = documentsUrl.first else {
+            return false
+        }
+        let gitManager = GitManager(url: url, pathDirectory: .documentDirectory)
+        let finalDatabaseURL = url.appendingPathComponent("en")
+        
+        return gitManager.checkIfExistClone() && ((try? finalDatabaseURL.checkResourceIsReachable()) ?? false)
     }
     
     /// Clone of repository of the tent

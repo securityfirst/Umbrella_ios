@@ -63,7 +63,7 @@ class UmbrellaDatabaseSpec: QuickSpec {
             
             it("should convert from object to database and viceversa") {
                 
-                let dao = UmbrellaDatabase(languages: languages, forms: forms, sqlProtocol: sqlManager)
+                var dao = UmbrellaDatabase(languages: languages, forms: forms, sqlProtocol: sqlManager)
                 _ = dao.dropTables()
                 _ = dao.createTables()
                 waitUntil(timeout: 600) { done in
@@ -72,6 +72,8 @@ class UmbrellaDatabaseSpec: QuickSpec {
                             expect(progress).to(equal(1.0))
                             languages = []
                             forms = []
+                            dao.languages = []
+                            dao.forms = []
                             dao.databaseToObject()
                             
                             expect(dao.languages.count).to(equal(1))

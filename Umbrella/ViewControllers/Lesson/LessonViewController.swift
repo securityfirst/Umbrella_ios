@@ -10,6 +10,8 @@ import UIKit
 
 class LessonViewController: UIViewController {
 
+    //
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
     }
