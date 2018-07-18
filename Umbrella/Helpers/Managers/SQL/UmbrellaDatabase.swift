@@ -29,19 +29,7 @@ struct UmbrellaDatabase {
     // MARK: - Initializers
     
     init(sqlProtocol: SQLProtocol) {
-        self.languages = []
-        self.forms = []
-        self.sqlProtocol = sqlProtocol
-        
-        self.languageDao = LanguageDao(sqlProtocol: self.sqlProtocol)
-        self.categoryDao = CategoryDao(sqlProtocol: self.sqlProtocol)
-        self.segmentDao = SegmentDao(sqlProtocol: self.sqlProtocol)
-        self.checkListDao = CheckListDao(sqlProtocol: self.sqlProtocol)
-        self.checkItemDao = CheckItemDao(sqlProtocol: self.sqlProtocol)
-        self.formDao = FormDao(sqlProtocol: self.sqlProtocol)
-        self.screenDao = ScreenDao(sqlProtocol: self.sqlProtocol)
-        self.itemFormDao = ItemFormDao(sqlProtocol: self.sqlProtocol)
-        self.optionItemDao = OptionItemDao(sqlProtocol: self.sqlProtocol)
+        self.init(languages: [], forms: [], sqlProtocol: sqlProtocol)
     }
     
     init(languages: [Language], forms: [Form], sqlProtocol: SQLProtocol) {

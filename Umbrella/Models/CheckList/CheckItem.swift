@@ -22,7 +22,7 @@ class CheckItem: Codable, TableProtocol {
     var name: String
     private let label: String
     
-    var isChecked: Bool?
+    var isChecked: Bool = false
     
     //
     // MARK: - Initializers
@@ -75,7 +75,7 @@ class CheckItem: Codable, TableProtocol {
         
         // This attribute is used when it is decoding from the database
         if container.contains(.isChecked) {
-            self.isChecked = try container.decode(Int.self, forKey: .isChecked) == 1 ? true : false
+            self.isChecked = try container.decode(Int.self, forKey: .isChecked) == 1 
         } else {
             self.isChecked = false
         }

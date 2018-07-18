@@ -70,7 +70,7 @@ class LoadingViewModel {
     ///
     /// - Parameter url: url of documents
     /// - Returns: boolean
-    func checkIfExistClone(fileManager: FileManager = FileManager.default, url: URL, pathDirectory: FileManager.SearchPathDirectory) -> Bool {
+    func checkIfExistClone(fileManager: FileManager = FileManager.default, pathDirectory: FileManager.SearchPathDirectory) -> Bool {
         let documentsUrl = fileManager.urls(for: pathDirectory, in: .userDomainMask)
         guard let url = documentsUrl.first else {
             return false

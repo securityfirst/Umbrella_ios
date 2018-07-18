@@ -155,7 +155,6 @@ class SQLManager: SQLProtocol {
     ///
     /// - Returns: boolean
     func checkIfTheDatabaseExists() -> Bool {
-        let fileManager = FileManager.default
         let documentsUrl = fileManager.urls(for: .documentDirectory,
                                             in: .userDomainMask)
         guard documentsUrl.count != 0 else {

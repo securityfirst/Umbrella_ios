@@ -53,7 +53,7 @@ struct CheckItemDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: CheckItem) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckItem.table) ('name', 'is_checked', 'check_list_id') VALUES (\"\(object.name)\", \(object.isChecked ?? false ? 1 : 0), \(object.checkListId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckItem.table) ('name', 'is_checked', 'check_list_id') VALUES (\"\(object.name)\", \(object.isChecked ? 1 : 0), \(object.checkListId))")
         return rowId
     }
     

@@ -59,7 +59,7 @@ class LoadingViewModelSpec: QuickSpec {
             
             it("should check if exist clone of the tent") {
                 Config.debug = false
-                let success = loadingViewModel.checkIfExistClone(url: Config.gitBaseURL, pathDirectory: .documentDirectory)
+                let success = loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory)
                 expect(success).to(beTrue())
             }
             

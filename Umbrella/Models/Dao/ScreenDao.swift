@@ -53,7 +53,7 @@ struct ScreenDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Screen) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Screen.table) ('name', 'form_id') VALUES (\"\(object.name)\", \(object.formId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Screen.table) ('title', 'form_id') VALUES (\"\(object.name)\", \(object.formId))")
         return rowId
     }
     

@@ -42,7 +42,7 @@ class LoadingViewController: UIViewController {
     /// Load the tent, do a clone, parse and add on database
     func loadTent() {
         #if !TESTING
-        if !loadingViewModel.checkIfExistClone(url: Config.gitBaseURL, pathDirectory: .documentDirectory) {
+        if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
             loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
                 DispatchQueue.main.async {
                     self.progressView.setProgress(gitProgress/2.0, animated: true)

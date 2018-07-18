@@ -83,7 +83,7 @@ class Screen: Codable, TableProtocol {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
-            Column(name: "name", type: .string),
+            Column(name: "title", type: .string),
             Column(foreignKey: ForeignKey(key: "form_id", table: Table("form"), tableKey: "id"))
         ]
         return array

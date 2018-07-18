@@ -1,7 +1,7 @@
 organization=lucascorrea-github
 projectKey=umbrella
 serverUrl=https://sonarcloud.io
-serverVersion=7.2.0.12953
-dashboardUrl=https://sonarcloud.io/dashboard/index/umbrella
-ceTaskId=AWP_nd3DTzX59Iu7A39Z
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWP_nd3DTzX59Iu7A39Z
+serverVersion=7.3.0.14089
+dashboardUrl=https://sonarcloud.io/dashboard?id=umbrella
+ceTaskId=AWSo_VNvr5pnsk0fp_TB
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWSo_VNvr5pnsk0fp_TB

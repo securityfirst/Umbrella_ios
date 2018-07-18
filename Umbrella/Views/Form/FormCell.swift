@@ -10,9 +10,13 @@ import UIKit
 
 class FormCell: UITableViewCell {
 
+    //
+    // MARK: - Properties
     @IBOutlet weak var formBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    //
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +33,11 @@ class FormCell: UITableViewCell {
     //
     // MARK: - Functions
     
+    /// Configure the cell with viewModel
+    ///
+    /// - Parameters:
+    ///   - viewModel: ViewModel
+    ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:FormViewModel, indexPath: IndexPath) {
         
         let form = viewModel.umbrella.forms[indexPath.row]

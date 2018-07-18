@@ -66,7 +66,7 @@ class OptionItem: Codable, TableProtocol {
             self.label = ""
         }
         
-        if container.contains(.label) {
+        if container.contains(.value) {
             self.value = try container.decode(String.self, forKey: .value)
         } else {
             self.value = ""

@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3BB472962D5E529D96075E59 /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */; };
+		A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003810720FE2AA400CDA44D /* StepperProtocol.swift */; };
+		A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003810820FE2AA400CDA44D /* StepperView.swift */; };
+		A003810C20FE2AA500CDA44D /* TitleFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003810920FE2AA500CDA44D /* TitleFormView.swift */; };
+		A003810D20FE315900CDA44D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00386F320F39529004FAC8A /* Roboto-Bold.ttf */; };
+		A003810E20FE315C00CDA44D /* Roboto-BoldCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00386F420F39529004FAC8A /* Roboto-BoldCondensed.ttf */; };
+		A003810F20FE315F00CDA44D /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00386F520F3952A004FAC8A /* Roboto-Condensed.ttf */; };
+		A003811020FE316100CDA44D /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00386F620F3952B004FAC8A /* Roboto-Light.ttf */; };
+		A003811120FE316400CDA44D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00386F720F3952B004FAC8A /* Roboto-Medium.ttf */; };
+		A003811220FE316600CDA44D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00386F820F3952D004FAC8A /* Roboto-Regular.ttf */; };
+		A003811720FE3F3D00CDA44D /* StepperViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811620FE3F3D00CDA44D /* StepperViewSpec.swift */; };
+		A003811920FF660C00CDA44D /* FillFormViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811820FF660C00CDA44D /* FillFormViewControllerSpec.swift */; };
+		A003811B20FF6FCA00CDA44D /* FeedViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811A20FF6FCA00CDA44D /* FeedViewControllerSpec.swift */; };
+		A003811D20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */; };
+		A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811E20FF6FED00CDA44D /* LessonViewControllerSpec.swift */; };
+		A003812120FF6FFD00CDA44D /* AccountViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */; };
 		A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386F920F39664004FAC8A /* UIView+Ext.swift */; };
 		A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FB20F398C4004FAC8A /* FormCell.swift */; };
 		A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */; };
@@ -58,7 +73,6 @@
 		A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */; };
 		A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42920AAE03600B2B796 /* Main.storyboard */; };
 		A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42C20AAE03900B2B796 /* Assets.xcassets */; };
-		A0B9D43020AAE03900B2B796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42E20AAE03900B2B796 /* LaunchScreen.storyboard */; };
 		A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45620AAE1CE00B2B796 /* LoadingViewController.swift */; };
 		A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */; };
 		A0C6CE9720B1E66B005BC111 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -144,6 +158,15 @@
 		9386F5AC361BF2292BED1D62 /* Pods-Umbrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella.debug.xcconfig"; sourceTree = "<group>"; };
 		98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E4BE74F3E8CCC91DE8D14E0 /* Pods-UmbrellaTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UmbrellaTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests.test.xcconfig"; sourceTree = "<group>"; };
+		A003810720FE2AA400CDA44D /* StepperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperProtocol.swift; sourceTree = "<group>"; };
+		A003810820FE2AA400CDA44D /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
+		A003810920FE2AA500CDA44D /* TitleFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleFormView.swift; sourceTree = "<group>"; };
+		A003811620FE3F3D00CDA44D /* StepperViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperViewSpec.swift; sourceTree = "<group>"; };
+		A003811820FF660C00CDA44D /* FillFormViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormViewControllerSpec.swift; sourceTree = "<group>"; };
+		A003811A20FF6FCA00CDA44D /* FeedViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerSpec.swift; sourceTree = "<group>"; };
+		A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewControllerSpec.swift; sourceTree = "<group>"; };
+		A003811E20FF6FED00CDA44D /* LessonViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewControllerSpec.swift; sourceTree = "<group>"; };
+		A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewControllerSpec.swift; sourceTree = "<group>"; };
 		A00386F320F39529004FAC8A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		A00386F420F39529004FAC8A /* Roboto-BoldCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensed.ttf"; sourceTree = "<group>"; };
 		A00386F520F3952A004FAC8A /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
@@ -201,7 +224,6 @@
 		A0B9D42220AAE03600B2B796 /* Umbrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umbrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B9D42A20AAE03600B2B796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0B9D42C20AAE03900B2B796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A0B9D42F20AAE03900B2B796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0B9D43120AAE03900B2B796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0B9D43620AAE03900B2B796 /* UmbrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmbrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B9D43C20AAE03900B2B796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -306,6 +328,40 @@
 				B8E7691B86B48D0956C3E803 /* Pods_UmbrellaUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A003810620FE2A8700CDA44D /* StepperView */ = {
+			isa = PBXGroup;
+			children = (
+				A003810920FE2AA500CDA44D /* TitleFormView.swift */,
+				A003810820FE2AA400CDA44D /* StepperView.swift */,
+			);
+			path = StepperView;
+			sourceTree = "<group>";
+		};
+		A003811320FE368B00CDA44D /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				A003810620FE2A8700CDA44D /* StepperView */,
+				A00386FB20F398C4004FAC8A /* FormCell.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		A003811420FE36B900CDA44D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A003811520FE3F2200CDA44D /* Form */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A003811520FE3F2200CDA44D /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				A003811620FE3F3D00CDA44D /* StepperViewSpec.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		A00386F220F394F7004FAC8A /* Fonts */ = {
@@ -445,8 +501,8 @@
 			isa = PBXGroup;
 			children = (
 				A0B0AA6820EE575400933759 /* TabBar.swift */,
-				A00386FB20F398C4004FAC8A /* FormCell.swift */,
 				A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */,
+				A003811320FE368B00CDA44D /* Form */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -518,6 +574,7 @@
 				A064106A20D80D9A0044ADAB /* Resources */,
 				A0FFE51A20D020DD0026C0C7 /* Helpers */,
 				A0FFE50720D01D1C0026C0C7 /* Models */,
+				A003811420FE36B900CDA44D /* Views */,
 				A0FFE52120D020DE0026C0C7 /* ViewControllers */,
 				A0FFE51820D020DC0026C0C7 /* ViewModels */,
 				A0B9D43C20AAE03900B2B796 /* Info.plist */,
@@ -582,6 +639,7 @@
 				A0D170BE20CE93C000758A8D /* FolderProtocol.swift */,
 				A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */,
 				A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */,
+				A003810720FE2AA400CDA44D /* StepperProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -598,7 +656,6 @@
 		A0B9D45C20AAE1CF00B2B796 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				A0B9D42E20AAE03900B2B796 /* LaunchScreen.storyboard */,
 				A0B9D42920AAE03600B2B796 /* Main.storyboard */,
 				A0B0AA6C20EE605500933759 /* Feed.storyboard */,
 				A0B0AA6E20EE60B800933759 /* Form.storyboard */,
@@ -726,6 +783,11 @@
 			isa = PBXGroup;
 			children = (
 				A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */,
+				A003811820FF660C00CDA44D /* FillFormViewControllerSpec.swift */,
+				A003811A20FF6FCA00CDA44D /* FeedViewControllerSpec.swift */,
+				A003811E20FF6FED00CDA44D /* LessonViewControllerSpec.swift */,
+				A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */,
+				A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -820,13 +882,18 @@
 			files = (
 				A0B0AA7320EE610A00933759 /* Lesson.storyboard in Resources */,
 				A0B0AA6D20EE605600933759 /* Feed.storyboard in Resources */,
+				A003811220FE316600CDA44D /* Roboto-Regular.ttf in Resources */,
 				A064CE9620AC497D00CE99E1 /* database.db in Resources */,
-				A0B9D43020AAE03900B2B796 /* LaunchScreen.storyboard in Resources */,
+				A003810F20FE315F00CDA44D /* Roboto-Condensed.ttf in Resources */,
+				A003811020FE316100CDA44D /* Roboto-Light.ttf in Resources */,
+				A003811120FE316400CDA44D /* Roboto-Medium.ttf in Resources */,
+				A003810D20FE315900CDA44D /* Roboto-Bold.ttf in Resources */,
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,
 				A0DFF37C20F3B74B008F3E43 /* SFProText-SemiBold.ttf in Resources */,
 				A0B0AA6F20EE60B900933759 /* Form.storyboard in Resources */,
 				A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */,
 				A0B0AA7520EE612900933759 /* Account.storyboard in Resources */,
+				A003810E20FE315C00CDA44D /* Roboto-BoldCondensed.ttf in Resources */,
 				A0B0AA7120EE60E300933759 /* CheckList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,14 +1030,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
+				A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */,
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
+				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
 				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
 				A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */,
+				A003810C20FE2AA500CDA44D /* TitleFormView.swift in Sources */,
 				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
 				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
@@ -1022,6 +1092,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A003811B20FF6FCA00CDA44D /* FeedViewControllerSpec.swift in Sources */,
+				A003811920FF660C00CDA44D /* FillFormViewControllerSpec.swift in Sources */,
 				A0FFE50F20D01E2C0026C0C7 /* CheckItemSpec.swift in Sources */,
 				A0B0AA3920EBC98B00933759 /* CheckListDaoSpec.swift in Sources */,
 				A0B0AA3820EBC98B00933759 /* SegmentDaoSpec.swift in Sources */,
@@ -1030,19 +1102,23 @@
 				A0FFE52320D0211E0026C0C7 /* GlobalSpec.swift in Sources */,
 				A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */,
 				A0FFE50920D01DF20026C0C7 /* CategorySpec.swift in Sources */,
+				A003811D20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift in Sources */,
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
 				A0B0AA4220EBDEC100933759 /* UmbrellaDatabaseSpec.swift in Sources */,
 				A0FFE51520D01E520026C0C7 /* ItemFormSpec.swift in Sources */,
 				A0B0AA3B20EBC98B00933759 /* ScreenDaoSpec.swift in Sources */,
 				A0FFE51320D01E470026C0C7 /* ScreenSpec.swift in Sources */,
 				A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */,
+				A003812120FF6FFD00CDA44D /* AccountViewControllerSpec.swift in Sources */,
 				A0B0AA4720ECF9F400933759 /* LoadingViewModelSpec.swift in Sources */,
 				A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */,
 				A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */,
+				A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */,
 				A0B0AA3C20EBC98B00933759 /* OptionItemDaoSpec.swift in Sources */,
 				A0B0AA3D20EBC98B00933759 /* FormDaoSpec.swift in Sources */,
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
 				A0B0AA3E20EBC98B00933759 /* ItemFormDaoSpec.swift in Sources */,
+				A003811720FE3F3D00CDA44D /* StepperViewSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
 				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,
 				A0FFE51120D01E390026C0C7 /* FormSpec.swift in Sources */,
@@ -1068,14 +1144,6 @@
 				A0B9D42A20AAE03600B2B796 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A0B9D42E20AAE03900B2B796 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0B9D42F20AAE03900B2B796 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
