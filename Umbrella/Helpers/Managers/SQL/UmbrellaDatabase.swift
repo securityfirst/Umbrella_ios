@@ -22,8 +22,11 @@ struct UmbrellaDatabase {
     let screenDao: ScreenDao
     let itemFormDao: ItemFormDao
     let optionItemDao: OptionItemDao
+    let formAnswerDao: FormAnswerDao
+    
     var languages: [Language]
     var forms: [Form]
+    var formAnswers: [FormAnswer]
     
     //
     // MARK: - Initializers
@@ -36,6 +39,7 @@ struct UmbrellaDatabase {
         self.languages = languages
         self.forms = forms
         self.sqlProtocol = sqlProtocol
+        self.formAnswers = []
         
         self.languageDao = LanguageDao(sqlProtocol: self.sqlProtocol)
         self.categoryDao = CategoryDao(sqlProtocol: self.sqlProtocol)
@@ -46,6 +50,7 @@ struct UmbrellaDatabase {
         self.screenDao = ScreenDao(sqlProtocol: self.sqlProtocol)
         self.itemFormDao = ItemFormDao(sqlProtocol: self.sqlProtocol)
         self.optionItemDao = OptionItemDao(sqlProtocol: self.sqlProtocol)
+        self.formAnswerDao = FormAnswerDao(sqlProtocol: self.sqlProtocol)
     }
     
     //
@@ -63,8 +68,9 @@ struct UmbrellaDatabase {
         let screenSuccess = self.screenDao.createTable()
         let itemFormSuccess = self.itemFormDao.createTable()
         let optionItemSuccess = self.optionItemDao.createTable()
+        let formAnswerSuccess = self.formAnswerDao.createTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess {
             return true
         } else {
             return false
@@ -72,6 +78,8 @@ struct UmbrellaDatabase {
     }
     
     func dropTables() -> Bool {
+        let formAnswerSuccess = self.formAnswerDao.createTable()
+        
         let optionItemSuccess = self.optionItemDao.dropTable()
         let itemFormSuccess = self.itemFormDao.dropTable()
         let screenSuccess = self.screenDao.dropTable()
@@ -83,7 +91,7 @@ struct UmbrellaDatabase {
         let categorySuccess = self.categoryDao.dropTable()
         let languageSuccess = self.languageDao.dropTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess {
             return true
         } else {
             return false
@@ -150,6 +158,9 @@ struct UmbrellaDatabase {
             
             self.forms.append(form)
         }
+        
+        // FormAnswer - Form Active
+        self.formAnswers = self.formAnswerDao.listFormActive()
         print("Finalized databaseToObject")
     }
     

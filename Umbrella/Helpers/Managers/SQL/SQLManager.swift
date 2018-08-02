@@ -83,20 +83,30 @@ class SQLManager: SQLProtocol {
         db?.busyTimeout = SQLManager.timeout
         do {
             let table = Table(tableProtocol.tableName)
-            try db?.run(table.create(ifNotExists: true) { tableColumn in
+            
+            let tableSQL = table.create(ifNotExists: true) { tableColumn in
                 
                 for column in tableProtocol.columns() {
                     
                     switch (column.type) {
                     case .int?:
-                        let exp = Expression<Int64>(column.name!)
-                        tableColumn.column(exp)
+                        if (column.isNotNull == true) {
+                            tableColumn.column(Expression<Int64>(column.name!))
+                        } else {
+                            tableColumn.column(Expression<Int64?>(column.name!))
+                        }
                     case .real?:
-                        let exp = Expression<Float64>(column.name!)
-                        tableColumn.column(exp)
+                        if (column.isNotNull == true) {
+                            tableColumn.column(Expression<Float64>(column.name!))
+                        } else {
+                            tableColumn.column(Expression<Float64?>(column.name!))
+                        }
                     case .string?:
-                        let exp = Expression<String>(column.name!)
-                        tableColumn.column(exp)
+                        if (column.isNotNull == true) {
+                            tableColumn.column(Expression<String>(column.name!))
+                        } else {
+                            tableColumn.column(Expression<String?>(column.name!))
+                        }
                     case .primaryKey?:
                         let exp = Expression<Int64>(column.name!)
                         tableColumn.column(exp, primaryKey: .autoincrement)
@@ -109,7 +119,9 @@ class SQLManager: SQLProtocol {
                         break
                     }
                 }
-            })
+            }
+//            print(tableSQL.asSQL())
+            try db?.run(tableSQL)
             
             return true
         } catch {
@@ -195,9 +207,9 @@ extension SQLManager {
                 })
             }
             
-//            #if DEBUG
-//            connect.trace { print($0) }
-//            #endif
+            //            #if DEBUG
+            //            connect.trace { print($0) }
+            //            #endif
             return self.connect
         } catch {
             print(error)

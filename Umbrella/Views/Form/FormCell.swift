@@ -40,8 +40,13 @@ class FormCell: UITableViewCell {
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:FormViewModel, indexPath: IndexPath) {
         
-        let form = viewModel.umbrella.forms[indexPath.row]
-        titleLabel.text = form.name
+        if indexPath.section == 0 {
+            let form = viewModel.umbrella.forms[indexPath.row]
+            titleLabel.text = form.name
+        } else if indexPath.section == 1 {
+            let form = viewModel.umbrella.formAnswers[indexPath.row]
+            titleLabel.text = form.createdAt
+        }
     }
 
 }

@@ -27,7 +27,6 @@ class LoadingViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadTent()
     }
     
@@ -55,7 +54,7 @@ class LoadingViewController: UIViewController {
                             self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
                             
                             if gitProgress + progress == 2.0 {
-                                NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms))
+                                NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
                                 self.view.removeFromSuperview()
                             }
                         }
@@ -89,7 +88,7 @@ class LoadingViewController: UIViewController {
     @IBAction func retryAction(_ sender: Any) {
         retryButton.isHidden = true
         activityIndicatorView.isHidden = false
-        messageLabel.text = "Clone of tent"
+        messageLabel.text = "Clone of the tent"
         loadTent()
     }
 }

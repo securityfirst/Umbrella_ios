@@ -24,6 +24,7 @@ struct Column {
     var name: String?
     var type: ColumnType?
     var foreignKey: ForeignKey?
+    var isNotNull: Bool?
     
     //
     // MARK: - Initializers
@@ -31,6 +32,14 @@ struct Column {
         self.name = name
         self.type = type
         self.foreignKey = nil
+        self.isNotNull = true
+    }
+    
+    init(name: String, type: ColumnType, isNotNull: Bool) {
+        self.name = name
+        self.type = type
+        self.foreignKey = nil
+        self.isNotNull = isNotNull
     }
     
     init(foreignKey: ForeignKey) {

@@ -23,6 +23,13 @@
 		A003811D20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */; };
 		A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003811E20FF6FED00CDA44D /* LessonViewControllerSpec.swift */; };
 		A003812120FF6FFD00CDA44D /* AccountViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */; };
+		A003812721073CDB00CDA44D /* DynamicFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003812621073CDB00CDA44D /* DynamicFormView.swift */; };
+		A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003812A2107418300CDA44D /* TextFieldCell.swift */; };
+		A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003812C2107419200CDA44D /* TextAreaCell.swift */; };
+		A003812F210741A500CDA44D /* MultiChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003812E210741A500CDA44D /* MultiChoiceCell.swift */; };
+		A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0038130210741B500CDA44D /* SingleChoiceCell.swift */; };
+		A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0038132210741F700CDA44D /* DynamicFormViewModel.swift */; };
+		A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00381342107424E00CDA44D /* FillFormViewModel.swift */; };
 		A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386F920F39664004FAC8A /* UIView+Ext.swift */; };
 		A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FB20F398C4004FAC8A /* FormCell.swift */; };
 		A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */; };
@@ -99,6 +106,12 @@
 		A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */; };
 		A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF38120F3E76E008F3E43 /* FillFormViewController.swift */; };
 		A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */; };
+		A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */; };
+		A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFC2108EC9100FB73FF /* LabelCell.swift */; };
+		A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFE210F38F100FB73FF /* ChoiceButton.swift */; };
+		A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81C00210F62AC00FB73FF /* BaseFormCell.swift */; };
+		A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */; };
+		A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81C052110B27400FB73FF /* FormAnswer.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -167,6 +180,13 @@
 		A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewControllerSpec.swift; sourceTree = "<group>"; };
 		A003811E20FF6FED00CDA44D /* LessonViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewControllerSpec.swift; sourceTree = "<group>"; };
 		A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewControllerSpec.swift; sourceTree = "<group>"; };
+		A003812621073CDB00CDA44D /* DynamicFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFormView.swift; sourceTree = "<group>"; };
+		A003812A2107418300CDA44D /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		A003812C2107419200CDA44D /* TextAreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAreaCell.swift; sourceTree = "<group>"; };
+		A003812E210741A500CDA44D /* MultiChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiChoiceCell.swift; sourceTree = "<group>"; };
+		A0038130210741B500CDA44D /* SingleChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleChoiceCell.swift; sourceTree = "<group>"; };
+		A0038132210741F700CDA44D /* DynamicFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFormViewModel.swift; sourceTree = "<group>"; };
+		A00381342107424E00CDA44D /* FillFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormViewModel.swift; sourceTree = "<group>"; };
 		A00386F320F39529004FAC8A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		A00386F420F39529004FAC8A /* Roboto-BoldCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldCondensed.ttf"; sourceTree = "<group>"; };
 		A00386F520F3952A004FAC8A /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
@@ -252,6 +272,12 @@
 		A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		A0DFF38120F3E76E008F3E43 /* FillFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormViewController.swift; sourceTree = "<group>"; };
 		A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		A0E81BFC2108EC9100FB73FF /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		A0E81BFE210F38F100FB73FF /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
+		A0E81C00210F62AC00FB73FF /* BaseFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFormCell.swift; sourceTree = "<group>"; };
+		A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAnswerDao.swift; sourceTree = "<group>"; };
+		A0E81C052110B27400FB73FF /* FormAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAnswer.swift; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -343,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				A003810620FE2A8700CDA44D /* StepperView */,
+				A00381362107431300CDA44D /* DynamicForm */,
 				A00386FB20F398C4004FAC8A /* FormCell.swift */,
 			);
 			path = Form;
@@ -362,6 +389,17 @@
 				A003811620FE3F3D00CDA44D /* StepperViewSpec.swift */,
 			);
 			path = Form;
+			sourceTree = "<group>";
+		};
+		A00381362107431300CDA44D /* DynamicForm */ = {
+			isa = PBXGroup;
+			children = (
+				A0E81C00210F62AC00FB73FF /* BaseFormCell.swift */,
+				A003812621073CDB00CDA44D /* DynamicFormView.swift */,
+				A0E81BFE210F38F100FB73FF /* ChoiceButton.swift */,
+				A0E81C0221107CEB00FB73FF /* Cells */,
+			);
+			path = DynamicForm;
 			sourceTree = "<group>";
 		};
 		A00386F220F394F7004FAC8A /* Fonts */ = {
@@ -527,6 +565,7 @@
 				A0D8BCA620E2469F0052028F /* ScreenDao.swift */,
 				A0D8BCA820E246AD0052028F /* ItemFormDao.swift */,
 				A0D8BCAC20E246C90052028F /* OptionItemDao.swift */,
+				A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -589,6 +628,7 @@
 				A0D170C220CE97F200758A8D /* File+Ext.swift */,
 				A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */,
 				A00386F920F39664004FAC8A /* UIView+Ext.swift */,
+				A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -649,6 +689,8 @@
 			children = (
 				A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */,
 				A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */,
+				A00381342107424E00CDA44D /* FillFormViewModel.swift */,
+				A0038132210741F700CDA44D /* DynamicFormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -706,6 +748,18 @@
 			path = Parsers;
 			sourceTree = "<group>";
 		};
+		A0E81C0221107CEB00FB73FF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A0E81BFC2108EC9100FB73FF /* LabelCell.swift */,
+				A003812A2107418300CDA44D /* TextFieldCell.swift */,
+				A003812C2107419200CDA44D /* TextAreaCell.swift */,
+				A003812E210741A500CDA44D /* MultiChoiceCell.swift */,
+				A0038130210741B500CDA44D /* SingleChoiceCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A0FFE4FB20CEEA660026C0C7 /* Form */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,6 +767,7 @@
 				A0FFE4FC20CEEA7E0026C0C7 /* Screen.swift */,
 				A0FFE4FE20CEEAB70026C0C7 /* ItemForm.swift */,
 				A0FFE50020CEEADD0026C0C7 /* OptionItem.swift */,
+				A0E81C052110B27400FB73FF /* FormAnswer.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -1043,20 +1098,27 @@
 				A003810C20FE2AA500CDA44D /* TitleFormView.swift in Sources */,
 				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
+				A003812F210741A500CDA44D /* MultiChoiceCell.swift in Sources */,
 				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
 				A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
+				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
 				A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */,
+				A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
+				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
+				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
+				A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
+				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
@@ -1067,13 +1129,18 @@
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
 				A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */,
 				A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */,
+				A003812721073CDB00CDA44D /* DynamicFormView.swift in Sources */,
+				A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */,
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
 				A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
+				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
+				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
+				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
@@ -1081,6 +1148,7 @@
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
+				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,

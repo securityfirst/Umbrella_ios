@@ -151,10 +151,10 @@ class StepperView: UIView, UIScrollViewDelegate {
         self.scrollView = UIScrollView(frame: self.bounds)
         self.scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.scrollView.delegate = self
-        self.scrollView.clipsToBounds = false
+        self.scrollView.clipsToBounds = true
         self.scrollView.showsVerticalScrollIndicator = false
         self.scrollView.showsHorizontalScrollIndicator = false
-        addSubview(self.scrollView)
+        self.addSubview(self.scrollView)
         
         // ProgressBarView
         self.progressBar = UIProgressView(frame: CGRect(x: 0, y: self.frame.size.height-12, width: self.frame.size.width, height: 2))
@@ -167,7 +167,7 @@ class StepperView: UIView, UIScrollViewDelegate {
         self.progressLabel.textAlignment = .center
         self.progressLabel.textColor = progressTintColor
         self.progressLabel.text = "0%"
-        progressLabel.font = UIFont(name: "Roboto-Bold", size: 8)
+        self.progressLabel.font = UIFont(name: "Roboto-Bold", size: 8)
         self.addSubview(progressLabel)
     }
 }

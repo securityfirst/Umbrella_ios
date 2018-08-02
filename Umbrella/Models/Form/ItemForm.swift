@@ -9,6 +9,33 @@
 import Foundation
 import SQLite
 
+enum FormType {
+    case textInput
+    case textArea
+    case multiChoice
+    case singleChoice
+    case label
+    case none
+    
+    func values() -> (identifierCell: String, sizeOfCell: CGFloat) {
+        
+        switch self {
+        case .textInput:
+            return ("TextFieldCell", 65.0)
+        case .textArea:
+            return ("TextAreaCell", 130.0)
+        case .multiChoice:
+            return ("MultiChoiceCell", 50.0)
+        case .singleChoice:
+            return ("SingleChoiceCell", 50.0)
+        case .label:
+            return ("LabelCell", 50.0)
+        case .none:
+            return ("LabelCell", 50.0)
+        }
+    }
+}
+
 class ItemForm: Codable, TableProtocol {
     
     // Used in parser from the database to object
@@ -22,6 +49,23 @@ class ItemForm: Codable, TableProtocol {
     let label: String
     let hint: String
     var options: [OptionItem]
+    
+    var formType: FormType {
+        switch type {
+        case "text_input":
+            return .textInput
+        case "text_area":
+            return .textArea
+        case "multiple_choice":
+            return .multiChoice
+        case "single_choice":
+            return .singleChoice
+        case "label":
+            return .label
+        default:
+            return .none
+        }
+    }
     
     //
     // MARK: - Initializers

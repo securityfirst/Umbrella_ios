@@ -61,7 +61,7 @@ class FormViewController: UIViewController {
         if segue.identifier == "fillFormSegue" {
             let fillFormViewController = (segue.destination as? FillFormViewController)!
             if let form = sender as? Form {
-                fillFormViewController.form = form
+                fillFormViewController.fillFormViewModel.form = form
             }
         }
     }
@@ -71,11 +71,21 @@ class FormViewController: UIViewController {
 extension FormViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.formViewModel.umbrella.formAnswers.count > 0 {
+            return 2
+        }
         return 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.formViewModel.umbrella.forms.count
+        
+        if section == 0 {
+            return self.formViewModel.umbrella.forms.count
+        } else if section == 1 {
+            return self.formViewModel.umbrella.formAnswers.count
+        }
+        
+        return 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,14 +108,24 @@ extension FormViewController: UITableViewDelegate {
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: 40))
         label.font = UIFont.init(name: "SFProText-SemiBold", size: 12)
         label.textColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)
-        label.text = "Available forms"
+        label.text = (section == 0) ? "Available forms" : "Active"
         view.addSubview(label)
         return view
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let form = self.formViewModel.umbrella.forms[indexPath.row]
-        self.performSegue(withIdentifier: "fillFormSegue", sender: form)
+        
+        if indexPath.section == 0 {
+            // Available Forms
+            let form = self.formViewModel.umbrella.forms[indexPath.row]
+            self.performSegue(withIdentifier: "fillFormSegue", sender: form)
+        } else if indexPath.section == 1 {
+            // Active
+            let form = self.formViewModel.umbrella.forms[indexPath.row]
+            self.performSegue(withIdentifier: "fillFormSegue", sender: form)
+        }
+        
+        
     }
 }

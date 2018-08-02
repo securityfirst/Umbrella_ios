@@ -12,14 +12,17 @@ class Umbrella {
     
     let languages: [Language]
     let forms: [Form]
+    let formAnswers: [FormAnswer]
     
     init() {
         self.languages = []
         self.forms = []
+        self.formAnswers = []
     }
     
-    init(languages: [Language], forms: [Form]) {
+    init(languages: [Language], forms: [Form], formAnswers: [FormAnswer]) {
         self.languages = languages
         self.forms = forms
+        self.formAnswers = formAnswers
     }
 }

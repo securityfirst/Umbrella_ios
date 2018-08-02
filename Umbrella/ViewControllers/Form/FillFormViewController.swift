@@ -12,18 +12,21 @@ class FillFormViewController: UIViewController {
     
     //
     // MARK: - Properties
-    var form: Form?
+    lazy var fillFormViewModel: FillFormViewModel = {
+        let fillFormViewModel = FillFormViewModel()
+        return fillFormViewModel
+    }()
+    
     var pageCurrent: CGFloat = 0
     @IBOutlet weak var stepperView: StepperView!
     @IBOutlet weak var formScrollView: UIScrollView!
     
     //
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = form?.name
+        self.title = fillFormViewModel.form.name
         
         self.stepperView.dataSource = self
         self.stepperView.reloadData()
@@ -31,25 +34,52 @@ class FillFormViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        for (index,item) in (form?.screens.enumerated())! {
+    
+        for (index,item) in fillFormViewModel.form.screens.enumerated() {
             var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
             frame.origin.x = self.formScrollView.frame.size.width * CGFloat(index)
             frame.size = self.formScrollView.frame.size
-            
-            let subView = UIView(frame: frame)
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: subView.frame.size.width, height: subView.frame.size.height))
-            label.text = item.name
-            label.textAlignment = .center
-            subView.addSubview(label)
+        
+            let storyboard = UIStoryboard(name: "Form", bundle: Bundle.main)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "DynamicViewController")
+            let subView = (viewController.view as? DynamicFormView)!
+            subView.frame = frame
+            subView.tag = index
+            subView.dynamicFormViewModel.screen = item
+            subView.setTitle(title: subView.dynamicFormViewModel.screen.name)
             self.formScrollView.addSubview(subView)
+            
+            // Simple Animation
+            subView.alpha = 0
+            UIView.animate(withDuration: 0.4) {
+                subView.alpha = 1
+            }
         }
         
-        self.formScrollView.contentSize = CGSize(width: self.formScrollView.frame.size.width * CGFloat(form!.screens.count), height: self.formScrollView.frame.size.height)
+        self.formScrollView.contentSize = CGSize(width: self.formScrollView.frame.size.width * CGFloat(fillFormViewModel.form.screens.count), height: self.formScrollView.frame.size.height)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            saveForm()
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Save form
+    func saveForm() {
+        for viewForm in self.formScrollView.subviews where viewForm is DynamicFormView {
+            let view = (viewForm as? DynamicFormView)!
+            view.saveForm()
+        }
     }
 }
 
@@ -69,6 +99,7 @@ extension FillFormViewController: UIScrollViewDelegate {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageCurrent = pageNumber
         stepperView.scrollViewDidPage(page: pageCurrent)
+        self.view.endEditing(true)
     }
 }
 
@@ -100,19 +131,12 @@ extension FillFormViewController: StepperViewDataSource {
         titleFormView.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 12)
         titleFormView.addSubview(titleFormView.titleLabel!)
         
-        if let form = form {
-            titleFormView.setTitle(form.screens[index].name)
-        }
+        titleFormView.setTitle(fillFormViewModel.form.screens[index].name)
         
         return titleFormView
     }
     
     func numberOfTitles() -> Int {
-        
-        if let form = form {
-            return form.screens.count
-        }
-        
-        return 0
+        return fillFormViewModel.form.screens.count
     }
 }

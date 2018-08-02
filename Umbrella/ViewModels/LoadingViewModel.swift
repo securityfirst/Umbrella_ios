@@ -15,6 +15,8 @@ class LoadingViewModel {
     // MARK: - Properties
     var languages: [Language]
     var forms: [Form]
+    var formAnswers: [FormAnswer]
+    
     var sqlManager: SQLManager
     var documentsFolder: Folder = {
         let system = FileSystem()
@@ -34,6 +36,7 @@ class LoadingViewModel {
     init() {
         self.languages = []
         self.forms = []
+        self.formAnswers = []
         self.sqlManager = SQLManager(databaseName: "database.db", password: "umbrella")
     }
     
@@ -62,8 +65,9 @@ class LoadingViewModel {
         umbrellaDatabase.databaseToObject()
         self.languages = umbrellaDatabase.languages
         self.forms = umbrellaDatabase.forms
+        self.formAnswers = umbrellaDatabase.formAnswers
         
-        NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.languages, forms: self.forms))
+        NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.languages, forms: self.forms, formAnswers: self.formAnswers))
     }
     
     /// Check if there is a clone
@@ -81,7 +85,7 @@ class LoadingViewModel {
         return gitManager.checkIfExistClone() && ((try? finalDatabaseURL.checkResourceIsReachable()) ?? false)
     }
     
-    /// Clone of repository of the tent
+    /// Clone of the repository of the tent
     ///
     /// - Parameters:
     ///   - url: url of repository
