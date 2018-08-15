@@ -21,7 +21,7 @@ force_try:
 line_length: 400
 
 function_body_length:
-    - 60 # warning
+    - 70 # warning
     - 100 # error
 
 type_body_length:

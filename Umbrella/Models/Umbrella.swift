@@ -10,10 +10,14 @@ import Foundation
 
 class Umbrella {
     
+    //
+    // MARK: - Properties
     let languages: [Language]
     let forms: [Form]
     var formAnswers: [FormAnswer]
     
+    //
+    // MARK: - Initializers
     init() {
         self.languages = []
         self.forms = []

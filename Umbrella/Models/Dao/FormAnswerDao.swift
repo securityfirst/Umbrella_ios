@@ -42,7 +42,7 @@ struct FormAnswerDao: DaoProtocol {
     ///
     /// - Returns: boolean if it was dropped
     func dropTable() -> Bool {
-        return self.sqlProtocol.drop(tableName: OptionItem.table)
+        return self.sqlProtocol.drop(tableName: FormAnswer.table)
     }
     
     /// Insert a object in database
@@ -105,6 +105,9 @@ struct FormAnswerDao: DaoProtocol {
         return self.sqlProtocol.select(withQuery: "SELECT * FROM \(FormAnswer.table) WHERE form_answer_id = \(id) and form_id = \(formId)")
     }
     
+    /// Get the last number of the formAnswer
+    ///
+    /// - Returns: Int
     func lastFormAnswerId() -> Int64 {
         let result = self.sqlProtocol.select(withQuery: "SELECT form_answer_id FROM \(FormAnswer.table) ORDER BY form_answer_id DESC LIMIT 1")
         

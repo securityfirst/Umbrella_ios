@@ -60,9 +60,6 @@ class MultiChoiceCell: BaseFormCell {
     
     /// Save the data in database
     override func saveForm() {
-//        for view in self.subviews where view is ChoiceButton {
-//            let button = (view as? ChoiceButton)!
-            self.delegate?.saveForm(cell: self, indexPath: self.indexPath)
-//        }
+        self.delegate?.saveForm(cell: self, indexPath: self.indexPath)
     }
 }

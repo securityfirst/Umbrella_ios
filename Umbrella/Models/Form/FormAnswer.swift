@@ -134,10 +134,6 @@ class FormAnswer: Codable, TableProtocol {
             Column(name: "form_id", type: .int),
             Column(name: "item_form_id", type: .int, isNotNull: false),
             Column(name: "option_item_id", type: .int, isNotNull: false)
-//            Column(foreignKey: ForeignKey(key: "form_id", table: Table("form"), tableKey: "id")),
-//            Column(foreignKey: ForeignKey(key: "item_id", table: Table("item_form"), tableKey: "id")),
-//            Column(foreignKey: ForeignKey(key: "option_id", table: Table("option_item"), tableKey: "id"))
-            
         ]
         return array
     }

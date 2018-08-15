@@ -68,6 +68,12 @@ class FormCell: UITableViewCell {
         self.layoutIfNeeded()
     }
     
+    /// Get the form of the FormId
+    ///
+    /// - Parameters:
+    ///   - formId: Int
+    ///   - forms: [Form]
+    /// - Returns: Form
     func loadForm(formId: Int, forms: [Form]) -> Form {
         
         for form in forms where form.id == formId {

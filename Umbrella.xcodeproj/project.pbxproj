@@ -33,6 +33,7 @@
 		A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386F920F39664004FAC8A /* UIView+Ext.swift */; };
 		A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FB20F398C4004FAC8A /* FormCell.swift */; };
 		A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */; };
+		A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
@@ -197,6 +198,7 @@
 		A00386F920F39664004FAC8A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		A00386FB20F398C4004FAC8A /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
 		A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaView.swift; sourceTree = "<group>"; };
+		A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAnswerDaoSpec.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				A0B0AA3320EBC98B00933759 /* ScreenDaoSpec.swift */,
 				A0B0AA3620EBC98B00933759 /* ItemFormDaoSpec.swift */,
 				A0B0AA3420EBC98B00933759 /* OptionItemDaoSpec.swift */,
+				A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -1166,6 +1169,7 @@
 			files = (
 				A003811B20FF6FCA00CDA44D /* FeedViewControllerSpec.swift in Sources */,
 				A003811920FF660C00CDA44D /* FillFormViewControllerSpec.swift in Sources */,
+				A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */,
 				A0FFE50F20D01E2C0026C0C7 /* CheckItemSpec.swift in Sources */,
 				A0B0AA3920EBC98B00933759 /* CheckListDaoSpec.swift in Sources */,
 				A0B0AA3820EBC98B00933759 /* SegmentDaoSpec.swift in Sources */,

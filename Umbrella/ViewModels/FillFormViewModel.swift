@@ -34,6 +34,11 @@ class FillFormViewModel {
         return formAnswerDao.lastFormAnswerId()
     }
     
+    /// Load the formAnswers
+    ///
+    /// - Parameters:
+    ///   - formId: Int
+    /// - Returns: Array of FormAnswer
     func loadFormAnswersTo(formId: Int) -> [FormAnswer] {
         return formAnswerDao.listFormAnswers(at: Int64(formAnswer.formAnswerId), formId: Int64(formId))
     }

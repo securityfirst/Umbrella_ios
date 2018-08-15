@@ -33,10 +33,18 @@ class DynamicFormViewModel {
     //
     // MARK: - Functions
     
+    /// Save a formAnswer on database
+    ///
+    /// - Parameter formAnswer: FormAnswer
+    /// - Returns: RowId Int
     func save(formAnswer: FormAnswer) -> Int64 {
         return formAnswerDao.insert(formAnswer)
     }
     
+    /// Remove the formAnswer
+    ///
+    /// - Parameter formAnswer: FormAnswer
+    /// - Returns: Bool
     func remove(formAnswer: FormAnswer) -> Bool {
         return formAnswerDao.remove(formAnswer)
     }

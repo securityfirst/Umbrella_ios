@@ -78,7 +78,7 @@ struct UmbrellaDatabase {
     }
     
     func dropTables() -> Bool {
-        let formAnswerSuccess = self.formAnswerDao.createTable()
+        let formAnswerSuccess = self.formAnswerDao.dropTable()
         
         let optionItemSuccess = self.optionItemDao.dropTable()
         let itemFormSuccess = self.itemFormDao.dropTable()

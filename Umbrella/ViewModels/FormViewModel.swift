@@ -29,14 +29,24 @@ class FormViewModel {
     //
     // MARK: - Functions
     
+    /// Load all forms active
     func loadFormActive() {
         self.umbrella.formAnswers = formAnswerDao.listFormActive()
     }
     
+    /// Load the formAnswers
+    ///
+    /// - Parameters:
+    ///   - formAnswerId: Int
+    ///   - formId: Int
+    /// - Returns: Array of FormAnswer
     func loadFormAnswersTo(formAnswerId: Int, formId: Int) -> [FormAnswer] {
         return formAnswerDao.listFormAnswers(at: Int64(formAnswerId), formId: Int64(formId))
     }
     
+    /// Remove all formAnswers to formAnswerId
+    ///
+    /// - Parameter formAnswerId: Int
     func remove(formAnswerId: Int) {
         _ = self.formAnswerDao.remove(formAnswerId)
     }
