@@ -12,6 +12,8 @@ class MultiChoiceCell: BaseFormCell {
     
     //
     // MARK: - Properties
+    var indexPath: IndexPath = IndexPath(row: 0, section: 0)
+    weak var delegate: BaseFormCellDelegate?
     
     //
     // MARK: - Life cycle
@@ -46,17 +48,21 @@ class MultiChoiceCell: BaseFormCell {
             button.index = optionItem.id
             button.choiceType = .multi
             button.setState(state: false)
+            
+            //Load answers
+            for formAnswer in viewModel.formAnswers where (formAnswer.itemFormId == itemForm.id && formAnswer.optionItemId == optionItem.id) {
+                button.setState(state: true)
+            }
+            
             self.addSubview(button)
         }
     }
     
     /// Save the data in database
     override func saveForm() {
-        for view in self.subviews where view is ChoiceButton {
-            let button = (view as? ChoiceButton)!
-            if button.state == true {
-                print(button.index)
-            }
-        }
+//        for view in self.subviews where view is ChoiceButton {
+//            let button = (view as? ChoiceButton)!
+            self.delegate?.saveForm(cell: self, indexPath: self.indexPath)
+//        }
     }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BaseFormCellDelegate: class {
+    func saveForm(cell: BaseFormCell, indexPath: IndexPath)
+}
+
 class BaseFormCell: UITableViewCell {
     
     //
@@ -31,6 +35,6 @@ class BaseFormCell: UITableViewCell {
     
     /// Save form
     func saveForm() {
-        fatalError("method \"save\" has not been implemented")
+        fatalError("method \"saveForm\" has not been implemented")
     }
 }

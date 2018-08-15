@@ -30,6 +30,7 @@ class DynamicFormView: UIView {
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        
     }
     
     //
@@ -85,7 +86,7 @@ class DynamicFormView: UIView {
     func cellsForTableView() -> [UITableViewCell] {
         let sections = self.dynamicTableView.numberOfSections
         var cells: Array = [UITableViewCell]()
-
+        
         for section in 0..<sections {
             let rows = self.dynamicTableView.numberOfRows(inSection: section)
             
@@ -100,10 +101,101 @@ class DynamicFormView: UIView {
         return cells
     }
     
+    /// Save a textField
+    ///
+    /// - Parameters:
+    ///   - cell: BaseFormCell
+    ///   - formAnswerId: Int64
+    ///   - formId: Int
+    ///   - itemForm: ItemForm
+    fileprivate func saveTextField(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
+        let formCell = (cell as? TextFieldCell)!
+        
+        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.valueText.text!, choice: -1)
+        
+        for answer in dynamicFormViewModel.formAnswers where (answer.itemFormId == itemForm.id && answer.formId == formId) {
+            formAnswer.id = answer.id
+        }
+        _ = dynamicFormViewModel.save(formAnswer: formAnswer)
+    }
+    
+    /// Save a textArea
+    ///
+    /// - Parameters:
+    ///   - cell: BaseFormCell
+    ///   - formAnswerId: Int64
+    ///   - formId: Int
+    ///   - itemForm: ItemForm
+    fileprivate func saveTextArea(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
+        let formCell = (cell as? TextAreaCell)!
+        
+        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.textView.text!, choice: -1)
+        
+        for answer in dynamicFormViewModel.formAnswers where (answer.itemFormId == itemForm.id && answer.formId == formId) {
+            formAnswer.id = answer.id
+        }
+        _ = dynamicFormViewModel.save(formAnswer: formAnswer)
+    }
+    
+    /// Save a list of multichoice
+    ///
+    /// - Parameters:
+    ///   - cell: BaseFormCell
+    ///   - formAnswerId: Int64
+    ///   - formId: Int
+    ///   - itemForm: ItemForm
+    fileprivate func saveMultiChoice(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
+        let formCell = (cell as? MultiChoiceCell)!
+        
+        for view in formCell.subviews where view is ChoiceButton {
+            let button = (view as? ChoiceButton)!
+            
+            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index)
+            
+            for answer in dynamicFormViewModel.formAnswers where (answer.formId == formId && answer.itemFormId == itemForm.id && answer.optionItemId == button.index) {
+                formAnswer.id = answer.id
+            }
+            
+            if button.state == true {
+                _ = dynamicFormViewModel.save(formAnswer: formAnswer)
+            } else {
+                //Remove
+                _ = dynamicFormViewModel.remove(formAnswer: formAnswer)
+            }
+        }
+    }
+    
     //
     // MARK: - UIResponder
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.keyboardWillBeHidden()
+    }
+    
+}
+
+//
+// MARK: - BaseFormCellDelegate
+extension DynamicFormView: BaseFormCellDelegate {
+    
+    /// Save the form
+    ///
+    /// - Parameters:
+    ///   - cell: BaseFormCell
+    ///   - indexPath: IndexPath
+    func saveForm(cell: BaseFormCell, indexPath: IndexPath) {
+        let formId = dynamicFormViewModel.screen.formId
+        let itemForm = dynamicFormViewModel.screen.items[indexPath.row]
+        let formAnswerId = dynamicFormViewModel.newFormAnswerId == -1 ? dynamicFormViewModel.formAnswerId : dynamicFormViewModel.newFormAnswerId
+        
+        if cell is TextFieldCell {
+            saveTextField(cell, formAnswerId, formId, itemForm)
+        } else if cell is TextAreaCell {
+            saveTextArea(cell, formAnswerId, formId, itemForm)
+        } else if cell is MultiChoiceCell {
+            saveMultiChoice(cell, formAnswerId, formId, itemForm)
+        } else if cell is SingleChoiceCell {
+            saveMultiChoice(cell, formAnswerId, formId, itemForm)
+        }
     }
 }
 
@@ -137,22 +229,26 @@ extension DynamicFormView: UITableViewDataSource {
         case .textInput:
             let cellCustom: TextFieldCell = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TextFieldCell)!
             cellCustom.configure(withViewModel: dynamicFormViewModel, indexPath: indexPath)
+            cellCustom.delegate = self
             cell = cellCustom
         case .textArea:
-            let cellCustom: TextAreaCell  = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TextAreaCell)!
+            let cellCustom: TextAreaCell = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TextAreaCell)!
+            cellCustom.configure(withViewModel: dynamicFormViewModel, indexPath: indexPath)
+            cellCustom.delegate = self
+            cellCustom.delegateForm = self
+            cell = cellCustom
+        case .multiChoice:
+            let cellCustom: MultiChoiceCell = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MultiChoiceCell)!
             cellCustom.configure(withViewModel: dynamicFormViewModel, indexPath: indexPath)
             cellCustom.delegate = self
             cell = cellCustom
-        case .multiChoice:
-            let cellCustom: MultiChoiceCell  = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MultiChoiceCell)!
-            cellCustom.configure(withViewModel: dynamicFormViewModel, indexPath: indexPath)
-            cell = cellCustom
         case .singleChoice:
-            let cellCustom: SingleChoiceCell  = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? SingleChoiceCell)!
+            let cellCustom: SingleChoiceCell = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? SingleChoiceCell)!
             cellCustom.configure(withViewModel: dynamicFormViewModel, indexPath: indexPath)
+            cellCustom.delegate = self
             cell = cellCustom
         case .label:
-            let cellCustom: LabelCell  = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? LabelCell)!
+            let cellCustom: LabelCell = (tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? LabelCell)!
             cellCustom.configure(withViewModel: dynamicFormViewModel, indexPath: indexPath)
             cell = cellCustom
         case .none:

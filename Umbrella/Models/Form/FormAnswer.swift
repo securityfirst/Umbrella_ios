@@ -37,6 +37,21 @@ class FormAnswer: Codable, TableProtocol {
         self.createdAt = ""
     }
     
+    init(formAnswerId: Int, formId: Int, itemFormId: Int, optionItemId: Int, text: String, choice: Int) {
+        self.id = -1
+        self.formAnswerId = formAnswerId
+        self.formId = formId
+        self.itemFormId = itemFormId
+        self.optionItemId = optionItemId
+        self.text = text
+        self.choice = choice
+        
+        let dateFormatter = Global.dateFormatter
+        dateFormatter.dateFormat = "MM/dd/YYYY HH:mm a"
+        let date = dateFormatter.string(from: Date())
+        self.createdAt = date
+    }
+    
     //
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {

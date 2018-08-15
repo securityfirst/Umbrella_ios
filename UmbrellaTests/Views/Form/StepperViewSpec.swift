@@ -32,7 +32,7 @@ class StepperViewSpec: QuickSpec {
                 let screen2 = Screen(name: "Screen2", items: [itemForm])
                 let form = Form(screens: [screen1, screen2])
                 form.name = "Form1"
-                viewController.form = form
+                viewController.fillFormViewModel.form = form
             }
             
             it("should create a StepperView") {

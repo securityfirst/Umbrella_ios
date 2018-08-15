@@ -12,6 +12,8 @@ class SingleChoiceCell: BaseFormCell {
     
     //
     // MARK: - Properties
+    var indexPath: IndexPath = IndexPath(row: 0, section: 0)
+    weak var delegate: BaseFormCellDelegate?
     
     //
     // MARK: - Life cycle
@@ -65,6 +67,9 @@ class SingleChoiceCell: BaseFormCell {
             let button = (view as? ChoiceButton)!
             if button.state == true {
                 print(button.index)
+                
+                self.delegate?.saveForm(cell: self, indexPath: self.indexPath)
+                break
             }
         }
     }

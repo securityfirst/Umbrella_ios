@@ -28,15 +28,19 @@ class FormViewControllerSpec: QuickSpec {
             window.rootViewController = viewController
             viewController.beginAppearanceTransition(true, animated: false) 
             viewController.endAppearanceTransition()
-        
+            
             var forms = [Form]()
             let optionItem = OptionItem(label: "label1", value: "value1")
             let itemForm = ItemForm(name: "ItemForm1", type: "type1", label: "label1", hint: "hint1", options: [optionItem])
             let screen = Screen(name: "Screen1", items: [itemForm])
             let form = Form(screens: [screen])
+            
+            form.id = 1
             form.name = "Form1"
             forms.append(form)
-            umbrella = Umbrella(languages: [], forms: forms)
+            
+            let formAnswer = FormAnswer(formAnswerId: 1, formId: 1, itemFormId: 1, optionItemId: -1, text: "Test text_input", choice: -1)
+            umbrella = Umbrella(languages: [], forms: forms, formAnswers: [formAnswer])
         }
         
         describe("FormViewController") {
@@ -63,8 +67,40 @@ class FormViewControllerSpec: QuickSpec {
                 it ("should get the first cell with data Form1") {
                     viewController.loadViewIfNeeded()
                     viewController.formViewModel.umbrella = umbrella!
+                    viewController.formViewModel.umbrella.formAnswers = []
+                    viewController.formTableView.reloadData()
                     let cell = viewController.tableView(viewController.formTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? FormCell
                     expect(cell?.titleLabel.text).to(equal("Form1"))
+                }
+                
+                it ("should get the first cell with data Form1 to when it has a FormAnswer") {
+                    viewController.loadViewIfNeeded()
+                    viewController.formViewModel.umbrella = umbrella!
+                    viewController.formTableView.reloadData()
+                    let cell = viewController.tableView(viewController.formTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? FormCell
+                    expect(cell?.titleLabel.text).to(equal("Form1"))
+                }
+            }
+            
+            describe("ShareHtml") {
+                it ("should be a URL to the File.html") {
+                    viewController.loadViewIfNeeded()
+                    viewController.formViewModel.umbrella = umbrella!
+                    viewController.formTableView.reloadData()
+                    
+                    let url = viewController.shareHtml(indexPath: IndexPath(row: 0, section: 0))
+                    
+                    expect(url).toNot(beNil())
+                }
+            }
+            
+            describe("LoadFormActive") {
+                it ("should be zero formAnswer") {
+                    viewController.loadViewIfNeeded()
+                    
+                    viewController.loadFormActive()
+                    
+                    expect(viewController.formViewModel.umbrella.formAnswers.count).to(equal(0))
                 }
             }
         }

@@ -27,7 +27,7 @@ class FillFormViewControllerSpec: QuickSpec {
             let screen = Screen(name: "Screen1", items: [itemForm])
             let form = Form(screens: [screen])
             form.name = "Form1"
-            viewController.form = form
+            viewController.fillFormViewModel.form = form
             
             window.makeKeyAndVisible()
             window.rootViewController = viewController

@@ -74,6 +74,35 @@ class SQLManager: SQLProtocol {
         return []
     }
     
+    /// Select in SQLite database
+    ///
+    /// - Parameter query: string of query
+    /// - Returns: return list of object
+    func select(withQuery query:String) -> [[String: Any]] {
+        
+        let db = openConnection()
+        var array = [[String: Any]]()
+        db?.busyTimeout = SQLManager.timeout
+        
+        do {
+            if let stmt = try db?.prepare(query) {
+                for row in stmt {
+                    var dictionary = [String:Any]()
+                    
+                    for (index, name) in stmt.columnNames.enumerated() {
+                        dictionary.updateValue(row[index]!, forKey: name)
+                    }
+                    array.append(dictionary)
+                }
+                return array
+            }
+        } catch {
+            print(error)
+        }
+        
+        return []
+    }
+    
     /// Create a table on SQLite
     ///
     /// - Parameter tableProtocol: object that implement the tableProtocol
@@ -123,6 +152,22 @@ class SQLManager: SQLProtocol {
 //            print(tableSQL.asSQL())
             try db?.run(tableSQL)
             
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
+    /// Remove a row on table
+    ///
+    /// - Parameter query: string with a query
+    /// - Returns: rowId of insertion
+    func remove(withQuery query:String) -> Bool {
+        let db = openConnection()
+        db?.busyTimeout = SQLManager.timeout
+        do {
+            try db?.prepare(query).run()
             return true
         } catch {
             print(error)
@@ -242,7 +287,7 @@ extension SQLManager {
             }
             
         } else {
-            print("Database file found at path: \(finalDatabaseURL.path)")
+//            print("Database file found at path: \(finalDatabaseURL.path)")
         }
     }
 }

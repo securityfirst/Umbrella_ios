@@ -209,6 +209,7 @@ extension UmbrellaDatabase {
         //Form
         for form in self.forms {
             let formRowId = self.formDao.insert(form)
+            form.id = Int(formRowId)
             
             // Screen
             for index in 0..<form.screens.count {

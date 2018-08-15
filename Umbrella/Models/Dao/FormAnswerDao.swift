@@ -50,12 +50,38 @@ struct FormAnswerDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: FormAnswer) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(FormAnswer.table) ('form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id') VALUES (\(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId))")
+        
+        var sql = ""
+        if object.id == -1 {
+            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at') VALUES (\(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\")"
+        } else {
+            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('id','form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at') VALUES (\(object.id), \(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\")"
+        }
+        
+        let rowId = self.sqlProtocol.insert(withQuery: sql)
         return rowId
     }
     
     //
     // MARK: - Custom functions
+    
+    /// Delete a object in database
+    ///
+    /// - Parameter object: object
+    /// - Returns: rowId of object inserted
+    func remove(_ object: FormAnswer) -> Bool {
+        let sql = "DELETE FROM \(FormAnswer.table) WHERE form_answer_id = \(object.formAnswerId) AND form_id = \(object.formId) AND item_form_id = \(object.itemFormId) AND option_item_id = \(object.optionItemId)"
+        return self.sqlProtocol.remove(withQuery: sql)
+    }
+    
+    /// Delete all formAnswer to formAnswerId in database
+    ///
+    /// - Parameter object: object
+    /// - Returns: rowId of object inserted
+    func remove(_ formAnswerId: Int) -> Bool {
+        let sql = "DELETE FROM \(FormAnswer.table) WHERE form_answer_id = \(formAnswerId)"
+        return self.sqlProtocol.remove(withQuery: sql)
+    }
     
     /// List of object
     ///
@@ -70,5 +96,21 @@ struct FormAnswerDao: DaoProtocol {
     /// - Returns: a list of object
     func listFormActive() -> [FormAnswer] {
         return self.sqlProtocol.select(withQuery: "SELECT form_id, form_answer_id, created_at FROM \(FormAnswer.table) group by form_answer_id")
+    }
+    
+    /// List of object to screen Form Active
+    ///
+    /// - Returns: a list of object
+    func listFormAnswers(at id:Int64, formId: Int64) -> [FormAnswer] {
+        return self.sqlProtocol.select(withQuery: "SELECT * FROM \(FormAnswer.table) WHERE form_answer_id = \(id) and form_id = \(formId)")
+    }
+    
+    func lastFormAnswerId() -> Int64 {
+        let result = self.sqlProtocol.select(withQuery: "SELECT form_answer_id FROM \(FormAnswer.table) ORDER BY form_answer_id DESC LIMIT 1")
+        
+        if result.count > 0 {
+            return (result.first!["form_answer_id"] as? Int64)!
+        }
+        return 0
     }
 }

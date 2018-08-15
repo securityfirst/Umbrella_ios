@@ -13,6 +13,8 @@ class TextFieldCell: BaseFormCell {
     //
     // MARK: - Properties
     @IBOutlet weak var valueText: UITextField!
+    weak var delegate: BaseFormCellDelegate?
+    var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     
     //
     // MARK: - Life cycle
@@ -37,12 +39,18 @@ class TextFieldCell: BaseFormCell {
     func configure(withViewModel viewModel:DynamicFormViewModel, indexPath: IndexPath) {
         let itemForm = viewModel.screen.items[indexPath.row]
         valueText.placeholder = itemForm.label
+        self.indexPath = indexPath
+        
+        //Load answers
+        for formAnswer in viewModel.formAnswers where formAnswer.itemFormId == itemForm.id {
+            valueText.text = formAnswer.text
+        }
     }
     
     /// Save the data in database
     override func saveForm() {
         if (valueText.text?.count)! > 0 {
-        
+            self.delegate?.saveForm(cell: self, indexPath: self.indexPath)
         }
     }
 }

@@ -21,6 +21,7 @@ class TextAreaCell: BaseFormCell {
     var placeholderLabel : UILabel!
     var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     weak var delegate: TextAreaCellDelegate?
+    weak var delegateForm: BaseFormCellDelegate?
     
     //
     // MARK: - Life cycle
@@ -60,12 +61,18 @@ class TextAreaCell: BaseFormCell {
             placeholderLabel.text = itemForm.hint
             placeholderLabel.sizeToFit()
         }
+        
+        //Load answers
+        for formAnswer in viewModel.formAnswers where formAnswer.itemFormId == itemForm.id {
+            textView.text = formAnswer.text
+            placeholderLabel.isHidden = true
+        }
     }
 
     /// Save the data in database
     override func saveForm() {
         if (textView.text?.count)! > 0 {
-            
+            self.delegateForm?.saveForm(cell: self, indexPath: self.indexPath)
         }
     }
 }

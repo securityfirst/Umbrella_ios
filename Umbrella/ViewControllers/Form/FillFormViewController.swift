@@ -17,6 +17,7 @@ class FillFormViewController: UIViewController {
         return fillFormViewModel
     }()
     
+    var isNewForm: Bool = true
     var pageCurrent: CGFloat = 0
     @IBOutlet weak var stepperView: StepperView!
     @IBOutlet weak var formScrollView: UIScrollView!
@@ -34,19 +35,40 @@ class FillFormViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
+        
+        var newFormAnswerId = (fillFormViewModel.formAnswerId())
+        
+        // If is a new form
+        // We need to add one more to be a new form answer.
+        if isNewForm {
+            newFormAnswerId += 1
+        }
+        
+        var formAnswers: [FormAnswer] = []
+        if let screen = fillFormViewModel.form.screens.first {
+            formAnswers = fillFormViewModel.loadFormAnswersTo(formId: screen.formId)
+        }
+        
         for (index,item) in fillFormViewModel.form.screens.enumerated() {
             var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
             frame.origin.x = self.formScrollView.frame.size.width * CGFloat(index)
             frame.size = self.formScrollView.frame.size
-        
+            
             let storyboard = UIStoryboard(name: "Form", bundle: Bundle.main)
             let viewController = storyboard.instantiateViewController(withIdentifier: "DynamicViewController")
             let subView = (viewController.view as? DynamicFormView)!
             subView.frame = frame
             subView.tag = index
             subView.dynamicFormViewModel.screen = item
+            subView.dynamicFormViewModel.formAnswers = formAnswers
             subView.setTitle(title: subView.dynamicFormViewModel.screen.name)
+            
+            if isNewForm {
+                subView.dynamicFormViewModel.newFormAnswerId = newFormAnswerId
+            } else {
+                subView.dynamicFormViewModel.formAnswerId = Int64(fillFormViewModel.formAnswer.formAnswerId)
+            }
+            
             self.formScrollView.addSubview(subView)
             
             // Simple Animation
@@ -63,7 +85,7 @@ class FillFormViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController {
-            saveForm()
+            self.saveForm()
         }
     }
     
@@ -78,7 +100,9 @@ class FillFormViewController: UIViewController {
     func saveForm() {
         for viewForm in self.formScrollView.subviews where viewForm is DynamicFormView {
             let view = (viewForm as? DynamicFormView)!
-            view.saveForm()
+            DispatchQueue.main.async {
+                view.saveForm()
+            }
         }
     }
 }

@@ -93,6 +93,7 @@
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
+		A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */; };
 		A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA020E243120052028F /* CheckListDao.swift */; };
 		A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA220E246840052028F /* CheckItemDao.swift */; };
 		A0D8BCA520E246930052028F /* FormDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA420E246930052028F /* FormDao.swift */; };
@@ -260,6 +261,7 @@
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
+		A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Ext.swift"; sourceTree = "<group>"; };
 		A0D8BCA020E243120052028F /* CheckListDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListDao.swift; sourceTree = "<group>"; };
 		A0D8BCA220E246840052028F /* CheckItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemDao.swift; sourceTree = "<group>"; };
 		A0D8BCA420E246930052028F /* FormDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDao.swift; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */,
 				A00386F920F39664004FAC8A /* UIView+Ext.swift */,
 				A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */,
+				A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
 				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
+				A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */,
 				A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,

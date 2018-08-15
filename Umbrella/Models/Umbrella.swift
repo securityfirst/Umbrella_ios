@@ -12,7 +12,7 @@ class Umbrella {
     
     let languages: [Language]
     let forms: [Form]
-    let formAnswers: [FormAnswer]
+    var formAnswers: [FormAnswer]
     
     init() {
         self.languages = []
