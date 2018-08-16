@@ -425,6 +425,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		A007B3C82125732000B3D8C9 /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				A007B3C421256D4000B3D8C9 /* Localizable.strings */,
+			);
+			path = i18n;
+			sourceTree = "<group>";
+		};
 		A05BA7FB20E11B5700482003 /* SQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,9 +732,9 @@
 			children = (
 				A00386F220F394F7004FAC8A /* Fonts */,
 				A064CE9420AC497D00CE99E1 /* Database */,
+				A007B3C82125732000B3D8C9 /* i18n */,
 				A0B9D43120AAE03900B2B796 /* Info.plist */,
 				A0B9D42C20AAE03900B2B796 /* Assets.xcassets */,
-				A007B3C421256D4000B3D8C9 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1011,6 +1019,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Files/Files.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
@@ -1019,6 +1028,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Files.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLCipher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",

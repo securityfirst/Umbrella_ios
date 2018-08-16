@@ -25,6 +25,8 @@ class FormViewController: UIViewController {
         super.awakeFromNib()
         
         NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.loadForms(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
+        
+        self.title = "Form".localized()
     }
     
     override func viewDidLoad() {
@@ -275,12 +277,12 @@ extension FormViewController: UITableViewDelegate {
         
         if self.formViewModel.umbrella.formAnswers.count > 0 {
             if section == 0 {
-                label.text = "Active"
+                label.text = "Active".localized()
             } else if section == 1 {
-                label.text = "Available forms"
+                label.text = "Available forms".localized()
             }
         } else {
-            label.text = "Available forms"
+            label.text = "Available forms".localized()
         }
         
         view.addSubview(label)

@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import SQLite
+import Localize_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

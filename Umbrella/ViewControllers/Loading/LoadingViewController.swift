@@ -27,6 +27,7 @@ class LoadingViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageLabel.text = "Clone of the tent".localized()
         loadTent()
     }
     
@@ -50,7 +51,7 @@ class LoadingViewController: UIViewController {
                 if gitProgress == 1.0 {
                     self.loadingViewModel.parseTent(completion: { progress in
                         DispatchQueue.main.async {
-                            self.messageLabel.text = "Updating the database"
+                            self.messageLabel.text = "Updating the database".localized()
                             self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
                             
                             if gitProgress + progress == 2.0 {
@@ -62,13 +63,13 @@ class LoadingViewController: UIViewController {
                 }
             }, failure: { _ in
                 DispatchQueue.main.async {
-                    self.messageLabel.text = "Error in load the tent"
+                    self.messageLabel.text = "Error in load the tent".localized()
                     self.activityIndicatorView.isHidden = true
                     self.retryButton.isHidden = false
                 }
             })
         } else {
-            self.messageLabel.text = "Getting the database"
+            self.messageLabel.text = "Getting the database".localized()
             
             loadingViewModel.loadUmbrellaOfDatabase()
             DispatchQueue.main.async {
@@ -88,7 +89,7 @@ class LoadingViewController: UIViewController {
     @IBAction func retryAction(_ sender: Any) {
         retryButton.isHidden = true
         activityIndicatorView.isHidden = false
-        messageLabel.text = "Clone of the tent"
+        messageLabel.text = "Clone of the tent".localized()
         loadTent()
     }
 }

@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  Umbrella
+
+  Created by Lucas Correa on 16/08/2018.
+  Copyright © 2018 Security First. All rights reserved.
+*/
+
+// Menu
+"Feed" = "Feed";
+"Form" = "Form";
+"Checklists" = "Checklists";
+"Lessons" = "Lessons";
+"Account" = "Account";
+
+// Loading
+"Updating the database" = "Updating the database";
+"Error in load the tent" = "Error in load the tent";
+"Getting the database" = "Getting the database";
+"Clone of the tent" = "Clone of the tent";
+
+// Form
+"Active" = "Active";
+"Available forms" = "Available forms";
+
+"" = "";
+"" = "";
+"" = "";
+"" = "";

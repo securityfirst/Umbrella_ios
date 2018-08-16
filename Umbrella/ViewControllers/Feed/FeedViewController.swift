@@ -14,7 +14,7 @@ class FeedViewController: UIViewController {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.title = "Feed".localized()
     }
     
     override func viewDidLoad() {
