@@ -6,7 +6,6 @@ target 'Umbrella' do
   inhibit_all_warnings!
 
   pod 'SwiftLint'
-  pod 'SwiftGen'
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git'
