@@ -21,6 +21,7 @@ class FillFormViewController: UIViewController {
     var pageCurrent: CGFloat = 0
     @IBOutlet weak var stepperView: StepperView!
     @IBOutlet weak var formScrollView: UIScrollView!
+    @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
     
     //
     // MARK: - Life cycle
@@ -31,6 +32,8 @@ class FillFormViewController: UIViewController {
         
         self.stepperView.dataSource = self
         self.stepperView.reloadData()
+        self.stepperView.isAccessibilityElement = false
+        self.stepperView.accessibilityElementsHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +65,8 @@ class FillFormViewController: UIViewController {
             subView.dynamicFormViewModel.screen = item
             subView.dynamicFormViewModel.formAnswers = formAnswers
             subView.setTitle(title: subView.dynamicFormViewModel.screen.name)
+            subView.titleLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            subView.titleLabel.accessibilityHint = String(format: "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form.".localized(), index+1, fillFormViewModel.form.screens.count)
             
             if isNewForm {
                 subView.dynamicFormViewModel.newFormAnswerId = newFormAnswerId
@@ -75,6 +80,8 @@ class FillFormViewController: UIViewController {
             subView.alpha = 0
             UIView.animate(withDuration: 0.4) {
                 subView.alpha = 1
+                self.progressIndicatorView.isHidden = true
+                self.progressIndicatorView.isAccessibilityElement = false
             }
         }
         

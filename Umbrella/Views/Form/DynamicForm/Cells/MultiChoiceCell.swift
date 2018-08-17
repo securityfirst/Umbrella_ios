@@ -44,7 +44,7 @@ class MultiChoiceCell: BaseFormCell {
             let height: CGFloat = 30.0
             
             let button = ChoiceButton(frame: CGRect(x: xItem, y: CGFloat(index)*height, width: self.frame.size.width - xItem - 5.0, height: height))
-            button.button.setTitle(optionItem.label, for: .normal)
+            button.setTitle(optionItem.label)
             button.index = optionItem.id
             button.choiceType = .multi
             button.setState(state: false)

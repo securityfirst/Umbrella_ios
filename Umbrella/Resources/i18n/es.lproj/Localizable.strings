@@ -6,6 +6,11 @@
   Copyright © 2018 Security First. All rights reserved.
 */
 
+// Accessibility
+"selected" = "seleccionado";
+"deselected" = "deseleccionado";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Esta es la forma %d de %d formularios para completar. Desliza tres dedos hacia la izquierda o hacia la derecha o hacia atrás.";
+
 // Menu
 "Feed" = "Noticias";
 "Form" = "Formulario";
@@ -22,3 +27,6 @@
 // Form
 "Active" = "Activo";
 "Available forms" = "Formularios disponibles";
+"REMOVE" = "RETIRAR";
+"EDIT" = "EDITAR";
+"SHARE" = "COMPARTIR";

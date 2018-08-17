@@ -40,6 +40,7 @@ class TextFieldCell: BaseFormCell {
         let itemForm = viewModel.screen.items[indexPath.row]
         valueText.placeholder = itemForm.label
         self.indexPath = indexPath
+        valueText.accessibilityHint = valueText.placeholder
         
         //Load answers
         for formAnswer in viewModel.formAnswers where formAnswer.itemFormId == itemForm.id {

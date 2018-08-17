@@ -24,6 +24,7 @@ class ChoiceButton: UIView {
     var choiceType: ChoiceType = .none
     var state: Bool = false
     var completionHandler: ((_ index: Int) -> Void)?
+    fileprivate var title: String = ""
     
     //
     // MARK: - Life cycle
@@ -53,11 +54,17 @@ class ChoiceButton: UIView {
     //
     // MARK: - Functions
     
+    func setTitle(_ title: String) {
+        self.title = title
+        button.setTitle(title, for: .normal)
+    }
+    
     /// Set new state to the component check or group
     ///
     /// - Parameter state: Bool
     func setState(state: Bool) {
         self.state = state
+        button.accessibilityLabel = state ? "\(title) \("selected".localized())" : "\(title) \("deselected".localized())"
         
         switch choiceType {
         case .multi:

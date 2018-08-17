@@ -6,6 +6,11 @@
   Copyright © 2018 Security First. All rights reserved.
 */
 
+// Accessibility
+"selected" = "selected";
+"deselected" = "deselected";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form.";
+
 // Menu
 "Feed" = "Feed";
 "Form" = "Form";
@@ -22,8 +27,10 @@
 // Form
 "Active" = "Active";
 "Available forms" = "Available forms";
+"REMOVE" = "REMOVE";
+"EDIT" = "EDIT";
+"SHARE" = "SHARE";
 
-"" = "";
 "" = "";
 "" = "";
 "" = "";

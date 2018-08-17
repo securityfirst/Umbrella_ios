@@ -38,11 +38,11 @@
                                                     <rect key="frame" x="22" y="12" width="331" height="82"/>
                                                     <subviews>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0G-SA-5KS">
-                                                            <rect key="frame" x="120" y="76" width="60" height="0.0"/>
+                                                            <rect key="frame" x="110" y="76" width="60" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="ah5-Yl-8zX"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                             <state key="normal" title="REMOVE">
                                                                 <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
@@ -51,12 +51,12 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-3R-ejq">
-                                                            <rect key="frame" x="190" y="76" width="60" height="0.0"/>
+                                                            <rect key="frame" x="180" y="76" width="60" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="NgN-Xn-WIY"/>
                                                                 <constraint firstAttribute="height" id="QDU-J8-QWU"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                             <state key="normal" title="EDIT">
                                                                 <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
@@ -64,12 +64,12 @@
                                                                 <action selector="editAction:" destination="Wyp-D2-NhD" eventType="touchUpInside" id="9mJ-Tg-vx7"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-9u-VkU">
-                                                            <rect key="frame" x="260" y="76.5" width="60" height="0.0"/>
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-9u-VkU">
+                                                            <rect key="frame" x="250" y="76.5" width="70" height="0.0"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="vwk-tN-87r"/>
+                                                                <constraint firstAttribute="width" constant="70" id="vwk-tN-87r"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                             <state key="normal" title="SHARE">
                                                                 <color key="titleColor" red="0.72156862745098038" green="0.21176470588235294" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
@@ -109,8 +109,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="editButton" destination="Gbh-3R-ejq" id="orm-81-cp8"/>
                                             <outlet property="editHeightConstraint" destination="QDU-J8-QWU" id="Zqk-eP-5he"/>
                                             <outlet property="formBackgroundView" destination="ui8-gA-Gtv" id="i6E-L2-2rl"/>
+                                            <outlet property="removeButton" destination="K0G-SA-5KS" id="sBA-nt-6as"/>
+                                            <outlet property="shareButton" destination="lxC-9u-VkU" id="r6i-ay-sdg"/>
                                             <outlet property="titleLabel" destination="IzR-f5-1z2" id="Oxc-ZO-IAh"/>
                                         </connections>
                                     </tableViewCell>
@@ -343,6 +346,7 @@
                     </view>
                     <connections>
                         <outlet property="formScrollView" destination="0Dv-UP-xyM" id="DDV-8W-Qt3"/>
+                        <outlet property="progressIndicatorView" destination="bkQ-Sk-I4b" id="R6d-Ok-KBF"/>
                         <outlet property="stepperView" destination="nMb-5c-Xcn" id="5eY-dg-n8w"/>
                     </connections>
                 </viewController>

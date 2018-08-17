@@ -41,6 +41,7 @@ class LoadingViewController: UIViewController {
     
     /// Load the tent, do a clone, parse and add on database
     func loadTent() {
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.messageLabel)
         #if !TESTING
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
             loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in

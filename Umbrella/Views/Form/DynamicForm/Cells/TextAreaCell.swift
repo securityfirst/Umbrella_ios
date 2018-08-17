@@ -56,9 +56,11 @@ class TextAreaCell: BaseFormCell {
         self.indexPath = indexPath
         let itemForm = viewModel.screen.items[indexPath.row]
         titleLabel.text = itemForm.label
+        placeholderLabel.accessibilityHint = titleLabel.text
         
         if itemForm.hint.count > 0 {
             placeholderLabel.text = itemForm.hint
+            placeholderLabel.accessibilityHint = itemForm.hint
             placeholderLabel.sizeToFit()
         }
         
@@ -66,6 +68,7 @@ class TextAreaCell: BaseFormCell {
         for formAnswer in viewModel.formAnswers where formAnswer.itemFormId == itemForm.id {
             textView.text = formAnswer.text
             placeholderLabel.isHidden = true
+            
         }
     }
 

@@ -37,6 +37,7 @@ class FormViewController: UIViewController {
         // If user fill any form this function will update the umbrella.formAnswers
         self.loadFormActive()
         self.formTableView.reloadData()
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.navigationItem.title)
     }
     
     override func didReceiveMemoryWarning() {
