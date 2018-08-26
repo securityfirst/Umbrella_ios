@@ -39,6 +39,50 @@
             </objects>
             <point key="canvasLocation" x="-694" y="1054"/>
         </scene>
+        <!--Tour View Controller-->
+        <scene sceneID="cCW-Mg-L9e">
+            <objects>
+                <viewController storyboardIdentifier="TourViewController" id="gsp-ea-RCW" customClass="TourViewController" customModule="Umbrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ma8-O5-2zp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3h-C4-Wd0">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gsp-ea-RCW" id="eJH-nl-EdV"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="sXL-lo-39H">
+                                <rect key="frame" x="146" y="727" width="83" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="RYW-i3-km0"/>
+                                    <constraint firstAttribute="height" constant="37" id="mps-qb-aHL"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pageControlAction:" destination="gsp-ea-RCW" eventType="valueChanged" id="ven-sp-JZS"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="sXL-lo-39H" firstAttribute="centerX" secondItem="ma8-O5-2zp" secondAttribute="centerX" id="B2J-XJ-aQL"/>
+                            <constraint firstItem="tMz-C9-KgO" firstAttribute="bottom" secondItem="o3h-C4-Wd0" secondAttribute="bottom" id="MWZ-6Y-Zpa"/>
+                            <constraint firstItem="o3h-C4-Wd0" firstAttribute="leading" secondItem="tMz-C9-KgO" secondAttribute="leading" id="PsL-k2-EE3"/>
+                            <constraint firstItem="tMz-C9-KgO" firstAttribute="trailing" secondItem="o3h-C4-Wd0" secondAttribute="trailing" id="Thf-0B-aDw"/>
+                            <constraint firstItem="o3h-C4-Wd0" firstAttribute="top" secondItem="tMz-C9-KgO" secondAttribute="top" id="Y4w-A3-j0A"/>
+                            <constraint firstItem="tMz-C9-KgO" firstAttribute="bottom" secondItem="sXL-lo-39H" secondAttribute="bottom" constant="14" id="gQh-2N-cZa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tMz-C9-KgO"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="sXL-lo-39H" id="xUt-d0-Csd"/>
+                        <outlet property="tourScrollView" destination="o3h-C4-Wd0" id="1QK-b0-rON"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xVu-4R-hWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1352.8" y="269.70443349753697"/>
+        </scene>
         <!--Loading View Controller-->
         <scene sceneID="0Ln-Qb-N8O">
             <objects>
@@ -73,6 +117,16 @@
                                             <action selector="retryAction:" destination="9dr-gm-E9m" eventType="touchUpInside" id="elt-gq-bpP"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-2a-c4B">
+                                        <rect key="frame" x="218" y="0.0" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeAction:" destination="9dr-gm-E9m" eventType="touchUpInside" id="H3o-Hc-xJm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -83,10 +137,22 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.45905565693430656" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="76A-4f-Rcx" firstAttribute="centerY" secondItem="2ZU-ei-AeR" secondAttribute="centerY" id="Z0B-R1-lKg"/>
                             <constraint firstItem="76A-4f-Rcx" firstAttribute="centerX" secondItem="2ZU-ei-AeR" secondAttribute="centerX" id="n0h-gS-dAB"/>
@@ -95,6 +161,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="d6y-wM-WHq" id="gUI-x8-wza"/>
+                        <outlet property="closeButton" destination="4Hy-2a-c4B" id="zic-tj-21M"/>
                         <outlet property="messageLabel" destination="9du-fN-06n" id="15l-7H-h0R"/>
                         <outlet property="progressView" destination="tJ6-0c-0ll" id="1Ym-iK-N7d"/>
                         <outlet property="retryButton" destination="xhZ-VD-W19" id="jwJ-pE-uJ9"/>

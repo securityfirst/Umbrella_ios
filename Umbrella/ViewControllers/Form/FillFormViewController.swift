@@ -18,7 +18,7 @@ class FillFormViewController: UIViewController {
     }()
     
     var isNewForm: Bool = true
-    var pageCurrent: CGFloat = 0
+    var currentPage: CGFloat = 0
     @IBOutlet weak var stepperView: StepperView!
     @IBOutlet weak var formScrollView: UIScrollView!
     @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
@@ -128,8 +128,8 @@ extension FillFormViewController: UIScrollViewDelegate {
     
     func updateDidScroll(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        pageCurrent = pageNumber
-        stepperView.scrollViewDidPage(page: pageCurrent)
+        currentPage = pageNumber
+        stepperView.scrollViewDidPage(page: currentPage)
         self.view.endEditing(true)
     }
 }

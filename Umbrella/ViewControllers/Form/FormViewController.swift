@@ -37,7 +37,7 @@ class FormViewController: UIViewController {
         // If user fill any form this function will update the umbrella.formAnswers
         self.loadFormActive()
         self.formTableView.reloadData()
-        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.navigationItem.title)
+        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.navigationItem.title)
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,7 +108,7 @@ class FormViewController: UIViewController {
             for formAnswer in formAnswers where formAnswer.itemFormId == item.id && formAnswer.optionItemId == optionItem.id {
                 boolean = true
             }
-            html += "<label><input type=\"checkbox\"\(boolean == true ? "checked" : "") readonly onclick=\"return false;\">\(optionItem.label)</label><br> \n"
+            html += "<label><input type=\"checkbox\"\(boolean ? "checked" : "") readonly onclick=\"return false;\">\(optionItem.label)</label><br> \n"
         }
     }
     
@@ -124,7 +124,7 @@ class FormViewController: UIViewController {
             for formAnswer in formAnswers where formAnswer.itemFormId == item.id && formAnswer.optionItemId == optionItem.id {
                 boolean = true
             }
-            html += "<label><input type=\"radio\"\(boolean == true ? "checked" : "") readonly onclick=\"return false;\">\(optionItem.label)</label><br> \n"
+            html += "<label><input type=\"radio\"\(boolean ? "checked" : "") readonly onclick=\"return false;\">\(optionItem.label)</label><br> \n"
         }
     }
     

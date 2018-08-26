@@ -57,7 +57,10 @@ class FormCell: UITableViewCell {
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:FormViewModel, indexPath: IndexPath) {
         self.indexPath = indexPath
-        self.editHeightConstraint.constant = 0
+        
+        if (self.editHeightConstraint != nil) {
+            self.editHeightConstraint.constant = 0
+        }
         
         if viewModel.umbrella.formAnswers.count > 0 && indexPath.row <= viewModel.umbrella.formAnswers.count - 1 {
             if indexPath.section == 0 {

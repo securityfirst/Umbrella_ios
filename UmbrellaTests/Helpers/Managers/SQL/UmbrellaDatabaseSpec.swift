@@ -16,7 +16,7 @@ class UmbrellaDatabaseSpec: QuickSpec {
     
     override func spec() {
         
-        let sqlManager = SQLManager(databaseName: "database.db", password: "umbrella")
+        let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
         var languages = [Language]()
         var forms = [Form]()
         

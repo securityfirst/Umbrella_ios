@@ -68,11 +68,11 @@ class ChoiceButton: UIView {
         
         switch choiceType {
         case .multi:
-            imageView.image = UIImage(named: state == true ? "checkSelected" : "checkNormal")
+            imageView.image = UIImage(named: state ? "checkSelected" : "checkNormal")
         case .single:
-            imageView.image = UIImage(named: state == true ? "groupSelected" : "groupNormal")
+            imageView.image = UIImage(named: state ? "groupSelected" : "groupNormal")
         case .none:
-            imageView.image = UIImage(named: state == true ? "" : "")
+            imageView.image = UIImage(named: "")
         }
     }
     

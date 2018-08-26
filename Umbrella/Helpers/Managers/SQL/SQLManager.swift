@@ -119,19 +119,19 @@ class SQLManager: SQLProtocol {
                     
                     switch (column.type) {
                     case .int?:
-                        if (column.isNotNull == true) {
+                        if (column.isNotNull) {
                             tableColumn.column(Expression<Int64>(column.name!))
                         } else {
                             tableColumn.column(Expression<Int64?>(column.name!))
                         }
                     case .real?:
-                        if (column.isNotNull == true) {
+                        if (column.isNotNull) {
                             tableColumn.column(Expression<Float64>(column.name!))
                         } else {
                             tableColumn.column(Expression<Float64?>(column.name!))
                         }
                     case .string?:
-                        if (column.isNotNull == true) {
+                        if (column.isNotNull) {
                             tableColumn.column(Expression<String>(column.name!))
                         } else {
                             tableColumn.column(Expression<String?>(column.name!))

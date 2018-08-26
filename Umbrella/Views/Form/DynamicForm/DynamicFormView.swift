@@ -156,7 +156,7 @@ class DynamicFormView: UIView {
                 formAnswer.id = answer.id
             }
             
-            if button.state == true {
+            if button.state {
                 _ = dynamicFormViewModel.save(formAnswer: formAnswer)
             } else {
                 //Remove

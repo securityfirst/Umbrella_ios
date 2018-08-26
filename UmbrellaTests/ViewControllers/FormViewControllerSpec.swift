@@ -64,6 +64,18 @@ class FormViewControllerSpec: QuickSpec {
                     expect(cell).to(beNil())
                 }
                 
+                it ("should configure a cell") {
+                    viewController.loadViewIfNeeded()
+                    viewController.formViewModel.umbrella = umbrella!
+                    viewController.formViewModel.umbrella.formAnswers = []
+                    viewController.formTableView.reloadData()
+                    let cell = viewController.tableView(viewController.formTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? FormCell
+                    
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    cell?.configure(withViewModel: viewController.formViewModel, indexPath: indexPath)
+                    expect(cell?.titleLabel.text).to(equal("Form1"))
+                }
+                
                 it ("should get the first cell with data Form1") {
                     viewController.loadViewIfNeeded()
                     viewController.formViewModel.umbrella = umbrella!

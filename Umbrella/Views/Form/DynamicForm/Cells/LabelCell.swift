@@ -42,6 +42,6 @@ class LabelCell: BaseFormCell {
     
     /// Save the data in database
     override func saveForm() {
-        
+        // This cell doesn't save nothing. It is not necessary to implement.
     }
 }

@@ -17,7 +17,7 @@ class LanguageDaoSpec: QuickSpec {
     override func spec() {
         describe("LanguageDao") {
             
-            let sqlManager = SQLManager(databaseName: "database.db", password: "umbrella")
+            let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
             
             beforeEach {
                 _ = UmbrellaDatabase(sqlProtocol: sqlManager).dropTables()

@@ -25,9 +25,9 @@ platform :ios do
     end
   end
 
-  error do |lane, exception|
-    if File.exists? "../DerivedData"
-      FileUtils.rm_rf("../DerivedData")
-    end
-  end
+#  error do |lane, exception|
+#    if File.exists? "../DerivedData"
+#      FileUtils.rm_rf("../DerivedData")
+#    end
+#  end
 end

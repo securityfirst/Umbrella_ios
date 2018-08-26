@@ -27,7 +27,7 @@ class DynamicFormViewModel {
     init() {
         self.screen = Screen()
         self.formAnswers = []
-        self.sqlManager = SQLManager(databaseName: "database.db", password: "umbrella")
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
     }
     
     //

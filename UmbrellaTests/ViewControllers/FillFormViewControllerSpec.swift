@@ -42,6 +42,13 @@ class FillFormViewControllerSpec: QuickSpec {
                     expect(window.rootViewController).toEventually(beAnInstanceOf(FillFormViewController.self))
                 }
             }
+            
+            describe(".viewDidAppear") {
+                it ("should be presented") {
+                    window.rootViewController?.viewDidAppear(true)
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(FillFormViewController.self))
+                }
+            }
         }
     }
 }

@@ -65,7 +65,7 @@ class SingleChoiceCell: BaseFormCell {
     override func saveForm() {
         for view in self.subviews where view is ChoiceButton {
             let button = (view as? ChoiceButton)!
-            if button.state == true {
+            if button.state {
                 print(button.index)
                 
                 self.delegate?.saveForm(cell: self, indexPath: self.indexPath)

@@ -10,13 +10,15 @@ import UIKit
 import SQLite
 
 class LoadingViewController: UIViewController {
-  
+    
     //
     // MARK: - Properties
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var closeButton: UIButton!
+    var completion: (() -> Void)?
     
     lazy var loadingViewModel: LoadingViewModel = {
         let loadingViewModel = LoadingViewModel()
@@ -28,7 +30,6 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         messageLabel.text = "Clone of the tent".localized()
-        loadTent()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,9 +41,10 @@ class LoadingViewController: UIViewController {
     // MARK: - Functions
     
     /// Load the tent, do a clone, parse and add on database
-    func loadTent() {
-        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self.messageLabel)
-        #if !TESTING
+    func loadTent(completion: @escaping () -> Void) {
+        self.completion = completion
+        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.messageLabel)
+
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
             loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
                 DispatchQueue.main.async {
@@ -57,6 +59,7 @@ class LoadingViewController: UIViewController {
                             
                             if gitProgress + progress == 2.0 {
                                 NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
+                                self.completion!()
                                 self.view.removeFromSuperview()
                             }
                         }
@@ -67,6 +70,7 @@ class LoadingViewController: UIViewController {
                     self.messageLabel.text = "Error in load the tent".localized()
                     self.activityIndicatorView.isHidden = true
                     self.retryButton.isHidden = false
+                    self.closeButton.isHidden = false
                 }
             })
         } else {
@@ -77,20 +81,25 @@ class LoadingViewController: UIViewController {
                 self.progressView.setProgress(1.0, animated: true)
                 
                 delay(1.5) {
+                    self.completion!()
                     self.view.removeFromSuperview()
                 }
             }
             print("Exist")
         }
-        #endif
     }
     
     //
     // MARK: - Actions
     @IBAction func retryAction(_ sender: Any) {
         retryButton.isHidden = true
+        closeButton.isHidden = true
         activityIndicatorView.isHidden = false
         messageLabel.text = "Clone of the tent".localized()
-        loadTent()
+        loadTent(completion: self.completion!)
+    }
+    
+    @IBAction func closeAction(_ sender: Any) {
+        self.view.removeFromSuperview()
     }
 }

@@ -89,7 +89,7 @@ extension UIAlertController {
         }))
         
         if buttons?.count != 0 && buttons != nil {
-
+            
             for index in 1...buttons!.count {
                 let btnTitle = String(describing: buttons![index - 1])
                 let actionItem = UIAlertAction(title: btnTitle, style: .default, handler: { (actionItem) in
@@ -117,12 +117,12 @@ extension UIViewController {
     class func getCurrentWindow() -> UIWindow? {
         
         var window: UIWindow? = UIApplication.shared.keyWindow
-    
+        
         if window?.windowLevel != UIWindowLevelNormal {
             
             for tempWindow in UIApplication.shared.windows where tempWindow.windowLevel == UIWindowLevelNormal {
-                    window = tempWindow
-                    break
+                window = tempWindow
+                break
             }
         }
         
@@ -133,12 +133,12 @@ extension UIViewController {
         var viewController: UIViewController?
         let window: UIWindow? = self.getCurrentWindow()
         let frontView = window?.subviews.first
-        let nextResponder = frontView?.next
-        
-        if nextResponder?.isKind(of: UIViewController.classForCoder()) == true {
-            viewController = nextResponder as? UIViewController
-        } else {
-            viewController = window?.rootViewController
+        if let nextResponder = frontView?.next {
+            if (nextResponder.isKind(of: UIViewController.classForCoder())) {
+                viewController = nextResponder as? UIViewController
+            } else {
+                viewController = window?.rootViewController
+            }
         }
         
         return viewController
@@ -155,14 +155,18 @@ extension UIViewController {
             return nil
         }
         
-        if viewController?.presentedViewController != nil {
-            return self.topViewControllerWithRootViewController(viewController: viewController?.presentedViewController!)
-        } else if viewController?.isKind(of: UITabBarController.self) == true {
-            return self.topViewControllerWithRootViewController(viewController: (viewController as? UITabBarController)!.selectedViewController)
-        } else if viewController?.isKind(of: UINavigationController.self) == true {
-            return self.topViewControllerWithRootViewController(viewController: (viewController as? UINavigationController)!.visibleViewController)
-        } else {
-            return viewController
+        if let viewcontroller = viewController {
+            if viewcontroller.presentedViewController != nil {
+                return self.topViewControllerWithRootViewController(viewController: viewcontroller.presentedViewController!)
+            } else if viewcontroller.isKind(of: UITabBarController.self) {
+                return self.topViewControllerWithRootViewController(viewController: (viewcontroller as? UITabBarController)!.selectedViewController)
+            } else if viewcontroller.isKind(of: UINavigationController.self) {
+                return self.topViewControllerWithRootViewController(viewController: (viewcontroller as? UINavigationController)!.visibleViewController)
+            } else {
+                return viewcontroller
+            }
         }
+        
+        return viewController
     }
 }

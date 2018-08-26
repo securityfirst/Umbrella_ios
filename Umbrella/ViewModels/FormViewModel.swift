@@ -23,7 +23,7 @@ class FormViewModel {
     // MARK: - Init
     init() {
         self.umbrella = Umbrella()
-        self.sqlManager = SQLManager(databaseName: "database.db", password: "umbrella")
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
     }
     
     //

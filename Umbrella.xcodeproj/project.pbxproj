@@ -54,6 +54,9 @@
 		A075248A20C824E200E91A4A /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248920C824E200E91A4A /* CheckList.swift */; };
 		A075248C20C8290300E91A4A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248B20C8290300E91A4A /* Language.swift */; };
 		A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */; };
+		A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */; };
+		A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F58C0212AE53F00BEF571 /* TourViewController.swift */; };
+		A08F58C3212B05C500BEF571 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = A08F58C2212B05C400BEF571 /* terms.html */; };
 		A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */; };
 		A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA2C20EBA52200933759 /* CategoryDaoSpec.swift */; };
 		A0B0AA3820EBC98B00933759 /* SegmentDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA3020EBC98A00933759 /* SegmentDaoSpec.swift */; };
@@ -104,6 +107,7 @@
 		A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCAC20E246C90052028F /* OptionItemDao.swift */; };
 		A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
 		A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
+		A0DAF9412132B845009B2743 /* LoadingViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */; };
 		A0DFF37C20F3B74B008F3E43 /* SFProText-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0DFF37B20F3B74A008F3E43 /* SFProText-SemiBold.ttf */; };
 		A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37D20F3C084008F3E43 /* Umbrella.swift */; };
 		A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */; };
@@ -223,6 +227,9 @@
 		A075248920C824E200E91A4A /* CheckList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		A075248B20C8290300E91A4A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitManagerSpec.swift; sourceTree = "<group>"; };
+		A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFormSpec.swift; sourceTree = "<group>"; };
+		A08F58C0212AE53F00BEF571 /* TourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
+		A08F58C2212B05C400BEF571 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLProtocol.swift; sourceTree = "<group>"; };
 		A0B0AA2C20EBA52200933759 /* CategoryDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDaoSpec.swift; sourceTree = "<group>"; };
 		A0B0AA3020EBC98A00933759 /* SegmentDaoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentDaoSpec.swift; sourceTree = "<group>"; };
@@ -276,6 +283,7 @@
 		A0D8BCA820E246AD0052028F /* ItemFormDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormDao.swift; sourceTree = "<group>"; };
 		A0D8BCAC20E246C90052028F /* OptionItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItemDao.swift; sourceTree = "<group>"; };
 		A0D8BCB220E508190052028F /* InputFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputFileReader.swift; sourceTree = "<group>"; };
+		A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0DFF37B20F3B74A008F3E43 /* SFProText-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-SemiBold.ttf"; sourceTree = "<group>"; };
 		A0DFF37D20F3C084008F3E43 /* Umbrella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Umbrella.swift; sourceTree = "<group>"; };
 		A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
@@ -388,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				A003811520FE3F2200CDA44D /* Form */,
+				A08F58BC212AC05400BEF571 /* DynamicForm */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -477,6 +486,22 @@
 				A064CE9520AC497D00CE99E1 /* database.db */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		A08F58BC212AC05400BEF571 /* DynamicForm */ = {
+			isa = PBXGroup;
+			children = (
+				A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */,
+			);
+			path = DynamicForm;
+			sourceTree = "<group>";
+		};
+		A08F58BF212AE52800BEF571 /* Tour */ = {
+			isa = PBXGroup;
+			children = (
+				A08F58C0212AE53F00BEF571 /* TourViewController.swift */,
+			);
+			path = Tour;
 			sourceTree = "<group>";
 		};
 		A0B0AA2B20EBA50B00933759 /* Dao */ = {
@@ -669,6 +694,7 @@
 		A0B9D45520AAE1CE00B2B796 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A08F58BF212AE52800BEF571 /* Tour */,
 				A0B0AA8520F375A000933759 /* Loading */,
 				A0B0AA8020EE707D00933759 /* Feed */,
 				A0B0AA8120EE708500933759 /* Form */,
@@ -733,6 +759,7 @@
 				A00386F220F394F7004FAC8A /* Fonts */,
 				A064CE9420AC497D00CE99E1 /* Database */,
 				A007B3C82125732000B3D8C9 /* i18n */,
+				A08F58C2212B05C400BEF571 /* terms.html */,
 				A0B9D43120AAE03900B2B796 /* Info.plist */,
 				A0B9D42C20AAE03900B2B796 /* Assets.xcassets */,
 			);
@@ -863,6 +890,7 @@
 				A003811E20FF6FED00CDA44D /* LessonViewControllerSpec.swift */,
 				A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */,
 				A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */,
+				A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -964,6 +992,7 @@
 				A064CE9620AC497D00CE99E1 /* database.db in Resources */,
 				A003810F20FE315F00CDA44D /* Roboto-Condensed.ttf in Resources */,
 				A003811020FE316100CDA44D /* Roboto-Light.ttf in Resources */,
+				A08F58C3212B05C500BEF571 /* terms.html in Resources */,
 				A003811120FE316400CDA44D /* Roboto-Medium.ttf in Resources */,
 				A003810D20FE315900CDA44D /* Roboto-Bold.ttf in Resources */,
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,
@@ -1169,6 +1198,7 @@
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
+				A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
@@ -1197,6 +1227,7 @@
 				A0B0AA3F20EBC98B00933759 /* LanguageDaoSpec.swift in Sources */,
 				A0FFE52320D0211E0026C0C7 /* GlobalSpec.swift in Sources */,
 				A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */,
+				A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */,
 				A0FFE50920D01DF20026C0C7 /* CategorySpec.swift in Sources */,
 				A003811D20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift in Sources */,
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
@@ -1208,6 +1239,7 @@
 				A003812120FF6FFD00CDA44D /* AccountViewControllerSpec.swift in Sources */,
 				A0B0AA4720ECF9F400933759 /* LoadingViewModelSpec.swift in Sources */,
 				A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */,
+				A0DAF9412132B845009B2743 /* LoadingViewControllerSpec.swift in Sources */,
 				A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */,
 				A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */,
 				A0B0AA3C20EBC98B00933759 /* OptionItemDaoSpec.swift in Sources */,

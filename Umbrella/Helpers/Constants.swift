@@ -10,5 +10,11 @@ import Foundation
 
 enum Config {
     static var gitBaseURL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
+    //Test the GitManager
     static var debug: Bool = false
+}
+
+enum Database {
+    static var name: String = "database.db"
+    static var password: String = "umbrella"
 }

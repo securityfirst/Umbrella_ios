@@ -24,7 +24,7 @@ struct Column {
     var name: String?
     var type: ColumnType?
     var foreignKey: ForeignKey?
-    var isNotNull: Bool?
+    var isNotNull: Bool = true
     
     //
     // MARK: - Initializers

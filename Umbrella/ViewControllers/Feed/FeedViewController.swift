@@ -19,10 +19,19 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let isAcceptTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "LoadingViewController")
         
-        UIApplication.shared.keyWindow?.addSubview(controller.view)
+        if isAcceptTerm {
+            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+            UIApplication.shared.keyWindow?.addSubview(controller.view)
+            controller.loadTent {
+            }
+        } else {
+            let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
+            self.present(controller, animated: false, completion: nil)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
