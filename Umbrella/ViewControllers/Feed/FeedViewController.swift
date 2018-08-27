@@ -19,6 +19,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 0
         let isAcceptTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -32,9 +33,20 @@ class FeedViewController: UIViewController {
             self.present(controller, animated: false, completion: nil)
         }
         
+        UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 1
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func choiceAction(_ sender: Any) {
     }
 }
