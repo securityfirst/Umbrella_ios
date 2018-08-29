@@ -2,6 +2,7 @@ PODS:
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Fabric (1.7.6)
+  - FeedKit (8.0.0)
   - Files (2.2.1)
   - Localize-Swift (2.0.0)
   - MarkdownView (1.2.0)
@@ -20,6 +21,7 @@ PODS:
 DEPENDENCIES:
   - Crashlytics
   - Fabric
+  - FeedKit (~> 8.0)
   - Files
   - Localize-Swift (~> 2.0)
   - MarkdownView
@@ -33,6 +35,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Crashlytics
     - Fabric
+    - FeedKit
     - Files
     - Localize-Swift
     - MarkdownView
@@ -54,6 +57,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
   Files: 18a88ede4f1e339a73adaca7272af15fa32ba69f
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
   MarkdownView: d72e5cca8172402a579d9ba082968af36c2faf56
@@ -64,6 +68,6 @@ SPEC CHECKSUMS:
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
   Yams: 9dfe90be5b942df6fa42ead8e6f0313e05600755
 
-PODFILE CHECKSUM: b78469a0186bab05e454e958e31e0f3ce87de8ee
+PODFILE CHECKSUM: cff5dd38b3b13b0fa59d1d6e39ee266e47331f7a
 
 COCOAPODS: 1.5.0.beta.1

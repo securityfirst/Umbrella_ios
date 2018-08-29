@@ -13,6 +13,7 @@ target 'Umbrella' do
   pod 'Files'
   pod 'Yams'
   pod 'MarkdownView'
+  pod 'FeedKit', '~> 8.0'
   
   target 'UmbrellaTests' do
     inherit! :search_paths

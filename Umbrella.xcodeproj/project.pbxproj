@@ -95,6 +95,9 @@
 		A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */; };
 		A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */; };
 		A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */; };
+		A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B432135AEAC00C28C3B /* FeedView.swift */; };
+		A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B452135AEBC00C28C3B /* RssView.swift */; };
+		A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B472136B16600C28C3B /* RssCell.swift */; };
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
@@ -272,6 +275,9 @@
 		A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParser.swift; sourceTree = "<group>"; };
 		A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
 		A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentParser.swift; sourceTree = "<group>"; };
+		A0CC7B432135AEAC00C28C3B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		A0CC7B452135AEBC00C28C3B /* RssView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssView.swift; sourceTree = "<group>"; };
+		A0CC7B472136B16600C28C3B /* RssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssCell.swift; sourceTree = "<group>"; };
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
@@ -584,6 +590,7 @@
 				A0B0AA6820EE575400933759 /* TabBar.swift */,
 				A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */,
 				A003811320FE368B00CDA44D /* Form */,
+				A0CC7B422135AE7100C28C3B /* Feed */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -793,6 +800,16 @@
 				A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */,
 			);
 			path = Parsers;
+			sourceTree = "<group>";
+		};
+		A0CC7B422135AE7100C28C3B /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A0CC7B432135AEAC00C28C3B /* FeedView.swift */,
+				A0CC7B452135AEBC00C28C3B /* RssView.swift */,
+				A0CC7B472136B16600C28C3B /* RssCell.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		A0E81C0221107CEB00FB73FF /* Cells */ = {
@@ -1047,6 +1064,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Files/Files.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
@@ -1056,6 +1074,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Files.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
@@ -1155,6 +1174,7 @@
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
 				A003812F210741A500CDA44D /* MultiChoiceCell.swift in Sources */,
 				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
+				A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */,
 				A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
@@ -1168,6 +1188,7 @@
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
+				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
 				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
 				A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */,
@@ -1203,6 +1224,7 @@
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
+				A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
