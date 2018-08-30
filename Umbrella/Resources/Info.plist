@@ -48,6 +48,7 @@
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 		<string>SFProText-SemiBold.ttf</string>
+		<string>SFProText-Regular.ttf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>

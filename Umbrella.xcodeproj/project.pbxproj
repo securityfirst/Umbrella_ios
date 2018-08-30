@@ -98,6 +98,9 @@
 		A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B432135AEAC00C28C3B /* FeedView.swift */; };
 		A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B452135AEBC00C28C3B /* RssView.swift */; };
 		A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B472136B16600C28C3B /* RssCell.swift */; };
+		A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B492136D91700C28C3B /* ListRssViewController.swift */; };
+		A0CC7B4D2136E11800C28C3B /* ListRssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */; };
+		A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */; };
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
@@ -278,6 +281,10 @@
 		A0CC7B432135AEAC00C28C3B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		A0CC7B452135AEBC00C28C3B /* RssView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssView.swift; sourceTree = "<group>"; };
 		A0CC7B472136B16600C28C3B /* RssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssCell.swift; sourceTree = "<group>"; };
+		A0CC7B492136D91700C28C3B /* ListRssViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssViewController.swift; sourceTree = "<group>"; };
+		A0CC7B4B2136DE5700C28C3B /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
+		A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssCell.swift; sourceTree = "<group>"; };
+		A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRssCell.swift; sourceTree = "<group>"; };
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
@@ -429,6 +436,7 @@
 		A00386F220F394F7004FAC8A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A0CC7B4B2136DE5700C28C3B /* SFProText-Regular.ttf */,
 				A0DFF37B20F3B74A008F3E43 /* SFProText-SemiBold.ttf */,
 				A00386F320F39529004FAC8A /* Roboto-Bold.ttf */,
 				A00386F420F39529004FAC8A /* Roboto-BoldCondensed.ttf */,
@@ -539,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */,
+				A0CC7B492136D91700C28C3B /* ListRssViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -808,6 +817,8 @@
 				A0CC7B432135AEAC00C28C3B /* FeedView.swift */,
 				A0CC7B452135AEBC00C28C3B /* RssView.swift */,
 				A0CC7B472136B16600C28C3B /* RssCell.swift */,
+				A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */,
+				A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1180,6 +1191,7 @@
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
+				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
@@ -1213,6 +1225,7 @@
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
+				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
 				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
@@ -1225,6 +1238,7 @@
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */,
+				A0CC7B4D2136E11800C28C3B /* ListRssCell.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,

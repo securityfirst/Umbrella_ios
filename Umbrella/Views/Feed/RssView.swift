@@ -7,27 +7,54 @@
 //
 
 import UIKit
+import FeedKit
+
+protocol RssViewDelegate: class {
+    func openRss(rss: RSSFeed)
+}
 
 class RssView: UIView {
     
+    //
+    // MARK: - Properties
     @IBOutlet weak var rssTableView: UITableView!
     
-//    { "link":"https://threatpost.com/feed/"},
-//    { "link":"https://krebsonsecurity.com/feed/"},
-//    { "link":"http://feeds.feedburner.com/NakedSecurity"},
-//    { "link":"http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk"},
-//    { "link":"http://rss.cnn.com/rss/edition.rss"},
-//    { "link":"https://www.aljazeera.com/xml/rss/all.xml"},
-//    { "link":"https://www.theguardian.com/world/rss"}
     var rssDefaultArray = [
-        ["title": "The first stop for security news | Threatpost", "desc": "The first stop for security news", "url": "https://threatpost.com/feed/"]
+        ["url": "https://threatpost.com/feed/"],
+        ["url": "https://krebsonsecurity.com/feed/"],
+        ["url": "http://feeds.feedburner.com/NakedSecurity"],
+        ["url": "http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk"],
+        ["url": "http://rss.cnn.com/rss/edition.rss"],
+        ["url": "https://www.aljazeera.com/xml/rss/all.xml"],
+        ["url": "https://www.theguardian.com/world/rss"]
     ]
+    
+    var rssArray: [Result] = [Result]()
+    weak var delegate: RssViewDelegate!
+    
+    //
+    // MARK: - Life cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.rssTableView.rowHeight = UITableViewAutomaticDimension
         self.rssTableView.estimatedRowHeight = 44.0
+        
+        var count = 0
+        for item in rssDefaultArray {
+            let feedURL = URL(string: item["url"]!)!
+            let parser = FeedParser(URL: feedURL)
+            parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
+                count += 1
+                self.rssArray.append(result)
+                DispatchQueue.main.async {
+                    if count == self.rssDefaultArray.count && count > 0 {
+                        self.rssTableView.reloadData()
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -40,7 +67,7 @@ extension RssView: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return self.formViewModel.umbrella.forms.count
-        return 1
+        return self.rssArray.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,9 +75,9 @@ extension RssView: UITableViewDataSource {
         //        cell.configure(withViewModel: formViewModel, indexPath: indexPath)
         //        cell.delegate = self
         
-        var item = rssDefaultArray[indexPath.row]
-        cell.titleLabel.text = item["title"]
-        cell.descriptionLabel.text = item["desc"]
+        let item = self.rssArray[indexPath.row]
+        cell.titleLabel.text = item.rssFeed?.title
+        cell.descriptionLabel.text = item.rssFeed?.description
         return cell
     }
 }
@@ -64,5 +91,10 @@ extension RssView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let item = self.rssArray[indexPath.row]
+        if let rssFeed = item.rssFeed {
+            self.delegate.openRss(rss: rssFeed)
+        }
     }
 }

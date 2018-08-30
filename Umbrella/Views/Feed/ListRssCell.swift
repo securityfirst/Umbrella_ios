@@ -1,5 +1,5 @@
 //
-//  RssCell.swift
+//  ListRssCell.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 29/08/2018.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class RssCell: UITableViewCell {
-    
+class ListRssCell: UITableViewCell {
+
     //
     // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     //
