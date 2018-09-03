@@ -35,6 +35,15 @@
 		A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */; };
 		A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */; };
 		A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007B3C421256D4000B3D8C9 /* Localizable.strings */; };
+		A021159C213D6B84004B5B73 /* TourViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */; };
+		A021159E213D6BAA004B5B73 /* ListRssViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */; };
+		A02115A0213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159F213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift */; };
+		A02115A2213D6C5A004B5B73 /* FeedViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */; };
+		A02115A4213D6C8A004B5B73 /* ListRssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */; };
+		A02115A6213D6C95004B5B73 /* RssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */; };
+		A02115A9213D6D5F004B5B73 /* ListRssCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A8213D6D5F004B5B73 /* ListRssCellSpec.swift */; };
+		A02115AB213D6D6D004B5B73 /* CardRssCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115AA213D6D6D004B5B73 /* CardRssCellSpec.swift */; };
+		A02115AD213D6FA2004B5B73 /* ImageDownloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115AC213D6FA2004B5B73 /* ImageDownloadSpec.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
@@ -220,6 +229,15 @@
 		A007B3C521256D5900B3D8C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A007B3C621256D9400B3D8C9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A007B3C721256D9E00B3D8C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewControllerSpec.swift; sourceTree = "<group>"; };
+		A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssViewControllerSpec.swift; sourceTree = "<group>"; };
+		A021159F213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewControllerSpec.swift; sourceTree = "<group>"; };
+		A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelSpec.swift; sourceTree = "<group>"; };
+		A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssViewModelSpec.swift; sourceTree = "<group>"; };
+		A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssViewModelSpec.swift; sourceTree = "<group>"; };
+		A02115A8213D6D5F004B5B73 /* ListRssCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssCellSpec.swift; sourceTree = "<group>"; };
+		A02115AA213D6D6D004B5B73 /* CardRssCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRssCellSpec.swift; sourceTree = "<group>"; };
+		A02115AC213D6FA2004B5B73 /* ImageDownloadSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadSpec.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
@@ -420,6 +438,7 @@
 		A003811420FE36B900CDA44D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A02115A7213D6D2E004B5B73 /* Feed */,
 				A003811520FE3F2200CDA44D /* Form */,
 				A08F58BC212AC05400BEF571 /* DynamicForm */,
 			);
@@ -466,6 +485,15 @@
 				A007B3C421256D4000B3D8C9 /* Localizable.strings */,
 			);
 			path = i18n;
+			sourceTree = "<group>";
+		};
+		A02115A7213D6D2E004B5B73 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A02115A8213D6D5F004B5B73 /* ListRssCellSpec.swift */,
+				A02115AA213D6D6D004B5B73 /* CardRssCellSpec.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		A05BA7FB20E11B5700482003 /* SQL */ = {
@@ -903,6 +931,9 @@
 			isa = PBXGroup;
 			children = (
 				A0B0AA4620ECF9F400933759 /* LoadingViewModelSpec.swift */,
+				A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */,
+				A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */,
+				A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -912,6 +943,7 @@
 			children = (
 				A0FFE52220D0211E0026C0C7 /* GlobalSpec.swift */,
 				A0641EEB20D90F970044ADAB /* InputFileReaderSpec.swift */,
+				A02115AC213D6FA2004B5B73 /* ImageDownloadSpec.swift */,
 				A0FFE51B20D020DD0026C0C7 /* Managers */,
 				A0FFE51C20D020DD0026C0C7 /* Parsers */,
 			);
@@ -945,6 +977,9 @@
 				A003811C20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift */,
 				A003812020FF6FFD00CDA44D /* AccountViewControllerSpec.swift */,
 				A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */,
+				A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */,
+				A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */,
+				A021159F213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1294,26 +1329,35 @@
 				A0B0AA3A20EBC98B00933759 /* CheckItemDaoSpec.swift in Sources */,
 				A0B0AA3F20EBC98B00933759 /* LanguageDaoSpec.swift in Sources */,
 				A0FFE52320D0211E0026C0C7 /* GlobalSpec.swift in Sources */,
+				A02115A2213D6C5A004B5B73 /* FeedViewModelSpec.swift in Sources */,
 				A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */,
 				A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */,
 				A0FFE50920D01DF20026C0C7 /* CategorySpec.swift in Sources */,
 				A003811D20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift in Sources */,
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
 				A0B0AA4220EBDEC100933759 /* UmbrellaDatabaseSpec.swift in Sources */,
+				A02115A4213D6C8A004B5B73 /* ListRssViewModelSpec.swift in Sources */,
+				A021159E213D6BAA004B5B73 /* ListRssViewControllerSpec.swift in Sources */,
 				A0FFE51520D01E520026C0C7 /* ItemFormSpec.swift in Sources */,
 				A0B0AA3B20EBC98B00933759 /* ScreenDaoSpec.swift in Sources */,
+				A02115AD213D6FA2004B5B73 /* ImageDownloadSpec.swift in Sources */,
 				A0FFE51320D01E470026C0C7 /* ScreenSpec.swift in Sources */,
 				A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */,
+				A021159C213D6B84004B5B73 /* TourViewControllerSpec.swift in Sources */,
 				A003812120FF6FFD00CDA44D /* AccountViewControllerSpec.swift in Sources */,
 				A0B0AA4720ECF9F400933759 /* LoadingViewModelSpec.swift in Sources */,
 				A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */,
 				A0DAF9412132B845009B2743 /* LoadingViewControllerSpec.swift in Sources */,
 				A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */,
 				A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */,
+				A02115A9213D6D5F004B5B73 /* ListRssCellSpec.swift in Sources */,
 				A0B0AA3C20EBC98B00933759 /* OptionItemDaoSpec.swift in Sources */,
+				A02115AB213D6D6D004B5B73 /* CardRssCellSpec.swift in Sources */,
 				A0B0AA3D20EBC98B00933759 /* FormDaoSpec.swift in Sources */,
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
+				A02115A6213D6C95004B5B73 /* RssViewModelSpec.swift in Sources */,
 				A0B0AA3E20EBC98B00933759 /* ItemFormDaoSpec.swift in Sources */,
+				A02115A0213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift in Sources */,
 				A003811720FE3F3D00CDA44D /* StepperViewSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
 				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,
