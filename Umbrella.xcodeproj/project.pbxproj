@@ -101,6 +101,12 @@
 		A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B492136D91700C28C3B /* ListRssViewController.swift */; };
 		A0CC7B4D2136E11800C28C3B /* ListRssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */; };
 		A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */; };
+		A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B502137F53700C28C3B /* FeedViewModel.swift */; };
+		A0CC7B552137F57400C28C3B /* ListRssViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */; };
+		A0CC7B572137F65800C28C3B /* RssViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B562137F65800C28C3B /* RssViewModel.swift */; };
+		A0CC7B5A2138048700C28C3B /* ImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B592138048700C28C3B /* ImageDownload.swift */; };
+		A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */; };
+		A0CC7B5E21384EB000C28C3B /* DetailRssViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B5D21384EB000C28C3B /* DetailRssViewController.swift */; };
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
@@ -285,6 +291,12 @@
 		A0CC7B4B2136DE5700C28C3B /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssCell.swift; sourceTree = "<group>"; };
 		A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRssCell.swift; sourceTree = "<group>"; };
+		A0CC7B502137F53700C28C3B /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssViewModel.swift; sourceTree = "<group>"; };
+		A0CC7B562137F65800C28C3B /* RssViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssViewModel.swift; sourceTree = "<group>"; };
+		A0CC7B592138048700C28C3B /* ImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownload.swift; sourceTree = "<group>"; };
+		A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		A0CC7B5D21384EB000C28C3B /* DetailRssViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewController.swift; sourceTree = "<group>"; };
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
@@ -548,6 +560,7 @@
 			children = (
 				A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */,
 				A0CC7B492136D91700C28C3B /* ListRssViewController.swift */,
+				A0CC7B5D21384EB000C28C3B /* DetailRssViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -689,6 +702,7 @@
 				A00386F920F39664004FAC8A /* UIView+Ext.swift */,
 				A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */,
 				A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */,
+				A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -727,6 +741,7 @@
 				A0C6CE9F20B5ABB6005BC111 /* Constants.swift */,
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
+				A0CC7B592138048700C28C3B /* ImageDownload.swift */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 			);
@@ -752,6 +767,9 @@
 				A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */,
 				A00381342107424E00CDA44D /* FillFormViewModel.swift */,
 				A0038132210741F700CDA44D /* DynamicFormViewModel.swift */,
+				A0CC7B502137F53700C28C3B /* FeedViewModel.swift */,
+				A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */,
+				A0CC7B562137F65800C28C3B /* RssViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -816,11 +834,19 @@
 			children = (
 				A0CC7B432135AEAC00C28C3B /* FeedView.swift */,
 				A0CC7B452135AEBC00C28C3B /* RssView.swift */,
+				A0CC7B582137F8A900C28C3B /* Cells */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A0CC7B582137F8A900C28C3B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				A0CC7B472136B16600C28C3B /* RssCell.swift */,
 				A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */,
 				A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */,
 			);
-			path = Feed;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A0E81C0221107CEB00FB73FF /* Cells */ = {
@@ -1186,6 +1212,7 @@
 				A003812F210741A500CDA44D /* MultiChoiceCell.swift in Sources */,
 				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
 				A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */,
+				A0CC7B572137F65800C28C3B /* RssViewModel.swift in Sources */,
 				A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
@@ -1202,11 +1229,13 @@
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
+				A0CC7B552137F57400C28C3B /* ListRssViewModel.swift in Sources */,
 				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
 				A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */,
 				A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
+				A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */,
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
@@ -1214,6 +1243,7 @@
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
 				A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */,
+				A0CC7B5A2138048700C28C3B /* ImageDownload.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
 				A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */,
@@ -1221,6 +1251,7 @@
 				A003812721073CDB00CDA44D /* DynamicFormView.swift in Sources */,
 				A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */,
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
+				A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */,
 				A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
@@ -1237,6 +1268,7 @@
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
+				A0CC7B5E21384EB000C28C3B /* DetailRssViewController.swift in Sources */,
 				A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */,
 				A0CC7B4D2136E11800C28C3B /* ListRssCell.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,

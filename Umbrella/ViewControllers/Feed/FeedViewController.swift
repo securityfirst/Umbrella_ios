@@ -55,7 +55,11 @@ class FeedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rssSegue" {
          let destination = (segue.destination as? ListRssViewController)!
+            let rss = (sender as? RSSFeed)!
             
+            if let items = rss.items {
+                destination.listRssViewModel.items = items
+            }
         }
     }
     

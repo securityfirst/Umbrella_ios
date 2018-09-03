@@ -28,5 +28,27 @@ class ListRssCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //
+    // MARK: - Functions
+    
+    /// Configure the cell with viewModel
+    ///
+    /// - Parameters:
+    ///   - viewModel: ViewModel
+    ///   - indexPath: IndexPath
+    func configure(withViewModel viewModel:ListRssViewModel, indexPath: IndexPath) {
+        
+        let item = viewModel.items[indexPath.row]
+        self.titleLabel.text = item.title
+        
+        Global.dateFormatter.dateFormat = "MM/dd/YYYY HH:mm"        
+        self.authorLabel.text = ""
+        if let date = item.pubDate {
+            self.authorLabel.text = Global.dateFormatter.string(from: date)
+        }
+        
+        self.descriptionLabel.text = item.description
+    }
 
 }
