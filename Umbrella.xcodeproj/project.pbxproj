@@ -44,6 +44,12 @@
 		A02115A9213D6D5F004B5B73 /* ListRssCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A8213D6D5F004B5B73 /* ListRssCellSpec.swift */; };
 		A02115AB213D6D6D004B5B73 /* CardRssCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115AA213D6D6D004B5B73 /* CardRssCellSpec.swift */; };
 		A02115AD213D6FA2004B5B73 /* ImageDownloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115AC213D6FA2004B5B73 /* ImageDownloadSpec.swift */; };
+		A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115AE213D8132004B5B73 /* RssItemDao.swift */; };
+		A02115B1213D816A004B5B73 /* RssItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B0213D816A004B5B73 /* RssItem.swift */; };
+		A02115B3213EB331004B5B73 /* DetailRssViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */; };
+		A02115B5213EB45C004B5B73 /* DetailRssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */; };
+		A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */; };
+		A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B8213EC106004B5B73 /* FeedCell.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
@@ -238,6 +244,12 @@
 		A02115A8213D6D5F004B5B73 /* ListRssCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssCellSpec.swift; sourceTree = "<group>"; };
 		A02115AA213D6D6D004B5B73 /* CardRssCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRssCellSpec.swift; sourceTree = "<group>"; };
 		A02115AC213D6FA2004B5B73 /* ImageDownloadSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadSpec.swift; sourceTree = "<group>"; };
+		A02115AE213D8132004B5B73 /* RssItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssItemDao.swift; sourceTree = "<group>"; };
+		A02115B0213D816A004B5B73 /* RssItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssItem.swift; sourceTree = "<group>"; };
+		A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewModel.swift; sourceTree = "<group>"; };
+		A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewModelSpec.swift; sourceTree = "<group>"; };
+		A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewSpec.swift; sourceTree = "<group>"; };
+		A02115B8213EC106004B5B73 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
@@ -492,6 +504,7 @@
 			children = (
 				A02115A8213D6D5F004B5B73 /* ListRssCellSpec.swift */,
 				A02115AA213D6D6D004B5B73 /* CardRssCellSpec.swift */,
+				A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -666,6 +679,7 @@
 				A0D8BCA820E246AD0052028F /* ItemFormDao.swift */,
 				A0D8BCAC20E246C90052028F /* OptionItemDao.swift */,
 				A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */,
+				A02115AE213D8132004B5B73 /* RssItemDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -743,6 +757,7 @@
 				A075248B20C8290300E91A4A /* Language.swift */,
 				A064CE9720AC883900CE99E1 /* Category.swift */,
 				A075248720C824B300E91A4A /* Segment.swift */,
+				A02115B0213D816A004B5B73 /* RssItem.swift */,
 				A0FFE50220CEEB010026C0C7 /* CheckList */,
 				A0FFE4FB20CEEA660026C0C7 /* Form */,
 			);
@@ -798,6 +813,7 @@
 				A0CC7B502137F53700C28C3B /* FeedViewModel.swift */,
 				A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */,
 				A0CC7B562137F65800C28C3B /* RssViewModel.swift */,
+				A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -871,6 +887,7 @@
 			isa = PBXGroup;
 			children = (
 				A0CC7B472136B16600C28C3B /* RssCell.swift */,
+				A02115B8213EC106004B5B73 /* FeedCell.swift */,
 				A0CC7B4C2136E11800C28C3B /* ListRssCell.swift */,
 				A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */,
 			);
@@ -934,6 +951,7 @@
 				A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */,
 				A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */,
 				A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */,
+				A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1235,6 +1253,7 @@
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
 				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
+				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
@@ -1253,10 +1272,12 @@
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
+				A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
+				A02115B3213EB331004B5B73 /* DetailRssViewModel.swift in Sources */,
 				A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */,
 				A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
@@ -1298,6 +1319,7 @@
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
+				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
 				A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
@@ -1349,6 +1371,7 @@
 				A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */,
 				A0DAF9412132B845009B2743 /* LoadingViewControllerSpec.swift in Sources */,
 				A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */,
+				A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */,
 				A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */,
 				A02115A9213D6D5F004B5B73 /* ListRssCellSpec.swift in Sources */,
 				A0B0AA3C20EBC98B00933759 /* OptionItemDaoSpec.swift in Sources */,
@@ -1364,6 +1387,7 @@
 				A0FFE51120D01E390026C0C7 /* FormSpec.swift in Sources */,
 				A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */,
 				A0FFE50D20D01E1C0026C0C7 /* CheckListSpec.swift in Sources */,
+				A02115B5213EB45C004B5B73 /* DetailRssViewModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

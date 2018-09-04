@@ -12,10 +12,16 @@ class FeedView: UIView {
 
     //
     // MARK: - Properties
+    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var feedTableView: UITableView!
     
     //
     // MARK: - Life cycle
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.emptyLabel.text = "There no Feed".localized()
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -31,7 +37,7 @@ extension FeedView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: FormCell = (tableView.dequeueReusableCell(withIdentifier: "FormCell", for: indexPath) as? FormCell)!
+        let cell: FeedCell = (tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as? FeedCell)!
 //        cell.configure(withViewModel: formViewModel, indexPath: indexPath)
 //        cell.delegate = self
         return cell
@@ -42,11 +48,7 @@ extension FeedView: UITableViewDataSource {
 extension FeedView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

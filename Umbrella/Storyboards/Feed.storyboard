@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
         </array>
@@ -29,7 +32,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2U-0I-zK3" userLabel="Rss" customClass="RssView" customModule="Umbrella" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-YZ-qry">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdM-re-zGM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-YZ-qry">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -95,17 +105,24 @@
                                     <constraint firstItem="VNI-YZ-qry" firstAttribute="leading" secondItem="x2U-0I-zK3" secondAttribute="leading" id="hFd-TF-ppT"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="emptyLabel" destination="hdM-re-zGM" id="d0X-fA-2E4"/>
                                     <outlet property="rssTableView" destination="VNI-YZ-qry" id="GRA-8U-a37"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akU-Ma-kkd" userLabel="Feed" customClass="FeedView" customModule="Umbrella" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcD-lK-grc">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-ae-tgy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormCell" rowHeight="106" id="Irh-4B-1vX" customClass="FormCell" customModule="Umbrella" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedCell" rowHeight="106" id="Irh-4B-1vX" customClass="FeedCell" customModule="Umbrella" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Irh-4B-1vX" id="NLB-zL-gqQ">
@@ -115,8 +132,8 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEG-eQ-qtB" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                             <rect key="frame" x="22" y="12" width="331" height="82"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-sW-wQl">
-                                                                    <rect key="frame" x="13" y="17" width="305" height="28.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-sW-wQl">
+                                                                    <rect key="frame" x="13" y="17" width="305" height="0.0"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
                                                                     <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -137,28 +154,29 @@
                                                         <constraint firstAttribute="trailing" secondItem="wEG-eQ-qtB" secondAttribute="trailing" constant="22" id="tdg-Va-fsV"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="formBackgroundView" destination="wEG-eQ-qtB" id="GNC-7n-VUk"/>
-                                                    <outlet property="titleLabel" destination="hCY-sW-wQl" id="TkK-Yv-35f"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="akU-Ma-kkd" id="3Dg-i5-6Jg"/>
+                                            <outlet property="delegate" destination="akU-Ma-kkd" id="4qF-ae-jSM"/>
+                                        </connections>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e19-7r-ztS">
-                                        <rect key="frame" x="166" y="268" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Thc-ae-tgy" secondAttribute="bottom" id="96l-vH-CUN"/>
+                                    <constraint firstAttribute="bottom" secondItem="CcD-lK-grc" secondAttribute="bottom" id="9hi-4Z-Ylg"/>
                                     <constraint firstItem="Thc-ae-tgy" firstAttribute="top" secondItem="akU-Ma-kkd" secondAttribute="top" id="CKH-L3-Twn"/>
+                                    <constraint firstAttribute="trailing" secondItem="CcD-lK-grc" secondAttribute="trailing" id="Hql-3P-dcK"/>
                                     <constraint firstItem="Thc-ae-tgy" firstAttribute="leading" secondItem="akU-Ma-kkd" secondAttribute="leading" id="J8r-L7-DPU"/>
+                                    <constraint firstItem="CcD-lK-grc" firstAttribute="leading" secondItem="akU-Ma-kkd" secondAttribute="leading" id="LRT-6X-h5g"/>
                                     <constraint firstAttribute="trailing" secondItem="Thc-ae-tgy" secondAttribute="trailing" id="OcX-G1-7OO"/>
+                                    <constraint firstItem="CcD-lK-grc" firstAttribute="top" secondItem="akU-Ma-kkd" secondAttribute="top" id="g2b-CW-lp1"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="emptyLabel" destination="CcD-lK-grc" id="9e3-IP-nD5"/>
+                                    <outlet property="feedTableView" destination="Thc-ae-tgy" id="oWb-ZZ-XYE"/>
+                                </connections>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPB-pG-1lE">
                                 <rect key="frame" x="127" y="74" width="121" height="29"/>
@@ -191,8 +209,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Ud-3A-tgF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="RUF-9A-BJe"/>
+                    <navigationItem key="navigationItem" title="Feed" id="RUF-9A-BJe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2oU-xr-Uad">
+                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addAction:" destination="7RP-n2-zSo" id="rpP-NZ-hK6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addBarButton" destination="2oU-xr-Uad" id="wJB-mv-vx2"/>
                         <outlet property="feedView" destination="akU-Ma-kkd" id="hWp-Vb-UVY"/>
                         <outlet property="rssView" destination="x2U-0I-zK3" id="EPp-ey-TAH"/>
                         <segue destination="JGr-7a-Zz5" kind="show" identifier="rssSegue" id="biR-P7-f4a"/>

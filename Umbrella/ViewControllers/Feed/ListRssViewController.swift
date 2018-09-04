@@ -48,7 +48,7 @@ class ListRssViewController: UIViewController {
         if segue.identifier == "detailFeedSegue" {
             let destination = (segue.destination as? DetailRssViewController)!
             let rss = (sender as? RSSFeedItem)!
-            destination.item = rss
+            destination.detailRssViewModel.item = rss
         }
     }
     

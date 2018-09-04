@@ -10,11 +10,12 @@ import UIKit
 import FeedKit
 
 class FeedViewController: UIViewController {
-
+    
     //
     // MARK: - Properties
     @IBOutlet weak var feedView: FeedView!
     @IBOutlet weak var rssView: RssView!
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     //
     // MARK: - Life cycle
@@ -25,7 +26,10 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addBarButton.isEnabled = false
+        addBarButton.tintColor = UIColor.clear
+        addBarButton.accessibilityElementsHidden = true
+        addBarButton.isAccessibilityElement = false
         rssView.delegate = self
         
         UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 0
@@ -44,7 +48,7 @@ class FeedViewController: UIViewController {
         
         UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 1
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -54,7 +58,7 @@ class FeedViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rssSegue" {
-         let destination = (segue.destination as? ListRssViewController)!
+            let destination = (segue.destination as? ListRssViewController)!
             let rss = (sender as? RSSFeed)!
             
             if let items = rss.items {
@@ -63,12 +67,47 @@ class FeedViewController: UIViewController {
         }
     }
     
+    func validateUrl (urlString: String) -> Bool {
+        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+        return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
+    }
+    
     //
     // MARK: - Actions
     
     @IBAction func choiceAction(_ sender: UISegmentedControl) {
         self.feedView.isHidden = sender.selectedSegmentIndex == 1
         self.rssView.isHidden = sender.selectedSegmentIndex == 0
+        
+        addBarButton.accessibilityElementsHidden = self.feedView.isHidden
+        addBarButton.isAccessibilityElement = !self.rssView.isHidden
+        addBarButton.isEnabled = !self.rssView.isHidden
+        addBarButton.tintColor = addBarButton.isEnabled ? #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1) : UIColor.clear
+    }
+    
+    @IBAction func addAction(_ sender: Any) {
+        let alertController = UIAlertController(title: "Feed Sources".localized(), message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "http://"
+        }
+        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertActionStyle.destructive, handler: { _ in
+            let firstTextField = alertController.textFields![0] as UITextField
+            print(firstTextField.text ?? "")
+            
+            if (firstTextField.text?.count)! > 0 {
+                if self.validateUrl(urlString: firstTextField.text!) {
+                    self.rssView.rssViewModel.insert(firstTextField.text!)
+                    self.rssView.loadRss()
+                }
+            }
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertActionStyle.cancel, handler: nil)
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

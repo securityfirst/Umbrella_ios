@@ -13,16 +13,19 @@ import FeedKit
 class DetailRssViewController: UIViewController {
 
     @IBOutlet weak var detailWebView: UIWebView!
-    var item: RSSFeedItem?
+    lazy var detailRssViewModel: DetailRssViewModel = {
+        let detailRssViewModel = DetailRssViewModel()
+        return detailRssViewModel
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let link = item?.link {
+        if let link = detailRssViewModel.item?.link {
             let request = URLRequest(url: URL(string: link)!)
             self.detailWebView.loadRequest(request)
             
-            self.title = item?.title
+            self.title = detailRssViewModel.item?.title
         }
         
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(self.shareAction(_:)))
@@ -38,7 +41,7 @@ class DetailRssViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
-        if let link = item?.link {
+        if let link = detailRssViewModel.item?.link {
             let objectsToShare = [URL(string: link)!]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             

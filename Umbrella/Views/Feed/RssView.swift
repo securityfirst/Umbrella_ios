@@ -17,7 +17,9 @@ class RssView: UIView {
     
     //
     // MARK: - Properties
+    @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var rssTableView: UITableView!
+    
     lazy var rssViewModel: RssViewModel = {
         let rssViewModel = RssViewModel()
         return rssViewModel
@@ -34,7 +36,17 @@ class RssView: UIView {
         self.rssTableView.rowHeight = UITableViewAutomaticDimension
         self.rssTableView.estimatedRowHeight = 44.0
         
+        self.emptyLabel.text = "There no RSS".localized()
+        loadRss()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Load all RSS
+    func loadRss() {
         rssViewModel.loadRSS {
+            self.rssTableView.isHidden = (self.rssViewModel.rssArray.count == 0)
             self.rssTableView.reloadData()
         }
     }
