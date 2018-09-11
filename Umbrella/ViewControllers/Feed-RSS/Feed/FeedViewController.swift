@@ -30,6 +30,8 @@ class FeedViewController: UIViewController {
         addBarButton.tintColor = UIColor.clear
         addBarButton.accessibilityElementsHidden = true
         addBarButton.isAccessibilityElement = false
+        
+        feedView.delegate = self
         rssView.delegate = self
         
         UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 0
@@ -47,6 +49,16 @@ class FeedViewController: UIViewController {
         }
         
         UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 1
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)
+    }
+    
+    @objc func updateLocation(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        
+        if let name = userInfo?["location"] as? String {
+            feedView.locationLabel.text = name
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,6 +79,10 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /// Validate if there is an url valid
+    ///
+    /// - Parameter urlString: String
+    /// - Returns: Bool
     func validateUrl (urlString: String) -> Bool {
         let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
         return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
@@ -89,6 +105,7 @@ class FeedViewController: UIViewController {
         let alertController = UIAlertController(title: "Feed Sources".localized(), message: "", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "http://"
+            textField.keyboardType = UIKeyboardType.URL
         }
         let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertActionStyle.destructive, handler: { _ in
             let firstTextField = alertController.textFields![0] as UITextField
@@ -111,8 +128,18 @@ class FeedViewController: UIViewController {
     }
 }
 
+//
+// MARK: - RssViewDelegate
 extension FeedViewController: RssViewDelegate {
     func openRss(rss: RSSFeed) {
         self.performSegue(withIdentifier: "rssSegue", sender: rss)
+    }
+}
+
+//
+// MARK: - FeedViewDelegate
+extension FeedViewController: FeedViewDelegate {
+    func choiceLocation() {
+        self.performSegue(withIdentifier: "locationSegue", sender: nil)
     }
 }

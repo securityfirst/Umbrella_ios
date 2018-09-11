@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol FeedViewDelegate: class {
+    func choiceLocation()
+}
+
 class FeedView: UIView {
 
     //
     // MARK: - Properties
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var intervalLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    weak var delegate: FeedViewDelegate!
     
     //
     // MARK: - Life cycle
@@ -21,6 +28,25 @@ class FeedView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.emptyLabel.text = "There no Feed".localized()
+    }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func setYourFeedAction(_ sender: Any) {
+        print("Set your Feed")
+    }
+    
+    @IBAction func intervalAction(_ sender: Any) {
+        print("Interval")
+    }
+    
+    @IBAction func locationAction(_ sender: Any) {
+        self.delegate?.choiceLocation()
+    }
+    
+    @IBAction func securityFeedAction(_ sender: Any) {
+        print("Security")
     }
 }
 

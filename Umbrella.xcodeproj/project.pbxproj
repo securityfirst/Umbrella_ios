@@ -50,6 +50,8 @@
 		A02115B5213EB45C004B5B73 /* DetailRssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */; };
 		A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */; };
 		A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B8213EC106004B5B73 /* FeedCell.swift */; };
+		A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115BA214163DC004B5B73 /* LocationViewController.swift */; };
+		A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E5EF92148185200DEFBFB /* LocationViewModel.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
@@ -250,6 +252,8 @@
 		A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewModelSpec.swift; sourceTree = "<group>"; };
 		A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewSpec.swift; sourceTree = "<group>"; };
 		A02115B8213EC106004B5B73 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		A02115BA214163DC004B5B73 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		A02E5EF92148185200DEFBFB /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
@@ -509,6 +513,24 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		A02115BC214168BC004B5B73 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */,
+				A02115BA214163DC004B5B73 /* LocationViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A02115BD214168CD004B5B73 /* RSS */ = {
+			isa = PBXGroup;
+			children = (
+				A0CC7B492136D91700C28C3B /* ListRssViewController.swift */,
+				A0CC7B5D21384EB000C28C3B /* DetailRssViewController.swift */,
+			);
+			path = RSS;
+			sourceTree = "<group>";
+		};
 		A05BA7FB20E11B5700482003 /* SQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,14 +618,13 @@
 			path = SQL;
 			sourceTree = "<group>";
 		};
-		A0B0AA8020EE707D00933759 /* Feed */ = {
+		A0B0AA8020EE707D00933759 /* Feed-RSS */ = {
 			isa = PBXGroup;
 			children = (
-				A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */,
-				A0CC7B492136D91700C28C3B /* ListRssViewController.swift */,
-				A0CC7B5D21384EB000C28C3B /* DetailRssViewController.swift */,
+				A02115BC214168BC004B5B73 /* Feed */,
+				A02115BD214168CD004B5B73 /* RSS */,
 			);
-			path = Feed;
+			path = "Feed-RSS";
 			sourceTree = "<group>";
 		};
 		A0B0AA8120EE708500933759 /* Form */ = {
@@ -653,7 +674,7 @@
 				A0B0AA6820EE575400933759 /* TabBar.swift */,
 				A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */,
 				A003811320FE368B00CDA44D /* Form */,
-				A0CC7B422135AE7100C28C3B /* Feed */,
+				A0CC7B422135AE7100C28C3B /* Feed-RSS */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -769,7 +790,7 @@
 			children = (
 				A08F58BF212AE52800BEF571 /* Tour */,
 				A0B0AA8520F375A000933759 /* Loading */,
-				A0B0AA8020EE707D00933759 /* Feed */,
+				A0B0AA8020EE707D00933759 /* Feed-RSS */,
 				A0B0AA8120EE708500933759 /* Form */,
 				A0B0AA8220EE709100933759 /* CheckList */,
 				A0B0AA8320EE709A00933759 /* Lesson */,
@@ -814,6 +835,7 @@
 				A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */,
 				A0CC7B562137F65800C28C3B /* RssViewModel.swift */,
 				A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */,
+				A02E5EF92148185200DEFBFB /* LocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -873,14 +895,14 @@
 			path = Parsers;
 			sourceTree = "<group>";
 		};
-		A0CC7B422135AE7100C28C3B /* Feed */ = {
+		A0CC7B422135AE7100C28C3B /* Feed-RSS */ = {
 			isa = PBXGroup;
 			children = (
 				A0CC7B432135AEAC00C28C3B /* FeedView.swift */,
 				A0CC7B452135AEBC00C28C3B /* RssView.swift */,
 				A0CC7B582137F8A900C28C3B /* Cells */,
 			);
-			path = Feed;
+			path = "Feed-RSS";
 			sourceTree = "<group>";
 		};
 		A0CC7B582137F8A900C28C3B /* Cells */ = {
@@ -1295,6 +1317,7 @@
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
+				A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */,
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
@@ -1319,6 +1342,7 @@
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
+				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
 				A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,

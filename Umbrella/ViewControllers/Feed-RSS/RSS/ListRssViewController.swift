@@ -86,14 +86,6 @@ extension ListRssViewController: UITableViewDataSource {
         if rssModeView == 0 {
             let cell: ListRssCell = (tableView.dequeueReusableCell(withIdentifier: "ListRssCell", for: indexPath) as? ListRssCell)!
             cell.configure(withViewModel: listRssViewModel, indexPath: indexPath)
-            
-//            if indexPath.row == 0 {
-//                let item = listRssViewModel.items[indexPath.row]
-//                UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, item.title)
-// UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, item.title)
-//
-//            }
-            
             return cell
         } else {
             let cell: CardRssCell = (tableView.dequeueReusableCell(withIdentifier: "CardRssCell", for: indexPath) as? CardRssCell)!

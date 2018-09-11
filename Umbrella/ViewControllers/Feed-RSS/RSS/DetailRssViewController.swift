@@ -12,12 +12,16 @@ import FeedKit
 
 class DetailRssViewController: UIViewController {
 
+    //
+    // MARK: - Properties
     @IBOutlet weak var detailWebView: UIWebView!
     lazy var detailRssViewModel: DetailRssViewModel = {
         let detailRssViewModel = DetailRssViewModel()
         return detailRssViewModel
     }()
     
+    //
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -43,7 +43,7 @@ class RssView: UIView {
     //
     // MARK: - Functions
     
-    /// Load all RSS
+    /// Load all the RSS
     func loadRss() {
         rssViewModel.loadRSS {
             self.rssTableView.isHidden = (self.rssViewModel.rssArray.count == 0)
