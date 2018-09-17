@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class Category: Codable, TableProtocol, FolderProtocol {
+class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     
     // Used in parser from the database to object
     var id: Int
@@ -18,6 +18,7 @@ class Category: Codable, TableProtocol, FolderProtocol {
     //
     // MARK: - Properties
     var name: String?
+    var icon: String?
     let index: Float?
     var parent: Int
     var folderName: String?
@@ -33,6 +34,7 @@ class Category: Codable, TableProtocol, FolderProtocol {
         self.languageId = -1
         
         self.name = ""
+        self.icon = ""
         self.index = 0
         self.folderName = ""
         self.categories = []
@@ -40,12 +42,13 @@ class Category: Codable, TableProtocol, FolderProtocol {
         self.checkList = []
     }
     
-    init(name: String, index: Float, folderName: String = "") {
+    init(name: String, icon: String = "", index: Float, folderName: String = "") {
         self.id = -1
         self.parent = 0
         self.languageId = -1
         
         self.name = name
+        self.icon = icon
         self.index = index
         self.folderName = folderName
         self.categories = []
@@ -60,6 +63,7 @@ class Category: Codable, TableProtocol, FolderProtocol {
         case parent
         case languageId = "language_id"
         case name = "title"
+        case icon
         case index
         case folderName = "folder_name"
     }
@@ -97,6 +101,12 @@ class Category: Codable, TableProtocol, FolderProtocol {
             self.name = ""
         }
         
+        if container.contains(.icon) {
+            self.icon = try container.decode(String.self, forKey: .icon)
+        } else {
+            self.icon = ""
+        }
+        
         if container.contains(.folderName) {
             self.folderName = try container.decode(String.self, forKey: .folderName)
         } else {
@@ -106,6 +116,14 @@ class Category: Codable, TableProtocol, FolderProtocol {
         self.categories = []
         self.segments = []
         self.checkList = []
+    }
+    
+    //
+    // MARK: - NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Category(name: self.name!, icon: self.icon!, index: self.index!, folderName: self.folderName!)
+        copy.id = id
+        return copy
     }
     
     //
@@ -119,6 +137,7 @@ class Category: Codable, TableProtocol, FolderProtocol {
         let array = [
             Column(name: "id", type: .primaryKey),
             Column(name: "name", type: .string),
+            Column(name: "icon", type: .string),
             Column(name: "index", type: .real),
             Column(name: "folder_name", type: .string),
             Column(name: "parent", type: .int),

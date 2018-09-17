@@ -56,6 +56,7 @@ class CategorySpec: QuickSpec {
                     let yml = """
                                 index: 2
                                 title: Communications
+                                icon: test.png
                               """
                     let category = try YAMLDecoder().decode(Category.self, from: yml)
                     
@@ -72,6 +73,7 @@ class CategorySpec: QuickSpec {
                     let yml = """
                                 index: test
                                 title: Communications
+                                icon: test.png
                               """
                     _ = try YAMLDecoder().decode(Category.self, from: yml)
                 } catch {

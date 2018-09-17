@@ -11,6 +11,8 @@ import CoreLocation
 
 class LocationViewController: UIViewController {
     
+    //
+    // MARK: - Properties
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var cityTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
@@ -20,6 +22,8 @@ class LocationViewController: UIViewController {
         return locationViewModel
     }()
     
+    //
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         locationText.setBottomBorder()

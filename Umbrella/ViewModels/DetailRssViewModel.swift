@@ -18,5 +18,6 @@ class DetailRssViewModel {
     //
     // MARK: - Init
     init() {
+        
     }
 }

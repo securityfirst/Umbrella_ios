@@ -125,13 +125,20 @@ struct UmbrellaDatabase {
         for language in languageArray {
             
             language.categories = categoryArray.filter { $0.languageId == language.id && $0.parent == 0 }
+            //Sort by Index
+            language.categories.sort(by: { $0.index! < $1.index!})
             
             //Categories
             for category in language.categories {
                 category.categories = categoryArray.filter { $0.languageId == language.id && $0.parent == category.id }
+                //Sort by Index
+                category.categories.sort(by: { $0.index! < $1.index!})
                 
                 //Segments
                 category.segments = segmentArray.filter { $0.categoryId == category.id }
+                
+                //Sort by Index
+                category.segments.sort(by: { $0.index! < $1.index!})
                 
                 //Recursively
                 convertToObject(category, categoryArray, language, segmentArray, checkListArray, checkItemArray)
@@ -176,6 +183,9 @@ extension UmbrellaDatabase {
         // Language
         for language in self.languages {
             
+            //Sort by Index
+            language.categories.sort(by: { $0.index! < $1.index!})
+            
             let languageRowId = self.languageDao.insert(language)
             
             // To this moment we need to add whole category parent separete of subcategories
@@ -186,6 +196,8 @@ extension UmbrellaDatabase {
                 category.languageId = Int(languageRowId)
                 let categoryRowId = self.categoryDao.insert(category)
                 category.id = Int(categoryRowId)
+                //Sort by Index
+                category.categories.sort(by: { $0.index! < $1.index!})
                 
                 //Segments
                 for index in 0..<category.segments.count {
@@ -195,6 +207,9 @@ extension UmbrellaDatabase {
                     let segmentRowId = self.segmentDao.insert(segment)
                     segment.id = Int(segmentRowId)
                 }
+                
+                //Sort by Index
+                category.segments.sort(by: { $0.index! < $1.index!})
                 
                 // Add whole subCategories recursively
                 self.insertIntoDatabase(category: category, categoryRowId: categoryRowId, languageRowId: languageRowId)
@@ -299,6 +314,7 @@ extension UmbrellaDatabase {
     fileprivate func convertToObject(_ category: Category, _ categories: [Category], _ language: Language, _ segments: [Segment], _ checkLists: [CheckList], _ checkItems: [CheckItem]) {
         
         // Subcategories
+        
         for subcategory in category.categories {
             subcategory.categories = categories.filter { $0.languageId == language.id && $0.parent == subcategory.id }
             

@@ -287,7 +287,7 @@ extension SQLManager {
             }
             
         } else {
-//            print("Database file found at path: \(finalDatabaseURL.path)")
+            print("Database file found at path: \(finalDatabaseURL.path)")
         }
     }
 }

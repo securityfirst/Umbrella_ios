@@ -74,6 +74,14 @@
 		A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */; };
 		A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F58C0212AE53F00BEF571 /* TourViewController.swift */; };
 		A08F58C3212B05C500BEF571 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = A08F58C2212B05C400BEF571 /* terms.html */; };
+		A099D09A214A73FF0064AD18 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D099214A73FF0064AD18 /* LessonViewModel.swift */; };
+		A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */; };
+		A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */; };
+		A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D0A0214A83CC0064AD18 /* CategoryCell.swift */; };
+		A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A27214BDC600019F09B /* DifficultyCell.swift */; };
+		A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */; };
+		A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */; };
+		A0AE1A2E214FE0370019F09B /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A2D214FE0370019F09B /* SegmentViewController.swift */; };
 		A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */; };
 		A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA2C20EBA52200933759 /* CategoryDaoSpec.swift */; };
 		A0B0AA3820EBC98B00933759 /* SegmentDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA3020EBC98A00933759 /* SegmentDaoSpec.swift */; };
@@ -276,6 +284,14 @@
 		A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFormSpec.swift; sourceTree = "<group>"; };
 		A08F58C0212AE53F00BEF571 /* TourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		A08F58C2212B05C400BEF571 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
+		A099D099214A73FF0064AD18 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
+		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
+		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A0AE1A27214BDC600019F09B /* DifficultyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyCell.swift; sourceTree = "<group>"; };
+		A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
+		A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewModel.swift; sourceTree = "<group>"; };
+		A0AE1A2D214FE0370019F09B /* SegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
 		A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLProtocol.swift; sourceTree = "<group>"; };
 		A0B0AA2C20EBA52200933759 /* CategoryDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDaoSpec.swift; sourceTree = "<group>"; };
 		A0B0AA3020EBC98A00933759 /* SegmentDaoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentDaoSpec.swift; sourceTree = "<group>"; };
@@ -593,6 +609,17 @@
 			path = Tour;
 			sourceTree = "<group>";
 		};
+		A099D09B214A7BDE0064AD18 /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */,
+				A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */,
+				A099D0A0214A83CC0064AD18 /* CategoryCell.swift */,
+				A0AE1A27214BDC600019F09B /* DifficultyCell.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
 		A0B0AA2B20EBA50B00933759 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +675,8 @@
 			isa = PBXGroup;
 			children = (
 				A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */,
+				A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */,
+				A0AE1A2D214FE0370019F09B /* SegmentViewController.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -675,6 +704,7 @@
 				A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */,
 				A003811320FE368B00CDA44D /* Form */,
 				A0CC7B422135AE7100C28C3B /* Feed-RSS */,
+				A099D09B214A7BDE0064AD18 /* Lesson */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -836,6 +866,8 @@
 				A0CC7B562137F65800C28C3B /* RssViewModel.swift */,
 				A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */,
 				A02E5EF92148185200DEFBFB /* LocationViewModel.swift */,
+				A099D099214A73FF0064AD18 /* LessonViewModel.swift */,
+				A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1130,6 +1162,7 @@
 				A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */,
 				A0B0AA7520EE612900933759 /* Account.storyboard in Resources */,
 				A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */,
+				A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */,
 				A003810E20FE315C00CDA44D /* Roboto-BoldCondensed.ttf in Resources */,
 				A0B0AA7120EE60E300933759 /* CheckList.storyboard in Resources */,
 			);
@@ -1243,7 +1276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "//\"${PODS_ROOT}/Fabric/run\" f25eccbeaeeb109eecb8bcd8bd9bdb5ae8275cee 19c68129629b1e03bb34208315d4732db9d9666cf7b5e025729ee192c2ca783b";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f25eccbeaeeb109eecb8bcd8bd9bdb5ae8275cee 19c68129629b1e03bb34208315d4732db9d9666cf7b5e025729ee192c2ca783b";
 		};
 		E9E6A98A10749655FC8F9303 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1279,6 +1312,7 @@
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
+				A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
 				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
 				A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */,
@@ -1293,6 +1327,7 @@
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
+				A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
 				A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
@@ -1302,11 +1337,13 @@
 				A02115B3213EB331004B5B73 /* DetailRssViewModel.swift in Sources */,
 				A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */,
 				A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */,
+				A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
+				A0AE1A2E214FE0370019F09B /* SegmentViewController.swift in Sources */,
 				A0CC7B552137F57400C28C3B /* ListRssViewModel.swift in Sources */,
 				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
 				A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */,
@@ -1336,6 +1373,7 @@
 				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
 				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
+				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
 				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
@@ -1347,6 +1385,7 @@
 				A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
+				A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0CC7B5E21384EB000C28C3B /* DetailRssViewController.swift in Sources */,
@@ -1358,6 +1397,7 @@
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,
+				A099D09A214A73FF0064AD18 /* LessonViewModel.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1518,7 +1558,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6CG326ELR9;
+				DEVELOPMENT_TEAM = A24RJ2RN38;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1685,7 +1725,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6CG326ELR9;
+				DEVELOPMENT_TEAM = A24RJ2RN38;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1712,7 +1752,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6CG326ELR9;
+				DEVELOPMENT_TEAM = A24RJ2RN38;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1836,9 +1876,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6CG326ELR9;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = A24RJ2RN38;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1851,7 +1891,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = Umbrella_adhoc;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1942,7 +1982,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6CG326ELR9;
+				DEVELOPMENT_TEAM = A24RJ2RN38;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

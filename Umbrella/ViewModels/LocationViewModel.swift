@@ -22,6 +22,14 @@ class LocationViewModel {
         
     }
     
+    //
+    // MARK: - Functions
+    
+    /// Geocoder of a string to CLPlacemark
+    ///
+    /// - Parameters:
+    ///   - string: String
+    ///   - completion: Closure
     func geocode(of string: String, completion: @escaping () -> Void ) {
         geocoder.geocodeAddressString(string) { (placemarks, error) in
             if let error = error {
