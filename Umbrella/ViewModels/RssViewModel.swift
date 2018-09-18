@@ -26,6 +26,9 @@ class RssViewModel {
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
     }
     
+    //
+    // MARK: - Functions
+    
     /// Load all rss default
     ///
     /// - Parameter completion: closure

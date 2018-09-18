@@ -15,11 +15,17 @@ class LessonViewModel {
     var umbrella: Umbrella?
     var categories: [Category] = [Category]()
     var sectionsCollapsed: [Int] = [Int]()
+    var sqlManager: SQLManager
+    lazy var difficultyRuleDao: DifficultyRuleDao = {
+        let difficultyRuleDao = DifficultyRuleDao(sqlProtocol: self.sqlManager)
+        return difficultyRuleDao
+    }()
     
     //
     // MARK: - Init
     init() {
-        
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        _ = self.difficultyRuleDao.createTable()
     }
     
     /// Get all categories of a language
@@ -45,5 +51,13 @@ class LessonViewModel {
         
         let count = sectionsCollapsed.filter { $0 == section }.count
         return count > 0
+    }
+    
+    /// Check if there is rule to a difficulty
+    ///
+    /// - Parameter difficultyRule: DifficultyRule
+    /// - Returns: Int
+    func isExistRule(to difficultyRule: DifficultyRule) -> Int {
+        return self.difficultyRuleDao.isExistRule(to: difficultyRule)
     }
 }

@@ -65,6 +65,11 @@ class LessonViewController: UIViewController {
             //Sort by Index
             category.categories.sort(by: { $0.index! < $1.index!})
             difficultyViewController.difficultyViewModel.difficulties = category.categories
+        } else if segue.identifier == "segmentSegue" {
+            let segmentViewController = (segue.destination as? SegmentViewController)!
+            
+            let category = (sender as? Category)!
+            segmentViewController.segmentViewModel.category = category
         }
     }
 }
@@ -156,7 +161,21 @@ extension LessonViewController: UITableViewDelegate {
         let headerItem = self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
         let category = headerItem.categories[indexPath.row]
         
-        self.performSegue(withIdentifier: "difficultySegue", sender: category)
+        // Check if there is difficulty rule
+        let difficultyRule = DifficultyRule(categoryId: category.id)
+        let difficultyId = self.lessonViewModel.isExistRule(to: difficultyRule)
+        
+        // if exist go direct to segment screen
+        if difficultyId != -1 {
+            
+            let categoryFilter = category.categories.filter { $0.id == difficultyId }.first
+            if let categoryFilter = categoryFilter {
+                self.performSegue(withIdentifier: "segmentSegue", sender: categoryFilter)
+            }
+            
+        } else {
+            self.performSegue(withIdentifier: "difficultySegue", sender: category)
+        }
     }
 }
 

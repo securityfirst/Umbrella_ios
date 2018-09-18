@@ -9,7 +9,7 @@
 import UIKit
 
 class DifficultyViewController: UIViewController {
-
+    
     //
     // MARK: - Properties
     lazy var difficultyViewModel: DifficultyViewModel = {
@@ -21,23 +21,25 @@ class DifficultyViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.title = self.difficultyViewModel.categoryParent?.name
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     //
     // MARK: - UIStoryboardSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segmentSegue" {
+            let segmentViewController = (segue.destination as? SegmentViewController)!
+            
+            let category = (sender as? Category)!
+            segmentViewController.segmentViewModel.category = category
         }
     }
 }
@@ -73,6 +75,12 @@ extension DifficultyViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "segmentSegue", sender: nil)
+        
+        let difficulty = self.difficultyViewModel.difficulties[indexPath.row]
+        
+//        let difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
+        
+//        self.difficultyViewModel.insert(difficultyRule)
+        self.performSegue(withIdentifier: "segmentSegue", sender: difficulty)
     }
 }

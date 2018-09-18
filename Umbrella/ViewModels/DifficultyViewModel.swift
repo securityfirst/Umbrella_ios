@@ -15,9 +15,27 @@ class DifficultyViewModel {
     var categoryParent: Category?
     var difficulties: [Category] = [Category]()
     
+    var sqlManager: SQLManager
+    lazy var difficultyRuleDao: DifficultyRuleDao = {
+        let difficultyRuleDao = DifficultyRuleDao(sqlProtocol: self.sqlManager)
+        return difficultyRuleDao
+    }()
+    
     //
     // MARK: - Init
     init() {
         categoryParent = nil
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        _ = self.difficultyRuleDao.createTable()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Insert a new DifficultyRule into the database
+    ///
+    /// - Parameter difficultyRule: DifficultyRule
+    func insert(_ difficultyRule: DifficultyRule) {
+        _ = self.difficultyRuleDao.insert(difficultyRule)
     }
 }

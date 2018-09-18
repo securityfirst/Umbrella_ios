@@ -18,6 +18,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     //
     // MARK: - Properties
     var name: String?
+    var description: String?
     var icon: String?
     let index: Float?
     var parent: Int
@@ -34,6 +35,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         self.languageId = -1
         
         self.name = ""
+        self.description = ""
         self.icon = ""
         self.index = 0
         self.folderName = ""
@@ -42,12 +44,13 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         self.checkList = []
     }
     
-    init(name: String, icon: String = "", index: Float, folderName: String = "") {
+    init(name: String, description: String, icon: String = "", index: Float, folderName: String = "") {
         self.id = -1
         self.parent = 0
         self.languageId = -1
         
         self.name = name
+        self.description = description
         self.icon = icon
         self.index = index
         self.folderName = folderName
@@ -63,6 +66,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         case parent
         case languageId = "language_id"
         case name = "title"
+        case description
         case icon
         case index
         case folderName = "folder_name"
@@ -101,6 +105,12 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
             self.name = ""
         }
         
+        if container.contains(.description) {
+            self.description = try container.decode(String.self, forKey: .description)
+        } else {
+            self.description = ""
+        }
+        
         if container.contains(.icon) {
             self.icon = try container.decode(String.self, forKey: .icon)
         } else {
@@ -121,7 +131,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     //
     // MARK: - NSCopying
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Category(name: self.name!, icon: self.icon!, index: self.index!, folderName: self.folderName!)
+        let copy = Category(name: self.name!, description: self.description!, icon: self.icon!, index: self.index!, folderName: self.folderName!)
         copy.id = id
         return copy
     }
@@ -137,6 +147,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         let array = [
             Column(name: "id", type: .primaryKey),
             Column(name: "name", type: .string),
+            Column(name: "description", type: .string),
             Column(name: "icon", type: .string),
             Column(name: "index", type: .real),
             Column(name: "folder_name", type: .string),
@@ -144,11 +155,5 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
             Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array
-    }
-}
-
-extension Category: CustomStringConvertible {
-    var description: String {
-        return "\(name ?? "")"
     }
 }
