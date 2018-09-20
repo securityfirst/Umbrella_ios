@@ -14,6 +14,7 @@ target 'Umbrella' do
   pod 'Yams'
   pod 'MarkdownView'
   pod 'FeedKit', '~> 8.0'
+  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
   
   target 'UmbrellaTests' do
     inherit! :search_paths

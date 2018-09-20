@@ -1,4 +1,5 @@
 PODS:
+  - BTNavigationDropdownMenu (0.4.4)
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Fabric (1.7.6)
@@ -19,6 +20,7 @@ PODS:
   - Yams (0.7.0)
 
 DEPENDENCIES:
+  - BTNavigationDropdownMenu (from `https://github.com/lucascorrea/BTNavigationDropdownMenu.git`)
   - Crashlytics
   - Fabric
   - FeedKit (~> 8.0)
@@ -46,15 +48,21 @@ SPEC REPOS:
     - Yams
 
 EXTERNAL SOURCES:
+  BTNavigationDropdownMenu:
+    :git: https://github.com/lucascorrea/BTNavigationDropdownMenu.git
   SQLite.swift:
     :git: https://github.com/stephencelis/SQLite.swift.git
 
 CHECKOUT OPTIONS:
+  BTNavigationDropdownMenu:
+    :commit: a00f15db1cdd6e982c039083c785c7e55057db05
+    :git: https://github.com/lucascorrea/BTNavigationDropdownMenu.git
   SQLite.swift:
     :commit: 210098546d59678f720e4ef67f8b562acfebbdb0
     :git: https://github.com/stephencelis/SQLite.swift.git
 
 SPEC CHECKSUMS:
+  BTNavigationDropdownMenu: 4c0b75f83317d300156ffcc8434bf411b05f5cd2
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
@@ -68,6 +76,6 @@ SPEC CHECKSUMS:
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
   Yams: 9dfe90be5b942df6fa42ead8e6f0313e05600755
 
-PODFILE CHECKSUM: cff5dd38b3b13b0fa59d1d6e39ee266e47331f7a
+PODFILE CHECKSUM: adb6cb1a1ece83aba65407cfae8896da7b381bcf
 
 COCOAPODS: 1.5.0.beta.1
