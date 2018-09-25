@@ -149,7 +149,7 @@ class StepperView: UIView, UIScrollViewDelegate {
     /// Create the scrollView and progressBar
     fileprivate func setup() {
         self.scrollView = UIScrollView(frame: self.bounds)
-        self.scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        self.scrollView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         self.scrollView.delegate = self
         self.scrollView.clipsToBounds = true
         self.scrollView.showsVerticalScrollIndicator = false

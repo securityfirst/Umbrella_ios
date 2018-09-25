@@ -65,7 +65,7 @@ class CheckListSpec: QuickSpec {
                     
                     expect(checkList.index).to(equal(100))
                     expect(checkList.items.count).to(equal(4))
-                    expect(checkList.items[2].isChecked).to(equal(true))
+                    expect(checkList.items[2].isLabel).to(equal(true))
                 } catch {
                     expect(error).to(beNil())
                 }

@@ -41,7 +41,7 @@ class CheckItemDaoSpec: QuickSpec {
                 
                 let dao = CategoryDao(sqlProtocol: sqlManager)
                 _ = dao.createTable()
-                let category = Category(name: "Category1", index: 1.0)
+                let category = Category(name: "Category1", description: "Description", index: 1.0)
                 category.languageId = Int(lRowId)
                 let rowId = dao.insert(category)
                 
@@ -72,7 +72,7 @@ class CheckItemDaoSpec: QuickSpec {
                 
                 let dao = CategoryDao(sqlProtocol: sqlManager)
                 _ = dao.createTable()
-                let category = Category(name: "Category1", index: 1.0)
+                let category = Category(name: "Category1", description: "Description", index: 1.0)
                 category.languageId = Int(lRowId)
                 let rowId = dao.insert(category)
                 

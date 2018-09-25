@@ -25,7 +25,6 @@ class LessonViewModel {
     // MARK: - Init
     init() {
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
-        _ = self.difficultyRuleDao.createTable()
     }
     
     /// Get all categories of a language

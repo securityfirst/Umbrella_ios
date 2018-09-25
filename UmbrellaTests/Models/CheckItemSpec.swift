@@ -49,7 +49,7 @@ class CheckItemSpec: QuickSpec {
                     let checkItem = try YAMLDecoder().decode(CheckItem.self, from: ymlInvalid)
                     
                     expect(checkItem.name).to(equal(""))
-                    expect(checkItem.isChecked).to(equal(false))
+                    expect(checkItem.isLabel).to(equal(false))
                 } catch {
                     expect(error).to(beNil())
                 }

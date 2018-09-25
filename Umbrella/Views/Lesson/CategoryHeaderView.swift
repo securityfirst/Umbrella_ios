@@ -22,6 +22,7 @@ class CategoryHeaderView: UITableViewHeaderFooterView {
     
     weak var delegate: CategoryHeaderViewDelegate?
     var section: Int = 0
+    var row: Int = 0
     
     static var nib:UINib {
         return UINib(nibName: identifier, bundle: nil)

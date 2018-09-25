@@ -38,7 +38,8 @@ class SegmentCell: UICollectionViewCell {
         if let category = viewModel.category {
             let segment = category.segments[indexPath.row]
             
-            self.titleLabel.text = "\(indexPath.row + 1) \(segment.name ?? "")"
+            let index = ((segment.index ?? 0) == 0) ? (indexPath.row + 1) : Int(segment.index!)
+            self.titleLabel.text = "\(index) \(segment.name ?? "")"
         }
     }
     

@@ -53,6 +53,10 @@ struct DifficultyRuleDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: DifficultyRule) -> Int64 {
+        
+        // Remove old difficultyRule
+        _ = remove(object.categoryId)
+        
         let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(DifficultyRule.table) ('category_id', 'difficulty_id') VALUES (\(object.categoryId) , \(object.difficultyId) )")
         return rowId
     }
@@ -77,7 +81,7 @@ struct DifficultyRuleDao: DaoProtocol {
         return difficultyRule
     }
     
-    /// Delete all formAnswer to formAnswerId in database
+    /// Delete all difficultyRule to categoryId in database
     ///
     /// - Parameter object: object
     /// - Returns: rowId of object inserted

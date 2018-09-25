@@ -21,8 +21,8 @@ class CheckItem: Codable, TableProtocol {
     //Name and label are same information (the title of checkbox), so a label is used to when the checkbox is checked and as I need to save the name, I create the attribute label only to get data.
     var name: String
     private let label: String
-    
-    var isChecked: Bool = false
+    var isLabel: Bool = false
+    var checked: Bool = false
     
     //
     // MARK: - Initializers
@@ -31,7 +31,7 @@ class CheckItem: Codable, TableProtocol {
         self.checkListId = -1
         self.name = ""
         self.label = ""
-        self.isChecked = false
+        self.isLabel = false
     }
     
     init(name: String) {
@@ -39,7 +39,7 @@ class CheckItem: Codable, TableProtocol {
         self.checkListId = -1
         self.name = name
         self.label = ""
-        self.isChecked = false
+        self.isLabel = false
     }
     
     //
@@ -49,7 +49,7 @@ class CheckItem: Codable, TableProtocol {
         case checkListId = "check_list_id"
         case name = "check"
         case label = "label"
-        case isChecked = "is_checked"
+        case isLabel = "is_label"
     }
     
     required init(from decoder: Decoder) throws {
@@ -74,19 +74,20 @@ class CheckItem: Codable, TableProtocol {
         }
         
         // This attribute is used when it is decoding from the database
-        if container.contains(.isChecked) {
-            self.isChecked = try container.decode(Int.self, forKey: .isChecked) == 1 
+        if container.contains(.isLabel) {
+            self.isLabel = try container.decode(Int.self, forKey: .isLabel) == 1
         } else {
-            self.isChecked = false
+            self.isLabel = false
         }
         
         if container.contains(.label) {
             // Get the title of tag ".label"
             self.name = try container.decode(String.self, forKey: .label)
-            self.isChecked = true
+            self.label = try container.decode(String.self, forKey: .label)
+            self.isLabel = true
+        } else {
+            self.label = ""
         }
-        
-        self.label = ""
     }
     
     //
@@ -100,7 +101,7 @@ class CheckItem: Codable, TableProtocol {
         let array = [
             Column(name: "id", type: .primaryKey),
             Column(name: "name", type: .string),
-            Column(name: "is_checked", type: .int),
+            Column(name: "is_label", type: .int),
             Column(foreignKey: ForeignKey(key: "check_list_id", table: Table(CheckList.table), tableKey: "id"))
         ]
         return array

@@ -62,14 +62,27 @@ class LessonViewController: UIViewController {
             
             let category = (sender as? Category)!
             difficultyViewController.difficultyViewModel.categoryParent = category
-            //Sort by Index
-            category.categories.sort(by: { $0.index! < $1.index!})
             difficultyViewController.difficultyViewModel.difficulties = category.categories
         } else if segue.identifier == "segmentSegue" {
             let segmentViewController = (segue.destination as? SegmentViewController)!
             
             let category = (sender as? Category)!
-            segmentViewController.segmentViewModel.category = category
+            
+            // if category is glossary or about doesn't have difficulties inside when should show just the segments.
+            if category.categories.count == 0 {
+                segmentViewController.segmentViewModel.category = category
+            } else {
+                // Check if there is difficulty rule
+                let difficultyRule = DifficultyRule(categoryId: category.id)
+                let difficultyId = self.lessonViewModel.isExistRule(to: difficultyRule)
+                
+                let categoryFilter = category.categories.filter { $0.id == difficultyId }.first
+                if let categoryFilter = categoryFilter {
+                    segmentViewController.segmentViewModel.category = categoryFilter
+                }
+                segmentViewController.segmentViewModel.difficulties = category.categories
+            }
+            
         }
     }
 }
@@ -166,13 +179,8 @@ extension LessonViewController: UITableViewDelegate {
         let difficultyId = self.lessonViewModel.isExistRule(to: difficultyRule)
         
         // if exist go direct to segment screen
-        if difficultyId != -1 {
-            
-            let categoryFilter = category.categories.filter { $0.id == difficultyId }.first
-            if let categoryFilter = categoryFilter {
-                self.performSegue(withIdentifier: "segmentSegue", sender: categoryFilter)
-            }
-            
+        if difficultyId != -1 || category.categories.count == 0 {
+            self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
             self.performSegue(withIdentifier: "difficultySegue", sender: category)
         }
@@ -192,13 +200,15 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             print("Go the favourites")
         } else if self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[section - 1].categories.count == 0 {
             print("Go to segment")
+             let category = self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[section - 1]
+            self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
             collapsed = true
             self.lessonViewModel.sectionsCollapsed.append(section)
         }
         
         header.setCollapsed(collapsed: collapsed)
-        self.lessonTableView.reloadSections([section], with: UITableViewRowAnimation.fade)
+        self.lessonTableView.reloadSections([section], with: UITableView.RowAnimation.fade)
         
         // I needed to put this code because there is a bug when the tableview is in scroll then I do a collapse in some section.
         self.lessonTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)

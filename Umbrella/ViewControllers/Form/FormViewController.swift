@@ -37,7 +37,7 @@ class FormViewController: UIViewController {
         // If user fill any form this function will update the umbrella.formAnswers
         self.loadFormActive()
         self.formTableView.reloadData()
-        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.navigationItem.title)
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.navigationItem.title)
     }
     
     override func didReceiveMemoryWarning() {
@@ -346,9 +346,9 @@ extension FormViewController: FormCellDelegate {
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         
         //New Excluded Activities Code
-        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll, UIActivityType.copyToPasteboard]
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
         
-        activityVC.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if !completed {
                 // User canceled
                 return

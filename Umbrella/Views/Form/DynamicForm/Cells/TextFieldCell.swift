@@ -64,7 +64,7 @@ extension TextFieldCell: UITextFieldDelegate {
         valueText.layer.shadowColor = #colorLiteral(red: 0.262745098, green: 0.6274509804, blue: 0.7921568627, alpha: 1).cgColor
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         valueText.layer.shadowColor = UIColor.gray.cgColor
     }
     

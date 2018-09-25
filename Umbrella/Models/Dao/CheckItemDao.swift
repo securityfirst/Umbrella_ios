@@ -38,7 +38,7 @@ struct CheckItemDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func list() -> [CheckItem] {
-        return self.sqlProtocol.select(withQuery: "SELECT id, name as [check], is_checked, check_list_id FROM \(CheckItem.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as [check], is_label, check_list_id FROM \(CheckItem.table)")
     }
     
     /// Drop the table
@@ -53,7 +53,7 @@ struct CheckItemDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: CheckItem) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckItem.table) ('name', 'is_checked', 'check_list_id') VALUES (\"\(object.name)\", \(object.isChecked ? 1 : 0), \(object.checkListId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckItem.table) ('name', 'is_label', 'check_list_id') VALUES (\"\(object.name)\", \(object.isLabel ? 1 : 0), \(object.checkListId))")
         return rowId
     }
     

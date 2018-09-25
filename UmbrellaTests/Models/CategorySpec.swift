@@ -29,7 +29,7 @@ class CategorySpec: QuickSpec {
             }
             
             it("should create a new Category with parameters") {
-                let category = Category(name: "Tools", index: 0)
+                let category = Category(name: "Tools", description: "Description", index: 0)
                 expect(category).toNot(beNil())
                 expect(category.name).to(equal("Tools"))
                 expect(category.index).to(equal(0))
@@ -83,7 +83,7 @@ class CategorySpec: QuickSpec {
             }
             
             it("should create a new Category and return columns") {
-                let category = Category(name: "Tools", index: 0)
+                let category = Category(name: "Tools", description: "Description", index: 0)
                 expect(category.columns()).toNot(beNil())
             }
             

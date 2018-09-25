@@ -32,7 +32,7 @@ class DetailRssViewController: UIViewController {
             self.title = detailRssViewModel.item?.title
         }
         
-        let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(self.shareAction(_:)))
+        let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem  = shareBarButton
     }
 
@@ -50,9 +50,9 @@ class DetailRssViewController: UIViewController {
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
-            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll, UIActivityType.copyToPasteboard]
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
             
-            activityVC.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
                 if !completed {
                     // User canceled
                     return

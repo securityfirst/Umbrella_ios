@@ -26,7 +26,7 @@ class ListRssViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "RSS".localized()
-    UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.title)
+    UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.title)
         
         let modeBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "rssCardChoice"), style: .plain, target: self, action: #selector(self.rssModeViewAction(_:)))
         modeBarButton.tintColor = #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1)

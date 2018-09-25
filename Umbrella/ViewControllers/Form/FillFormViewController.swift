@@ -65,7 +65,7 @@ class FillFormViewController: UIViewController {
             subView.dynamicFormViewModel.screen = item
             subView.dynamicFormViewModel.formAnswers = formAnswers
             subView.setTitle(title: subView.dynamicFormViewModel.screen.name)
-            subView.titleLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            subView.titleLabel.accessibilityTraits = UIAccessibilityTraits.staticText
             subView.titleLabel.accessibilityHint = String(format: "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form.".localized(), index+1, fillFormViewModel.form.screens.count)
             
             if isNewForm {
@@ -91,7 +91,7 @@ class FillFormViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParentViewController {
+        if self.isMovingFromParent {
             self.saveForm()
         }
     }

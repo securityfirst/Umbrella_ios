@@ -85,6 +85,12 @@
 		A0A166F52152B2EC00A91B53 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; };
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */; };
+		A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */; };
+		A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */; };
+		A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */; };
+		A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */; };
+		A0AA0911215924C9007C0327 /* CheckListLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA0910215924C9007C0327 /* CheckListLabelCell.swift */; };
 		A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A27214BDC600019F09B /* DifficultyCell.swift */; };
 		A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */; };
 		A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */; };
@@ -298,6 +304,12 @@
 		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
+		A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
+		A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewController.swift; sourceTree = "<group>"; };
+		A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCheckListCell.swift; sourceTree = "<group>"; };
+		A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewModel.swift; sourceTree = "<group>"; };
+		A0AA0910215924C9007C0327 /* CheckListLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListLabelCell.swift; sourceTree = "<group>"; };
 		A0AE1A27214BDC600019F09B /* DifficultyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyCell.swift; sourceTree = "<group>"; };
 		A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 		A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewModel.swift; sourceTree = "<group>"; };
@@ -632,6 +644,8 @@
 				A0AE1A27214BDC600019F09B /* DifficultyCell.swift */,
 				A0848684214FFBA00099D669 /* SegmentCell.swift */,
 				A0848686214FFD6E0099D669 /* CheckListCell.swift */,
+				A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */,
+				A0AA0910215924C9007C0327 /* CheckListLabelCell.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -693,6 +707,8 @@
 				A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */,
 				A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */,
 				A0AE1A2D214FE0370019F09B /* SegmentViewController.swift */,
+				A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */,
+				A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -887,6 +903,8 @@
 				A099D099214A73FF0064AD18 /* LessonViewModel.swift */,
 				A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */,
 				A08486882150018B0099D669 /* SegmentViewModel.swift */,
+				A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */,
+				A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1132,9 +1150,11 @@
 				TargetAttributes = {
 					A0B9D42120AAE03600B2B796 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 					A0B9D43520AAE03900B2B796 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						TestTargetID = A0B9D42120AAE03600B2B796;
 					};
 				};
@@ -1325,11 +1345,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
+				A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */,
 				A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */,
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
 				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
 				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
+				A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
@@ -1359,6 +1381,7 @@
 				A02115B3213EB331004B5B73 /* DetailRssViewModel.swift in Sources */,
 				A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */,
 				A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */,
+				A0AA0911215924C9007C0327 /* CheckListLabelCell.swift in Sources */,
 				A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
@@ -1380,6 +1403,7 @@
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
+				A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */,
 				A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */,
 				A0CC7B5A2138048700C28C3B /* ImageDownload.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
@@ -1405,8 +1429,10 @@
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
 				A08486892150018B0099D669 /* SegmentViewModel.swift in Sources */,
+				A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */,
 				A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,
+				A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */,
 				A0AE1A30214FE3AF0019F09B /* DifficultyRule.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */,
@@ -1600,7 +1626,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TESTING;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Test;
@@ -1621,7 +1647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
 			};
@@ -1767,7 +1793,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1795,7 +1821,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1816,7 +1842,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
 			};
@@ -1838,7 +1864,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
 			};
@@ -1922,7 +1948,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Umbrella_adhoc;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Adhoc;
@@ -1943,7 +1969,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
 			};
@@ -2027,7 +2053,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Appstore;
@@ -2048,7 +2074,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.siriuscode.UmbrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Umbrella.app/Umbrella";
 			};

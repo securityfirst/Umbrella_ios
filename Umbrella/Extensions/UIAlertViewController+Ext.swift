@@ -118,9 +118,9 @@ extension UIViewController {
         
         var window: UIWindow? = UIApplication.shared.keyWindow
         
-        if window?.windowLevel != UIWindowLevelNormal {
+        if window?.windowLevel != UIWindow.Level.normal {
             
-            for tempWindow in UIApplication.shared.windows where tempWindow.windowLevel == UIWindowLevelNormal {
+            for tempWindow in UIApplication.shared.windows where tempWindow.windowLevel == UIWindow.Level.normal {
                 window = tempWindow
                 break
             }

@@ -26,7 +26,7 @@ class UmbrellaDatabaseSpec: QuickSpec {
             forms = []
             let language = Language(name: "en")
             
-            let category = Category(name: "Category1", index: 1.0)
+            let category = Category(name: "Category1", description: "Description", index: 1.0)
             let segment = Segment(name: "Segment1", index: 1.0, content: "## Hello")
             category.segments.append(segment)
             

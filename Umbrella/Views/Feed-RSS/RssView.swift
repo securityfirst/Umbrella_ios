@@ -33,7 +33,7 @@ class RssView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.rssTableView.rowHeight = UITableViewAutomaticDimension
+        self.rssTableView.rowHeight = UITableView.automaticDimension
         self.rssTableView.estimatedRowHeight = 44.0
         
         self.emptyLabel.text = "There no RSS".localized()

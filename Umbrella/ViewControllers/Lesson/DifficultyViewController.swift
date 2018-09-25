@@ -40,6 +40,7 @@ class DifficultyViewController: UIViewController {
             
             let category = (sender as? Category)!
             segmentViewController.segmentViewModel.category = category
+            segmentViewController.segmentViewModel.difficulties = self.difficultyViewModel.difficulties
         }
     }
 }
@@ -78,9 +79,9 @@ extension DifficultyViewController: UITableViewDelegate {
         
         let difficulty = self.difficultyViewModel.difficulties[indexPath.row]
         
-//        let difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
+        let difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
         
-//        self.difficultyViewModel.insert(difficultyRule)
+        self.difficultyViewModel.insert(difficultyRule)
         self.performSegue(withIdentifier: "segmentSegue", sender: difficulty)
     }
 }

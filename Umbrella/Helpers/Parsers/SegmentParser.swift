@@ -67,7 +67,7 @@ struct SegmentParser {
                 } else {
                     lineReplaced = line
                 }
-                markdown += lineReplaced
+                markdown += lineReplaced + "\n "
             }
             
             segment?.content = markdown

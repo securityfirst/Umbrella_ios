@@ -26,7 +26,6 @@ class DifficultyViewModel {
     init() {
         categoryParent = nil
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
-        _ = self.difficultyRuleDao.createTable()
     }
     
     //

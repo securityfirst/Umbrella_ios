@@ -23,6 +23,9 @@ struct UmbrellaDatabase {
     let itemFormDao: ItemFormDao
     let optionItemDao: OptionItemDao
     let formAnswerDao: FormAnswerDao
+    let difficultyRuleDao: DifficultyRuleDao
+    
+    static var languagesStatic: [Language] = [Language]()
     
     var languages: [Language]
     var forms: [Form]
@@ -51,6 +54,7 @@ struct UmbrellaDatabase {
         self.itemFormDao = ItemFormDao(sqlProtocol: self.sqlProtocol)
         self.optionItemDao = OptionItemDao(sqlProtocol: self.sqlProtocol)
         self.formAnswerDao = FormAnswerDao(sqlProtocol: self.sqlProtocol)
+        self.difficultyRuleDao = DifficultyRuleDao(sqlProtocol: self.sqlProtocol)
     }
     
     //
@@ -69,8 +73,9 @@ struct UmbrellaDatabase {
         let itemFormSuccess = self.itemFormDao.createTable()
         let optionItemSuccess = self.optionItemDao.createTable()
         let formAnswerSuccess = self.formAnswerDao.createTable()
+        let difficultyRuleSuccess = self.difficultyRuleDao.createTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess {
             return true
         } else {
             return false
@@ -78,6 +83,9 @@ struct UmbrellaDatabase {
     }
     
     func dropTables() -> Bool {
+        
+        let difficultyRuleSuccess = self.difficultyRuleDao.dropTable()
+        
         let formAnswerSuccess = self.formAnswerDao.dropTable()
         
         let optionItemSuccess = self.optionItemDao.dropTable()
@@ -91,7 +99,7 @@ struct UmbrellaDatabase {
         let categorySuccess = self.categoryDao.dropTable()
         let languageSuccess = self.languageDao.dropTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess {
             return true
         } else {
             return false
@@ -106,6 +114,7 @@ struct UmbrellaDatabase {
             self.insertAllLanguages(completion: completion)
             self.insertAllForms()
             print("Finalized objectToDatabase")
+            UmbrellaDatabase.languagesStatic = self.languages
         }
     }
     
@@ -169,10 +178,26 @@ struct UmbrellaDatabase {
         // FormAnswer - Form Active
         self.formAnswers = self.formAnswerDao.listFormActive()
         print("Finalized databaseToObject")
+        UmbrellaDatabase.languagesStatic = self.languages
     }
     
     func checkIfTheDatabaseExists() -> Bool {
         return self.sqlProtocol.checkIfTheDatabaseExists()
+    }
+    
+    /// Get all categories of a language
+    ///
+    /// - Parameter lang: String
+    /// - Returns: [Category]
+    static func categories() -> [Category] {
+        
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == Locale.current.languageCode!}.first
+        
+        if let language = language {
+            return language.categories
+        }
+        
+        return [Category]()
     }
 }
 
@@ -270,6 +295,10 @@ extension UmbrellaDatabase {
             subCategory.parent = Int(categoryRowId)
             subCategory.languageId = Int(languageRowId)
             let subCategoryRowId = self.categoryDao.insert(subCategory)
+            subCategory.id = Int(subCategoryRowId)
+        
+            //Sort by Index
+            subCategory.categories.sort(by: { $0.index! < $1.index!})
             
             //Segments
             for index in 0..<subCategory.segments.count {
@@ -279,6 +308,9 @@ extension UmbrellaDatabase {
                 let segmentRowId = self.segmentDao.insert(segment)
                 segment.id = Int(segmentRowId)
             }
+            
+            //Sort by Index
+            subCategory.segments.sort(by: { $0.index! < $1.index!})
             
             //Checklist
             for index in 0..<subCategory.checkList.count {
@@ -297,6 +329,9 @@ extension UmbrellaDatabase {
                     checkItem.id = Int(checkListRowId)
                 }
             }
+            
+            //Sort by Index
+            subCategory.checkList.sort(by: { $0.index! < $1.index!})
             
             insertIntoDatabase(category: subCategory, categoryRowId: subCategoryRowId, languageRowId: languageRowId)
         }
@@ -317,12 +352,20 @@ extension UmbrellaDatabase {
         
         for subcategory in category.categories {
             subcategory.categories = categories.filter { $0.languageId == language.id && $0.parent == subcategory.id }
+            //Sort by Index
+            subcategory.categories.sort(by: { $0.index! < $1.index!})
             
             //Segments2
             subcategory.segments = segments.filter { $0.categoryId == subcategory.id }
             
+            //Sort by Index
+            subcategory.segments.sort(by: { $0.index! < $1.index!})
+            
             //CheckList
             subcategory.checkList = checkLists.filter { $0.categoryId == subcategory.id }
+            
+            //Sort by Index
+            subcategory.checkList.sort(by: { $0.index! < $1.index!})
             
             for checkList in subcategory.checkList {
                 checkList.items = checkItems.filter { $0.checkListId == checkList.id }

@@ -49,7 +49,7 @@ class TourViewController: UIViewController {
         let view = UIView(frame: CGRect(x: 4*self.tourScrollView.frame.size.width, y: 0, width:self.tourScrollView.frame.size.width, height: self.tourScrollView.frame.size.height))
         view.backgroundColor = #colorLiteral(red: 0.9661672711, green: 0.7777593136, blue: 0.215906769, alpha: 1)
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 5, width: self.tourScrollView.frame.size.width, height: 40))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 30, width: self.tourScrollView.frame.size.width, height: 40))
         titleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         titleLabel.tag = 999
         titleLabel.font = UIFont(name: "Roboto-Bold", size: 20)
@@ -63,7 +63,7 @@ class TourViewController: UIViewController {
         wkUController.addUserScript(userScript)
         let wkWebConfig = WKWebViewConfiguration()
         wkWebConfig.userContentController = wkUController
-        let webView = WKWebView(frame: CGRect(x: 20, y: 50, width: self.tourScrollView.frame.size.width-40, height: self.tourScrollView.frame.size.height-120), configuration: wkWebConfig)
+        let webView = WKWebView(frame: CGRect(x: 20, y: 80, width: self.tourScrollView.frame.size.width-40, height: self.tourScrollView.frame.size.height-160), configuration: wkWebConfig)
         webView.navigationDelegate = self
         webView.layer.cornerRadius = 12
         webView.layer.masksToBounds = true
@@ -154,7 +154,7 @@ extension TourViewController: UIScrollViewDelegate {
                     let result = view.subviews.filter { $0.tag == 999 }
                     
                     if let first = result.first {
-                        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, first)
+                        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: first)
                     }
                 }
                 return
@@ -164,7 +164,7 @@ extension TourViewController: UIScrollViewDelegate {
                 let result = view.subviews.filter { $0.tag == self.pageControl.currentPage }
                 
                 if let first = result.first {
-                    UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, first)
+                    UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: first)
                 }
             }
         }

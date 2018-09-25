@@ -102,12 +102,12 @@ class FeedViewController: UIViewController {
     }
     
     @IBAction func addAction(_ sender: Any) {
-        let alertController = UIAlertController(title: "Feed Sources".localized(), message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Feed Sources".localized(), message: "", preferredStyle: UIAlertController.Style.alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "http://"
             textField.keyboardType = UIKeyboardType.URL
         }
-        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertActionStyle.destructive, handler: { _ in
+        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertAction.Style.destructive, handler: { _ in
             let firstTextField = alertController.textFields![0] as UITextField
             print(firstTextField.text ?? "")
             
@@ -119,7 +119,7 @@ class FeedViewController: UIViewController {
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: nil)
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
