@@ -30,7 +30,6 @@ class MarkdownViewController: UIViewController {
         
         if let segment = self.markdownViewModel.segment {
             self.markdownView.load(markdown: segment.content)
-            print(segment.content ?? "")
             self.title = segment.name
         }
         

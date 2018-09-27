@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
         </array>
@@ -250,7 +253,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="171" height="141"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ATJ-lH-mpF">
-                                                                    <rect key="frame" x="8" y="8" width="155" height="112.5"/>
+                                                                    <rect key="frame" x="8" y="8" width="155" height="112"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="125" id="4n0-jl-RLE"/>
                                                                     </constraints>
@@ -390,7 +393,7 @@ Why do kidnappings occur?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JmH-Zb-Bog">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FillCheckListCell" rowHeight="80" id="EIs-J6-1Sp" customClass="FillCheckListCell" customModule="Umbrella" customModuleProvider="target">
@@ -471,18 +474,43 @@ Why do kidnappings occur?</string>
                                     <outlet property="delegate" destination="tT0-L0-ZEO" id="JDj-aL-Ycq"/>
                                 </connections>
                             </tableView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K12-02-jPx">
+                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="S6S-fS-Xo9"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kS0-ZM-C6J">
+                                <rect key="frame" x="166" y="69" width="43" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="43" id="Gdl-uw-8WQ"/>
+                                    <constraint firstAttribute="height" constant="13" id="rgq-qq-FQx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="11"/>
+                                <color key="textColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LY2-gi-faS" firstAttribute="bottom" secondItem="JmH-Zb-Bog" secondAttribute="bottom" id="3ZH-ae-7ZY"/>
+                            <constraint firstItem="K12-02-jPx" firstAttribute="leading" secondItem="wQo-cN-dBf" secondAttribute="leading" id="GH4-Xt-Ak3"/>
+                            <constraint firstAttribute="trailing" secondItem="K12-02-jPx" secondAttribute="trailing" id="Lv7-wZ-gFR"/>
+                            <constraint firstItem="kS0-ZM-C6J" firstAttribute="top" secondItem="LY2-gi-faS" secondAttribute="top" constant="5" id="PvK-kQ-CDI"/>
                             <constraint firstItem="JmH-Zb-Bog" firstAttribute="leading" secondItem="LY2-gi-faS" secondAttribute="leading" id="YBY-6r-RD0"/>
-                            <constraint firstItem="JmH-Zb-Bog" firstAttribute="top" secondItem="LY2-gi-faS" secondAttribute="top" id="s4b-Db-k02"/>
+                            <constraint firstItem="kS0-ZM-C6J" firstAttribute="centerX" secondItem="wQo-cN-dBf" secondAttribute="centerX" id="YaC-NY-wPA"/>
+                            <constraint firstItem="K12-02-jPx" firstAttribute="top" secondItem="LY2-gi-faS" secondAttribute="top" id="abU-X1-hTq"/>
+                            <constraint firstItem="JmH-Zb-Bog" firstAttribute="top" secondItem="LY2-gi-faS" secondAttribute="top" constant="20" id="s4b-Db-k02"/>
                             <constraint firstItem="LY2-gi-faS" firstAttribute="trailing" secondItem="JmH-Zb-Bog" secondAttribute="trailing" id="sHY-FB-aJL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LY2-gi-faS"/>
                     </view>
                     <connections>
                         <outlet property="checkListTableView" destination="JmH-Zb-Bog" id="ABk-rF-o3l"/>
+                        <outlet property="progressLabel" destination="kS0-ZM-C6J" id="j7s-K9-O0j"/>
+                        <outlet property="progressView" destination="K12-02-jPx" id="0dX-er-PTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EV-9K-iWw" userLabel="First Responder" sceneMemberID="firstResponder"/>

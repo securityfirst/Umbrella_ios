@@ -12,13 +12,49 @@ class LessonCheckListViewModel {
     
     //
     // MARK: - Properties
-    var checkList: CheckList?
+    var checklist: CheckList?
     var category: Category?
+    var sqlManager: SQLManager
+    lazy var checklistCheckedDao: ChecklistCheckedDao = {
+        let checklistCheckedDao = ChecklistCheckedDao(sqlProtocol: self.sqlManager)
+        return checklistCheckedDao
+    }()
     
     //
     // MARK: - Init
     init() {
         self.category = nil
-        self.checkList = nil
+        self.checklist = nil
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        _ = checklistCheckedDao.createTable()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Insert a new ChecklistChecked into the database
+    ///
+    /// - Parameter checklistChecked: ChecklistChecked
+    func insert(_ checklistChecked: ChecklistChecked) {
+        _ = self.checklistCheckedDao.insert(checklistChecked)
+    }
+    
+    /// Insert a new ChecklistChecked into the database
+    ///
+    /// - Parameter checklistChecked: ChecklistChecked
+    func remove(_ checklistChecked: ChecklistChecked) {
+        _ = self.checklistCheckedDao.remove(checklistChecked)
+    }
+    
+    func updateChecklistWithItemChecked() {
+        
+        let checkedList = self.checklistCheckedDao.list(checklistId: self.checklist!.id)
+        
+        for item in (self.checklist?.items)! {
+            
+            let checked = checkedList.filter {$0.itemId == item.id}.first
+            
+            item.checked = (checked != nil)
+        }
     }
 }

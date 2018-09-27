@@ -26,6 +26,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addBarButton.isEnabled = false
         addBarButton.tintColor = UIColor.clear
         addBarButton.accessibilityElementsHidden = true

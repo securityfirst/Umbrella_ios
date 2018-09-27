@@ -189,9 +189,9 @@ struct UmbrellaDatabase {
     ///
     /// - Parameter lang: String
     /// - Returns: [Category]
-    static func categories() -> [Category] {
+    static func categories(lang: String = Locale.current.languageCode!) -> [Category] {
         
-        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == Locale.current.languageCode!}.first
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == lang}.first
         
         if let language = language {
             return language.categories

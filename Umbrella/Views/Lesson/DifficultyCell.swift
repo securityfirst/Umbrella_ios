@@ -10,11 +10,15 @@ import UIKit
 
 class DifficultyCell: UITableViewCell {
     
+    //
+    // MARK: - Properties
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    //
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

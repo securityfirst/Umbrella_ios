@@ -83,8 +83,8 @@ struct DifficultyRuleDao: DaoProtocol {
     
     /// Delete all difficultyRule to categoryId in database
     ///
-    /// - Parameter object: object
-    /// - Returns: rowId of object inserted
+    /// - Parameter categoryId: Int
+    /// - Returns: bool
     func remove(_ categoryId: Int) -> Bool {
         let sql = "DELETE FROM \(DifficultyRule.table) WHERE category_id = \(categoryId)"
         return self.sqlProtocol.remove(withQuery: sql)

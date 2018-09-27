@@ -18,9 +18,41 @@ class LessonCheckListViewController: UIViewController {
     }()
     @IBOutlet weak var checkListTableView: UITableView!
     
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
+    
+    //
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "CheckList"
+    
+        self.lessonCheckListViewModel.updateChecklistWithItemChecked()
+        self.checkListTableView.reloadData()
+        
+        let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
+        self.navigationItem.rightBarButtonItem  = modeBarButton
+        
+        updateProgress()
+    }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func shareAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Update the progress of the progressBar
+    fileprivate func updateProgress() {
+        
+        if let currentChecked = (self.lessonCheckListViewModel.checklist?.items.filter {$0.checked == true }.count), let totalItemInChecklist = self.lessonCheckListViewModel.checklist?.items.count {
+            self.progressView.setProgress(Float(currentChecked)/Float(totalItemInChecklist), animated: true)
+            self.progressLabel.text = "\(Int(CGFloat(currentChecked) / CGFloat(totalItemInChecklist) * 100))%"
+        }
     }
 
 }
@@ -33,12 +65,12 @@ extension LessonCheckListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.lessonCheckListViewModel.checkList!.items.count
+        return self.lessonCheckListViewModel.checklist!.items.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let item: CheckItem = self.lessonCheckListViewModel.checkList!.items[indexPath.row]
+        let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
         
         if item.isLabel {
             let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
@@ -61,7 +93,7 @@ extension LessonCheckListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let item: CheckItem = self.lessonCheckListViewModel.checkList!.items[indexPath.row]
+        let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
         
         if item.isLabel {
             return 50.0
@@ -72,10 +104,38 @@ extension LessonCheckListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-     
-        UmbrellaDatabase.categories().flatMap{$0.categories}.flatMap($0).
-        let item: CheckItem = self.lessonCheckListViewModel.checkList!.items[indexPath.row]
+
+        var categoryFound: Category? = nil
+        
+        for category in UmbrellaDatabase.categories() {
+            if category.id == self.lessonCheckListViewModel.category?.parent {
+                categoryFound = category
+                break
+            }
+            
+            let categoryFilter = category.categories.filter {$0.id == self.lessonCheckListViewModel.category?.parent }.first
+            
+            if let category = categoryFilter {
+                categoryFound = category
+                break
+            }
+        }
+        
+        let subCategory = categoryFound
+        let difficulty = self.lessonCheckListViewModel.category
+        let checklist = self.lessonCheckListViewModel.checklist
+        let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
+        
+        let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.items.count)
         item.checked = !item.checked
+        
+        if item.checked {
+            self.lessonCheckListViewModel.insert(checklistChecked)
+        } else {
+            self.lessonCheckListViewModel.remove(checklistChecked)
+        }
+        
+        self.updateProgress()
         tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
 }

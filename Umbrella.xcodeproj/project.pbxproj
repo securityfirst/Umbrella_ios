@@ -133,6 +133,8 @@
 		A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */; };
 		A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */; };
 		A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */; };
+		A0C7326B215B9CA0003087BC /* ChecklistChecked.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */; };
+		A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */; };
 		A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B432135AEAC00C28C3B /* FeedView.swift */; };
 		A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B452135AEBC00C28C3B /* RssView.swift */; };
 		A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B472136B16600C28C3B /* RssCell.swift */; };
@@ -358,6 +360,8 @@
 		A0C6CEA520B6D14C005BC111 /* CategoryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParser.swift; sourceTree = "<group>"; };
 		A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
 		A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentParser.swift; sourceTree = "<group>"; };
+		A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistChecked.swift; sourceTree = "<group>"; };
+		A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistCheckedDao.swift; sourceTree = "<group>"; };
 		A0CC7B432135AEAC00C28C3B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		A0CC7B452135AEBC00C28C3B /* RssView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssView.swift; sourceTree = "<group>"; };
 		A0CC7B472136B16600C28C3B /* RssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssCell.swift; sourceTree = "<group>"; };
@@ -764,6 +768,7 @@
 				A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */,
 				A02115AE213D8132004B5B73 /* RssItemDao.swift */,
 				A0AE1A31214FE5A90019F09B /* DifficultyRuleDao.swift */,
+				A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -843,7 +848,8 @@
 				A075248720C824B300E91A4A /* Segment.swift */,
 				A02115B0213D816A004B5B73 /* RssItem.swift */,
 				A0AE1A2F214FE3AF0019F09B /* DifficultyRule.swift */,
-				A0FFE50220CEEB010026C0C7 /* CheckList */,
+				A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */,
+				A0FFE50220CEEB010026C0C7 /* Checklist */,
 				A0FFE4FB20CEEA660026C0C7 /* Form */,
 			);
 			path = Models;
@@ -1009,13 +1015,13 @@
 			path = Form;
 			sourceTree = "<group>";
 		};
-		A0FFE50220CEEB010026C0C7 /* CheckList */ = {
+		A0FFE50220CEEB010026C0C7 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
 				A075248920C824E200E91A4A /* CheckList.swift */,
 				A0FFE50320CEEB1B0026C0C7 /* CheckItem.swift */,
 			);
-			path = CheckList;
+			path = Checklist;
 			sourceTree = "<group>";
 		};
 		A0FFE50720D01D1C0026C0C7 /* Models */ = {
@@ -1421,6 +1427,7 @@
 				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
 				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
 				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
+				A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
@@ -1450,6 +1457,7 @@
 				A099D09A214A73FF0064AD18 /* LessonViewModel.swift in Sources */,
 				A0848685214FFBA00099D669 /* SegmentCell.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
+				A0C7326B215B9CA0003087BC /* ChecklistChecked.swift in Sources */,
 				A0AE1A32214FE5A90019F09B /* DifficultyRuleDao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

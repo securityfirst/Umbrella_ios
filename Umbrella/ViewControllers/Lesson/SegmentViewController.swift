@@ -76,7 +76,7 @@ class SegmentViewController: UIViewController {
             let lessonCheckListViewController = (segue.destination as? LessonCheckListViewController)!
             
             let dictionary = (sender as? [String: Any])!
-            lessonCheckListViewController.lessonCheckListViewModel.checkList = (dictionary["checkList"] as? CheckList)!
+            lessonCheckListViewController.lessonCheckListViewModel.checklist = (dictionary["checkList"] as? CheckList)!
             lessonCheckListViewController.lessonCheckListViewModel.category = (dictionary["category"] as? Category)!
         }
     }
