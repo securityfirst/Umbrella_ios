@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class ChecklistChecked: Codable, TableProtocol {
+class ChecklistChecked: Codable, TableProtocol, Equatable {
     
     // Used in parser from the database to object
     var id: Int
@@ -38,6 +38,17 @@ class ChecklistChecked: Codable, TableProtocol {
         self.totalItemsChecklist = -1
     }
     
+    init(subCategoryName: String, totalChecked: Int, totalItemsChecklist: Int) {
+        self.id = -1
+        self.subCategoryName = subCategoryName
+        self.subCategoryId = -1
+        self.difficultyId = -1
+        self.checklistId = -1
+        self.itemId = -1
+        self.totalChecked = totalChecked
+        self.totalItemsChecklist = totalItemsChecklist
+    }
+    
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalItemsChecklist: Int) {
         self.id = -1
         self.subCategoryName = subCategoryName
@@ -46,6 +57,17 @@ class ChecklistChecked: Codable, TableProtocol {
         self.checklistId = checklistId
         self.itemId = itemId
         self.totalChecked = -1
+        self.totalItemsChecklist = totalItemsChecklist
+    }
+    
+    init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalChecked: Int, totalItemsChecklist: Int) {
+        self.id = -1
+        self.subCategoryName = subCategoryName
+        self.subCategoryId = subCategoryId
+        self.difficultyId = difficultyId
+        self.checklistId = checklistId
+        self.itemId = itemId
+        self.totalChecked = totalChecked
         self.totalItemsChecklist = totalItemsChecklist
     }
     
@@ -132,5 +154,9 @@ class ChecklistChecked: Codable, TableProtocol {
             Column(name: "total_items_checklist", type: .int)
         ]
         return array
+    }
+    
+    static func == (lhs: ChecklistChecked, rhs: ChecklistChecked) -> Bool {
+        return lhs.subCategoryId == rhs.subCategoryId && lhs.checklistId == rhs.checklistId
     }
 }

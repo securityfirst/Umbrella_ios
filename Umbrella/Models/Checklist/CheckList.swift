@@ -73,6 +73,14 @@ class CheckList: Codable, TableProtocol {
         }
     }
     
+    /// Count just item Check different of Label
+    ///
+    /// - Returns: Int
+    func countItemCheck() -> Int {
+        // Remove Label Item
+        return items.filter { $0.isLabel == false }.count
+    }
+    
     //
     // MARK: - TableProtocol
     static var table: String = "check_list"

@@ -49,7 +49,7 @@ class LessonCheckListViewController: UIViewController {
     /// Update the progress of the progressBar
     fileprivate func updateProgress() {
         
-        if let currentChecked = (self.lessonCheckListViewModel.checklist?.items.filter {$0.checked == true }.count), let totalItemInChecklist = self.lessonCheckListViewModel.checklist?.items.count {
+        if let currentChecked = (self.lessonCheckListViewModel.checklist?.items.filter {$0.checked == true }.count), let totalItemInChecklist = self.lessonCheckListViewModel.checklist?.countItemCheck() {
             self.progressView.setProgress(Float(currentChecked)/Float(totalItemInChecklist), animated: true)
             self.progressLabel.text = "\(Int(CGFloat(currentChecked) / CGFloat(totalItemInChecklist) * 100))%"
         }
@@ -126,7 +126,7 @@ extension LessonCheckListViewController: UITableViewDelegate {
         let checklist = self.lessonCheckListViewModel.checklist
         let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
         
-        let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.items.count)
+        let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
         item.checked = !item.checked
         
         if item.checked {

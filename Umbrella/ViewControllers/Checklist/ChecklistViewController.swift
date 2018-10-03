@@ -32,6 +32,13 @@ class ChecklistViewController: UIViewController {
         self.checklistReviewTableView?.register(ChecklistReviewHeaderView.nib, forHeaderFooterViewReuseIdentifier: ChecklistReviewHeaderView.identifier)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.checklistViewModel.reportOfItemsChecked()
+        self.checklistReviewTableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -49,9 +56,9 @@ extension ChecklistViewController: UITableViewDataSource {
         if section == 0 {
             return 1
         } else if section == 1 {
-            return 0
+            return self.checklistViewModel.favouriteChecklistChecked.count
         } else if section == 2 {
-            return 2
+            return self.checklistViewModel.checklistChecked.count
         }
         
         return self.checklistViewModel.checklistChecked.count
@@ -59,17 +66,20 @@ extension ChecklistViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            
-        } else if indexPath.section == 1 {
-            
-        } else if indexPath.section == 2 {
-            
-        }
-        
         let cell: ChecklistReviewCell = (tableView.dequeueReusableCell(withIdentifier: "ChecklistReviewCell", for: indexPath) as? ChecklistReviewCell)!
         
-        //        cell.configure(withViewModel: self.checklistViewModel, indexPath: indexPath)
+        if indexPath.section == 0 {
+            
+            var totalList = [ChecklistChecked]()
+            totalList = self.checklistViewModel.checklistChecked + self.checklistViewModel.favouriteChecklistChecked
+            
+            let totalChecked = totalList.reduce(0) { $0 + $1.totalChecked}
+            let totalItemsChecklist = totalList.reduce(0) { $0 + $1.totalItemsChecklist}
+            let checklistChecked = ChecklistChecked(subCategoryName: "Total done".localized(), totalChecked: totalChecked, totalItemsChecklist: totalItemsChecklist)
+            self.checklistViewModel.itemTotalDone = checklistChecked
+        }
+        
+        cell.configure(withViewModel: self.checklistViewModel, indexPath: indexPath)
         
         return cell
     }

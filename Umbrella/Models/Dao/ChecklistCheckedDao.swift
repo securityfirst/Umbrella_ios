@@ -80,6 +80,6 @@ struct ChecklistCheckedDao: DaoProtocol {
     ///
     /// - Returns: [ChecklistChecked]
     func reportOfItemsChecked() -> [ChecklistChecked] {
-        return self.sqlProtocol.select(withQuery: "SELECT subcategory_name, subcategory_id, difficulty_id, checklist_id,  count(1) as total_checked, total_items_checklist FROM \(ChecklistChecked.table) GROUP BY checklist_id ORDER BY subcategory_name desc;")
+        return self.sqlProtocol.select(withQuery: "SELECT subcategory_name, subcategory_id, difficulty_id, checklist_id, count(1) as total_checked, total_items_checklist FROM \(ChecklistChecked.table) GROUP BY checklist_id ORDER BY subcategory_name desc;")
     }
 }
