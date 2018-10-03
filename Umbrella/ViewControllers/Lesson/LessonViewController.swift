@@ -17,6 +17,7 @@ class LessonViewController: UIViewController {
         return lessonViewModel
     }()
     @IBOutlet weak var lessonTableView: UITableView!
+    var favouriteSegments: [Segment] = [Segment]()
     
     //
     // MARK: - Life cycle
@@ -32,6 +33,13 @@ class LessonViewController: UIViewController {
         super.viewDidLoad()
         
         self.lessonTableView?.register(CategoryHeaderView.nib, forHeaderFooterViewReuseIdentifier: CategoryHeaderView.identifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Update list of segment favourites
+        self.favouriteSegments = self.lessonViewModel.loadFavourites()
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,7 +99,7 @@ class LessonViewController: UIViewController {
 extension LessonViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!).count + 1
+        return self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!).count + 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,7 +109,7 @@ extension LessonViewController: UITableViewDataSource {
             return 0
         }
         
-        let headerItem = self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[section - 1]
+        let headerItem = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
         
         // if section is in array as collapsed when it should return the count of items of category
         if self.lessonViewModel.isCollapsed(section: section) {
@@ -139,7 +147,7 @@ extension LessonViewController: UITableViewDelegate {
                 headerView.arrowImageView.isHidden = true
                 headerView.iconImageView.image = #imageLiteral(resourceName: "iconFavourite")
             } else {
-                let item = self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[section - 1]
+                let item = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
                 headerView.nameLabel.text = item.name
                 headerView.arrowImageView.isHidden = item.categories.count == 0
                 let file = "\(item.folderName ?? "")\(item.icon ?? "")"
@@ -171,7 +179,7 @@ extension LessonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let headerItem = self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
+        let headerItem = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
         let category = headerItem.categories[indexPath.row]
         
         // Check if there is difficulty rule
@@ -198,9 +206,12 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             collapsed = false
         } else if section == 0 {
             print("Go the favourites")
-        } else if self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[section - 1].categories.count == 0 {
+            let category = Category(name: "Favourites".localized(), description: "", index: 1)
+            category.segments = self.favouriteSegments
+            self.performSegue(withIdentifier: "segmentSegue", sender: category)
+        } else if self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1].categories.count == 0 {
             print("Go to segment")
-             let category = self.lessonViewModel.categories(ofLanguage: Locale.current.languageCode!)[section - 1]
+             let category = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
             collapsed = true
@@ -211,7 +222,9 @@ extension LessonViewController: CategoryHeaderViewDelegate {
         self.lessonTableView.reloadSections([section], with: UITableView.RowAnimation.fade)
         
         // I needed to put this code because there is a bug when the tableview is in scroll then I do a collapse in some section.
-        self.lessonTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        if !collapsed {
+            self.lessonTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        }
     }
 }
 

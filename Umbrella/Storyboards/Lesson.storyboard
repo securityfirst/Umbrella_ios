@@ -119,7 +119,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEm-3b-7z6" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="12" width="345" height="139.5"/>
                                                     <subviews>
-                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RQ-Hr-OqO">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RQ-Hr-OqO">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="76"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconExpert" translatesAutoresizingMaskIntoConstraints="NO" id="53L-dz-GaQ">
@@ -164,7 +164,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="g42-c6-O1n" secondAttribute="bottom" constant="4" id="9vB-IC-uNi"/>
                                                         <constraint firstItem="g42-c6-O1n" firstAttribute="leading" secondItem="mEm-3b-7z6" secondAttribute="leading" constant="15" id="L7f-2c-Hn4"/>
                                                         <constraint firstItem="3RQ-Hr-OqO" firstAttribute="top" secondItem="mEm-3b-7z6" secondAttribute="top" id="ZWq-rT-ZVh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="3RQ-Hr-OqO" secondAttribute="trailing" id="bdL-lc-hGf"/>
+                                                        <constraint firstItem="3RQ-Hr-OqO" firstAttribute="width" secondItem="mEm-3b-7z6" secondAttribute="width" id="hb8-OX-Tfo"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -229,10 +229,16 @@
                                     <outlet property="delegate" destination="4dF-MN-S27" id="jMU-xo-2Z2"/>
                                 </connections>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6de-Sb-2yP">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vdv-y0-h1e">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eyZ-Kd-gE2">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="eyZ-Kd-gE2">
                                     <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -296,7 +302,7 @@ Why do kidnappings occur?</string>
                                                         <constraint firstAttribute="trailing" secondItem="Xhz-Te-mFh" secondAttribute="trailing" constant="7" id="BTx-pg-CuU"/>
                                                         <constraint firstItem="Xhz-Te-mFh" firstAttribute="top" secondItem="vtN-jf-LEA" secondAttribute="bottom" constant="8" id="M7s-LS-UpW"/>
                                                         <constraint firstItem="vtN-jf-LEA" firstAttribute="leading" secondItem="iO3-mQ-0AJ" secondAttribute="leading" id="Sxe-d5-ycH"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vtN-jf-LEA" secondAttribute="trailing" id="fif-QG-jQe"/>
+                                                        <constraint firstItem="vtN-jf-LEA" firstAttribute="width" secondItem="iO3-mQ-0AJ" secondAttribute="width" id="dfT-kV-6Ga"/>
                                                         <constraint firstAttribute="trailing" secondItem="1bx-bf-zWq" secondAttribute="trailing" id="sKA-JT-Yhb"/>
                                                         <constraint firstAttribute="bottom" secondItem="1bx-bf-zWq" secondAttribute="bottom" constant="1" id="zbJ-ze-cSY"/>
                                                     </constraints>
@@ -318,7 +324,7 @@ Why do kidnappings occur?</string>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CheckListCell" id="eks-2Q-UHn" customClass="CheckListCell" customModule="Umbrella" customModuleProvider="target">
-                                        <rect key="frame" x="12.5" y="207" width="350" height="132"/>
+                                        <rect key="frame" x="12.5" y="217" width="350" height="132"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="132"/>
@@ -364,8 +370,12 @@ Why do kidnappings occur?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gJd-ix-k9c" firstAttribute="trailing" secondItem="6de-Sb-2yP" secondAttribute="trailing" id="6Bg-um-tjg"/>
                             <constraint firstItem="gJd-ix-k9c" firstAttribute="trailing" secondItem="vdv-y0-h1e" secondAttribute="trailing" id="6SI-uX-aw9"/>
+                            <constraint firstItem="6de-Sb-2yP" firstAttribute="leading" secondItem="gJd-ix-k9c" secondAttribute="leading" id="8FJ-3c-Hxh"/>
+                            <constraint firstItem="6de-Sb-2yP" firstAttribute="top" secondItem="bfQ-we-ZZm" secondAttribute="bottom" id="Bla-01-uYj"/>
                             <constraint firstItem="bfQ-we-ZZm" firstAttribute="trailing" secondItem="gJd-ix-k9c" secondAttribute="trailing" id="Ib1-9G-GAj"/>
+                            <constraint firstItem="gJd-ix-k9c" firstAttribute="bottom" secondItem="6de-Sb-2yP" secondAttribute="bottom" id="MJX-DD-tFS"/>
                             <constraint firstItem="vdv-y0-h1e" firstAttribute="leading" secondItem="gJd-ix-k9c" secondAttribute="leading" id="OvQ-iD-Yja"/>
                             <constraint firstItem="gJd-ix-k9c" firstAttribute="bottom" secondItem="vdv-y0-h1e" secondAttribute="bottom" id="Sq3-bI-JbE"/>
                             <constraint firstItem="bfQ-we-ZZm" firstAttribute="top" secondItem="gJd-ix-k9c" secondAttribute="top" id="c1p-67-dNg"/>
@@ -375,6 +385,8 @@ Why do kidnappings occur?</string>
                         <viewLayoutGuide key="safeArea" id="gJd-ix-k9c"/>
                     </view>
                     <connections>
+                        <outlet property="emptyLabel" destination="6de-Sb-2yP" id="7j3-6e-Y4k"/>
+                        <outlet property="searchBar" destination="bfQ-we-ZZm" id="JKC-9h-Ufz"/>
                         <outlet property="segmentCollectionView" destination="vdv-y0-h1e" id="NhN-Qi-hTP"/>
                         <segue destination="9On-Dg-B0H" kind="show" identifier="markdownSegue" id="cBn-aN-LZI"/>
                         <segue destination="tT0-L0-ZEO" kind="show" identifier="checkListSegue" id="4Ng-9Z-iNI"/>
@@ -382,7 +394,7 @@ Why do kidnappings occur?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VD-LQ-uj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="1970"/>
+            <point key="canvasLocation" x="2992.8000000000002" y="1969.5652173913045"/>
         </scene>
         <!--Lesson Check List View Controller-->
         <scene sceneID="raI-Pi-nYw">

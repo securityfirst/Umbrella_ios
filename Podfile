@@ -10,9 +10,9 @@ target 'Umbrella' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git'
-  pod 'Files'
+  pod 'Files', :git => 'https://github.com/clayellis/Files.git'
   pod 'Yams'
-  pod 'MarkdownView'
+  pod 'MarkdownView', '~> 1.2.0'
   pod 'FeedKit', '~> 8.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
   

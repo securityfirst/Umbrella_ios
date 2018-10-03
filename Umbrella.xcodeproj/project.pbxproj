@@ -51,6 +51,8 @@
 		A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */; };
 		A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B8213EC106004B5B73 /* FeedCell.swift */; };
 		A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115BA214163DC004B5B73 /* LocationViewController.swift */; };
+		A0240485216231F5004057B5 /* FavouriteSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0240484216231F5004057B5 /* FavouriteSegment.swift */; };
+		A02404872162327F004057B5 /* FavouriteSegmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02404862162327F004057B5 /* FavouriteSegmentDao.swift */; };
 		A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E5EF92148185200DEFBFB /* LocationViewModel.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
@@ -112,12 +114,12 @@
 		A0B0AA6920EE575500933759 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA6820EE575400933759 /* TabBar.swift */; };
 		A0B0AA6D20EE605600933759 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA6C20EE605500933759 /* Feed.storyboard */; };
 		A0B0AA6F20EE60B900933759 /* Form.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA6E20EE60B800933759 /* Form.storyboard */; };
-		A0B0AA7120EE60E300933759 /* CheckList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7020EE60E300933759 /* CheckList.storyboard */; };
+		A0B0AA7120EE60E300933759 /* Checklist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7020EE60E300933759 /* Checklist.storyboard */; };
 		A0B0AA7320EE610A00933759 /* Lesson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7220EE610A00933759 /* Lesson.storyboard */; };
 		A0B0AA7520EE612900933759 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B0AA7420EE612900933759 /* Account.storyboard */; };
 		A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */; };
 		A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7820EE6EA000933759 /* FormViewController.swift */; };
-		A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7A20EE6EB500933759 /* CheckListViewController.swift */; };
+		A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */; };
 		A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */; };
 		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
 		A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787020ADA12B00A287C8 /* TableProtocol.swift */; };
@@ -150,6 +152,10 @@
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
 		A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C220CE97F200758A8D /* File+Ext.swift */; };
+		A0D19D7F215E4A6300B5F5FE /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D19D7E215E4A6300B5F5FE /* ChecklistViewModel.swift */; };
+		A0D19D81215E4A9600B5F5FE /* ChecklistReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D19D80215E4A9600B5F5FE /* ChecklistReviewCell.swift */; };
+		A0D19D85215E51A000B5F5FE /* ChecklistReviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D19D84215E51A000B5F5FE /* ChecklistReviewHeaderView.swift */; };
+		A0D19D87215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0D19D86215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib */; };
 		A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */; };
 		A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA020E243120052028F /* CheckListDao.swift */; };
 		A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCA220E246840052028F /* CheckItemDao.swift */; };
@@ -276,6 +282,8 @@
 		A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewSpec.swift; sourceTree = "<group>"; };
 		A02115B8213EC106004B5B73 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A02115BA214163DC004B5B73 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		A0240484216231F5004057B5 /* FavouriteSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSegment.swift; sourceTree = "<group>"; };
+		A02404862162327F004057B5 /* FavouriteSegmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSegmentDao.swift; sourceTree = "<group>"; };
 		A02E5EF92148185200DEFBFB /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
@@ -333,12 +341,12 @@
 		A0B0AA6820EE575400933759 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A0B0AA6C20EE605500933759 /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		A0B0AA6E20EE60B800933759 /* Form.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Form.storyboard; sourceTree = "<group>"; };
-		A0B0AA7020EE60E300933759 /* CheckList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckList.storyboard; sourceTree = "<group>"; };
+		A0B0AA7020EE60E300933759 /* Checklist.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Checklist.storyboard; sourceTree = "<group>"; };
 		A0B0AA7220EE610A00933759 /* Lesson.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Lesson.storyboard; sourceTree = "<group>"; };
 		A0B0AA7420EE612900933759 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7820EE6EA000933759 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
-		A0B0AA7A20EE6EB500933759 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
+		A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
@@ -378,6 +386,10 @@
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		A0D170C220CE97F200758A8D /* File+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Ext.swift"; sourceTree = "<group>"; };
+		A0D19D7E215E4A6300B5F5FE /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
+		A0D19D80215E4A9600B5F5FE /* ChecklistReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistReviewCell.swift; sourceTree = "<group>"; };
+		A0D19D84215E51A000B5F5FE /* ChecklistReviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistReviewHeaderView.swift; sourceTree = "<group>"; };
+		A0D19D86215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChecklistReviewHeaderView.xib; sourceTree = "<group>"; };
 		A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Ext.swift"; sourceTree = "<group>"; };
 		A0D8BCA020E243120052028F /* CheckListDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListDao.swift; sourceTree = "<group>"; };
 		A0D8BCA220E246840052028F /* CheckItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItemDao.swift; sourceTree = "<group>"; };
@@ -697,12 +709,12 @@
 			path = Form;
 			sourceTree = "<group>";
 		};
-		A0B0AA8220EE709100933759 /* CheckList */ = {
+		A0B0AA8220EE709100933759 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
-				A0B0AA7A20EE6EB500933759 /* CheckListViewController.swift */,
+				A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */,
 			);
-			path = CheckList;
+			path = Checklist;
 			sourceTree = "<group>";
 		};
 		A0B0AA8320EE709A00933759 /* Lesson */ = {
@@ -741,6 +753,7 @@
 				A003811320FE368B00CDA44D /* Form */,
 				A0CC7B422135AE7100C28C3B /* Feed-RSS */,
 				A099D09B214A7BDE0064AD18 /* Lesson */,
+				A0D19D78215E49D800B5F5FE /* Checklist */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -769,6 +782,7 @@
 				A02115AE213D8132004B5B73 /* RssItemDao.swift */,
 				A0AE1A31214FE5A90019F09B /* DifficultyRuleDao.swift */,
 				A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */,
+				A02404862162327F004057B5 /* FavouriteSegmentDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -841,16 +855,12 @@
 		A0B9D45420AAE1CE00B2B796 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A0B9787320ADC79800A287C8 /* Dao */,
 				A0DFF37D20F3C084008F3E43 /* Umbrella.swift */,
-				A075248B20C8290300E91A4A /* Language.swift */,
-				A064CE9720AC883900CE99E1 /* Category.swift */,
-				A075248720C824B300E91A4A /* Segment.swift */,
-				A02115B0213D816A004B5B73 /* RssItem.swift */,
-				A0AE1A2F214FE3AF0019F09B /* DifficultyRule.swift */,
-				A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */,
-				A0FFE50220CEEB010026C0C7 /* Checklist */,
+				A0B9787320ADC79800A287C8 /* Dao */,
 				A0FFE4FB20CEEA660026C0C7 /* Form */,
+				A0D19D83215E4AE600B5F5FE /* Feed-RSS */,
+				A0D19D82215E4ADC00B5F5FE /* Lesson */,
+				A0FFE50220CEEB010026C0C7 /* Checklist */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -862,7 +872,7 @@
 				A0B0AA8520F375A000933759 /* Loading */,
 				A0B0AA8020EE707D00933759 /* Feed-RSS */,
 				A0B0AA8120EE708500933759 /* Form */,
-				A0B0AA8220EE709100933759 /* CheckList */,
+				A0B0AA8220EE709100933759 /* Checklist */,
 				A0B0AA8320EE709A00933759 /* Lesson */,
 				A0B0AA8420EE70A200933759 /* Account */,
 			);
@@ -897,20 +907,11 @@
 		A0B9D45B20AAE1CE00B2B796 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */,
-				A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */,
-				A00381342107424E00CDA44D /* FillFormViewModel.swift */,
-				A0038132210741F700CDA44D /* DynamicFormViewModel.swift */,
-				A0CC7B502137F53700C28C3B /* FeedViewModel.swift */,
-				A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */,
-				A0CC7B562137F65800C28C3B /* RssViewModel.swift */,
-				A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */,
-				A02E5EF92148185200DEFBFB /* LocationViewModel.swift */,
-				A099D099214A73FF0064AD18 /* LessonViewModel.swift */,
-				A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */,
-				A08486882150018B0099D669 /* SegmentViewModel.swift */,
-				A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */,
-				A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */,
+				A0D19D79215E49FA00B5F5FE /* Loading */,
+				A0D19D7A215E4A0800B5F5FE /* Form */,
+				A0D19D7B215E4A1800B5F5FE /* Feed-RSS */,
+				A0D19D7C215E4A2A00B5F5FE /* Lesson */,
+				A0D19D7D215E4A3A00B5F5FE /* Checklist */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -921,7 +922,7 @@
 				A0B9D42920AAE03600B2B796 /* Main.storyboard */,
 				A0B0AA6C20EE605500933759 /* Feed.storyboard */,
 				A0B0AA6E20EE60B800933759 /* Form.storyboard */,
-				A0B0AA7020EE60E300933759 /* CheckList.storyboard */,
+				A0B0AA7020EE60E300933759 /* Checklist.storyboard */,
 				A0B0AA7220EE610A00933759 /* Lesson.storyboard */,
 				A0B0AA7420EE612900933759 /* Account.storyboard */,
 			);
@@ -989,6 +990,87 @@
 				A0CC7B4E2136E12B00C28C3B /* CardRssCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A0D19D78215E49D800B5F5FE /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				A0D19D80215E4A9600B5F5FE /* ChecklistReviewCell.swift */,
+				A0D19D84215E51A000B5F5FE /* ChecklistReviewHeaderView.swift */,
+				A0D19D86215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
+		A0D19D79215E49FA00B5F5FE /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				A0C6CEA920B70CC0005BC111 /* LoadingViewModel.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		A0D19D7A215E4A0800B5F5FE /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */,
+				A00381342107424E00CDA44D /* FillFormViewModel.swift */,
+				A0038132210741F700CDA44D /* DynamicFormViewModel.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		A0D19D7B215E4A1800B5F5FE /* Feed-RSS */ = {
+			isa = PBXGroup;
+			children = (
+				A0CC7B502137F53700C28C3B /* FeedViewModel.swift */,
+				A0CC7B542137F57400C28C3B /* ListRssViewModel.swift */,
+				A0CC7B562137F65800C28C3B /* RssViewModel.swift */,
+				A02115B2213EB330004B5B73 /* DetailRssViewModel.swift */,
+				A02E5EF92148185200DEFBFB /* LocationViewModel.swift */,
+			);
+			path = "Feed-RSS";
+			sourceTree = "<group>";
+		};
+		A0D19D7C215E4A2A00B5F5FE /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				A099D099214A73FF0064AD18 /* LessonViewModel.swift */,
+				A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */,
+				A08486882150018B0099D669 /* SegmentViewModel.swift */,
+				A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */,
+				A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		A0D19D7D215E4A3A00B5F5FE /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				A0D19D7E215E4A6300B5F5FE /* ChecklistViewModel.swift */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
+		A0D19D82215E4ADC00B5F5FE /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				A075248B20C8290300E91A4A /* Language.swift */,
+				A064CE9720AC883900CE99E1 /* Category.swift */,
+				A075248720C824B300E91A4A /* Segment.swift */,
+				A0AE1A2F214FE3AF0019F09B /* DifficultyRule.swift */,
+				A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */,
+				A0240484216231F5004057B5 /* FavouriteSegment.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		A0D19D83215E4AE600B5F5FE /* Feed-RSS */ = {
+			isa = PBXGroup;
+			children = (
+				A02115B0213D816A004B5B73 /* RssItem.swift */,
+			);
+			path = "Feed-RSS";
 			sourceTree = "<group>";
 		};
 		A0E81C0221107CEB00FB73FF /* Cells */ = {
@@ -1204,12 +1286,13 @@
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,
 				A0DFF37C20F3B74B008F3E43 /* SFProText-SemiBold.ttf in Resources */,
 				A0B0AA6F20EE60B900933759 /* Form.storyboard in Resources */,
+				A0D19D87215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib in Resources */,
 				A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */,
 				A0B0AA7520EE612900933759 /* Account.storyboard in Resources */,
 				A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */,
 				A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */,
 				A003810E20FE315C00CDA44D /* Roboto-BoldCondensed.ttf in Resources */,
-				A0B0AA7120EE60E300933759 /* CheckList.storyboard in Resources */,
+				A0B0AA7120EE60E300933759 /* Checklist.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1233,7 +1316,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -1244,7 +1327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82674C40E9961726A75A0971 /* [CP] Embed Pods Frameworks */ = {
@@ -1253,7 +1336,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BTNavigationDropdownMenu/BTNavigationDropdownMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Files/Files.framework",
@@ -1276,7 +1359,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99372F1E561386EA80207056 /* [CP] Check Pods Manifest.lock */ = {
@@ -1350,6 +1433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D19D81215E4A9600B5F5FE /* ChecklistReviewCell.swift in Sources */,
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
 				A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */,
 				A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */,
@@ -1359,7 +1443,7 @@
 				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
 				A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
-				A0B0AA7B20EE6EB500933759 /* CheckListViewController.swift in Sources */,
+				A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
 				A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
@@ -1399,6 +1483,7 @@
 				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
 				A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */,
 				A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */,
+				A0D19D7F215E4A6300B5F5FE /* ChecklistViewModel.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
 				A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */,
@@ -1406,6 +1491,7 @@
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
 				A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */,
+				A0D19D85215E51A000B5F5FE /* ChecklistReviewHeaderView.swift in Sources */,
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
@@ -1430,10 +1516,12 @@
 				A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
+				A0240485216231F5004057B5 /* FavouriteSegment.swift in Sources */,
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
+				A02404872162327F004057B5 /* FavouriteSegmentDao.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
 				A08486892150018B0099D669 /* SegmentViewModel.swift in Sources */,
 				A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */,

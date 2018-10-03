@@ -20,6 +20,11 @@ class SegmentViewModel {
         return difficultyRuleDao
     }()
     
+    lazy var favouriteSegmentDao: FavouriteSegmentDao = {
+        let favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlManager)
+        return favouriteSegmentDao
+    }()
+    
     //
     // MARK: - Init
     init() {
@@ -35,6 +40,14 @@ class SegmentViewModel {
     /// - Parameter difficultyRule: DifficultyRule
     func insert(_ difficultyRule: DifficultyRule) {
         _ = self.difficultyRuleDao.insert(difficultyRule)
+    }
+    
+    func insert(_ favouriteSegment: FavouriteSegment) {
+        _ = self.favouriteSegmentDao.insert(favouriteSegment)
+    }
+    
+    func remove(_ segmentId: Int) {
+        _ = self.favouriteSegmentDao.remove(segmentId)
     }
     
 }

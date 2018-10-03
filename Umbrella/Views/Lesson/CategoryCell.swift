@@ -35,7 +35,7 @@ class CategoryCell: UITableViewCell {
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:LessonViewModel, indexPath: IndexPath) {
         
-        let headerItem = viewModel.categories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
+        let headerItem = viewModel.getCategories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
         
         let category = headerItem.categories[indexPath.row]
         self.nameLabel.text = category.name

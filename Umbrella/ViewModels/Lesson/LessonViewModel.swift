@@ -21,6 +21,12 @@ class LessonViewModel {
         return difficultyRuleDao
     }()
     
+    lazy var favouriteSegmentDao: FavouriteSegmentDao = {
+        let favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlManager)
+         _ = favouriteSegmentDao.createTable()
+        return favouriteSegmentDao
+    }()
+    
     //
     // MARK: - Init
     init() {
@@ -31,7 +37,7 @@ class LessonViewModel {
     ///
     /// - Parameter lang: String
     /// - Returns: [Category]
-    func categories(ofLanguage lang: String) -> [Category] {
+    func getCategories(ofLanguage lang: String = Locale.current.languageCode!) -> [Category] {
         
         let language = umbrella?.languages.filter { $0.name == lang}.first
         
@@ -58,5 +64,36 @@ class LessonViewModel {
     /// - Returns: Int
     func isExistRule(to difficultyRule: DifficultyRule) -> Int {
         return self.difficultyRuleDao.isExistRule(to: difficultyRule)
+    }
+    
+    func loadFavourites() -> [Segment] {
+        
+        var segments: [Segment] = [Segment]()
+        
+        let categories = getCategories()
+        let favourites = self.favouriteSegmentDao.list()
+        
+        for favouriteSegment in favourites {
+            
+            for category in categories {
+                
+                let categ = category.categories.filter {$0.id == favouriteSegment.categoryId}.first
+                
+                if let categ = categ {
+                    let difficulty = categ.categories.filter {$0.id == favouriteSegment.difficultyId}.first
+                    
+                    if let difficulty = difficulty {
+                        let segment = difficulty.segments.filter {$0.id == favouriteSegment.segmentId}.first
+                        
+                        if let segment = segment {
+                            segment.favourite = true
+                            segments.append(segment)
+                        }
+                    }
+                }
+            }
+        }
+        
+        return segments
     }
 }

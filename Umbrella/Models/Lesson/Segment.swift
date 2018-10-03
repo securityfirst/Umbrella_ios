@@ -20,6 +20,7 @@ class Segment: Codable, TableProtocol {
     let name: String?
     let index: Float?
     var content: String?
+    var favourite: Bool = false
     
     //
     // MARK: - Initializers
@@ -29,6 +30,7 @@ class Segment: Codable, TableProtocol {
         self.name = ""
         self.index = 0
         self.content = ""
+        self.favourite = false
     }
     
     init(name: String, index: Float, content: String) {
@@ -37,6 +39,7 @@ class Segment: Codable, TableProtocol {
         self.name = name
         self.index = index
         self.content = content
+        self.favourite = false
     }
     
     //

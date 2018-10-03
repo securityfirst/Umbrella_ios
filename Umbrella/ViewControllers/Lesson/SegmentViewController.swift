@@ -18,6 +18,10 @@ class SegmentViewController: UIViewController {
         return segmentViewModel
     }()
     
+    @IBOutlet weak var emptyLabel: UILabel!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var segmentCollectionView: UICollectionView!
     var menuView: BTNavigationDropdownMenu?
     
@@ -52,6 +56,9 @@ class SegmentViewController: UIViewController {
                 }
             }
         }
+        
+        self.emptyLabel.text = "You do not have any Segment yet.".localized()
+        self.checkIfEmptyList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +86,14 @@ class SegmentViewController: UIViewController {
             lessonCheckListViewController.lessonCheckListViewModel.checklist = (dictionary["checkList"] as? CheckList)!
             lessonCheckListViewController.lessonCheckListViewModel.category = (dictionary["category"] as? Category)!
         }
+    }
+    
+    //
+    // MARK: - Functions
+    
+    func checkIfEmptyList() {
+        self.segmentCollectionView.isHidden = self.segmentViewModel.category?.segments.count == 0
+        self.searchBar.isHidden = self.segmentCollectionView.isHidden
     }
 }
 
@@ -132,6 +147,7 @@ extension SegmentViewController: UICollectionViewDataSource {
             let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "SegmentCell",
                                                            for: indexPath) as? SegmentCell)!
             cell.configure(withViewModel: self.segmentViewModel, indexPath: indexPath)
+            cell.delegate = self
             return cell
         } else {
             let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "CheckListCell",
@@ -150,9 +166,46 @@ extension SegmentViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
-            return CGSize(width: 171, height: 187)
+            return CGSize(width: UIScreen.main.bounds.width/2-15, height: 187)
         } else {
-            return CGSize(width: 350, height: 132)
+            return CGSize(width: UIScreen.main.bounds.width-22, height: 132)
+        }
+    }
+}
+
+//
+// MARK: - SegmentCellDelegate
+extension SegmentViewController: SegmentCellDelegate {
+    
+    func favouriteSegment(cell: SegmentCell) {
+        
+        let indexPath = self.segmentCollectionView.indexPath(for: cell)
+        
+        if let  indexPath = indexPath {
+            let segment = self.segmentViewModel.category?.segments[indexPath.row]
+            if let segment = segment {
+                segment.favourite = !segment.favourite
+                
+                if segment.favourite {
+                    
+                    let favouriteSegment = FavouriteSegment(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: segment.id)
+                    
+                    self.segmentViewModel.insert(favouriteSegment)
+                } else {
+                    self.segmentViewModel.remove(segment.id)
+                    
+                    if self.segmentViewModel.category?.name == "Favourites".localized() {
+                        self.segmentViewModel.category?.segments.remove(at: indexPath.row)
+                    }
+                }
+                
+                if self.segmentViewModel.category?.name == "Favourites".localized() {
+                    self.checkIfEmptyList()
+                    self.segmentCollectionView.reloadData()
+                } else {
+                    self.segmentCollectionView.reloadItems(at: [indexPath])
+                }
+            }
         }
     }
 }

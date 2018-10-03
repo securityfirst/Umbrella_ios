@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="21" y="992"/>
         </scene>
-        <!--CheckList-->
+        <!--Checklist-->
         <scene sceneID="Qjn-w1-dPd">
             <objects>
-                <viewControllerPlaceholder storyboardName="CheckList" id="pl9-Ep-k5U" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Checklist" id="pl9-Ep-k5U" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="PeI-cV-J3h"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sE4-GT-nPe" userLabel="First Responder" sceneMemberID="firstResponder"/>

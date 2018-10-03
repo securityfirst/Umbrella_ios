@@ -22,8 +22,17 @@ class DifficultyCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        headerView.roundCorners([.topLeft, .topRight], radius: 14)
+        // Bugfix - In iPhone 5/5s, for some reason the direct side constraint doesn't work and the view ends up getting larger than the superview and does not show the cornerRadius correctly, so I made that modification of the frame to solve the problem.
+        var frame = headerView.frame
+        frame.size.width = self.bounds.size.width - 30
+        headerView.frame = frame
+        
+        headerView.roundCorners([.topRight, .topLeft], radius: 14)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
