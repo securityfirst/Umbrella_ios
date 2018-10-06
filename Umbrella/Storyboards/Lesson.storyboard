@@ -65,7 +65,7 @@
                                     <outlet property="delegate" destination="4dF-MN-S27" id="Qw6-kR-R8L"/>
                                 </connections>
                             </tableView>
-                            <searchBar userInteractionEnabled="NO" contentMode="redraw" searchBarStyle="minimal" text="" translatesAutoresizingMaskIntoConstraints="NO" id="3rt-qD-udK">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" translatesAutoresizingMaskIntoConstraints="NO" id="3rt-qD-udK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -259,7 +259,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="171" height="141"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ATJ-lH-mpF">
-                                                                    <rect key="frame" x="8" y="8" width="155" height="112"/>
+                                                                    <rect key="frame" x="8" y="8" width="155" height="112.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="125" id="4n0-jl-RLE"/>
                                                                     </constraints>
@@ -586,6 +586,6 @@ Why do kidnappings occur?</string>
         <image name="iconFavourite" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6fs-CU-3FT"/>
+        <segue reference="Wln-tG-fek"/>
     </inferredMetricsTieBreakers>
 </document>

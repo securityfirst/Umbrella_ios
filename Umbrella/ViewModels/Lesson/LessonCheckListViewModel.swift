@@ -46,6 +46,7 @@ class LessonCheckListViewModel {
         _ = self.checklistCheckedDao.remove(checklistChecked)
     }
     
+    /// Update checklist with Item checked
     func updateChecklistWithItemChecked() {
         
         let checkedList = self.checklistCheckedDao.list(checklistId: self.checklist!.id)

@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class Segment: Codable, TableProtocol {
+class Segment: Codable, TableProtocol, NSCopying {
     
     // Used in parser from the database to object
     var id: Int
@@ -17,8 +17,8 @@ class Segment: Codable, TableProtocol {
     
     //
     // MARK: - Properties
-    let name: String?
-    let index: Float?
+    var name: String?
+    var index: Float?
     var content: String?
     var favourite: Bool = false
     
@@ -84,6 +84,19 @@ class Segment: Codable, TableProtocol {
         } else {
             self.content = ""
         }
+    }
+    
+    //
+    // MARK: - NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Segment()
+        copy.id = self.id
+        copy.categoryId = self.categoryId
+        copy.name = self.name
+        copy.index = self.index
+        copy.content = self.content
+        copy.favourite = self.favourite
+        return copy
     }
     
     //

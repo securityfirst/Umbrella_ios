@@ -82,6 +82,9 @@ struct UmbrellaDatabase {
         }
     }
     
+    /// Drop all tables
+    ///
+    /// - Returns: Bool
     func dropTables() -> Bool {
         
         let difficultyRuleSuccess = self.difficultyRuleDao.dropTable()
@@ -181,6 +184,9 @@ struct UmbrellaDatabase {
         UmbrellaDatabase.languagesStatic = self.languages
     }
     
+    /// Check if the database exists
+    ///
+    /// - Returns: Bool
     func checkIfTheDatabaseExists() -> Bool {
         return self.sqlProtocol.checkIfTheDatabaseExists()
     }
@@ -349,13 +355,12 @@ extension UmbrellaDatabase {
     fileprivate func convertToObject(_ category: Category, _ categories: [Category], _ language: Language, _ segments: [Segment], _ checkLists: [CheckList], _ checkItems: [CheckItem]) {
         
         // Subcategories
-        
         for subcategory in category.categories {
             subcategory.categories = categories.filter { $0.languageId == language.id && $0.parent == subcategory.id }
             //Sort by Index
             subcategory.categories.sort(by: { $0.index! < $1.index!})
             
-            //Segments2
+            //Segments
             subcategory.segments = segments.filter { $0.categoryId == subcategory.id }
             
             //Sort by Index

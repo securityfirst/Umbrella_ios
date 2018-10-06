@@ -59,6 +59,9 @@ class SegmentViewController: UIViewController {
         
         self.emptyLabel.text = "You do not have any Segment yet.".localized()
         self.checkIfEmptyList()
+        
+        self.segmentViewModel.updateFavouriteSegment()
+        self.segmentCollectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class CheckItem: Codable, TableProtocol {
+class CheckItem: Codable, TableProtocol, NSCopying {
     
     // Used in parser from the database to object
     var id: Int
@@ -20,7 +20,7 @@ class CheckItem: Codable, TableProtocol {
     
     //Name and label are same information (the title of checkbox), so a label is used to when the checkbox is checked and as I need to save the name, I create the attribute label only to get data.
     var name: String
-    private let label: String
+    private var label: String
     var isLabel: Bool = false
     var checked: Bool = false
     
@@ -88,6 +88,19 @@ class CheckItem: Codable, TableProtocol {
         } else {
             self.label = ""
         }
+    }
+    
+    //
+    // MARK: - NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = CheckItem()
+        copy.id = self.id
+        copy.checkListId = self.checkListId
+        copy.name = self.name
+        copy.label = self.label
+        copy.isLabel = self.isLabel
+        copy.checked = self.checked
+        return copy
     }
     
     //

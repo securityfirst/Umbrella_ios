@@ -35,6 +35,21 @@ class SegmentViewModel {
     //
     // MARK: - Functions
     
+    /// Update favourite segment
+    func updateFavouriteSegment() {
+        
+        let favouriteList = self.favouriteSegmentDao.list()
+        
+        for favourite in favouriteList where category?.id == favourite.difficultyId {
+            
+            let segment = category?.segments.filter {$0.id == favourite.segmentId}.first
+            
+            if let segment = segment {
+                segment.favourite = true
+            }
+        }
+    }
+    
     /// Insert a new DifficultyRule into the database
     ///
     /// - Parameter difficultyRule: DifficultyRule

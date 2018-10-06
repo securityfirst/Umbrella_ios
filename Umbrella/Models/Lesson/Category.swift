@@ -20,7 +20,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     var name: String?
     var description: String?
     var icon: String?
-    let index: Float?
+    var index: Float?
     var parent: Int
     var folderName: String?
     var categories: [Category]
@@ -131,8 +131,15 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     //
     // MARK: - NSCopying
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Category(name: self.name!, description: self.description!, icon: self.icon!, index: self.index!, folderName: self.folderName!)
-        copy.id = id
+        let copy = Category()
+        copy.id = self.id
+        copy.languageId = self.languageId
+        copy.name = self.name
+        copy.description = self.description
+        copy.icon = self.icon
+        copy.index = self.index
+        copy.folderName = self.folderName
+        copy.parent = self.parent
         return copy
     }
     

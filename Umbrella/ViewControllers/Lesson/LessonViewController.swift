@@ -211,7 +211,7 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else if self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1].categories.count == 0 {
             print("Go to segment")
-             let category = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
+            let category = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
             collapsed = true
@@ -229,6 +229,7 @@ extension LessonViewController: CategoryHeaderViewDelegate {
 }
 
 extension LessonViewController: UISearchBarDelegate {
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
     }
@@ -237,15 +238,23 @@ extension LessonViewController: UISearchBarDelegate {
         
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
+        
+        if let text = searchBar.text {
+            self.lessonViewModel.termSearch = text
+            self.lessonTableView.reloadData()
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if searchText == "" {
+            self.lessonViewModel.termSearch = ""
+            self.lessonTableView.reloadData()
+            
+            delay(0.25) {
+                self.view.endEditing(true)
+            }
+        }
     }
 }

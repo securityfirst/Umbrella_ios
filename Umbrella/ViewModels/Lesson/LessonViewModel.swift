@@ -13,8 +13,25 @@ class LessonViewModel {
     //
     // MARK: - Properties
     var umbrella: Umbrella?
-    var categories: [Category] = [Category]()
+    var categoriesFilter: [Category] = [Category]()
     var sectionsCollapsed: [Int] = [Int]()
+    private var isSearch: Bool = false
+    var termSearch: String = "" {
+        didSet {
+            isSearch = termSearch.count > 0
+            
+            if isSearch {
+                let language = umbrella?.languages.filter { $0.name == Locale.current.languageCode!}.first
+                
+                if let language = language {
+                    copyList(originalList: language.categories)
+                }
+            } else {
+                sectionsCollapsed.removeAll()
+            }
+        }
+    }
+    
     var sqlManager: SQLManager
     lazy var difficultyRuleDao: DifficultyRuleDao = {
         let difficultyRuleDao = DifficultyRuleDao(sqlProtocol: self.sqlManager)
@@ -42,10 +59,86 @@ class LessonViewModel {
         let language = umbrella?.languages.filter { $0.name == lang}.first
         
         if let language = language {
+            
+            if self.isSearch {
+                return filterCategories()
+            }
+            
             return language.categories
         }
         
         return [Category]()
+    }
+    
+    fileprivate func copyList(originalList: [Category]) {
+        
+        self.categoriesFilter.removeAll()
+        
+        for category in originalList {
+            
+            // Category
+            let copyCat: Category = (category.copy() as? Category)!
+            
+            // SubCategory
+            for subcategory in category.categories {
+                let copySub = (subcategory.copy() as? Category)!
+                copyCat.categories.append(copySub)
+
+                // Difficulty
+                for difficulty in subcategory.categories {
+                    let copyDifficulty = (difficulty.copy() as? Category)!
+                    copySub.categories.append(copyDifficulty)
+                    
+                    // Segments
+                    for segment in difficulty.segments {
+                        let copySeg = (segment.copy() as? Segment)!
+                        copyDifficulty.segments.append(copySeg)
+                    }
+                    
+                    // Checklist
+                    for checklist in difficulty.checkList {
+                        let copyChecklist = (checklist.copy() as? CheckList)!
+                        copyDifficulty.checkList.append(copyChecklist)
+                        
+                        // CheckItem
+                        for checkItem in checklist.items {
+                            let copyCheckItem = (checkItem.copy() as? CheckItem)!
+                            copyChecklist.items.append(copyCheckItem)
+                        }
+                    }
+                }
+            }
+            
+            // Segments
+            for segment in category.segments {
+                let copySeg = (segment.copy() as? Segment)!
+                copyCat.segments.append(copySeg)
+            }
+
+            // Checklist
+            for checklist in category.checkList {
+                let copyChecklist = (checklist.copy() as? CheckList)!
+                copyCat.checkList.append(copyChecklist)
+            }
+            
+            self.categoriesFilter.append(copyCat)
+        }
+    }
+    
+    fileprivate func filterCategories() -> [Category] {
+        
+        var finalList = [Category]()
+        
+        for parent in self.categoriesFilter {
+            let children = parent.categories.filter { $0.name!.contains(termSearch) }
+            if children.count > 0 {
+                let copyParent = parent
+                copyParent.categories = children
+                finalList.append(copyParent)
+            }
+        }
+
+        return finalList
     }
     
     /// Check if the headerView is collapsed in array
@@ -53,7 +146,6 @@ class LessonViewModel {
     /// - Parameter section: Int
     /// - Returns: Bool
     func isCollapsed(section: Int) -> Bool {
-        
         let count = sectionsCollapsed.filter { $0 == section }.count
         return count > 0
     }
@@ -66,6 +158,9 @@ class LessonViewModel {
         return self.difficultyRuleDao.isExistRule(to: difficultyRule)
     }
     
+    /// Load all favourite segments
+    ///
+    /// - Returns: [Segment]
     func loadFavourites() -> [Segment] {
         
         var segments: [Segment] = [Segment]()
@@ -73,6 +168,7 @@ class LessonViewModel {
         let categories = getCategories()
         let favourites = self.favouriteSegmentDao.list()
         
+        // I need to refactor it
         for favouriteSegment in favourites {
             
             for category in categories {

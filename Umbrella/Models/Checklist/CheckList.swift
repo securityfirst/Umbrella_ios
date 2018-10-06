@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class CheckList: Codable, TableProtocol {
+class CheckList: Codable, TableProtocol, NSCopying {
     
     // Used in parser from the database to object
     var id: Int
@@ -17,7 +17,7 @@ class CheckList: Codable, TableProtocol {
     
     //
     // MARK: - Properties
-    let index: Float?
+    var index: Float?
     var items: [CheckItem]
     
     //
@@ -71,6 +71,16 @@ class CheckList: Codable, TableProtocol {
         } else {
             self.items = []
         }
+    }
+    
+    //
+    // MARK: - NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = CheckList()
+        copy.id = self.id
+        copy.categoryId = self.categoryId
+        copy.index = self.index
+        return copy
     }
     
     /// Count just item Check different of Label
