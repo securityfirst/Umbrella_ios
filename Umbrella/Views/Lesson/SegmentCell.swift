@@ -49,15 +49,13 @@ class SegmentCell: UICollectionViewCell {
     func configure(withViewModel viewModel:SegmentViewModel, indexPath: IndexPath) {
         
         headerView.backgroundColor = Lessons.colors[indexPath.row % Lessons.colors.count]
-
-        if let category = viewModel.category {
-            let segment = category.segments[indexPath.row]
-            
-            let index = ((segment.index ?? 0) == 0) ? (indexPath.row + 1) : Int(segment.index!)
-            self.titleLabel.text = "\(index) \(segment.name ?? "")"
-            
-            self.iconImageView.tintColor = segment.favourite ? #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1) : #colorLiteral(red: 0.6251067519, green: 0.6256913543, blue: 0.6430284977, alpha: 1)
-        }
+        
+        let segment = viewModel.getSegments()[indexPath.row]
+        
+        let index = ((segment.index ?? 0) == 0) ? (indexPath.row + 1) : Int(segment.index!)
+        self.titleLabel.text = "\(index) \(segment.name ?? "")"
+        
+        self.iconImageView.tintColor = segment.favourite ? #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1) : #colorLiteral(red: 0.6251067519, green: 0.6256913543, blue: 0.6430284977, alpha: 1)
     }
     
     //

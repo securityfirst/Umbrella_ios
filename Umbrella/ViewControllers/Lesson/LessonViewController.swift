@@ -95,6 +95,7 @@ class LessonViewController: UIViewController {
     }
 }
 
+//
 // MARK: - UITableViewDataSource
 extension LessonViewController: UITableViewDataSource {
     
@@ -128,6 +129,7 @@ extension LessonViewController: UITableViewDataSource {
     }
 }
 
+//
 // MARK: - UITableViewDelegate
 extension LessonViewController: UITableViewDelegate {
     
@@ -195,6 +197,8 @@ extension LessonViewController: UITableViewDelegate {
     }
 }
 
+//
+// MARK: - CategoryHeaderViewDelegate
 extension LessonViewController: CategoryHeaderViewDelegate {
     func toggleSection(header: CategoryHeaderView, section: Int) {
         
@@ -228,16 +232,10 @@ extension LessonViewController: CategoryHeaderViewDelegate {
     }
 }
 
+//
+// MARK: - UISearchBarDelegate
 extension LessonViewController: UISearchBarDelegate {
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
+  
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         

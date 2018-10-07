@@ -15,7 +15,7 @@ class LessonViewModel {
     var umbrella: Umbrella?
     var categoriesFilter: [Category] = [Category]()
     var sectionsCollapsed: [Int] = [Int]()
-    private var isSearch: Bool = false
+    fileprivate var isSearch: Bool = false
     var termSearch: String = "" {
         didSet {
             isSearch = termSearch.count > 0
@@ -70,6 +70,9 @@ class LessonViewModel {
         return [Category]()
     }
     
+    /// Copy a list of Categories
+    ///
+    /// - Parameter originalList: [Category]
     fileprivate func copyList(originalList: [Category]) {
         
         self.categoriesFilter.removeAll()
@@ -125,12 +128,15 @@ class LessonViewModel {
         }
     }
     
+    /// Filter Categories for the term
+    ///
+    /// - Returns: [Category]
     fileprivate func filterCategories() -> [Category] {
         
         var finalList = [Category]()
         
         for parent in self.categoriesFilter {
-            let children = parent.categories.filter { $0.name!.contains(termSearch) }
+            let children = parent.categories.filter { $0.name!.lowercased().contains(termSearch.lowercased()) }
             if children.count > 0 {
                 let copyParent = parent
                 copyParent.categories = children

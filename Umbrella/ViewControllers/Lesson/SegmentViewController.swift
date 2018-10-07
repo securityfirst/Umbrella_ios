@@ -107,7 +107,7 @@ extension SegmentViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            let segment = self.segmentViewModel.category?.segments[indexPath.row]
+            let segment = self.segmentViewModel.getSegments()[indexPath.row]
             self.performSegue(withIdentifier: "markdownSegue", sender: segment)
         } else if indexPath.section == 1 {
             let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
@@ -126,18 +126,11 @@ extension SegmentViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if let category = self.segmentViewModel.category {
-                return category.segments.count
-            } else {
-                return 0
-            }
-            
+            return self.segmentViewModel.getSegments().count
         } else if section == 1 {
             
             if let category = self.segmentViewModel.category {
                 return category.checkList.count
-            } else {
-                return 0
             }
         }
         
@@ -185,29 +178,55 @@ extension SegmentViewController: SegmentCellDelegate {
         let indexPath = self.segmentCollectionView.indexPath(for: cell)
         
         if let  indexPath = indexPath {
-            let segment = self.segmentViewModel.category?.segments[indexPath.row]
-            if let segment = segment {
-                segment.favourite = !segment.favourite
+            let segment = self.segmentViewModel.getSegments()[indexPath.row]
+            segment.favourite = !segment.favourite
+            
+            if segment.favourite {
                 
-                if segment.favourite {
-                    
-                    let favouriteSegment = FavouriteSegment(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: segment.id)
-                    
-                    self.segmentViewModel.insert(favouriteSegment)
-                } else {
-                    self.segmentViewModel.remove(segment.id)
-                    
-                    if self.segmentViewModel.category?.name == "Favourites".localized() {
-                        self.segmentViewModel.category?.segments.remove(at: indexPath.row)
-                    }
-                }
+                let favouriteSegment = FavouriteSegment(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: segment.id)
+                
+                self.segmentViewModel.insert(favouriteSegment)
+            } else {
+                self.segmentViewModel.remove(segment.id)
                 
                 if self.segmentViewModel.category?.name == "Favourites".localized() {
-                    self.checkIfEmptyList()
-                    self.segmentCollectionView.reloadData()
-                } else {
-                    self.segmentCollectionView.reloadItems(at: [indexPath])
+                    var segments = self.segmentViewModel.getSegments()
+                    segments.remove(at: indexPath.row)
                 }
+            }
+            
+            if self.segmentViewModel.category?.name == "Favourites".localized() {
+                self.checkIfEmptyList()
+                self.segmentCollectionView.reloadData()
+            } else {
+                self.segmentCollectionView.reloadItems(at: [indexPath])
+            }
+        }
+    }
+}
+
+//
+// MARK: - UISearchBarDelegate
+extension SegmentViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        
+        if let text = searchBar.text {
+            self.segmentViewModel.termSearch = text
+            self.segmentViewModel.updateFavouriteSegment()
+            self.segmentCollectionView.reloadData()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            self.segmentViewModel.termSearch = ""
+            self.segmentViewModel.updateFavouriteSegment()
+            self.segmentCollectionView.reloadData()
+            
+            delay(0.25) {
+                self.view.endEditing(true)
             }
         }
     }
