@@ -14,7 +14,7 @@ class LessonViewModel {
     // MARK: - Properties
     var umbrella: Umbrella?
     var categoriesFilter: [Category] = [Category]()
-    var sectionsCollapsed: [Int] = [Int]()
+    var sectionsCollapsed: Set<Int> = Set<Int>()
     fileprivate var isSearch: Bool = false
     var termSearch: String = "" {
         didSet {
@@ -142,6 +142,11 @@ class LessonViewModel {
                 copyParent.categories = children
                 finalList.append(copyParent)
             }
+        }
+        
+        for index in finalList.indices {
+            //Collapse all
+            sectionsCollapsed.insert(index+1)
         }
 
         return finalList

@@ -219,7 +219,7 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
             collapsed = true
-            self.lessonViewModel.sectionsCollapsed.append(section)
+            self.lessonViewModel.sectionsCollapsed.insert(section)
         }
         
         header.setCollapsed(collapsed: collapsed)

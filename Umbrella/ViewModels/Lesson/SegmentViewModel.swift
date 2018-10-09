@@ -81,6 +81,13 @@ class SegmentViewModel {
                 segment.favourite = true
             }
         }
+        
+        // Favourite Screen
+        if category?.id == -1 {
+            for segment in getSegments() {
+                segment.favourite = true
+            }
+        }
     }
     
     /// Reset all flag favourite of the segments

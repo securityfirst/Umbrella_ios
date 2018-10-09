@@ -190,8 +190,7 @@ extension SegmentViewController: SegmentCellDelegate {
                 self.segmentViewModel.remove(segment.id)
                 
                 if self.segmentViewModel.category?.name == "Favourites".localized() {
-                    var segments = self.segmentViewModel.getSegments()
-                    segments.remove(at: indexPath.row)
+                    self.segmentViewModel.category?.segments.remove(at: indexPath.row)
                 }
             }
             

@@ -40,7 +40,27 @@ class LessonCheckListViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
+        var checkItemChecked = ""
+//        ✓✗
         
+        for checkItem in (self.lessonCheckListViewModel.checklist?.items)! {
+            checkItemChecked.append("\(checkItem.checked ? "✓" : "✗") \(checkItem.name)\n")
+        }
+        let objectsToShare = [checkItemChecked]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        //New Excluded Activities Code
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+        
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                return
+            }
+            // User completed activity
+        }
+        
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     //
