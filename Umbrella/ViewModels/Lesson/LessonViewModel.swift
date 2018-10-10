@@ -174,6 +174,7 @@ class LessonViewModel {
     /// - Returns: [Segment]
     func loadFavourites() -> [Segment] {
         
+        _ = favouriteSegmentDao.createTable()
         var segments: [Segment] = [Segment]()
         
         let categories = getCategories()

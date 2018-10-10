@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 enum Config {
-//    static var gitBaseURL = URL(string: "https://github.com/securityfirst/umbrella-content")!
-    static var gitBaseURL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
+    static var gitBaseURL = URL(string: "https://github.com/securityfirst/umbrella-content")!
+//    static var gitBaseURL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
     //Test the GitManager
     static var debug: Bool = false
 }

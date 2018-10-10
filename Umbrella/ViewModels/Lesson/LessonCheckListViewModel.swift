@@ -49,13 +49,15 @@ class LessonCheckListViewModel {
     /// Update checklist with Item checked
     func updateChecklistWithItemChecked() {
         
-        let checkedList = self.checklistCheckedDao.list(checklistId: self.checklist!.id)
-        
-        for item in (self.checklist?.items)! {
+        if let checklist = self.checklist {
+            let checkedList = self.checklistCheckedDao.list(checklistId: checklist.id)
             
-            let checked = checkedList.filter {$0.itemId == item.id}.first
-            
-            item.checked = (checked != nil)
+            for item in checklist.items {
+                
+                let checked = checkedList.filter {$0.itemId == item.id}.first
+                
+                item.checked = (checked != nil)
+            }
         }
     }
 }

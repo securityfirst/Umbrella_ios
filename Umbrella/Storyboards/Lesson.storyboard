@@ -390,6 +390,7 @@ Why do kidnappings occur?</string>
                         <outlet property="segmentCollectionView" destination="vdv-y0-h1e" id="NhN-Qi-hTP"/>
                         <segue destination="9On-Dg-B0H" kind="show" identifier="markdownSegue" id="cBn-aN-LZI"/>
                         <segue destination="tT0-L0-ZEO" kind="show" identifier="checkListSegue" id="4Ng-9Z-iNI"/>
+                        <segue destination="Xih-sS-bEp" kind="show" identifier="reviewLessonSegue" id="MFc-0B-sLb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VD-LQ-uj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -528,6 +529,49 @@ Why do kidnappings occur?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EV-9K-iWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3829.5999999999999" y="2735.9820089955024"/>
+        </scene>
+        <!--Review Lesson View Controller-->
+        <scene sceneID="4al-RU-09y">
+            <objects>
+                <viewController storyboardIdentifier="ReviewLessonViewController" id="Xih-sS-bEp" customClass="ReviewLessonViewController" customModule="Umbrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uZ5-9L-tg9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvd-hp-hKH" customClass="SideScrollLessonView" customModule="Umbrella" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="28"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="fMm-Of-sAy"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q4O-CW-rgi">
+                                <rect key="frame" x="0.0" y="97" width="375" height="570"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xih-sS-bEp" id="at3-a4-GiB"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Q4O-CW-rgi" firstAttribute="leading" secondItem="aOt-83-Q0e" secondAttribute="leading" id="1vh-vz-Ss7"/>
+                            <constraint firstItem="Q4O-CW-rgi" firstAttribute="top" secondItem="fvd-hp-hKH" secondAttribute="bottom" constant="5" id="Joc-Qd-yTs"/>
+                            <constraint firstItem="aOt-83-Q0e" firstAttribute="trailing" secondItem="fvd-hp-hKH" secondAttribute="trailing" id="Ski-02-tLA"/>
+                            <constraint firstItem="aOt-83-Q0e" firstAttribute="trailing" secondItem="Q4O-CW-rgi" secondAttribute="trailing" id="cu7-VT-3Us"/>
+                            <constraint firstItem="fvd-hp-hKH" firstAttribute="leading" secondItem="aOt-83-Q0e" secondAttribute="leading" id="goc-6s-e7f"/>
+                            <constraint firstItem="fvd-hp-hKH" firstAttribute="top" secondItem="aOt-83-Q0e" secondAttribute="top" id="r5U-a5-aqG"/>
+                            <constraint firstItem="aOt-83-Q0e" firstAttribute="bottom" secondItem="Q4O-CW-rgi" secondAttribute="bottom" id="tgc-Xw-Y5U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aOt-83-Q0e"/>
+                    </view>
+                    <connections>
+                        <outlet property="reviewScrollView" destination="Q4O-CW-rgi" id="5QO-sc-dik"/>
+                        <outlet property="sideScrollView" destination="fvd-hp-hKH" id="Vho-Ym-ERi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rbj-Nh-slt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3889" y="1279"/>
         </scene>
         <!--Markdown View Controller-->
         <scene sceneID="BQN-0G-CWD">

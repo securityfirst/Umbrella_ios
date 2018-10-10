@@ -9,7 +9,7 @@
 import UIKit
 
 class LessonCheckListViewController: UIViewController {
-
+    
     //
     // MARK: - Properties
     lazy var lessonCheckListViewModel: LessonCheckListViewModel = {
@@ -26,7 +26,7 @@ class LessonCheckListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "CheckList"
-    
+        
         self.lessonCheckListViewModel.updateChecklistWithItemChecked()
         self.checkListTableView.reloadData()
         
@@ -41,7 +41,7 @@ class LessonCheckListViewController: UIViewController {
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
         var checkItemChecked = ""
-//        ✓✗
+        //        ✓✗
         
         for checkItem in (self.lessonCheckListViewModel.checklist?.items)! {
             checkItemChecked.append("\(checkItem.checked ? "✓" : "✗") \(checkItem.name)\n")
@@ -74,7 +74,7 @@ class LessonCheckListViewController: UIViewController {
             self.progressLabel.text = "\(Int(CGFloat(currentChecked) / CGFloat(totalItemInChecklist) * 100))%"
         }
     }
-
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -85,26 +85,34 @@ extension LessonCheckListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.lessonCheckListViewModel.checklist!.items.count
+        
+        if let checklist = self.lessonCheckListViewModel.checklist {
+            return checklist.items.count
+        }
+        
+        return 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
-        
-        if item.isLabel {
-            let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
+        if let checklist = self.lessonCheckListViewModel.checklist {
+            let item: CheckItem = checklist.items[indexPath.row]
             
-            cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
-            
-            return cell
-        } else {
-            let cell: FillCheckListCell = (tableView.dequeueReusableCell(withIdentifier: "FillCheckListCell", for: indexPath) as? FillCheckListCell)!
-            
-            cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
-            
-            return cell
+            if item.isLabel {
+                let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
+                
+                cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
+                
+                return cell
+            } else {
+                let cell: FillCheckListCell = (tableView.dequeueReusableCell(withIdentifier: "FillCheckListCell", for: indexPath) as? FillCheckListCell)!
+                
+                cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
+                
+                return cell
+            }
         }
+        return UITableViewCell()
     }
 }
 
@@ -124,7 +132,7 @@ extension LessonCheckListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         var categoryFound: Category? = nil
         
         for category in UmbrellaDatabase.categories() {

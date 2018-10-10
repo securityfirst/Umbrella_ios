@@ -93,6 +93,11 @@
 		A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */; };
 		A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */; };
 		A0AA0911215924C9007C0327 /* CheckListLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA0910215924C9007C0327 /* CheckListLabelCell.swift */; };
+		A0AA1561216E4686003753E5 /* ReviewLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1560216E4686003753E5 /* ReviewLessonViewController.swift */; };
+		A0AA1563216E4771003753E5 /* ReviewLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1562216E4771003753E5 /* ReviewLessonViewModel.swift */; };
+		A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */; };
+		A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */; };
+		A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1567216E577F003753E5 /* TitleLessonView.swift */; };
 		A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A27214BDC600019F09B /* DifficultyCell.swift */; };
 		A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */; };
 		A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */; };
@@ -320,6 +325,11 @@
 		A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCheckListCell.swift; sourceTree = "<group>"; };
 		A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewModel.swift; sourceTree = "<group>"; };
 		A0AA0910215924C9007C0327 /* CheckListLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListLabelCell.swift; sourceTree = "<group>"; };
+		A0AA1560216E4686003753E5 /* ReviewLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLessonViewController.swift; sourceTree = "<group>"; };
+		A0AA1562216E4771003753E5 /* ReviewLessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLessonViewModel.swift; sourceTree = "<group>"; };
+		A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideScrollProtocol.swift; sourceTree = "<group>"; };
+		A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideScrollLessonView.swift; sourceTree = "<group>"; };
+		A0AA1567216E577F003753E5 /* TitleLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLessonView.swift; sourceTree = "<group>"; };
 		A0AE1A27214BDC600019F09B /* DifficultyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyCell.swift; sourceTree = "<group>"; };
 		A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 		A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewModel.swift; sourceTree = "<group>"; };
@@ -662,8 +672,18 @@
 				A0848686214FFD6E0099D669 /* CheckListCell.swift */,
 				A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */,
 				A0AA0910215924C9007C0327 /* CheckListLabelCell.swift */,
+				A0AA1564216E5767003753E5 /* SideScrollLesson */,
 			);
 			path = Lesson;
+			sourceTree = "<group>";
+		};
+		A0AA1564216E5767003753E5 /* SideScrollLesson */ = {
+			isa = PBXGroup;
+			children = (
+				A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */,
+				A0AA1567216E577F003753E5 /* TitleLessonView.swift */,
+			);
+			path = SideScrollLesson;
 			sourceTree = "<group>";
 		};
 		A0B0AA2B20EBA50B00933759 /* Dao */ = {
@@ -725,6 +745,7 @@
 				A0AE1A2D214FE0370019F09B /* SegmentViewController.swift */,
 				A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */,
 				A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */,
+				A0AA1560216E4686003753E5 /* ReviewLessonViewController.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -900,6 +921,7 @@
 				A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */,
 				A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */,
 				A003810720FE2AA400CDA44D /* StepperProtocol.swift */,
+				A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1040,6 +1062,7 @@
 				A08486882150018B0099D669 /* SegmentViewModel.swift */,
 				A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */,
 				A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */,
+				A0AA1562216E4771003753E5 /* ReviewLessonViewModel.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -1442,6 +1465,7 @@
 				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
 				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
 				A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */,
+				A0AA1561216E4686003753E5 /* ReviewLessonViewController.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
@@ -1490,15 +1514,18 @@
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
+				A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */,
 				A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */,
 				A0D19D85215E51A000B5F5FE /* ChecklistReviewHeaderView.swift in Sources */,
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
 				A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */,
+				A0AA1563216E4771003753E5 /* ReviewLessonViewModel.swift in Sources */,
 				A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */,
 				A0CC7B5A2138048700C28C3B /* ImageDownload.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
+				A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
 				A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */,
 				A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */,
@@ -1546,6 +1573,7 @@
 				A0848685214FFBA00099D669 /* SegmentCell.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 				A0C7326B215B9CA0003087BC /* ChecklistChecked.swift in Sources */,
+				A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */,
 				A0AE1A32214FE5A90019F09B /* DifficultyRuleDao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

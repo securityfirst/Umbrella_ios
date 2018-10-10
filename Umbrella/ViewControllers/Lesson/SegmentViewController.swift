@@ -77,23 +77,35 @@ class SegmentViewController: UIViewController {
     //
     // MARK: - UIStoryboardSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "markdownSegue" {
-            let markdownViewController = (segue.destination as? MarkdownViewController)!
+//        if segue.identifier == "markdownSegue" {
+//            let markdownViewController = (segue.destination as? MarkdownViewController)!
+//
+//            let segment = (sender as? Segment)!
+//            markdownViewController.markdownViewModel.segment = segment
+//        } else if segue.identifier == "checkListSegue" {
+//            let lessonCheckListViewController = (segue.destination as? LessonCheckListViewController)!
+//
+//            let dictionary = (sender as? [String: Any])!
+//            lessonCheckListViewController.lessonCheckListViewModel.checklist = (dictionary["checkList"] as? CheckList)!
+//            lessonCheckListViewController.lessonCheckListViewModel.category = (dictionary["category"] as? Category)!
+//        }
+        
+        if segue.identifier == "reviewLessonSegue" {
             
-            let segment = (sender as? Segment)!
-            markdownViewController.markdownViewModel.segment = segment
-        } else if segue.identifier == "checkListSegue" {
-            let lessonCheckListViewController = (segue.destination as? LessonCheckListViewController)!
+            let reviewLessonViewController = (segue.destination as? ReviewLessonViewController)!
             
             let dictionary = (sender as? [String: Any])!
-            lessonCheckListViewController.lessonCheckListViewModel.checklist = (dictionary["checkList"] as? CheckList)!
-            lessonCheckListViewController.lessonCheckListViewModel.category = (dictionary["category"] as? Category)!
+            reviewLessonViewController.reviewLessonViewModel.segments = (dictionary["segments"] as? [Segment])!
+            reviewLessonViewController.reviewLessonViewModel.checkLists = (dictionary["checkLists"] as? [CheckList])!
+            reviewLessonViewController.reviewLessonViewModel.category = (dictionary["category"] as? Category)!
+            reviewLessonViewController.reviewLessonViewModel.selected = dictionary["selected"] 
         }
     }
     
     //
     // MARK: - Functions
     
+    /// Check if empty List
     func checkIfEmptyList() {
         self.segmentCollectionView.isHidden = self.segmentViewModel.category?.segments.count == 0
         self.searchBar.isHidden = self.segmentCollectionView.isHidden
@@ -106,13 +118,18 @@ extension SegmentViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        var selected: (Any)? = nil
         if indexPath.section == 0 {
             let segment = self.segmentViewModel.getSegments()[indexPath.row]
-            self.performSegue(withIdentifier: "markdownSegue", sender: segment)
+//            self.performSegue(withIdentifier: "markdownSegue", sender: segment)
+            selected = segment
         } else if indexPath.section == 1 {
             let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
-            self.performSegue(withIdentifier: "checkListSegue", sender: ["checkList": checklist!, "category": self.segmentViewModel.category!])
+//            self.performSegue(withIdentifier: "checkListSegue", sender: ["checkList": checklist!, "category": self.segmentViewModel.category!])
+            selected = checklist!
         }
+        
+        self.performSegue(withIdentifier: "reviewLessonSegue", sender: ["segments": self.segmentViewModel.getSegments(), "checkLists": self.segmentViewModel.category?.checkList ?? [CheckList](), "category": self.segmentViewModel.category!, "selected": selected])
     }
 }
 
