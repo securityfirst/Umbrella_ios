@@ -119,7 +119,7 @@ class SegmentViewModel {
         
         let finalList = [Segment]()
         
-        let children = segmentsFilter.filter { $0.name!.lowercased().contains(termSearch.lowercased()) }
+        let children = segmentsFilter.filter { $0.name!.lowercased().contains(termSearch.lowercased()) || $0.content!.lowercased().contains(termSearch.lowercased()) }
         if children.count > 0 {
             return children
         }
