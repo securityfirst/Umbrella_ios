@@ -143,4 +143,12 @@ extension FeedViewController: FeedViewDelegate {
     func choiceLocation() {
         self.performSegue(withIdentifier: "locationSegue", sender: nil)
     }
+    
+    func choiceInterval() {
+        self.performSegue(withIdentifier: "intervalSegue", sender: nil)
+    }
+    
+    func choiceSource() {
+        self.performSegue(withIdentifier: "sourcesSegue", sender: nil)
+    }
 }

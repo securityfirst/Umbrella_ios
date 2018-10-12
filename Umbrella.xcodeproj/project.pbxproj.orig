@@ -897,6 +897,7 @@
 		A0B9D45520AAE1CE00B2B796 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A0F5B25F216E98B5008B2B6A /* DemoSettingViewController.swift */,
 				A08F58BF212AE52800BEF571 /* Tour */,
 				A0B0AA8520F375A000933759 /* Loading */,
 				A0B0AA8020EE707D00933759 /* Feed-RSS */,
@@ -1502,6 +1503,7 @@
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
+				A0F5B260216E98B5008B2B6A /* DemoSettingViewController.swift in Sources */,
 				A02115B3213EB331004B5B73 /* DetailRssViewModel.swift in Sources */,
 				A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */,
 				A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */,

@@ -10,6 +10,8 @@ import UIKit
 
 protocol FeedViewDelegate: class {
     func choiceLocation()
+    func choiceInterval()
+    func choiceSource()
 }
 
 class FeedView: UIView {
@@ -38,7 +40,7 @@ class FeedView: UIView {
     }
     
     @IBAction func intervalAction(_ sender: Any) {
-        print("Interval")
+        self.delegate?.choiceInterval()
     }
     
     @IBAction func locationAction(_ sender: Any) {
@@ -46,7 +48,7 @@ class FeedView: UIView {
     }
     
     @IBAction func securityFeedAction(_ sender: Any) {
-        print("Security")
+        self.delegate?.choiceSource()
     }
 }
 
