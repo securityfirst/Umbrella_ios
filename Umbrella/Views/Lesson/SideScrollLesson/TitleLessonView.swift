@@ -22,10 +22,10 @@ class TitleLessonView: UIView, SideScrollProtocol {
             switch stage {
             case .active:
                 titleLabel?.textColor = #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1)
-                titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 11)
+                titleLabel?.font = UIFont(name: "SFProText-SemiBold", size: 11)
             case .inactive:
                 titleLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-                titleLabel?.font = UIFont(name: "Helvetica", size: 11)
+                titleLabel?.font = UIFont(name: "SFProText-SemiBold", size: 11)
             }
         }
     }

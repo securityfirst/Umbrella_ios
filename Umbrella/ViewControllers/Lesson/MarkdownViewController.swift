@@ -17,6 +17,7 @@ class MarkdownViewController: UIViewController {
         let markdownViewModel = MarkdownViewModel()
         return markdownViewModel
     }()
+    var isLoading: Bool = false
     
     @IBOutlet weak var markdownView: MarkdownView!
     
@@ -28,11 +29,24 @@ class MarkdownViewController: UIViewController {
         let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem  = modeBarButton
         
-        if let segment = self.markdownViewModel.segment {
-            self.markdownView.load(markdown: segment.content)
-            self.title = segment.name
+        self.markdownView.isHidden = true
+    }
+    
+    func loadMarkdown() {
+        if self.isLoading {
+            return
         }
         
+        self.isLoading = true
+        
+        if let segment = self.markdownViewModel.segment {
+            self.title = segment.name
+            self.markdownView.load(markdown: segment.content)
+            self.markdownView.onRendered = { [weak self] height in
+                self?.markdownView.isHidden = false
+                self?.view.setNeedsLayout()
+            }
+        }
     }
     
     //

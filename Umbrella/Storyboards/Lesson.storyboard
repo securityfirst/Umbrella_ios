@@ -581,6 +581,9 @@ Why do kidnappings occur?</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-WC-Vix">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R22-hz-ujc" customClass="MarkdownView" customModule="MarkdownView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -588,6 +591,8 @@ Why do kidnappings occur?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QGx-WC-Vix" firstAttribute="centerY" secondItem="P1N-rF-JST" secondAttribute="centerY" id="XPo-30-f4g"/>
+                            <constraint firstItem="QGx-WC-Vix" firstAttribute="centerX" secondItem="P1N-rF-JST" secondAttribute="centerX" id="c6R-Oe-XRN"/>
                             <constraint firstItem="R22-hz-ujc" firstAttribute="top" secondItem="bao-1i-3hL" secondAttribute="top" id="gRd-i8-Rz1"/>
                             <constraint firstItem="R22-hz-ujc" firstAttribute="bottom" secondItem="bao-1i-3hL" secondAttribute="bottom" id="kSn-kg-Wvt"/>
                             <constraint firstItem="R22-hz-ujc" firstAttribute="trailing" secondItem="bao-1i-3hL" secondAttribute="trailing" id="qAa-Vr-qsm"/>

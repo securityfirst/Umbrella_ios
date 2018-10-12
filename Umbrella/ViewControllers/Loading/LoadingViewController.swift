@@ -46,7 +46,11 @@ class LoadingViewController: UIViewController {
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.messageLabel)
 
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
-            loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
+            
+            let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
+            
+//            loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
+            loadingViewModel.clone(witUrl: URL(string: gitHubDemo)!, completion: { gitProgress in
                 DispatchQueue.main.async {
                     self.progressView.setProgress(gitProgress/2.0, animated: true)
                 }

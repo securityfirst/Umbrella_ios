@@ -107,6 +107,8 @@ class ReviewLessonViewController: UIViewController {
                         self.title = name
                     }
                     
+                    controller.loadMarkdown()
+                    
                     break
                 }
                 
@@ -183,6 +185,7 @@ extension ReviewLessonViewController: UIScrollViewDelegate {
             if let name = controller.markdownViewModel.segment?.name {
                 self.title = name
             }
+            controller.loadMarkdown()
         } else if viewController is LessonCheckListViewController {
             self.title = "CheckList".localized()
         }
@@ -200,7 +203,7 @@ extension ReviewLessonViewController: SideScrollLessonViewDataSource {
         
         //Title
         titleFormView.titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: titleFormView.frame.size.width, height: titleFormView.frame.size.height))
-        titleFormView.titleLabel?.font = UIFont(name: "Helvetica", size: 11)
+        titleFormView.titleLabel?.font = UIFont(name: "SFProText-SemiBold", size: 11)
         titleFormView.titleLabel?.textAlignment = .center
         titleFormView.titleLabel?.numberOfLines = 0
         titleFormView.titleLabel?.minimumScaleFactor = 0.5
