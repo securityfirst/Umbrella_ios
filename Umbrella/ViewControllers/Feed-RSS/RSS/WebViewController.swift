@@ -1,5 +1,5 @@
 //
-//  DetailRssViewController.swift
+//  WebViewController.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 30/08/2018.
@@ -10,14 +10,14 @@ import UIKit
 import WebKit
 import FeedKit
 
-class DetailRssViewController: UIViewController {
+class WebViewController: UIViewController {
 
     //
     // MARK: - Properties
     @IBOutlet weak var detailWebView: UIWebView!
-    lazy var detailRssViewModel: DetailRssViewModel = {
-        let detailRssViewModel = DetailRssViewModel()
-        return detailRssViewModel
+    lazy var webViewModel: WebViewModel = {
+        let webViewModel = WebViewModel()
+        return webViewModel
     }()
     
     //
@@ -25,11 +25,14 @@ class DetailRssViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let link = detailRssViewModel.item?.link {
+        self.detailWebView.isHidden = true
+        
+        if let link = webViewModel.link {
             let request = URLRequest(url: URL(string: link)!)
+            self.detailWebView.delegate = self
             self.detailWebView.loadRequest(request)
             
-            self.title = detailRssViewModel.item?.title
+            self.title = webViewModel.title
         }
         
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
@@ -45,7 +48,7 @@ class DetailRssViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
-        if let link = detailRssViewModel.item?.link {
+        if let link = webViewModel.link {
             let objectsToShare = [URL(string: link)!]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
@@ -74,5 +77,12 @@ class DetailRssViewController: UIViewController {
     
     @IBAction func refreshAction(_ sender: Any) {
         self.detailWebView.reload()
+    }
+}
+
+extension WebViewController: UIWebViewDelegate {
+
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.detailWebView.isHidden = false
     }
 }

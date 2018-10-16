@@ -8,6 +8,7 @@
 
 import UIKit
 import FeedKit
+import CoreLocation
 
 class FeedViewController: UIViewController {
     
@@ -16,6 +17,57 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var feedView: FeedView!
     @IBOutlet weak var rssView: RssView!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
+    @IBOutlet weak var sourceLegLabel: UILabel!
+    @IBOutlet weak var setYourFeedLegLabel: UILabel!
+    @IBOutlet weak var intervalLegLabel: UILabel!
+    @IBOutlet weak var locationLegLabel: UILabel!
+    @IBOutlet weak var setupScrollView: UIScrollView!
+    @IBOutlet weak var locationChosenView: UmbrellaView!
+    @IBOutlet weak var locationChosenLabel: UILabel!
+    @IBOutlet weak var changeLocationButton: UIButton!
+    @IBOutlet weak var locationViewLegLabel: UILabel!
+    
+    var stepLocation: Bool = false
+    var stepSources: Bool = false
+    var isStartingSetup: Bool = false
+    var continueWizard: Bool = false
+    var intervalTimer = Timer()
+    var sourceLegend = ""
+    var intervalSet = "" {
+        didSet {
+            self.feedView.intervalLabel.text = "\(intervalSet.count == 0 ? "30" : intervalSet) min"
+            checkState()
+        }
+    }
+    
+    var locationSet = (city: "", country: "", countryCode: "") {
+        didSet {
+            self.feedView.locationLabel.text = locationSet.country
+            checkState()
+        }
+    }
+    
+    var sourceSet = [Int]() {
+        didSet {
+            if sourceSet.count == 0 {
+                self.sourceLegLabel.text = self.sourceLegend
+                self.sourceLegLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                return
+            }
+            
+            var stringBuffer = ""
+            
+            for index in sourceSet {
+                let source = Sources.list.filter { $0.code == index}.first
+                if let source = source {
+                    stringBuffer.append("- \(source.name)\n")
+                }
+                self.sourceLegLabel.text = stringBuffer
+                self.sourceLegLabel.textColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
+            }
+            checkState()
+        }
+    }
     
     //
     // MARK: - Life cycle
@@ -26,6 +78,13 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
+        self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()
+        self.locationLegLabel.text = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.".localized()
+        self.sourceLegLabel.text = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.".localized()
+        
+        self.sourceLegend = self.sourceLegLabel.text ?? ""
         
         addBarButton.isEnabled = false
         addBarButton.tintColor = UIColor.clear
@@ -51,15 +110,29 @@ class FeedViewController: UIViewController {
         
         UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 1
         
-         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateInterval(notification:)), name: Notification.Name("UpdateInterval"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateSources(notification:)), name: Notification.Name("UpdateSources"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.continueWizard(notification:)), name: Notification.Name("ContinueWizard"), object: nil)
+        
+        self.locationChosenView.isHidden = true
+        self.feedView.activityIndicatorView.isHidden = true
+        self.feedView.emptyView.isHidden = true
+        
+        loadSetup()
     }
     
-    @objc func updateLocation(notification: NSNotification) {
-        let userInfo = notification.userInfo
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let name = userInfo?["location"] as? String {
-            feedView.locationLabel.text = name
+        if self.isStartingSetup && self.continueWizard {
+            checkWizardSetup()
         }
+        
+        self.continueWizard = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,6 +150,185 @@ class FeedViewController: UIViewController {
             if let items = rss.items {
                 destination.listRssViewModel.items = items
             }
+        } else if segue.identifier == "webSegue" {
+            let destination = (segue.destination as? WebViewController)!
+            let feedItem = (sender as? FeedItem)!
+            
+            destination.webViewModel.link = feedItem.url
+            destination.webViewModel.title = feedItem.title
+        }
+    }
+    
+    func checkWizardSetup() {
+        
+        if stepLocation == false {
+            self.performSegue(withIdentifier: "locationSegue", sender: nil)
+        } else if stepSources == false {
+            self.performSegue(withIdentifier: "sourcesSegue", sender: nil)
+        } 
+    }
+    
+    func checkState() {
+        if intervalSet.count > 0 && locationSet.countryCode.count > 0 && sourceSet.count > 0 {
+            self.showFeedList()
+        } else {
+            self.closeFeedList()
+        }
+    }
+    
+    func showFeedList() {
+        
+        if intervalTimer.isValid {
+            intervalTimer.invalidate()
+        }
+        
+        if let interval = Double(intervalSet) {
+            intervalTimer = Timer.scheduledTimer(timeInterval: interval * 60.0, target: self, selector: #selector(self.refreshFeed), userInfo: index, repeats: true)
+        }
+        
+        self.setupScrollView.isHidden = true
+        self.feedView.feedTableView.isHidden = true
+        self.locationChosenView.isHidden = true
+        self.feedView.activityIndicatorView.isHidden = false
+        self.locationChosenLabel.text = locationSet.country
+        self.feedView.emptyCountryLabel.text = locationSet.country
+        self.feedView.feedViewModel.location = locationSet.countryCode.lowercased()
+        self.feedView.feedViewModel.sources = sourceSet
+        self.feedView.feedViewModel.requestFeed(completion: {
+            DispatchQueue.main.async {
+                
+                if self.feedView.feedViewModel.feedItems.count == 0 {
+                    self.feedView.emptyView.isHidden = false
+                    self.feedView.feedTableView.isHidden = false
+                    self.feedView.activityIndicatorView.isHidden = true
+                    self.feedView.topConstraint.constant = 100
+                    return
+                }
+                
+                self.feedView.topConstraint.constant = 20
+                
+                self.feedView.feedTableView.isHidden = false
+                self.locationChosenView.isHidden = false
+                self.feedView.activityIndicatorView.isHidden = true
+                self.feedView.feedTableView.reloadData()
+                self.feedView.feedTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+            }
+        }, failure: { (error) in
+            DispatchQueue.main.async {
+                self.feedView.emptyView.isHidden = false
+                self.feedView.feedTableView.isHidden = false
+                self.feedView.activityIndicatorView.isHidden = true
+            }
+        })
+    }
+    
+    func closeFeedList() {
+        self.setupScrollView.isHidden = false
+        self.feedView.feedTableView.isHidden = true
+        self.locationChosenView.isHidden = true
+        self.feedView.emptyView.isHidden = true
+    }
+    
+    func loadSetup() {
+        
+        let interval = UserDefaults.standard.object(forKey: "Interval") as? String
+        let locationCity = UserDefaults.standard.object(forKey: "LocationCity") as? String
+        let locationCountry = UserDefaults.standard.object(forKey: "LocationCountry") as? String
+        let locationCountryCode = UserDefaults.standard.object(forKey: "LocationCountryCode") as? String
+        let sources = UserDefaults.standard.object(forKey: "Sources") as? [Int]
+        
+        if let interval = interval {
+            intervalSet = interval.count == 0 ? "30" : interval
+        } else {
+            intervalSet = "30"
+        }
+        
+        if let locationCity = locationCity, let locationCountry = locationCountry, let locationCountryCode = locationCountryCode {
+            locationSet = (city: locationCity, country: locationCountry, countryCode: locationCountryCode)
+        }
+        
+        if let sources = sources {
+            sourceSet = sources
+        }
+    }
+    
+    func resetSetup() {
+        UserDefaults.standard.set([], forKey: "Sources")
+        UserDefaults.standard.set("", forKey: "Interval")
+        UserDefaults.standard.set("", forKey: "LocationCity")
+        UserDefaults.standard.set("", forKey: "LocationCountry")
+        UserDefaults.standard.set("", forKey: "LocationCountryCode")
+        
+        isStartingSetup = false
+        stepLocation = false
+        stepSources = false
+        
+        if intervalTimer.isValid {
+            intervalTimer.invalidate()
+        }
+        
+        locationSet = (city: "", country: "", countryCode: "")
+        sourceSet = []
+        intervalSet = "30"
+        
+        self.feedView.feedViewModel.feedItems.removeAll()
+        self.feedView.feedTableView.reloadData()
+    }
+    
+    @objc func updateLocation(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        
+        if let placeMark = userInfo?["location"] as? (String, String, String) {
+            locationSet = placeMark
+            stepLocation = true
+        }
+    }
+    
+    @objc func updateInterval(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        
+        if let interval = userInfo?["interval"] as? String {
+            intervalSet = interval
+        }
+    }
+    
+    @objc func updateSources(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        
+        if let sources = userInfo?["sources"] as? [Int] {
+            sourceSet = sources
+            stepSources = true
+        }
+    }
+    
+    @objc func continueWizard(notification: NSNotification) {
+        continueWizard = true
+    }
+    
+    fileprivate func refresFeed() {
+        if intervalTimer.isValid {
+            self.feedView.feedViewModel.requestFeed(completion: {
+                DispatchQueue.main.async {
+                    self.feedView.refreshControl.endRefreshing()
+                    if self.feedView.feedViewModel.feedItems.count == 0 {
+                        self.feedView.emptyView.isHidden = false
+                        self.feedView.activityIndicatorView.isHidden = true
+                        return
+                    }
+                    
+                    self.feedView.feedTableView.isHidden = false
+                    self.locationChosenView.isHidden = false
+                    self.feedView.activityIndicatorView.isHidden = true
+                    self.feedView.feedTableView.reloadData()
+                }
+            }, failure: { (error) in
+                DispatchQueue.main.async {
+                    self.feedView.refreshControl.endRefreshing()
+                    self.feedView.emptyView.isHidden = false
+                    self.feedView.feedTableView.isHidden = false
+                    self.feedView.activityIndicatorView.isHidden = true
+                }
+            })
         }
     }
     
@@ -127,6 +379,11 @@ class FeedViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func changeLocationAction(_ sender: Any) {
+        
+    }
+    
 }
 
 //
@@ -150,5 +407,24 @@ extension FeedViewController: FeedViewDelegate {
     
     func choiceSource() {
         self.performSegue(withIdentifier: "sourcesSegue", sender: nil)
+    }
+    
+    func resetFeed() {
+        self.resetSetup()
+        self.closeFeedList()
+    }
+    
+    @objc func refreshFeed() {
+        refresFeed()
+    }
+    
+    func openWebView(item: FeedItem) {
+        self.performSegue(withIdentifier: "webSegue", sender: item)
+    }
+    
+    func starSetupFeed() {
+        isStartingSetup = true
+        continueWizard = false
+        checkWizardSetup()
     }
 }

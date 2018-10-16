@@ -59,10 +59,13 @@ class DifficultyCell: UITableViewCell {
         
         if difficulty.name == "Beginner".localized() {
             self.iconImageView.image = #imageLiteral(resourceName: "iconBeginner")
+            self.headerView.backgroundColor = Lessons.colors[0]
         } else if difficulty.name == "Advanced".localized() {
             self.iconImageView.image = #imageLiteral(resourceName: "iconAdvanced")
+            self.headerView.backgroundColor = Lessons.colors[1]
         } else if difficulty.name == "Expert".localized() {
             self.iconImageView.image = #imageLiteral(resourceName: "iconExpert")
+            self.headerView.backgroundColor = Lessons.colors[2]
         }
     }
     

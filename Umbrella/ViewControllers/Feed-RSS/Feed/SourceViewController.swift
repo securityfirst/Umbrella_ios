@@ -9,15 +9,8 @@
 import UIKit
 
 class SourceViewController: UIViewController {
-
-    var sources = [
-        (name: "ReliefWeb", code: 0),
-        (name: "UN", code: 1),
-        (name: "FCO", code: 2),
-        (name: "CDC", code: 3),
-        (name: "Global Disaster and Alert Coordination System", code: 4),
-        (name: "US State Department Country Warnings", code: 5)
-    ]
+    
+    var selectedIndexPaths: Set<IndexPath> = Set<IndexPath>()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sourceTableView: UITableView!
@@ -25,10 +18,33 @@ class SourceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sources = UserDefaults.standard.object(forKey: "Sources") as? [Int]
+        
+        if sources != nil {
+            sources?.forEach { index in
+             self.selectedIndexPaths.insert(IndexPath(row: index, section: 0))
+            }
+        }
+        self.sourceTableView.reloadData()
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        if self.selectedIndexPaths.count == 0 {
+            return
+        }
         
+        NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
+        
+        var indexs: [Int] = [Int]()
+        for indexPath in self.selectedIndexPaths {
+            indexs.append(indexPath.row)
+        }
+        NotificationCenter.default.post(name: Notification.Name("UpdateSources"), object: nil, userInfo: ["sources": indexs])
+        
+        UserDefaults.standard.set(indexs, forKey: "Sources")
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -41,15 +57,18 @@ extension SourceViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sources.count
+        return Sources.list.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: SourceCell = (tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as? SourceCell)!
         
-        let source = self.sources[indexPath.row]
+        let source = Sources.list[indexPath.row]
         cell.titleLabel?.text = source.name
+        
+        cell.checkImageView.image = self.selectedIndexPaths.contains(indexPath) ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
+        
         return cell
     }
 }
@@ -63,6 +82,12 @@ extension SourceViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if self.selectedIndexPaths.contains(indexPath) {
+            self.selectedIndexPaths.remove(indexPath)
+        } else {
+            self.selectedIndexPaths.insert(indexPath)
+        }
         
         tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }

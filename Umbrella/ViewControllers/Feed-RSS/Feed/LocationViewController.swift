@@ -26,11 +26,12 @@ class LocationViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationText.setBottomBorder()
-        locationText.placeholder = "Enter location".localized()
-        locationText.delegate = self
-        locationText.becomeFirstResponder()
-        saveButton.setTitle("Save".localized(), for: .normal)
+        
+        self.locationText.setBottomBorder()
+        self.locationText.placeholder = "Enter location".localized()
+        self.locationText.delegate = self
+        self.locationText.becomeFirstResponder()
+        self.saveButton.setTitle("Save".localized(), for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,13 +39,49 @@ class LocationViewController: UIViewController {
     }
     
     //
-    // MARK: - Actions
-    @IBAction func saveAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        
-        NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": locationText.text ?? ""])
+    // MARK: - Functions
+    
+    fileprivate func showError() {
+        UIAlertController.alert(title: "Alert", message: "The city or country is not available or you have no internet connection.".localized(), cancelButtonTitle: "OK", otherButtons: nil, dismiss: { _ in
+        }, cancel: {
+            print("cancelClicked")
+        })
     }
     
+    fileprivate func savePlace(_ placeMark: CLPlacemark) {
+        if let city = placeMark.addressDictionary?["Name"] as? String, let country = placeMark.addressDictionary?["Country"] as? String, let countryCode = placeMark.addressDictionary?["CountryCode"] as? String {
+            if city.lowercased() == self.locationText.text?.lowercased() {
+                NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": (city: city, country: country, countryCode: countryCode)])
+                UserDefaults.standard.set(city, forKey: "LocationCity")
+                UserDefaults.standard.set(country, forKey: "LocationCountry")
+                UserDefaults.standard.set(countryCode, forKey: "LocationCountryCode")
+                NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.showError()
+            }
+        }
+    }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func saveAction(_ sender: Any) {
+        if self.locationViewModel.cityArray.count > 0 {
+            if let placemark = self.locationViewModel.cityArray.first {
+                savePlace(placemark)
+            }
+        } else {
+            self.locationViewModel.geocode(of: self.locationText.text!, completion: {
+                self.cityTableView.reloadData()
+                if let placemark = self.locationViewModel.cityArray.first {
+                    self.savePlace(placemark)
+                }
+            }, failure: {
+                self.showError()
+            })
+        }
+    }
 }
 
 //
@@ -52,15 +89,14 @@ class LocationViewController: UIViewController {
 extension LocationViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        locationText.layer.shadowColor = #colorLiteral(red: 0.262745098, green: 0.6274509804, blue: 0.7921568627, alpha: 1).cgColor
+        self.locationText.layer.shadowColor = #colorLiteral(red: 0.262745098, green: 0.6274509804, blue: 0.7921568627, alpha: 1).cgColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        locationText.layer.shadowColor = UIColor.gray.cgColor
+        self.locationText.layer.shadowColor = UIColor.gray.cgColor
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
         return false
     }
     
@@ -72,9 +108,10 @@ extension LocationViewController: UITextFieldDelegate {
                                                        with: string)
             
             if updatedText.count >= 3 {
-                self.locationViewModel.geocode(of: updatedText) { 
+                self.locationViewModel.geocode(of: updatedText, completion: {
                     self.cityTableView.reloadData()
-                }
+                }, failure: {
+                })
             } else {
                 self.locationViewModel.cityArray.removeAll()
                 self.cityTableView.reloadData()
@@ -100,8 +137,12 @@ extension LocationViewController: UITableViewDataSource {
         
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
         
-        let city = self.locationViewModel.cityArray[indexPath.row]
-        cell.textLabel?.text = "\(String(describing: city.addressDictionary!["Name"]!))"
+        let location = self.locationViewModel.cityArray[indexPath.row]
+        
+        if let city = location.addressDictionary?["Name"], let country = location.addressDictionary?["Country"] {
+            cell.textLabel?.text = "\(city) \(country)"
+        }
+        
         return cell
     }
 }

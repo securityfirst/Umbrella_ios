@@ -571,7 +571,7 @@ Why do kidnappings occur?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rbj-Nh-slt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3889" y="1279"/>
+            <point key="canvasLocation" x="3830" y="1220"/>
         </scene>
         <!--Markdown View Controller-->
         <scene sceneID="BQN-0G-CWD">
@@ -588,6 +588,10 @@ Why do kidnappings occur?</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bgp-dr-yMF">
+                                <rect key="frame" x="178" y="124" width="200" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -601,12 +605,13 @@ Why do kidnappings occur?</string>
                         <viewLayoutGuide key="safeArea" id="bao-1i-3hL"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="bgp-dr-yMF" id="cgM-oh-Nz0"/>
                         <outlet property="markdownView" destination="R22-hz-ujc" id="3Uy-MQ-hk6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KkO-AR-3zm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3830" y="1970"/>
+            <point key="canvasLocation" x="3829.5999999999999" y="1969.5652173913045"/>
         </scene>
         <!--Lessons-->
         <scene sceneID="sqv-t6-YvZ">

@@ -57,13 +57,14 @@ struct SegmentParser {
             
             //List of the Segments
             var markdown: String = ""
+            let path: String = (folder.path.components(separatedBy: "Documents").last)!
             
             for line in lines {
                 var lineReplaced = ""
                 if line.contains("![image](") {
-                    lineReplaced = line.replacingOccurrences(of: "![image](", with: "![image](\(folder.path)") + "\n"
+                    lineReplaced = line.replacingOccurrences(of: "![image](", with: "![image](#DOCUMENTS\(path)") + "\n"
                 } else if line.contains("![](") {
-                    lineReplaced = line.replacingOccurrences(of: "![](", with: "![](\(folder.path)") + "\n"
+                    lineReplaced = line.replacingOccurrences(of: "![](", with: "![](#DOCUMENTS\(path)") + "\n"
                 } else {
                     lineReplaced = line
                 }

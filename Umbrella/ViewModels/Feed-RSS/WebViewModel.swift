@@ -1,5 +1,5 @@
 //
-//  DetailRssViewModel.swift
+//  WebViewModel.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 04/09/2018.
@@ -9,11 +9,12 @@
 import Foundation
 import FeedKit
 
-class DetailRssViewModel {
+class WebViewModel {
     
     //
     // MARK: - Properties
-    var item: RSSFeedItem?
+    var link: String?
+    var title: String?
     
     //
     // MARK: - Init

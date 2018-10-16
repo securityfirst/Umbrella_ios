@@ -21,6 +21,8 @@ class MarkdownViewController: UIViewController {
     
     @IBOutlet weak var markdownView: MarkdownView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -41,10 +43,31 @@ class MarkdownViewController: UIViewController {
         
         if let segment = self.markdownViewModel.segment {
             self.title = segment.name
-            self.markdownView.load(markdown: segment.content)
-            self.markdownView.onRendered = { [weak self] height in
-                self?.markdownView.isHidden = false
-                self?.view.setNeedsLayout()
+            
+            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                var path = documentsPathURL.absoluteString
+                path.removeLast()
+                path = path.replacingOccurrences(of: "file://", with: "")
+                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
+                
+                print(segment.content)
+                print("\(path)/call1.png")
+                self.imageView.image = UIImage(contentsOfFile: "\(path)/call1.png")
+                
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: "\(path)/en/communications/making-a-call/beginner/call1.png") {
+                    print("FILE AVAILABLE")
+                } else {
+                    print("FILE NOT AVAILABLE")
+                }
+                
+                let  markdownImage = "![image](\(path)/call1.png)"
+                
+                self.markdownView.load(markdown: segment.content, enableImage: true)
+                self.markdownView.onRendered = { [weak self] height in
+                    self?.markdownView.isHidden = false
+                    self?.view.setNeedsLayout()
+                }
             }
         }
     }

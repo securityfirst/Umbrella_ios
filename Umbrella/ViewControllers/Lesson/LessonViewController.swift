@@ -152,8 +152,18 @@ extension LessonViewController: UITableViewDelegate {
                 let item = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
                 headerView.nameLabel.text = item.name
                 headerView.arrowImageView.isHidden = item.categories.count == 0
-                let file = "\(item.folderName ?? "")\(item.icon ?? "")"
-                headerView.iconImageView.image = UIImage(contentsOfFile: file)
+                
+                let path: String = (item.folderName?.components(separatedBy: "Documents").last)!
+                
+                if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    
+                    var documents = documentsPathURL.absoluteString
+                    documents.removeLast()
+                    documents = documents.replacingOccurrences(of: "file://", with: "")
+                    
+                    let file = "\(documents)\(path)\(item.icon ?? "")"
+                    headerView.iconImageView.image = UIImage(contentsOfFile: file)
+                }
             }
             
             headerView.section = section

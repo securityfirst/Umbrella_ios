@@ -40,9 +40,11 @@ class IntervalViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         
-//        NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": intervalText.text ?? ""])
+        NotificationCenter.default.post(name: Notification.Name("UpdateInterval"), object: nil, userInfo: ["interval": self.intervalText.text ?? ""])
+        
+        UserDefaults.standard.set(self.intervalText.text ?? "", forKey: "Interval")
     }
-    
+
 }
 
 //

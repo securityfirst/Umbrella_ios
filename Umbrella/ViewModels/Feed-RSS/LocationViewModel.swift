@@ -30,11 +30,12 @@ class LocationViewModel {
     /// - Parameters:
     ///   - string: String
     ///   - completion: Closure
-    func geocode(of string: String, completion: @escaping () -> Void ) {
+    func geocode(of string: String, completion: @escaping () -> Void, failure: @escaping () -> Void ) {
         geocoder.geocodeAddressString(string) { (placemarks, error) in
             if let error = error {
                 print("Unable to Forward Geocode Address (\(error))")
                 self.cityArray.removeAll()
+                failure()
             }
             
             if let placemarks = placemarks, placemarks.count > 0 {

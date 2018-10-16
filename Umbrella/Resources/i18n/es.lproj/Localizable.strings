@@ -1,60 +1,66 @@
-/* 
-  Localizable.strings
-  Umbrella
-
-  Created by Lucas Correa on 16/08/2018.
-  Copyright © 2018 Security First. All rights reserved.
-*/
+/*
+ Localizable.strings
+ Umbrella
+ 
+ Created by Lucas Correa on 16/08/2018.
+ Copyright © 2018 Security First. All rights reserved.
+ */
 
 // Accessibility
 "selected" = "seleccionado";
-"deselected" = "deseleccionado";
-"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Esta es la forma %d de %d formularios para completar. Desliza tres dedos hacia la izquierda o hacia la derecha o hacia atrás.";
+"deselected" = "deselected";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form.";
 
 // Menu
-"Feed" = "Noticias";
+"Feed" = "Lista de entradas";
 "Form" = "Formulario";
-"Checklists" = "Listas de verificación";
+"Checklists" = "Checklists";
 "Lessons" = "Lecciones";
 "Account" = "Cuenta";
 
 // Loading
-"Updating the database" = "Actualizando la base de datos";
-"Error in load the tent" = "Error al cargar la tienda";
-"Getting the database" = "Obtener la base de datos";
-"Clone of the tent" = "Clon de la tienda";
+"Updating the database" = "Updating the database";
+"Error in load the tent" = "Error in load the tent";
+"Getting the database" = "Getting the database";
+"Clone of the tent" = "Clone of the tent";
 
 // Form
-"Active" = "Activo";
-"Available forms" = "Formularios disponibles";
-"REMOVE" = "RETIRAR";
-"EDIT" = "EDITAR";
+"Active" = "Activa";
+"Available forms" = "Available forms";
+"REMOVE" = "ELIMINAR";
+"EDIT" = "EDIT";
 "SHARE" = "COMPARTIR";
 
 // Tour
-"Get advice on everything from sending a secure email to safe travel" = "Get advice on everything from sending a secure email to safe travel";
-"Umbrella makes your security simple" = "Umbrella makes your security simple";
-"Use checklists to mark your progress" = "Use checklists to mark your progress";
-"Stay up to date with the latest information on where you are" = "Stay up to date with the latest information on where you are";
-"Terms and Conditions" = "Terms and Conditions";
-"ACCEPT" = "ACCEPT";
+"Get advice on everything from sending a secure email to safe travel" = "Consiga asesoramiento en muchos temas, desde enviar un correo electrónico privado hasta viajar seguro";
+"Umbrella makes your security simple" = "Umbrella hace que su seguridad sea sencilla";
+"Use checklists to mark your progress" = "Use listas de comprobación para seguir su progreso";
+"Stay up to date with the latest information on where you are" = "Permanezca al día con la última información sobre el lugar dónde se encuentra";
+"Terms and Conditions" = "Términos y Condiciones";
+"ACCEPT" = "ACEPTAR";
 
 // RSS
-"You chose the Card mode view" = "You chose the Card mode view";
-"You chose the List mode view" = "You chose the List mode view";
-"Save" = "Save";
-"Cancel" = "Cancel";
-"Feed Sources" = "Feed Sources";
+"You chose the Card mode view" = "Elegiste la vista de modo de tarjeta";
+"You chose the List mode view" = "Escogiste la vista de modo de lista";
+"Save" = "Guardar";
+"Cancel" = "Cancelar";
+"Feed Sources" = "Fuentes de alimentación";
 
 // Feed - Location
-"Enter location" = "Enter location";
+"Enter location" = "Ingrese ubicación";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.";
+"Set how often you want Umbrella to check for the latest security news." = "Set how often you want Umbrella to check for the latest security news.";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.";
 
 // Lessons
-"Favourites" = "Favourites";
-"You do not have any Segment yet." = "You do not have any Segment yet.";
-"" = "";
+"Favourites" = "Favoritos";
+"You do not have any Segment yet." = "Aún no tienes ningún segmento.";
+"Beginner" = "Beginner";
+"Advanced" = "Advanced";
+"Expert" = "Expert";
 
 //Checklists
-"Checklists total" = "Checklists total";
-"Favourites" = "Favourites";
-"My Checklists" = "My Checklists";
+"Checklists total" = "Total de listas de control";
+"Favourites" = "Favoritos";
+"My Checklists" = "Mis listas de comprobación";

@@ -45,10 +45,11 @@ class ListRssViewController: UIViewController {
     // MARK: - Functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailFeedSegue" {
-            let destination = (segue.destination as? DetailRssViewController)!
+        if segue.identifier == "webSegue" {
+            let destination = (segue.destination as? WebViewController)!
             let rss = (sender as? RSSFeedItem)!
-            destination.detailRssViewModel.item = rss
+            destination.webViewModel.link = rss.link
+            destination.webViewModel.title = rss.title
         }
     }
     
@@ -102,6 +103,6 @@ extension ListRssViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let item = self.listRssViewModel.items[indexPath.row]
-        self.performSegue(withIdentifier: "detailFeedSegue", sender: item)
+        self.performSegue(withIdentifier: "webSegue", sender: item)
     }
 }
