@@ -44,31 +44,42 @@ class MarkdownViewController: UIViewController {
         if let segment = self.markdownViewModel.segment {
             self.title = segment.name
             
-            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                var path = documentsPathURL.absoluteString
-                path.removeLast()
-                path = path.replacingOccurrences(of: "file://", with: "")
-                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
-                
-                print(segment.content)
-                print("\(path)/call1.png")
-                self.imageView.image = UIImage(contentsOfFile: "\(path)/call1.png")
-                
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: "\(path)/en/communications/making-a-call/beginner/call1.png") {
-                    print("FILE AVAILABLE")
-                } else {
-                    print("FILE NOT AVAILABLE")
-                }
-                
-                let  markdownImage = "![image](\(path)/call1.png)"
-                
-                self.markdownView.load(markdown: segment.content, enableImage: true)
-                self.markdownView.onRendered = { [weak self] height in
-                    self?.markdownView.isHidden = false
-                    self?.view.setNeedsLayout()
-                }
+            //FIXME: Just for demo
+            let gitHubDemo = UserDefaults.standard.object(forKey: "gitHubDemo")
+            segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: "\(gitHubDemo!)/raw/master")
+            
+            self.markdownView.load(markdown: segment.content, enableImage: true)
+            self.markdownView.onRendered = { [weak self] height in
+                self?.markdownView.isHidden = false
+                self?.view.setNeedsLayout()
             }
+            
+//            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+//                var path = documentsPathURL.absoluteString
+//                path.removeLast()
+//                path = path.replacingOccurrences(of: "file://", with: "")
+//
+//                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
+//
+//                print(segment.content)
+//                print("\(path)/call1.png")
+//                self.imageView.image = UIImage(contentsOfFile: "\(path)/call1.png")
+//
+//                let fileManager = FileManager.default
+//                if fileManager.fileExists(atPath: "\(path)/en/communications/making-a-call/beginner/call1.png") {
+//                    print("FILE AVAILABLE")
+//                } else {
+//                    print("FILE NOT AVAILABLE")
+//                }
+//
+//                let  markdownImage = "![image](\(path)/call1.png)"
+//
+//                self.markdownView.load(markdown: segment.content, enableImage: true)
+//                self.markdownView.onRendered = { [weak self] height in
+//                    self?.markdownView.isHidden = false
+//                    self?.view.setNeedsLayout()
+//                }
+//            }
         }
     }
     

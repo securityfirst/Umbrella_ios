@@ -79,6 +79,13 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let modeBarButton = UIBarButtonItem(title: "Switch server", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.shareAction(_:)))
+        modeBarButton.tintColor = UIColor.black
+        modeBarButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 12.0)!], for: UIControl.State.normal)
+        modeBarButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 12.0)!], for: UIControl.State.highlighted)
+
+        self.navigationItem.rightBarButtonItem  = modeBarButton
+        
         self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
         self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()
         self.locationLegLabel.text = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.".localized()
@@ -159,6 +166,11 @@ class FeedViewController: UIViewController {
         }
     }
     
+    @objc func shareAction(_ sender: UIBarButtonItem) {
+        let app = UIApplication.shared.delegate as! AppDelegate
+        app.show()
+    }
+    
     func checkWizardSetup() {
         
         if stepLocation == false {
@@ -218,6 +230,7 @@ class FeedViewController: UIViewController {
                 self.feedView.emptyView.isHidden = false
                 self.feedView.feedTableView.isHidden = false
                 self.feedView.activityIndicatorView.isHidden = true
+                self.feedView.topConstraint.constant = 100
             }
         })
     }
