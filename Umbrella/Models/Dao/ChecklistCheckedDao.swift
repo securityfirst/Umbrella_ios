@@ -57,6 +57,12 @@ struct ChecklistCheckedDao: DaoProtocol {
         return rowId
     }
     
+    /// Reset connection
+    ///
+    func resetConnection() {
+        self.sqlProtocol.resetConnection()
+    }
+    
     //
     // MARK: - Custom functions
  

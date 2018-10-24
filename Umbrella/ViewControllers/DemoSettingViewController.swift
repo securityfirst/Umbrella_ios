@@ -74,7 +74,14 @@ class DemoSettingViewController: UIViewController {
             
             do {
                 try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
-                exit(0)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
+                self.present(controller, animated: false, completion: nil)
+                NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
+                self.view.isHidden = true
+                self.view.endEditing(true)
+//                exit(0)
             } catch {
                 print(error)
             }

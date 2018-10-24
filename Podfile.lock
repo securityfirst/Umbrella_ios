@@ -1,8 +1,8 @@
 PODS:
   - BTNavigationDropdownMenu (0.4.4)
-  - Crashlytics (3.10.7):
-    - Fabric (~> 1.7.11)
-  - Fabric (1.7.11)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
+  - Fabric (1.7.13)
   - FeedKit (8.0.0)
   - Files (2.0.1)
   - Localize-Swift (2.0.0)
@@ -26,7 +26,7 @@ DEPENDENCIES:
   - FeedKit (~> 8.0)
   - Files (from `https://github.com/clayellis/Files.git`)
   - Localize-Swift (~> 2.0)
-  - MarkdownView (~> 1.2.0)
+  - MarkdownView
   - Nimble
   - Quick
   - SQLite.swift/SQLCipher (from `https://github.com/stephencelis/SQLite.swift.git`)
@@ -67,8 +67,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BTNavigationDropdownMenu: 4c0b75f83317d300156ffcc8434bf411b05f5cd2
-  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
-  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
   Files: dd0aa68aa068e87c60ec844b13e0a95179e2fb62
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
@@ -80,6 +80,6 @@ SPEC CHECKSUMS:
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
 
-PODFILE CHECKSUM: 116f0fae440b8d7f38fa11ef5c7c20b0c9b68bce
+PODFILE CHECKSUM: d457820fa2718a2e334cd002bff0ab6a7a1e32ea
 
 COCOAPODS: 1.6.0.beta.1

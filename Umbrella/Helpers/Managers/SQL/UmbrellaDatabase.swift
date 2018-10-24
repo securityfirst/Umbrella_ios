@@ -23,7 +23,10 @@ struct UmbrellaDatabase {
     let itemFormDao: ItemFormDao
     let optionItemDao: OptionItemDao
     let formAnswerDao: FormAnswerDao
+    let rssItemDao: RssItemDao
     let difficultyRuleDao: DifficultyRuleDao
+    let checklistCheckedDao: ChecklistCheckedDao
+    let favouriteSegmentDao: FavouriteSegmentDao
     
     static var languagesStatic: [Language] = [Language]()
     
@@ -55,6 +58,10 @@ struct UmbrellaDatabase {
         self.optionItemDao = OptionItemDao(sqlProtocol: self.sqlProtocol)
         self.formAnswerDao = FormAnswerDao(sqlProtocol: self.sqlProtocol)
         self.difficultyRuleDao = DifficultyRuleDao(sqlProtocol: self.sqlProtocol)
+        self.rssItemDao = RssItemDao(sqlProtocol: self.sqlProtocol)
+        self.checklistCheckedDao = ChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
+        self.favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlProtocol)
+        
     }
     
     //
@@ -67,15 +74,17 @@ struct UmbrellaDatabase {
         let segmentSuccess = self.segmentDao.createTable()
         let checkListSuccess = self.checkListDao.createTable()
         let checkItemSuccess = self.checkItemDao.createTable()
-        
         let formSuccess = self.formDao.createTable()
         let screenSuccess = self.screenDao.createTable()
         let itemFormSuccess = self.itemFormDao.createTable()
         let optionItemSuccess = self.optionItemDao.createTable()
         let formAnswerSuccess = self.formAnswerDao.createTable()
         let difficultyRuleSuccess = self.difficultyRuleDao.createTable()
+        let rssItemSuccess = self.rssItemDao.createTable()
+        let checklistCheckedSuccess = self.checklistCheckedDao.createTable()
+        let favouriteSegmentSuccess = self.favouriteSegmentDao.createTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess {
             return true
         } else {
             return false
@@ -87,22 +96,22 @@ struct UmbrellaDatabase {
     /// - Returns: Bool
     func dropTables() -> Bool {
         
+        let rssItemSuccess = self.rssItemDao.dropTable()
+        let checklistCheckedSuccess = self.checklistCheckedDao.dropTable()
+        let favouriteSegmentSuccess = self.favouriteSegmentDao.dropTable()
         let difficultyRuleSuccess = self.difficultyRuleDao.dropTable()
-        
         let formAnswerSuccess = self.formAnswerDao.dropTable()
-        
         let optionItemSuccess = self.optionItemDao.dropTable()
         let itemFormSuccess = self.itemFormDao.dropTable()
         let screenSuccess = self.screenDao.dropTable()
         let formSuccess = self.formDao.dropTable()
-        
         let checkItemSuccess = self.checkItemDao.dropTable()
         let checkListSuccess = self.checkListDao.dropTable()
         let segmentSuccess = self.segmentDao.dropTable()
         let categorySuccess = self.categoryDao.dropTable()
         let languageSuccess = self.languageDao.dropTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess {
             return true
         } else {
             return false

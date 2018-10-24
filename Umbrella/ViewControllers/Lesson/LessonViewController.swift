@@ -33,6 +33,8 @@ class LessonViewController: UIViewController {
         super.viewDidLoad()
         
         self.lessonTableView?.register(CategoryHeaderView.nib, forHeaderFooterViewReuseIdentifier: CategoryHeaderView.identifier)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LessonViewController.resetLessonsDemo(notification:)), name: Notification.Name("ResetDemo"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +50,12 @@ class LessonViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    @objc func resetLessonsDemo(notification: NSNotification) {
+        self.navigationController?.popToRootViewController(animated: true)
+        self.lessonViewModel.sectionsCollapsed.removeAll()
+        self.lessonTableView.reloadData()
+    }
     
     /// Receive the tent by notification
     ///
@@ -219,12 +227,10 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             }
             collapsed = false
         } else if section == 0 {
-            print("Go the favourites")
             let category = Category(name: "Favourites".localized(), description: "", index: 1)
             category.segments = self.favouriteSegments
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else if self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1].categories.count == 0 {
-            print("Go to segment")
             let category = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
@@ -261,6 +267,7 @@ extension LessonViewController: UISearchBarDelegate {
             self.lessonTableView.reloadData()
             
             delay(0.25) {
+                self.favouriteSegments = self.lessonViewModel.loadFavourites()
                 self.view.endEditing(true)
             }
         }

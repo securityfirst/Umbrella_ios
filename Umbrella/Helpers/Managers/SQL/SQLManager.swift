@@ -108,6 +108,8 @@ class SQLManager: SQLProtocol {
     /// - Parameter tableProtocol: object that implement the tableProtocol
     /// - Returns: boolean if it was created a table
     func create(table tableProtocol: TableProtocol) -> Bool {
+        resetConnection()
+        
         let db = openConnection()
         db?.busyTimeout = SQLManager.timeout
         do {
@@ -235,6 +237,9 @@ extension SQLManager {
     ///
     /// - Returns: Connection
     func openConnection() -> Connection? {
+        
+        self.copyDatabaseIfNeeded()
+        
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
             ).first!
@@ -260,6 +265,10 @@ extension SQLManager {
             print(error)
         }
         return nil
+    }
+    
+    func resetConnection() {
+        self.connect = nil
     }
     
     /// Copy the database if needed

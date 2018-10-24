@@ -79,12 +79,21 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let modeBarButton = UIBarButtonItem(title: "Switch server", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.shareAction(_:)))
-        modeBarButton.tintColor = UIColor.black
-        modeBarButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 12.0)!], for: UIControl.State.normal)
-        modeBarButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 12.0)!], for: UIControl.State.highlighted)
+        let font = UIFont(name: "Roboto-Regular", size: 11)
+        let attributesDictionary: [NSAttributedString.Key: Any]? = [NSAttributedString.Key.font: font!, NSAttributedString.Key.foregroundColor : UIColor.black]
+        
+        let modeBarButton = UIBarButtonItem(title: "Repo", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.shareAction(_:)))
+        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
+        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
+        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
 
-        self.navigationItem.rightBarButtonItem  = modeBarButton
+        let refreshBarButton = UIBarButtonItem(title: "Refresh", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.refreshRepo(_:)))
+        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
+        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
+        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
+
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItems = [modeBarButton, spacer,spacer,spacer, refreshBarButton]
         
         self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
         self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()
@@ -124,6 +133,8 @@ class FeedViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateSources(notification:)), name: Notification.Name("UpdateSources"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.continueWizard(notification:)), name: Notification.Name("ContinueWizard"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.resetDemo(notification:)), name: Notification.Name("ResetDemo"), object: nil)
         
         self.locationChosenView.isHidden = true
         self.feedView.activityIndicatorView.isHidden = true
@@ -167,8 +178,33 @@ class FeedViewController: UIViewController {
     }
     
     @objc func shareAction(_ sender: UIBarButtonItem) {
-        let app = UIApplication.shared.delegate as! AppDelegate
+        let app = (UIApplication.shared.delegate as? AppDelegate)!
         app.show()
+    }
+    
+    @objc func refreshRepo(_ sender: UIBarButtonItem) {
+        
+        let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
+        _ = umbrellaDatabase.dropTables()
+        
+        let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
+        let gitManager = GitManager(url: URL(string: gitHubDemo)!, pathDirectory: .documentDirectory)
+        
+        do {
+            try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
+            
+            NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+            UIApplication.shared.keyWindow?.addSubview(controller.view)
+            controller.loadTent {
+            }
+
+        } catch {
+            print(error)
+        }
     }
     
     func checkWizardSetup() {
@@ -219,6 +255,7 @@ class FeedViewController: UIViewController {
                 
                 self.feedView.topConstraint.constant = 20
                 
+                self.feedView.emptyView.isHidden = true
                 self.feedView.feedTableView.isHidden = false
                 self.locationChosenView.isHidden = false
                 self.feedView.activityIndicatorView.isHidden = true
@@ -288,6 +325,10 @@ class FeedViewController: UIViewController {
         self.feedView.feedTableView.reloadData()
     }
     
+    @objc func resetDemo(notification: NSNotification) {
+        resetSetup()
+    }
+    
     @objc func updateLocation(notification: NSNotification) {
         let userInfo = notification.userInfo
         
@@ -329,6 +370,7 @@ class FeedViewController: UIViewController {
                         return
                     }
                     
+                    self.feedView.emptyView.isHidden = true
                     self.feedView.feedTableView.isHidden = false
                     self.locationChosenView.isHidden = false
                     self.feedView.activityIndicatorView.isHidden = true

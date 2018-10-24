@@ -18,4 +18,5 @@ protocol SQLProtocol {
     func drop(tableName table: String) -> Bool
     
     func checkIfTheDatabaseExists() -> Bool
+    func resetConnection()
 }

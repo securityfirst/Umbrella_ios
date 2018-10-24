@@ -48,6 +48,8 @@ class ChecklistViewModel {
     ///
     /// - Returns: [ChecklistChecked]
     private func filterByGreatestDifficultyId() -> [ChecklistChecked] {
+        _ = checklistCheckedDao.createTable()
+        _ = favouriteSegmentDao.createTable()
         let list = self.checklistCheckedDao.reportOfItemsChecked()
         var results = [ChecklistChecked]()
         

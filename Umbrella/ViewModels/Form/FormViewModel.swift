@@ -31,6 +31,7 @@ class FormViewModel {
     
     /// Load all forms active
     func loadFormActive() {
+        _ = formAnswerDao.createTable()
         self.umbrella.formAnswers = formAnswerDao.listFormActive()
     }
     

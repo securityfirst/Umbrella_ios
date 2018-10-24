@@ -12,7 +12,7 @@ target 'Umbrella' do
   pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git'
   pod 'Files', :git => 'https://github.com/clayellis/Files.git'
   pod 'Yams'
-  pod 'MarkdownView', '~> 1.2.0'
+  pod 'MarkdownView'
   pod 'FeedKit', '~> 8.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
   
@@ -32,4 +32,11 @@ post_install do |installer_representation|
             config.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
         end
     end
+    
+    installer_representation.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '4.0'
+        end
+    end
 end
+
