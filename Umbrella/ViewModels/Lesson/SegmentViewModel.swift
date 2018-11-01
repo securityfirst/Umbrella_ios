@@ -16,14 +16,13 @@ class SegmentViewModel {
     var difficulties: [Category] = [Category]()
     var segmentsFilter: [Segment] = [Segment]()
     fileprivate var isSearch: Bool = false
+    
     var termSearch: String = "" {
         didSet {
             isSearch = termSearch.count > 0
             
-            if isSearch {
-                if let category = category {
-                    copyList(originalList: category.segments)
-                }
+            if isSearch, let category = category {
+                copyList(originalList: category.segments)
             }
         }
     }
@@ -134,10 +133,16 @@ class SegmentViewModel {
         _ = self.difficultyRuleDao.insert(difficultyRule)
     }
     
+    /// Insert a new FavouriteSegment into the database
+    ///
+    /// - Parameter favouriteSegment: FavouriteSegment
     func insert(_ favouriteSegment: FavouriteSegment) {
         _ = self.favouriteSegmentDao.insert(favouriteSegment)
     }
     
+    /// Remove a favouriteSegment of the database
+    ///
+    /// - Parameter segmentId: Int
     func remove(_ segmentId: Int) {
         _ = self.favouriteSegmentDao.remove(segmentId)
     }

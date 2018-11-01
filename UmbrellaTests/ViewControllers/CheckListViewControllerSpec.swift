@@ -15,13 +15,13 @@ import Nimble
 class CheckListViewControllerSpec: QuickSpec {
     
     override func spec() {
-        var viewController: CheckListViewController!
+        var viewController: ChecklistViewController!
         let window = UIWindow(frame: UIScreen.main.bounds)
         
         beforeEach {
-            let storyboard = UIStoryboard(name: "CheckList",
+            let storyboard = UIStoryboard(name: "Checklist",
                                           bundle: Bundle.main)
-            viewController = storyboard.instantiateViewController(withIdentifier: "CheckListViewController") as? CheckListViewController
+            viewController = storyboard.instantiateViewController(withIdentifier: "ChecklistViewController") as? ChecklistViewController
             
             window.makeKeyAndVisible()
             window.rootViewController = viewController
@@ -29,11 +29,11 @@ class CheckListViewControllerSpec: QuickSpec {
             viewController.endAppearanceTransition()
         }
         
-        describe("CheckListViewController") {
+        describe("ChecklistViewController") {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(CheckListViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(ChecklistViewController.self))
                 }
             }
         }

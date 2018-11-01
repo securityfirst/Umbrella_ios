@@ -70,8 +70,7 @@ extension ChecklistViewController: UITableViewDataSource {
         
         if indexPath.section == 0 {
             
-            var totalList = [ChecklistChecked]()
-            totalList = self.checklistViewModel.checklistChecked + self.checklistViewModel.favouriteChecklistChecked
+            let totalList = self.checklistViewModel.checklistChecked + self.checklistViewModel.favouriteChecklistChecked
             
             let totalChecked = totalList.reduce(0) { $0 + $1.totalChecked}
             let totalItemsChecklist = totalList.reduce(0) { $0 + $1.totalItemsChecklist}

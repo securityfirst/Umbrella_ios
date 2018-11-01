@@ -10,12 +10,16 @@ import UIKit
 
 class SourceViewController: UIViewController {
     
+    //
+    // MARK: - Properties
     var selectedIndexPaths: Set<IndexPath> = Set<IndexPath>()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sourceTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     
+    //
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +32,9 @@ class SourceViewController: UIViewController {
         }
         self.sourceTableView.reloadData()
     }
+    
+    //
+    // MARK: - Actions
     
     @IBAction func saveAction(_ sender: Any) {
         if self.selectedIndexPaths.count == 0 {

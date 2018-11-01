@@ -17,6 +17,8 @@ class TourViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     var currentPage: Int = 0
     
+    static let robotoBold = "Roboto-Bold"
+    
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -52,7 +54,7 @@ class TourViewController: UIViewController {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 30, width: self.tourScrollView.frame.size.width, height: 40))
         titleLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         titleLabel.tag = 999
-        titleLabel.font = UIFont(name: "Roboto-Bold", size: 20)
+        titleLabel.font = UIFont(name: TourViewController.robotoBold, size: 20)
         titleLabel.textAlignment = .center
         titleLabel.text = "Terms and Conditions".localized()
         view.addSubview(titleLabel)
@@ -76,7 +78,7 @@ class TourViewController: UIViewController {
         
         let acceptButton = UIButton(frame: CGRect(x: self.tourScrollView.frame.size.width-100, y: webView.frame.origin.y + webView.frame.size.height + 10, width: 80, height: 40))
         acceptButton.setTitle("ACCEPT".localized(), for: .normal)
-        acceptButton.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 20)
+        acceptButton.titleLabel?.font = UIFont(name: TourViewController.robotoBold, size: 20)
         acceptButton.addTarget(self, action: #selector(acceptAction), for: .touchUpInside)
         view.addSubview(acceptButton)
         self.tourScrollView.addSubview(view)
@@ -113,7 +115,7 @@ class TourViewController: UIViewController {
         textLabel.tag = position
         textLabel.textAlignment = .center
         textLabel.numberOfLines = 0
-        textLabel.font = UIFont(name: "Roboto-Bold", size: 24)
+        textLabel.font = UIFont(name: TourViewController.robotoBold, size: 24)
         textLabel.text = text
         textLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         tourView.addSubview(textLabel)

@@ -51,6 +51,9 @@ class LessonViewController: UIViewController {
     //
     // MARK: - Functions
     
+    /// Reset Lessons to Demo
+    ///
+    /// - Parameter notification: NSNotification
     @objc func resetLessonsDemo(notification: NSNotification) {
         self.navigationController?.popToRootViewController(animated: true)
         self.lessonViewModel.sectionsCollapsed.removeAll()

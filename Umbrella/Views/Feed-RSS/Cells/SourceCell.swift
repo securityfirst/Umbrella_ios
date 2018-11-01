@@ -30,19 +30,4 @@ class SourceCell: UITableViewCell {
 
     //
     // MARK: - Functions
-    
-    /// Configure the cell with viewModel
-    ///
-    /// - Parameters:
-    ///   - viewModel: ViewModel
-    ///   - indexPath: IndexPath
-    func configure(withViewModel viewModel:LessonCheckListViewModel, indexPath: IndexPath) {
-        
-//        if let checkList = viewModel.checklist {
-//            let item = checkList.items[indexPath.row]
-//
-//            self.titleLabel.text = item.name
-//            self.checkImageView.image = item.checked ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
-//        }
-    }
 }

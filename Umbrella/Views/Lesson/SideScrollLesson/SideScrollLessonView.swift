@@ -110,22 +110,16 @@ class SideScrollLessonView: UIView, UIScrollViewDelegate {
     /// - Parameter index: Index
     /// - Returns: Width
     func viewWidth(index: Int) -> CGFloat {
-        var width: CGFloat = 0.0
-//        if index == totalViewCount - 1 {
-//            width = self.frame.size.width
-//        } else {
-            width = visivelPercentualSize
-//        }
-        return width
+        return visivelPercentualSize
     }
     
     /// Change the state of the title to .active, .done or .inactive
     fileprivate func changeState() {
         
         for view in self.scrollView.subviews {
-
+            
             var stepperItem = view as? SideScrollProtocol
-
+            
             if let index = stepperItem?.index {
                 if index == currentIndex {
                     stepperItem?.stage = .active
@@ -143,8 +137,6 @@ class SideScrollLessonView: UIView, UIScrollViewDelegate {
         for index in 0..<totalViewCount {
             
             let itemView = dataSource.viewAtIndex(index)
-            
-//            itemView.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(255))/255, green: CGFloat(arc4random_uniform(255))/255, blue: CGFloat(arc4random_uniform(255))/255, alpha: 1.0)
             
             if var view = itemView as? SideScrollProtocol {
                 view.stage = index == 0 ? .active : .inactive

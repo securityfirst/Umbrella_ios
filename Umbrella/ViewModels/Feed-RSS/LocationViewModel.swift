@@ -19,7 +19,7 @@ class LocationViewModel {
     //
     // MARK: - Init
     init() {
-        
+        // Init variables
     }
     
     //

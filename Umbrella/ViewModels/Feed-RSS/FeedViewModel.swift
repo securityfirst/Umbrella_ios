@@ -20,7 +20,7 @@ class FeedViewModel {
     //
     // MARK: - Init
     init() {
-        
+        // Init variables
     }
     
     func requestFeed(completion: @escaping () -> Void, failure: @escaping (Error) -> Void) {
@@ -35,13 +35,13 @@ class FeedViewModel {
             }
         }
         
-        let url = URL(string: "https://api.secfirst.org/v3/feed?country=\(location)&sources=\(sourceString)&since=0")!
+        let url = URL(string: String(format: Feed.feedUrl, "\(location)", "\(sourceString)"))!
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else { return }
             
             do {
-                let feedItems = try JSONDecoder().decode([FeedItem].self, from: data)
-                self.feedItems = feedItems
+                let feedsDecode = try JSONDecoder().decode([FeedItem].self, from: data)
+                self.feedItems = feedsDecode
                 completion()
             } catch let error {
                 print(error)

@@ -45,16 +45,12 @@ class CardRssCell: UITableViewCell {
             self.authorLabel.text = Global.dateFormatter.string(from: date)
         }
         
-        if let thumb = item.media?.mediaThumbnails?.first {
-            if let url = thumb.attributes?.url {
-                self.thumbImageView.setImage(withUrl: url)
-            }
+        if let mediaThumbnail = item.media?.mediaThumbnails?.first, let urlMediaThumbnail = mediaThumbnail.attributes?.url {
+            self.thumbImageView.setImage(withUrl: urlMediaThumbnail)
         }
         
-        if let thumb = item.media?.mediaContents?.first {
-            if let url = thumb.attributes?.url {
-                self.thumbImageView.setImage(withUrl: url)
-            }
+        if let mediaContent = item.media?.mediaContents?.first, let urlMediaContent = mediaContent.attributes?.url {
+            self.thumbImageView.setImage(withUrl: urlMediaContent)
         }
     }
 

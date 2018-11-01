@@ -39,7 +39,7 @@
 		A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007B3C421256D4000B3D8C9 /* Localizable.strings */; };
 		A021159C213D6B84004B5B73 /* TourViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */; };
 		A021159E213D6BAA004B5B73 /* ListRssViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */; };
-		A02115A0213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159F213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift */; };
+		A02115A0213D6BB9004B5B73 /* WebViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159F213D6BB9004B5B73 /* WebViewControllerSpec.swift */; };
 		A02115A2213D6C5A004B5B73 /* FeedViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */; };
 		A02115A4213D6C8A004B5B73 /* ListRssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */; };
 		A02115A6213D6C95004B5B73 /* RssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */; };
@@ -49,7 +49,7 @@
 		A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115AE213D8132004B5B73 /* RssItemDao.swift */; };
 		A02115B1213D816A004B5B73 /* RssItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B0213D816A004B5B73 /* RssItem.swift */; };
 		A02115B3213EB331004B5B73 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B2213EB330004B5B73 /* WebViewModel.swift */; };
-		A02115B5213EB45C004B5B73 /* DetailRssViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */; };
+		A02115B5213EB45C004B5B73 /* WebViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B4213EB45C004B5B73 /* WebViewModelSpec.swift */; };
 		A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */; };
 		A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B8213EC106004B5B73 /* FeedCell.swift */; };
 		A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115BA214163DC004B5B73 /* LocationViewController.swift */; };
@@ -280,7 +280,7 @@
 		A007B3C721256D9E00B3D8C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewControllerSpec.swift; sourceTree = "<group>"; };
 		A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssViewControllerSpec.swift; sourceTree = "<group>"; };
-		A021159F213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewControllerSpec.swift; sourceTree = "<group>"; };
+		A021159F213D6BB9004B5B73 /* WebViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerSpec.swift; sourceTree = "<group>"; };
 		A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelSpec.swift; sourceTree = "<group>"; };
 		A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRssViewModelSpec.swift; sourceTree = "<group>"; };
 		A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssViewModelSpec.swift; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 		A02115AE213D8132004B5B73 /* RssItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssItemDao.swift; sourceTree = "<group>"; };
 		A02115B0213D816A004B5B73 /* RssItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssItem.swift; sourceTree = "<group>"; };
 		A02115B2213EB330004B5B73 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
-		A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRssViewModelSpec.swift; sourceTree = "<group>"; };
+		A02115B4213EB45C004B5B73 /* WebViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModelSpec.swift; sourceTree = "<group>"; };
 		A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewSpec.swift; sourceTree = "<group>"; };
 		A02115B8213EC106004B5B73 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A02115BA214163DC004B5B73 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -1168,7 +1168,7 @@
 				A02115A1213D6C5A004B5B73 /* FeedViewModelSpec.swift */,
 				A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */,
 				A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */,
-				A02115B4213EB45C004B5B73 /* DetailRssViewModelSpec.swift */,
+				A02115B4213EB45C004B5B73 /* WebViewModelSpec.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1214,7 +1214,7 @@
 				A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */,
 				A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */,
 				A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */,
-				A021159F213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift */,
+				A021159F213D6BB9004B5B73 /* WebViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1640,14 +1640,14 @@
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
 				A02115A6213D6C95004B5B73 /* RssViewModelSpec.swift in Sources */,
 				A0B0AA3E20EBC98B00933759 /* ItemFormDaoSpec.swift in Sources */,
-				A02115A0213D6BB9004B5B73 /* DetailRssViewControllerSpec.swift in Sources */,
+				A02115A0213D6BB9004B5B73 /* WebViewControllerSpec.swift in Sources */,
 				A003811720FE3F3D00CDA44D /* StepperViewSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
 				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,
 				A0FFE51120D01E390026C0C7 /* FormSpec.swift in Sources */,
 				A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */,
 				A0FFE50D20D01E1C0026C0C7 /* CheckListSpec.swift in Sources */,
-				A02115B5213EB45C004B5B73 /* DetailRssViewModelSpec.swift in Sources */,
+				A02115B5213EB45C004B5B73 /* WebViewModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

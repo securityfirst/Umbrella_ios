@@ -19,6 +19,6 @@ class WebViewModel {
     //
     // MARK: - Init
     init() {
-        
+      // Init variables
     }
 }

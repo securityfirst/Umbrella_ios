@@ -54,12 +54,15 @@ class ReviewLessonViewController: UIViewController {
         
         self.reviewScrollView.contentSize = CGSize(width: self.reviewScrollView.frame.size.width * CGFloat(pages.count), height: self.reviewScrollView.frame.size.height)
         
-        setPosition()
+        setCurrentPosition()
     }
     
     //
     // MARK: - Functions
     
+    /// Get Viewcontrollers
+    ///
+    /// - Returns: [UIViewController]
     func getViewControllers() -> [UIViewController] {
         var viewControllers = [UIViewController]()
         
@@ -79,11 +82,16 @@ class ReviewLessonViewController: UIViewController {
         return viewControllers
     }
     
+    /// Get ViewController with Identifier
+    ///
+    /// - Parameter identifier: String
+    /// - Returns: UIViewController
     func getViewController(withIdentifier identifier: String) -> UIViewController {
         return UIStoryboard(name: "Lesson", bundle: nil).instantiateViewController(withIdentifier: identifier)
     }
     
-    fileprivate func setPosition() {
+    /// Set position of the workflow tabs
+    fileprivate func setCurrentPosition() {
         var segment:Segment? = nil
         var checklist:CheckList? = nil
         
@@ -96,35 +104,62 @@ class ReviewLessonViewController: UIViewController {
         for (index, viewController) in pages.enumerated() {
             
             if viewController is MarkdownViewController {
-                let controller = (viewController as? MarkdownViewController)!
-                
-                if controller.markdownViewModel.segment?.id == segment?.id {
-                    self.sideScrollView.scrollViewDidPage(page: CGFloat(index))
-                    self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
-                    
-                    // Set title navigationController
-                    if let name = controller.markdownViewModel.segment?.name {
-                        self.title = name
-                    }
-                    
-                    controller.loadMarkdown()
-                    
+                if loadSegment(index: index, viewController: viewController, segment: segment) {
                     break
                 }
-                
             } else if viewController is LessonCheckListViewController {
-                let controller = (viewController as? LessonCheckListViewController)!
-                
-                if controller.lessonCheckListViewModel.checklist?.id == checklist?.id {
-                    self.sideScrollView.scrollViewDidPage(page: CGFloat(index))
-                    self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
-                    
-                    // Set title navigationController
-                    self.title = "CheckList".localized()
+                if loadChecklist(index: index, viewController: viewController, checklist: checklist) {
                     break
                 }
             }
         }
+    }
+    
+    /// Load segment selected
+    ///
+    /// - Parameters:
+    ///   - index: Int
+    ///   - viewController: UIViewController
+    ///   - segment: Segment
+    /// - Returns: Bool
+    fileprivate func loadSegment(index: Int, viewController: UIViewController, segment: Segment?) -> Bool {
+        let controller = (viewController as? MarkdownViewController)!
+        
+        if controller.markdownViewModel.segment?.id == segment?.id {
+            self.sideScrollView.scrollViewDidPage(page: CGFloat(index))
+            self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
+            
+            // Set title navigationController
+            if let name = controller.markdownViewModel.segment?.name {
+                self.title = name
+            }
+            
+            controller.loadMarkdown()
+            return true
+        }
+        
+        return false
+    }
+    
+    /// Load checklist selected
+    ///
+    /// - Parameters:
+    ///   - index: Int
+    ///   - viewController: UIViewController
+    ///   - segment: Segment
+    /// - Returns: Bool
+    fileprivate func loadChecklist(index: Int, viewController: UIViewController, checklist: CheckList?) -> Bool {
+        let controller = (viewController as? LessonCheckListViewController)!
+        
+        if controller.lessonCheckListViewModel.checklist?.id == checklist?.id {
+            self.sideScrollView.scrollViewDidPage(page: CGFloat(index))
+            self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
+            
+            // Set title navigationController
+            self.title = "CheckList".localized()
+            return true
+        }
+        return false
     }
     
     //

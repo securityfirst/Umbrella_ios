@@ -27,13 +27,13 @@ class MarkdownViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
-        self.navigationItem.rightBarButtonItem  = modeBarButton
-        
         self.markdownView.isHidden = true
     }
     
+    //
+    // MARK: - Functions
+    
+    /// Load Markdown
     func loadMarkdown() {
         if self.isLoading {
             return
@@ -84,12 +84,4 @@ class MarkdownViewController: UIViewController {
             }
         }
     }
-    
-    //
-    // MARK: - Actions
-    
-    @IBAction func shareAction(_ sender: UIBarButtonItem) {
-        
-    }
-
 }

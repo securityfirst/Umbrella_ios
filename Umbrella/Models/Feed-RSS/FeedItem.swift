@@ -22,8 +22,8 @@ class FeedItem: Codable {
         let dateFormatter = Global.dateFormatter
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat =  "MM/dd/yyyy hh:mm a"
-        let dateString = dateFormatter.string(from: date as Date)
-        return dateString
+        let dateFormat = dateFormatter.string(from: date as Date)
+        return dateFormat
     }
     var url: String
     

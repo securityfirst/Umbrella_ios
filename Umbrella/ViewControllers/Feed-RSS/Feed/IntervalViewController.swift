@@ -65,22 +65,6 @@ extension IntervalViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-//        if let text = textField.text,
-//            let textRange = Range(range, in: text) {
-//            let updatedText = text.replacingCharacters(in: textRange,
-//                                                       with: string)
-//
-//            if updatedText.count >= 3 {
-//                self.locationViewModel.geocode(of: updatedText) {
-//                    self.cityTableView.reloadData()
-//                }
-//            } else {
-//                self.locationViewModel.cityArray.removeAll()
-//                self.cityTableView.reloadData()
-//            }
-//        }
-        
         return true
     }
 }

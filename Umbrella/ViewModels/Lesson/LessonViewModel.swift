@@ -82,49 +82,77 @@ class LessonViewModel {
             // Category
             let copyCat: Category = (category.copy() as? Category)!
             
-            // SubCategory
-            for subcategory in category.categories {
-                let copySub = (subcategory.copy() as? Category)!
-                copyCat.categories.append(copySub)
+            copySubCategories(category, copyCat)
+            copySegments(category, copyCat)
+            copyChecklists(category, copyCat)
 
-                // Difficulty
-                for difficulty in subcategory.categories {
-                    let copyDifficulty = (difficulty.copy() as? Category)!
-                    copySub.categories.append(copyDifficulty)
-                    
-                    // Segments
-                    for segment in difficulty.segments {
-                        let copySeg = (segment.copy() as? Segment)!
-                        copyDifficulty.segments.append(copySeg)
-                    }
-                    
-                    // Checklist
-                    for checklist in difficulty.checkList {
-                        let copyChecklist = (checklist.copy() as? CheckList)!
-                        copyDifficulty.checkList.append(copyChecklist)
-                        
-                        // CheckItem
-                        for checkItem in checklist.items {
-                            let copyCheckItem = (checkItem.copy() as? CheckItem)!
-                            copyChecklist.items.append(copyCheckItem)
-                        }
-                    }
-                }
-            }
-            
-            // Segments
-            for segment in category.segments {
-                let copySeg = (segment.copy() as? Segment)!
-                copyCat.segments.append(copySeg)
-            }
-
-            // Checklist
-            for checklist in category.checkList {
-                let copyChecklist = (checklist.copy() as? CheckList)!
-                copyCat.checkList.append(copyChecklist)
-            }
-            
             self.categoriesFilter.append(copyCat)
+        }
+    }
+    
+    /// Copy a list of segments
+    ///
+    /// - Parameters:
+    ///   - category: Category
+    ///   - copyCategory: Category
+    fileprivate func copySegments(_ category: Category, _ copyCategory: Category) {
+        
+        // Segments
+        for segment in category.segments {
+            let copySeg = (segment.copy() as? Segment)!
+            copyCategory.segments.append(copySeg)
+        }
+    }
+    
+    /// Copy a list of checklists
+    ///
+    /// - Parameters:
+    ///   - category: Category
+    ///   - copyCategory: Category
+    fileprivate func copyChecklists(_ category: Category, _ copyCategory: Category) {
+        // Checklist
+        for checklist in category.checkList {
+            let copyChecklist = (checklist.copy() as? CheckList)!
+            copyCategory.checkList.append(copyChecklist)
+            
+            // CheckItem
+            for checkItem in checklist.items {
+                let copyCheckItem = (checkItem.copy() as? CheckItem)!
+                copyChecklist.items.append(copyCheckItem)
+            }
+        }
+    }
+    
+    /// Copy a list of difficuties
+    ///
+    /// - Parameters:
+    ///   - category: Category
+    ///   - copyCategory: Category
+    fileprivate func copyDifficulties(_ category: Category, _ copyCategory: Category) {
+        
+        // Difficulty
+        for difficulty in category.categories {
+            let copyDifficulty = (difficulty.copy() as? Category)!
+            copyCategory.categories.append(copyDifficulty)
+            
+            copySegments(difficulty, copyDifficulty)
+            copyChecklists(difficulty, copyDifficulty)
+        }
+    }
+    
+    /// Copy a list of Subcategories
+    ///
+    /// - Parameters:
+    ///   - category: Category
+    ///   - copyCategory: Category
+    fileprivate func copySubCategories(_ category: Category, _ copyCategory: Category) {
+        
+        // SubCategory
+        for subcategory in category.categories {
+            let copySub = (subcategory.copy() as? Category)!
+            copyCategory.categories.append(copySub)
+            
+            copyDifficulties(subcategory, copySub)
         }
     }
     
@@ -180,7 +208,6 @@ class LessonViewModel {
         let categories = getCategories()
         let favourites = self.favouriteSegmentDao.list()
         
-        // I need to refactor it
         for favouriteSegment in favourites {
             
             for category in categories {

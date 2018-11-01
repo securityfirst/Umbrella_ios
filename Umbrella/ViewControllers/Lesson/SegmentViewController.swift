@@ -46,6 +46,7 @@ class SegmentViewController: UIViewController {
             self.navigationItem.titleView = self.menuView
             
             self.menuView?.didSelectItemAtIndexHandler = { indexPath in
+                self.segmentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
                 self.segmentViewModel.category = self.segmentViewModel.difficulties[indexPath]
                 self.segmentCollectionView.reloadData()
                 
@@ -76,20 +77,7 @@ class SegmentViewController: UIViewController {
     
     //
     // MARK: - UIStoryboardSegue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "markdownSegue" {
-//            let markdownViewController = (segue.destination as? MarkdownViewController)!
-//
-//            let segment = (sender as? Segment)!
-//            markdownViewController.markdownViewModel.segment = segment
-//        } else if segue.identifier == "checkListSegue" {
-//            let lessonCheckListViewController = (segue.destination as? LessonCheckListViewController)!
-//
-//            let dictionary = (sender as? [String: Any])!
-//            lessonCheckListViewController.lessonCheckListViewModel.checklist = (dictionary["checkList"] as? CheckList)!
-//            lessonCheckListViewController.lessonCheckListViewModel.category = (dictionary["category"] as? Category)!
-//        }
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
         if segue.identifier == "reviewLessonSegue" {
             
             let reviewLessonViewController = (segue.destination as? ReviewLessonViewController)!
@@ -144,11 +132,8 @@ extension SegmentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return self.segmentViewModel.getSegments().count
-        } else if section == 1 {
-            
-            if let category = self.segmentViewModel.category {
-                return category.checkList.count
-            }
+        } else if section == 1, let category = self.segmentViewModel.category {
+            return category.checkList.count
         }
         
         return 0

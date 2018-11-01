@@ -41,13 +41,19 @@ class LocationViewController: UIViewController {
     //
     // MARK: - Functions
     
+    /// Show error
     fileprivate func showError() {
         UIAlertController.alert(title: "Alert", message: "The city or country is not available or you have no internet connection.".localized(), cancelButtonTitle: "OK", otherButtons: nil, dismiss: { _ in
+            // Don't need to do nothing
         }, cancel: {
+            // In this case we need to do nothing when user cancel the alert
             print("cancelClicked")
         })
     }
     
+    /// Save place
+    ///
+    /// - Parameter placeMark: CLPlacemark
     fileprivate func savePlace(_ placeMark: CLPlacemark) {
         if let city = placeMark.addressDictionary?["Name"] as? String, let country = placeMark.addressDictionary?["Country"] as? String, let countryCode = placeMark.addressDictionary?["CountryCode"] as? String {
             if city.lowercased() == self.locationText.text?.lowercased() {
@@ -111,6 +117,7 @@ extension LocationViewController: UITextFieldDelegate {
                 self.locationViewModel.geocode(of: updatedText, completion: {
                     self.cityTableView.reloadData()
                 }, failure: {
+                    // It is not necessary show alert in this case
                 })
             } else {
                 self.locationViewModel.cityArray.removeAll()

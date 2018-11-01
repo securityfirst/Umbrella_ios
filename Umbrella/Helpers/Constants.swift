@@ -10,19 +10,19 @@ import Foundation
 import UIKit
 
 enum Config {
-    static var gitBaseURL = URL(string: "https://github.com/securityfirst/umbrella-content")!
+    static let gitBaseURL = URL(string: "https://github.com/securityfirst/umbrella-content")!
 //    static var gitBaseURL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
     //Test the GitManager
     static var debug: Bool = false
 }
 
 enum Database {
-    static var name: String = "database.db"
-    static var password: String = "umbrella"
+    static let name: String = "database.db"
+    static let password: String = "umbrella"
 }
 
 enum RSS {
-    static var feeds = [
+    static let feeds = [
         ["url": "https://www.theguardian.com/world/rss"],
         ["url": "https://www.aljazeera.com/xml/rss/all.xml"],
         ["url": "http://rss.cnn.com/rss/edition.rss"],
@@ -34,11 +34,11 @@ enum RSS {
 }
 
 enum Lessons {
-    static var colors: [UIColor] = [#colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1), #colorLiteral(red: 0.9661672711, green: 0.7777593136, blue: 0.215906769, alpha: 1), #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)]
+    static let colors: [UIColor] = [#colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1), #colorLiteral(red: 0.9661672711, green: 0.7777593136, blue: 0.215906769, alpha: 1), #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)]
 }
 
 enum Sources {
-    static var list = [
+    static let list = [
         (name: "ReliefWeb", code: 0),
         (name: "UN", code: 1),
         (name: "FCO", code: 2),
@@ -46,4 +46,8 @@ enum Sources {
         (name: "Global Disaster and Alert Coordination System", code: 4),
         (name: "US State Department Country Warnings", code: 5)
     ]
+}
+
+enum Feed {
+    static let feedUrl = "https://api.secfirst.org/v3/feed?country=%@&sources=%@&since=0"
 }

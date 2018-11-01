@@ -86,12 +86,12 @@ class FeedViewController: UIViewController {
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
-
+        
         let refreshBarButton = UIBarButtonItem(title: "Refresh", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.refreshRepo(_:)))
         refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
         refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
         refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
-
+        
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.navigationItem.leftBarButtonItems = [modeBarButton, spacer,spacer,spacer, refreshBarButton]
         
@@ -118,6 +118,7 @@ class FeedViewController: UIViewController {
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
             UIApplication.shared.keyWindow?.addSubview(controller.view)
             controller.loadTent {
+                print("Finished load tent")
             }
         } else {
             let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
@@ -147,7 +148,7 @@ class FeedViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if self.isStartingSetup && self.continueWizard {
-            checkWizardSetup()
+            checkSetupWizard()
         }
         
         self.continueWizard = false
@@ -158,8 +159,7 @@ class FeedViewController: UIViewController {
     }
     
     //
-    // MARK: - Functions
-    
+    // MARK: - UIStoryboardSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rssSegue" {
             let destination = (segue.destination as? ListRssViewController)!
@@ -177,11 +177,20 @@ class FeedViewController: UIViewController {
         }
     }
     
+    //
+    // MARK: - Functions
+    
+    /// Share action
+    ///
+    /// - Parameter sender: UIBarButtonItem
     @objc func shareAction(_ sender: UIBarButtonItem) {
         let app = (UIApplication.shared.delegate as? AppDelegate)!
         app.show()
     }
     
+    /// Refresh repository
+    ///
+    /// - Parameter sender: UIBarButtonItem
     @objc func refreshRepo(_ sender: UIBarButtonItem) {
         
         let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
@@ -200,22 +209,24 @@ class FeedViewController: UIViewController {
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
             UIApplication.shared.keyWindow?.addSubview(controller.view)
             controller.loadTent {
+                print("Finished load tent")
             }
-
         } catch {
             print(error)
         }
     }
     
-    func checkWizardSetup() {
+    /// Check the workflow of the setup Wizard
+    func checkSetupWizard() {
         
-        if stepLocation == false {
+        if !stepLocation {
             self.performSegue(withIdentifier: "locationSegue", sender: nil)
-        } else if stepSources == false {
+        } else if !stepSources {
             self.performSegue(withIdentifier: "sourcesSegue", sender: nil)
         } 
     }
     
+    /// Check the state
     func checkState() {
         if intervalSet.count > 0 && locationSet.countryCode.count > 0 && sourceSet.count > 0 {
             self.showFeedList()
@@ -224,6 +235,7 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /// Show Feed List
     func showFeedList() {
         
         if intervalTimer.isValid {
@@ -272,6 +284,7 @@ class FeedViewController: UIViewController {
         })
     }
     
+    /// Close Feed list
     func closeFeedList() {
         self.setupScrollView.isHidden = false
         self.feedView.feedTableView.isHidden = true
@@ -279,6 +292,7 @@ class FeedViewController: UIViewController {
         self.feedView.emptyView.isHidden = true
     }
     
+    /// Load setup
     func loadSetup() {
         
         let interval = UserDefaults.standard.object(forKey: "Interval") as? String
@@ -302,6 +316,7 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /// Reset Setup
     func resetSetup() {
         UserDefaults.standard.set([], forKey: "Sources")
         UserDefaults.standard.set("", forKey: "Interval")
@@ -325,10 +340,16 @@ class FeedViewController: UIViewController {
         self.feedView.feedTableView.reloadData()
     }
     
+    /// Reset Demo
+    ///
+    /// - Parameter notification: NSNotification
     @objc func resetDemo(notification: NSNotification) {
         resetSetup()
     }
     
+    /// Update Location
+    ///
+    /// - Parameter notification: NSNotification
     @objc func updateLocation(notification: NSNotification) {
         let userInfo = notification.userInfo
         
@@ -338,6 +359,9 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /// Update Interval
+    ///
+    /// - Parameter notification: NSNotification
     @objc func updateInterval(notification: NSNotification) {
         let userInfo = notification.userInfo
         
@@ -346,6 +370,9 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /// Update Sources
+    ///
+    /// - Parameter notification: NSNotification
     @objc func updateSources(notification: NSNotification) {
         let userInfo = notification.userInfo
         
@@ -355,10 +382,14 @@ class FeedViewController: UIViewController {
         }
     }
     
+    /// Continue Wizard
+    ///
+    /// - Parameter notification: NSNotification
     @objc func continueWizard(notification: NSNotification) {
         continueWizard = true
     }
     
+    /// Refresh Feed
     fileprivate func refresFeed() {
         if intervalTimer.isValid {
             self.feedView.feedViewModel.requestFeed(completion: {
@@ -419,10 +450,12 @@ class FeedViewController: UIViewController {
             let firstTextField = alertController.textFields![0] as UITextField
             print(firstTextField.text ?? "")
             
-            if (firstTextField.text?.count)! > 0 {
-                if self.validateUrl(urlString: firstTextField.text!) {
-                    self.rssView.rssViewModel.insert(firstTextField.text!)
-                    self.rssView.loadRss()
+            if let count = firstTextField.text?.count {
+                if count > 0 {
+                    if self.validateUrl(urlString: firstTextField.text!) {
+                        self.rssView.rssViewModel.insert(firstTextField.text!)
+                        self.rssView.loadRss()
+                    }
                 }
             }
         })
@@ -433,10 +466,6 @@ class FeedViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func changeLocationAction(_ sender: Any) {
-        
     }
     
 }
@@ -480,6 +509,6 @@ extension FeedViewController: FeedViewDelegate {
     func starSetupFeed() {
         isStartingSetup = true
         continueWizard = false
-        checkWizardSetup()
+        checkSetupWizard()
     }
 }
