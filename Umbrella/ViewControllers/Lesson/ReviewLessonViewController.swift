@@ -102,15 +102,12 @@ class ReviewLessonViewController: UIViewController {
         }
         
         for (index, viewController) in pages.enumerated() {
+            if viewController is MarkdownViewController, loadSegment(index: index, viewController: viewController, segment: segment) {
+                break
+            }
             
-            if viewController is MarkdownViewController {
-                if loadSegment(index: index, viewController: viewController, segment: segment) {
-                    break
-                }
-            } else if viewController is LessonCheckListViewController {
-                if loadChecklist(index: index, viewController: viewController, checklist: checklist) {
-                    break
-                }
+            if viewController is LessonCheckListViewController, loadChecklist(index: index, viewController: viewController, checklist: checklist) {
+                break
             }
         }
     }

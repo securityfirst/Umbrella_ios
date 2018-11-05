@@ -129,6 +129,8 @@
 		A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */; };
 		A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */; };
 		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
+		A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */; };
+		A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B412190A5CB00D46653 /* AccountCell.swift */; };
 		A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787020ADA12B00A287C8 /* TableProtocol.swift */; };
 		A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */; };
 		A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */; };
@@ -187,6 +189,33 @@
 		A0F5B262216FB0DB008B2B6A /* IntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5B261216FB0DA008B2B6A /* IntervalViewController.swift */; };
 		A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5B2632170C80F008B2B6A /* SourceViewController.swift */; };
 		A0F5B2662170CAC6008B2B6A /* SourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5B2652170CAC6008B2B6A /* SourceCell.swift */; };
+		A0F738B1218B4FB400F63D7C /* LessonViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */; };
+		A0F738B3218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */; };
+		A0F738B5218B519D00F63D7C /* FeedItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */; };
+		A0F738B7218B521700F63D7C /* IntervalViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B6218B521700F63D7C /* IntervalViewControllerSpec.swift */; };
+		A0F738B9218B525800F63D7C /* LocationViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B8218B525800F63D7C /* LocationViewControllerSpec.swift */; };
+		A0F738BB218B528D00F63D7C /* SourceViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738BA218B528D00F63D7C /* SourceViewControllerSpec.swift */; };
+		A0F738BD218B52BA00F63D7C /* DifficultyViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738BC218B52BA00F63D7C /* DifficultyViewControllerSpec.swift */; };
+		A0F738BF218B52EF00F63D7C /* LessonCheckListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738BE218B52EF00F63D7C /* LessonCheckListViewModelSpec.swift */; };
+		A0F738C1218B534600F63D7C /* LessonCheckListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738C0218B534600F63D7C /* LessonCheckListViewControllerSpec.swift */; };
+		A0F738C3218B538900F63D7C /* MarkdownViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738C2218B538900F63D7C /* MarkdownViewControllerSpec.swift */; };
+		A0F738C5218B53B900F63D7C /* SegmentViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738C4218B53B900F63D7C /* SegmentViewControllerSpec.swift */; };
+		A0F738C7218B53EC00F63D7C /* LocationViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738C6218B53EC00F63D7C /* LocationViewModelSpec.swift */; };
+		A0F738C9218B542000F63D7C /* DifficultyViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738C8218B542000F63D7C /* DifficultyViewModelSpec.swift */; };
+		A0F738CB218B544B00F63D7C /* MarkdownViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738CA218B544B00F63D7C /* MarkdownViewModelSpec.swift */; };
+		A0F738CD218B547000F63D7C /* SegmentViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738CC218B547000F63D7C /* SegmentViewModelSpec.swift */; };
+		A0F738CF218B558600F63D7C /* RssItemDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738CE218B558600F63D7C /* RssItemDaoSpec.swift */; };
+		A0F738D1218B560F00F63D7C /* DifficultyRuleDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738D0218B560F00F63D7C /* DifficultyRuleDaoSpec.swift */; };
+		A0F738D3218B56E500F63D7C /* ChecklistCheckedDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738D2218B56E500F63D7C /* ChecklistCheckedDaoSpec.swift */; };
+		A0F738D5218B56F300F63D7C /* FavouriteSegmentDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738D4218B56F300F63D7C /* FavouriteSegmentDaoSpec.swift */; };
+		A0F738D7218C86FD00F63D7C /* ChecklistCheckedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738D6218C86FD00F63D7C /* ChecklistCheckedSpec.swift */; };
+		A0F738D9218C870C00F63D7C /* FavouriteSegmentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738D8218C870C00F63D7C /* FavouriteSegmentSpec.swift */; };
+		A0F738DB218C871D00F63D7C /* RssItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738DA218C871D00F63D7C /* RssItemSpec.swift */; };
+		A0F738DD218C894C00F63D7C /* DifficultyCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738DC218C894C00F63D7C /* DifficultyCellSpec.swift */; };
+		A0F738DF218C895900F63D7C /* FillCheckListCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738DE218C895900F63D7C /* FillCheckListCellSpec.swift */; };
+		A0F738E1218C896400F63D7C /* SegmentCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738E0218C896400F63D7C /* SegmentCellSpec.swift */; };
+		A0F738E3218C897200F63D7C /* TitleLessonViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738E2218C897200F63D7C /* TitleLessonViewSpec.swift */; };
+		A0F738E5218C8AF900F63D7C /* FeedCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738E4218C8AF900F63D7C /* FeedCellSpec.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -366,6 +395,8 @@
 		A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		A0B66B412190A5CB00D46653 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
 		A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoProtocol.swift; sourceTree = "<group>"; };
@@ -430,6 +461,33 @@
 		A0F5B261216FB0DA008B2B6A /* IntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalViewController.swift; sourceTree = "<group>"; };
 		A0F5B2632170C80F008B2B6A /* SourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewController.swift; sourceTree = "<group>"; };
 		A0F5B2652170CAC6008B2B6A /* SourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCell.swift; sourceTree = "<group>"; };
+		A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLessonViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemSpec.swift; sourceTree = "<group>"; };
+		A0F738B6218B521700F63D7C /* IntervalViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738B8218B525800F63D7C /* LocationViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738BA218B528D00F63D7C /* SourceViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738BC218B52BA00F63D7C /* DifficultyViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738BE218B52EF00F63D7C /* LessonCheckListViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F738C0218B534600F63D7C /* LessonCheckListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738C2218B538900F63D7C /* MarkdownViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738C4218B53B900F63D7C /* SegmentViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F738C6218B53EC00F63D7C /* LocationViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F738C8218B542000F63D7C /* DifficultyViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F738CA218B544B00F63D7C /* MarkdownViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F738CC218B547000F63D7C /* SegmentViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F738CE218B558600F63D7C /* RssItemDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssItemDaoSpec.swift; sourceTree = "<group>"; };
+		A0F738D0218B560F00F63D7C /* DifficultyRuleDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyRuleDaoSpec.swift; sourceTree = "<group>"; };
+		A0F738D2218B56E500F63D7C /* ChecklistCheckedDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistCheckedDaoSpec.swift; sourceTree = "<group>"; };
+		A0F738D4218B56F300F63D7C /* FavouriteSegmentDaoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSegmentDaoSpec.swift; sourceTree = "<group>"; };
+		A0F738D6218C86FD00F63D7C /* ChecklistCheckedSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistCheckedSpec.swift; sourceTree = "<group>"; };
+		A0F738D8218C870C00F63D7C /* FavouriteSegmentSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSegmentSpec.swift; sourceTree = "<group>"; };
+		A0F738DA218C871D00F63D7C /* RssItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssItemSpec.swift; sourceTree = "<group>"; };
+		A0F738DC218C894C00F63D7C /* DifficultyCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyCellSpec.swift; sourceTree = "<group>"; };
+		A0F738DE218C895900F63D7C /* FillCheckListCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCheckListCellSpec.swift; sourceTree = "<group>"; };
+		A0F738E0218C896400F63D7C /* SegmentCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCellSpec.swift; sourceTree = "<group>"; };
+		A0F738E2218C897200F63D7C /* TitleLessonViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLessonViewSpec.swift; sourceTree = "<group>"; };
+		A0F738E4218C8AF900F63D7C /* FeedCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellSpec.swift; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -535,6 +593,11 @@
 				A02115A7213D6D2E004B5B73 /* Feed */,
 				A003811520FE3F2200CDA44D /* Form */,
 				A08F58BC212AC05400BEF571 /* DynamicForm */,
+				A0F738DC218C894C00F63D7C /* DifficultyCellSpec.swift */,
+				A0F738DE218C895900F63D7C /* FillCheckListCellSpec.swift */,
+				A0F738E0218C896400F63D7C /* SegmentCellSpec.swift */,
+				A0F738E2218C897200F63D7C /* TitleLessonViewSpec.swift */,
+				A0F738E4218C8AF900F63D7C /* FeedCellSpec.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -711,6 +774,10 @@
 				A0B0AA3620EBC98B00933759 /* ItemFormDaoSpec.swift */,
 				A0B0AA3420EBC98B00933759 /* OptionItemDaoSpec.swift */,
 				A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */,
+				A0F738CE218B558600F63D7C /* RssItemDaoSpec.swift */,
+				A0F738D0218B560F00F63D7C /* DifficultyRuleDaoSpec.swift */,
+				A0F738D2218B56E500F63D7C /* ChecklistCheckedDaoSpec.swift */,
+				A0F738D4218B56F300F63D7C /* FavouriteSegmentDaoSpec.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -787,6 +854,7 @@
 				A0CC7B422135AE7100C28C3B /* Feed-RSS */,
 				A099D09B214A7BDE0064AD18 /* Lesson */,
 				A0D19D78215E49D800B5F5FE /* Checklist */,
+				A0B66B432190A5D100D46653 /* Account */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -797,6 +865,22 @@
 				A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */,
 			);
 			path = Git;
+			sourceTree = "<group>";
+		};
+		A0B66B432190A5D100D46653 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				A0B66B412190A5CB00D46653 /* AccountCell.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		A0B66B442190A5D900D46653 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		A0B9787320ADC79800A287C8 /* Dao */ = {
@@ -947,6 +1031,7 @@
 				A0D19D7B215E4A1800B5F5FE /* Feed-RSS */,
 				A0D19D7C215E4A2A00B5F5FE /* Lesson */,
 				A0D19D7D215E4A3A00B5F5FE /* Checklist */,
+				A0B66B442190A5D900D46653 /* Account */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1157,6 +1242,10 @@
 				A0FFE51220D01E470026C0C7 /* ScreenSpec.swift */,
 				A0FFE51420D01E520026C0C7 /* ItemFormSpec.swift */,
 				A0FFE51620D01E5E0026C0C7 /* OptionItemSpec.swift */,
+				A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */,
+				A0F738D6218C86FD00F63D7C /* ChecklistCheckedSpec.swift */,
+				A0F738D8218C870C00F63D7C /* FavouriteSegmentSpec.swift */,
+				A0F738DA218C871D00F63D7C /* RssItemSpec.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1169,6 +1258,12 @@
 				A02115A3213D6C8A004B5B73 /* ListRssViewModelSpec.swift */,
 				A02115A5213D6C95004B5B73 /* RssViewModelSpec.swift */,
 				A02115B4213EB45C004B5B73 /* WebViewModelSpec.swift */,
+				A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */,
+				A0F738BE218B52EF00F63D7C /* LessonCheckListViewModelSpec.swift */,
+				A0F738C6218B53EC00F63D7C /* LocationViewModelSpec.swift */,
+				A0F738C8218B542000F63D7C /* DifficultyViewModelSpec.swift */,
+				A0F738CA218B544B00F63D7C /* MarkdownViewModelSpec.swift */,
+				A0F738CC218B547000F63D7C /* SegmentViewModelSpec.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1215,6 +1310,14 @@
 				A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */,
 				A021159D213D6BAA004B5B73 /* ListRssViewControllerSpec.swift */,
 				A021159F213D6BB9004B5B73 /* WebViewControllerSpec.swift */,
+				A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */,
+				A0F738B6218B521700F63D7C /* IntervalViewControllerSpec.swift */,
+				A0F738B8218B525800F63D7C /* LocationViewControllerSpec.swift */,
+				A0F738BA218B528D00F63D7C /* SourceViewControllerSpec.swift */,
+				A0F738BC218B52BA00F63D7C /* DifficultyViewControllerSpec.swift */,
+				A0F738C0218B534600F63D7C /* LessonCheckListViewControllerSpec.swift */,
+				A0F738C2218B538900F63D7C /* MarkdownViewControllerSpec.swift */,
+				A0F738C4218B53B900F63D7C /* SegmentViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1518,6 +1621,7 @@
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
+				A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
 				A0AE1A2E214FE0370019F09B /* SegmentViewController.swift in Sources */,
 				A0CC7B552137F57400C28C3B /* ListRssViewModel.swift in Sources */,
@@ -1527,6 +1631,7 @@
 				A0F5B262216FB0DB008B2B6A /* IntervalViewController.swift in Sources */,
 				A0D19D7F215E4A6300B5F5FE /* ChecklistViewModel.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
+				A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
 				A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */,
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
@@ -1605,6 +1710,7 @@
 				A003811B20FF6FCA00CDA44D /* FeedViewControllerSpec.swift in Sources */,
 				A003811920FF660C00CDA44D /* FillFormViewControllerSpec.swift in Sources */,
 				A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */,
+				A0F738CD218B547000F63D7C /* SegmentViewModelSpec.swift in Sources */,
 				A0FFE50F20D01E2C0026C0C7 /* CheckItemSpec.swift in Sources */,
 				A0B0AA3920EBC98B00933759 /* CheckListDaoSpec.swift in Sources */,
 				A0B0AA3820EBC98B00933759 /* SegmentDaoSpec.swift in Sources */,
@@ -1612,18 +1718,29 @@
 				A0B0AA3F20EBC98B00933759 /* LanguageDaoSpec.swift in Sources */,
 				A0FFE52320D0211E0026C0C7 /* GlobalSpec.swift in Sources */,
 				A02115A2213D6C5A004B5B73 /* FeedViewModelSpec.swift in Sources */,
+				A0F738DD218C894C00F63D7C /* DifficultyCellSpec.swift in Sources */,
 				A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */,
 				A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */,
 				A0FFE50920D01DF20026C0C7 /* CategorySpec.swift in Sources */,
+				A0F738D5218B56F300F63D7C /* FavouriteSegmentDaoSpec.swift in Sources */,
+				A0F738E3218C897200F63D7C /* TitleLessonViewSpec.swift in Sources */,
 				A003811D20FF6FDC00CDA44D /* CheckListViewControllerSpec.swift in Sources */,
 				A0FFE50B20D01E060026C0C7 /* SegmentSpec.swift in Sources */,
 				A0B0AA4220EBDEC100933759 /* UmbrellaDatabaseSpec.swift in Sources */,
 				A02115A4213D6C8A004B5B73 /* ListRssViewModelSpec.swift in Sources */,
 				A021159E213D6BAA004B5B73 /* ListRssViewControllerSpec.swift in Sources */,
+				A0F738B5218B519D00F63D7C /* FeedItemSpec.swift in Sources */,
+				A0F738C5218B53B900F63D7C /* SegmentViewControllerSpec.swift in Sources */,
+				A0F738CB218B544B00F63D7C /* MarkdownViewModelSpec.swift in Sources */,
 				A0FFE51520D01E520026C0C7 /* ItemFormSpec.swift in Sources */,
+				A0F738E1218C896400F63D7C /* SegmentCellSpec.swift in Sources */,
+				A0F738B1218B4FB400F63D7C /* LessonViewModelSpec.swift in Sources */,
+				A0F738D3218B56E500F63D7C /* ChecklistCheckedDaoSpec.swift in Sources */,
+				A0F738DB218C871D00F63D7C /* RssItemSpec.swift in Sources */,
 				A0B0AA3B20EBC98B00933759 /* ScreenDaoSpec.swift in Sources */,
 				A02115AD213D6FA2004B5B73 /* ImageDownloadSpec.swift in Sources */,
 				A0FFE51320D01E470026C0C7 /* ScreenSpec.swift in Sources */,
+				A0F738B7218B521700F63D7C /* IntervalViewControllerSpec.swift in Sources */,
 				A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */,
 				A021159C213D6B84004B5B73 /* TourViewControllerSpec.swift in Sources */,
 				A003812120FF6FFD00CDA44D /* AccountViewControllerSpec.swift in Sources */,
@@ -1632,20 +1749,35 @@
 				A0DAF9412132B845009B2743 /* LoadingViewControllerSpec.swift in Sources */,
 				A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */,
 				A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */,
+				A0F738B3218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift in Sources */,
+				A0F738BF218B52EF00F63D7C /* LessonCheckListViewModelSpec.swift in Sources */,
 				A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */,
+				A0F738CF218B558600F63D7C /* RssItemDaoSpec.swift in Sources */,
 				A02115A9213D6D5F004B5B73 /* ListRssCellSpec.swift in Sources */,
 				A0B0AA3C20EBC98B00933759 /* OptionItemDaoSpec.swift in Sources */,
 				A02115AB213D6D6D004B5B73 /* CardRssCellSpec.swift in Sources */,
 				A0B0AA3D20EBC98B00933759 /* FormDaoSpec.swift in Sources */,
 				A0FFE50620D01CD40026C0C7 /* LanguageSpec.swift in Sources */,
 				A02115A6213D6C95004B5B73 /* RssViewModelSpec.swift in Sources */,
+				A0F738DF218C895900F63D7C /* FillCheckListCellSpec.swift in Sources */,
 				A0B0AA3E20EBC98B00933759 /* ItemFormDaoSpec.swift in Sources */,
+				A0F738D7218C86FD00F63D7C /* ChecklistCheckedSpec.swift in Sources */,
 				A02115A0213D6BB9004B5B73 /* WebViewControllerSpec.swift in Sources */,
+				A0F738C9218B542000F63D7C /* DifficultyViewModelSpec.swift in Sources */,
 				A003811720FE3F3D00CDA44D /* StepperViewSpec.swift in Sources */,
+				A0F738E5218C8AF900F63D7C /* FeedCellSpec.swift in Sources */,
+				A0F738D1218B560F00F63D7C /* DifficultyRuleDaoSpec.swift in Sources */,
 				A0FFE51720D01E5E0026C0C7 /* OptionItemSpec.swift in Sources */,
+				A0F738BD218B52BA00F63D7C /* DifficultyViewControllerSpec.swift in Sources */,
 				A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */,
+				A0F738C3218B538900F63D7C /* MarkdownViewControllerSpec.swift in Sources */,
 				A0FFE51120D01E390026C0C7 /* FormSpec.swift in Sources */,
+				A0F738B9218B525800F63D7C /* LocationViewControllerSpec.swift in Sources */,
+				A0F738BB218B528D00F63D7C /* SourceViewControllerSpec.swift in Sources */,
 				A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */,
+				A0F738C7218B53EC00F63D7C /* LocationViewModelSpec.swift in Sources */,
+				A0F738C1218B534600F63D7C /* LessonCheckListViewControllerSpec.swift in Sources */,
+				A0F738D9218C870C00F63D7C /* FavouriteSegmentSpec.swift in Sources */,
 				A0FFE50D20D01E1C0026C0C7 /* CheckListSpec.swift in Sources */,
 				A02115B5213EB45C004B5B73 /* WebViewModelSpec.swift in Sources */,
 			);

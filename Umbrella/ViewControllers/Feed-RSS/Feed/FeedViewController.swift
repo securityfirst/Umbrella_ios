@@ -450,13 +450,9 @@ class FeedViewController: UIViewController {
             let firstTextField = alertController.textFields![0] as UITextField
             print(firstTextField.text ?? "")
             
-            if let count = firstTextField.text?.count {
-                if count > 0 {
-                    if self.validateUrl(urlString: firstTextField.text!) {
-                        self.rssView.rssViewModel.insert(firstTextField.text!)
-                        self.rssView.loadRss()
-                    }
-                }
+            if let count = firstTextField.text?.count, count > 0, self.validateUrl(urlString: firstTextField.text!) {
+                self.rssView.rssViewModel.insert(firstTextField.text!)
+                self.rssView.loadRss()
             }
         })
         
