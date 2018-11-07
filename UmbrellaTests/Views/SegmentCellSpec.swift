@@ -31,6 +31,27 @@ class SegmentCellSpec: QuickSpec {
                 cell.awakeFromNib()
                 expect(cell).toNot(beNil())
             }
+
+            it("should create a new SegmentCell") {
+                let cell = tableView.dequeueReusableCell(withReuseIdentifier: "SegmentCell", for: IndexPath(row: 0, section: 0))
+                cell.layoutSubviews()
+                expect(cell).toNot(beNil())
+            }
+            
+            it("should configure cell") {
+                let indexPath = IndexPath(row: 0, section: 0)
+                let cell: SegmentCell = (tableView.dequeueReusableCell(withReuseIdentifier: "SegmentCell", for: indexPath) as? SegmentCell)!
+                cell.awakeFromNib()
+                
+                let segmentViewModel = SegmentViewModel()
+                
+                let category = Category(name: "Tools", description: "Description", index: 0)
+                category.segments = [Segment(name: "Segment test", index: 1.0, content: "## Title")]
+                segmentViewModel.category = category
+                
+                cell.configure(withViewModel: segmentViewModel, indexPath: indexPath)
+                expect(cell).toNot(beNil())
+            }
             
             afterEach {
                 

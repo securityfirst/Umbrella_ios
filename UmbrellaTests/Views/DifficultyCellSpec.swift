@@ -26,10 +26,20 @@ class DifficultyCellSpec: QuickSpec {
                 tableView.register(DifficultyCell.self, forCellReuseIdentifier: "DifficultyCell")
             }
             
-            it("should create a new DifficultyCell") {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DifficultyCell")
-                cell?.awakeFromNib()
-                expect(cell).toNot(beNil())
+            describe(".viewDidLoad") {
+                it("should create a new DifficultyCell") {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DifficultyCell")
+                    cell?.awakeFromNib()
+                    expect(cell).toNot(beNil())
+                }
+            }
+            
+            describe(".layoutSubviews") {
+                it("should create a new DifficultyCell") {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DifficultyCell")
+                    cell?.layoutSubviews()
+                    expect(cell).toNot(beNil())
+                }
             }
             
             afterEach {

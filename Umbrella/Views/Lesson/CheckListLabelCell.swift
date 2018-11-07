@@ -40,7 +40,9 @@ class CheckListLabelCell: UITableViewCell {
         if let checkList = viewModel.checklist {
             let item = checkList.items[indexPath.row]
             
-            self.titleLabel.text = item.name
+            if let titleLabel = self.titleLabel {
+             titleLabel.text = item.name
+            }
         }
     }
 

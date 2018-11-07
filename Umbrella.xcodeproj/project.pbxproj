@@ -131,6 +131,8 @@
 		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
 		A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */; };
 		A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B412190A5CB00D46653 /* AccountCell.swift */; };
+		A0B66B462192043000D46653 /* CategoryCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B452192043000D46653 /* CategoryCellSpec.swift */; };
+		A0B66B48219204DE00D46653 /* CheckListLabelCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B47219204DE00D46653 /* CheckListLabelCellSpec.swift */; };
 		A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787020ADA12B00A287C8 /* TableProtocol.swift */; };
 		A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */; };
 		A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */; };
@@ -397,6 +399,8 @@
 		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		A0B66B412190A5CB00D46653 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		A0B66B452192043000D46653 /* CategoryCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellSpec.swift; sourceTree = "<group>"; };
+		A0B66B47219204DE00D46653 /* CheckListLabelCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListLabelCellSpec.swift; sourceTree = "<group>"; };
 		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
 		A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoProtocol.swift; sourceTree = "<group>"; };
@@ -598,6 +602,8 @@
 				A0F738E0218C896400F63D7C /* SegmentCellSpec.swift */,
 				A0F738E2218C897200F63D7C /* TitleLessonViewSpec.swift */,
 				A0F738E4218C8AF900F63D7C /* FeedCellSpec.swift */,
+				A0B66B452192043000D46653 /* CategoryCellSpec.swift */,
+				A0B66B47219204DE00D46653 /* CheckListLabelCellSpec.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1719,6 +1725,7 @@
 				A0FFE52320D0211E0026C0C7 /* GlobalSpec.swift in Sources */,
 				A02115A2213D6C5A004B5B73 /* FeedViewModelSpec.swift in Sources */,
 				A0F738DD218C894C00F63D7C /* DifficultyCellSpec.swift in Sources */,
+				A0B66B462192043000D46653 /* CategoryCellSpec.swift in Sources */,
 				A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */,
 				A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */,
 				A0FFE50920D01DF20026C0C7 /* CategorySpec.swift in Sources */,
@@ -1736,6 +1743,7 @@
 				A0F738E1218C896400F63D7C /* SegmentCellSpec.swift in Sources */,
 				A0F738B1218B4FB400F63D7C /* LessonViewModelSpec.swift in Sources */,
 				A0F738D3218B56E500F63D7C /* ChecklistCheckedDaoSpec.swift in Sources */,
+				A0B66B48219204DE00D46653 /* CheckListLabelCellSpec.swift in Sources */,
 				A0F738DB218C871D00F63D7C /* RssItemSpec.swift in Sources */,
 				A0B0AA3B20EBC98B00933759 /* ScreenDaoSpec.swift in Sources */,
 				A02115AD213D6FA2004B5B73 /* ImageDownloadSpec.swift in Sources */,

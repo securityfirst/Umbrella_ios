@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import Quick
 import Nimble
 
@@ -24,16 +25,28 @@ class SegmentViewControllerSpec: QuickSpec {
             viewController = storyboard.instantiateViewController(withIdentifier: "SegmentViewController") as? SegmentViewController
             
             window.makeKeyAndVisible()
-            window.rootViewController = viewController
+            
+            let navigationController = UINavigationController(rootViewController: viewController)
+            window.rootViewController = navigationController
             viewController.beginAppearanceTransition(true, animated: false)
             viewController.endAppearanceTransition()
+            
+            let segmentViewModel = SegmentViewModel()
+            
+            let difficulties = [Category(name: "Tools", description: "Description", index: 0),
+                                Category(name: "Tools", description: "Description", index: 0)]
+            
+            segmentViewModel.difficulties = difficulties
+            viewController.segmentViewModel = segmentViewModel
         }
         
         describe("SegmentViewController") {
             describe(".viewDidLoad") {
                 it ("should be presented") {
-                    window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(SegmentViewController.self))
+                    let navigationController: UINavigationController = (window.rootViewController as? UINavigationController)!
+                   let segmentViewController = navigationController.viewControllers.first
+                    segmentViewController?.viewDidLoad()
+                    expect(segmentViewController).toEventually(beAnInstanceOf(SegmentViewController.self))
                 }
             }
         }

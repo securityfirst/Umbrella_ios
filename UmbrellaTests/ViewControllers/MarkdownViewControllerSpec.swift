@@ -27,6 +27,10 @@ class MarkdownViewControllerSpec: QuickSpec {
             window.rootViewController = viewController
             viewController.beginAppearanceTransition(true, animated: false)
             viewController.endAppearanceTransition()
+            
+            let markdownViewModel = MarkdownViewModel()
+            markdownViewModel.segment = Segment(name: "Segment test", index: 1.0, content: "## Title")
+            viewController.markdownViewModel = markdownViewModel
         }
         
         describe("MarkdownViewController") {
@@ -34,6 +38,13 @@ class MarkdownViewControllerSpec: QuickSpec {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
                     expect(window.rootViewController).toEventually(beAnInstanceOf(MarkdownViewController.self))
+                }
+            }
+            
+            describe(".methods") {
+                it ("should load the markdown content") {
+                    viewController.loadMarkdown()
+                    expect(viewController.isLoading).to(equal(true))
                 }
             }
         }

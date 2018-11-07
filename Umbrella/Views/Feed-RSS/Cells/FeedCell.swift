@@ -36,18 +36,26 @@ class FeedCell: UITableViewCell {
     func configure(withViewModel viewModel:FeedViewModel, indexPath: IndexPath) {
         
         let item = viewModel.feedItems[indexPath.row]
-        self.titleLabel.text = item.title
+        
+        if let titleLabel = self.titleLabel {
+            titleLabel.text = item.title
+        }
         
         if let url = URL(string: item.url) {
-            self.dateLabel.text = "Via \(url.host ?? "") \(item.dateString)"
+            if let dateLabel = self.dateLabel {
+                dateLabel.text = "Via \(url.host ?? "") \(item.dateString)"
+            }
         }
         
         do {
             DispatchQueue.global(qos: .default).async {
             let theAttributedString = try? NSAttributedString(data: item.description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
                 DispatchQueue.main.async {
-                    self.descriptionTextView.attributedText = theAttributedString
-                    self.descriptionTextView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 0, height: 0), animated: true)
+                    
+                    if let descriptionTextView = self.descriptionTextView {
+                        descriptionTextView.attributedText = theAttributedString
+                        descriptionTextView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 0, height: 0), animated: true)
+                    }
                 }
             }
         }

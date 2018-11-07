@@ -38,6 +38,8 @@ class CategoryCell: UITableViewCell {
         let headerItem = viewModel.getCategories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
         
         let category = headerItem.categories[indexPath.row]
-        self.nameLabel.text = category.name
+        if let nameLabel = self.nameLabel {
+            nameLabel.text = category.name
+        }
     }
 }

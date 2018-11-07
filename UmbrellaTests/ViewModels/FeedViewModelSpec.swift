@@ -26,6 +26,22 @@ class FeedViewModelSpec: QuickSpec {
                 expect(viewModel).toNot(beNil())
             }
             
+            it("should do request to Yemen location") {
+                let viewModel = FeedViewModel()
+                
+                viewModel.location = "ye"
+                viewModel.sources = [0,1,2,3,4,5]
+                waitUntil(timeout: 30) { done in
+                    viewModel.requestFeed(completion: {
+                        expect(viewModel.feedItems.count) > 0
+                        done()
+                    }, failure: { error in
+                        done()
+                    })
+                }
+                expect(viewModel).toNot(beNil())
+            }
+            
             afterEach {
                 
             }
