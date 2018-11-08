@@ -16,7 +16,7 @@ class SQLManager: SQLProtocol {
     // MARK: - Properties
     let fileManager: FileManager
     let databaseName: String
-    let password: String
+    var password: String
     var connect: Connection?
     static let timeout = 60.0
     
@@ -151,7 +151,7 @@ class SQLManager: SQLProtocol {
                     }
                 }
             }
-//            print(tableSQL.asSQL())
+            //            print(tableSQL.asSQL())
             try db?.run(tableSQL)
             
             return true
@@ -240,6 +240,10 @@ extension SQLManager {
         
         self.copyDatabaseIfNeeded()
         
+        if let passwordCustom: String = UserDefaults.standard.object(forKey: "passwordCustom") as? String {
+            self.password = passwordCustom
+        }
+        
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
             ).first!
@@ -267,8 +271,27 @@ extension SQLManager {
         return nil
     }
     
+    /// Reset connection
     func resetConnection() {
         self.connect = nil
+    }
+    
+    /// Change password
+    ///
+    /// - Parameter password: String
+    func changePassword(oldPassword: String, newPassword: String) {
+        let connect = openConnection()
+        do {
+            try connect?.key(oldPassword)
+            try connect?.rekey(newPassword)
+            
+            UserDefaults.standard.set(newPassword, forKey: "passwordCustom")
+            UserDefaults.standard.synchronize()
+            
+        } catch {
+            print(error)
+        }
+        
     }
     
     /// Copy the database if needed
@@ -296,7 +319,7 @@ extension SQLManager {
             }
             
         } else {
-//            print("Database file found at path: \(finalDatabaseURL.path)")
+            //            print("Database file found at path: \(finalDatabaseURL.path)")
         }
     }
 }

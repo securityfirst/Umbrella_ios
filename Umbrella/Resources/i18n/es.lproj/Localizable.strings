@@ -64,3 +64,6 @@
 "Checklists total" = "Total de listas de control";
 "Favourites" = "Favoritos";
 "My Checklists" = "Mis listas de comprobación";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";

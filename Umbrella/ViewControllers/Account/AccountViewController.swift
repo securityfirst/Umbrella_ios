@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class AccountViewController: UIViewController {
     
@@ -33,6 +34,39 @@ class AccountViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Validate if there is an url valid
+    ///
+    /// - Parameter urlString: String
+    /// - Returns: Bool
+    func validatePassword(password: String, confirm: String) -> Bool {
+        
+        var check = true
+        var message = ""
+        
+        if !password.contains(confirm) {
+            check = false
+            message = "Passwords do not match.".localized()
+        } else if password.count < 8 {
+            check = false
+            message = "Password too short.".localized()
+        } else if !NSPredicate(format: "SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: password) || !NSPredicate(format: "SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: confirm) {
+            check = false
+            message = "Password must have at least one digit.".localized()
+        } else if !NSPredicate(format: "SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: password) || !NSPredicate(format: "SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: confirm) {
+            check = false
+            message = "Password must have at least one capital letter.".localized()
+        }
+
+        if !check {
+            self.view.makeToast(message, duration: 3.0, position: .bottom)
+        }
+        
+        return check
     }
 }
 
@@ -73,7 +107,44 @@ extension AccountViewController: UITableViewDelegate {
             
         case AccountItem.settings: break
         case AccountItem.mask: break
-        case AccountItem.setPassword: break
+        case AccountItem.setPassword:
+            let alertController = UIAlertController(title: "Set your password".localized(), message: "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = "Password".localized()
+                textField.keyboardType = UIKeyboardType.alphabet
+                textField.isSecureTextEntry = true
+            }
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = "Confirm".localized()
+                textField.keyboardType = UIKeyboardType.alphabet
+                textField.isSecureTextEntry = true
+            }
+            let saveAction = UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.destructive, handler: { (action) in
+                let passwordTextField = alertController.textFields![0] as UITextField
+                let confirmTextField = alertController.textFields![1] as UITextField
+                
+                if let passwordCount = passwordTextField.text?.count, passwordCount > 0,
+                    let confirmCount = confirmTextField.text?.count, confirmCount > 0,
+                    self.validatePassword(password: passwordTextField.text!, confirm: confirmTextField.text!) {
+                    let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+                    
+                    var oldPassword = ""
+                    if let passwordCustom: String = UserDefaults.standard.object(forKey: "passwordCustom") as? String {
+                        oldPassword = passwordCustom
+                    } else {
+                        oldPassword = Database.password
+                    }
+                    
+                    sqlManager.changePassword(oldPassword: oldPassword, newPassword: passwordTextField.text!)
+                }
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: nil)
+            
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         case AccountItem.switchRepo:
             let app = (UIApplication.shared.delegate as? AppDelegate)!
             app.show()

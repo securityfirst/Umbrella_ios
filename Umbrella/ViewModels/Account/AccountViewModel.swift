@@ -26,8 +26,9 @@ class AccountViewModel {
     init() {
         self.items = [
             (name: "Settings", type: AccountItem.settings),
-            (name: "Mask", type: AccountItem.mask),
-            (name: "Set password", type: AccountItem.setPassword),
-            (name: "Switch repo", type: AccountItem.switchRepo)]
+//            (name: "Mask", type: AccountItem.mask),
+            (name: "Set password", type: AccountItem.setPassword)
+//            (name: "Switch repo", type: AccountItem.switchRepo)
+        ]
     }
 }

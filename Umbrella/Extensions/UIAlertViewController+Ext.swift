@@ -34,7 +34,7 @@ extension UIAlertController {
         let messageStr = message != nil ? message : ""
         
         let alertVC = UIAlertController(title: titleStr, message: messageStr, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "关闭", style: .cancel, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         self.topViewController()?.present(alertVC, animated: true, completion: nil)
     }
     

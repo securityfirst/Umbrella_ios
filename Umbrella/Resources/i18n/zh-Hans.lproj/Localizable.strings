@@ -9,7 +9,7 @@
 // Accessibility
 "selected" = "选";
 "deselected" = "取消";
-"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "这是填写%d表格的%d。向左滑动三个手指到下一个或右后方。";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "这是填写 %d 表格的 %d。向左滑动三个手指到下一个或右后方。";
 
 // Menu
 "Feed" = "饲料";
@@ -61,3 +61,6 @@
 "Checklists total" = "清单总计";
 "Favourites" = "最爱";
 "My Checklists" = "我的检查表";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";

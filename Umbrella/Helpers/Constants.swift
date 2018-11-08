@@ -18,7 +18,7 @@ enum Config {
 
 enum Database {
     static let name: String = "database.db"
-    static let password: String = "umbrella"
+    static var password: String = "umbrella"
 }
 
 enum RSS {

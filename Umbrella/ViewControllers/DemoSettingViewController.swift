@@ -65,7 +65,7 @@ class DemoSettingViewController: UIViewController {
             UserDefaults.standard.set(url, forKey: "gitHubDemo")
             UserDefaults.standard.set(false, forKey: "acceptTerm")
             UserDefaults.standard.synchronize()
-            
+        
             let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
             let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
             _ = umbrellaDatabase.dropTables()

@@ -17,6 +17,7 @@ PODS:
   - SQLite.swift/SQLCipher (0.11.5):
     - SQLCipher (>= 3.4.0)
   - SwiftLint (0.27.0)
+  - Toast-Swift (4.0.0)
   - Yams (1.0.1)
 
 DEPENDENCIES:
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Quick
   - SQLite.swift/SQLCipher (from `https://github.com/stephencelis/SQLite.swift.git`)
   - SwiftLint
+  - Toast-Swift (~> 4.0.0)
   - Yams
 
 SPEC REPOS:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - Quick
     - SQLCipher
     - SwiftLint
+    - Toast-Swift
     - Yams
 
 EXTERNAL SOURCES:
@@ -78,8 +81,9 @@ SPEC CHECKSUMS:
   SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
 
-PODFILE CHECKSUM: 0508ba1e2f8be4ba16756f59f89391a7e55809c7
+PODFILE CHECKSUM: 9cda133f75f55a94f17b035e70b8adc5cb1d8769
 
 COCOAPODS: 1.6.0.beta.1

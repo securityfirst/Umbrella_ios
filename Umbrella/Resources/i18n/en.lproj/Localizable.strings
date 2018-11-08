@@ -65,3 +65,12 @@
 "Checklists total" = "Checklists total";
 "Favourites" = "Favourites";
 "My Checklists" = "My Checklists";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";
+"Password" = "Password";
+"Confirm" = "Confirm";
+"Passwords do not match." = "Passwords do not match.";
+"Password too short." = "Password too short.";
+"Password must have at least one digit." = "Password must have at least one digit.";
+"Password must have at least one capital letter." = "Password must have at least one capital letter.";

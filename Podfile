@@ -15,6 +15,7 @@ target 'Umbrella' do
   pod 'FeedKit', '~> 8.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
   pod 'Yams'
+  pod 'Toast-Swift', '~> 4.0.0'
   
   target 'UmbrellaTests' do
     inherit! :search_paths
@@ -34,7 +35,7 @@ post_install do |installer_representation|
     end
     
     installer_representation.pods_project.targets.each do |target|
-        if target.name != 'MarkdownView'
+        if target.name != 'MarkdownView' && target.name != 'Toast-Swift'
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.0'
             end
