@@ -91,6 +91,7 @@
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */; };
 		A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */; };
+		A0A364852195C11F00448A7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A364842195C11E00448A7A /* SettingsViewController.swift */; };
 		A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */; };
 		A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */; };
 		A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */; };
@@ -133,6 +134,8 @@
 		A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B412190A5CB00D46653 /* AccountCell.swift */; };
 		A0B66B462192043000D46653 /* CategoryCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B452192043000D46653 /* CategoryCellSpec.swift */; };
 		A0B66B48219204DE00D46653 /* CheckListLabelCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B47219204DE00D46653 /* CheckListLabelCellSpec.swift */; };
+		A0B8F40A21986AFC00ACDEEC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8F40921986AFC00ACDEEC /* SettingsViewModel.swift */; };
+		A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B8F40B219872E300ACDEEC /* SettingCell.swift */; };
 		A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787020ADA12B00A287C8 /* TableProtocol.swift */; };
 		A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */; };
 		A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */; };
@@ -359,6 +362,7 @@
 		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
+		A0A364842195C11E00448A7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewController.swift; sourceTree = "<group>"; };
 		A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCheckListCell.swift; sourceTree = "<group>"; };
 		A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewModel.swift; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 		A0B66B412190A5CB00D46653 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		A0B66B452192043000D46653 /* CategoryCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellSpec.swift; sourceTree = "<group>"; };
 		A0B66B47219204DE00D46653 /* CheckListLabelCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListLabelCellSpec.swift; sourceTree = "<group>"; };
+		A0B8F40921986AFC00ACDEEC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A0B8F40B219872E300ACDEEC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
 		A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoProtocol.swift; sourceTree = "<group>"; };
@@ -839,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */,
+				A0A364842195C11E00448A7A /* SettingsViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -877,6 +884,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B66B412190A5CB00D46653 /* AccountCell.swift */,
+				A0B8F40B219872E300ACDEEC /* SettingCell.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -885,6 +893,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */,
+				A0B8F40921986AFC00ACDEEC /* SettingsViewModel.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1661,6 +1670,7 @@
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
 				A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */,
 				A0B9787520ADC7AE00A287C8 /* CategoryDao.swift in Sources */,
+				A0B8F40A21986AFC00ACDEEC /* SettingsViewModel.swift in Sources */,
 				A003812721073CDB00CDA44D /* DynamicFormView.swift in Sources */,
 				A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */,
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
@@ -1691,6 +1701,7 @@
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
+				A0A364852195C11F00448A7A /* SettingsViewController.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0CC7B5E21384EB000C28C3B /* WebViewController.swift in Sources */,
 				A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */,
@@ -1699,6 +1710,7 @@
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
+				A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0F5B2662170CAC6008B2B6A /* SourceCell.swift in Sources */,
 				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,

@@ -61,7 +61,7 @@ class AccountViewController: UIViewController {
             check = false
             message = "Password must have at least one capital letter.".localized()
         }
-
+        
         if !check {
             self.view.makeToast(message, duration: 3.0, position: .bottom)
         }
@@ -105,7 +105,8 @@ extension AccountViewController: UITableViewDelegate {
         
         switch item.type {
             
-        case AccountItem.settings: break
+        case AccountItem.settings:
+            self.performSegue(withIdentifier: "settingsSegue", sender: nil)
         case AccountItem.mask: break
         case AccountItem.setPassword:
             let alertController = UIAlertController(title: "Set your password".localized(), message: "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.", preferredStyle: UIAlertController.Style.alert)
