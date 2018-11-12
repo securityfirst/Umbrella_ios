@@ -20,10 +20,86 @@ class SettingsViewController: UIViewController {
     
     //
     // MARK: - Life cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.title = "Settings".localized()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    fileprivate func refreshRepo() {
+        let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
+        _ = umbrellaDatabase.dropTables()
+        
+        let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
+        let gitManager = GitManager(url: URL(string: gitHubDemo)!, pathDirectory: .documentDirectory)
+        
+        do {
+            try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
+            
+            NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+            UIApplication.shared.keyWindow?.addSubview(controller.view)
+            controller.loadTent {
+                print("Finished load tent")
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    fileprivate func selectLanguage() {
+        
+    }
+    
+    fileprivate func importData() {
+        
+    }
+    
+    fileprivate func exportData() {
+        
+        let fileManager = FileManager.default
+        let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                            in: .userDomainMask)
+        guard documentsUrl.count != 0 else {
+            return
+        }
+        
+        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent(Database.name)
+        
+        let activityVC = UIActivityViewController(activityItems: [finalDatabaseURL], applicationActivities: nil)
+        
+        //New Excluded Activities Code
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+        
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                return
+            }
+            // User completed activity
+        }
+        
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    fileprivate func refreshInterval() {
+        
+    }
+
+    fileprivate func selectLocation() {
+        
+    }
+    
+    fileprivate func selectFeedSources() {
+        
     }
 }
 
@@ -89,6 +165,40 @@ extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-       
+        // General
+        if indexPath.section == 0 {
+            // Refresh
+            if indexPath.row == 1 {
+                refreshRepo()
+            }
+                // Language
+            else if indexPath.row == 2 {
+                selectLanguage()
+            }
+                // Import
+            else if indexPath.row == 3 {
+                importData()
+            }
+                // Export
+            else if indexPath.row == 4 {
+                exportData()
+            }
+            
+        }
+            // Feed
+        else if indexPath.section == 1 {
+            // Refresh Interval
+            if indexPath.row == 0 {
+                refreshInterval()
+            }
+                // Location
+            else if indexPath.row == 1 {
+                selectLocation()
+            }
+                // Feed sources
+            else if indexPath.row == 2 {
+                selectFeedSources()
+            }
+        }
     }
 }
