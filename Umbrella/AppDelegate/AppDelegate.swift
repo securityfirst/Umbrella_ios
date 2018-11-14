@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "gitHubDemo")
         }
         
+        // Fetch data once an hour.
+        UIApplication.shared.setMinimumBackgroundFetchInterval(10)
+        
         return true
     }
     
@@ -81,6 +84,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication,
+                     performFetchWithCompletionHandler completionHandler:
+        @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        print("pass here")
+//        // Check for new data.
+//        if let newData = fetchUpdates() {
+//            addDataToFeed(newData: newData)
+//            completionHandler(.newData)
+//        }
+//        completionHandler(.noData)
     }
     
 }

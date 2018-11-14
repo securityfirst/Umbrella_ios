@@ -407,6 +407,7 @@
 		A0B66B47219204DE00D46653 /* CheckListLabelCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListLabelCellSpec.swift; sourceTree = "<group>"; };
 		A0B8F40921986AFC00ACDEEC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		A0B8F40B219872E300ACDEEC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		A0B8F40D2199DE9200ACDEEC /* Umbrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Umbrella.entitlements; sourceTree = "<group>"; };
 		A0B9787020ADA12B00A287C8 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		A0B9787420ADC7AE00A287C8 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
 		A0B9787620ADC7D100A287C8 /* DaoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoProtocol.swift; sourceTree = "<group>"; };
@@ -942,6 +943,7 @@
 		A0B9D42420AAE03600B2B796 /* Umbrella */ = {
 			isa = PBXGroup;
 			children = (
+				A0B8F40D2199DE9200ACDEEC /* Umbrella.entitlements */,
 				A0B9D45E20AAE1CF00B2B796 /* AppDelegate */,
 				A0B9D45C20AAE1CF00B2B796 /* Storyboards */,
 				A0B9D45320AAE1CD00B2B796 /* Extensions */,
@@ -1395,6 +1397,17 @@
 					A0B9D42120AAE03600B2B796 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Multipath = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					A0B9D43520AAE03900B2B796 = {
 						CreatedOnToolsVersion = 9.3;

@@ -60,7 +60,9 @@ class SettingsViewController: UIViewController {
     }
     
     fileprivate func importData() {
-        
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.text", "public.database"], in: .import)
+        documentPicker.delegate = self
+        self.present(documentPicker, animated: true, completion: nil)
     }
     
     fileprivate func exportData() {
@@ -93,7 +95,7 @@ class SettingsViewController: UIViewController {
     fileprivate func refreshInterval() {
         
     }
-
+    
     fileprivate func selectLocation() {
         
     }
@@ -198,6 +200,41 @@ extension SettingsViewController: UITableViewDelegate {
                 // Feed sources
             else if indexPath.row == 2 {
                 selectFeedSources()
+            }
+        }
+    }
+}
+
+extension SettingsViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+        UIApplication.shared.keyWindow?.addSubview(controller.view)
+        
+        DispatchQueue.global(qos: .default).async {
+            let fileManager = FileManager.default
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                in: .userDomainMask)
+            guard documentsUrl.count != 0 else {
+                return
+            }
+            
+            do {
+                let finalDatabaseURL = documentsUrl.first!.appendingPathComponent(Database.name)
+                
+                _ = try fileManager.replaceItemAt(finalDatabaseURL, withItemAt: url)
+                let result = self.settingsViewModel.updateDatabaseToObject()
+                
+                DispatchQueue.main.async {
+                    controller.view.removeFromSuperview()
+                    
+                    //Update all screen that Subscribe this notification
+                    NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: result.languages, forms: result.forms, formAnswers: result.formAnswers))
+                }
+                
+            } catch let error as NSError {
+                print("Couldn't copy file to final location! Error:\(error.description)")
             }
         }
     }

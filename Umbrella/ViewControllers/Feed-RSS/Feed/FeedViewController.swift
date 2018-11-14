@@ -87,13 +87,13 @@ class FeedViewController: UIViewController {
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
         
-        let refreshBarButton = UIBarButtonItem(title: "Refresh", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.refreshRepo(_:)))
-        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
-        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
-        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
+//        let refreshBarButton = UIBarButtonItem(title: "Refresh", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.refreshRepo(_:)))
+//        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
+//        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
+//        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        self.navigationItem.leftBarButtonItems = [modeBarButton, spacer,spacer,spacer, refreshBarButton]
+        self.navigationItem.leftBarButtonItems = [modeBarButton]
         
         self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
         self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()

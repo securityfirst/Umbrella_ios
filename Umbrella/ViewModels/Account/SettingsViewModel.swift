@@ -19,10 +19,11 @@ class SettingsViewModel {
     // MARK: - Properties
     
     var items: [TableSection : [(title: String, subtitle: String, hasAccessory: Bool, hasSwitch: Bool)]]!
-    
+    let sqlManager: SQLManager!
     //
     // MARK: - Init
     init() {
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
         self.items = [
             .general: [
                 (title: "Skip password".localized(), subtitle: "Don't ask for password again".localized(), hasAccessory: false, hasSwitch: true),
@@ -40,5 +41,12 @@ class SettingsViewModel {
                 (title: "Show updates as notification".localized(), subtitle: "Show updates as notification".localized(), hasAccessory: false, hasSwitch: true)
             ]
         ]
+    }
+    
+    func updateDatabaseToObject() -> (languages: [Language], forms: [Form], formAnswers: [FormAnswer]) {
+        var umbrellaDatabase = UmbrellaDatabase(sqlProtocol: self.sqlManager)
+        umbrellaDatabase.databaseToObject()
+        
+        return (umbrellaDatabase.languages, umbrellaDatabase.forms, umbrellaDatabase.formAnswers)
     }
 }
