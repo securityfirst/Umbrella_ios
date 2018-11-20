@@ -9,20 +9,32 @@
 import Foundation
 import UIKit
 
-class FeedViewModel {
+class FeedViewModel: NSObject {
     
     //
     // MARK: - Properties
     var location = ""
     var sources = [Int]()
     var feedItems: [FeedItem] = [FeedItem]()
+    private var session: URLSession!
+    
+    var savedCompletionHandler: (() -> Void)?
     
     //
     // MARK: - Init
-    init() {
+    override init() {
         // Init variables
+        super.init()
+        let configuration = URLSessionConfiguration.background(withIdentifier: "org.secfirst.umbrella")
+        session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
     
+    //
+    /// Request feed
+    ///
+    /// - Parameters:
+    ///   - completion: Closure
+    ///   - failure: Closure
     func requestFeed(completion: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         
         var sourceString = ""
@@ -50,4 +62,64 @@ class FeedViewModel {
             }.resume()
     }
     
+    /// Request feed in background
+    ///
+    /// - Parameters:
+    ///   - completion: Closure
+    ///   - failure: Closure
+    func requestFeedInBackground(completion: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        self.savedCompletionHandler = completion
+        var sourceString = ""
+        for (index, value) in sources.enumerated() {
+            
+            if index + 1 != sources.count {
+                sourceString += "\(value),"
+            } else {
+                sourceString += "\(value)"
+            }
+        }
+        
+        let url = URL(string: String(format: Feed.feedUrl, "\(location)", "\(sourceString)"))!
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 20)
+        request.httpMethod = "GET"
+//        request.httpBody = parameters.data(using: .utf8)
+        session.downloadTask(with: request).resume()
+    }
+}
+
+extension FeedViewModel: URLSessionDelegate {
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        DispatchQueue.main.async {
+            self.savedCompletionHandler?()
+            self.savedCompletionHandler = nil
+        }
+    }
+}
+
+extension FeedViewModel: URLSessionTaskDelegate {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error = error {
+            // handle failure here
+            print("\(error.localizedDescription)")
+        }
+    }
+}
+
+extension FeedViewModel: URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        do {
+            let data = try Data(contentsOf: location)
+            
+            do {
+                let feedsDecode = try JSONDecoder().decode([FeedItem].self, from: data)
+                self.feedItems = feedsDecode
+                
+                self.savedCompletionHandler?()
+            } catch let error {
+                print(error)
+            }
+        } catch {
+            print("\(error.localizedDescription)")
+        }
+    }
 }

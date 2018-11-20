@@ -8,7 +8,6 @@ disabled_rules:
 
 opt_in_rules:
 
-
 excluded:
   - Carthage
   - Pods
@@ -49,8 +48,8 @@ identifier_name:
 reporter: "xcode"
 
 large_tuple:
-  warning: 3
-  error: 4
+  warning: 4
+  error: 5
 
 function_parameter_count:
   warning: 7

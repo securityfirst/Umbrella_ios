@@ -29,7 +29,6 @@ class LoadingViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        messageLabel.text = "Clone of the tent".localized()
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,7 +45,7 @@ class LoadingViewController: UIViewController {
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.messageLabel)
 
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
-            
+            messageLabel.text = "Clone of the tent".localized()
             let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
             
 //            loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in

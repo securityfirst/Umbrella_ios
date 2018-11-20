@@ -9,17 +9,16 @@
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array>
-				<string>inCommand icon114</string>
+				<string>icon-imported-document.png</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Database Umbrella</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Umbrella</string>
 			<key>LSHandlerRank</key>
-			<string>Alternate</string>
+			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>org.secfirst.umbrella.db</string>
+				<string>public.data</string>
+				<string>public.database</string>
 			</array>
 		</dict>
 	</array>
@@ -107,7 +106,11 @@
 				<string>public.database</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>db</string>
+			<string>Umbrella</string>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>icon-imported-document.png</string>
+			</array>
 			<key>UTTypeIdentifier</key>
 			<string>org.secfirst.umbrella.db</string>
 			<key>UTTypeTagSpecification</key>

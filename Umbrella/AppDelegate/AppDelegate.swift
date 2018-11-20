@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import SQLite
 import Localize_Swift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isShow: Bool = false
     var demoViewController: DemoSettingViewController!
+    var loginViewController: LoginViewController!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -37,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Fetch data once an hour.
         UIApplication.shared.setMinimumBackgroundFetchInterval(10)
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in
+            print(error as Any)
+        }
         return true
     }
     
@@ -61,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.demoViewController = (storyboard.instantiateViewController(withIdentifier: "DemoSettingViewController") as? DemoSettingViewController)!
         
         getWindow().addSubview(self.demoViewController.view)
-
+        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -76,6 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+        if passwordCustom {
+            let storyboard = UIStoryboard(name: "Account", bundle: Bundle.main)
+            self.loginViewController = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController)!
+            
+            self.window?.rootViewController?.present(self.loginViewController, animated: false, completion: nil)
+        }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -89,14 +102,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      performFetchWithCompletionHandler completionHandler:
         @escaping (UIBackgroundFetchResult) -> Void) {
+       
+        print(application.backgroundRefreshStatus)
+        if application.backgroundRefreshStatus == .available {
+            print("Available")
+        }
         
-        print("pass here")
-//        // Check for new data.
-//        if let newData = fetchUpdates() {
-//            addDataToFeed(newData: newData)
-//            completionHandler(.newData)
-//        }
-//        completionHandler(.noData)
+        if application.applicationState == .background {
+            print("Background")
+        }
+        
+        if application.backgroundRefreshStatus == .denied {
+            print("denied")
+        }
+        
+        if application.backgroundRefreshStatus == .restricted {
+            print("restricted")
+        }
+        NotificationCenter.default.post(name: Notification.Name("UpdateFeed"), object: nil)
+        
+        completionHandler(.newData)
     }
     
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        print("handleEventsForBackgroundURLSession")
+    }
 }

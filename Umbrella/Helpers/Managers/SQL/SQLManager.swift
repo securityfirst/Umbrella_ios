@@ -46,6 +46,11 @@ class SQLManager: SQLProtocol {
     func select<T: Decodable>(withQuery query:String) -> [T] {
         
         let db = openConnection()
+        
+        if db == nil {
+            return []
+        }
+        
         var array = [[String: Any]]()
         db?.busyTimeout = SQLManager.timeout
         
@@ -81,6 +86,11 @@ class SQLManager: SQLProtocol {
     func select(withQuery query:String) -> [[String: Any]] {
         
         let db = openConnection()
+        
+        if db == nil {
+            return []
+        }
+        
         var array = [[String: Any]]()
         db?.busyTimeout = SQLManager.timeout
         
@@ -111,6 +121,11 @@ class SQLManager: SQLProtocol {
         resetConnection()
         
         let db = openConnection()
+        
+        if db == nil {
+            return false
+        }
+        
         db?.busyTimeout = SQLManager.timeout
         do {
             let table = Table(tableProtocol.tableName)
@@ -183,6 +198,11 @@ class SQLManager: SQLProtocol {
     /// - Returns: rowId of insertion
     func insert(withQuery query:String) -> Int64 {
         let db = openConnection()
+        
+        if db == nil {
+            return -1
+        }
+        
         db?.busyTimeout = SQLManager.timeout
         do {
             try db?.prepare(query).run()
@@ -240,8 +260,10 @@ extension SQLManager {
         
         self.copyDatabaseIfNeeded()
         
-        if let passwordCustom: String = UserDefaults.standard.object(forKey: "passwordCustom") as? String {
-            self.password = passwordCustom
+        if let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool {
+            if passwordCustom {
+                self.password = CustomPassword.shared.password
+            }
         }
         
         let path = NSSearchPathForDirectoriesInDomains(
@@ -267,8 +289,9 @@ extension SQLManager {
             return self.connect
         } catch {
             print(error)
+            self.connect = nil
+            return nil
         }
-        return nil
     }
     
     /// Reset connection
@@ -285,7 +308,7 @@ extension SQLManager {
             try connect?.key(oldPassword)
             try connect?.rekey(newPassword)
             
-            UserDefaults.standard.set(newPassword, forKey: "passwordCustom")
+            UserDefaults.standard.set(true, forKey: "passwordCustom")
             UserDefaults.standard.synchronize()
             
         } catch {

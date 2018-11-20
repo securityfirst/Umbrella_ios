@@ -9,6 +9,7 @@
 import UIKit
 import FeedKit
 import CoreLocation
+import UserNotifications
 
 class FeedViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var changeLocationButton: UIButton!
     @IBOutlet weak var locationViewLegLabel: UILabel!
     
+    var loginViewController: LoginViewController!
     var stepLocation: Bool = false
     var stepSources: Bool = false
     var isStartingSetup: Bool = false
@@ -87,12 +89,6 @@ class FeedViewController: UIViewController {
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
         modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
         
-//        let refreshBarButton = UIBarButtonItem(title: "Refresh", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.refreshRepo(_:)))
-//        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
-//        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
-//        refreshBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
-        
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         self.navigationItem.leftBarButtonItems = [modeBarButton]
         
         self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
@@ -111,14 +107,22 @@ class FeedViewController: UIViewController {
         rssView.delegate = self
         
         UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 0
-        let isAcceptTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
+        let isAcceptedTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        if isAcceptTerm {
-            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
-            UIApplication.shared.keyWindow?.addSubview(controller.view)
-            controller.loadTent {
-                print("Finished load tent")
+        if isAcceptedTerm {
+            let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+            if passwordCustom {
+                let storyboard = UIStoryboard(name: "Account", bundle: Bundle.main)
+                self.loginViewController = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController)!
+                
+                self.present(self.loginViewController, animated: false, completion: nil)
+            } else {
+                let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                UIApplication.shared.keyWindow?.addSubview(controller.view)
+                controller.loadTent {
+                    print("Finished load tent")
+                }
             }
         } else {
             let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
@@ -136,6 +140,8 @@ class FeedViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.continueWizard(notification:)), name: Notification.Name("ContinueWizard"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.resetDemo(notification:)), name: Notification.Name("ResetDemo"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateFeedInBackground), name: Notification.Name("UpdateFeed"), object: nil)
         
         self.locationChosenView.isHidden = true
         self.feedView.activityIndicatorView.isHidden = true
@@ -223,7 +229,57 @@ class FeedViewController: UIViewController {
             self.performSegue(withIdentifier: "locationSegue", sender: nil)
         } else if !stepSources {
             self.performSegue(withIdentifier: "sourcesSegue", sender: nil)
-        } 
+        }
+    }
+    
+    /// Update feed in background
+    @objc func updateFeedInBackground() {
+        if intervalSet.count > 0 && locationSet.countryCode.count > 0 && sourceSet.count > 0 {
+            self.feedView.feedViewModel.requestFeedInBackground(completion: {
+                DispatchQueue.main.async {
+                    
+                    if self.feedView.feedViewModel.feedItems.count == 0 {
+                        self.feedView.emptyView.isHidden = false
+                        self.feedView.feedTableView.isHidden = false
+                        self.feedView.activityIndicatorView.isHidden = true
+                        self.feedView.topConstraint.constant = 100
+                        return
+                    }
+                    
+                    let showUpdateAsNotification = UserDefaults.standard.object(forKey: "showUpdateAsNotification") as? Bool
+                    
+                    if showUpdateAsNotification ?? false {
+                        
+                        let notification = UNMutableNotificationContent()
+                        notification.title = self.feedView.feedViewModel.feedItems.count == 1 ? self.feedView.feedViewModel.feedItems[0].title : "Dashboard"
+                        notification.body = self.feedView.feedViewModel.feedItems.count == 1 ? self.feedView.feedViewModel.feedItems[0].description : "\(self.feedView.feedViewModel.feedItems.count) new customFeeds."
+                        
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                        let request = UNNotificationRequest(identifier: "umbrella", content: notification, trigger: trigger)
+                        
+                        UNUserNotificationCenter.current().add(request) { error in
+                            print(error as Any)
+                        }
+                    }
+                    
+                    self.feedView.topConstraint.constant = 20
+                    
+                    self.feedView.emptyView.isHidden = true
+                    self.feedView.feedTableView.isHidden = false
+                    self.locationChosenView.isHidden = false
+                    self.feedView.activityIndicatorView.isHidden = true
+                    self.feedView.feedTableView.reloadData()
+                    self.feedView.feedTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+                }
+            }, failure: { (error) in
+                DispatchQueue.main.async {
+                    self.feedView.emptyView.isHidden = false
+                    self.feedView.feedTableView.isHidden = false
+                    self.feedView.activityIndicatorView.isHidden = true
+                    self.feedView.topConstraint.constant = 100
+                }
+            })
+        }
     }
     
     /// Check the state

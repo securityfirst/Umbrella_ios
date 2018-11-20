@@ -9,6 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
     //
     // MARK: - Properties
     lazy var settingsViewModel: SettingsViewModel = {
@@ -31,6 +32,10 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //
+    // MARK: - Functions
+    
+    /// Refresh data of the repository
     fileprivate func refreshRepo() {
         let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
         let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
@@ -41,7 +46,8 @@ class SettingsViewController: UIViewController {
         
         do {
             try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
-            
+            UserDefaults.standard.set(false, forKey: "passwordCustom")
+            UserDefaults.standard.synchronize()
             NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -55,16 +61,19 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    /// Select another language
     fileprivate func selectLanguage() {
         
     }
     
+    /// Import data
     fileprivate func importData() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.text", "public.database"], in: .import)
         documentPicker.delegate = self
         self.present(documentPicker, animated: true, completion: nil)
     }
     
+    /// Export data
     fileprivate func exportData() {
         
         let fileManager = FileManager.default
@@ -92,14 +101,17 @@ class SettingsViewController: UIViewController {
         self.present(activityVC, animated: true, completion: nil)
     }
     
+    /// Change interval to update the feed
     fileprivate func refreshInterval() {
         
     }
     
+    /// Change location to update the feed
     fileprivate func selectLocation() {
         
     }
     
+    /// Change sources to update the feed
     fileprivate func selectFeedSources() {
         
     }

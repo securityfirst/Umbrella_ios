@@ -17,6 +17,7 @@ class AccountViewController: UIViewController {
         let accountViewModel = AccountViewModel()
         return accountViewModel
     }()
+    var askForPasswordView: AskForPasswordView!
     
     @IBOutlet weak var accountTableView: UITableView!
     
@@ -63,7 +64,7 @@ class AccountViewController: UIViewController {
         }
         
         if !check {
-            self.view.makeToast(message, duration: 3.0, position: .bottom)
+            UIApplication.shared.keyWindow!.makeToast(message, duration: 3.0, position: .top)
         }
         
         return check
@@ -109,43 +110,48 @@ extension AccountViewController: UITableViewDelegate {
             self.performSegue(withIdentifier: "settingsSegue", sender: nil)
         case AccountItem.mask: break
         case AccountItem.setPassword:
-            let alertController = UIAlertController(title: "Set your password".localized(), message: "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.", preferredStyle: UIAlertController.Style.alert)
-            alertController.addTextField { (textField : UITextField!) -> Void in
-                textField.placeholder = "Password".localized()
-                textField.keyboardType = UIKeyboardType.alphabet
-                textField.isSecureTextEntry = true
-            }
-            alertController.addTextField { (textField : UITextField!) -> Void in
-                textField.placeholder = "Confirm".localized()
-                textField.keyboardType = UIKeyboardType.alphabet
-                textField.isSecureTextEntry = true
-            }
-            let saveAction = UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.destructive, handler: { (action) in
-                let passwordTextField = alertController.textFields![0] as UITextField
-                let confirmTextField = alertController.textFields![1] as UITextField
+            
+            self.askForPasswordView = (Bundle.main.loadNibNamed("AskForPasswordView", owner: self, options: nil)![0] as? AskForPasswordView)!
+            self.askForPasswordView.show(view: self.view)
+            
+            self.askForPasswordView.save { (password, confirm) in
+                print(password)
+                print(confirm)
                 
-                if let passwordCount = passwordTextField.text?.count, passwordCount > 0,
-                    let confirmCount = confirmTextField.text?.count, confirmCount > 0,
-                    self.validatePassword(password: passwordTextField.text!, confirm: confirmTextField.text!) {
+                if password.count > 0 && confirm.count > 0 &&
+                    self.validatePassword(password: password, confirm: confirm) {
                     let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
                     
                     var oldPassword = ""
-                    if let passwordCustom: String = UserDefaults.standard.object(forKey: "passwordCustom") as? String {
-                        oldPassword = passwordCustom
+                    let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+                    if passwordCustom {
+                        oldPassword = CustomPassword.shared.password
                     } else {
                         oldPassword = Database.password
                     }
                     
-                    sqlManager.changePassword(oldPassword: oldPassword, newPassword: passwordTextField.text!)
+                    sqlManager.changePassword(oldPassword: oldPassword, newPassword: password)
+                    CustomPassword.shared.password = password
+                    self.askForPasswordView.close()
                 }
-            })
+            }
             
-            let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: nil)
-            
-            alertController.addAction(saveAction)
-            alertController.addAction(cancelAction)
-            
-            self.present(alertController, animated: true, completion: nil)
+            self.askForPasswordView.skip {
+                let alertController = UIAlertController(title: "Skip setting password".localized(), message: "Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella.", preferredStyle: UIAlertController.Style.alert)
+                let saveAction = UIAlertAction(title: "YES".localized(), style: UIAlertAction.Style.default, handler: { (action) in
+                    UserDefaults.standard.set(true, forKey: "skipPassword")
+                    UserDefaults.standard.synchronize()
+                })
+                
+                let cancelAction = UIAlertAction(title: "NO".localized(), style: UIAlertAction.Style.cancel, handler: { (action) in
+                    
+                })
+                
+                alertController.addAction(saveAction)
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         case AccountItem.switchRepo:
             let app = (UIApplication.shared.delegate as? AppDelegate)!
             app.show()
