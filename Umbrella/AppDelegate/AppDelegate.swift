@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "gitHubDemo")
         }
         
-        // Fetch data once an hour.
-        UIApplication.shared.setMinimumBackgroundFetchInterval(10)
+        // Fetch data once 30 minutes.
+        UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in
             print(error as Any)

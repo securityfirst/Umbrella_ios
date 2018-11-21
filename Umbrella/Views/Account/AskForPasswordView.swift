@@ -10,6 +10,8 @@ import UIKit
 
 class AskForPasswordView: UIView {
 
+    //
+    // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var passwordText: UITextField!
@@ -18,6 +20,18 @@ class AskForPasswordView: UIView {
     var savedCompletionHandler: ((String, String) -> Void)?
     var skipCompletionHandler: (() -> Void)?
     
+    //
+    // MARK: - Life cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Show popup ask for password
+    ///
+    /// - Parameter view: UIView
     func show(view: UIView) {
         
         background.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -29,18 +43,28 @@ class AskForPasswordView: UIView {
         passwordText.becomeFirstResponder()
     }
     
+    /// Save closure
+    ///
+    /// - Parameter saveCompletion: Closure
     func save(saveCompletion: @escaping (String, String) -> Void) {
         self.savedCompletionHandler = saveCompletion
     }
     
+    /// Skip closure
+    ///
+    /// - Parameter skipCompletion: Closure
     func skip(skipCompletion: @escaping () -> Void) {
         self.skipCompletionHandler = skipCompletion
     }
     
+    /// Close view
     func close() {
         background.removeFromSuperview()
     }
 
+    //
+    // MARK: - Actions
+    
     @IBAction func skipAction(_ sender: Any) {
         background.removeFromSuperview()
         self.skipCompletionHandler?()

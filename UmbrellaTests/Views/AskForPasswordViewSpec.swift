@@ -22,10 +22,17 @@ class AskForPasswordViewSpec: QuickSpec {
             }
             
             it("should create a new AskForPasswordView") {
-                let cell = AskForPasswordView()
-                expect(cell).toNot(beNil())
+                let view = AskForPasswordView()
+                expect(view).toNot(beNil())
             }
             
+            describe(".viewDidLoad") {
+                it("should create a new AskForPasswordView") {
+                    let view = AskForPasswordView()
+                    view.awakeFromNib()
+                    expect(view).toNot(beNil())
+                }
+            }
             afterEach {
                 
             }

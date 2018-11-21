@@ -32,6 +32,11 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.settingsTableView.reloadData()
+    }
+    
     //
     // MARK: - Functions
     
@@ -103,7 +108,7 @@ class SettingsViewController: UIViewController {
     
     /// Change interval to update the feed
     fileprivate func refreshInterval() {
-        
+        self.performSegue(withIdentifier: "intervalSegue", sender: nil)
     }
     
     /// Change location to update the feed
@@ -113,7 +118,7 @@ class SettingsViewController: UIViewController {
     
     /// Change sources to update the feed
     fileprivate func selectFeedSources() {
-        
+        self.performSegue(withIdentifier: "sourcesSegue", sender: nil)
     }
 }
 

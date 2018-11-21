@@ -54,6 +54,7 @@ class FeedViewController: UIViewController {
             if sourceSet.count == 0 {
                 self.sourceLegLabel.text = self.sourceLegend
                 self.sourceLegLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                checkState()
                 return
             }
             
@@ -299,7 +300,10 @@ class FeedViewController: UIViewController {
         }
         
         if let interval = Double(intervalSet) {
-            intervalTimer = Timer.scheduledTimer(timeInterval: interval * 60.0, target: self, selector: #selector(self.refreshFeed), userInfo: index, repeats: true)
+            
+            if interval != -1 {
+                intervalTimer = Timer.scheduledTimer(timeInterval: interval * 60.0, target: self, selector: #selector(self.refreshFeed), userInfo: index, repeats: true)
+            }
         }
         
         self.setupScrollView.isHidden = true
@@ -447,31 +451,29 @@ class FeedViewController: UIViewController {
     
     /// Refresh Feed
     fileprivate func refresFeed() {
-        if intervalTimer.isValid {
-            self.feedView.feedViewModel.requestFeed(completion: {
-                DispatchQueue.main.async {
-                    self.feedView.refreshControl.endRefreshing()
-                    if self.feedView.feedViewModel.feedItems.count == 0 {
-                        self.feedView.emptyView.isHidden = false
-                        self.feedView.activityIndicatorView.isHidden = true
-                        return
-                    }
-                    
-                    self.feedView.emptyView.isHidden = true
-                    self.feedView.feedTableView.isHidden = false
-                    self.locationChosenView.isHidden = false
-                    self.feedView.activityIndicatorView.isHidden = true
-                    self.feedView.feedTableView.reloadData()
-                }
-            }, failure: { (error) in
-                DispatchQueue.main.async {
-                    self.feedView.refreshControl.endRefreshing()
+        self.feedView.feedViewModel.requestFeed(completion: {
+            DispatchQueue.main.async {
+                self.feedView.refreshControl.endRefreshing()
+                if self.feedView.feedViewModel.feedItems.count == 0 {
                     self.feedView.emptyView.isHidden = false
-                    self.feedView.feedTableView.isHidden = false
                     self.feedView.activityIndicatorView.isHidden = true
+                    return
                 }
-            })
-        }
+                
+                self.feedView.emptyView.isHidden = true
+                self.feedView.feedTableView.isHidden = false
+                self.locationChosenView.isHidden = false
+                self.feedView.activityIndicatorView.isHidden = true
+                self.feedView.feedTableView.reloadData()
+            }
+        }, failure: { (error) in
+            DispatchQueue.main.async {
+                self.feedView.refreshControl.endRefreshing()
+                self.feedView.emptyView.isHidden = false
+                self.feedView.feedTableView.isHidden = false
+                self.feedView.activityIndicatorView.isHidden = true
+            }
+        })
     }
     
     /// Validate if there is an url valid

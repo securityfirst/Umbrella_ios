@@ -155,6 +155,7 @@
 		A0C404B621A318220068BDDD /* SettingCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C404B521A318220068BDDD /* SettingCellSpec.swift */; };
 		A0C404B821A3183C0068BDDD /* AskForPasswordViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C404B721A3183C0068BDDD /* AskForPasswordViewSpec.swift */; };
 		A0C404BA21A319020068BDDD /* AccountViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C404B921A319020068BDDD /* AccountViewModelSpec.swift */; };
+		A0C404BC21A428B70068BDDD /* SettingIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C404BB21A428B60068BDDD /* SettingIntervalViewController.swift */; };
 		A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CE9B20B1EBB8005BC111 /* Global.swift */; };
 		A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */; };
 		A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CE9F20B5ABB6005BC111 /* Constants.swift */; };
@@ -206,6 +207,16 @@
 		A0F5B262216FB0DB008B2B6A /* IntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5B261216FB0DA008B2B6A /* IntervalViewController.swift */; };
 		A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5B2632170C80F008B2B6A /* SourceViewController.swift */; };
 		A0F5B2662170CAC6008B2B6A /* SourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5B2652170CAC6008B2B6A /* SourceCell.swift */; };
+		A0F6C39721A42DCB00A0FE85 /* SettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C39621A42DCB00A0FE85 /* SettingItemCell.swift */; };
+		A0F6C39921A42F0900A0FE85 /* SettingIntervalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C39821A42F0900A0FE85 /* SettingIntervalViewModel.swift */; };
+		A0F6C39B21A4421100A0FE85 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C39A21A4421100A0FE85 /* SettingItem.swift */; };
+		A0F6C39D21A45D1900A0FE85 /* SettingIntervalViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C39C21A45D1900A0FE85 /* SettingIntervalViewModelSpec.swift */; };
+		A0F6C39F21A45D3700A0FE85 /* SettingIntervalViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C39E21A45D3700A0FE85 /* SettingIntervalViewControllerSpec.swift */; };
+		A0F6C3A321A5694500A0FE85 /* SettingItemCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3A221A5694500A0FE85 /* SettingItemCellSpec.swift */; };
+		A0F6C3A521A569C100A0FE85 /* SettingSourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3A421A569C100A0FE85 /* SettingSourcesViewController.swift */; };
+		A0F6C3A721A569FB00A0FE85 /* SettingSourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3A621A569FB00A0FE85 /* SettingSourceViewModel.swift */; };
+		A0F6C3A921A56AB100A0FE85 /* SettingCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */; };
+		A0F6C3AB21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3AA21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift */; };
 		A0F738B1218B4FB400F63D7C /* LessonViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */; };
 		A0F738B3218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */; };
 		A0F738B5218B519D00F63D7C /* FeedItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */; };
@@ -443,6 +454,7 @@
 		A0C404B521A318220068BDDD /* SettingCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellSpec.swift; sourceTree = "<group>"; };
 		A0C404B721A3183C0068BDDD /* AskForPasswordViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForPasswordViewSpec.swift; sourceTree = "<group>"; };
 		A0C404B921A319020068BDDD /* AccountViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelSpec.swift; sourceTree = "<group>"; };
+		A0C404BB21A428B60068BDDD /* SettingIntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIntervalViewController.swift; sourceTree = "<group>"; };
 		A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftGit2.framework; sourceTree = "<group>"; };
 		A0C6CE9320B1E5D6005BC111 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		A0C6CE9B20B1EBB8005BC111 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -496,6 +508,16 @@
 		A0F5B261216FB0DA008B2B6A /* IntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalViewController.swift; sourceTree = "<group>"; };
 		A0F5B2632170C80F008B2B6A /* SourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewController.swift; sourceTree = "<group>"; };
 		A0F5B2652170CAC6008B2B6A /* SourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCell.swift; sourceTree = "<group>"; };
+		A0F6C39621A42DCB00A0FE85 /* SettingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemCell.swift; sourceTree = "<group>"; };
+		A0F6C39821A42F0900A0FE85 /* SettingIntervalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIntervalViewModel.swift; sourceTree = "<group>"; };
+		A0F6C39A21A4421100A0FE85 /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
+		A0F6C39C21A45D1900A0FE85 /* SettingIntervalViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIntervalViewModelSpec.swift; sourceTree = "<group>"; };
+		A0F6C39E21A45D3700A0FE85 /* SettingIntervalViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIntervalViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F6C3A221A5694500A0FE85 /* SettingItemCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemCellSpec.swift; sourceTree = "<group>"; };
+		A0F6C3A421A569C100A0FE85 /* SettingSourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSourcesViewController.swift; sourceTree = "<group>"; };
+		A0F6C3A621A569FB00A0FE85 /* SettingSourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSourceViewModel.swift; sourceTree = "<group>"; };
+		A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellProtocol.swift; sourceTree = "<group>"; };
+		A0F6C3AA21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSourcesViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModelSpec.swift; sourceTree = "<group>"; };
 		A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLessonViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemSpec.swift; sourceTree = "<group>"; };
@@ -617,7 +639,6 @@
 			children = (
 				A003810620FE2A8700CDA44D /* StepperView */,
 				A00381362107431300CDA44D /* DynamicForm */,
-				A00386FB20F398C4004FAC8A /* FormCell.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -638,6 +659,7 @@
 				A0C404B321A3180F0068BDDD /* AccountCellSpec.swift */,
 				A0C404B521A318220068BDDD /* SettingCellSpec.swift */,
 				A0C404B721A3183C0068BDDD /* AskForPasswordViewSpec.swift */,
+				A0F6C3A221A5694500A0FE85 /* SettingItemCellSpec.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -656,6 +678,7 @@
 				A0E81C00210F62AC00FB73FF /* BaseFormCell.swift */,
 				A003812621073CDB00CDA44D /* DynamicFormView.swift */,
 				A0E81BFE210F38F100FB73FF /* ChoiceButton.swift */,
+				A00386FB20F398C4004FAC8A /* FormCell.swift */,
 				A0E81C0221107CEB00FB73FF /* Cells */,
 			);
 			path = DynamicForm;
@@ -875,6 +898,8 @@
 				A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */,
 				A0A364842195C11E00448A7A /* SettingsViewController.swift */,
 				A0C404A921A2C4980068BDDD /* LoginViewController.swift */,
+				A0C404BB21A428B60068BDDD /* SettingIntervalViewController.swift */,
+				A0F6C3A421A569C100A0FE85 /* SettingSourcesViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -916,6 +941,7 @@
 				A0B8F40B219872E300ACDEEC /* SettingCell.swift */,
 				A0C404A521A19FEC0068BDDD /* AskForPasswordView.swift */,
 				A0C404A321A19FCF0068BDDD /* AskForPasswordView.xib */,
+				A0F6C39621A42DCB00A0FE85 /* SettingItemCell.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -925,6 +951,8 @@
 			children = (
 				A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */,
 				A0B8F40921986AFC00ACDEEC /* SettingsViewModel.swift */,
+				A0F6C39821A42F0900A0FE85 /* SettingIntervalViewModel.swift */,
+				A0F6C3A621A569FB00A0FE85 /* SettingSourceViewModel.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1026,6 +1054,7 @@
 				A0D19D82215E4ADC00B5F5FE /* Lesson */,
 				A0FFE50220CEEB010026C0C7 /* Checklist */,
 				A0C404A721A2C27A0068BDDD /* CustomPassword.swift */,
+				A0F6C39A21A4421100A0FE85 /* SettingItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1067,6 +1096,7 @@
 				A0B0AA2920EAC6FB00933759 /* SQLProtocol.swift */,
 				A003810720FE2AA400CDA44D /* StepperProtocol.swift */,
 				A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */,
+				A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1315,6 +1345,7 @@
 				A0F738CC218B547000F63D7C /* SegmentViewModelSpec.swift */,
 				A0C404B121A317CA0068BDDD /* SettingsViewModelSpec.swift */,
 				A0C404B921A319020068BDDD /* AccountViewModelSpec.swift */,
+				A0F6C39C21A45D1900A0FE85 /* SettingIntervalViewModelSpec.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1371,6 +1402,8 @@
 				A0F738C4218B53B900F63D7C /* SegmentViewControllerSpec.swift */,
 				A0C404AD21A317850068BDDD /* SettingsViewControllerSpec.swift */,
 				A0C404AF21A317A50068BDDD /* LoginViewControllerSpec.swift */,
+				A0F6C39E21A45D3700A0FE85 /* SettingIntervalViewControllerSpec.swift */,
+				A0F6C3AA21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1645,11 +1678,15 @@
 				A002B6412173975100C180E9 /* FeedItem.swift in Sources */,
 				A0D19D81215E4A9600B5F5FE /* ChecklistReviewCell.swift in Sources */,
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
+				A0C404BC21A428B70068BDDD /* SettingIntervalViewController.swift in Sources */,
 				A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */,
+				A0F6C39921A42F0900A0FE85 /* SettingIntervalViewModel.swift in Sources */,
 				A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */,
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
+				A0F6C3A521A569C100A0FE85 /* SettingSourcesViewController.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
 				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
+				A0F6C39721A42DCB00A0FE85 /* SettingItemCell.swift in Sources */,
 				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
 				A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */,
 				A0AA1561216E4686003753E5 /* ReviewLessonViewController.swift in Sources */,
@@ -1672,6 +1709,7 @@
 				A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
+				A0F6C3A721A569FB00A0FE85 /* SettingSourceViewModel.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
 				A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
@@ -1680,6 +1718,7 @@
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
+				A0F6C39B21A4421100A0FE85 /* SettingItem.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
 				A02115B3213EB331004B5B73 /* WebViewModel.swift in Sources */,
 				A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */,
@@ -1700,6 +1739,7 @@
 				A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */,
 				A0F5B262216FB0DB008B2B6A /* IntervalViewController.swift in Sources */,
 				A0D19D7F215E4A6300B5F5FE /* ChecklistViewModel.swift in Sources */,
+				A0F6C3A921A56AB100A0FE85 /* SettingCellProtocol.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
@@ -1788,6 +1828,7 @@
 				A0FFE50F20D01E2C0026C0C7 /* CheckItemSpec.swift in Sources */,
 				A0B0AA3920EBC98B00933759 /* CheckListDaoSpec.swift in Sources */,
 				A0B0AA3820EBC98B00933759 /* SegmentDaoSpec.swift in Sources */,
+				A0F6C39F21A45D3700A0FE85 /* SettingIntervalViewControllerSpec.swift in Sources */,
 				A0B0AA3A20EBC98B00933759 /* CheckItemDaoSpec.swift in Sources */,
 				A0B0AA3F20EBC98B00933759 /* LanguageDaoSpec.swift in Sources */,
 				A0FFE52320D0211E0026C0C7 /* GlobalSpec.swift in Sources */,
@@ -1805,6 +1846,7 @@
 				A02115A4213D6C8A004B5B73 /* ListRssViewModelSpec.swift in Sources */,
 				A021159E213D6BAA004B5B73 /* ListRssViewControllerSpec.swift in Sources */,
 				A0F738B5218B519D00F63D7C /* FeedItemSpec.swift in Sources */,
+				A0F6C3AB21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift in Sources */,
 				A0F738C5218B53B900F63D7C /* SegmentViewControllerSpec.swift in Sources */,
 				A0C404B621A318220068BDDD /* SettingCellSpec.swift in Sources */,
 				A0F738CB218B544B00F63D7C /* MarkdownViewModelSpec.swift in Sources */,
@@ -1828,8 +1870,10 @@
 				A0B0AA2D20EBA52200933759 /* CategoryDaoSpec.swift in Sources */,
 				A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */,
 				A0F738B3218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift in Sources */,
+				A0F6C3A321A5694500A0FE85 /* SettingItemCellSpec.swift in Sources */,
 				A0C404B021A317A50068BDDD /* LoginViewControllerSpec.swift in Sources */,
 				A0F738BF218B52EF00F63D7C /* LessonCheckListViewModelSpec.swift in Sources */,
+				A0F6C39D21A45D1900A0FE85 /* SettingIntervalViewModelSpec.swift in Sources */,
 				A003811F20FF6FED00CDA44D /* LessonViewControllerSpec.swift in Sources */,
 				A0F738CF218B558600F63D7C /* RssItemDaoSpec.swift in Sources */,
 				A0C404BA21A319020068BDDD /* AccountViewModelSpec.swift in Sources */,

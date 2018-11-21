@@ -10,10 +10,14 @@ import UIKit
 
 class SettingCell: UITableViewCell {
 
+    //
+    // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var optionSwitch: UISwitch!
     
+    //
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -50,6 +54,24 @@ class SettingCell: UITableViewCell {
             if tableSection.rawValue == 2 {
                 let showUpdateAsNotification = UserDefaults.standard.object(forKey: "showUpdateAsNotification") as? Bool
                 optionSwitch.isOn = showUpdateAsNotification ?? false
+            }
+            
+            // Interval
+            if tableSection.rawValue == 1 && indexPath.row == 0 {
+                let interval = UserDefaults.standard.object(forKey: "Interval") as? String
+                
+                if interval != nil && interval != "" && interval != "-1" {
+                    
+                    let minOrHours = Int(interval!)! / 60
+                    if minOrHours >= 1 {
+                        self.subtitleLabel.text = "\(minOrHours) hour(s)"
+                    } else {
+                        self.subtitleLabel.text = "\(interval!) min"
+                    }
+                    
+                } else {
+                    self.subtitleLabel.text = "Manually"
+                }
             }
         }
     }
