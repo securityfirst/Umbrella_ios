@@ -193,6 +193,7 @@
 		A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
 		A0D8BCB420E50ACF0052028F /* InputFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8BCB220E508190052028F /* InputFileReader.swift */; };
 		A0DAF9412132B845009B2743 /* LoadingViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */; };
+		A0DBDF9B21A6D4390084AEC9 /* SettingLocationViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DBDF9A21A6D4390084AEC9 /* SettingLocationViewControllerSpec.swift */; };
 		A0DFF37C20F3B74B008F3E43 /* SFProText-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0DFF37B20F3B74A008F3E43 /* SFProText-SemiBold.ttf */; };
 		A0DFF37E20F3C084008F3E43 /* Umbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37D20F3C084008F3E43 /* Umbrella.swift */; };
 		A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */; };
@@ -217,6 +218,7 @@
 		A0F6C3A721A569FB00A0FE85 /* SettingSourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3A621A569FB00A0FE85 /* SettingSourceViewModel.swift */; };
 		A0F6C3A921A56AB100A0FE85 /* SettingCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */; };
 		A0F6C3AB21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3AA21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift */; };
+		A0F6C3AD21A6BB5000A0FE85 /* SettingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6C3AC21A6BB4F00A0FE85 /* SettingLocationViewController.swift */; };
 		A0F738B1218B4FB400F63D7C /* LessonViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */; };
 		A0F738B3218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */; };
 		A0F738B5218B519D00F63D7C /* FeedItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */; };
@@ -494,6 +496,7 @@
 		A0D8BCAC20E246C90052028F /* OptionItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItemDao.swift; sourceTree = "<group>"; };
 		A0D8BCB220E508190052028F /* InputFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputFileReader.swift; sourceTree = "<group>"; };
 		A0DAF9402132B845009B2743 /* LoadingViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0DBDF9A21A6D4390084AEC9 /* SettingLocationViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0DFF37B20F3B74A008F3E43 /* SFProText-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-SemiBold.ttf"; sourceTree = "<group>"; };
 		A0DFF37D20F3C084008F3E43 /* Umbrella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Umbrella.swift; sourceTree = "<group>"; };
 		A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
@@ -518,6 +521,7 @@
 		A0F6C3A621A569FB00A0FE85 /* SettingSourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSourceViewModel.swift; sourceTree = "<group>"; };
 		A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellProtocol.swift; sourceTree = "<group>"; };
 		A0F6C3AA21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSourcesViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0F6C3AC21A6BB4F00A0FE85 /* SettingLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLocationViewController.swift; sourceTree = "<group>"; };
 		A0F738B0218B4FB400F63D7C /* LessonViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModelSpec.swift; sourceTree = "<group>"; };
 		A0F738B2218B4FF100F63D7C /* ReviewLessonViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLessonViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0F738B4218B519D00F63D7C /* FeedItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemSpec.swift; sourceTree = "<group>"; };
@@ -721,8 +725,8 @@
 			isa = PBXGroup;
 			children = (
 				A0B0AA7620EE6E8D00933759 /* FeedViewController.swift */,
-				A02115BA214163DC004B5B73 /* LocationViewController.swift */,
 				A0F5B261216FB0DA008B2B6A /* IntervalViewController.swift */,
+				A02115BA214163DC004B5B73 /* LocationViewController.swift */,
 				A0F5B2632170C80F008B2B6A /* SourceViewController.swift */,
 			);
 			path = Feed;
@@ -900,6 +904,7 @@
 				A0C404A921A2C4980068BDDD /* LoginViewController.swift */,
 				A0C404BB21A428B60068BDDD /* SettingIntervalViewController.swift */,
 				A0F6C3A421A569C100A0FE85 /* SettingSourcesViewController.swift */,
+				A0F6C3AC21A6BB4F00A0FE85 /* SettingLocationViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1404,6 +1409,7 @@
 				A0C404AF21A317A50068BDDD /* LoginViewControllerSpec.swift */,
 				A0F6C39E21A45D3700A0FE85 /* SettingIntervalViewControllerSpec.swift */,
 				A0F6C3AA21A57C5C00A0FE85 /* SettingSourcesViewControllerSpec.swift */,
+				A0DBDF9A21A6D4390084AEC9 /* SettingLocationViewControllerSpec.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1699,6 +1705,7 @@
 				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
 				A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */,
 				A003810C20FE2AA500CDA44D /* TitleFormView.swift in Sources */,
+				A0F6C3AD21A6BB5000A0FE85 /* SettingLocationViewController.swift in Sources */,
 				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
 				A0848687214FFD6E0099D669 /* CheckListCell.swift in Sources */,
@@ -1901,6 +1908,7 @@
 				A0C404B421A3180F0068BDDD /* AccountCellSpec.swift in Sources */,
 				A0F738BB218B528D00F63D7C /* SourceViewControllerSpec.swift in Sources */,
 				A064107A20D81F960044ADAB /* UmbrellaParserSpec.swift in Sources */,
+				A0DBDF9B21A6D4390084AEC9 /* SettingLocationViewControllerSpec.swift in Sources */,
 				A0F738C7218B53EC00F63D7C /* LocationViewModelSpec.swift in Sources */,
 				A0F738C1218B534600F63D7C /* LessonCheckListViewControllerSpec.swift in Sources */,
 				A0C404AE21A317870068BDDD /* SettingsViewControllerSpec.swift in Sources */,

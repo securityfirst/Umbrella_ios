@@ -113,7 +113,7 @@ class SettingsViewController: UIViewController {
     
     /// Change location to update the feed
     fileprivate func selectLocation() {
-        
+        self.performSegue(withIdentifier: "locationSegue", sender: nil)
     }
     
     /// Change sources to update the feed
