@@ -25,6 +25,8 @@ class SettingLocationViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Location".localized()
+        
         self.locationText.setBottomBorder()
         self.locationText.placeholder = "Enter location".localized()
         self.locationText.delegate = self

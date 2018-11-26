@@ -31,9 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         getWindow().addGestureRecognizer(longPressGesture)
         
         let gitHubDemo = UserDefaults.standard.object(forKey: "gitHubDemo")
-        
         if gitHubDemo == nil {
             UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "gitHubDemo")
+        }
+        
+        let language = UserDefaults.standard.object(forKey: "Language")
+        if language == nil {
+            UserDefaults.standard.set("en", forKey: "Language")
         }
         
         // Fetch data once 30 minutes.

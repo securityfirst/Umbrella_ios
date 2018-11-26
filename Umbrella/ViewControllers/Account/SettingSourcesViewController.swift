@@ -24,9 +24,9 @@ class SettingSourcesViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Sources".localized()
         
         let sources = UserDefaults.standard.object(forKey: "Sources") as? [Int]
-        
         if sources != nil {
             sources?.forEach { index in
                 

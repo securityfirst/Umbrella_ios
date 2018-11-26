@@ -66,11 +66,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    /// Select another language
-    fileprivate func selectLanguage() {
-        
-    }
-    
     /// Import data
     fileprivate func importData() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.text", "public.database"], in: .import)
@@ -104,6 +99,11 @@ class SettingsViewController: UIViewController {
         }
         
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    /// Select another language
+    fileprivate func selectLanguage() {
+        self.performSegue(withIdentifier: "languageSegue", sender: nil)
     }
     
     /// Change interval to update the feed

@@ -1,31 +1,32 @@
 //
-//  SettingIntervalViewController.swift
+//  SettingLanguageViewController.swift
 //  Umbrella
 //
-//  Created by Lucas Correa on 20/11/2018.
+//  Created by Lucas Correa on 23/11/2018.
 //  Copyright © 2018 Security First. All rights reserved.
 //
 
 import UIKit
+import Localize_Swift
 
-class SettingIntervalViewController: UIViewController {
-
+class SettingLanguageViewController: UIViewController {
+    
     //
     // MARK: - Properties
-    lazy var settingIntervalViewModel: SettingIntervalViewModel = {
-        let settingIntervalViewModel = SettingIntervalViewModel()
-        return settingIntervalViewModel
+    lazy var settingLanguageViewModel: SettingLanguageViewModel = {
+        let settingLanguageViewModel = SettingLanguageViewModel()
+        return settingLanguageViewModel
     }()
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Interval".localized()
+        self.title = "Languages".localized()
         
-        let interval = UserDefaults.standard.object(forKey: "Interval") as? String
+        let language = UserDefaults.standard.object(forKey: "Language") as? String
         
-        self.settingIntervalViewModel.items.forEach { item in
-            item.checked = (item.value == interval)
+        self.settingLanguageViewModel.items.forEach { item in
+            item.checked = (item.value == language)
         }
     }
     
@@ -37,28 +38,28 @@ class SettingIntervalViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension SettingIntervalViewController: UITableViewDataSource {
+extension SettingLanguageViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.settingIntervalViewModel.items.count
+        return self.settingLanguageViewModel.items.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: SettingItemCell = (tableView.dequeueReusableCell(withIdentifier: "SettingItemCell", for: indexPath) as? SettingItemCell)!
         
-        cell.configure(withViewModel: self.settingIntervalViewModel, indexPath: indexPath)
+        cell.configure(withViewModel: self.settingLanguageViewModel, indexPath: indexPath)
         
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension SettingIntervalViewController: UITableViewDelegate {
+extension SettingLanguageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65.0
@@ -67,9 +68,9 @@ extension SettingIntervalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let itemSelected = self.settingIntervalViewModel.items[indexPath.row]
+        let itemSelected = self.settingLanguageViewModel.items[indexPath.row]
         
-        self.settingIntervalViewModel.items.forEach { item in
+        self.settingLanguageViewModel.items.forEach { item in
             item.checked = false
             
             if item.name == itemSelected.name {
@@ -77,9 +78,8 @@ extension SettingIntervalViewController: UITableViewDelegate {
             }
         }
         
-        NotificationCenter.default.post(name: Notification.Name("UpdateInterval"), object: nil, userInfo: ["interval": itemSelected.value])
-        UserDefaults.standard.set(itemSelected.value, forKey: "Interval")
-        
+        Localize.setCurrentLanguage(itemSelected.value)
+        UserDefaults.standard.set(itemSelected.value, forKey: "Language")
         tableView.reloadData()
     }
 }
