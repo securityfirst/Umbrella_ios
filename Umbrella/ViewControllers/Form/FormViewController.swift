@@ -328,7 +328,7 @@ extension FormViewController: UITableViewDelegate {
 extension FormViewController: FormCellDelegate {
     
     func removeAction(indexPath: IndexPath) {
-        UIAlertController.alert(title: "Alert", message: "Do you really want to remove this form?", cancelButtonTitle: "No", otherButtons: ["Yes"], dismiss: { _ in
+        UIAlertController.alert(title: "Alert".localized(), message: "Do you really want to remove this form?".localized(), cancelButtonTitle: "No".localized(), otherButtons: ["Yes".localized()], dismiss: { _ in
             let formAnswer = self.formViewModel.umbrella.formAnswers[indexPath.row]
             self.formViewModel.umbrella.formAnswers.remove(at: indexPath.row)
             self.formViewModel.remove(formAnswerId: formAnswer.formAnswerId)

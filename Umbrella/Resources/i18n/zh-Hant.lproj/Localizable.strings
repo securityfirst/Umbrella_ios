@@ -30,6 +30,9 @@
 "REMOVE" = "去掉";
 "EDIT" = "编辑";
 "SHARE" = "分享";
+"Do you really want to remove this form?" = "Do you really want to remove this form?";
+"No" = "No";
+"Yes" = "Yes";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "获得一切的安全忠告，从发送安全电子邮件，到安全出行。";

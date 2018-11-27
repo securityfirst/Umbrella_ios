@@ -78,6 +78,10 @@ class FormCell: UITableViewCell {
             accessibility(enable: false)
         }
         
+        removeButton.setTitle("REMOVE".localized(), for: .normal)
+        editButton.setTitle("EDIT".localized(), for: .normal)
+        shareButton.setTitle("SHARE".localized(), for: .normal)
+        
         self.layoutIfNeeded()
     }
     

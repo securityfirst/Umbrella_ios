@@ -19,17 +19,20 @@
 "Account" = "Cuenta";
 
 // Loading
-"Updating the database" = "Updating the database";
-"Error in load the tent" = "Error in load the tent";
-"Getting the database" = "Getting the database";
-"Clone of the tent" = "Clone of the tent";
+"Updating the database" = "Actualizando la base de datos";
+"Error in load the tent" = "Error al cargar la tienda";
+"Getting the database" = "Obteniendo la base de datos";
+"Clone of the tent" = "Clon de la carpa";
 
 // Form
 "Active" = "Activa";
 "Available forms" = "Formularios disponibles";
 "REMOVE" = "ELIMINAR";
-"EDIT" = "EDIT";
+"EDIT" = "EDITAR";
 "SHARE" = "COMPARTIR";
+"Do you really want to remove this form?" = "¿Realmente quieres eliminar este formulario?";
+"No" = "No";
+"Yes" = "Sí";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "Consiga asesoramiento en muchos temas, desde enviar un correo electrónico privado hasta viajar seguro";

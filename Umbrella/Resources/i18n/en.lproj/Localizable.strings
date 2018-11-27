@@ -30,6 +30,9 @@
 "REMOVE" = "REMOVE";
 "EDIT" = "EDIT";
 "SHARE" = "SHARE";
+"Do you really want to remove this form?" = "Do you really want to remove this form?";
+"No" = "No";
+"Yes" = "Yes";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "Get advice on everything from sending a secure email to safe travel";
