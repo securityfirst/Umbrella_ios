@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class SourceViewController: UIViewController {
     
@@ -22,6 +23,9 @@ class SourceViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Sources".localized()
+        
+        self.titleLabel.text = "Select The Feed Sources".localized()
         
         let sources = UserDefaults.standard.object(forKey: "Sources") as? [Int]
         
@@ -30,6 +34,8 @@ class SourceViewController: UIViewController {
              self.selectedIndexPaths.insert(IndexPath(row: index, section: 0))
             }
         }
+        
+        saveButton.setTitle("Save".localized(), for: .normal)
         self.sourceTableView.reloadData()
     }
     

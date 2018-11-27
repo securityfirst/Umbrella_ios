@@ -10,11 +10,13 @@ import UIKit
 import FeedKit
 import CoreLocation
 import UserNotifications
+import Localize_Swift
 
 class FeedViewController: UIViewController {
     
     //
     // MARK: - Properties
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var feedView: FeedView!
     @IBOutlet weak var rssView: RssView!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
@@ -27,6 +29,19 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var locationChosenLabel: UILabel!
     @IBOutlet weak var changeLocationButton: UIButton!
     @IBOutlet weak var locationViewLegLabel: UILabel!
+    @IBOutlet weak var setYourFeedLabel: UILabel!
+    @IBOutlet weak var setNowLabel: UILabel!
+    @IBOutlet weak var securityFeedToLabel: UILabel!
+    @IBOutlet weak var emptyDisplayLebLabel: UILabel!
+    @IBOutlet weak var emptyChangeLocationLabel: UIButton!
+    @IBOutlet weak var intervalLabel: UILabel!
+    @IBOutlet weak var setIntervalLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var setLocationLabel: UILabel!
+    @IBOutlet weak var securityFeedSourcesLabel: UILabel!
+    
+    @IBOutlet weak var setSourcesLabel: UILabel!
+    
     
     var loginViewController: LoginViewController!
     var stepLocation: Bool = false
@@ -77,10 +92,17 @@ class FeedViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title = "Feed".localized()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateLanguage()
+        
+        self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
+        self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
         
         let font = UIFont(name: "Roboto-Regular", size: 11)
         let attributesDictionary: [NSAttributedString.Key: Any]? = [NSAttributedString.Key.font: font!, NSAttributedString.Key.foregroundColor : UIColor.black]
@@ -92,10 +114,6 @@ class FeedViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItems = [modeBarButton]
         
-        self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
-        self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()
-        self.locationLegLabel.text = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.".localized()
-        self.sourceLegLabel.text = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.".localized()
         
         self.sourceLegend = self.sourceLegLabel.text ?? ""
         
@@ -186,6 +204,42 @@ class FeedViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    @objc func updateLanguage() {
+        self.title = "Feed".localized()
+        
+       self.feedView.emptyLabel.text = "There no Feed".localized()
+        
+        // Location
+        self.changeLocationButton.setTitle("CHANGE LOCATION".localized(), for: .normal)
+       
+        self.locationViewLegLabel.text = "Location:".localized()
+        self.setYourFeedLabel.text = "Set your Feed".localized()
+        self.setNowLabel.text = "SET NOW".localized()
+       
+        self.securityFeedToLabel.text = "Security feed set to:".localized()
+        self.emptyDisplayLebLabel.text = "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again.".localized()
+        self.emptyChangeLocationLabel.setTitle("CHANGE LOCATION".localized(), for: .normal)
+        
+        self.intervalLabel.text = "Interval".localized()
+        self.setIntervalLabel.text = "SET".localized()
+        self.locationLabel.text = "Location".localized()
+        self.setLocationLabel.text = "SET".localized()
+        self.securityFeedSourcesLabel.text = "Security Feed Sources".localized()
+        
+        self.setSourcesLabel.text = "SET".localized()
+        
+        
+        
+        self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
+        self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
+        self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
+        self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()
+        self.locationLegLabel.text = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.".localized()
+        self.sourceLegLabel.text = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.".localized()
+        
+        self.sourceLegend = self.sourceLegLabel.text ?? ""
+    }
     
     /// Share action
     ///

@@ -26,7 +26,7 @@ class LocationViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Location".localized()
         self.locationText.setBottomBorder()
         self.locationText.placeholder = "Enter location".localized()
         self.locationText.delegate = self
@@ -43,7 +43,7 @@ class LocationViewController: UIViewController {
     
     /// Show error
     fileprivate func showError() {
-        UIAlertController.alert(title: "Alert", message: "The city or country is not available or you have no internet connection.".localized(), cancelButtonTitle: "OK", otherButtons: nil, dismiss: { _ in
+        UIAlertController.alert(title: "Alert".localized(), message: "The city or country is not available or you have no internet connection.".localized(), cancelButtonTitle: "OK", otherButtons: nil, dismiss: { _ in
             // Don't need to do nothing
         }, cancel: {
             // In this case we need to do nothing when user cancel the alert

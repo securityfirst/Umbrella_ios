@@ -237,7 +237,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KABUL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8fU-6I-tUi">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8fU-6I-tUi">
                                                 <rect key="frame" x="96" y="14" width="170" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="91h-cY-sWP"/>
@@ -424,11 +424,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET NOW" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqE-vZ-WVL">
-                                                        <rect key="frame" x="200" y="117" width="65" height="22"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET NOW" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="lqE-vZ-WVL">
+                                                        <rect key="frame" x="200" y="122" width="65" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="60V-vG-i8M"/>
-                                                            <constraint firstAttribute="width" constant="65" id="sWE-Qm-iQW"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="sWE-Qm-iQW"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                                         <color key="textColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -447,7 +447,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="iW8-7J-Y8c" secondAttribute="trailing" constant="15" id="CSP-Kw-6Zc"/>
                                                     <constraint firstItem="iW8-7J-Y8c" firstAttribute="leading" secondItem="eRa-1m-94H" secondAttribute="leading" constant="15" id="GtK-w5-nx9"/>
                                                     <constraint firstAttribute="trailing" secondItem="w0p-oR-8mm" secondAttribute="trailing" constant="15" id="Icy-zP-hek"/>
-                                                    <constraint firstAttribute="bottom" secondItem="lqE-vZ-WVL" secondAttribute="bottom" constant="11" id="KPc-yA-YgZ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="lqE-vZ-WVL" secondAttribute="bottom" constant="6" id="KPc-yA-YgZ"/>
                                                     <constraint firstItem="iW8-7J-Y8c" firstAttribute="top" secondItem="eRa-1m-94H" secondAttribute="top" constant="15" id="L5q-cm-XNZ"/>
                                                     <constraint firstItem="Ulh-0g-4tz" firstAttribute="top" secondItem="iW8-7J-Y8c" secondAttribute="bottom" constant="-35" id="LHL-mJ-KNL"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ulh-0g-4tz" secondAttribute="trailing" id="OqC-mo-Dnd"/>
@@ -483,7 +483,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qE-3l-v02">
                                                         <rect key="frame" x="200" y="117" width="65" height="22"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="65" id="IVw-hj-mFo"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="IVw-hj-mFo"/>
                                                             <constraint firstAttribute="height" constant="22" id="qBY-c7-WCw"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
@@ -550,7 +550,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIK-rA-ZBn">
                                                         <rect key="frame" x="200" y="117" width="65" height="22"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="65" id="Hbg-FO-0bs"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="Hbg-FO-0bs"/>
                                                             <constraint firstAttribute="height" constant="22" id="nyF-HP-Zdu"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
@@ -596,7 +596,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-he-bLe" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="515" width="280" height="150"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Feed Sources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-vz-CT9">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Feed Sources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-vz-CT9">
                                                         <rect key="frame" x="15" y="15" width="250" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="VzM-hh-IM1"/>
@@ -614,7 +614,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ6-AV-Qz8">
                                                         <rect key="frame" x="200" y="117" width="65" height="22"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="65" id="BV3-3U-a3W"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="BV3-3U-a3W"/>
                                                             <constraint firstAttribute="height" constant="22" id="RCy-U1-Fqp"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
@@ -703,7 +703,7 @@
                                 <rect key="frame" x="99.5" y="74" width="121" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="PN9-bv-eAp"/>
-                                    <constraint firstAttribute="width" constant="121" id="U6n-aN-bfd"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="121" id="U6n-aN-bfd"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Feed"/>
@@ -741,13 +741,25 @@
                     <connections>
                         <outlet property="addBarButton" destination="2oU-xr-Uad" id="wJB-mv-vx2"/>
                         <outlet property="changeLocationButton" destination="gJl-E1-NBr" id="Glp-Ml-vxV"/>
+                        <outlet property="emptyChangeLocationLabel" destination="HfA-1x-YEW" id="gg5-t5-b12"/>
+                        <outlet property="emptyDisplayLebLabel" destination="v3j-E0-PcK" id="URw-BD-HO2"/>
                         <outlet property="feedView" destination="akU-Ma-kkd" id="hWp-Vb-UVY"/>
+                        <outlet property="intervalLabel" destination="zpD-J7-WHE" id="CYu-jE-10r"/>
                         <outlet property="intervalLegLabel" destination="UL9-U9-jgH" id="Ypg-Oa-TQt"/>
                         <outlet property="locationChosenLabel" destination="8fU-6I-tUi" id="VPn-YV-i5G"/>
                         <outlet property="locationChosenView" destination="eai-Wk-kTi" id="Eyc-h8-JKE"/>
+                        <outlet property="locationLabel" destination="9h9-fc-sCV" id="6AN-kY-3no"/>
                         <outlet property="locationLegLabel" destination="Y5x-DU-exV" id="zPA-aO-97O"/>
                         <outlet property="locationViewLegLabel" destination="bhv-Z1-m67" id="SdU-rE-n9N"/>
                         <outlet property="rssView" destination="x2U-0I-zK3" id="EPp-ey-TAH"/>
+                        <outlet property="securityFeedSourcesLabel" destination="T4e-vz-CT9" id="5Vr-c7-ZTo"/>
+                        <outlet property="securityFeedToLabel" destination="Ana-mS-gY7" id="s6e-PS-WJf"/>
+                        <outlet property="segmentedControl" destination="GPB-pG-1lE" id="yPt-AF-eIo"/>
+                        <outlet property="setIntervalLabel" destination="9qE-3l-v02" id="qn4-Nu-GfD"/>
+                        <outlet property="setLocationLabel" destination="uIK-rA-ZBn" id="tC7-p9-9Yz"/>
+                        <outlet property="setNowLabel" destination="lqE-vZ-WVL" id="SFI-ln-M2D"/>
+                        <outlet property="setSourcesLabel" destination="LZ6-AV-Qz8" id="jZZ-m0-Xp5"/>
+                        <outlet property="setYourFeedLabel" destination="iW8-7J-Y8c" id="N8P-kh-D8m"/>
                         <outlet property="setYourFeedLegLabel" destination="w0p-oR-8mm" id="LPX-Kg-Lb3"/>
                         <outlet property="setupScrollView" destination="E07-6l-Gkr" id="O5F-XC-Q8l"/>
                         <outlet property="sourceLegLabel" destination="YNo-tr-iJM" id="hka-L3-e9n"/>

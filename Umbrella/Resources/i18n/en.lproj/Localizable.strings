@@ -52,7 +52,21 @@
 "Set how often you want Umbrella to check for the latest security news." = "Set how often you want Umbrella to check for the latest security news.";
 "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.";
 "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.";
-
+"Location:" = "Location:";
+"CHANGE LOCATION" = "CHANGE LOCATION";
+"Set your Feed" = "Set your Feed";
+"SET NOW" = "SET NOW";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again.";
+"Security feed set to:" = "Security feed set to:";
+"Interval" = "Interval";
+"SET" = "SET";
+"Location" = "Location";
+"Security Feed Sources" = "Security Feed Sources";
+"The city or country is not available or you have no internet connection." = "The city or country is not available or you have no internet connection.";
+"Alert" = "Alert";
+"Enter interval" = "Enter interval";
+"Sources" = "Sources";
+"Select The Feed Sources" = "Select The Feed Sources";
 
 // Lessons
 "Favourites" = "Favourites";
@@ -65,6 +79,7 @@
 "Checklists total" = "Checklists total";
 "Favourites" = "Favourites";
 "My Checklists" = "My Checklists";
+"Total done" = "Total done";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";

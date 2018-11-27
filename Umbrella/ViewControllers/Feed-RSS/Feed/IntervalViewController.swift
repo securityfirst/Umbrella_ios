@@ -24,6 +24,7 @@ class IntervalViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Interval".localized()
         intervalText.setBottomBorder()
         intervalText.placeholder = "Enter interval".localized()
         intervalText.delegate = self

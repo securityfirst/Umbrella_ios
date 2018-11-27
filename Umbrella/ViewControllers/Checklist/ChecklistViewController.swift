@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class ChecklistViewController: UIViewController {
     
@@ -24,6 +25,7 @@ class ChecklistViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title = "Checklists".localized()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
@@ -41,6 +43,14 @@ class ChecklistViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    @objc func updateLanguage() {
+        self.title = "Checklists".localized()
+        self.checklistReviewTableView?.reloadData()
     }
 }
 

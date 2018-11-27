@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class FormViewController: UIViewController {
     
@@ -23,10 +24,11 @@ class FormViewController: UIViewController {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.title = "Form".localized()
         
         NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.loadForms(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
         
-        self.title = "Form".localized()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
@@ -50,6 +52,11 @@ class FormViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    @objc func updateLanguage() {
+        self.title = "Form".localized()
+        self.formTableView?.reloadData()
+    }
     
     /// Receive the forms by notification
     ///

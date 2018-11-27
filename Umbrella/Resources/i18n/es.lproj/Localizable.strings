@@ -26,7 +26,7 @@
 
 // Form
 "Active" = "Activa";
-"Available forms" = "Available forms";
+"Available forms" = "Formularios disponibles";
 "REMOVE" = "ELIMINAR";
 "EDIT" = "EDIT";
 "SHARE" = "COMPARTIR";
@@ -48,10 +48,25 @@
 
 // Feed - Location
 "Enter location" = "Ingrese ubicación";
-"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.";
-"Set how often you want Umbrella to check for the latest security news." = "Set how often you want Umbrella to check for the latest security news.";
-"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them.";
-"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Aún no ha establecido la ubicación y las fuentes de las fuentes. Debe hacerlo para obtener las últimas noticias de seguridad para su país. Puede cambiarlas en cualquier momento más adelante en la configuración.";
+"Set how often you want Umbrella to check for the latest security news." = "Establezca la frecuencia con la que desea que Umbrella compruebe las últimas noticias de seguridad.";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "No almacenamos su ubicación por más tiempo del necesario. Los proveedores de feeds no saben que está recibiendo datos de ellos.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Establezca las fuentes de las que desea recibir actualizaciones. Las fuentes de las fuentes no pueden ver que está solicitando información de ellas.";
+"Location:" = "Ubicación:";
+"CHANGE LOCATION" = "CAMBIAR UBICACIÓN";
+"Set your Feed" = "Establezca su entrada";
+"SET NOW" = "CONFIGURAR AHORA";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "No hay eventos para mostrar para su ubicación. Los mostraremos cuando ocurran. Tire para actualizar para comprobar de nuevo.";
+"Security feed set to:" = "Feed de seguridad establecido en:";
+"Interval" = "Intervalo";
+"SET" = "CONFIGURAR";
+"Location" = "Ubicación";
+"Security Feed Sources" = "Fuentes de alimentación de seguridad";
+"The city or country is not available or you have no internet connection." = "La ciudad o el país no está disponible o no tiene conexión a Internet.";
+"Alert" = "Alerta";
+"Enter interval" = "Enter interval";
+"Sources" = "Fuentes";
+"Select The Feed Sources" = "Seleccione las fuentes de alimentación";
 
 // Lessons
 "Favourites" = "Favoritos";
@@ -64,6 +79,13 @@
 "Checklists total" = "Total de listas de control";
 "Favourites" = "Favoritos";
 "My Checklists" = "Mis listas de comprobación";
+"Total done" = "Total hecho";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";
+"Password" = "Password";
+"Confirm" = "Confirm";
+"Passwords do not match." = "Passwords do not match.";
+"Password too short." = "Password too short.";
+"Password must have at least one digit." = "Password must have at least one digit.";
+"Password must have at least one capital letter." = "Password must have at least one capital letter.";
