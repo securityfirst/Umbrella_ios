@@ -17,11 +17,13 @@ class FillFormViewController: UIViewController {
         return fillFormViewModel
     }()
     
-    var isNewForm: Bool = true
-    var currentPage: CGFloat = 0
     @IBOutlet weak var stepperView: StepperView!
     @IBOutlet weak var formScrollView: UIScrollView!
     @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
+    
+    var isNewForm: Bool = true
+    var currentPage: CGFloat = 0
+    var askForPasswordView: AskForPasswordView!
     
     //
     // MARK: - Life cycle
@@ -86,6 +88,8 @@ class FillFormViewController: UIViewController {
         }
         
         self.formScrollView.contentSize = CGSize(width: self.formScrollView.frame.size.width * CGFloat(fillFormViewModel.form.screens.count), height: self.formScrollView.frame.size.height)
+        
+        checkPassword()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,6 +106,86 @@ class FillFormViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    func checkPassword() {
+        
+        let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+        let skipPassword: Bool = UserDefaults.standard.object(forKey: "skipPassword") as? Bool ?? false
+        
+        if passwordCustom || skipPassword {
+            return
+        }
+        
+        self.askForPasswordView = (Bundle.main.loadNibNamed("AskForPasswordView", owner: self, options: nil)![0] as? AskForPasswordView)!
+        self.askForPasswordView.show(view: self.view)
+        
+        self.askForPasswordView.save { (password, confirm) in
+            
+            if password.count > 0 && confirm.count > 0 &&
+                self.validatePassword(password: password, confirm: confirm) {
+                let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+                
+                var oldPassword = ""
+                let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+                if passwordCustom {
+                    oldPassword = CustomPassword.shared.password
+                } else {
+                    oldPassword = Database.password
+                }
+                
+                sqlManager.changePassword(oldPassword: oldPassword, newPassword: password)
+                CustomPassword.shared.password = password
+                self.askForPasswordView.close()
+            }
+        }
+        
+        self.askForPasswordView.skip {
+            let alertController = UIAlertController(title: "Skip setting password".localized(), message: "Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella.".localized(), preferredStyle: UIAlertController.Style.alert)
+            let saveAction = UIAlertAction(title: "YES".localized(), style: UIAlertAction.Style.default, handler: { (action) in
+                UserDefaults.standard.set(true, forKey: "skipPassword")
+                UserDefaults.standard.synchronize()
+            })
+            
+            let cancelAction = UIAlertAction(title: "NO".localized(), style: UIAlertAction.Style.cancel, handler: { (action) in
+                
+            })
+            
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    /// Validate if there is an url valid
+    ///
+    /// - Parameter urlString: String
+    /// - Returns: Bool
+    func validatePassword(password: String, confirm: String) -> Bool {
+        
+        var check = true
+        var message = ""
+        
+        if !password.contains(confirm) {
+            check = false
+            message = "Passwords do not match.".localized()
+        } else if password.count < 8 {
+            check = false
+            message = "Password too short.".localized()
+        } else if !NSPredicate(format: "SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: password) || !NSPredicate(format: "SELF MATCHES %@", ".*[0-9]+.*").evaluate(with: confirm) {
+            check = false
+            message = "Password must have at least one digit.".localized()
+        } else if !NSPredicate(format: "SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: password) || !NSPredicate(format: "SELF MATCHES %@", ".*[A-Z]+.*").evaluate(with: confirm) {
+            check = false
+            message = "Password must have at least one capital letter.".localized()
+        }
+        
+        if !check {
+            UIApplication.shared.keyWindow!.makeToast(message, duration: 3.0, position: .top)
+        }
+        
+        return check
+    }
     
     /// Save form
     func saveForm() {

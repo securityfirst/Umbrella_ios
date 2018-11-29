@@ -9,7 +9,7 @@
 // Accessibility
 "selected" = "seleccionado";
 "deselected" = "deselected";
-"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form.";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Este es el formulario %d de los formularios %d para completar. Deslice tres dedos de la izquierda hacia atrás o hacia la derecha.";
 
 // Menu
 "Feed" = "Lista de entradas";
@@ -85,13 +85,13 @@
 "Total done" = "Total hecho";
 
 // Account
-"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";
-"Password" = "Password";
-"Confirm" = "Confirm";
-"Passwords do not match." = "Passwords do not match.";
-"Password too short." = "Password too short.";
-"Password must have at least one digit." = "Password must have at least one digit.";
-"Password must have at least one capital letter." = "Password must have at least one capital letter.";
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Su contraseña debe tener al menos 8 caracteres y debe contener al menos un dígito y una letra mayúscula.";
+"Password" = "Contraseña";
+"Confirm" = "Confirmar";
+"Passwords do not match." = "Las contraseñas no coinciden.";
+"Password too short." = "Contraseña demasiado corta.";
+"Password must have at least one digit." = "La contraseña debe tener al menos un dígito.";
+"Password must have at least one capital letter." = "La contraseña debe tener al menos una letra mayúscula.";
 "Skip setting password" = "Saltar configuración de contraseña";
 "Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "¿Está seguro de que desea continuar usando la aplicación sin configurar la contraseña? \n\nEsto disminuye significativamente su seguridad con respecto a cualquier información identificable que ingrese en Umbrella.";
 "YES" = "SÍ";
@@ -100,8 +100,6 @@
 "Set password" = "Configurar la contraseña";
 "Set your password" = "Establece tu contraseña";
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Su contraseña debe tener al menos 8 caracteres y debe contener al menos un dígito y una letra mayúscula.";
-"Password" = "Contraseña";
-"Confirm" = "Confirmar";
 "Skip" = "Omitir";
 "Skip password" = "Omitir contraseña";
 "Don't ask for password again" = "No volver a pedir contraseña";
@@ -124,3 +122,4 @@
 "Manually" = "Manualmente";
 "Dashboard" = "Tablero";
 "new customFeeds." = "nuevas fuentes personalizadas.";
+"You can enable access in Settings> Umbrela> Notifications" = "You can enable access in Settings> Umbrela> Notifications";

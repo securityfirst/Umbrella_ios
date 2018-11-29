@@ -43,10 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Fetch data once 30 minutes.
         UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in
-            print(error as Any)
-        }
+
         return true
     }
     

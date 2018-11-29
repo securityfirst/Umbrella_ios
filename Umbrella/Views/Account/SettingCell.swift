@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingCell: UITableViewCell {
-
+    
     //
     // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,7 +24,7 @@ class SettingCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -80,16 +81,26 @@ class SettingCell: UITableViewCell {
     
     //
     // MARK: - Actions
-
+    
     @IBAction func changeSwitchAction(_ sender: UISwitch) {
         
         if sender.tag == 0 {
             UserDefaults.standard.set(sender.isOn, forKey: "skipPassword")
         } else if sender.tag == 2 {
-            UserDefaults.standard.set(sender.isOn, forKey: "showUpdateAsNotification")
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in
+                DispatchQueue.main.async {
+                    if permissionGranted == false {
+                        sender.isOn = false
+                        UIAlertController.alert(title: "Alert".localized(), message: "You can enable access in Settings> Umbrela> Notifications", cancelButtonTitle: "OK".localized())
+                        
+                    } else {
+                        UserDefaults.standard.set(sender.isOn, forKey: "showUpdateAsNotification")
+                    }
+                }
+                print(error as Any)
+            }
         }
-        
         UserDefaults.standard.synchronize()
     }
-    
 }
