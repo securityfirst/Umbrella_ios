@@ -14,6 +14,7 @@ struct FormParser {
     
     //
     // MARK: - Properties
+    let folder: Folder
     let file: File
     
     //
@@ -23,7 +24,8 @@ struct FormParser {
     ///
     /// - Parameters:
     ///   - file: file of parse
-    init(file: File) {
+    init(folder: Folder, file: File) {
+        self.folder = folder
         self.file = file
     }
     
@@ -36,6 +38,12 @@ struct FormParser {
     mutating func parse() -> Form? {
         do {
             let form = try YAMLDecoder().decode(Form.self, from: self.file.readAsString())
+            
+            let split = folder.path.components(separatedBy: "/")
+            
+            // Get language
+            form.language = split[split.count-3]
+            
             return form
         } catch {
             print("FormParser: \(error)")

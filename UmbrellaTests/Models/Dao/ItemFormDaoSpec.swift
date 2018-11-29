@@ -20,6 +20,12 @@ class ItemFormDaoSpec: QuickSpec {
         
         beforeEach {
             _ = UmbrellaDatabase(sqlProtocol: sqlManager).dropTables()
+            
+            let dao = LanguageDao(sqlProtocol: sqlManager)
+            _ = dao.createTable()
+            let language = Language(name: "en")
+            language.id = 1
+            _ = dao.insert(language)
         }
         
         describe("ItemFormDao") {
@@ -39,6 +45,7 @@ class ItemFormDaoSpec: QuickSpec {
                 
                 let screen = Screen(name: "Screen1", items: [])
                 let form = Form(screens: [screen])
+                form.languageId = 1
                 let rowId = formDao.insert(form)
                 
                 let screenDao = ScreenDao(sqlProtocol: sqlManager)
@@ -65,6 +72,7 @@ class ItemFormDaoSpec: QuickSpec {
                 let screen = Screen(name: "Screen1", items: [])
                 
                 let form = Form(screens: [screen])
+                form.languageId = 1
                 let rowId = formDao.insert(form)
                 
                 let screenDao = ScreenDao(sqlProtocol: sqlManager)

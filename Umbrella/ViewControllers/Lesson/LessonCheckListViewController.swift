@@ -135,7 +135,11 @@ extension LessonCheckListViewController: UITableViewDelegate {
         
         var categoryFound: Category? = nil
         
-        for category in UmbrellaDatabase.categories() {
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        for category in UmbrellaDatabase.categories(lang: languageName) {
             if category.id == self.lessonCheckListViewModel.category?.parent {
                 categoryFound = category
                 break
@@ -155,6 +159,7 @@ extension LessonCheckListViewController: UITableViewDelegate {
         let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
         
         let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
+        checklistChecked.languageId = language!.id
         item.checked = !item.checked
         
         if item.checked {

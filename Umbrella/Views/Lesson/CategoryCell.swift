@@ -34,8 +34,9 @@ class CategoryCell: UITableViewCell {
     ///   - viewModel: ViewModel
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:LessonViewModel, indexPath: IndexPath) {
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         
-        let headerItem = viewModel.getCategories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
+        let headerItem = viewModel.getCategories(ofLanguage: languageName)[indexPath.section - 1]
         
         let category = headerItem.categories[indexPath.row]
         if let nameLabel = self.nameLabel {

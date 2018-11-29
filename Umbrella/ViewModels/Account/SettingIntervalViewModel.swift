@@ -13,19 +13,19 @@ class SettingIntervalViewModel: SettingCellProtocol {
     
     //
     // MARK: - Properties
-    var items: [SettingItem]
+    var items: [SettingItem]!
     
     //
     // MARK: - Init
     init() {
        self.items = [
         SettingItem(name: "30 min", value: "30", checked: false),
-        SettingItem(name: "1 hour", value: "60", checked: false),
-        SettingItem(name: "2 hours", value: "120", checked: false),
-        SettingItem(name: "4 hours", value: "240", checked: false),
-        SettingItem(name: "6 hours", value: "360", checked: false),
-        SettingItem(name: "12 hours", value: "720", checked: false),
-        SettingItem(name: "24 hours", value: "1440", checked: false),
+        SettingItem(name: "1 \("hour".localized())", value: "60", checked: false),
+        SettingItem(name: "2 \("hours".localized())", value: "120", checked: false),
+        SettingItem(name: "4 \("hours".localized())", value: "240", checked: false),
+        SettingItem(name: "6 \("hours".localized())", value: "360", checked: false),
+        SettingItem(name: "12 \("hours".localized())", value: "720", checked: false),
+        SettingItem(name: "24 \("hours".localized())", value: "1440", checked: false),
         SettingItem(name: "Manually".localized(), value: "-1", checked: false)
         ]
     }

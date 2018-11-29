@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class SettingsViewController: UIViewController {
     
@@ -24,6 +25,7 @@ class SettingsViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title = "Settings".localized()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
@@ -40,6 +42,12 @@ class SettingsViewController: UIViewController {
     //
     // MARK: - Functions
     
+    @objc func updateLanguage() {
+        self.title = "Settings".localized()
+        self.settingsViewModel.loadItems()
+        self.settingsTableView.reloadData()
+    }
+    
     /// Refresh data of the repository
     fileprivate func refreshRepo() {
         let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
@@ -53,7 +61,7 @@ class SettingsViewController: UIViewController {
             try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
             UserDefaults.standard.set(false, forKey: "passwordCustom")
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("ResetRepository"), object: nil)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
@@ -167,9 +175,9 @@ extension SettingsViewController: UITableViewDelegate {
         if let tableSection = TableSection(rawValue: section) {
             switch tableSection {
             case .general:
-                label.text = "GENERAL"
+                label.text = "GENERAL".localized()
             case .feed, .feed2:
-                label.text = "FEED"
+                label.text = "FEED".localized()
             default:
                 label.text = ""
             }

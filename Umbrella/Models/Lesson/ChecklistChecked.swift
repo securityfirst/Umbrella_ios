@@ -14,6 +14,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
     // Used in parser from the database to object
     var id: Int
     //   attributes: subcategory_name,  subcategory_id, difficulty_id, checklist_id, item_id, total_items_checklist
+    var languageId: Int
     
     //
     // MARK: - Properties
@@ -36,6 +37,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.itemId = -1
         self.totalChecked = -1
         self.totalItemsChecklist = -1
+        self.languageId = -1
     }
     
     init(subCategoryName: String, totalChecked: Int, totalItemsChecklist: Int) {
@@ -47,6 +49,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.itemId = -1
         self.totalChecked = totalChecked
         self.totalItemsChecklist = totalItemsChecklist
+        self.languageId = -1
     }
     
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalItemsChecklist: Int) {
@@ -58,6 +61,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.itemId = itemId
         self.totalChecked = -1
         self.totalItemsChecklist = totalItemsChecklist
+        self.languageId = -1
     }
     
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalChecked: Int, totalItemsChecklist: Int) {
@@ -69,6 +73,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.itemId = itemId
         self.totalChecked = totalChecked
         self.totalItemsChecklist = totalItemsChecklist
+        self.languageId = -1
     }
     
     //
@@ -82,6 +87,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         case itemId = "item_id"
         case totalChecked = "total_checked"
         case totalItemsChecklist = "total_items_checklist"
+        case languageId = "language_id"
     }
     
     required init(from decoder: Decoder) throws {
@@ -91,6 +97,12 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
             self.id = try container.decode(Int.self, forKey: .id)
         } else {
             self.id = -1
+        }
+        
+        if container.contains(.languageId) {
+            self.languageId = try container.decode(Int.self, forKey: .languageId)
+        } else {
+            self.languageId = -1
         }
         
         if container.contains(.subCategoryName) {
@@ -151,7 +163,8 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
             Column(name: "difficulty_id", type: .int),
             Column(name: "checklist_id", type: .int),
             Column(name: "item_id", type: .int),
-            Column(name: "total_items_checklist", type: .int)
+            Column(name: "total_items_checklist", type: .int),
+            Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array
     }

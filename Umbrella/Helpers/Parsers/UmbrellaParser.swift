@@ -76,7 +76,7 @@ struct UmbrellaParser {
             
         //Form
         case .form:
-            var formParser = FormParser(file: file)
+            var formParser = FormParser(folder: folder, file: file)
             if let form = formParser.parse() {
                 self.formArray.append(form)
             }

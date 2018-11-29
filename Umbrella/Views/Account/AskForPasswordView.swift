@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class AskForPasswordView: UIView {
 
@@ -16,6 +17,9 @@ class AskForPasswordView: UIView {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmText: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+    
     var background: UIView = UIView(frame: (UIApplication.shared.keyWindow?.bounds)!)
     var savedCompletionHandler: ((String, String) -> Void)?
     var skipCompletionHandler: (() -> Void)?
@@ -24,6 +28,12 @@ class AskForPasswordView: UIView {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.titleLabel?.text = "Set your password".localized()
+        self.messageLabel?.text = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.".localized()
+        self.passwordText?.placeholder = "Password".localized()
+        self.confirmText?.placeholder = "Confirm".localized()
+        self.cancelButton?.setTitle("Cancel".localized(), for: .normal)
+        self.skipButton?.setTitle("Skip".localized(), for: .normal)
     }
     
     //

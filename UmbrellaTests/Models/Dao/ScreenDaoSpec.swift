@@ -21,6 +21,12 @@ class ScreenDaoSpec: QuickSpec {
             
             beforeEach {
                 _ = UmbrellaDatabase(sqlProtocol: sqlManager).dropTables()
+                
+                let dao = LanguageDao(sqlProtocol: sqlManager)
+                _ = dao.createTable()
+                let language = Language(name: "en")
+                language.id = 1
+                _ = dao.insert(language)
             }
             
             it("should create the table of Screen in Database") {
@@ -38,6 +44,7 @@ class ScreenDaoSpec: QuickSpec {
                 
                 let screen = Screen(name: "Screen1", items: [])
                 let form = Form(screens: [screen])
+                form.languageId = 1
                 let rowId = formDao.insert(form)
                 
                 let screenDao = ScreenDao(sqlProtocol: sqlManager)
@@ -57,6 +64,7 @@ class ScreenDaoSpec: QuickSpec {
                 let screen = Screen(name: "Screen1", items: [])
                 
                 let form = Form(screens: [screen])
+                form.languageId = 1
                 let rowId = formDao.insert(form)
                 
                 let screenDao = ScreenDao(sqlProtocol: sqlManager)

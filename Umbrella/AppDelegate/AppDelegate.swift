@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let gitHubDemo = UserDefaults.standard.object(forKey: "gitHubDemo")
         if gitHubDemo == nil {
-            UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "gitHubDemo")
+//            UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "gitHubDemo")
+            UserDefaults.standard.set("https://github.com/lucascorrea/umbrella-content", forKey: "gitHubDemo")
         }
         
         let language = UserDefaults.standard.object(forKey: "Language")

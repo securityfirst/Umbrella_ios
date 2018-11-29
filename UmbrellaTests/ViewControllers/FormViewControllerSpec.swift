@@ -20,14 +20,14 @@ class FormViewControllerSpec: QuickSpec {
         var umbrella: Umbrella?
         
         beforeEach {
+            UserDefaults.standard.set("en", forKey: "Language")
+            let language = Language(name: "en")
+            language.id = 1
+            UmbrellaDatabase.languagesStatic = [language]
+            
             let storyboard = UIStoryboard(name: "Form",
                                           bundle: Bundle.main)
             viewController = storyboard.instantiateViewController(withIdentifier: "FormViewController") as? FormViewController
-            
-            window.makeKeyAndVisible()
-            window.rootViewController = viewController
-            viewController.beginAppearanceTransition(true, animated: false) 
-            viewController.endAppearanceTransition()
             
             var forms = [Form]()
             let optionItem = OptionItem(label: "label1", value: "value1")
@@ -37,10 +37,17 @@ class FormViewControllerSpec: QuickSpec {
             
             form.id = 1
             form.name = "Form1"
+            form.languageId = 1
+            form.language = "en"
             forms.append(form)
             
             let formAnswer = FormAnswer(formAnswerId: 1, formId: 1, itemFormId: 1, optionItemId: -1, text: "Test text_input", choice: -1)
             umbrella = Umbrella(languages: [], forms: forms, formAnswers: [formAnswer])
+            
+            window.makeKeyAndVisible()
+            window.rootViewController = viewController
+            viewController.beginAppearanceTransition(true, animated: false) 
+            viewController.endAppearanceTransition()
         }
         
         describe("FormViewController") {

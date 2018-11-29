@@ -13,11 +13,15 @@ class SettingLanguageViewModel: SettingCellProtocol {
     
     //
     // MARK: - Properties
-    var items: [SettingItem]
+    var items: [SettingItem]!
     
     //
     // MARK: - Init
     init() {
+        loadItems()
+    }
+    
+    func loadItems() {
         self.items = [
             SettingItem(name: "English".localized(), value: "en", checked: false),
             SettingItem(name: "Spanish".localized(), value: "es", checked: false),

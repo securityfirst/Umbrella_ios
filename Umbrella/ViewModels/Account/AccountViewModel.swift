@@ -24,11 +24,15 @@ class AccountViewModel {
     //
     // MARK: - Init
     init() {
+        loadItems()
+    }
+    
+    func loadItems() {
         self.items = [
-            (name: "Settings", type: AccountItem.settings),
-//            (name: "Mask", type: AccountItem.mask),
-            (name: "Set password", type: AccountItem.setPassword)
-//            (name: "Switch repo", type: AccountItem.switchRepo)
+            (name: "Settings".localized(), type: AccountItem.settings),
+            //            (name: "Mask", type: AccountItem.mask),
+            (name: "Set password".localized(), type: AccountItem.setPassword)
+            //            (name: "Switch repo", type: AccountItem.switchRepo)
         ]
     }
 }

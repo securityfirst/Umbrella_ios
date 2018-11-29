@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class LessonViewController: UIViewController {
     
@@ -23,18 +24,21 @@ class LessonViewController: UIViewController {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.title = "Lessons".localized()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LessonViewController.loadTent(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
         
-        self.title = "Lessons".localized()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         
         self.lessonTableView?.register(CategoryHeaderView.nib, forHeaderFooterViewReuseIdentifier: CategoryHeaderView.identifier)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(LessonViewController.resetLessonsDemo(notification:)), name: Notification.Name("ResetDemo"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LessonViewController.resetLessons(notification:)), name: Notification.Name("ResetRepository"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,10 +55,14 @@ class LessonViewController: UIViewController {
     //
     // MARK: - Functions
     
+    @objc func updateLanguage() {
+        self.title = "Lessons".localized()
+    }
+    
     /// Reset Lessons to Demo
     ///
     /// - Parameter notification: NSNotification
-    @objc func resetLessonsDemo(notification: NSNotification) {
+    @objc func resetLessons(notification: NSNotification) {
         self.navigationController?.popToRootViewController(animated: true)
         self.lessonViewModel.sectionsCollapsed.removeAll()
         self.lessonTableView.reloadData()
@@ -111,7 +119,8 @@ class LessonViewController: UIViewController {
 extension LessonViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!).count + 1
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        return self.lessonViewModel.getCategories(ofLanguage: languageName).count + 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,7 +130,8 @@ extension LessonViewController: UITableViewDataSource {
             return 0
         }
         
-        let headerItem = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let headerItem = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
         
         // if section is in array as collapsed when it should return the count of items of category
         if self.lessonViewModel.isCollapsed(section: section) {
@@ -160,7 +170,8 @@ extension LessonViewController: UITableViewDelegate {
                 headerView.arrowImageView.isHidden = true
                 headerView.iconImageView.image = #imageLiteral(resourceName: "iconFavourite")
             } else {
-                let item = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
+                let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+                let item = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
                 headerView.nameLabel.text = item.name
                 headerView.arrowImageView.isHidden = item.categories.count == 0
                 
@@ -201,8 +212,8 @@ extension LessonViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let headerItem = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[indexPath.section - 1]
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let headerItem = self.lessonViewModel.getCategories(ofLanguage: languageName)[indexPath.section - 1]
         let category = headerItem.categories[indexPath.row]
         
         // Check if there is difficulty rule
@@ -222,7 +233,7 @@ extension LessonViewController: UITableViewDelegate {
 // MARK: - CategoryHeaderViewDelegate
 extension LessonViewController: CategoryHeaderViewDelegate {
     func toggleSection(header: CategoryHeaderView, section: Int) {
-        
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         var collapsed = false
         if self.lessonViewModel.isCollapsed(section: section) {
             if let index = self.lessonViewModel.sectionsCollapsed.index(of: section) {
@@ -233,8 +244,8 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             let category = Category(name: "Favourites".localized(), description: "", index: 1)
             category.segments = self.favouriteSegments
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
-        } else if self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1].categories.count == 0 {
-            let category = self.lessonViewModel.getCategories(ofLanguage: Locale.current.languageCode!)[section - 1]
+        } else if self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1].categories.count == 0 {
+            let category = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else {
             collapsed = true
@@ -254,7 +265,7 @@ extension LessonViewController: CategoryHeaderViewDelegate {
 //
 // MARK: - UISearchBarDelegate
 extension LessonViewController: UISearchBarDelegate {
-  
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         
@@ -273,6 +284,19 @@ extension LessonViewController: UISearchBarDelegate {
                 self.favouriteSegments = self.lessonViewModel.loadFavourites()
                 self.view.endEditing(true)
             }
+        }
+    }
+}
+
+//
+// MARK: - UITabBarControllerDelegate
+extension LessonViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 3 {
+            self.lessonViewModel.sectionsCollapsed.removeAll()
+            self.lessonTableView.reloadData()
         }
     }
 }

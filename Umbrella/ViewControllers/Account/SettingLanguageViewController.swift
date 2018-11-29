@@ -17,11 +17,14 @@ class SettingLanguageViewController: UIViewController {
         let settingLanguageViewModel = SettingLanguageViewModel()
         return settingLanguageViewModel
     }()
+    @IBOutlet weak var languageTableView: UITableView!
+    
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Languages".localized()
+         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
         
         let language = UserDefaults.standard.object(forKey: "Language") as? String
         
@@ -32,6 +35,12 @@ class SettingLanguageViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    @objc func updateLanguage() {
+        self.title = "Languages".localized()
+        self.settingLanguageViewModel.loadItems()
+        self.languageTableView.reloadData()
+    }
     
     //
     // MARK: - Actions
@@ -78,8 +87,11 @@ extension SettingLanguageViewController: UITableViewDelegate {
             }
         }
         
-        Localize.setCurrentLanguage(itemSelected.value)
         UserDefaults.standard.set(itemSelected.value, forKey: "Language")
+        Localize.setCurrentLanguage(itemSelected.value)
+        
         tableView.reloadData()
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }

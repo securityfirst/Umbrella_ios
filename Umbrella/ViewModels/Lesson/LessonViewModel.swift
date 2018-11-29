@@ -21,7 +21,9 @@ class LessonViewModel {
             isSearch = termSearch.count > 0
             
             if isSearch {
-                let language = umbrella?.languages.filter { $0.name == Locale.current.languageCode!}.first
+                
+                let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+                let language = umbrella?.languages.filter { $0.name == languageName}.first
                 
                 if let language = language {
                     copyList(originalList: language.categories)
@@ -205,7 +207,8 @@ class LessonViewModel {
         _ = favouriteSegmentDao.createTable()
         var segments: [Segment] = [Segment]()
         
-        let categories = getCategories()
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let categories = getCategories(ofLanguage: languageName)
         let favourites = self.favouriteSegmentDao.list()
         
         for favouriteSegment in favourites {

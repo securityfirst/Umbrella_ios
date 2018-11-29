@@ -123,9 +123,7 @@ struct UmbrellaDatabase {
         DispatchQueue.global(qos: .default).async {
             _ = self.dropTables()
             _ = self.createTables()
-            self.insertAllLanguages(completion: completion)
-            self.insertAllForms()
-            print("Finalized objectToDatabase")
+            self.insertAllObjects(completion: completion)
             UmbrellaDatabase.languagesStatic = self.languages
         }
     }
@@ -189,7 +187,6 @@ struct UmbrellaDatabase {
         
         // FormAnswer - Form Active
         self.formAnswers = self.formAnswerDao.listFormActive()
-        print("Finalized databaseToObject")
         UmbrellaDatabase.languagesStatic = self.languages
     }
     
@@ -219,7 +216,8 @@ struct UmbrellaDatabase {
 extension UmbrellaDatabase {
     
     /// Insert all the languages, categories, segments and checkList
-    fileprivate func insertAllLanguages(completion: @escaping (Float) -> Void) {
+    fileprivate func insertAllObjects(completion: @escaping (Float) -> Void) {
+        
         // Language
         for language in self.languages {
             
@@ -227,6 +225,7 @@ extension UmbrellaDatabase {
             language.categories.sort(by: { $0.index! < $1.index!})
             
             let languageRowId = self.languageDao.insert(language)
+            language.id = Int(languageRowId)
             
             // To this moment we need to add whole category parent separete of subcategories
             // Categories
@@ -257,12 +256,22 @@ extension UmbrellaDatabase {
                 completion(Float(index+1)/Float(language.categories.count))
             }
         }
+        
+        // I must languageId to insert the forms
+        self.insertAllForms()
     }
     
     /// Insert all the forms
     fileprivate func insertAllForms() {
         //Form
         for form in self.forms {
+            
+            let language = self.languages.filter { $0.name == form.language}.first
+            
+            if let language = language {
+                form.languageId = language.id
+            }
+            
             let formRowId = self.formDao.insert(form)
             form.id = Int(formRowId)
             

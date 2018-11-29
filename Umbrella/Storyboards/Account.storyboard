@@ -239,6 +239,7 @@
                                                             <rect key="frame" x="276" y="11" width="51" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="31" id="80B-Fy-Mr5"/>
+                                                                <constraint firstAttribute="width" constant="49" id="Mt7-2D-ZbA"/>
                                                             </constraints>
                                                             <connections>
                                                                 <action selector="changeSwitchAction:" destination="SUV-2Q-gSf" eventType="valueChanged" id="TpP-1U-a4K"/>
@@ -247,7 +248,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="width" secondItem="xc7-Tp-yxI" secondAttribute="width" id="0sq-Tp-0Oj"/>
+                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="width" relation="greaterThanOrEqual" secondItem="xc7-Tp-yxI" secondAttribute="width" id="0sq-Tp-0Oj"/>
                                                         <constraint firstItem="sOB-WS-pDn" firstAttribute="top" secondItem="xc7-Tp-yxI" secondAttribute="bottom" constant="-1" id="5H3-JU-bcR"/>
                                                         <constraint firstItem="sOB-WS-pDn" firstAttribute="height" secondItem="xc7-Tp-yxI" secondAttribute="height" id="9FC-Vg-wAg"/>
                                                         <constraint firstItem="xc7-Tp-yxI" firstAttribute="leading" secondItem="n4s-P3-wt7" secondAttribute="leading" constant="16" id="9Sf-XH-9lK"/>
@@ -268,6 +269,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="optionSwitch" destination="YBB-Fh-FG4" id="Udw-v0-Qmp"/>
+                                            <outlet property="optionWidthConstraint" destination="Mt7-2D-ZbA" id="yQc-oy-KGe"/>
                                             <outlet property="subtitleLabel" destination="sOB-WS-pDn" id="jQX-69-fbh"/>
                                             <outlet property="titleLabel" destination="xc7-Tp-yxI" id="aj2-2a-Ls5"/>
                                         </connections>
@@ -697,6 +699,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l2G-4O-DGH"/>
                     </view>
+                    <connections>
+                        <outlet property="languageTableView" destination="fdh-2J-iFl" id="jrg-m2-PtQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4js-be-QjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

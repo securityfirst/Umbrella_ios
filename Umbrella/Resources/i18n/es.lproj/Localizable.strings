@@ -14,7 +14,7 @@
 // Menu
 "Feed" = "Lista de entradas";
 "Form" = "Formulario";
-"Checklists" = "Checklists";
+"Checklists" = "Listas de control";
 "Lessons" = "Lecciones";
 "Account" = "Cuenta";
 
@@ -92,3 +92,35 @@
 "Password too short." = "Password too short.";
 "Password must have at least one digit." = "Password must have at least one digit.";
 "Password must have at least one capital letter." = "Password must have at least one capital letter.";
+"Skip setting password" = "Saltar configuración de contraseña";
+"Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "¿Está seguro de que desea continuar usando la aplicación sin configurar la contraseña? \n\nEsto disminuye significativamente su seguridad con respecto a cualquier información identificable que ingrese en Umbrella.";
+"YES" = "SÍ";
+"NO" = "NO";
+"Settings" = "Ajustes";
+"Set password" = "Configurar la contraseña";
+"Set your password" = "Establece tu contraseña";
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Su contraseña debe tener al menos 8 caracteres y debe contener al menos un dígito y una letra mayúscula.";
+"Password" = "Contraseña";
+"Confirm" = "Confirmar";
+"Skip" = "Omitir";
+"Skip password" = "Omitir contraseña";
+"Don't ask for password again" = "No volver a pedir contraseña";
+"Refresh from the server" = "Actualizar desde el servidor";
+"Select Language" = "Seleccione el idioma";
+"Import your data" = "Importa tus datos";
+"Export your data" = "Exporta tus datos";
+"Refresh interval for custom feeds" = "Intervalo de actualización para feeds personalizados";
+"Your location" = "Tu ubicación";
+"Security feed sources" = "Fuentes de alimentación de seguridad";
+"Show updates as notification" = "Mostrar actualizaciones como notificación";
+"GENERAL" = "GENERAL";
+"FEED" = "LISTA DE ENTRADAS";
+"English" = "Inglés";
+"Spanish" = "Español";
+"Chinese" = "Chino";
+"hour" = "hora";
+"hour(s)" = "hora(s)";
+"hours" = "horas";
+"Manually" = "Manualmente";
+"Dashboard" = "Tablero";
+"new customFeeds." = "nuevas fuentes personalizadas.";

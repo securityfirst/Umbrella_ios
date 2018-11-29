@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class FormAnswer: Codable, TableProtocol {
+class FormAnswer: Codable, TableProtocol, Equatable {
     
     // Used in parser from the database to object
     var id: Int
@@ -136,5 +136,9 @@ class FormAnswer: Codable, TableProtocol {
             Column(name: "option_item_id", type: .int, isNotNull: false)
         ]
         return array
+    }
+    
+    static func == (lhs: FormAnswer, rhs: FormAnswer) -> Bool {
+        return lhs.formId == rhs.formId && lhs.formAnswerId == rhs.formAnswerId
     }
 }

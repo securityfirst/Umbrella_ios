@@ -41,8 +41,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var securityFeedSourcesLabel: UILabel!
     
     @IBOutlet weak var setSourcesLabel: UILabel!
-    
-    
+
     var loginViewController: LoginViewController!
     var stepLocation: Bool = false
     var stepSources: Bool = false
@@ -114,7 +113,6 @@ class FeedViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItems = [modeBarButton]
         
-        
         self.sourceLegend = self.sourceLegLabel.text ?? ""
         
         addBarButton.isEnabled = false
@@ -158,7 +156,7 @@ class FeedViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.continueWizard(notification:)), name: Notification.Name("ContinueWizard"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.resetDemo(notification:)), name: Notification.Name("ResetDemo"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.resetRepository(notification:)), name: Notification.Name("ResetRepository"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateFeedInBackground), name: Notification.Name("UpdateFeed"), object: nil)
         
@@ -229,8 +227,6 @@ class FeedViewController: UIViewController {
         
         self.setSourcesLabel.text = "SET".localized()
         
-        
-        
         self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
         self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
@@ -264,7 +260,7 @@ class FeedViewController: UIViewController {
         do {
             try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
             
-            NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("ResetRepository"), object: nil)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
@@ -306,8 +302,8 @@ class FeedViewController: UIViewController {
                     if showUpdateAsNotification ?? false {
                         
                         let notification = UNMutableNotificationContent()
-                        notification.title = self.feedView.feedViewModel.feedItems.count == 1 ? self.feedView.feedViewModel.feedItems[0].title : "Dashboard"
-                        notification.body = self.feedView.feedViewModel.feedItems.count == 1 ? self.feedView.feedViewModel.feedItems[0].description : "\(self.feedView.feedViewModel.feedItems.count) new customFeeds."
+                        notification.title = self.feedView.feedViewModel.feedItems.count == 1 ? self.feedView.feedViewModel.feedItems[0].title : "Dashboard".localized()
+                        notification.body = self.feedView.feedViewModel.feedItems.count == 1 ? self.feedView.feedViewModel.feedItems[0].description : "\(self.feedView.feedViewModel.feedItems.count) \("new customFeeds.".localized()))"
                         
                         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
                         let request = UNNotificationRequest(identifier: "umbrella", content: notification, trigger: trigger)
@@ -457,7 +453,7 @@ class FeedViewController: UIViewController {
     /// Reset Demo
     ///
     /// - Parameter notification: NSNotification
-    @objc func resetDemo(notification: NSNotification) {
+    @objc func resetRepository(notification: NSNotification) {
         resetSetup()
     }
     

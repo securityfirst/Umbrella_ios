@@ -50,7 +50,13 @@ class ChecklistViewModel {
     private func filterByGreatestDifficultyId() -> [ChecklistChecked] {
         _ = checklistCheckedDao.createTable()
         _ = favouriteSegmentDao.createTable()
-        let list = self.checklistCheckedDao.reportOfItemsChecked()
+        var list = self.checklistCheckedDao.reportOfItemsChecked()
+        
+        // Filter by language
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        list = list.filter { $0.languageId == language?.id }
+        
         var results = [ChecklistChecked]()
         
         for check in list {

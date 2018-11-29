@@ -21,6 +21,12 @@ class ChecklistCheckedDaoSpec: QuickSpec {
             
             beforeEach {
                 _ = UmbrellaDatabase(sqlProtocol: sqlManager).dropTables()
+                
+                let dao = LanguageDao(sqlProtocol: sqlManager)
+                _ = dao.createTable()
+                let language = Language(name: "en")
+                language.id = 1
+                _ = dao.insert(language)
             }
             
             it("should create the table of ChecklistChecked in Database") {
@@ -37,6 +43,7 @@ class ChecklistCheckedDaoSpec: QuickSpec {
                 _ = dao.createTable()
                 
                 let object = ChecklistChecked(subCategoryName: "SubCategory", subCategoryId: 1, difficultyId: 1, checklistId: 1, itemId: 1, totalChecked: 1, totalItemsChecklist: 1)
+                object.languageId = 1
                 let rowId = dao.insert(object)
                 
                 expect(rowId).to(equal(1))
@@ -48,6 +55,7 @@ class ChecklistCheckedDaoSpec: QuickSpec {
                 _ = dao.createTable()
                 
                 let object = ChecklistChecked(subCategoryName: "SubCategory", subCategoryId: 1, difficultyId: 1, checklistId: 1, itemId: 1, totalChecked: 1, totalItemsChecklist: 1)
+                object.languageId = 1
                 _ = dao.insert(object)
                 
                 let list = dao.list()

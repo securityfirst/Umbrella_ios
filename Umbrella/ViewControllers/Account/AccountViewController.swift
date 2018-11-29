@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import Localize_Swift
 
 class AccountViewController: UIViewController {
     
@@ -26,6 +27,8 @@ class AccountViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title = "Account".localized()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
@@ -38,6 +41,12 @@ class AccountViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    @objc func updateLanguage() {
+        self.title = "Account".localized()
+        self.accountViewModel.loadItems()
+        self.accountTableView.reloadData()
+    }
     
     /// Validate if there is an url valid
     ///
@@ -136,7 +145,7 @@ extension AccountViewController: UITableViewDelegate {
             }
             
             self.askForPasswordView.skip {
-                let alertController = UIAlertController(title: "Skip setting password".localized(), message: "Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella.", preferredStyle: UIAlertController.Style.alert)
+                let alertController = UIAlertController(title: "Skip setting password".localized(), message: "Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella.".localized(), preferredStyle: UIAlertController.Style.alert)
                 let saveAction = UIAlertAction(title: "YES".localized(), style: UIAlertAction.Style.default, handler: { (action) in
                     UserDefaults.standard.set(true, forKey: "skipPassword")
                     UserDefaults.standard.synchronize()

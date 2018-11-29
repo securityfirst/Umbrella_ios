@@ -13,6 +13,8 @@ class Form: Codable, TableProtocol {
     
     // Used in parser from the database to object
     var id: Int
+    var languageId: Int
+    var language: String
     
     //
     // MARK: - Properties
@@ -23,12 +25,16 @@ class Form: Codable, TableProtocol {
     // MARK: - Initializers
     init() {
         self.id = -1
+        self.languageId = -1
+        self.language = ""
         self.name = ""
         self.screens = []
     }
     
     init(screens: [Screen]) {
         self.id = -1
+        self.languageId = -1
+        self.language = ""
         self.name = ""
         self.screens = screens
     }
@@ -37,6 +43,8 @@ class Form: Codable, TableProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
+        case languageId = "language_id"
+        case language
         case name = "title"
         case screens
     }
@@ -48,6 +56,18 @@ class Form: Codable, TableProtocol {
             self.id = try container.decode(Int.self, forKey: .id)
         } else {
             self.id = -1
+        }
+        
+        if container.contains(.languageId) {
+            self.languageId = try container.decode(Int.self, forKey: .languageId)
+        } else {
+            self.languageId = -1
+        }
+        
+        if container.contains(.language) {
+            self.language = try container.decode(String.self, forKey: .language)
+        } else {
+            self.language = ""
         }
         
         if container.contains(.name) {
@@ -73,7 +93,8 @@ class Form: Codable, TableProtocol {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
-            Column(name: "title", type: .string)
+            Column(name: "title", type: .string),
+            Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array
     }

@@ -24,13 +24,28 @@ class SettingsViewModel {
     // MARK: - Init
     init() {
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        loadItems()
+    }
+    
+    func loadItems() {
+        let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        var languageSelected = ""
+        
+        if language == "en" {
+            languageSelected = "English".localized()
+        } else if language == "es" {
+            languageSelected = "Spanish".localized()
+        } else if language == "zh-Hans" {
+            languageSelected = "Chinese".localized()
+        }
+        
         self.items = [
             .general: [
                 (title: "Skip password".localized(), subtitle: "Don't ask for password again".localized(), hasAccessory: false, hasSwitch: true),
                 (title: "Refresh from the server".localized(), subtitle: "Refresh from the server".localized(), hasAccessory: false, hasSwitch: false),
-                (title: "Select Language".localized(), subtitle: "English".localized(), hasAccessory: true, hasSwitch: false),
+                (title: "Select Language".localized(), subtitle: languageSelected, hasAccessory: true, hasSwitch: false),
                 (title: "Import your data".localized(), subtitle: "Import your data".localized(), hasAccessory: false, hasSwitch: false),
-                (title: "Export your data", subtitle: "Export your data", hasAccessory: false, hasSwitch: false)
+                (title: "Export your data".localized(), subtitle: "Export your data".localized(), hasAccessory: false, hasSwitch: false)
             ],
             .feed: [
                 (title: "Refresh interval for custom feeds".localized(), subtitle: "30 min".localized(), hasAccessory: true, hasSwitch: false),

@@ -13,7 +13,7 @@ class SettingSourceViewModel: SettingCellProtocol {
     
     //
     // MARK: - Properties
-    var items: [SettingItem]
+    var items: [SettingItem]!
     
     //
     // MARK: - Init

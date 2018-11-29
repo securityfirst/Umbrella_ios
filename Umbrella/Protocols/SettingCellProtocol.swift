@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SettingCellProtocol {
-    var items: [SettingItem] { get set }
+    var items: [SettingItem]! { get set }
 }

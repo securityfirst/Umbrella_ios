@@ -78,7 +78,7 @@ class DemoSettingViewController: UIViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
                 self.present(controller, animated: false, completion: nil)
-                NotificationCenter.default.post(name: Notification.Name("ResetDemo"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("ResetRepository"), object: nil)
                 self.view.isHidden = true
                 self.view.endEditing(true)
 //                exit(0)

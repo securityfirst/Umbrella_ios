@@ -15,6 +15,7 @@ class SettingCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var optionSwitch: UISwitch!
+    @IBOutlet weak var optionWidthConstraint: NSLayoutConstraint!
     
     //
     // MARK: - Life cycle
@@ -42,6 +43,7 @@ class SettingCell: UITableViewCell {
             self.subtitleLabel.text = item.subtitle
             self.accessoryType = item.hasAccessory ? .disclosureIndicator : .none
             optionSwitch.isHidden = !item.hasSwitch
+            optionWidthConstraint.constant = !item.hasSwitch ? 0 : 49
             optionSwitch.tag = tableSection.rawValue
             
             // Skip password
@@ -64,13 +66,13 @@ class SettingCell: UITableViewCell {
                     
                     let minOrHours = Int(interval!)! / 60
                     if minOrHours >= 1 {
-                        self.subtitleLabel.text = "\(minOrHours) hour(s)"
+                        self.subtitleLabel.text = "\(minOrHours) \("hour(s)".localized())"
                     } else {
                         self.subtitleLabel.text = "\(interval!) min"
                     }
                     
                 } else {
-                    self.subtitleLabel.text = "Manually"
+                    self.subtitleLabel.text = "Manually".localized()
                 }
             }
         }
