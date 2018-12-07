@@ -83,6 +83,14 @@
 "Favourites" = "最爱";
 "My Checklists" = "我的检查表";
 "Total done" = "完成總計";
+"Overview" = "Overview";
+"Custom" = "Custom";
+"Go to lessons and discover recommenced checklists or create your own custom checklists." = "Go to lessons and discover recommenced checklists or create your own custom checklists.";
+"New Checklist" = "New Checklist";
+"Name of Checklist" = "Name of Checklist";
+"Button + to add a new custom checklist." = "Button + to add a new custom checklist.";
+"Delete" = "Delete";
+"Title" = "Title";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "您的密碼長度必須至少為8個字符，並且必須至少包含一個數字和一個大寫字母。";

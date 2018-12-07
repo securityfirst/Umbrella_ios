@@ -30,10 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         longPressGesture.numberOfTouchesRequired = 2
         getWindow().addGestureRecognizer(longPressGesture)
         
-        let gitHubDemo = UserDefaults.standard.object(forKey: "gitHubDemo")
-        if gitHubDemo == nil {
-//            UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "gitHubDemo")
-            UserDefaults.standard.set("https://github.com/lucascorrea/umbrella-content", forKey: "gitHubDemo")
+        let repository = UserDefaults.standard.object(forKey: "repository")
+        if repository == nil {
+            UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "repository")
         }
         
         let language = UserDefaults.standard.object(forKey: "Language")

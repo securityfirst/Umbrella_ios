@@ -54,8 +54,8 @@ class SettingsViewController: UIViewController {
         let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
         _ = umbrellaDatabase.dropTables()
         
-        let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
-        let gitManager = GitManager(url: URL(string: gitHubDemo)!, pathDirectory: .documentDirectory)
+        let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
+        let gitManager = GitManager(url: URL(string: repository)!, pathDirectory: .documentDirectory)
         
         do {
             try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)

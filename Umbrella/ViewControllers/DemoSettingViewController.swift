@@ -58,11 +58,11 @@ class DemoSettingViewController: UIViewController {
         
         gitText.text = "https://github.com/"
         
-        let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
+        let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
         
-        if gitHubDemo != url {
+        if repository != url {
          
-            UserDefaults.standard.set(url, forKey: "gitHubDemo")
+            UserDefaults.standard.set(url, forKey: "repository")
             UserDefaults.standard.set(false, forKey: "acceptTerm")
             UserDefaults.standard.synchronize()
         

@@ -46,10 +46,10 @@ class LoadingViewController: UIViewController {
 
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
             messageLabel.text = "Clone of the tent".localized()
-            let gitHubDemo = (UserDefaults.standard.object(forKey: "gitHubDemo") as? String)!
+            let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
 //            loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
-            loadingViewModel.clone(witUrl: URL(string: gitHubDemo)!, completion: { gitProgress in
+            loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
                 DispatchQueue.main.async {
                     self.progressView.setProgress(gitProgress/2.0, animated: true)
                 }

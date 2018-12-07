@@ -94,6 +94,10 @@
 		A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */; };
 		A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */; };
 		A0A364852195C11F00448A7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A364842195C11E00448A7A /* SettingsViewController.swift */; };
+		A0A391A521B18D5D0067A04D /* NewChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391A421B18D5D0067A04D /* NewChecklistViewController.swift */; };
+		A0A391A721B546AA0067A04D /* NewChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391A621B546AA0067A04D /* NewChecklistViewModel.swift */; };
+		A0A391A921B54C6D0067A04D /* BaseChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391A821B54C6C0067A04D /* BaseChecklistViewController.swift */; };
+		A0A391AB21B54CA50067A04D /* CustomChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391AA21B54CA50067A04D /* CustomChecklistViewController.swift */; };
 		A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */; };
 		A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */; };
 		A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */; };
@@ -103,6 +107,11 @@
 		A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */; };
 		A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */; };
 		A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1567216E577F003753E5 /* TitleLessonView.swift */; };
+		A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */; };
+		A0AE0C7021B83C51005EA2A8 /* CustomChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C6F21B83C51005EA2A8 /* CustomChecklist.swift */; };
+		A0AE0C7221B83C62005EA2A8 /* CustomCheckItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C7121B83C62005EA2A8 /* CustomCheckItem.swift */; };
+		A0AE0C7421B8420C005EA2A8 /* CustomChecklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C7321B8420C005EA2A8 /* CustomChecklistCell.swift */; };
+		A0AE0C7621B84D2E005EA2A8 /* NewCheckItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C7521B84D2E005EA2A8 /* NewCheckItemCell.swift */; };
 		A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A27214BDC600019F09B /* DifficultyCell.swift */; };
 		A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */; };
 		A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */; };
@@ -250,6 +259,10 @@
 		A0F738E1218C896400F63D7C /* SegmentCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738E0218C896400F63D7C /* SegmentCellSpec.swift */; };
 		A0F738E3218C897200F63D7C /* TitleLessonViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738E2218C897200F63D7C /* TitleLessonViewSpec.swift */; };
 		A0F738E5218C8AF900F63D7C /* FeedCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F738E4218C8AF900F63D7C /* FeedCellSpec.swift */; };
+		A0FDDF5D21BA8B5A0078FCAA /* CustomChecklistChecked.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF5C21BA8B5A0078FCAA /* CustomChecklistChecked.swift */; };
+		A0FDDF5F21BA94780078FCAA /* CustomChecklistDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */; };
+		A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */; };
+		A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -394,6 +407,10 @@
 		A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
 		A0A364842195C11E00448A7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A0A391A421B18D5D0067A04D /* NewChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChecklistViewController.swift; sourceTree = "<group>"; };
+		A0A391A621B546AA0067A04D /* NewChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChecklistViewModel.swift; sourceTree = "<group>"; };
+		A0A391A821B54C6C0067A04D /* BaseChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChecklistViewController.swift; sourceTree = "<group>"; };
+		A0A391AA21B54CA50067A04D /* CustomChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewController.swift; sourceTree = "<group>"; };
 		A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewController.swift; sourceTree = "<group>"; };
 		A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCheckListCell.swift; sourceTree = "<group>"; };
 		A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewModel.swift; sourceTree = "<group>"; };
@@ -403,6 +420,11 @@
 		A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideScrollProtocol.swift; sourceTree = "<group>"; };
 		A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideScrollLessonView.swift; sourceTree = "<group>"; };
 		A0AA1567216E577F003753E5 /* TitleLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLessonView.swift; sourceTree = "<group>"; };
+		A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewModel.swift; sourceTree = "<group>"; };
+		A0AE0C6F21B83C51005EA2A8 /* CustomChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklist.swift; sourceTree = "<group>"; };
+		A0AE0C7121B83C62005EA2A8 /* CustomCheckItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckItem.swift; sourceTree = "<group>"; };
+		A0AE0C7321B8420C005EA2A8 /* CustomChecklistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistCell.swift; sourceTree = "<group>"; };
+		A0AE0C7521B84D2E005EA2A8 /* NewCheckItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckItemCell.swift; sourceTree = "<group>"; };
 		A0AE1A27214BDC600019F09B /* DifficultyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyCell.swift; sourceTree = "<group>"; };
 		A0AE1A29214BEFC50019F09B /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 		A0AE1A2B214BF6690019F09B /* DifficultyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewModel.swift; sourceTree = "<group>"; };
@@ -557,6 +579,10 @@
 		A0F738E0218C896400F63D7C /* SegmentCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCellSpec.swift; sourceTree = "<group>"; };
 		A0F738E2218C897200F63D7C /* TitleLessonViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLessonViewSpec.swift; sourceTree = "<group>"; };
 		A0F738E4218C8AF900F63D7C /* FeedCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellSpec.swift; sourceTree = "<group>"; };
+		A0FDDF5C21BA8B5A0078FCAA /* CustomChecklistChecked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistChecked.swift; sourceTree = "<group>"; };
+		A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistDao.swift; sourceTree = "<group>"; };
+		A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckItemDao.swift; sourceTree = "<group>"; };
+		A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistCheckedDao.swift; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -836,6 +862,16 @@
 			path = SideScrollLesson;
 			sourceTree = "<group>";
 		};
+		A0AE0C6E21B83C3B005EA2A8 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				A0AE0C6F21B83C51005EA2A8 /* CustomChecklist.swift */,
+				A0AE0C7121B83C62005EA2A8 /* CustomCheckItem.swift */,
+				A0FDDF5C21BA8B5A0078FCAA /* CustomChecklistChecked.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		A0B0AA2B20EBA50B00933759 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -886,7 +922,10 @@
 		A0B0AA8220EE709100933759 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				A0A391A821B54C6C0067A04D /* BaseChecklistViewController.swift */,
 				A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */,
+				A0A391AA21B54CA50067A04D /* CustomChecklistViewController.swift */,
+				A0A391A421B18D5D0067A04D /* NewChecklistViewController.swift */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";
@@ -989,6 +1028,9 @@
 				A0AE1A31214FE5A90019F09B /* DifficultyRuleDao.swift */,
 				A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */,
 				A02404862162327F004057B5 /* FavouriteSegmentDao.swift */,
+				A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */,
+				A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */,
+				A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -1213,6 +1255,8 @@
 				A0D19D80215E4A9600B5F5FE /* ChecklistReviewCell.swift */,
 				A0D19D84215E51A000B5F5FE /* ChecklistReviewHeaderView.swift */,
 				A0D19D86215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib */,
+				A0AE0C7321B8420C005EA2A8 /* CustomChecklistCell.swift */,
+				A0AE0C7521B84D2E005EA2A8 /* NewCheckItemCell.swift */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";
@@ -1264,6 +1308,8 @@
 			isa = PBXGroup;
 			children = (
 				A0D19D7E215E4A6300B5F5FE /* ChecklistViewModel.swift */,
+				A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */,
+				A0A391A621B546AA0067A04D /* NewChecklistViewModel.swift */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";
@@ -1319,6 +1365,7 @@
 			children = (
 				A075248920C824E200E91A4A /* CheckList.swift */,
 				A0FFE50320CEEB1B0026C0C7 /* CheckItem.swift */,
+				A0AE0C6E21B83C3B005EA2A8 /* Custom */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";
@@ -1699,17 +1746,21 @@
 				A0C404BC21A428B70068BDDD /* SettingIntervalViewController.swift in Sources */,
 				A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */,
 				A0F6C39921A42F0900A0FE85 /* SettingIntervalViewModel.swift in Sources */,
+				A0A391A721B546AA0067A04D /* NewChecklistViewModel.swift in Sources */,
 				A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */,
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
+				A0AE0C7221B83C62005EA2A8 /* CustomCheckItem.swift in Sources */,
 				A0F6C3A521A569C100A0FE85 /* SettingSourcesViewController.swift in Sources */,
 				A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */,
 				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
 				A0F6C39721A42DCB00A0FE85 /* SettingItemCell.swift in Sources */,
 				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
 				A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */,
+				A0FDDF5D21BA8B5A0078FCAA /* CustomChecklistChecked.swift in Sources */,
 				A0AA1561216E4686003753E5 /* ReviewLessonViewController.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */,
+				A0A391AB21B54CA50067A04D /* CustomChecklistViewController.swift in Sources */,
 				A075248A20C824E200E91A4A /* CheckList.swift in Sources */,
 				A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */,
 				A0C404A821A2C27B0068BDDD /* CustomPassword.swift in Sources */,
@@ -1726,18 +1777,22 @@
 				A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */,
 				A0CC7B572137F65800C28C3B /* RssViewModel.swift in Sources */,
 				A0D8BCB320E508190052028F /* InputFileReader.swift in Sources */,
+				A0A391A921B54C6D0067A04D /* BaseChecklistViewController.swift in Sources */,
 				A0C6CE9E20B5AB3B005BC111 /* GitManager.swift in Sources */,
 				A0B9787120ADA12B00A287C8 /* TableProtocol.swift in Sources */,
 				A0F6C3A721A569FB00A0FE85 /* SettingSourceViewModel.swift in Sources */,
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
 				A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */,
+				A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
 				A0B8CC7121AC076600AEAF50 /* SettingLanguageViewModel.swift in Sources */,
 				A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */,
+				A0AE0C7021B83C51005EA2A8 /* CustomChecklist.swift in Sources */,
 				A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
+				A0AE0C7421B8420C005EA2A8 /* CustomChecklistCell.swift in Sources */,
 				A0F6C39B21A4421100A0FE85 /* SettingItem.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
 				A02115B3213EB331004B5B73 /* WebViewModel.swift in Sources */,
@@ -1763,6 +1818,7 @@
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
+				A0FDDF5F21BA94780078FCAA /* CustomChecklistDao.swift in Sources */,
 				A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */,
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
@@ -1775,9 +1831,11 @@
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
 				A006B5D421721AAF00B68309 /* DemoSettingViewController.swift in Sources */,
 				A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */,
+				A0AE0C7621B84D2E005EA2A8 /* NewCheckItemCell.swift in Sources */,
 				A0AA1563216E4771003753E5 /* ReviewLessonViewModel.swift in Sources */,
 				A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */,
 				A0CC7B5A2138048700C28C3B /* ImageDownload.swift in Sources */,
+				A0A391A521B18D5D0067A04D /* NewChecklistViewController.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
 				A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
@@ -1813,6 +1871,7 @@
 				A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */,
 				A0AE1A30214FE3AF0019F09B /* DifficultyRule.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
+				A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */,
 				A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
 				A0A364852195C11F00448A7A /* SettingsViewController.swift in Sources */,
@@ -1824,6 +1883,7 @@
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
 				A0C404AA21A2C4980068BDDD /* LoginViewController.swift in Sources */,
+				A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,

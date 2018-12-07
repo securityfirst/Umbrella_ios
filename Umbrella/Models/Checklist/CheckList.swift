@@ -93,7 +93,7 @@ class CheckList: Codable, TableProtocol, NSCopying {
     
     //
     // MARK: - TableProtocol
-    static var table: String = "check_list"
+    static var table: String = "checklist"
     var tableName: String {
         return CheckList.table
     }

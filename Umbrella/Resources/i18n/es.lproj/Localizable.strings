@@ -83,6 +83,14 @@
 "Favourites" = "Favoritos";
 "My Checklists" = "Mis listas de comprobación";
 "Total done" = "Total hecho";
+"Overview" = "Visión general";
+"Custom" = "Personalizado";
+"Go to lessons and discover recommenced checklists or create your own custom checklists." = "Vaya a las lecciones y descubra listas de verificación recomenzadas o cree sus propias listas de verificación personalizadas.";
+"New Checklist" = "Nueva lista de verificación";
+"Name of Checklist" = "Nombre de la lista de verificación";
+"Button + to add a new custom checklist." = "Botón + para agregar una nueva lista de verificación personalizada.";
+"Delete" = "Borrar";
+"Title" = "Título";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Su contraseña debe tener al menos 8 caracteres y debe contener al menos un dígito y una letra mayúscula.";

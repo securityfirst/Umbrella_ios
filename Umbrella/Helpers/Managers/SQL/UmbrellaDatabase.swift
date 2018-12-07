@@ -28,6 +28,10 @@ struct UmbrellaDatabase {
     let checklistCheckedDao: ChecklistCheckedDao
     let favouriteSegmentDao: FavouriteSegmentDao
     
+    let customChecklistDao: CustomChecklistDao
+    let customCheckItemDao: CustomCheckItemDao
+    let customChecklistCheckedDao: CustomChecklistCheckedDao
+    
     static var languagesStatic: [Language] = [Language]()
     
     var languages: [Language]
@@ -61,7 +65,9 @@ struct UmbrellaDatabase {
         self.rssItemDao = RssItemDao(sqlProtocol: self.sqlProtocol)
         self.checklistCheckedDao = ChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
         self.favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlProtocol)
-        
+        self.customChecklistDao = CustomChecklistDao(sqlProtocol: self.sqlProtocol)
+        self.customCheckItemDao = CustomCheckItemDao(sqlProtocol: self.sqlProtocol)
+        self.customChecklistCheckedDao = CustomChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
     }
     
     //
@@ -83,8 +89,11 @@ struct UmbrellaDatabase {
         let rssItemSuccess = self.rssItemDao.createTable()
         let checklistCheckedSuccess = self.checklistCheckedDao.createTable()
         let favouriteSegmentSuccess = self.favouriteSegmentDao.createTable()
+        let customChecklistSuccess = self.customChecklistDao.createTable()
+        let customCheckItemSuccess = self.customCheckItemDao.createTable()
+        let customChecklistCheckedSuccess = self.customChecklistCheckedDao.createTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess {
             return true
         } else {
             return false
@@ -95,7 +104,9 @@ struct UmbrellaDatabase {
     ///
     /// - Returns: Bool
     func dropTables() -> Bool {
-        
+        let customChecklistCheckedSuccess = self.customChecklistCheckedDao.createTable()
+        let customCheckItemSuccess = self.customCheckItemDao.createTable()
+        let customChecklistSuccess = self.customChecklistDao.createTable()
         let rssItemSuccess = self.rssItemDao.dropTable()
         let checklistCheckedSuccess = self.checklistCheckedDao.dropTable()
         let favouriteSegmentSuccess = self.favouriteSegmentDao.dropTable()
@@ -111,7 +122,7 @@ struct UmbrellaDatabase {
         let categorySuccess = self.categoryDao.dropTable()
         let languageSuccess = self.languageDao.dropTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess {
             return true
         } else {
             return false

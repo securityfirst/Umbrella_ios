@@ -39,7 +39,7 @@ class LessonCheckListViewModel {
         _ = self.checklistCheckedDao.insert(checklistChecked)
     }
     
-    /// Insert a new ChecklistChecked into the database
+    /// Remove a ChecklistChecked into the database
     ///
     /// - Parameter checklistChecked: ChecklistChecked
     func remove(_ checklistChecked: ChecklistChecked) {

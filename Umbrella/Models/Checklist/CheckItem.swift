@@ -46,7 +46,7 @@ class CheckItem: Codable, TableProtocol, NSCopying {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
-        case checkListId = "check_list_id"
+        case checkListId = "checklist_id"
         case name = "check"
         case label = "label"
         case isLabel = "is_label"
@@ -115,7 +115,7 @@ class CheckItem: Codable, TableProtocol, NSCopying {
             Column(name: "id", type: .primaryKey),
             Column(name: "name", type: .string),
             Column(name: "is_label", type: .int),
-            Column(foreignKey: ForeignKey(key: "check_list_id", table: Table(CheckList.table), tableKey: "id"))
+            Column(foreignKey: ForeignKey(key: "checklist_id", table: Table(CheckList.table), tableKey: "id"))
         ]
         return array
     }

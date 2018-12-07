@@ -45,43 +45,43 @@ class MarkdownViewController: UIViewController {
             self.title = segment.name
             
             //FIXME: Just for demo
-//            let gitHubDemo = UserDefaults.standard.object(forKey: "gitHubDemo")
-//            segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: "\(gitHubDemo!)/raw/master")
-//
-//            self.markdownView.load(markdown: segment.content, enableImage: true)
-//            self.markdownView.onRendered = { [weak self] height in
-//                self?.markdownView.isHidden = false
-//                self?.view.setNeedsLayout()
-//            }
-            
-            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                var path = documentsPathURL.absoluteString
-                path.removeLast()
-                
-                //I have tried with file:// it same problem
-                path = path.replacingOccurrences(of: "file://", with: "")
-                
-                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
+            let repository = UserDefaults.standard.object(forKey: "repository")
+            segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: "\(repository!)/raw/master")
 
-                print("Content: \(String(describing: segment.content)) \n\n")
-                print("Path Image: \(path)/en/communications/making-a-call/beginner/call1.png \n")
-                
-                // The path is the same, I've added this imageView to test. In the simulator work both, but not in the device. I have tested a different 4 frameworks the same problem.
-                self.imageView.image = UIImage(contentsOfFile: "\(path)/en/communications/making-a-call/beginner/call1.png")
-                
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: "\(path)/en/communications/making-a-call/beginner/call1.png") {
-                    print("FILE AVAILABLE")
-                } else {
-                    print("FILE NOT AVAILABLE")
-                }
-
-                self.markdownView.load(markdown: segment.content, enableImage: true)
-                self.markdownView.onRendered = { [weak self] height in
-                    self?.markdownView.isHidden = false
-                    self?.view.setNeedsLayout()
-                }
+            self.markdownView.load(markdown: segment.content, enableImage: true)
+            self.markdownView.onRendered = { [weak self] height in
+                self?.markdownView.isHidden = false
+                self?.view.setNeedsLayout()
             }
+            
+//            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+//                var path = documentsPathURL.absoluteString
+//                path.removeLast()
+//
+//                //I have tried with file:// it same problem
+//                path = path.replacingOccurrences(of: "file://", with: "")
+//
+//                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
+//
+//                print("Content: \(String(describing: segment.content)) \n\n")
+//                print("Path Image: \(path)/en/communications/making-a-call/beginner/call1.png \n")
+//
+//                // The path is the same, I've added this imageView to test. In the simulator work both, but not in the device. I have tested a different 4 frameworks the same problem.
+//                self.imageView.image = UIImage(contentsOfFile: "\(path)/en/communications/making-a-call/beginner/call1.png")
+//
+//                let fileManager = FileManager.default
+//                if fileManager.fileExists(atPath: "\(path)/en/communications/making-a-call/beginner/call1.png") {
+//                    print("FILE AVAILABLE")
+//                } else {
+//                    print("FILE NOT AVAILABLE")
+//                }
+//
+//                self.markdownView.load(markdown: segment.content, enableImage: true)
+//                self.markdownView.onRendered = { [weak self] height in
+//                    self?.markdownView.isHidden = false
+//                    self?.view.setNeedsLayout()
+//                }
+//            }
         }
     }
 }

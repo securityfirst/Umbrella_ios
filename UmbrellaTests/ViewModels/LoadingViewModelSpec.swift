@@ -22,7 +22,7 @@ class LoadingViewModelSpec: QuickSpec {
             beforeEach {
                 
                 let url = "https://github.com/klaidliadon/umbrella-content"
-                UserDefaults.standard.set(url, forKey: "gitHubDemo")
+                UserDefaults.standard.set(url, forKey: "repository")
                 UserDefaults.standard.synchronize()
             }
             

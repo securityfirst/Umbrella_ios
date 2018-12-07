@@ -18,19 +18,20 @@ class ChecklistViewController: UIViewController {
         return checklistViewModel
     }()
     
+    @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var checklistReviewTableView: UITableView!
     
     //
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.title = "Checklists".localized()
+        self.emptyLabel?.text = "Go to lessons and discover recommenced checklists or create your own custom checklists.".localized()
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateLanguage()
         self.checklistReviewTableView?.register(ChecklistReviewHeaderView.nib, forHeaderFooterViewReuseIdentifier: ChecklistReviewHeaderView.identifier)
     }
     
@@ -38,6 +39,10 @@ class ChecklistViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.checklistViewModel.reportOfItemsChecked()
+        
+        self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0)
+        self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0)
+        
         self.checklistReviewTableView.reloadData()
     }
     
@@ -50,6 +55,7 @@ class ChecklistViewController: UIViewController {
     
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
+        self.emptyLabel.text = "Go to lessons and discover recommenced checklists or create your own custom checklists.".localized()
         self.checklistReviewTableView?.reloadData()
     }
 }
