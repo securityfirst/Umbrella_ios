@@ -165,30 +165,45 @@ class ReviewLessonViewController: UIViewController {
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
         var checkItemChecked = ""
         
-        let viewController = self.pages.filter { $0 is LessonCheckListViewController }.first
-        if let viewController = viewController {
-            let controller = (viewController as? LessonCheckListViewController)!
+        var objectsToShare:[Any] = [Any]()
+        let viewController = self.pages[Int(currentPage)]
+        
+        // MarkdownViewController
+        if viewController is MarkdownViewController {
+            let controller = (viewController as? MarkdownViewController)!
             
+            let name = controller.markdownViewModel.segment!.name!.components(separatedBy: .whitespacesAndNewlines).joined()
+            let fm = FileManager.default
+            guard let pdfURL = fm.documentsURL?.appendingPathComponent("\(name).pdf") else { return }
+            
+            let renderer = HTML2PDFRenderer()
+            renderer.render(webView: controller.markdownView!.webView!, toPDF: pdfURL, paperSize: .a4)
+            objectsToShare = [pdfURL]
+            
+        }
+        // LessonCheckListViewController
+        else if viewController is LessonCheckListViewController {
+            let controller = (viewController as? LessonCheckListViewController)!
             for checkItem in (controller.lessonCheckListViewModel.checklist?.items)! {
                 checkItemChecked.append("\(checkItem.checked ? "✓" : "✗") \(checkItem.name)\n")
             }
-            
-            let objectsToShare = [checkItemChecked]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
-            //New Excluded Activities Code
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
-            
-            activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-                if !completed {
-                    // User canceled
-                    return
-                }
-                // User completed activity
-            }
-            
-            self.present(activityVC, animated: true, completion: nil)
+            objectsToShare = [checkItemChecked]
         }
+   
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        //New Excluded Activities Code
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+        
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                return
+            }
+            // User completed activity
+        }
+        
+        self.present(activityVC, animated: true, completion: nil)
     }
 }
 

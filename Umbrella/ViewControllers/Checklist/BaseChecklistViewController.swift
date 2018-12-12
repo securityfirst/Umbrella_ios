@@ -11,6 +11,8 @@ import Localize_Swift
 
 class BaseChecklistViewController: UIViewController {
     
+    //
+    // MARK: - Properties
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var contentView: UIView!
     var currentViewController: UIViewController?
@@ -52,6 +54,7 @@ class BaseChecklistViewController: UIViewController {
     //
     // MARK: - Functions
     
+    /// Update language
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.navigationItem.title = "Checklists".localized()
@@ -60,8 +63,11 @@ class BaseChecklistViewController: UIViewController {
         
     }
     
+    /// Display current ViewController by tabIndex
+    ///
+    /// - Parameter tabIndex: Int
     func displayCurrentTab(_ tabIndex: Int) {
-        if let viewController = viewControllerForSelectedSegmentIndex(tabIndex) {
+        if let viewController = viewControllerForSelectedIndex(tabIndex) {
             self.addChild(viewController)
             viewController.didMove(toParent: self)
             viewController.view.frame = self.contentView.bounds
@@ -70,7 +76,11 @@ class BaseChecklistViewController: UIViewController {
         }
     }
     
-    func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
+    /// Select viewController
+    ///
+    /// - Parameter index: Int
+    /// - Returns: UIViewController
+    func viewControllerForSelectedIndex(_ index: Int) -> UIViewController? {
         var viewController: UIViewController?
         switch index {
         case 0 :

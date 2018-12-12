@@ -53,6 +53,7 @@ class ChecklistViewController: UIViewController {
     //
     // MARK: - Functions
     
+    /// Update Language
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.emptyLabel.text = "Go to lessons and discover recommenced checklists or create your own custom checklists.".localized()

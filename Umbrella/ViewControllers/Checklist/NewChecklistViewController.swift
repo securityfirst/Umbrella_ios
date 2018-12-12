@@ -21,6 +21,8 @@ class NewChecklistViewController: UIViewController {
     @IBOutlet weak var newCheckItemTableView: UITableView!
     var editIndexPath: IndexPath = IndexPath(row: -1, section: 0)
     
+    //
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +48,7 @@ class NewChecklistViewController: UIViewController {
     //
     // MARK: - Functions
     
+    /// Save checklist
     func saveChecklist() {
         self.newChecklistViewModel.customChecklist.items.forEach { customCheckItem in
             
@@ -67,6 +70,7 @@ class NewChecklistViewController: UIViewController {
         }
     }
     
+    /// Update Language
     @objc func updateLanguage() {
         self.newCheckItemTableView?.reloadData()
     }

@@ -263,6 +263,12 @@
 		A0FDDF5F21BA94780078FCAA /* CustomChecklistDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */; };
 		A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */; };
 		A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */; };
+		A0FDDF6B21BE8B2A0078FCAA /* PDFPaperSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6521BE8B280078FCAA /* PDFPaperSize.swift */; };
+		A0FDDF6C21BE8B2A0078FCAA /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6621BE8B290078FCAA /* SwiftyTimer.swift */; };
+		A0FDDF6D21BE8B2A0078FCAA /* HTMLPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6721BE8B290078FCAA /* HTMLPDFRenderer.swift */; };
+		A0FDDF6E21BE8B2A0078FCAA /* UIPrintPageRenderer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6821BE8B290078FCAA /* UIPrintPageRenderer-Extensions.swift */; };
+		A0FDDF6F21BE8B2A0078FCAA /* FileManager-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6921BE8B2A0078FCAA /* FileManager-Extensions.swift */; };
+		A0FDDF7021BE8B2A0078FCAA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6A21BE8B2A0078FCAA /* Log.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -583,6 +589,12 @@
 		A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistDao.swift; sourceTree = "<group>"; };
 		A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckItemDao.swift; sourceTree = "<group>"; };
 		A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistCheckedDao.swift; sourceTree = "<group>"; };
+		A0FDDF6521BE8B280078FCAA /* PDFPaperSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPaperSize.swift; sourceTree = "<group>"; };
+		A0FDDF6621BE8B290078FCAA /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
+		A0FDDF6721BE8B290078FCAA /* HTMLPDFRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLPDFRenderer.swift; sourceTree = "<group>"; };
+		A0FDDF6821BE8B290078FCAA /* UIPrintPageRenderer-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPrintPageRenderer-Extensions.swift"; sourceTree = "<group>"; };
+		A0FDDF6921BE8B2A0078FCAA /* FileManager-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-Extensions.swift"; sourceTree = "<group>"; };
+		A0FDDF6A21BE8B2A0078FCAA /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -1140,6 +1152,7 @@
 				A0CC7B592138048700C28C3B /* ImageDownload.swift */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
+				A0FDDF6421BE8B190078FCAA /* HTMLPDFRenderer */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1346,6 +1359,19 @@
 				A0038130210741B500CDA44D /* SingleChoiceCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A0FDDF6421BE8B190078FCAA /* HTMLPDFRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				A0FDDF6921BE8B2A0078FCAA /* FileManager-Extensions.swift */,
+				A0FDDF6721BE8B290078FCAA /* HTMLPDFRenderer.swift */,
+				A0FDDF6A21BE8B2A0078FCAA /* Log.swift */,
+				A0FDDF6521BE8B280078FCAA /* PDFPaperSize.swift */,
+				A0FDDF6621BE8B290078FCAA /* SwiftyTimer.swift */,
+				A0FDDF6821BE8B290078FCAA /* UIPrintPageRenderer-Extensions.swift */,
+			);
+			path = HTMLPDFRenderer;
 			sourceTree = "<group>";
 		};
 		A0FFE4FB20CEEA660026C0C7 /* Form */ = {
@@ -1741,6 +1767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A002B6412173975100C180E9 /* FeedItem.swift in Sources */,
+				A0FDDF7021BE8B2A0078FCAA /* Log.swift in Sources */,
 				A0D19D81215E4A9600B5F5FE /* ChecklistReviewCell.swift in Sources */,
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
 				A0C404BC21A428B70068BDDD /* SettingIntervalViewController.swift in Sources */,
@@ -1787,6 +1814,7 @@
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
 				A0B8CC7121AC076600AEAF50 /* SettingLanguageViewModel.swift in Sources */,
 				A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */,
+				A0FDDF6F21BE8B2A0078FCAA /* FileManager-Extensions.swift in Sources */,
 				A0AE0C7021B83C51005EA2A8 /* CustomChecklist.swift in Sources */,
 				A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
@@ -1810,6 +1838,8 @@
 				A0AE1A2E214FE0370019F09B /* SegmentViewController.swift in Sources */,
 				A0CC7B552137F57400C28C3B /* ListRssViewModel.swift in Sources */,
 				A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */,
+				A0FDDF6D21BE8B2A0078FCAA /* HTMLPDFRenderer.swift in Sources */,
+				A0FDDF6B21BE8B2A0078FCAA /* PDFPaperSize.swift in Sources */,
 				A0D6386E21219D6B009F1151 /* UIAlertViewController+Ext.swift in Sources */,
 				A0038131210741B500CDA44D /* SingleChoiceCell.swift in Sources */,
 				A0F5B262216FB0DB008B2B6A /* IntervalViewController.swift in Sources */,
@@ -1863,6 +1893,7 @@
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
 				A02404872162327F004057B5 /* FavouriteSegmentDao.swift in Sources */,
+				A0FDDF6E21BE8B2A0078FCAA /* UIPrintPageRenderer-Extensions.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
 				A08486892150018B0099D669 /* SegmentViewModel.swift in Sources */,
 				A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */,
@@ -1885,6 +1916,7 @@
 				A0C404AA21A2C4980068BDDD /* LoginViewController.swift in Sources */,
 				A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
+				A0FDDF6C21BE8B2A0078FCAA /* SwiftyTimer.swift in Sources */,
 				A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0F5B2662170CAC6008B2B6A /* SourceCell.swift in Sources */,

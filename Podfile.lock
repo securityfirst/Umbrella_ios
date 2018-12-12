@@ -27,7 +27,7 @@ DEPENDENCIES:
   - FeedKit (~> 8.0)
   - Files (from `https://github.com/clayellis/Files.git`)
   - Localize-Swift (~> 2.0)
-  - MarkdownView
+  - MarkdownView (from `https://github.com/lucascorrea/MarkdownView.git`)
   - Nimble
   - Quick
   - SQLite.swift/SQLCipher (from `https://github.com/stephencelis/SQLite.swift.git`)
@@ -41,7 +41,6 @@ SPEC REPOS:
     - Fabric
     - FeedKit
     - Localize-Swift
-    - MarkdownView
     - Nimble
     - Quick
     - SQLCipher
@@ -54,6 +53,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/lucascorrea/BTNavigationDropdownMenu.git
   Files:
     :git: https://github.com/clayellis/Files.git
+  MarkdownView:
+    :git: https://github.com/lucascorrea/MarkdownView.git
   SQLite.swift:
     :git: https://github.com/stephencelis/SQLite.swift.git
 
@@ -64,6 +65,9 @@ CHECKOUT OPTIONS:
   Files:
     :commit: 06f95bd1bf4f8d5f50bc6bb30b808c253acd4c88
     :git: https://github.com/clayellis/Files.git
+  MarkdownView:
+    :commit: 10179d89e8e9336ce56ee1a929dce11ce8307033
+    :git: https://github.com/lucascorrea/MarkdownView.git
   SQLite.swift:
     :commit: d13baed8d0041caa2d7617e4e1f3d50922a0a225
     :git: https://github.com/stephencelis/SQLite.swift.git
@@ -84,6 +88,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
 
-PODFILE CHECKSUM: 9cda133f75f55a94f17b035e70b8adc5cb1d8769
+PODFILE CHECKSUM: 2f8d358ab4d973db585b76cc566cc3a9bd57edea
 
 COCOAPODS: 1.6.0.beta.1

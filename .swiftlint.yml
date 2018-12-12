@@ -19,13 +19,15 @@ force_try:
 
 line_length: 400
 
+cyclomatic_complexity: 12
+
 function_body_length:
-    - 70 # warning
+    - 80 # warning
     - 100 # error
 
 type_body_length:
-  - 300
   - 400
+  - 500
 
 file_length:
   warning: 500

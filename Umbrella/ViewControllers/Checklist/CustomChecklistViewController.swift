@@ -21,6 +21,8 @@ class CustomChecklistViewController: UIViewController {
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var customTableView: UITableView!
     
+    //
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emptyLabel?.text = "Button + to add a new custom checklist.".localized()
@@ -39,6 +41,7 @@ class CustomChecklistViewController: UIViewController {
     
     // MARK: - Functions
     
+    /// Update Language
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.emptyLabel?.text = "Button + to add a new custom checklist.".localized()

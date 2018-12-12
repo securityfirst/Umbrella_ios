@@ -44,7 +44,6 @@ class MarkdownViewController: UIViewController {
         if let segment = self.markdownViewModel.segment {
             self.title = segment.name
             
-            //FIXME: Just for demo
             let repository = UserDefaults.standard.object(forKey: "repository")
             segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: "\(repository!)/raw/master")
 
