@@ -29,8 +29,9 @@ class ReviewLessonViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
-        self.navigationItem.rightBarButtonItem  = modeBarButton
+        
+        let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
+        self.navigationItem.rightBarButtonItem = shareBarButton
     }
     
     override func viewDidAppear(_ animated: Bool) {

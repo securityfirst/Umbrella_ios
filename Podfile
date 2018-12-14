@@ -34,12 +34,12 @@ post_install do |installer_representation|
         end
     end
     
-    installer_representation.pods_project.targets.each do |target|
-        if target.name != 'MarkdownView' && target.name != 'Toast-Swift'
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '4.0'
-            end
-        end
-    end
+#    installer_representation.pods_project.targets.each do |target|
+#        if target.name != 'MarkdownView' && target.name != 'Toast-Swift'
+#            target.build_configurations.each do |config|
+#                config.build_settings['SWIFT_VERSION'] = '4.0'
+#            end
+#        end
+#    end
 end
 

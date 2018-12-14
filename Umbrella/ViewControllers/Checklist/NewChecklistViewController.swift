@@ -34,7 +34,12 @@ class NewChecklistViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
         
-        self.newChecklistViewModel.updateChecklistCheckedOfCustomChecklist(customChecklistId: newChecklistViewModel.customChecklist.id)
+        if newChecklistViewModel.customChecklist != nil {
+            self.newChecklistViewModel.updateChecklistCheckedOfCustomChecklist(customChecklistId: newChecklistViewModel.customChecklist.id)
+        }
+        
+        let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
+        self.navigationItem.rightBarButtonItem = shareBarButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +103,34 @@ class NewChecklistViewController: UIViewController {
             }
         }
     }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func shareAction(_ sender: UIBarButtonItem) {
+        var checkItemChecked = ""
+        var objectsToShare:[Any] = [Any]()
+        
+        for checkItem in self.newChecklistViewModel.customChecklist.items {
+            checkItemChecked.append("\(checkItem.checked ? "✓" : "✗") \(checkItem.name)\n")
+        }
+        objectsToShare = [checkItemChecked]
+        
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        //New Excluded Activities Code
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+        
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                return
+            }
+            // User completed activity
+        }
+        
+        self.present(activityVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -108,6 +141,11 @@ extension NewChecklistViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if self.newChecklistViewModel.customChecklist == nil {
+            return 0
+        }
+        
         return self.newChecklistViewModel.customChecklist.items.count + 1
     }
     

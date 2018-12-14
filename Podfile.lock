@@ -60,7 +60,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BTNavigationDropdownMenu:
-    :commit: a00f15db1cdd6e982c039083c785c7e55057db05
+    :commit: cdaa0fe6f3f5f28114c1658ac080e207756fa938
     :git: https://github.com/lucascorrea/BTNavigationDropdownMenu.git
   Files:
     :commit: 06f95bd1bf4f8d5f50bc6bb30b808c253acd4c88
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
 
-PODFILE CHECKSUM: 2f8d358ab4d973db585b76cc566cc3a9bd57edea
+PODFILE CHECKSUM: 6839163f367c36888b5bfac266956bf5ed227132
 
 COCOAPODS: 1.6.0.beta.1
