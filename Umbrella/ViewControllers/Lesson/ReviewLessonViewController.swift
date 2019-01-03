@@ -178,7 +178,7 @@ class ReviewLessonViewController: UIViewController {
             guard let pdfURL = fm.documentsURL?.appendingPathComponent("\(name).pdf") else { return }
             
             let renderer = HTML2PDFRenderer()
-            renderer.render(webView: controller.markdownView!.webView!, toPDF: pdfURL, paperSize: .a4)
+            renderer.render(webView: controller.markdownWebView, toPDF: pdfURL, paperSize: .a4)
             objectsToShare = [pdfURL]
             
         }

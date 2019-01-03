@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="4352" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -581,32 +581,35 @@ Why do kidnappings occur?</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-WC-Vix">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YtD-Fe-tRe">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Xzf-WO-apc"/>
+                                    <constraint firstAttribute="height" constant="20" id="tO0-HG-HqM"/>
+                                </constraints>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R22-hz-ujc" customClass="MarkdownView" customModule="MarkdownView">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68y-TU-9dv">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bgp-dr-yMF">
-                                <rect key="frame" x="292" y="124" width="86" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QGx-WC-Vix" firstAttribute="centerY" secondItem="P1N-rF-JST" secondAttribute="centerY" id="XPo-30-f4g"/>
-                            <constraint firstItem="QGx-WC-Vix" firstAttribute="centerX" secondItem="P1N-rF-JST" secondAttribute="centerX" id="c6R-Oe-XRN"/>
-                            <constraint firstItem="R22-hz-ujc" firstAttribute="top" secondItem="bao-1i-3hL" secondAttribute="top" id="gRd-i8-Rz1"/>
-                            <constraint firstItem="R22-hz-ujc" firstAttribute="bottom" secondItem="bao-1i-3hL" secondAttribute="bottom" id="kSn-kg-Wvt"/>
-                            <constraint firstItem="R22-hz-ujc" firstAttribute="trailing" secondItem="bao-1i-3hL" secondAttribute="trailing" id="qAa-Vr-qsm"/>
-                            <constraint firstItem="R22-hz-ujc" firstAttribute="leading" secondItem="bao-1i-3hL" secondAttribute="leading" id="tUr-K7-7MS"/>
+                            <constraint firstItem="YtD-Fe-tRe" firstAttribute="centerY" secondItem="P1N-rF-JST" secondAttribute="centerY" id="8ri-mI-vQF"/>
+                            <constraint firstItem="68y-TU-9dv" firstAttribute="leading" secondItem="bao-1i-3hL" secondAttribute="leading" id="AnB-zq-NjE"/>
+                            <constraint firstItem="68y-TU-9dv" firstAttribute="top" secondItem="bao-1i-3hL" secondAttribute="top" id="YsX-Di-p7W"/>
+                            <constraint firstItem="68y-TU-9dv" firstAttribute="trailing" secondItem="bao-1i-3hL" secondAttribute="trailing" id="e8O-Dc-sf9"/>
+                            <constraint firstItem="YtD-Fe-tRe" firstAttribute="centerX" secondItem="P1N-rF-JST" secondAttribute="centerX" id="feM-dr-Efw"/>
+                            <constraint firstItem="bao-1i-3hL" firstAttribute="bottom" secondItem="68y-TU-9dv" secondAttribute="bottom" id="pwK-K3-H5z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bao-1i-3hL"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="bgp-dr-yMF" id="cgM-oh-Nz0"/>
-                        <outlet property="markdownView" destination="R22-hz-ujc" id="3Uy-MQ-hk6"/>
+                        <outlet property="markdownWebView" destination="68y-TU-9dv" id="wRR-q1-gm5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KkO-AR-3zm" userLabel="First Responder" sceneMemberID="firstResponder"/>

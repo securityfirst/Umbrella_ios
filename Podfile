@@ -24,6 +24,8 @@ target 'Umbrella' do
     pod 'Nimble'
     
   end
+  
+  pod 'Down'
 
 end
 

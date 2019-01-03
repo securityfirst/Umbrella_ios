@@ -2,6 +2,7 @@ PODS:
   - BTNavigationDropdownMenu (0.4.4)
   - Crashlytics (3.11.0):
     - Fabric (~> 1.8.0)
+  - Down (0.6.0)
   - Fabric (1.8.0)
   - FeedKit (8.0.0)
   - Files (2.0.1)
@@ -23,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - BTNavigationDropdownMenu (from `https://github.com/lucascorrea/BTNavigationDropdownMenu.git`)
   - Crashlytics
+  - Down
   - Fabric
   - FeedKit (~> 8.0)
   - Files (from `https://github.com/clayellis/Files.git`)
@@ -38,6 +40,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Crashlytics
+    - Down
     - Fabric
     - FeedKit
     - Localize-Swift
@@ -75,6 +78,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BTNavigationDropdownMenu: 4c0b75f83317d300156ffcc8434bf411b05f5cd2
   Crashlytics: 1448070c1d2731ab71ea7c3faf84ac0f69657287
+  Down: f594e719ff2c2d974c42a122fa219813f5fc3c06
   Fabric: 4ac1cdfef3004ccd83ce0959b91eda8a6e37df72
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
   Files: dd0aa68aa068e87c60ec844b13e0a95179e2fb62
@@ -88,6 +92,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
 
-PODFILE CHECKSUM: 6839163f367c36888b5bfac266956bf5ed227132
+PODFILE CHECKSUM: 3f7dec3b6c089723674face9211b20da34bce8cd
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.5.3

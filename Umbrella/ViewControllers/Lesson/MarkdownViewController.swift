@@ -8,26 +8,29 @@
 
 import UIKit
 import MarkdownView
+import WebKit
+import Down
 
 class MarkdownViewController: UIViewController {
     
     //
     // MARK: - Properties
+    
     lazy var markdownViewModel: MarkdownViewModel = {
         let markdownViewModel = MarkdownViewModel()
         return markdownViewModel
     }()
     var isLoading: Bool = false
     
-    @IBOutlet weak var markdownView: MarkdownView!
-    
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var markdownWebView: WKWebView!
+
     
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.markdownView.isHidden = true
+        self.markdownWebView.isHidden = true
+        self.markdownWebView.navigationDelegate = self
     }
     
     //
@@ -44,43 +47,52 @@ class MarkdownViewController: UIViewController {
         if let segment = self.markdownViewModel.segment {
             self.title = segment.name
             
-            let repository = UserDefaults.standard.object(forKey: "repository")
-            segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: "\(repository!)/raw/master")
+//            let repository = UserDefaults.standard.object(forKey: "repository")
+//            segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: "\(repository!)/raw/master")
 
-            self.markdownView.load(markdown: segment.content, enableImage: true)
-            self.markdownView.onRendered = { [weak self] height in
-                self?.markdownView.isHidden = false
-                self?.view.setNeedsLayout()
-            }
-            
-//            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-//                var path = documentsPathURL.absoluteString
-//                path.removeLast()
-//
-//                //I have tried with file:// it same problem
-//                path = path.replacingOccurrences(of: "file://", with: "")
-//
-//                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
-//
-//                print("Content: \(String(describing: segment.content)) \n\n")
-//                print("Path Image: \(path)/en/communications/making-a-call/beginner/call1.png \n")
-//
-//                // The path is the same, I've added this imageView to test. In the simulator work both, but not in the device. I have tested a different 4 frameworks the same problem.
-//                self.imageView.image = UIImage(contentsOfFile: "\(path)/en/communications/making-a-call/beginner/call1.png")
-//
-//                let fileManager = FileManager.default
-//                if fileManager.fileExists(atPath: "\(path)/en/communications/making-a-call/beginner/call1.png") {
-//                    print("FILE AVAILABLE")
-//                } else {
-//                    print("FILE NOT AVAILABLE")
-//                }
-//
-//                self.markdownView.load(markdown: segment.content, enableImage: true)
-//                self.markdownView.onRendered = { [weak self] height in
-//                    self?.markdownView.isHidden = false
-//                    self?.view.setNeedsLayout()
-//                }
+//            self.markdownView.load(markdown: segment.content, enableImage: true)
+//            self.markdownView.onRendered = { [weak self] height in
+//                self?.markdownView.isHidden = false
+//                self?.view.setNeedsLayout()
 //            }
+            
+            
+            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                var path = documentsPathURL.absoluteString
+                path.removeLast()
+
+                path = path.replacingOccurrences(of: "file://", with: "")
+
+                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
+                
+                let html = try! Down(markdownString: segment.content!).toHTML()
+                var docc = documentsPathURL
+                docc.appendPathComponent("index.html")
+                try! html.write(to: docc, atomically: true, encoding: .utf8)
+                
+                self.markdownWebView.loadFileURL(docc, allowingReadAccessTo: documentsPathURL)
+                
+            }
         }
+    }
+}
+
+extension MarkdownViewController : WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        // Callback from javascript: window.webkit.messageHandlers.MyObserver.postMessage(message)
+        let text = message.body as! String;
+        let alertController = UIAlertController(title: "Javascript said:", message: text, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("OK")
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension MarkdownViewController : WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("didFinish navigation:");
+        self.markdownWebView.isHidden = false
     }
 }
