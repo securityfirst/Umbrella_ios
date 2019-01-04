@@ -333,22 +333,54 @@ Why do kidnappings occur?</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63y-lb-ch7" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="132"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-AN-W29">
-                                                            <rect key="frame" x="21" y="48" width="168" height="35"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOJ-nZ-7Kk">
+                                                            <rect key="frame" x="-1" y="0.0" width="350" height="92"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checklist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPo-AN-W29">
+                                                                    <rect key="frame" x="21" y="28" width="168" height="35"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="168" id="AvH-eo-iAm"/>
+                                                                        <constraint firstAttribute="height" constant="35" id="IhR-Vg-90t"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="168" id="AvH-eo-iAm"/>
-                                                                <constraint firstAttribute="height" constant="35" id="IhR-Vg-90t"/>
+                                                                <constraint firstItem="uPo-AN-W29" firstAttribute="leading" secondItem="WOJ-nZ-7Kk" secondAttribute="leading" constant="21" id="NAp-FO-7gw"/>
+                                                                <constraint firstItem="uPo-AN-W29" firstAttribute="top" secondItem="WOJ-nZ-7Kk" secondAttribute="top" constant="28" id="wFd-cA-FM4"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconFavourite" translatesAutoresizingMaskIntoConstraints="NO" id="PZ0-WD-Mb4">
+                                                            <rect key="frame" x="313.5" y="95" width="30" height="31"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="31" id="cta-z3-frv"/>
+                                                                <constraint firstAttribute="width" constant="30" id="p13-mL-mtp"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAx-sY-bP8">
+                                                            <rect key="frame" x="280" y="78" width="70" height="54"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="70" id="X6q-Kj-xO5"/>
+                                                                <constraint firstAttribute="height" constant="54" id="cD7-Bg-arO"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="favouriteAction:" destination="eks-2Q-UHn" eventType="touchUpInside" id="5z4-sk-Gij"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="uPo-AN-W29" firstAttribute="leading" secondItem="63y-lb-ch7" secondAttribute="leading" constant="21" id="4iM-SW-TSl"/>
-                                                        <constraint firstItem="uPo-AN-W29" firstAttribute="top" secondItem="63y-lb-ch7" secondAttribute="top" constant="48" id="QS3-Sh-S5o"/>
-                                                        <constraint firstAttribute="bottom" secondItem="uPo-AN-W29" secondAttribute="bottom" constant="49" id="jq4-gG-qBX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WOJ-nZ-7Kk" secondAttribute="trailing" constant="1" id="4Wz-M9-Iev"/>
+                                                        <constraint firstItem="PZ0-WD-Mb4" firstAttribute="top" secondItem="WOJ-nZ-7Kk" secondAttribute="bottom" constant="3" id="5PB-oS-Y7L"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PZ0-WD-Mb4" secondAttribute="trailing" constant="6.5" id="8k1-Um-Xnf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="NAx-sY-bP8" secondAttribute="bottom" id="K20-VT-n63"/>
+                                                        <constraint firstItem="WOJ-nZ-7Kk" firstAttribute="top" secondItem="63y-lb-ch7" secondAttribute="top" id="Ovd-yZ-by8"/>
+                                                        <constraint firstItem="WOJ-nZ-7Kk" firstAttribute="leading" secondItem="63y-lb-ch7" secondAttribute="leading" constant="-1" id="QLw-qo-JQ2"/>
+                                                        <constraint firstAttribute="bottom" secondItem="PZ0-WD-Mb4" secondAttribute="bottom" constant="6" id="Yx0-9a-JaB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NAx-sY-bP8" secondAttribute="trailing" id="aSn-Xl-AEm"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -360,6 +392,10 @@ Why do kidnappings occur?</string>
                                             <constraint firstAttribute="bottom" secondItem="63y-lb-ch7" secondAttribute="bottom" id="eXx-dN-2Jr"/>
                                         </constraints>
                                         <size key="customSize" width="350" height="132"/>
+                                        <connections>
+                                            <outlet property="headerView" destination="WOJ-nZ-7Kk" id="mWA-Lz-hZc"/>
+                                            <outlet property="iconImageView" destination="PZ0-WD-Mb4" id="M8U-yf-J2M"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

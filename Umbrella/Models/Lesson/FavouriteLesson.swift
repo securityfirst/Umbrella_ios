@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class FavouriteSegment: Codable, TableProtocol {
+class FavouriteLesson: Codable, TableProtocol {
     
     //
     // MARK: - Properties
@@ -63,9 +63,9 @@ class FavouriteSegment: Codable, TableProtocol {
     
     //
     // MARK: - TableProtocol
-    static var table: String = "favourite_segment"
+    static var table: String = "favourite_lesson"
     var tableName: String {
-        return FavouriteSegment.table
+        return FavouriteLesson.table
     }
     
     func columns() -> [Column] {

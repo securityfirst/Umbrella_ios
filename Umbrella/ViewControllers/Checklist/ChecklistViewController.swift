@@ -40,8 +40,8 @@ class ChecklistViewController: UIViewController {
         
         self.checklistViewModel.reportOfItemsChecked()
         
-        self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0)
-        self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0)
+        self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+        self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
         
         self.checklistReviewTableView.reloadData()
     }

@@ -33,9 +33,9 @@ class SegmentViewModel {
         return difficultyRuleDao
     }()
     
-    lazy var favouriteSegmentDao: FavouriteSegmentDao = {
-        let favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlManager)
-        return favouriteSegmentDao
+    lazy var favouriteLessonDao: FavouriteLessonDao = {
+        let favouriteLessonDao = FavouriteLessonDao(sqlProtocol: self.sqlManager)
+        return favouriteLessonDao
     }()
     
     //
@@ -70,7 +70,7 @@ class SegmentViewModel {
         
         self.resetFavouriteSegments()
         
-        let favouriteList = self.favouriteSegmentDao.list()
+        let favouriteList = self.favouriteLessonDao.list()
         
         for favourite in favouriteList where category?.id == favourite.difficultyId {
             
@@ -78,6 +78,14 @@ class SegmentViewModel {
             
             if let segment = segment {
                 segment.favourite = true
+            } else {
+                for checklist in (category?.checkList)! {
+                    if checklist.categoryId == favourite.difficultyId {
+                        checklist.favourite = true
+                    } else {
+                        checklist.favourite = false
+                    }
+                }
             }
         }
         
@@ -136,15 +144,22 @@ class SegmentViewModel {
     /// Insert a new FavouriteSegment into the database
     ///
     /// - Parameter favouriteSegment: FavouriteSegment
-    func insert(_ favouriteSegment: FavouriteSegment) {
-        _ = self.favouriteSegmentDao.insert(favouriteSegment)
+    func insert(_ favouriteSegment: FavouriteLesson) {
+        _ = self.favouriteLessonDao.insert(favouriteSegment)
     }
     
     /// Remove a favouriteSegment of the database
     ///
     /// - Parameter segmentId: Int
     func remove(_ segmentId: Int) {
-        _ = self.favouriteSegmentDao.remove(segmentId)
+        _ = self.favouriteLessonDao.remove(segmentId)
+    }
+    
+    /// Remove a favouriteSegment of the database
+    ///
+    /// - Parameter segmentId: Int
+    func removeFavouriteChecklist(_ categoryId: Int, difficultyId: Int) {
+        _ = self.favouriteLessonDao.remove(categoryId, difficultyId: difficultyId)
     }
     
 }

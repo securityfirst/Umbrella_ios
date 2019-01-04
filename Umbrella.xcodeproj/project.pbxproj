@@ -55,8 +55,8 @@
 		A02115B7213EBF53004B5B73 /* FeedViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */; };
 		A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115B8213EC106004B5B73 /* FeedCell.swift */; };
 		A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02115BA214163DC004B5B73 /* LocationViewController.swift */; };
-		A0240485216231F5004057B5 /* FavouriteSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0240484216231F5004057B5 /* FavouriteSegment.swift */; };
-		A02404872162327F004057B5 /* FavouriteSegmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02404862162327F004057B5 /* FavouriteSegmentDao.swift */; };
+		A0240485216231F5004057B5 /* FavouriteLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0240484216231F5004057B5 /* FavouriteLesson.swift */; };
+		A02404872162327F004057B5 /* FavouriteLessonDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02404862162327F004057B5 /* FavouriteLessonDao.swift */; };
 		A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E5EF92148185200DEFBFB /* LocationViewModel.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
@@ -384,8 +384,8 @@
 		A02115B6213EBF53004B5B73 /* FeedViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewSpec.swift; sourceTree = "<group>"; };
 		A02115B8213EC106004B5B73 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A02115BA214163DC004B5B73 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		A0240484216231F5004057B5 /* FavouriteSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSegment.swift; sourceTree = "<group>"; };
-		A02404862162327F004057B5 /* FavouriteSegmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSegmentDao.swift; sourceTree = "<group>"; };
+		A0240484216231F5004057B5 /* FavouriteLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLesson.swift; sourceTree = "<group>"; };
+		A02404862162327F004057B5 /* FavouriteLessonDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLessonDao.swift; sourceTree = "<group>"; };
 		A02E5EF92148185200DEFBFB /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
@@ -1053,7 +1053,7 @@
 				A02115AE213D8132004B5B73 /* RssItemDao.swift */,
 				A0AE1A31214FE5A90019F09B /* DifficultyRuleDao.swift */,
 				A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */,
-				A02404862162327F004057B5 /* FavouriteSegmentDao.swift */,
+				A02404862162327F004057B5 /* FavouriteLessonDao.swift */,
 				A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */,
 				A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */,
 				A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */,
@@ -1349,7 +1349,7 @@
 				A075248720C824B300E91A4A /* Segment.swift */,
 				A0AE1A2F214FE3AF0019F09B /* DifficultyRule.swift */,
 				A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */,
-				A0240484216231F5004057B5 /* FavouriteSegment.swift */,
+				A0240484216231F5004057B5 /* FavouriteLesson.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -1907,12 +1907,12 @@
 				A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
-				A0240485216231F5004057B5 /* FavouriteSegment.swift in Sources */,
+				A0240485216231F5004057B5 /* FavouriteLesson.swift in Sources */,
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
-				A02404872162327F004057B5 /* FavouriteSegmentDao.swift in Sources */,
+				A02404872162327F004057B5 /* FavouriteLessonDao.swift in Sources */,
 				A0FDDF6E21BE8B2A0078FCAA /* UIPrintPageRenderer-Extensions.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
 				A08486892150018B0099D669 /* SegmentViewModel.swift in Sources */,

@@ -26,7 +26,7 @@ struct UmbrellaDatabase {
     let rssItemDao: RssItemDao
     let difficultyRuleDao: DifficultyRuleDao
     let checklistCheckedDao: ChecklistCheckedDao
-    let favouriteSegmentDao: FavouriteSegmentDao
+    let favouriteLessonDao: FavouriteLessonDao
     
     let customChecklistDao: CustomChecklistDao
     let customCheckItemDao: CustomCheckItemDao
@@ -64,7 +64,7 @@ struct UmbrellaDatabase {
         self.difficultyRuleDao = DifficultyRuleDao(sqlProtocol: self.sqlProtocol)
         self.rssItemDao = RssItemDao(sqlProtocol: self.sqlProtocol)
         self.checklistCheckedDao = ChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
-        self.favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlProtocol)
+        self.favouriteLessonDao = FavouriteLessonDao(sqlProtocol: self.sqlProtocol)
         self.customChecklistDao = CustomChecklistDao(sqlProtocol: self.sqlProtocol)
         self.customCheckItemDao = CustomCheckItemDao(sqlProtocol: self.sqlProtocol)
         self.customChecklistCheckedDao = CustomChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
@@ -88,7 +88,7 @@ struct UmbrellaDatabase {
         let difficultyRuleSuccess = self.difficultyRuleDao.createTable()
         let rssItemSuccess = self.rssItemDao.createTable()
         let checklistCheckedSuccess = self.checklistCheckedDao.createTable()
-        let favouriteSegmentSuccess = self.favouriteSegmentDao.createTable()
+        let favouriteSegmentSuccess = self.favouriteLessonDao.createTable()
         let customChecklistSuccess = self.customChecklistDao.createTable()
         let customCheckItemSuccess = self.customCheckItemDao.createTable()
         let customChecklistCheckedSuccess = self.customChecklistCheckedDao.createTable()
@@ -109,7 +109,7 @@ struct UmbrellaDatabase {
         let customChecklistSuccess = self.customChecklistDao.createTable()
         let rssItemSuccess = self.rssItemDao.dropTable()
         let checklistCheckedSuccess = self.checklistCheckedDao.dropTable()
-        let favouriteSegmentSuccess = self.favouriteSegmentDao.dropTable()
+        let favouriteSegmentSuccess = self.favouriteLessonDao.dropTable()
         let difficultyRuleSuccess = self.difficultyRuleDao.dropTable()
         let formAnswerSuccess = self.formAnswerDao.dropTable()
         let optionItemSuccess = self.optionItemDao.dropTable()

@@ -22,10 +22,10 @@ class ChecklistViewModel {
         return checklistCheckedDao
     }()
     
-    lazy var favouriteSegmentDao: FavouriteSegmentDao = {
-        let favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlManager)
-        _ = favouriteSegmentDao.createTable()
-        return favouriteSegmentDao
+    lazy var favouriteLessonDao: FavouriteLessonDao = {
+        let favouriteLessonDao = FavouriteLessonDao(sqlProtocol: self.sqlManager)
+        _ = favouriteLessonDao.createTable()
+        return favouriteLessonDao
     }()
     
     //
@@ -49,7 +49,7 @@ class ChecklistViewModel {
     /// - Returns: [ChecklistChecked]
     private func filterByGreatestDifficultyId() -> [ChecklistChecked] {
         _ = checklistCheckedDao.createTable()
-        _ = favouriteSegmentDao.createTable()
+        _ = favouriteLessonDao.createTable()
         var list = self.checklistCheckedDao.reportOfItemsChecked()
         
         // Filter by language
@@ -77,6 +77,7 @@ class ChecklistViewModel {
                 results.append(check)
             }
         }
+        
         removeFavouriteOfList(checklistChecked: &results)
         return results
     }
@@ -88,7 +89,7 @@ class ChecklistViewModel {
         
         self.favouriteChecklistChecked.removeAll()
         
-        let favourites = self.favouriteSegmentDao.list()
+        let favourites = self.favouriteLessonDao.list()
         
         for fav in favourites {
             let check = checklistChecked.filter { $0.subCategoryId == fav.categoryId }.first

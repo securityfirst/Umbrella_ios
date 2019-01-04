@@ -19,6 +19,7 @@ class CheckList: Codable, TableProtocol, NSCopying {
     // MARK: - Properties
     var index: Float?
     var items: [CheckItem]
+    var favourite: Bool = false
     
     //
     // MARK: - Initializers
@@ -27,6 +28,7 @@ class CheckList: Codable, TableProtocol, NSCopying {
         self.categoryId = -1
         self.index = 0
         self.items = []
+        self.favourite = false
     }
     
     init(index: Float, items: [CheckItem]) {
@@ -34,6 +36,7 @@ class CheckList: Codable, TableProtocol, NSCopying {
         self.categoryId = -1
         self.index = index
         self.items = items
+        self.favourite = false
     }
     
     //
@@ -80,6 +83,7 @@ class CheckList: Codable, TableProtocol, NSCopying {
         copy.id = self.id
         copy.categoryId = self.categoryId
         copy.index = self.index
+        copy.favourite = self.favourite
         return copy
     }
     

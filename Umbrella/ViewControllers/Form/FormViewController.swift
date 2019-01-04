@@ -33,6 +33,10 @@ class FormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIApplication.shared.keyWindow?.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            registerForPreviewing(with: self, sourceView: view)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -364,5 +368,44 @@ extension FormViewController: FormCellDelegate {
         }
         
         self.present(activityVC, animated: true, completion: nil)
+    }
+}
+
+extension FormViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        let storyboard = UIStoryboard(name: "Form", bundle: Bundle.main)
+        let fillFormViewController = (storyboard.instantiateViewController(withIdentifier: "FillFormViewController") as? FillFormViewController)!
+        
+        let cellPosition = self.formTableView.convert(location, from: self.view)
+        
+        if let indexPath = self.formTableView.indexPathForRow(at: cellPosition) {
+            if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
+                if indexPath.section == 0 {
+                    // Active
+                    let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+                    
+                    for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == form.id {
+                        fillFormViewController.fillFormViewModel.form = form
+                        fillFormViewController.fillFormViewModel.formAnswer = formAnswer
+                        fillFormViewController.isNewForm = false
+                    }
+                    
+                } else if indexPath.section == 1 {
+                    let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
+                    fillFormViewController.fillFormViewModel.form = form
+                }
+            } else {
+                let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
+                fillFormViewController.fillFormViewModel.form = form
+            }
+        }
+        
+        fillFormViewController.preferredContentSize = CGSize(width: 0.0, height: 500)
+        return fillFormViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
     }
 }

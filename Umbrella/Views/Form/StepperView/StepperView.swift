@@ -121,8 +121,8 @@ class StepperView: UIView, UIScrollViewDelegate {
     
     /// Update the progress of the progressBar
     fileprivate func updateProgress() {
-        self.progressBar.setProgress(Float(currentIndex)/Float(totalViewCount), animated: true)
-        self.progressLabel.text = "\(Int(CGFloat(currentIndex) / CGFloat(totalViewCount) * 100))%"
+        self.progressBar.setProgress(Float(currentIndex)/Float(totalViewCount - 1), animated: true)
+        self.progressLabel.text = "\(Int(CGFloat(currentIndex) / CGFloat(totalViewCount - 1) * 100))%"
     }
     
     /// Rearrange the views of the titles

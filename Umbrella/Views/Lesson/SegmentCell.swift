@@ -40,6 +40,7 @@ class SegmentCell: UICollectionViewCell {
             headerView.roundCorners([.topRight, .topLeft], radius: 14)
         }
     }
+    
     //
     // MARK: - Functions
     

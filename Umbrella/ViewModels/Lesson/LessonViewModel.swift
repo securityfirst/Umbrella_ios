@@ -40,10 +40,10 @@ class LessonViewModel {
         return difficultyRuleDao
     }()
     
-    lazy var favouriteSegmentDao: FavouriteSegmentDao = {
-        let favouriteSegmentDao = FavouriteSegmentDao(sqlProtocol: self.sqlManager)
-         _ = favouriteSegmentDao.createTable()
-        return favouriteSegmentDao
+    lazy var favouriteLessonDao: FavouriteLessonDao = {
+        let favouriteLessonDao = FavouriteLessonDao(sqlProtocol: self.sqlManager)
+         _ = favouriteLessonDao.createTable()
+        return favouriteLessonDao
     }()
     
     //
@@ -204,12 +204,12 @@ class LessonViewModel {
     /// - Returns: [Segment]
     func loadFavourites() -> [Segment] {
         
-        _ = favouriteSegmentDao.createTable()
+        _ = favouriteLessonDao.createTable()
         var segments: [Segment] = [Segment]()
         
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         let categories = getCategories(ofLanguage: languageName)
-        let favourites = self.favouriteSegmentDao.list()
+        let favourites = self.favouriteLessonDao.list()
         
         for favouriteSegment in favourites {
             

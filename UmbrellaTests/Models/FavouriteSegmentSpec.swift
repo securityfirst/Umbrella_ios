@@ -22,7 +22,7 @@ class FavouriteSegmentSpec: QuickSpec {
             }
             
             it("should create a new FavouriteSegment") {
-                let object = FavouriteSegment()
+                let object = FavouriteLesson()
                 expect(object).toNot(beNil())
             }
             

@@ -25,7 +25,7 @@ class FavouriteSegmentDaoSpec: QuickSpec {
             
             it("should create the table of FavouriteSegment in Database") {
                 
-                let dao = FavouriteSegmentDao(sqlProtocol: sqlManager)
+                let dao = FavouriteLessonDao(sqlProtocol: sqlManager)
                 let success = dao.createTable()
                 
                 expect(success).to(beTrue())
@@ -33,10 +33,10 @@ class FavouriteSegmentDaoSpec: QuickSpec {
             
             it("should insert a FavouriteSegment in Database") {
                 
-                let dao = FavouriteSegmentDao(sqlProtocol: sqlManager)
+                let dao = FavouriteLessonDao(sqlProtocol: sqlManager)
                 _ = dao.createTable()
                 
-                let object = FavouriteSegment(categoryId: 1, difficultyId: 1, segmentId: 1)
+                let object = FavouriteLesson(categoryId: 1, difficultyId: 1, segmentId: 1)
                 let rowId = dao.insert(object)
                 
                 expect(rowId).to(equal(1))
@@ -44,10 +44,10 @@ class FavouriteSegmentDaoSpec: QuickSpec {
             
             it("should do to select in table of FavouriteSegment in Database") {
                 
-                let dao = FavouriteSegmentDao(sqlProtocol: sqlManager)
+                let dao = FavouriteLessonDao(sqlProtocol: sqlManager)
                 _ = dao.createTable()
                 
-                let object = FavouriteSegment(categoryId: 1, difficultyId: 1, segmentId: 1)
+                let object = FavouriteLesson(categoryId: 1, difficultyId: 1, segmentId: 1)
                 _ = dao.insert(object)
                 
                 let list = dao.list()
@@ -57,7 +57,7 @@ class FavouriteSegmentDaoSpec: QuickSpec {
             
             it("should drop the table of FavouriteSegment in Database") {
                 
-                let dao = FavouriteSegmentDao(sqlProtocol: sqlManager)
+                let dao = FavouriteLessonDao(sqlProtocol: sqlManager)
                 let success = dao.dropTable()
                 
                 expect(success).to(beTrue())

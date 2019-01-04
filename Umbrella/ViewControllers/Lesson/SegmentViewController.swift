@@ -19,9 +19,7 @@ class SegmentViewController: UIViewController {
     }()
     
     @IBOutlet weak var emptyLabel: UILabel!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var segmentCollectionView: UICollectionView!
     var menuView: BTNavigationDropdownMenu?
     
@@ -109,11 +107,9 @@ extension SegmentViewController: UICollectionViewDelegate {
         var selected: (Any)? = nil
         if indexPath.section == 0 {
             let segment = self.segmentViewModel.getSegments()[indexPath.row]
-//            self.performSegue(withIdentifier: "markdownSegue", sender: segment)
             selected = segment
         } else if indexPath.section == 1 {
             let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
-//            self.performSegue(withIdentifier: "checkListSegue", sender: ["checkList": checklist!, "category": self.segmentViewModel.category!])
             selected = checklist!
         }
         
@@ -150,6 +146,8 @@ extension SegmentViewController: UICollectionViewDataSource {
         } else {
             let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "CheckListCell",
                                                            for: indexPath) as? CheckListCell)!
+            cell.configure(withViewModel: self.segmentViewModel, indexPath: indexPath)
+            cell.delegate = self
             return cell
         }
     }
@@ -185,7 +183,7 @@ extension SegmentViewController: SegmentCellDelegate {
             
             if segment.favourite {
                 
-                let favouriteSegment = FavouriteSegment(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: segment.id)
+                let favouriteSegment = FavouriteLesson(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: segment.id)
                 
                 self.segmentViewModel.insert(favouriteSegment)
             } else {
@@ -202,6 +200,34 @@ extension SegmentViewController: SegmentCellDelegate {
             } else {
                 self.segmentCollectionView.reloadItems(at: [indexPath])
             }
+        }
+    }
+}
+
+//
+// MARK: - SegmentCellDelegate
+extension SegmentViewController: ChecklistCellDelegate {
+    
+    func favouriteChecklist(cell: CheckListCell) {
+        
+        let indexPath = self.segmentCollectionView.indexPath(for: cell)
+        
+        if let indexPath = indexPath, indexPath.section == 1 {
+            
+            let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
+            
+            if let checklist = checklist {
+                checklist.favourite = !checklist.favourite
+                
+                if checklist.favourite {
+                    let favouriteSegment = FavouriteLesson(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: -1)
+                    self.segmentViewModel.insert(favouriteSegment)
+                } else {
+                    self.segmentViewModel.removeFavouriteChecklist(self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id)
+                }
+            }
+           
+            self.segmentCollectionView.reloadItems(at: [indexPath])
         }
     }
 }
