@@ -21,7 +21,6 @@ class MarkdownWebView: WKWebView {
         self.init(frame: .zero, configuration: wkWebConfig)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.isScrollEnabled = true
-        self.scrollView.bounces = false
         self.allowsBackForwardNavigationGestures = false
         self.contentMode = .scaleToFill
     }

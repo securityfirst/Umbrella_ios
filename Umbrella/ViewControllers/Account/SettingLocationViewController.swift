@@ -54,7 +54,7 @@ class SettingLocationViewController: UIViewController {
     ///
     /// - Parameter placeMark: CLPlacemark
     fileprivate func savePlace(_ placeMark: CLPlacemark) {
-        if let city = placeMark.addressDictionary?["Name"] as? String, let country = placeMark.addressDictionary?["Country"] as? String, let countryCode = placeMark.addressDictionary?["CountryCode"] as? String {
+        if let city = placeMark.name, let country = placeMark.country, let countryCode = placeMark.isoCountryCode {
             if city.lowercased() == self.locationText.text?.lowercased() {
                 NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": (city: city, country: country, countryCode: countryCode)])
                 UserDefaults.standard.set(city, forKey: "LocationCity")
@@ -150,7 +150,7 @@ extension SettingLocationViewController: UITableViewDataSource {
         
         let location = self.locationViewModel.cityArray[indexPath.row]
         
-        if let city = location.addressDictionary?["Name"], let country = location.addressDictionary?["Country"] {
+        if let city = location.name, let country = location.country {
             cell.titleLabel.text = "\(city) \(country)"
         }
         
@@ -175,7 +175,7 @@ extension SettingLocationViewController: UITableViewDelegate {
         }
         
         let city = self.locationViewModel.cityArray[indexPath.row]
-        let cityString = "\(String(describing: city.addressDictionary!["Name"]!))"
+        let cityString = "\(String(describing: city.name!))"
         
         self.locationText.text = cityString
         savePlace(city)
