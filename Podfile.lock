@@ -7,7 +7,6 @@ PODS:
   - FeedKit (8.0.0)
   - Files (2.0.1)
   - Localize-Swift (2.0.0)
-  - MarkdownView (1.5.0)
   - Nimble (7.3.1)
   - Quick (1.3.2)
   - SQLCipher (3.4.2):
@@ -29,7 +28,6 @@ DEPENDENCIES:
   - FeedKit (~> 8.0)
   - Files (from `https://github.com/clayellis/Files.git`)
   - Localize-Swift (~> 2.0)
-  - MarkdownView (from `https://github.com/lucascorrea/MarkdownView.git`)
   - Nimble
   - Quick
   - SQLite.swift/SQLCipher (from `https://github.com/stephencelis/SQLite.swift.git`)
@@ -56,8 +54,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/lucascorrea/BTNavigationDropdownMenu.git
   Files:
     :git: https://github.com/clayellis/Files.git
-  MarkdownView:
-    :git: https://github.com/lucascorrea/MarkdownView.git
   SQLite.swift:
     :git: https://github.com/stephencelis/SQLite.swift.git
 
@@ -68,9 +64,6 @@ CHECKOUT OPTIONS:
   Files:
     :commit: 06f95bd1bf4f8d5f50bc6bb30b808c253acd4c88
     :git: https://github.com/clayellis/Files.git
-  MarkdownView:
-    :commit: 10179d89e8e9336ce56ee1a929dce11ce8307033
-    :git: https://github.com/lucascorrea/MarkdownView.git
   SQLite.swift:
     :commit: d13baed8d0041caa2d7617e4e1f3d50922a0a225
     :git: https://github.com/stephencelis/SQLite.swift.git
@@ -83,7 +76,6 @@ SPEC CHECKSUMS:
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
   Files: dd0aa68aa068e87c60ec844b13e0a95179e2fb62
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
-  MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
   SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
@@ -92,6 +84,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
 
-PODFILE CHECKSUM: 3f7dec3b6c089723674face9211b20da34bce8cd
+PODFILE CHECKSUM: b7eee068a95a9bcc8845f86c7cb8726df77474a6
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.1

@@ -2,6 +2,9 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+Result.framework
+SwiftGit2.framework
+
 ## Build generated
 build/
 DerivedData/

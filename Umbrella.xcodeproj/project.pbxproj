@@ -141,6 +141,7 @@
 		A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */; };
 		A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */; };
 		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
+		A0B1AF4C21E3A3EF00ADD6CB /* MarkdownWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */; };
 		A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */; };
 		A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B412190A5CB00D46653 /* AccountCell.swift */; };
 		A0B66B462192043000D46653 /* CategoryCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B452192043000D46653 /* CategoryCellSpec.swift */; };
@@ -466,6 +467,7 @@
 		A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownWebView.swift; sourceTree = "<group>"; };
 		A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		A0B66B412190A5CB00D46653 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		A0B66B452192043000D46653 /* CategoryCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellSpec.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
 				A0CC7B592138048700C28C3B /* ImageDownload.swift */,
+				A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 				A0FDDF6421BE8B190078FCAA /* HTMLPDFRenderer */,
@@ -1665,7 +1668,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -1676,7 +1679,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UmbrellaTests/Pods-UmbrellaTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82674C40E9961726A75A0971 /* [CP] Embed Pods Frameworks */ = {
@@ -1685,13 +1688,12 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BTNavigationDropdownMenu/BTNavigationDropdownMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Files/Files.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -1704,7 +1706,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Files.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLCipher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -1712,7 +1713,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99372F1E561386EA80207056 /* [CP] Check Pods Manifest.lock */ = {
@@ -1912,6 +1913,7 @@
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
+				A0B1AF4C21E3A3EF00ADD6CB /* MarkdownWebView.swift in Sources */,
 				A02404872162327F004057B5 /* FavouriteLessonDao.swift in Sources */,
 				A0FDDF6E21BE8B2A0078FCAA /* UIPrintPageRenderer-Extensions.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,
