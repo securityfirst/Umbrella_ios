@@ -4,12 +4,12 @@
 
 Result.framework/**/
 SwiftGit2.framework/**/
-Result.framework/Headers/Result-Swift.h
-Result.framework/Info.plist
-Result.framework/Result
-SwiftGit2.framework/Headers/SwiftGit2-Swift.h
-SwiftGit2.framework/Info.plist
-SwiftGit2.framework/SwiftGit2
+*.Result.framework/Headers/Result-Swift.h
+*.Result.framework/Info.plist
+*.Result.framework/Result
+*.SwiftGit2.framework/Headers/SwiftGit2-Swift.h
+*.SwiftGit2.framework/Info.plist
+*.SwiftGit2.framework/SwiftGit2
 
 ## Build generated
 build/
