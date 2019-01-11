@@ -43,30 +43,31 @@ class LoadingViewController: UIViewController {
     func loadTent(completion: @escaping () -> Void) {
         self.completion = completion
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.messageLabel)
-
+        
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
             messageLabel.text = "Clone of the tent".localized()
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
-//            loadingViewModel.clone(witUrl: Config.gitBaseURL, completion: { gitProgress in
             loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
                 DispatchQueue.main.async {
                     self.progressView.setProgress(gitProgress/2.0, animated: true)
                 }
                 
                 if gitProgress == 1.0 {
-                    self.loadingViewModel.parseTent(completion: { progress in
-                        DispatchQueue.main.async {
-                            self.messageLabel.text = "Updating the database".localized()
-                            self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
-                            
-                            if gitProgress + progress == 2.0 {
-                                NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
-                                self.completion!()
-                                self.view.removeFromSuperview()
+                    DispatchQueue.main.async {
+                        self.loadingViewModel.parseTent(completion: { progress in
+                            DispatchQueue.main.async {
+                                self.messageLabel.text = "Updating the database".localized()
+                                self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
+                                
+                                if gitProgress + progress == 2.0 {
+                                    NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
+                                    self.completion!()
+                                    self.view.removeFromSuperview()
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
             }, failure: { _ in
                 DispatchQueue.main.async {

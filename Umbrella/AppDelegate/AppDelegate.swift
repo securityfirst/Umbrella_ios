@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let repository = UserDefaults.standard.object(forKey: "repository")
         if repository == nil {
-            UserDefaults.standard.set("https://github.com/securityfirst/umbrella-content", forKey: "repository")
+            print(Config.gitBaseURL.absoluteString)
+            UserDefaults.standard.set(Config.gitBaseURL.absoluteString, forKey: "repository")
         }
         
         let language = UserDefaults.standard.object(forKey: "Language")

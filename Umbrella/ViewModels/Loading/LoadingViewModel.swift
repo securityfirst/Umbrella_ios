@@ -16,7 +16,7 @@ class LoadingViewModel {
     var languages: [Language]
     var forms: [Form]
     var formAnswers: [FormAnswer]
-    
+    var umbrellaParser: UmbrellaParser
     var sqlManager: SQLManager
     var documentsFolder: Folder = {
         let system = FileSystem()
@@ -37,6 +37,7 @@ class LoadingViewModel {
         self.languages = []
         self.forms = []
         self.formAnswers = []
+        self.umbrellaParser = UmbrellaParser(documentsFolder: documentsFolder)
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
     }
     
@@ -47,8 +48,7 @@ class LoadingViewModel {
     func parseTent(completion: @escaping (Float) -> Void) {
         
         //Umbrella Parse of Tent
-        var umbrellaParser = UmbrellaParser(documentsFolder: documentsFolder)
-        umbrellaParser.parse { languages, forms in
+        self.umbrellaParser.parse { languages, forms in
             self.languages = languages
             self.forms = forms
             let umbrellaDatabase = UmbrellaDatabase(languages: self.languages, forms: self.forms, sqlProtocol: sqlManager)

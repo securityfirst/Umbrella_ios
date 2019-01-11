@@ -16,6 +16,7 @@ class TourViewController: UIViewController {
     @IBOutlet weak var tourScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     var currentPage: Int = 0
+    var loadingViewController: LoadingViewController!
     
     static let robotoBold = "Roboto-Bold"
     
@@ -87,9 +88,9 @@ class TourViewController: UIViewController {
     /// Accept action
     @objc func acceptAction() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
-        UIApplication.shared.keyWindow?.addSubview(controller.view)
-        controller.loadTent {
+        self.loadingViewController = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+        UIApplication.shared.keyWindow?.addSubview(self.loadingViewController.view)
+        self.loadingViewController.loadTent {
             UserDefaults.standard.set(true, forKey: "acceptTerm")
             self.dismiss(animated: false, completion: nil)
         }
