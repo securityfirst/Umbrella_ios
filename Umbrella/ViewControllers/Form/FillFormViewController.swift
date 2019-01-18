@@ -41,6 +41,11 @@ class FillFormViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if view.tag == 99 {
+            return
+        }
+        view.tag = 99
+        
         var newFormAnswerId = (fillFormViewModel.formAnswerId())
         
         // If is a new form

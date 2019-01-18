@@ -110,6 +110,15 @@ class LessonViewController: UIViewController {
                 segmentViewController.segmentViewModel.difficulties = category.categories
             }
             
+        } else if segue.identifier == "glossarySegue" {
+            let reviewLessonViewController = (segue.destination as? ReviewLessonViewController)!
+            
+            let dictionary = (sender as? [String: Any])!
+            reviewLessonViewController.reviewLessonViewModel.segments = (dictionary["segments"] as? [Segment])!
+            reviewLessonViewController.reviewLessonViewModel.checkLists = (dictionary["checkLists"] as? [CheckList])!
+            reviewLessonViewController.reviewLessonViewModel.category = (dictionary["category"] as? Category)!
+            reviewLessonViewController.reviewLessonViewModel.selected = dictionary["selected"]
+            reviewLessonViewController.reviewLessonViewModel.isGlossary = true
         }
     }
 }
@@ -246,7 +255,13 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             self.performSegue(withIdentifier: "segmentSegue", sender: category)
         } else if self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1].categories.count == 0 {
             let category = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
-            self.performSegue(withIdentifier: "segmentSegue", sender: category)
+            
+            if category.template != Template.glossary.rawValue {
+                let dic = ["segments": category.segments, "checkLists": category.checkList , "category": category, "selected": category.segments.first!] as [String : Any]
+                self.performSegue(withIdentifier: "glossarySegue", sender: dic)
+            } else {
+                self.performSegue(withIdentifier: "segmentSegue", sender: category)
+            }
         } else {
             collapsed = true
             self.lessonViewModel.sectionsCollapsed.insert(section)

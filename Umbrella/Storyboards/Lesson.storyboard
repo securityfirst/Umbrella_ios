@@ -91,6 +91,7 @@
                         <outlet property="lessonTableView" destination="BlC-Wu-u8L" id="YG3-q0-JYJ"/>
                         <segue destination="pB0-aF-ga4" kind="show" identifier="difficultySegue" id="iyB-RK-iZg"/>
                         <segue destination="B2x-lK-1Wv" kind="show" identifier="segmentSegue" id="Wln-tG-fek"/>
+                        <segue destination="Xih-sS-bEp" kind="show" identifier="glossarySegue" id="0CJ-vw-xmI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pz-vO-grM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -679,6 +680,7 @@ Why do kidnappings occur?</string>
         <image name="iconFavourite" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0CJ-vw-xmI"/>
         <segue reference="Wln-tG-fek"/>
     </inferredMetricsTieBreakers>
 </document>

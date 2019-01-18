@@ -9,6 +9,10 @@
 import Foundation
 import SQLite
 
+enum Template : String {
+    case glossary
+}
+
 class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     
     // Used in parser from the database to object
@@ -22,6 +26,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     var icon: String?
     var index: Float?
     var parent: Int
+    var template: String
     var folderName: String?
     var categories: [Category]
     var segments: [Segment]
@@ -33,7 +38,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         self.id = -1
         self.parent = 0
         self.languageId = -1
-        
+        self.template = ""
         self.name = ""
         self.description = ""
         self.icon = ""
@@ -48,7 +53,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         self.id = -1
         self.parent = 0
         self.languageId = -1
-        
+        self.template = ""
         self.name = name
         self.description = description
         self.icon = icon
@@ -66,6 +71,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         case parent
         case languageId = "language_id"
         case name = "title"
+        case template
         case description
         case icon
         case index
@@ -97,6 +103,12 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
             self.index = try container.decode(Float.self, forKey: .index)
         } else {            
             self.index = 0
+        }
+        
+        if container.contains(.template) {
+            self.template = try container.decode(String.self, forKey: .template)
+        } else {
+            self.template = ""
         }
         
         if container.contains(.name) {
@@ -134,6 +146,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         let copy = Category()
         copy.id = self.id
         copy.languageId = self.languageId
+        copy.template = self.template
         copy.name = self.name
         copy.description = self.description
         copy.icon = self.icon
@@ -153,6 +166,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
+            Column(name: "template", type: .string, isNotNull: false),
             Column(name: "name", type: .string),
             Column(name: "description", type: .string),
             Column(name: "icon", type: .string),

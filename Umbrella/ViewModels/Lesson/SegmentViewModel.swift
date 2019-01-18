@@ -72,8 +72,7 @@ class SegmentViewModel {
         
         let favouriteList = self.favouriteLessonDao.list()
         
-        for favourite in favouriteList where category?.id == favourite.difficultyId {
-            
+        for favourite in favouriteList {
             let segment = getSegments().filter {$0.id == favourite.segmentId}.first
             
             if let segment = segment {

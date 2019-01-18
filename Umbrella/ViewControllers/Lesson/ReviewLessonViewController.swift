@@ -15,6 +15,7 @@ class ReviewLessonViewController: UIViewController {
     @IBOutlet weak var sideScrollView: SideScrollLessonView!
     @IBOutlet weak var reviewScrollView: UIScrollView!
     var currentPage: CGFloat = 0
+    var button: UIButton!
     
     lazy var reviewLessonViewModel: ReviewLessonViewModel = {
         let reviewLessonViewModel = ReviewLessonViewModel()
@@ -31,14 +32,17 @@ class ReviewLessonViewController: UIViewController {
         super.viewDidLoad()
         
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
-        self.navigationItem.rightBarButtonItem = shareBarButton
+        
+        if reviewLessonViewModel.isGlossary {
+            let favouriteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "iconFavourite").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(self.favouriteAction(_:)))
+            self.navigationItem.rightBarButtonItems = [shareBarButton, favouriteBarButton]
+        } else {
+            self.navigationItem.rightBarButtonItem = shareBarButton
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.sideScrollView.dataSource = self
-        self.sideScrollView.reloadData()
         
         for (index, viewController) in pages.enumerated() {
             var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -54,8 +58,10 @@ class ReviewLessonViewController: UIViewController {
         }
         
         self.reviewScrollView.contentSize = CGSize(width: self.reviewScrollView.frame.size.width * CGFloat(pages.count), height: self.reviewScrollView.frame.size.height)
-        
         setCurrentPosition()
+        
+        self.sideScrollView.dataSource = self
+        self.sideScrollView.reloadData()
     }
     
     //
@@ -182,7 +188,7 @@ class ReviewLessonViewController: UIViewController {
             objectsToShare = [pdfURL]
             
         }
-        // LessonCheckListViewController
+            // LessonCheckListViewController
         else if viewController is LessonCheckListViewController {
             let controller = (viewController as? LessonCheckListViewController)!
             for checkItem in (controller.lessonCheckListViewModel.checklist?.items)! {
@@ -190,7 +196,7 @@ class ReviewLessonViewController: UIViewController {
             }
             objectsToShare = [checkItemChecked]
         }
-   
+        
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         
         //New Excluded Activities Code
@@ -205,6 +211,39 @@ class ReviewLessonViewController: UIViewController {
         }
         
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func favouriteAction(_ sender: UIBarButtonItem) {
+        let viewController = self.pages[Int(currentPage)]
+        
+        // MarkdownViewController
+        if viewController is MarkdownViewController {
+            let controller = (viewController as? MarkdownViewController)!
+            
+            controller.markdownViewModel.segment!.favourite = !controller.markdownViewModel.segment!.favourite
+            
+            if controller.markdownViewModel.segment!.favourite {
+                
+                let favouriteSegment = FavouriteLesson(categoryId: self.reviewLessonViewModel.category!.id, difficultyId: 0, segmentId: controller.markdownViewModel.segment!.id)
+                
+                self.reviewLessonViewModel.insert(favouriteSegment)
+            } else {
+                self.reviewLessonViewModel.remove(controller.markdownViewModel.segment!.id)
+            }
+        }
+            // LessonCheckListViewController
+        else if viewController is LessonCheckListViewController {
+            let controller = (viewController as? LessonCheckListViewController)!
+            
+            controller.lessonCheckListViewModel.checklist!.favourite = !controller.lessonCheckListViewModel.checklist!.favourite
+            
+            if controller.lessonCheckListViewModel.checklist!.favourite {
+                let favouriteSegment = FavouriteLesson(categoryId: self.reviewLessonViewModel.category!.parent, difficultyId: self.reviewLessonViewModel.category!.id, segmentId: -1)
+                self.reviewLessonViewModel.insert(favouriteSegment)
+            } else {
+                self.reviewLessonViewModel.removeFavouriteChecklist(self.reviewLessonViewModel.category!.parent, difficultyId: self.reviewLessonViewModel.category!.id)
+            }
+        }
     }
 }
 

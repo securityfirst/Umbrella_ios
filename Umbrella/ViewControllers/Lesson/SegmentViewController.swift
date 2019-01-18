@@ -182,9 +182,14 @@ extension SegmentViewController: SegmentCellDelegate {
             segment.favourite = !segment.favourite
             
             if segment.favourite {
+                var categoryId = self.segmentViewModel.category!.parent
+                var difficultyId = self.segmentViewModel.category!.id
                 
-                let favouriteSegment = FavouriteLesson(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: segment.id)
-                
+                if self.segmentViewModel.category!.parent == 0 {
+                    categoryId = self.segmentViewModel.category!.id
+                    difficultyId = 0
+                }
+                let favouriteSegment = FavouriteLesson(categoryId: categoryId, difficultyId: difficultyId, segmentId: segment.id)
                 self.segmentViewModel.insert(favouriteSegment)
             } else {
                 self.segmentViewModel.remove(segment.id)

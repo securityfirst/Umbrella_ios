@@ -37,6 +37,7 @@
 		A006B5D421721AAF00B68309 /* DemoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006B5D321721AAE00B68309 /* DemoSettingViewController.swift */; };
 		A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */; };
 		A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007B3C421256D4000B3D8C9 /* Localizable.strings */; };
+		A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */; };
 		A01FCF1C21AC127A001E4DA3 /* SettingLanguageViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FCF1B21AC127A001E4DA3 /* SettingLanguageViewControllerSpec.swift */; };
 		A01FCF1E21AC12AA001E4DA3 /* SettingLanguageViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FCF1D21AC12AA001E4DA3 /* SettingLanguageViewModelSpec.swift */; };
 		A021159C213D6B84004B5B73 /* TourViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */; };
@@ -367,6 +368,7 @@
 		A007B3C521256D5900B3D8C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A007B3C621256D9400B3D8C9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A007B3C721256D9E00B3D8C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A01FCF1B21AC127A001E4DA3 /* SettingLanguageViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewControllerSpec.swift; sourceTree = "<group>"; };
 		A01FCF1D21AC12AA001E4DA3 /* SettingLanguageViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewModelSpec.swift; sourceTree = "<group>"; };
 		A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -1125,6 +1127,7 @@
 				A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */,
 				A0D6386D21219D6B009F1151 /* UIAlertViewController+Ext.swift */,
 				A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */,
+				A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1851,6 +1854,7 @@
 				A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */,
 				A0C404A621A19FEC0068BDDD /* AskForPasswordView.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
+				A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,

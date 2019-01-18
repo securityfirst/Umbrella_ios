@@ -42,7 +42,7 @@ class LessonViewModel {
     
     lazy var favouriteLessonDao: FavouriteLessonDao = {
         let favouriteLessonDao = FavouriteLessonDao(sqlProtocol: self.sqlManager)
-         _ = favouriteLessonDao.createTable()
+        _ = favouriteLessonDao.createTable()
         return favouriteLessonDao
     }()
     
@@ -87,7 +87,7 @@ class LessonViewModel {
             copySubCategories(category, copyCat)
             copySegments(category, copyCat)
             copyChecklists(category, copyCat)
-
+            
             self.categoriesFilter.append(copyCat)
         }
     }
@@ -178,7 +178,7 @@ class LessonViewModel {
             //Collapse all
             sectionsCollapsed.insert(index+1)
         }
-
+        
         return finalList
     }
     
@@ -215,17 +215,27 @@ class LessonViewModel {
             
             for category in categories {
                 
-                let categ = category.categories.filter {$0.id == favouriteSegment.categoryId}.first
-                
-                if let categ = categ {
-                    let difficulty = categ.categories.filter {$0.id == favouriteSegment.difficultyId}.first
+                if category.id == favouriteSegment.categoryId {
+                    let segment = category.segments.filter {$0.id == favouriteSegment.segmentId}.first
                     
-                    if let difficulty = difficulty {
-                        let segment = difficulty.segments.filter {$0.id == favouriteSegment.segmentId}.first
+                    if let segment = segment {
+                        segment.favourite = true
+                        segments.append(segment)
+                    }
+                } else {
+                    
+                    let categ = category.categories.filter {$0.id == favouriteSegment.categoryId}.first
+                    
+                    if let categ = categ {
+                        let difficulty = categ.categories.filter {$0.id == favouriteSegment.difficultyId}.first
                         
-                        if let segment = segment {
-                            segment.favourite = true
-                            segments.append(segment)
+                        if let difficulty = difficulty {
+                            let segment = difficulty.segments.filter {$0.id == favouriteSegment.segmentId}.first
+                            
+                            if let segment = segment {
+                                segment.favourite = true
+                                segments.append(segment)
+                            }
                         }
                     }
                 }
