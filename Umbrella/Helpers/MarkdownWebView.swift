@@ -12,7 +12,7 @@ import WebKit
 class MarkdownWebView: WKWebView {
 
     required convenience init?(coder: NSCoder) {
-        let jscript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); meta.setAttribute('initial-scale', '1.0'); meta.setAttribute('maximum-scale', '1.0'); meta.setAttribute('minimum-scale', '1.0'); meta.setAttribute('user-scalable', 'no'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        let jscript = ""
         let userScript = WKUserScript(source: jscript, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
         let wkUController = WKUserContentController()
         wkUController.addUserScript(userScript)
