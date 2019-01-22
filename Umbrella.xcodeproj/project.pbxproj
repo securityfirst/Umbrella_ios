@@ -38,6 +38,11 @@
 		A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */; };
 		A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007B3C421256D4000B3D8C9 /* Localizable.strings */; };
 		A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */; };
+		A01CC61C21F61AA500E5D771 /* PDFFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61B21F61AA300E5D771 /* PDFFactory.swift */; };
+		A01CC61F21F717FD00E5D771 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61E21F717FD00E5D771 /* Export.swift */; };
+		A01CC62121F7187C00E5D771 /* ExportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC62021F7187C00E5D771 /* ExportProtocol.swift */; };
+		A01CC62321F7195B00E5D771 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC62221F7195B00E5D771 /* PDF.swift */; };
+		A01CC62521F7196700E5D771 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC62421F7196700E5D771 /* HTML.swift */; };
 		A01FCF1C21AC127A001E4DA3 /* SettingLanguageViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FCF1B21AC127A001E4DA3 /* SettingLanguageViewControllerSpec.swift */; };
 		A01FCF1E21AC12AA001E4DA3 /* SettingLanguageViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FCF1D21AC12AA001E4DA3 /* SettingLanguageViewModelSpec.swift */; };
 		A021159C213D6B84004B5B73 /* TourViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */; };
@@ -369,6 +374,11 @@
 		A007B3C621256D9400B3D8C9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A007B3C721256D9E00B3D8C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
+		A01CC61B21F61AA300E5D771 /* PDFFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFactory.swift; sourceTree = "<group>"; };
+		A01CC61E21F717FD00E5D771 /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
+		A01CC62021F7187C00E5D771 /* ExportProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportProtocol.swift; sourceTree = "<group>"; };
+		A01CC62221F7195B00E5D771 /* PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF.swift; sourceTree = "<group>"; };
+		A01CC62421F7196700E5D771 /* HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTML.swift; sourceTree = "<group>"; };
 		A01FCF1B21AC127A001E4DA3 /* SettingLanguageViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewControllerSpec.swift; sourceTree = "<group>"; };
 		A01FCF1D21AC12AA001E4DA3 /* SettingLanguageViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewModelSpec.swift; sourceTree = "<group>"; };
 		A021159B213D6B84004B5B73 /* TourViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -775,6 +785,17 @@
 			path = i18n;
 			sourceTree = "<group>";
 		};
+		A01CC61D21F717DC00E5D771 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				A01CC61E21F717FD00E5D771 /* Export.swift */,
+				A01CC62221F7195B00E5D771 /* PDF.swift */,
+				A01CC62421F7196700E5D771 /* HTML.swift */,
+				A01CC61B21F61AA300E5D771 /* PDFFactory.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
 		A02115A7213D6D2E004B5B73 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,6 +1191,7 @@
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
 				A0CC7B592138048700C28C3B /* ImageDownload.swift */,
 				A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */,
+				A01CC61D21F717DC00E5D771 /* Export */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 				A0FDDF6421BE8B190078FCAA /* HTMLPDFRenderer */,
@@ -1187,6 +1209,7 @@
 				A003810720FE2AA400CDA44D /* StepperProtocol.swift */,
 				A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */,
 				A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */,
+				A01CC62021F7187C00E5D771 /* ExportProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1852,6 +1875,7 @@
 				A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */,
 				A0AA0911215924C9007C0327 /* CheckListLabelCell.swift in Sources */,
 				A0AE1A2C214BF6690019F09B /* DifficultyViewModel.swift in Sources */,
+				A01CC62321F7195B00E5D771 /* PDF.swift in Sources */,
 				A0C404A621A19FEC0068BDDD /* AskForPasswordView.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */,
@@ -1870,6 +1894,7 @@
 				A0F5B262216FB0DB008B2B6A /* IntervalViewController.swift in Sources */,
 				A0D19D7F215E4A6300B5F5FE /* ChecklistViewModel.swift in Sources */,
 				A0F6C3A921A56AB100A0FE85 /* SettingCellProtocol.swift in Sources */,
+				A01CC61F21F717FD00E5D771 /* Export.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
@@ -1878,10 +1903,12 @@
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
+				A01CC62521F7196700E5D771 /* HTML.swift in Sources */,
 				A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */,
 				A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */,
 				A0D19D85215E51A000B5F5FE /* ChecklistReviewHeaderView.swift in Sources */,
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
+				A01CC62121F7187C00E5D771 /* ExportProtocol.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
 				A006B5D421721AAF00B68309 /* DemoSettingViewController.swift in Sources */,
@@ -1931,6 +1958,7 @@
 				A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */,
 				A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
+				A01CC61C21F61AA500E5D771 /* PDFFactory.swift in Sources */,
 				A0A364852195C11F00448A7A /* SettingsViewController.swift in Sources */,
 				A0FFE4FD20CEEA7E0026C0C7 /* Screen.swift in Sources */,
 				A0CC7B5E21384EB000C28C3B /* WebViewController.swift in Sources */,

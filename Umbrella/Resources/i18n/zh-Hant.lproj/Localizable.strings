@@ -33,6 +33,7 @@
 "Do you really want to remove this form?" = "你真的想刪除這個表格嗎？";
 "No" = "沒有";
 "Yes" = "是";
+"Choose the format." = "選擇格式。";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "获得一切的安全忠告，从发送安全电子邮件，到安全出行。";

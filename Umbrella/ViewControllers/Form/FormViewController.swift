@@ -8,6 +8,7 @@
 
 import UIKit
 import Localize_Swift
+import WebKit
 
 class FormViewController: UIViewController {
     
@@ -143,9 +144,8 @@ class FormViewController: UIViewController {
     ///
     /// - Parameters:
     ///   - indexPath: IndexPath
-    ///   - fileManager: FileManager
-    /// - Returns: URL
-    func shareHtml(indexPath: IndexPath, fileManager: FileManager = FileManager.default) -> URL {
+    /// - Returns: String
+    func prepareHtml(indexPath: IndexPath) -> (nameFile: String, content: String) {
         let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
         
         var form = Form()
@@ -198,18 +198,7 @@ class FormViewController: UIViewController {
         </body>
         </html>
         """
-        
-        do {
-            if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = documentDirectory.appendingPathComponent("\(form.name.replacingOccurrences(of: " ", with: "_")).html")
-                try html.write(to: fileURL, atomically: false, encoding: .utf8)
-                return fileURL
-            }
-        } catch {
-            print("error:", error)
-        }
-        
-        return URL(string: "")!
+        return (form.name.replacingOccurrences(of: " ", with: "_"), html)
     }
     
     //
@@ -352,22 +341,42 @@ extension FormViewController: FormCellDelegate {
     }
     
     func shareAction(indexPath: IndexPath) {
-        let url = shareHtml(indexPath: indexPath)
-        let objectsToShare = [url]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         
-        //New Excluded Activities Code
-        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
-        
-        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            if !completed {
-                // User canceled
-                return
+        UIAlertController.alertSheet(title: "Alert".localized(), message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+            
+            let shareItem = self.prepareHtml(indexPath: indexPath)
+            var objectsToShare: [Any] = [Any]()
+            
+            if option == 0 {
+                // HTML
+                let html = HTML(nameFile: shareItem.nameFile + ".html", content: shareItem.content)
+                let export = Export(html)
+                let url = export.makeExport()
+                objectsToShare = [url]
+            } else if option == 1 {
+                //PDF
+                let pdf = PDF(nameFile: shareItem.nameFile + ".pdf", content: shareItem.content)
+                let export = Export(pdf)
+                let url = export.makeExport()
+                objectsToShare = [url]
             }
-            // User completed activity
-        }
-        
-        self.present(activityVC, animated: true, completion: nil)
+            
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+
+            activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                if !completed {
+                    // User canceled
+                    return
+                }
+            }
+
+            self.present(activityVC, animated: true, completion: nil)
+        }, cancel: {
+            print("cancel")
+        })
     }
 }
 

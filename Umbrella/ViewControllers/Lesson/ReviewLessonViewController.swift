@@ -170,8 +170,6 @@ class ReviewLessonViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
-        var checkItemChecked = ""
-        
         var objectsToShare:[Any] = [Any]()
         let viewController = self.pages[Int(currentPage)]
         
@@ -191,26 +189,62 @@ class ReviewLessonViewController: UIViewController {
             // LessonCheckListViewController
         else if viewController is LessonCheckListViewController {
             let controller = (viewController as? LessonCheckListViewController)!
+            
+            var content: String = ""
+            
+            content += """
+            <html>
+            <head>
+            <meta charset="UTF-8"> \n
+            """
+            content += "<title>\(controller.lessonCheckListViewModel.category!.name ?? "") - Checklist</title> \n"
+            content += "</head> \n"
+            content += "<body style=\"display:block;width:100%;\"> \n"
+            content += "<h1>Checklist</h1> \n"
+            
             for checkItem in (controller.lessonCheckListViewModel.checklist?.items)! {
-                checkItemChecked.append("\(checkItem.checked ? "✓" : "✗") \(checkItem.name)\n")
+                 content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
             }
-            objectsToShare = [checkItemChecked]
+            
+            content += """
+            </form>
+            </body>
+            </html>
+            """
+            
+            UIAlertController.alertSheet(title: "Alert".localized(), message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+
+                if option == 0 {
+                    // HTML
+                    let html = HTML(nameFile: "Checklist.html", content: content)
+                    let export = Export(html)
+                    let url = export.makeExport()
+                    objectsToShare = [url]
+                } else if option == 1 {
+                    //PDF
+                    let pdf = PDF(nameFile: "Checklist.pdf", content: content)
+                    let export = Export(pdf)
+                    let url = export.makeExport()
+                    objectsToShare = [url]
+                }
+                
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                
+                //New Excluded Activities Code
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+                
+                activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                    if !completed {
+                        // User canceled
+                        return
+                    }
+                }
+                
+                self.present(activityVC, animated: true, completion: nil)
+            }, cancel: {
+                print("cancel")
+            })
         }
-        
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        
-        //New Excluded Activities Code
-        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
-        
-        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            if !completed {
-                // User canceled
-                return
-            }
-            // User completed activity
-        }
-        
-        self.present(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func favouriteAction(_ sender: UIBarButtonItem) {
