@@ -342,7 +342,7 @@ extension FormViewController: FormCellDelegate {
     
     func shareAction(indexPath: IndexPath) {
         
-        UIAlertController.alertSheet(title: "Alert".localized(), message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+        UIAlertController.alertSheet(title: "", message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
             
             let shareItem = self.prepareHtml(indexPath: indexPath)
             var objectsToShare: [Any] = [Any]()

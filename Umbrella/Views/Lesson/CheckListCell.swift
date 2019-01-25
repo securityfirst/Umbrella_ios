@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChecklistCellDelegate: class {
     func favouriteChecklist(cell: CheckListCell)
+    func shareChecklist(cell: CheckListCell)
 }
 
 class CheckListCell: UICollectionViewCell {
@@ -67,4 +68,7 @@ class CheckListCell: UICollectionViewCell {
         self.delegate?.favouriteChecklist(cell: self)
     }
     
+    @IBAction func shareAction(_ sender: Any) {
+        self.delegate?.shareChecklist(cell: self)
+    }
 }

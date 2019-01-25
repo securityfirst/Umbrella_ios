@@ -10,6 +10,7 @@ import UIKit
 
 protocol SegmentCellDelegate: class {
     func favouriteSegment(cell: SegmentCell)
+    func shareSegment(cell: SegmentCell)
 }
 
 class SegmentCell: UICollectionViewCell {
@@ -72,5 +73,9 @@ class SegmentCell: UICollectionViewCell {
     
     @IBAction func favouriteAction(_ sender: Any) {
         self.delegate?.favouriteSegment(cell: self)
+    }
+    
+    @IBAction func shareAction(_ sender: Any) {
+        self.delegate?.shareSegment(cell: self)
     }
 }

@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Down
 
 class HTML: ExportProtocol {
     
     //
     // MARK: - Properties
     let nameFile: String!
-    let content: String!
+    var content: String!
     
     //
     // MARK: - Initializer
@@ -44,5 +45,67 @@ class HTML: ExportProtocol {
         }
         
         return URL(string: "")!
+    }
+    
+    /// Prepare html with style of the content
+    ///
+    /// - Returns: String
+    func prepareHtmlWithStyle() {
+        do {
+            var html = try Down(markdownString: self.content).toHTML()
+            
+            html = """
+            <html>
+                <head>
+                    <style>
+                        body{
+                            color:#444444;
+                            font-size:300%;
+                        }
+                        img{
+                            width:100%
+                        }
+                        h1{
+                            color:#33b5e5;
+                            font-weight:normal;
+                        }
+                        h2{
+                            color:#9ABE2E;
+                            font-weight:normal;
+                        }
+                        getDifficultyFromId{
+                            color:#33b5e5
+                        }
+                        .button,.button:link{
+                            display:block;
+                            text-decoration:none;
+                            color:white;
+                            border:none;
+                            width:100%;
+                            text-align:center;
+                            border-radius:3px;
+                            padding-top:10px;
+                            padding-bottom:10px;
+                        }
+                        .green{
+                            background:#9ABE2E
+                        }
+                        .purple{
+                            background:#b83656
+                        }
+                        .yellow{
+                            background:#f3bc2b
+                        }
+                    </style>
+                </head>
+                <body>
+                \(html)
+                </body>
+            </html>
+            """
+            self.content = html
+        } catch {
+            print("Convert to html error: \(error)")
+        }
     }
 }

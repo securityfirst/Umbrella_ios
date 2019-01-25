@@ -185,6 +185,21 @@ class ReviewLessonViewController: UIViewController {
             renderer.render(webView: controller.markdownWebView, toPDF: pdfURL, paperSize: .a4)
             objectsToShare = [pdfURL]
             
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+            
+            activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                if !completed {
+                    // User canceled
+                    return
+                }
+                // User completed activity
+            }
+            
+            self.present(activityVC, animated: true, completion: nil)
+            
         }
             // LessonCheckListViewController
         else if viewController is LessonCheckListViewController {
@@ -212,7 +227,7 @@ class ReviewLessonViewController: UIViewController {
             </html>
             """
             
-            UIAlertController.alertSheet(title: "Alert".localized(), message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+            UIAlertController.alertSheet(title: "", message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
 
                 if option == 0 {
                     // HTML

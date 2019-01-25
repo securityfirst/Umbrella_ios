@@ -8,6 +8,7 @@
 
 import UIKit
 import BTNavigationDropdownMenu
+import WebKit
 
 class SegmentViewController: UIViewController {
     
@@ -22,6 +23,8 @@ class SegmentViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentCollectionView: UICollectionView!
     var menuView: BTNavigationDropdownMenu?
+    var wkWebView: WKWebView!
+    var fileNameShare: String = ""
     
     //
     // MARK: - Life cycle
@@ -207,6 +210,31 @@ extension SegmentViewController: SegmentCellDelegate {
             }
         }
     }
+    
+    func shareSegment(cell: SegmentCell) {
+        let indexPath = self.segmentCollectionView.indexPath(for: cell)
+        
+        if let  indexPath = indexPath {
+            let segment = self.segmentViewModel.getSegments()[indexPath.row]
+            
+            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                var path = documentsPathURL.absoluteString
+                path.removeLast()
+                path = path.replacingOccurrences(of: "file://", with: "")
+                segment.content = segment.content?.replacingOccurrences(of: "#DOCUMENTS", with: path)
+                
+                self.fileNameShare = segment.name!.components(separatedBy: .whitespacesAndNewlines).joined()
+                let html = HTML(nameFile: "\(self.fileNameShare).html", content: segment.content!)
+                html.prepareHtmlWithStyle()
+                let export = Export(html)
+                let url = export.makeExport()
+                
+                self.wkWebView = WKWebView(frame: self.view.bounds)
+                self.wkWebView.navigationDelegate = self
+                self.wkWebView.loadFileURL(url, allowingReadAccessTo: documentsPathURL)
+            }
+        }
+    }
 }
 
 //
@@ -231,8 +259,75 @@ extension SegmentViewController: ChecklistCellDelegate {
                     self.segmentViewModel.removeFavouriteChecklist(self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id)
                 }
             }
-           
+            
             self.segmentCollectionView.reloadItems(at: [indexPath])
+        }
+    }
+    
+    func shareChecklist(cell: CheckListCell) {
+        let indexPath = self.segmentCollectionView.indexPath(for: cell)
+        var objectsToShare:[Any] = [Any]()
+        
+        if let indexPath = indexPath, indexPath.section == 1 {
+            
+            let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
+            
+            if let checklist = checklist {
+                var content: String = ""
+                
+                content += """
+                <html>
+                <head>
+                <meta charset="UTF-8"> \n
+                """
+                content += "<title>\(self.segmentViewModel.category!.name ?? "") - Checklist</title> \n"
+                content += "</head> \n"
+                content += "<body style=\"display:block;width:100%;\"> \n"
+                content += "<h1>Checklist</h1> \n"
+                
+                for checkItem in checklist.items {
+                    content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
+                }
+                
+                content += """
+                </form>
+                </body>
+                </html>
+                """
+                
+                UIAlertController.alertSheet(title: "", message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+                    
+                    if option == 0 {
+                        // HTML
+                        let html = HTML(nameFile: "Checklist.html", content: content)
+                        let export = Export(html)
+                        let url = export.makeExport()
+                        objectsToShare = [url]
+                    } else if option == 1 {
+                        //PDF
+                        let pdf = PDF(nameFile: "Checklist.pdf", content: content)
+                        let export = Export(pdf)
+                        let url = export.makeExport()
+                        objectsToShare = [url]
+                    }
+                    
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                    
+                    //New Excluded Activities Code
+                    activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+                    
+                    activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                        if !completed {
+                            // User canceled
+                            return
+                        }
+                    }
+                    
+                    self.present(activityVC, animated: true, completion: nil)
+                }, cancel: {
+                    print("cancel")
+                })
+            }
         }
     }
 }
@@ -261,5 +356,29 @@ extension SegmentViewController: UISearchBarDelegate {
                 self.view.endEditing(true)
             }
         }
+    }
+}
+
+extension SegmentViewController : WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        var objectsToShare:[Any] = [Any]()
+        guard let pdfURL = FileManager.default.documentsURL?.appendingPathComponent("\(self.fileNameShare).pdf") else { return }
+        let renderer = HTML2PDFRenderer()
+        renderer.render(webView: webView, toPDF: pdfURL, paperSize: .a4)
+        objectsToShare = [pdfURL]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        //New Excluded Activities Code
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+        
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                return
+            }
+            // User completed activity
+        }
+        
+        self.present(activityVC, animated: true, completion: nil)
     }
 }

@@ -279,20 +279,31 @@ Why do kidnappings occur?</string>
                                                             </constraints>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconFavourite" translatesAutoresizingMaskIntoConstraints="NO" id="Xhz-Te-mFh">
-                                                            <rect key="frame" x="134" y="149" width="30" height="31"/>
+                                                            <rect key="frame" x="86" y="149" width="30" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="WPJ-8T-h4k"/>
                                                                 <constraint firstAttribute="height" constant="31" id="y5r-C2-lCF"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bx-bf-zWq">
-                                                            <rect key="frame" x="101" y="132" width="70" height="54"/>
+                                                            <rect key="frame" x="76" y="141" width="50" height="45"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="70" id="Yf6-H7-rS6"/>
-                                                                <constraint firstAttribute="height" constant="54" id="yhe-Uv-cKS"/>
+                                                                <constraint firstAttribute="width" constant="50" id="Yf6-H7-rS6"/>
+                                                                <constraint firstAttribute="height" constant="45" id="yhe-Uv-cKS"/>
                                                             </constraints>
                                                             <connections>
                                                                 <action selector="favouriteAction:" destination="PBG-Tm-ZDN" eventType="touchUpInside" id="sUL-Af-Z9a"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVs-8V-ywC">
+                                                            <rect key="frame" x="136" y="152" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="0Lq-cu-vf9"/>
+                                                                <constraint firstAttribute="height" constant="25" id="Kza-16-lHK"/>
+                                                            </constraints>
+                                                            <state key="normal" backgroundImage="iconShare"/>
+                                                            <connections>
+                                                                <action selector="shareAction:" destination="PBG-Tm-ZDN" eventType="touchUpInside" id="a3g-UB-Enn"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -300,11 +311,13 @@ Why do kidnappings occur?</string>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Xhz-Te-mFh" secondAttribute="bottom" constant="7" id="7eE-gP-kMb"/>
                                                         <constraint firstItem="vtN-jf-LEA" firstAttribute="top" secondItem="iO3-mQ-0AJ" secondAttribute="top" id="ADh-1h-yVd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Xhz-Te-mFh" secondAttribute="trailing" constant="7" id="BTx-pg-CuU"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Xhz-Te-mFh" secondAttribute="trailing" constant="55" id="BTx-pg-CuU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cVs-8V-ywC" secondAttribute="bottom" constant="10" id="GVv-4d-DJw"/>
                                                         <constraint firstItem="Xhz-Te-mFh" firstAttribute="top" secondItem="vtN-jf-LEA" secondAttribute="bottom" constant="8" id="M7s-LS-UpW"/>
                                                         <constraint firstItem="vtN-jf-LEA" firstAttribute="leading" secondItem="iO3-mQ-0AJ" secondAttribute="leading" id="Sxe-d5-ycH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cVs-8V-ywC" secondAttribute="trailing" constant="10" id="Yn8-UQ-YX4"/>
+                                                        <constraint firstItem="cVs-8V-ywC" firstAttribute="leading" secondItem="1bx-bf-zWq" secondAttribute="trailing" constant="10" id="ZiP-Xa-TEH"/>
                                                         <constraint firstItem="vtN-jf-LEA" firstAttribute="width" secondItem="iO3-mQ-0AJ" secondAttribute="width" id="dfT-kV-6Ga"/>
-                                                        <constraint firstAttribute="trailing" secondItem="1bx-bf-zWq" secondAttribute="trailing" id="sKA-JT-Yhb"/>
                                                         <constraint firstAttribute="bottom" secondItem="1bx-bf-zWq" secondAttribute="bottom" constant="1" id="zbJ-ze-cSY"/>
                                                     </constraints>
                                                 </view>
@@ -355,20 +368,33 @@ Why do kidnappings occur?</string>
                                                             </constraints>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconFavourite" translatesAutoresizingMaskIntoConstraints="NO" id="PZ0-WD-Mb4">
-                                                            <rect key="frame" x="313.5" y="95" width="30" height="31"/>
+                                                            <rect key="frame" x="268.5" y="95" width="30" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="31" id="cta-z3-frv"/>
                                                                 <constraint firstAttribute="width" constant="30" id="p13-mL-mtp"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAx-sY-bP8">
-                                                            <rect key="frame" x="280" y="78" width="70" height="54"/>
+                                                            <rect key="frame" x="260" y="92" width="45" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="70" id="X6q-Kj-xO5"/>
-                                                                <constraint firstAttribute="height" constant="54" id="cD7-Bg-arO"/>
+                                                                <constraint firstAttribute="width" constant="45" id="X6q-Kj-xO5"/>
+                                                                <constraint firstAttribute="height" constant="40" id="cD7-Bg-arO"/>
                                                             </constraints>
                                                             <connections>
                                                                 <action selector="favouriteAction:" destination="eks-2Q-UHn" eventType="touchUpInside" id="5z4-sk-Gij"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tb-zn-Hjb">
+                                                            <rect key="frame" x="315" y="97" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="Q9z-h2-sV6"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="XZY-zm-S6v"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="get-b5-JgP"/>
+                                                                <constraint firstAttribute="height" constant="25" id="kJy-Tf-ZJV"/>
+                                                            </constraints>
+                                                            <state key="normal" backgroundImage="iconShare"/>
+                                                            <connections>
+                                                                <action selector="shareAction:" destination="eks-2Q-UHn" eventType="touchUpInside" id="HOg-o1-Wn4"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -376,12 +402,14 @@ Why do kidnappings occur?</string>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="WOJ-nZ-7Kk" secondAttribute="trailing" constant="1" id="4Wz-M9-Iev"/>
                                                         <constraint firstItem="PZ0-WD-Mb4" firstAttribute="top" secondItem="WOJ-nZ-7Kk" secondAttribute="bottom" constant="3" id="5PB-oS-Y7L"/>
-                                                        <constraint firstAttribute="trailing" secondItem="PZ0-WD-Mb4" secondAttribute="trailing" constant="6.5" id="8k1-Um-Xnf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7tb-zn-Hjb" secondAttribute="trailing" constant="10" id="5xK-vx-Lso"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PZ0-WD-Mb4" secondAttribute="trailing" constant="51.5" id="8k1-Um-Xnf"/>
                                                         <constraint firstAttribute="bottom" secondItem="NAx-sY-bP8" secondAttribute="bottom" id="K20-VT-n63"/>
                                                         <constraint firstItem="WOJ-nZ-7Kk" firstAttribute="top" secondItem="63y-lb-ch7" secondAttribute="top" id="Ovd-yZ-by8"/>
                                                         <constraint firstItem="WOJ-nZ-7Kk" firstAttribute="leading" secondItem="63y-lb-ch7" secondAttribute="leading" constant="-1" id="QLw-qo-JQ2"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7tb-zn-Hjb" secondAttribute="bottom" constant="10" id="VOd-hL-n4W"/>
                                                         <constraint firstAttribute="bottom" secondItem="PZ0-WD-Mb4" secondAttribute="bottom" constant="6" id="Yx0-9a-JaB"/>
-                                                        <constraint firstAttribute="trailing" secondItem="NAx-sY-bP8" secondAttribute="trailing" id="aSn-Xl-AEm"/>
+                                                        <constraint firstItem="7tb-zn-Hjb" firstAttribute="leading" secondItem="NAx-sY-bP8" secondAttribute="trailing" constant="10" id="q63-bc-YLf"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -678,9 +706,10 @@ Why do kidnappings occur?</string>
         <image name="icLocalLibrary" width="24" height="24"/>
         <image name="iconExpert" width="65" height="65"/>
         <image name="iconFavourite" width="24" height="24"/>
+        <image name="iconShare" width="104" height="104"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0CJ-vw-xmI"/>
+        <segue reference="MFc-0B-sLb"/>
         <segue reference="Wln-tG-fek"/>
     </inferredMetricsTieBreakers>
 </document>
