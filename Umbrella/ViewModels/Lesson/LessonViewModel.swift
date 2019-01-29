@@ -215,6 +215,7 @@ class LessonViewModel {
             
             for category in categories {
                 
+                // if segment doesn't have difficulty
                 if category.id == favouriteSegment.categoryId {
                     let segment = category.segments.filter {$0.id == favouriteSegment.segmentId}.first
                     
@@ -222,8 +223,17 @@ class LessonViewModel {
                         segment.favourite = true
                         segments.append(segment)
                     }
-                } else {
                     
+                    for subCategory in category.categories {
+                        let segment = subCategory.segments.filter {$0.id == favouriteSegment.segmentId}.first
+                        
+                        if let segment = segment {
+                            segment.favourite = true
+                            segments.append(segment)
+                        }
+                    }
+                } else {
+                    // if segment has difficulty
                     let categ = category.categories.filter {$0.id == favouriteSegment.categoryId}.first
                     
                     if let categ = categ {

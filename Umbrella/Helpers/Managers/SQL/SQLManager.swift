@@ -263,6 +263,8 @@ extension SQLManager {
         if let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool {
             if passwordCustom {
                 self.password = CustomPassword.shared.password
+            } else {
+                self.password = Database.password
             }
         }
         

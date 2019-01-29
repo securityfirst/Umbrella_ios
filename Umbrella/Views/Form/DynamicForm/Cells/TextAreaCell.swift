@@ -29,13 +29,13 @@ class TextAreaCell: BaseFormCell {
         super.awakeFromNib()
         // Initialization code
         
-        textView.delegate = self
-        placeholderLabel = UILabel()
-        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (textView.font?.pointSize)!)
-        textView.addSubview(placeholderLabel)
-        placeholderLabel.frame.origin = CGPoint(x: 5, y: (textView.font?.pointSize)! / 2)
-        placeholderLabel.textColor = UIColor.lightGray
-        placeholderLabel.isHidden = !textView.text.isEmpty
+        self.textView.delegate = self
+        self.placeholderLabel = UILabel()
+        self.placeholderLabel.font = UIFont.italicSystemFont(ofSize: (self.textView.font?.pointSize)!)
+        self.textView.addSubview(self.placeholderLabel)
+        self.placeholderLabel.frame.origin = CGPoint(x: 5, y: (self.textView.font?.pointSize)! / 2)
+        self.placeholderLabel.textColor = UIColor.lightGray
+        self.placeholderLabel.isHidden = !self.textView.text.isEmpty
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,26 +55,26 @@ class TextAreaCell: BaseFormCell {
     func configure(withViewModel viewModel:DynamicFormViewModel, indexPath: IndexPath) {
         self.indexPath = indexPath
         let itemForm = viewModel.screen.items[indexPath.row]
-        titleLabel.text = itemForm.label
-        placeholderLabel.accessibilityHint = titleLabel.text
+        self.titleLabel.text = itemForm.label
+        self.placeholderLabel.accessibilityHint = self.titleLabel.text
         
         if itemForm.hint.count > 0 {
-            placeholderLabel.text = itemForm.hint
-            placeholderLabel.accessibilityHint = itemForm.hint
-            placeholderLabel.sizeToFit()
+            self.placeholderLabel.text = itemForm.hint
+            self.placeholderLabel.accessibilityHint = itemForm.hint
+            self.placeholderLabel.sizeToFit()
         }
         
         //Load answers
         for formAnswer in viewModel.formAnswers where formAnswer.itemFormId == itemForm.id {
-            textView.text = formAnswer.text
-            placeholderLabel.isHidden = true
+            self.textView.text = formAnswer.text
+            self.placeholderLabel.isHidden = true
             
         }
     }
 
     /// Save the data in database
     override func saveForm() {
-        if (textView.text?.count)! > 0 {
+        if (self.textView.text?.count)! > 0 {
             self.delegateForm?.saveForm(cell: self, indexPath: self.indexPath)
         }
     }
@@ -85,7 +85,7 @@ class TextAreaCell: BaseFormCell {
 extension TextAreaCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        placeholderLabel.isHidden = !textView.text.isEmpty
+        self.placeholderLabel.isHidden = !textView.text.isEmpty
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

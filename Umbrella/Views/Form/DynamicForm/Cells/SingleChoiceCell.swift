@@ -66,8 +66,6 @@ class SingleChoiceCell: BaseFormCell {
         for view in self.subviews where view is ChoiceButton {
             let button = (view as? ChoiceButton)!
             if button.state {
-                print(button.index)
-                
                 self.delegate?.saveForm(cell: self, indexPath: self.indexPath)
                 break
             }

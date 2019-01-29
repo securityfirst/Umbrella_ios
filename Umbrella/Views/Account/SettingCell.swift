@@ -86,6 +86,25 @@ class SettingCell: UITableViewCell {
         
         if sender.tag == 0 {
             UserDefaults.standard.set(sender.isOn, forKey: "skipPassword")
+            
+            if sender.isOn {
+                var oldPassword = ""
+                let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+                if passwordCustom {
+                    oldPassword = CustomPassword.shared.password
+                } else {
+                    oldPassword = Database.password
+                }
+                
+                let sqlManager = SQLManager(databaseName: Database.name, password: oldPassword)
+                
+                sqlManager.changePassword(oldPassword: oldPassword, newPassword: Database.password)
+                
+                UserDefaults.standard.set(false, forKey: "passwordCustom")
+                UserDefaults.standard.synchronize()
+                CustomPassword.shared.password = ""
+            }
+            
         } else if sender.tag == 2 {
             
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in

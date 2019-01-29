@@ -37,7 +37,7 @@ class LabelCell: BaseFormCell {
     ///   - indexPath: indexPath
     func configure(withViewModel viewModel:DynamicFormViewModel, indexPath: IndexPath) {
         let itemForm = viewModel.screen.items[indexPath.row]
-        titleLabel.text = itemForm.label
+        self.titleLabel.text = itemForm.label
     }
     
     /// Save the data in database
