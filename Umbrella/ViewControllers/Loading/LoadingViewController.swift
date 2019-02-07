@@ -45,7 +45,7 @@ class LoadingViewController: UIViewController {
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.messageLabel)
         
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
-            messageLabel.text = "Clone of the tent".localized()
+            messageLabel.text = "Fetching Data".localized()
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
             loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
@@ -99,7 +99,7 @@ class LoadingViewController: UIViewController {
         retryButton.isHidden = true
         closeButton.isHidden = true
         activityIndicatorView.isHidden = false
-        messageLabel.text = "Clone of the tent".localized()
+        messageLabel.text = "Fetching Data".localized()
         loadTent(completion: self.completion!)
     }
     

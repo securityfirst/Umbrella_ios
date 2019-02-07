@@ -170,4 +170,10 @@ class StepperView: UIView, UIScrollViewDelegate {
         self.progressLabel.font = UIFont(name: "Roboto-Bold", size: 8)
         self.addSubview(progressLabel)
     }
+    
+    func updateFrame() {
+        self.scrollView.frame = self.bounds
+        self.progressBar.frame = CGRect(x: 0, y: self.frame.size.height-12, width: self.frame.size.width, height: 2)
+        self.progressLabel.frame = CGRect(x: 0, y: self.frame.size.height-10, width: self.frame.size.width, height: 12)
+    }
 }

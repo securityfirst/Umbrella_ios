@@ -20,6 +20,8 @@ class FillFormViewController: UIViewController {
     @IBOutlet weak var stepperView: StepperView!
     @IBOutlet weak var formScrollView: UIScrollView!
     @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     var isNewForm: Bool = true
     var currentPage: CGFloat = 0
@@ -31,11 +33,7 @@ class FillFormViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = fillFormViewModel.form.name
-        
-        self.stepperView.dataSource = self
-        self.stepperView.reloadData()
-        self.stepperView.isAccessibilityElement = false
-        self.stepperView.accessibilityElementsHidden = true
+        self.stepperView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +44,13 @@ class FillFormViewController: UIViewController {
         }
         view.tag = 99
         
+        self.stepperView.updateFrame()
+        self.stepperView.dataSource = self
+        self.stepperView.reloadData()
+        self.stepperView.isHidden = false
+        self.stepperView.isAccessibilityElement = false
+        self.stepperView.accessibilityElementsHidden = true
+        
         var newFormAnswerId = (fillFormViewModel.formAnswerId())
         
         // If is a new form
@@ -53,7 +58,7 @@ class FillFormViewController: UIViewController {
         if isNewForm {
             newFormAnswerId += 1
         }
-        
+      
         var formAnswers: [FormAnswer] = []
         if let screen = fillFormViewModel.form.screens.first {
             formAnswers = fillFormViewModel.loadFormAnswersTo(formId: screen.formId)
@@ -112,6 +117,7 @@ class FillFormViewController: UIViewController {
     //
     // MARK: - Functions
     
+    /// Check password
     func checkPassword() {
         
         let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
@@ -201,6 +207,17 @@ class FillFormViewController: UIViewController {
             }
         }
     }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func backAction(_ sender: Any) {
+        self.formScrollView.contentOffset.x = (currentPage - 1) * self.formScrollView.frame.size.width
+    }
+    
+    @IBAction func nextAction(_ sender: Any) {
+        self.formScrollView.contentOffset.x = (currentPage + 1) * self.formScrollView.frame.size.width
+    }
 }
 
 //
@@ -220,6 +237,11 @@ extension FillFormViewController: UIScrollViewDelegate {
         currentPage = pageNumber
         stepperView.scrollViewDidPage(page: currentPage)
         self.view.endEditing(true)
+        self.backButton.isHidden = (currentPage == 0)
+        
+        if (Int(currentPage) == fillFormViewModel.form.screens.count - 1) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

@@ -103,15 +103,15 @@ class FeedViewController: UIViewController {
         self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
         
-        let font = UIFont(name: "Roboto-Regular", size: 11)
-        let attributesDictionary: [NSAttributedString.Key: Any]? = [NSAttributedString.Key.font: font!, NSAttributedString.Key.foregroundColor : UIColor.black]
-        
-        let modeBarButton = UIBarButtonItem(title: "Repo", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.shareAction(_:)))
-        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
-        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
-        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
-        
-        self.navigationItem.leftBarButtonItems = [modeBarButton]
+//        let font = UIFont(name: "Roboto-Regular", size: 11)
+//        let attributesDictionary: [NSAttributedString.Key: Any]? = [NSAttributedString.Key.font: font!, NSAttributedString.Key.foregroundColor : UIColor.black]
+//
+//        let modeBarButton = UIBarButtonItem(title: "Change repository".localized(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.shareAction(_:)))
+//        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
+//        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
+//        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
+//
+//        self.navigationItem.leftBarButtonItems = [modeBarButton]
         
         self.sourceLegend = self.sourceLegLabel.text ?? ""
         
@@ -237,13 +237,13 @@ class FeedViewController: UIViewController {
         self.sourceLegend = self.sourceLegLabel.text ?? ""
     }
     
-    /// Share action
-    ///
-    /// - Parameter sender: UIBarButtonItem
-    @objc func shareAction(_ sender: UIBarButtonItem) {
-        let app = (UIApplication.shared.delegate as? AppDelegate)!
-        app.show()
-    }
+//    /// Share action
+//    ///
+//    /// - Parameter sender: UIBarButtonItem
+//    @objc func shareAction(_ sender: UIBarButtonItem) {
+//        let app = (UIApplication.shared.delegate as? AppDelegate)!
+//        app.show()
+//    }
     
     /// Refresh repository
     ///

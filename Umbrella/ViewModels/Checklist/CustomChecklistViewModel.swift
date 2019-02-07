@@ -43,9 +43,12 @@ class CustomChecklistViewModel {
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
         self.customChecklistChecked = self.customChecklistCheckedDao.list()
-        self.customChecklists = self.customChecklistDao.listOfLanguage(languageId: language!.id)
-        self.customChecklists.forEach { customChecklist in
-            customChecklist.items = self.customCheckItemDao.listOfChecklist(checkListId: customChecklist.id)
+        
+        if let language = language {
+            self.customChecklists = self.customChecklistDao.listOfLanguage(languageId: language.id)
+            self.customChecklists.forEach { customChecklist in
+                customChecklist.items = self.customCheckItemDao.listOfChecklist(checkListId: customChecklist.id)
+            }
         }
     }
     

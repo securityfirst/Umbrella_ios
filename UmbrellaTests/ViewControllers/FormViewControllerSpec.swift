@@ -107,7 +107,7 @@ class FormViewControllerSpec: QuickSpec {
                     viewController.formViewModel.umbrella = umbrella!
                     viewController.formTableView.reloadData()
                     
-                    let url = viewController.shareHtml(indexPath: IndexPath(row: 0, section: 0))
+                    let url = viewController.prepareHtml(indexPath: IndexPath(row: 0, section: 0))
                     
                     expect(url).toNot(beNil())
                 }

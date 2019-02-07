@@ -43,6 +43,7 @@ class SettingsViewModel {
             .general: [
                 (title: "Skip password".localized(), subtitle: "Don't ask for password again".localized(), hasAccessory: false, hasSwitch: true),
                 (title: "Refresh from the server".localized(), subtitle: "Refresh from the server".localized(), hasAccessory: false, hasSwitch: false),
+                (title: "Change repository".localized(), subtitle: "Change repository".localized(), hasAccessory: false, hasSwitch: false),
                 (title: "Select Language".localized(), subtitle: languageSelected, hasAccessory: true, hasSwitch: false),
                 (title: "Import your data".localized(), subtitle: "Import your data".localized(), hasAccessory: false, hasSwitch: false),
                 (title: "Export your data".localized(), subtitle: "Export your data".localized(), hasAccessory: false, hasSwitch: false)

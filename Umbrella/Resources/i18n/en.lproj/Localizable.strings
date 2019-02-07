@@ -22,7 +22,7 @@
 "Updating the database" = "Updating the database";
 "Error in load the tent" = "Error in load the tent";
 "Getting the database" = "Getting the database";
-"Clone of the tent" = "Clone of the tent";
+"Fetching Data" = "Fetching Data";
 
 // Form
 "Active" = "Active";
@@ -71,6 +71,7 @@
 "Enter interval" = "Enter interval";
 "Sources" = "Sources";
 "Select The Feed Sources" = "Select The Feed Sources";
+"Change repository" = "Change repository";
 
 // Lessons
 "Favourites" = "Favourites";

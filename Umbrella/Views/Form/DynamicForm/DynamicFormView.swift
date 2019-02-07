@@ -57,7 +57,8 @@ class DynamicFormView: UIView {
             if endFrameY >= UIScreen.main.bounds.size.height {
                 self.bottomConstraint?.constant = 0.0
             } else {
-                self.bottomConstraint?.constant = (endFrame?.size.height)! - 48
+                // Number 50 is to navigation view (Back - Next)
+                self.bottomConstraint?.constant = (endFrame?.size.height)! - 48 - 50
             }
             UIView.animate(withDuration: duration,
                            delay: 0,

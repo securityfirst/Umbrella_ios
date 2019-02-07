@@ -114,6 +114,12 @@ class SettingsViewController: UIViewController {
         self.performSegue(withIdentifier: "languageSegue", sender: nil)
     }
     
+    /// Select another language
+    fileprivate func changeRepository() {
+        let app = (UIApplication.shared.delegate as? AppDelegate)!
+        app.show()
+    }
+    
     /// Change interval to update the feed
     fileprivate func refreshInterval() {
         self.performSegue(withIdentifier: "intervalSegue", sender: nil)
@@ -198,16 +204,20 @@ extension SettingsViewController: UITableViewDelegate {
             if indexPath.row == 1 {
                 refreshRepo()
             }
-                // Language
+                // Repository
             else if indexPath.row == 2 {
+                changeRepository()
+            }
+                // Language
+            else if indexPath.row == 3 {
                 selectLanguage()
             }
                 // Import
-            else if indexPath.row == 3 {
+            else if indexPath.row == 4 {
                 importData()
             }
                 // Export
-            else if indexPath.row == 4 {
+            else if indexPath.row == 5 {
                 exportData()
             }
             

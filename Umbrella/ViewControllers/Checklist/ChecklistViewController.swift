@@ -84,17 +84,6 @@ extension ChecklistViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: ChecklistReviewCell = (tableView.dequeueReusableCell(withIdentifier: "ChecklistReviewCell", for: indexPath) as? ChecklistReviewCell)!
-        
-        if indexPath.section == 0 {
-            
-            let totalList = self.checklistViewModel.checklistChecked + self.checklistViewModel.favouriteChecklistChecked
-            
-            let totalChecked = totalList.reduce(0) { $0 + $1.totalChecked}
-            let totalItemsChecklist = totalList.reduce(0) { $0 + $1.totalItemsChecklist}
-            let checklistChecked = ChecklistChecked(subCategoryName: "Total done".localized(), totalChecked: totalChecked, totalItemsChecklist: totalItemsChecklist)
-            self.checklistViewModel.itemTotalDone = checklistChecked
-        }
-        
         cell.configure(withViewModel: self.checklistViewModel, indexPath: indexPath)
         
         return cell

@@ -19,6 +19,7 @@ class RssViewModel {
         let rssItemDao = RssItemDao(sqlProtocol: self.sqlManager)
         return rssItemDao
     }()
+    var count = 0
     
     //
     // MARK: - Init
@@ -33,7 +34,7 @@ class RssViewModel {
     ///
     /// - Parameter completion: closure
     func loadRSS(feeds: [[String: String]] = RSS.feeds, completion: @escaping (() -> Void)) {
-        var count = 0
+        self.count = 0
         self.rssArray.removeAll()
         
         _ = self.rssItemDao.createTable()
@@ -51,14 +52,14 @@ class RssViewModel {
             let feedURL = URL(string: item.url)!
             let parser = FeedParser(URL: feedURL)
             parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
-                count += 1
+                self.count += 1
                 
                 if result.isSuccess {
                     self.rssArray.append(result)
                 }
                 
                 DispatchQueue.main.async {
-                    if count == rssUrlArray.count && count > 0 {
+                    if self.count == rssUrlArray.count && self.count > 0 {
                         completion()
                     }
                 }

@@ -22,7 +22,7 @@
 "Updating the database" = "Actualizando la base de datos";
 "Error in load the tent" = "Error al cargar la tienda";
 "Getting the database" = "Obteniendo la base de datos";
-"Clone of the tent" = "Clon de la carpa";
+"Fetching Data" = "Recuperacion de datos";
 
 // Form
 "Active" = "Activa";
@@ -71,6 +71,7 @@
 "Enter interval" = "Enter interval";
 "Sources" = "Fuentes";
 "Select The Feed Sources" = "Seleccione las fuentes de alimentación";
+"Change repository" = "Cambiar repositorio";
 
 // Lessons
 "Favourites" = "Favoritos";

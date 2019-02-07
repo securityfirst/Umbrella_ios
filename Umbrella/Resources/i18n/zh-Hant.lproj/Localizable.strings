@@ -22,7 +22,7 @@
 "Updating the database" = "更新数据库";
 "Error in load the tent" = "加载帐篷时出错";
 "Getting the database" = "获取数据库";
-"Clone of the tent" = "克隆的帐篷";
+"Fetching Data" = "獲取數據";
 
 // Form
 "Active" = "活性";
@@ -71,6 +71,7 @@
 "Enter interval" = "輸入間隔";
 "Sources" = "來源";
 "Select The Feed Sources" = "選擇Feed源";
+"Change repository" = "更改存儲庫";
 
 // Lessons
 "Favourites" = "最爱";

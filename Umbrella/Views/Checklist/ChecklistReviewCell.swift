@@ -40,21 +40,21 @@ class ChecklistReviewCell: UITableViewCell {
         var percent = ""
         
         if indexPath.section == 0 {
-            let checklistChecked = viewModel.itemTotalDone
+            let checklistChecked = viewModel.totalDonechecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
-            if checklistChecked?.totalChecked ?? 0 == 0 {
+            if checklistChecked?.totalChecked == 0 {
                 percent = "0%"
             } else {
-                percent = String(format: "%.f%%", Float(checklistChecked?.totalChecked ?? 0) / (Float(checklistChecked?.totalItemsChecklist ?? 0)) * 100)
+                percent = String(format: "%.f%%", floor(Float(checklistChecked?.totalChecked ?? 0) / (Float(checklistChecked?.totalItemsChecklist ?? 0)) * 100))
             }
         } else if indexPath.section == 1 {
             let checklistChecked = viewModel.favouriteChecklistChecked[indexPath.row]
             title = checklistChecked.subCategoryName
-            percent = String(format: "%.f%%", Float(checklistChecked.totalChecked) / (Float(checklistChecked.totalItemsChecklist)) * 100)
+            percent = String(format: "%.f%%", floor(Float(checklistChecked.totalChecked) / (Float(checklistChecked.totalItemsChecklist)) * 100))
         } else {
             let checklistChecked = viewModel.checklistChecked[indexPath.row]
             title = checklistChecked.subCategoryName
-            percent = String(format: "%.f%%", Float(checklistChecked.totalChecked) / (Float(checklistChecked.totalItemsChecklist)) * 100)
+            percent = String(format: "%.f%%", floor(Float(checklistChecked.totalChecked) / (Float(checklistChecked.totalItemsChecklist)) * 100))
         }
         
         self.titleLabel.text = title

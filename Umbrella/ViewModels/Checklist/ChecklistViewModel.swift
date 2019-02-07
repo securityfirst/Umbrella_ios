@@ -14,6 +14,35 @@ class ChecklistViewModel {
     // MARK: - Properties
     var itemTotalDone: ChecklistChecked?
     var checklistChecked: [ChecklistChecked] = [ChecklistChecked]()
+    var totalDonechecklistChecked: ChecklistChecked? {
+        let totalDonechecklistChecked: ChecklistChecked = ChecklistChecked()
+        totalDonechecklistChecked.subCategoryName = "Total done".localized()
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        var totalChecklists = 0
+        
+        if let language = language {
+            //Category
+            for category in language.categories {
+                //Subcategory
+                for subCategory in category.categories {
+                    //Difficulty
+                    for difficulty in subCategory.categories {
+                        //Checklists
+                        for _ in difficulty.checkList {
+                            totalChecklists += 1
+                        }
+                    }
+                }
+            }
+            
+            totalDonechecklistChecked.totalItemsChecklist = totalChecklists
+            totalDonechecklistChecked.totalChecked = self.checklistChecked.count + self.favouriteChecklistChecked.count
+        }
+        return totalDonechecklistChecked
+    }
+    
     var favouriteChecklistChecked: [ChecklistChecked] = [ChecklistChecked]()
     
     var sqlManager: SQLManager
