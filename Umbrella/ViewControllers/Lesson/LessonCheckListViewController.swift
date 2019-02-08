@@ -33,6 +33,8 @@ class LessonCheckListViewController: UIViewController {
         let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem  = modeBarButton
         
+        NotificationCenter.default.addObserver(self, selector: #selector(LessonCheckListViewController.updateChecklist(notification:)), name: Notification.Name("UpdateChecklist"), object: nil)
+        
         updateProgress()
     }
     
@@ -40,27 +42,63 @@ class LessonCheckListViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
-        var checkItemChecked = ""
-        //        ✓✗
+        
+        var objectsToShare:[Any] = [Any]()
+        
+        var content: String = ""
+        
+        content += """
+        <html>
+        <head>
+        <meta charset="UTF-8"> \n
+        """
+        content += "<title>\(self.lessonCheckListViewModel.category?.name ?? "")</title> \n"
+        content += "</head> \n"
+        content += "<body style=\"display:block;width:100%;\"> \n"
+        content += "<h1>Checklist</h1> \n"
         
         for checkItem in (self.lessonCheckListViewModel.checklist?.items)! {
-            checkItemChecked.append("\(checkItem.checked ? "✓" : "✗") \(checkItem.name)\n")
+            content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
         }
-        let objectsToShare = [checkItemChecked]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         
-        //New Excluded Activities Code
-        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+        content += """
+        </form>
+        </body>
+        </html>
+        """
         
-        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            if !completed {
-                // User canceled
-                return
+        UIAlertController.alertSheet(title: "Alert".localized(), message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+            
+            if option == 0 {
+                // HTML
+                let html = HTML(nameFile: "Checklist.html", content: content)
+                let export = Export(html)
+                let url = export.makeExport()
+                objectsToShare = [url]
+            } else if option == 1 {
+                //PDF
+                let pdf = PDF(nameFile: "Checklist.pdf", content: content)
+                let export = Export(pdf)
+                let url = export.makeExport()
+                objectsToShare = [url]
             }
-            // User completed activity
-        }
-        
-        self.present(activityVC, animated: true, completion: nil)
+            
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+            
+            activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                if !completed {
+                    // User canceled
+                    return
+                }
+            }
+            
+            self.present(activityVC, animated: true, completion: nil)
+        }, cancel: {
+            print("cancel")
+        })
     }
     
     //
@@ -73,6 +111,16 @@ class LessonCheckListViewController: UIViewController {
             self.progressView.setProgress(Float(currentChecked)/Float(totalItemInChecklist), animated: true)
             self.progressLabel.text = "\(Int(CGFloat(currentChecked) / CGFloat(totalItemInChecklist) * 100))%"
         }
+    }
+    
+    /// Update Checklist
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func updateChecklist(notification: NSNotification) {
+        self.lessonCheckListViewModel.updateChecklistWithItemChecked()
+        self.checkListTableView.reloadData()
+        
+        updateProgress()
     }
     
 }
@@ -169,6 +217,8 @@ extension LessonCheckListViewController: UITableViewDelegate {
         }
         
         self.updateProgress()
-        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+
+        // I have created this notification to update when a user marks check or uncheck an item on the checklist tab or lesson tab. This way both will be updated
+        NotificationCenter.default.post(name: Notification.Name("UpdateChecklist"), object: nil)
     }
 }

@@ -40,7 +40,7 @@ class ChecklistReviewCell: UITableViewCell {
         var percent = ""
         
         if indexPath.section == 0 {
-            let checklistChecked = viewModel.totalDonechecklistChecked
+            let checklistChecked = viewModel.totalDoneChecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
             if checklistChecked?.totalChecked == 0 {
                 percent = "0%"

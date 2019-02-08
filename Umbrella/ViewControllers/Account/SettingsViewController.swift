@@ -76,7 +76,7 @@ class SettingsViewController: UIViewController {
     
     /// Import data
     fileprivate func importData() {
-        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.text", "public.database"], in: .import)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.database"], in: .import)
         documentPicker.delegate = self
         self.present(documentPicker, animated: true, completion: nil)
     }

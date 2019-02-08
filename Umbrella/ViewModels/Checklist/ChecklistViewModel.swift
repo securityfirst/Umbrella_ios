@@ -14,9 +14,10 @@ class ChecklistViewModel {
     // MARK: - Properties
     var itemTotalDone: ChecklistChecked?
     var checklistChecked: [ChecklistChecked] = [ChecklistChecked]()
-    var totalDonechecklistChecked: ChecklistChecked? {
-        let totalDonechecklistChecked: ChecklistChecked = ChecklistChecked()
-        totalDonechecklistChecked.subCategoryName = "Total done".localized()
+    
+    var totalDoneChecklistChecked: ChecklistChecked? {
+        let totalDoneChecklistChecked: ChecklistChecked = ChecklistChecked()
+        totalDoneChecklistChecked.subCategoryName = "Total done".localized()
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
         
@@ -37,10 +38,10 @@ class ChecklistViewModel {
                 }
             }
             
-            totalDonechecklistChecked.totalItemsChecklist = totalChecklists
-            totalDonechecklistChecked.totalChecked = self.checklistChecked.count + self.favouriteChecklistChecked.count
+            totalDoneChecklistChecked.totalItemsChecklist = totalChecklists
+            totalDoneChecklistChecked.totalChecked = self.checklistChecked.count + self.favouriteChecklistChecked.count
         }
-        return totalDonechecklistChecked
+        return totalDoneChecklistChecked
     }
     
     var favouriteChecklistChecked: [ChecklistChecked] = [ChecklistChecked]()
@@ -71,6 +72,30 @@ class ChecklistViewModel {
     /// Get all item checked
     func reportOfItemsChecked() {
         self.checklistChecked = filterByGreatestDifficultyId()
+    }
+    
+    func getChecklistAndCategory(to checklistId: Int) -> (Category, CheckList) {
+        
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        if let language = language {
+            //Category
+            for category in language.categories {
+                //Subcategory
+                for subCategory in category.categories {
+                    //Difficulty
+                    for difficulty in subCategory.categories {
+                        //Checklists
+                        for checklist in difficulty.checkList where checklist.id == checklistId {
+                            return (difficulty, checklist)
+                        }
+                    }
+                }
+            }
+        }
+        
+        return (Category(),CheckList())
     }
     
     /// Filter by greatest difficultyId

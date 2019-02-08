@@ -321,9 +321,12 @@ extension ReviewLessonViewController: UIScrollViewDelegate {
             if let name = controller.markdownViewModel.segment?.name {
                 self.title = name
             }
+            self.reviewLessonViewModel.selected = controller.markdownViewModel.segment
             controller.loadMarkdown()
         } else if viewController is LessonCheckListViewController {
+            let controller = (viewController as? LessonCheckListViewController)!
             self.title = "CheckList".localized()
+            self.reviewLessonViewModel.selected = controller.lessonCheckListViewModel.checklist
         }
     }
 }

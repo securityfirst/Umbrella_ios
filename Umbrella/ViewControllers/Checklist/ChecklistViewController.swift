@@ -59,6 +59,18 @@ class ChecklistViewController: UIViewController {
         self.emptyLabel.text = "Go to lessons and discover recommenced checklists or create your own custom checklists.".localized()
         self.checklistReviewTableView?.reloadData()
     }
+    
+    //
+    // MARK: - UIStoryboardSegue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "checklistDetailSegue" {
+            let destination = (segue.destination as? LessonCheckListViewController)!
+            let item = (sender as? (category: Category, checkList: CheckList))!
+            destination.lessonCheckListViewModel.checklist = item.checkList
+            destination.lessonCheckListViewModel.category = item.category
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -121,5 +133,15 @@ extension ChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        var item = (Category(), CheckList())
+        if indexPath.section == 1 {
+            let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
+            item = self.checklistViewModel.getChecklistAndCategory(to: checklistChecked.checklistId)
+        } else if indexPath.section == 2 {
+            let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
+            item = self.checklistViewModel.getChecklistAndCategory(to: checklistChecked.checklistId)
+        }
+        
+        self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
     }
 }
