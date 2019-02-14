@@ -93,21 +93,22 @@ class LessonViewController: UIViewController {
         } else if segue.identifier == "segmentSegue" {
             let segmentViewController = (segue.destination as? SegmentViewController)!
             
-            let category = (sender as? Category)!
+            let subCategory = (sender as? Category)!
             
-            // if category is glossary or about doesn't have difficulties inside when should show just the segments.
-            if category.categories.count == 0 {
-                segmentViewController.segmentViewModel.category = category
+            // if the category is glossary or about does not have difficulties inside so it should show just the segments.
+            if subCategory.categories.count == 0 {
+                segmentViewController.segmentViewModel.difficulty = subCategory
             } else {
+                segmentViewController.segmentViewModel.subCategory = subCategory
                 // Check if there is difficulty rule
-                let difficultyRule = DifficultyRule(categoryId: category.id)
+                let difficultyRule = DifficultyRule(categoryId: subCategory.id)
                 let difficultyId = self.lessonViewModel.isExistRule(to: difficultyRule)
                 
-                let categoryFilter = category.categories.filter { $0.id == difficultyId }.first
-                if let categoryFilter = categoryFilter {
-                    segmentViewController.segmentViewModel.category = categoryFilter
+                let difficultyFilter = subCategory.categories.filter { $0.id == difficultyId }.first
+                if let difficultyFilter = difficultyFilter {
+                    segmentViewController.segmentViewModel.difficulty = difficultyFilter
                 }
-                segmentViewController.segmentViewModel.difficulties = category.categories
+                segmentViewController.segmentViewModel.difficulties = subCategory.categories
             }
             
         } else if segue.identifier == "glossarySegue" {

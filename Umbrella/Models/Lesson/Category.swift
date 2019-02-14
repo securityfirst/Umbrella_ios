@@ -13,7 +13,7 @@ enum Template : String {
     case glossary
 }
 
-class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
+class Category: Codable, TableProtocol, FolderProtocol, NSCopying, Hashable {
     
     // Used in parser from the database to object
     var id: Int
@@ -31,6 +31,10 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     var categories: [Category]
     var segments: [Segment]
     var checkList: [CheckList]
+    
+    var hashValue: Int {
+        return id.hashValue
+    }
     
     //
     // MARK: - Initializers
@@ -176,5 +180,11 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
             Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array
+    }
+    
+    //
+    // MARK: - Hashable
+    static func == (lhs: Category, rhs: Category) -> Bool {
+        return lhs.id == rhs.id
     }
 }

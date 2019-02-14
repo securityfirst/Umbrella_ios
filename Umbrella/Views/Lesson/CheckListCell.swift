@@ -52,7 +52,7 @@ class CheckListCell: UICollectionViewCell {
             headerView.backgroundColor = Lessons.colors[indexPath.row % Lessons.colors.count]
         }
         
-        let checklist = viewModel.category?.checkList[indexPath.row]
+        let checklist = viewModel.difficulty?.checkList[indexPath.row]
         
         if let iconImageView = self.iconImageView {
             if let checklist = checklist {

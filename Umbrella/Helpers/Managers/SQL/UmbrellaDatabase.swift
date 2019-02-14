@@ -33,6 +33,7 @@ struct UmbrellaDatabase {
     let customChecklistCheckedDao: CustomChecklistCheckedDao
     
     static var languagesStatic: [Language] = [Language]()
+    static var umbrellaStatic: Umbrella = Umbrella()
     
     var languages: [Language]
     var forms: [Form]
@@ -136,6 +137,7 @@ struct UmbrellaDatabase {
             _ = self.createTables()
             self.insertAllObjects(completion: completion)
             UmbrellaDatabase.languagesStatic = self.languages
+            UmbrellaDatabase.umbrellaStatic = Umbrella(languages: self.languages, forms: self.forms, formAnswers: self.formAnswers)
         }
     }
     
@@ -199,6 +201,7 @@ struct UmbrellaDatabase {
         // FormAnswer - Form Active
         self.formAnswers = self.formAnswerDao.listFormActive()
         UmbrellaDatabase.languagesStatic = self.languages
+        UmbrellaDatabase.umbrellaStatic = Umbrella(languages: self.languages, forms: self.forms, formAnswers: self.formAnswers)
     }
     
     /// Check if the database exists

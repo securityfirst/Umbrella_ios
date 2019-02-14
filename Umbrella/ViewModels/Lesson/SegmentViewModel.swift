@@ -12,7 +12,8 @@ class SegmentViewModel {
     
     //
     // MARK: - Properties
-    var category: Category?
+    var subCategory: Category?
+    var difficulty: Category?
     var difficulties: [Category] = [Category]()
     var segmentsFilter: [Segment] = [Segment]()
     fileprivate var isSearch: Bool = false
@@ -21,8 +22,8 @@ class SegmentViewModel {
         didSet {
             isSearch = termSearch.count > 0
             
-            if isSearch, let category = category {
-                copyList(originalList: category.segments)
+            if isSearch, let difficulty = difficulty {
+                copyList(originalList: difficulty.segments)
             }
         }
     }
@@ -41,7 +42,8 @@ class SegmentViewModel {
     //
     // MARK: - Init
     init() {
-        category = nil
+        self.subCategory = nil
+        self.difficulty = nil
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
     }
     
@@ -58,8 +60,8 @@ class SegmentViewModel {
             return filterSegments()
         }
         
-        if let category = category {
-            return category.segments
+        if let difficulty = difficulty {
+            return difficulty.segments
         }
         
         return [Segment]()
@@ -78,7 +80,7 @@ class SegmentViewModel {
             if let segment = segment {
                 segment.favourite = true
             } else {
-                for checklist in (category?.checkList)! {
+                for checklist in (difficulty?.checkList)! {
                     if checklist.categoryId == favourite.difficultyId {
                         checklist.favourite = true
                     } else {
@@ -89,7 +91,7 @@ class SegmentViewModel {
         }
         
         // Favourite Screen
-        if category?.id == -1 {
+        if difficulty?.id == -1 {
             for segment in getSegments() {
                 segment.favourite = true
             }
@@ -101,6 +103,14 @@ class SegmentViewModel {
         for segment in getSegments() {
             segment.favourite = false
         }
+    }
+    
+    /// Check if there is rule to a difficulty
+    ///
+    /// - Parameter difficultyRule: DifficultyRule
+    /// - Returns: Int
+    func isExistRule(to difficultyRule: DifficultyRule) -> Int {
+        return self.difficultyRuleDao.isExistRule(to: difficultyRule)
     }
     
     /// Copy a list of Categories

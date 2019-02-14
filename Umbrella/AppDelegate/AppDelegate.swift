@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Fetch data once 30 minutes.
         UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
-
+        
         return true
     }
     
@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      performFetchWithCompletionHandler completionHandler:
         @escaping (UIBackgroundFetchResult) -> Void) {
-       
+        
         print(application.backgroundRefreshStatus)
         if application.backgroundRefreshStatus == .available {
             print("Available")
@@ -130,7 +130,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("handleEventsForBackgroundURLSession")
     }
     
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        return true
-//    }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("\(url.host!) \(url.path)")
+        if  url.scheme == "umbrella" {
+            if deepLinkManager.handleDeeplink(url: url) {
+                deepLinkManager.checkDeepLink()
+            }
+        }
+        
+        return true
+    }
 }

@@ -38,8 +38,9 @@ class DifficultyViewController: UIViewController {
         if segue.identifier == "segmentSegue" {
             let segmentViewController = (segue.destination as? SegmentViewController)!
             
-            let category = (sender as? Category)!
-            segmentViewController.segmentViewModel.category = category
+            let difficulty = (sender as? Category)!
+            segmentViewController.segmentViewModel.subCategory = self.difficultyViewModel.categoryParent
+            segmentViewController.segmentViewModel.difficulty = difficulty
             segmentViewController.segmentViewModel.difficulties = self.difficultyViewModel.difficulties
         }
     }

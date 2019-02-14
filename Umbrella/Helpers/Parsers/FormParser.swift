@@ -43,7 +43,7 @@ struct FormParser {
             
             // Get language
             form.language = split[split.count-3]
-            
+            form.fileName = self.file.name.replacingOccurrences(of: "f_", with: "").replacingOccurrences(of: ".yml", with: "")
             return form
         } catch {
             print("FormParser: \(error)")

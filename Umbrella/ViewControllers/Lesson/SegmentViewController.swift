@@ -31,32 +31,10 @@ class SegmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.segmentViewModel.category?.name
-        
-        if self.segmentViewModel.difficulties.count > 1 {
-            
-            var items: [String] = [String]()
-            for category in segmentViewModel.difficulties {
-                items.append(category.name ?? "")
-            }
-            
-            self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title(self.segmentViewModel.category?.name ?? ""), items: items)
-            
-            self.menuView?.arrowTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            self.menuView?.checkMarkImage = #imageLiteral(resourceName: "iconCheckmark")
-            self.navigationItem.titleView = self.menuView
-            
-            self.menuView?.didSelectItemAtIndexHandler = { indexPath in
-                self.segmentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-                self.segmentViewModel.category = self.segmentViewModel.difficulties[indexPath]
-                self.segmentCollectionView.reloadData()
-                
-                if let category = self.segmentViewModel.category {
-                    self.title = category.name
-                    let difficultyRule = DifficultyRule(categoryId: category.parent, difficultyId: category.id)
-                    self.segmentViewModel.insert(difficultyRule)
-                }
-            }
+        if self.segmentViewModel.subCategory != nil {
+            self.title = "\(self.segmentViewModel.subCategory!.name!) \(self.segmentViewModel.difficulty!.name!)"
+        } else {
+            self.title = self.segmentViewModel.difficulty?.name
         }
         
         self.emptyLabel.text = "You do not have any Segment yet.".localized()
@@ -71,8 +49,41 @@ class SegmentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.segmentViewModel.difficulties.count > 1 {
+            var categoryName = ""
+            if self.segmentViewModel.subCategory != nil {
+                categoryName = self.segmentViewModel.subCategory!.name!
+            }
+            var items: [String] = [String]()
+            for difficulty in segmentViewModel.difficulties {
+                items.append("\(categoryName) \(difficulty.name ?? "")")
+            }
+            
+            self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title(self.title ?? ""), items: items)
+            
+            self.menuView?.arrowTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            self.menuView?.checkMarkImage = #imageLiteral(resourceName: "iconCheckmark")
+            self.navigationItem.titleView = self.menuView
+            
+            self.menuView?.didSelectItemAtIndexHandler = { indexPath in
+                self.segmentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                self.segmentViewModel.difficulty = self.segmentViewModel.difficulties[indexPath]
+                self.segmentCollectionView.reloadData()
+                
+                if let difficulty = self.segmentViewModel.difficulty {
+                    self.title = "\(categoryName) \(difficulty.name ?? "")"
+                    let difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
+                    self.segmentViewModel.insert(difficultyRule)
+                }
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.menuView?.hide()
     }
     
@@ -96,7 +107,7 @@ class SegmentViewController: UIViewController {
     
     /// Check if empty List
     func checkIfEmptyList() {
-        self.segmentCollectionView.isHidden = self.segmentViewModel.category?.segments.count == 0
+        self.segmentCollectionView.isHidden = self.segmentViewModel.difficulty?.segments.count == 0
         self.searchBar.isHidden = self.segmentCollectionView.isHidden
     }
 }
@@ -112,11 +123,11 @@ extension SegmentViewController: UICollectionViewDelegate {
             let segment = self.segmentViewModel.getSegments()[indexPath.row]
             selected = segment
         } else if indexPath.section == 1 {
-            let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
+            let checklist = self.segmentViewModel.difficulty?.checkList[indexPath.row]
             selected = checklist!
         }
         
-        self.performSegue(withIdentifier: "reviewLessonSegue", sender: ["segments": self.segmentViewModel.getSegments(), "checkLists": self.segmentViewModel.category?.checkList ?? [CheckList](), "category": self.segmentViewModel.category!, "selected": selected])
+        self.performSegue(withIdentifier: "reviewLessonSegue", sender: ["segments": self.segmentViewModel.getSegments(), "checkLists": self.segmentViewModel.difficulty?.checkList ?? [CheckList](), "category": self.segmentViewModel.difficulty!, "selected": selected])
     }
 }
 
@@ -131,8 +142,8 @@ extension SegmentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return self.segmentViewModel.getSegments().count
-        } else if section == 1, let category = self.segmentViewModel.category {
-            return category.checkList.count
+        } else if section == 1, let difficulty = self.segmentViewModel.difficulty {
+            return difficulty.checkList.count
         }
         
         return 0
@@ -185,11 +196,11 @@ extension SegmentViewController: SegmentCellDelegate {
             segment.favourite = !segment.favourite
             
             if segment.favourite {
-                var categoryId = self.segmentViewModel.category!.parent
-                var difficultyId = self.segmentViewModel.category!.id
+                var categoryId = self.segmentViewModel.difficulty!.parent
+                var difficultyId = self.segmentViewModel.difficulty!.id
                 
-                if self.segmentViewModel.category!.parent == 0 {
-                    categoryId = self.segmentViewModel.category!.id
+                if self.segmentViewModel.difficulty!.parent == 0 {
+                    categoryId = self.segmentViewModel.difficulty!.id
                     difficultyId = 0
                 }
                 let favouriteSegment = FavouriteLesson(categoryId: categoryId, difficultyId: difficultyId, segmentId: segment.id)
@@ -197,12 +208,12 @@ extension SegmentViewController: SegmentCellDelegate {
             } else {
                 self.segmentViewModel.remove(segment.id)
                 
-                if self.segmentViewModel.category?.name == "Favourites".localized() {
-                    self.segmentViewModel.category?.segments.remove(at: indexPath.row)
+                if self.segmentViewModel.difficulty?.name == "Favourites".localized() {
+                    self.segmentViewModel.difficulty?.segments.remove(at: indexPath.row)
                 }
             }
             
-            if self.segmentViewModel.category?.name == "Favourites".localized() {
+            if self.segmentViewModel.difficulty?.name == "Favourites".localized() {
                 self.checkIfEmptyList()
                 self.segmentCollectionView.reloadData()
             } else {
@@ -247,16 +258,16 @@ extension SegmentViewController: ChecklistCellDelegate {
         
         if let indexPath = indexPath, indexPath.section == 1 {
             
-            let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
+            let checklist = self.segmentViewModel.difficulty?.checkList[indexPath.row]
             
             if let checklist = checklist {
                 checklist.favourite = !checklist.favourite
                 
                 if checklist.favourite {
-                    let favouriteSegment = FavouriteLesson(categoryId: self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id, segmentId: -1)
+                    let favouriteSegment = FavouriteLesson(categoryId: self.segmentViewModel.difficulty!.parent, difficultyId: self.segmentViewModel.difficulty!.id, segmentId: -1)
                     self.segmentViewModel.insert(favouriteSegment)
                 } else {
-                    self.segmentViewModel.removeFavouriteChecklist(self.segmentViewModel.category!.parent, difficultyId: self.segmentViewModel.category!.id)
+                    self.segmentViewModel.removeFavouriteChecklist(self.segmentViewModel.difficulty!.parent, difficultyId: self.segmentViewModel.difficulty!.id)
                 }
             }
             
@@ -270,7 +281,7 @@ extension SegmentViewController: ChecklistCellDelegate {
         
         if let indexPath = indexPath, indexPath.section == 1 {
             
-            let checklist = self.segmentViewModel.category?.checkList[indexPath.row]
+            let checklist = self.segmentViewModel.difficulty?.checkList[indexPath.row]
             
             if let checklist = checklist {
                 var content: String = ""
@@ -280,7 +291,7 @@ extension SegmentViewController: ChecklistCellDelegate {
                 <head>
                 <meta charset="UTF-8"> \n
                 """
-                content += "<title>\(self.segmentViewModel.category!.name ?? "") - Checklist</title> \n"
+                content += "<title>\(self.segmentViewModel.difficulty!.name ?? "") - Checklist</title> \n"
                 content += "</head> \n"
                 content += "<body style=\"display:block;width:100%;\"> \n"
                 content += "<h1>Checklist</h1> \n"
