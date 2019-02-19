@@ -43,6 +43,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var setSourcesLabel: UILabel!
 
     var loginViewController: LoginViewController!
+    var tourViewController: TourViewController!
     var stepLocation: Bool = false
     var stepSources: Bool = false
     var isStartingSetup: Bool = false
@@ -102,17 +103,7 @@ class FeedViewController: UIViewController {
         
         self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
-        
-//        let font = UIFont(name: "Roboto-Regular", size: 11)
-//        let attributesDictionary: [NSAttributedString.Key: Any]? = [NSAttributedString.Key.font: font!, NSAttributedString.Key.foregroundColor : UIColor.black]
-//
-//        let modeBarButton = UIBarButtonItem(title: "Change repository".localized(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.shareAction(_:)))
-//        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .normal)
-//        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .selected)
-//        modeBarButton.setTitleTextAttributes(attributesDictionary, for: .highlighted)
-//
-//        self.navigationItem.leftBarButtonItems = [modeBarButton]
-        
+    
         self.sourceLegend = self.sourceLegLabel.text ?? ""
         
         addBarButton.isEnabled = false
@@ -123,7 +114,6 @@ class FeedViewController: UIViewController {
         feedView.delegate = self
         rssView.delegate = self
         
-        UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 0
         let isAcceptedTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -132,8 +122,7 @@ class FeedViewController: UIViewController {
             if passwordCustom {
                 let storyboard = UIStoryboard(name: "Account", bundle: Bundle.main)
                 self.loginViewController = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController)!
-                
-                self.present(self.loginViewController, animated: false, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController!.add(self.loginViewController)
             } else {
                 let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
                 UIApplication.shared.keyWindow?.addSubview(controller.view)
@@ -142,11 +131,9 @@ class FeedViewController: UIViewController {
                 }
             }
         } else {
-            let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
-            self.present(controller, animated: false, completion: nil)
+            self.tourViewController = (storyboard.instantiateViewController(withIdentifier: "TourViewController") as? TourViewController)!
+            UIApplication.shared.keyWindow?.rootViewController!.add(self.tourViewController)
         }
-        
-        UIApplication.shared.keyWindow?.rootViewController?.view.alpha = 1
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)
         

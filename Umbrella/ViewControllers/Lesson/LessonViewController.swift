@@ -92,7 +92,6 @@ class LessonViewController: UIViewController {
             difficultyViewController.difficultyViewModel.difficulties = category.categories
         } else if segue.identifier == "segmentSegue" {
             let segmentViewController = (segue.destination as? SegmentViewController)!
-            
             let subCategory = (sender as? Category)!
             
             // if the category is glossary or about does not have difficulties inside so it should show just the segments.

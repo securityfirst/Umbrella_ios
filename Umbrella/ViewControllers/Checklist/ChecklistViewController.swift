@@ -142,6 +142,8 @@ extension ChecklistViewController: UITableViewDelegate {
             item = self.checklistViewModel.getChecklistAndCategory(to: checklistChecked.checklistId)
         }
         
-        self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+        if indexPath.section != 0 {
+            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+        }
     }
 }

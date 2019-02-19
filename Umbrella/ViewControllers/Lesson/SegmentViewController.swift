@@ -30,6 +30,7 @@ class SegmentViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.largeTitleDisplayMode = .never
         
         if self.segmentViewModel.subCategory != nil {
             self.title = "\(self.segmentViewModel.subCategory!.name!) \(self.segmentViewModel.difficulty!.name!)"
@@ -39,7 +40,7 @@ class SegmentViewController: UIViewController {
         
         self.emptyLabel.text = "You do not have any Segment yet.".localized()
         self.checkIfEmptyList()
-        
+
         self.segmentViewModel.updateFavouriteSegment()
         self.segmentCollectionView.reloadData()
     }
@@ -66,6 +67,9 @@ class SegmentViewController: UIViewController {
             
             self.menuView?.arrowTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             self.menuView?.checkMarkImage = #imageLiteral(resourceName: "iconCheckmark")
+            let font = UIFont(name: "Roboto-Bold", size: 15)
+            self.menuView?.navigationBarTitleFont = font
+            self.menuView?.cellTextLabelFont = font
             self.navigationItem.titleView = self.menuView
             
             self.menuView?.didSelectItemAtIndexHandler = { indexPath in

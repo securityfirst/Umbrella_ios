@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class TourViewController: UIViewController {
 
@@ -25,10 +26,7 @@ class TourViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        self.tourScrollView.bounds = (self.parent?.view.bounds)!
         
         addTourPageView(position: 0, icon: #imageLiteral(resourceName: "tour1"), backgroundColor: #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1), text: "Umbrella makes your security simple".localized())
         addTourPageView(position: 1, icon: #imageLiteral(resourceName: "tour2"), backgroundColor: #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1), text: "Get advice on everything from sending a secure email to safe travel".localized())
@@ -39,7 +37,7 @@ class TourViewController: UIViewController {
         
         self.tourScrollView.contentSize = CGSize(width: 5*self.tourScrollView.frame.size.width, height: self.tourScrollView.frame.size.height)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -92,7 +90,7 @@ class TourViewController: UIViewController {
         UIApplication.shared.keyWindow?.addSubview(self.loadingViewController.view)
         self.loadingViewController.loadTent {
             UserDefaults.standard.set(true, forKey: "acceptTerm")
-            self.dismiss(animated: false, completion: nil)
+            self.remove()
         }
     }
     
@@ -181,7 +179,8 @@ extension TourViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.navigationType == WKNavigationType.linkActivated {
             guard let url = URL(string: (navigationAction.request.url?.absoluteString)!) else { return }
-                UIApplication.shared.open(url)
+            let safariViewController = SFSafariViewController(url: url)
+            self.present(safariViewController, animated: true)
             decisionHandler(WKNavigationActionPolicy.cancel)
             return
         }

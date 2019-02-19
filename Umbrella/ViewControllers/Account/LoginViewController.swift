@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                 let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
                 UIApplication.shared.keyWindow?.addSubview(controller.view)
                 controller.loadTent {
-                    self.dismiss(animated: true, completion: nil)
+                    self.remove()
                 }
             } catch {
                 print(error)
@@ -86,7 +86,7 @@ class LoginViewController: UIViewController {
             UIApplication.shared.keyWindow?.addSubview(controller.view)
             DispatchQueue.main.async {
                 controller.loadTent {
-                    self.dismiss(animated: true, completion: nil)
+                    self.remove()
                 }
             }
         }

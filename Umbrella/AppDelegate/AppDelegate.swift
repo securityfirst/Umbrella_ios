@@ -79,18 +79,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        print(self.window?.rootViewController?.children)
+        
+        let foundViewController = self.window?.rootViewController?.children.filter { $0 is LoginViewController }
+        
+        if foundViewController?.count == 0 {
+            let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
+            if passwordCustom {
+                let storyboard = UIStoryboard(name: "Account", bundle: Bundle.main)
+                self.loginViewController = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController)!
+                self.window?.rootViewController?.add(self.loginViewController)
+            }
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        
-        let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
-        if passwordCustom {
-            let storyboard = UIStoryboard(name: "Account", bundle: Bundle.main)
-            self.loginViewController = (storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController)!
-            
-            self.window?.rootViewController?.present(self.loginViewController, animated: false, completion: nil)
-        }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

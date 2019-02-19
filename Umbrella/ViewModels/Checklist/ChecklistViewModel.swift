@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ChecklistViewModel {
     
@@ -96,6 +97,39 @@ class ChecklistViewModel {
         }
         
         return (Category(),CheckList())
+    }
+    
+    /// Search recursive for whole the categories
+    ///
+    /// - Parameter id: Int
+    /// - Returns: Category?
+    func searchCategoryBy(id: Int) -> Category? {
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        for cat in (language?.categories)! {
+            let found = cat.searchCategoryBy(id: id)
+            if (found != nil) {
+                return found
+            }
+        }
+        return nil
+    }
+    
+    func difficultyIconBy(id: Int) -> (image: UIImage?, color: UIColor?) {
+        let category = searchCategoryBy(id: id)
+        
+        if let category = category {
+            if category.name == "Beginner".localized() {
+                return (#imageLiteral(resourceName: "iconBeginner"), Lessons.colors[0])
+            } else if category.name == "Advanced".localized() {
+                return (#imageLiteral(resourceName: "iconAdvanced"), Lessons.colors[1])
+            } else if category.name == "Expert".localized() {
+                return (#imageLiteral(resourceName: "iconExpert"), Lessons.colors[2])
+            }
+        }
+        
+        return (nil, nil)
     }
     
     /// Filter by greatest difficultyId

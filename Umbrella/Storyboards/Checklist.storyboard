@@ -49,14 +49,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-SQ-Ggr" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                     <rect key="frame" x="18" y="13" width="339" height="70"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZMC-vH-WAN">
-                                                            <rect key="frame" x="11" y="20" width="249" height="30"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Managing Information" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZMC-vH-WAN">
+                                                            <rect key="frame" x="63" y="8" width="203" height="54"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                             <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-1p-of3">
-                                                            <rect key="frame" x="268" y="20" width="60" height="30"/>
+                                                            <rect key="frame" x="274" y="20" width="60" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="hc3-RL-uuU"/>
                                                             </constraints>
@@ -64,16 +64,31 @@
                                                             <color key="textColor" red="0.28235294117647058" green="0.72156862745098038" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBeginner" translatesAutoresizingMaskIntoConstraints="NO" id="TGl-Z1-ggt">
+                                                            <rect key="frame" x="11" y="13" width="44" height="44"/>
+                                                            <color key="backgroundColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="44" id="9Hs-87-PGE"/>
+                                                                <constraint firstAttribute="height" constant="44" id="Ezo-lN-spR"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="22"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="ZMC-vH-WAN" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="20" id="1ag-2O-I2W"/>
-                                                        <constraint firstAttribute="trailing" secondItem="rLy-1p-of3" secondAttribute="trailing" constant="11" id="1kb-nW-5BQ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ZMC-vH-WAN" secondAttribute="bottom" constant="20" id="GS0-Uh-ofq"/>
+                                                        <constraint firstItem="ZMC-vH-WAN" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="8" id="1ag-2O-I2W"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rLy-1p-of3" secondAttribute="trailing" constant="5" id="1kb-nW-5BQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZMC-vH-WAN" secondAttribute="bottom" constant="8" id="GS0-Uh-ofq"/>
+                                                        <constraint firstItem="TGl-Z1-ggt" firstAttribute="centerY" secondItem="a2q-SQ-Ggr" secondAttribute="centerY" id="LKW-VR-I4g"/>
+                                                        <constraint firstItem="ZMC-vH-WAN" firstAttribute="leading" secondItem="TGl-Z1-ggt" secondAttribute="trailing" constant="8" id="ViB-xR-BBS"/>
                                                         <constraint firstItem="rLy-1p-of3" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="20" id="Y2h-uq-tnA"/>
                                                         <constraint firstAttribute="bottom" secondItem="rLy-1p-of3" secondAttribute="bottom" constant="20" id="cbR-b8-MTC"/>
                                                         <constraint firstItem="rLy-1p-of3" firstAttribute="leading" secondItem="ZMC-vH-WAN" secondAttribute="trailing" constant="8" id="gu9-bU-lNg"/>
-                                                        <constraint firstItem="ZMC-vH-WAN" firstAttribute="leading" secondItem="a2q-SQ-Ggr" secondAttribute="leading" constant="11" id="lYv-el-cL3"/>
+                                                        <constraint firstItem="TGl-Z1-ggt" firstAttribute="leading" secondItem="a2q-SQ-Ggr" secondAttribute="leading" constant="11" id="qVI-ZU-WUK"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -85,8 +100,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="iconImageView" destination="TGl-Z1-ggt" id="OVu-8O-vEg"/>
                                             <outlet property="percentLabel" destination="rLy-1p-of3" id="YTM-lY-I7M"/>
                                             <outlet property="titleLabel" destination="ZMC-vH-WAN" id="AWs-5x-CQe"/>
+                                            <outlet property="widthConstraint" destination="9Hs-87-PGE" id="C1O-X5-JHz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2f-Fi-voY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="835"/>
+            <point key="canvasLocation" x="1884" y="834.33283358320841"/>
         </scene>
         <!--New Checklist-->
         <scene sceneID="Evt-xB-qYL">
@@ -367,7 +384,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YNk-As-twH">
-                                <rect key="frame" x="89.5" y="73" width="196" height="28"/>
+                                <rect key="frame" x="89.5" y="125" width="196" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="4vu-cP-VYa"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="196" id="vut-2E-nys"/>
@@ -382,7 +399,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWF-uC-wmR">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -397,7 +414,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b9U-gJ-6Ja"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Checklists" id="499-GU-OTk">
+                    <navigationItem key="navigationItem" title="Checklists" largeTitleDisplayMode="always" id="499-GU-OTk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="caG-IS-nXc">
                             <connections>
                                 <action selector="addAction:" destination="ing-cz-5of" id="KSN-WU-1JA"/>
@@ -420,9 +437,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VWH-wf-fXL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Checklists" image="icDoneAll" id="D15-Cg-4TB"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Kr-Xa-kZt">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9Kr-Xa-kZt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -571,6 +591,7 @@
         <image name="checkNormal" width="22" height="22"/>
         <image name="checklistsAddIcon" width="32" height="29"/>
         <image name="icDoneAll" width="24" height="24"/>
+        <image name="iconBeginner" width="65" height="65"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TOh-4F-YMH"/>

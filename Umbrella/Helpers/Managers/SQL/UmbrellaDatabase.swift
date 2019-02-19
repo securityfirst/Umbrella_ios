@@ -255,7 +255,7 @@ extension UmbrellaDatabase {
                 //Segments
                 for index in 0..<category.segments.count {
                     let segment = category.segments[index]
-
+                    
                     segment.categoryId = Int(categoryRowId)
                     let segmentRowId = self.segmentDao.insert(segment)
                     segment.id = Int(segmentRowId)
@@ -329,19 +329,19 @@ extension UmbrellaDatabase {
         // SubCategories
         for index in 0..<category.categories.count {
             let subCategory = category.categories[index]
-        
+            
             subCategory.parent = Int(categoryRowId)
             subCategory.languageId = Int(languageRowId)
             let subCategoryRowId = self.categoryDao.insert(subCategory)
             subCategory.id = Int(subCategoryRowId)
-        
+            
             //Sort by Index
             subCategory.categories.sort(by: { $0.index! < $1.index!})
             
             //Segments
             for index in 0..<subCategory.segments.count {
                 let segment = subCategory.segments[index]
-
+                
                 segment.categoryId = Int(subCategoryRowId)
                 let segmentRowId = self.segmentDao.insert(segment)
                 segment.id = Int(segmentRowId)
@@ -353,15 +353,15 @@ extension UmbrellaDatabase {
             //Checklist
             for index in 0..<subCategory.checkList.count {
                 let checkList = subCategory.checkList[index]
-
+                
                 checkList.categoryId = Int(subCategoryRowId)
                 let checkListRowId = self.checkListDao.insert(checkList)
                 checkList.id = Int(checkListRowId)
-
+                
                 //CheckItem
                 for index in 0..<checkList.items.count {
                     let checkItem = checkList.items[index]
-
+                    
                     checkItem.checkListId = Int(checkList.id)
                     let checkListRowId = self.checkItemDao.insert(checkItem)
                     checkItem.id = Int(checkListRowId)
