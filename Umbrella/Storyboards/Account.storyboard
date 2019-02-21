@@ -250,6 +250,7 @@
                                                     <constraints>
                                                         <constraint firstItem="sOB-WS-pDn" firstAttribute="width" relation="greaterThanOrEqual" secondItem="xc7-Tp-yxI" secondAttribute="width" id="0sq-Tp-0Oj"/>
                                                         <constraint firstItem="sOB-WS-pDn" firstAttribute="top" secondItem="xc7-Tp-yxI" secondAttribute="bottom" constant="-1" id="5H3-JU-bcR"/>
+                                                        <constraint firstItem="YBB-Fh-FG4" firstAttribute="leading" secondItem="sOB-WS-pDn" secondAttribute="trailing" constant="19" id="8fN-Uo-XrE"/>
                                                         <constraint firstItem="sOB-WS-pDn" firstAttribute="height" secondItem="xc7-Tp-yxI" secondAttribute="height" id="9FC-Vg-wAg"/>
                                                         <constraint firstItem="xc7-Tp-yxI" firstAttribute="leading" secondItem="n4s-P3-wt7" secondAttribute="leading" constant="16" id="9Sf-XH-9lK"/>
                                                         <constraint firstAttribute="trailing" secondItem="YBB-Fh-FG4" secondAttribute="trailing" constant="10" id="Fjy-0i-wMC"/>

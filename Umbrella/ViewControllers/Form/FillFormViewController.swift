@@ -239,7 +239,7 @@ extension FillFormViewController: UIScrollViewDelegate {
         self.view.endEditing(true)
         self.backButton.isHidden = (currentPage == 0)
         
-        if (Int(currentPage) == fillFormViewModel.form.screens.count - 1) {
+        if (Int(currentPage) > fillFormViewModel.form.screens.count - 1) {
             self.navigationController?.popViewController(animated: true)
         }
     }
