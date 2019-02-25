@@ -42,6 +42,14 @@ class SettingItemCell: UITableViewCell {
         
         let item = viewModel.items[indexPath.row]
         self.titleLabel.text = item.name
+        self.iconConstraint.constant = 0
+        
+        if item.icon.count > 0 {
+            self.iconImageView.image = UIImage(named: item.icon)
+            self.iconConstraint.constant = 25
+        }
+        
         self.checkImageView.image = item.checked ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
+        self.layoutIfNeeded()
     }
 }

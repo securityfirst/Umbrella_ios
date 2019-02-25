@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tsW-up-0b3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DifficultyCell" rowHeight="164" id="Fv1-Th-QFM" customClass="DifficultyCell" customModule="Umbrella" customModuleProvider="target">
@@ -602,6 +602,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xd6-YC-aTg">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvd-hp-hKH" customClass="SideScrollLessonView" customModule="Umbrella" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="28"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -620,8 +623,10 @@
                         <constraints>
                             <constraint firstItem="Q4O-CW-rgi" firstAttribute="leading" secondItem="aOt-83-Q0e" secondAttribute="leading" id="1vh-vz-Ss7"/>
                             <constraint firstItem="Q4O-CW-rgi" firstAttribute="top" secondItem="fvd-hp-hKH" secondAttribute="bottom" constant="5" id="Joc-Qd-yTs"/>
+                            <constraint firstItem="Xd6-YC-aTg" firstAttribute="centerY" secondItem="uZ5-9L-tg9" secondAttribute="centerY" id="PPN-9K-8to"/>
                             <constraint firstItem="aOt-83-Q0e" firstAttribute="trailing" secondItem="fvd-hp-hKH" secondAttribute="trailing" id="Ski-02-tLA"/>
                             <constraint firstItem="aOt-83-Q0e" firstAttribute="trailing" secondItem="Q4O-CW-rgi" secondAttribute="trailing" id="cu7-VT-3Us"/>
+                            <constraint firstItem="Xd6-YC-aTg" firstAttribute="centerX" secondItem="uZ5-9L-tg9" secondAttribute="centerX" id="fXf-iJ-gSZ"/>
                             <constraint firstItem="fvd-hp-hKH" firstAttribute="leading" secondItem="aOt-83-Q0e" secondAttribute="leading" id="goc-6s-e7f"/>
                             <constraint firstItem="fvd-hp-hKH" firstAttribute="top" secondItem="aOt-83-Q0e" secondAttribute="top" id="r5U-a5-aqG"/>
                             <constraint firstItem="aOt-83-Q0e" firstAttribute="bottom" secondItem="Q4O-CW-rgi" secondAttribute="bottom" id="tgc-Xw-Y5U"/>

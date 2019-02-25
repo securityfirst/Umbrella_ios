@@ -59,10 +59,10 @@ class ReviewLessonViewController: UIViewController {
         }
         
         self.reviewScrollView.contentSize = CGSize(width: self.reviewScrollView.frame.size.width * CGFloat(pages.count), height: self.reviewScrollView.frame.size.height)
-        setCurrentPosition()
-        
         self.sideScrollView.dataSource = self
         self.sideScrollView.reloadData()
+        
+        setCurrentPosition()
     }
     
     //
@@ -306,7 +306,7 @@ extension ReviewLessonViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateDidScroll(scrollView)
+//        updateDidScroll(scrollView)
     }
     
     func updateDidScroll(_ scrollView: UIScrollView) {

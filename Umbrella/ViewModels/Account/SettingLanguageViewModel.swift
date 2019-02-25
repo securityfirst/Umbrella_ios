@@ -23,9 +23,9 @@ class SettingLanguageViewModel: SettingCellProtocol {
     
     func loadItems() {
         self.items = [
-            SettingItem(name: "English".localized(), value: "en", checked: false),
-            SettingItem(name: "Spanish".localized(), value: "es", checked: false),
-            SettingItem(name: "Chinese".localized(), value: "zh-Hans", checked: false)
+            SettingItem(icon: "GB", name: "English".localized(), value: "en", checked: false),
+            SettingItem(icon: "ES", name: "Spanish".localized(), value: "es", checked: false),
+            SettingItem(icon: "CN", name: "Chinese".localized(), value: "zh-Hans", checked: false)
         ]
     }
 }
