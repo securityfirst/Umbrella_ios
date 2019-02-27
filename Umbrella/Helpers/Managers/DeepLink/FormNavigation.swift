@@ -13,7 +13,7 @@ class FormNavigation: DeepLinkNavigationProtocol {
     
     //
     // MARK: - Properties
-    let nameForm: String?
+    let file: String?
     lazy var formViewModel: FormViewModel = {
         let formViewModel = FormViewModel()
         return formViewModel
@@ -25,9 +25,9 @@ class FormNavigation: DeepLinkNavigationProtocol {
     /// Init
     ///
     /// - Parameters:
-    ///   - nameForm: String
-    init(nameForm: String?) {
-        self.nameForm = nameForm
+    ///   - file: String
+    init(file: String?) {
+        self.file = file
     }
     
     //
@@ -45,7 +45,7 @@ class FormNavigation: DeepLinkNavigationProtocol {
                 if navigationController.topViewController is FormViewController {
                     
                     self.formViewModel.umbrella = UmbrellaDatabase.umbrellaStatic
-                    for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where form.fileName == self.nameForm {
+                    for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where form.file == self.file {
                             let storyboard = UIStoryboard(name: "Form", bundle: Bundle.main)
                             let viewcontroller = (storyboard.instantiateViewController(withIdentifier: "FillFormViewController") as? FillFormViewController)!
                             viewcontroller.fillFormViewModel.form = form

@@ -13,8 +13,10 @@ class LessonNavigation: DeepLinkNavigationProtocol {
     
     //
     // MARK: - Properties
-    let categoryName: String?
-    let difficultyNumber: String?
+    let category: String?
+    let subCategory: String?
+    let difficulty: String?
+    let file: String?
     
     lazy var segmentViewModel: SegmentViewModel = {
         let segmentViewModel = SegmentViewModel()
@@ -27,11 +29,15 @@ class LessonNavigation: DeepLinkNavigationProtocol {
     /// Init
     ///
     /// - Parameters:
-    ///   - categoryName: String
-    ///   - content: String
-    init(categoryName: String?, difficultyNumber: String?) {
-        self.categoryName = categoryName
-        self.difficultyNumber = difficultyNumber
+    ///   - category: String?
+    ///   - subCategory: String?
+    ///   - difficulty: String?
+    ///   - file: String?
+    init(category: String?, subCategory: String?, difficulty: String?, file: String?) {
+        self.category = category
+        self.subCategory = subCategory
+        self.difficulty = difficulty
+        self.file = file
     }
     
     //
@@ -46,30 +52,59 @@ class LessonNavigation: DeepLinkNavigationProtocol {
     /// Search for the category of the deep link
     ///
     /// - Returns: [String: Category]
-    func searchObject() -> [String: Category] {
+    func searchObject() -> [String: Any] {
         //Searching for name of category
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
         
         var subCategoryFound = Category()
         var difficultyFound = Category()
+        var segmentFound = Segment()
         
         if let language = language {
             //Category
             for category in language.categories {
-                //Subcategory
-                for subCategory in category.categories {
-                    let normalizeCategory = subCategory.name?.replacingOccurrences(of: " ", with: "-").lowercased()
-                    if self.categoryName == normalizeCategory {
-                        subCategoryFound = subCategory
-                        validateRuleOfDifficulty(subCategory, subCategoryFound, &difficultyFound)
-                        break
+                let normalizeCategory = category.name?.replacingOccurrences(of: " ", with: "-").lowercased()
+                if self.category == normalizeCategory {
+                    
+                    // if glossary for example umbrella://glossary/s_two-factor-authentication.md
+                    if self.subCategory == nil && self.difficulty == nil {
+                        //Segment - File
+                        if (self.file != nil) {
+                            let result = category.segments.filter { $0.file == self.file }
+                            
+                            if let segment = result.first {
+                                segmentFound = segment
+                            }
+                        }
                     }
+                    
+                    //Subcategory
+                    for subCategory in category.categories {
+                        let normalizeSubCategory = subCategory.name?.replacingOccurrences(of: " ", with: "-").lowercased()
+                        if self.subCategory == normalizeSubCategory {
+                            subCategoryFound = subCategory
+                            validateRuleOfDifficulty(subCategory, subCategoryFound, &difficultyFound)
+                            
+                            //Segment - File
+                            if (self.file != nil) {
+                                let searchCategory = (difficultyFound.id > -1) ? difficultyFound : subCategory
+                                let result = searchCategory.segments.filter { $0.file == self.file }
+                                
+                                if let segment = result.first {
+                                    segmentFound = segment
+                                }
+                            }
+                            
+                            break
+                        }
+                    }
+                    break
                 }
             }
         }
         
-        return ["category": subCategoryFound, "difficulty":difficultyFound]
+        return ["category": subCategoryFound, "difficulty":difficultyFound, "segment": segmentFound]
     }
     
     /// Validate the rule of difficulty
@@ -83,8 +118,8 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         var difficultyRule = DifficultyRule()
         var difficultyId = -1
         
-        if let difficultyNumber = self.difficultyNumber, difficultyNumber.count > 0 {
-            let difficulty = subCategory.categories[Int(difficultyNumber) ?? 0]
+        if getDifficulty() >= 0 {
+            let difficulty = subCategory.categories[Int(getDifficulty())]
             difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
             difficultyId = difficulty.id
             self.segmentViewModel.insert(difficultyRule)
@@ -95,9 +130,11 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         
         // Do not exist
         if difficultyId == -1 {
-            difficultyFound = subCategory.categories[0]
-            difficultyRule.difficultyId = difficultyFound.id
-            self.segmentViewModel.insert(difficultyRule)
+            if subCategory.categories.count > 0 {
+                difficultyFound = subCategory.categories[0]
+                difficultyRule.difficultyId = difficultyFound.id
+                self.segmentViewModel.insert(difficultyRule)
+            }
         } else {
             let categoryFilter = subCategory.categories.filter { $0.id == difficultyId }.first
             if let categoryFilter = categoryFilter {
@@ -106,15 +143,44 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         }
     }
     
+    func getDifficulty() -> Int {
+        
+        if self.difficulty?.lowercased() == "Beginner".localized().lowercased() {
+            return 0
+        } else if self.difficulty?.lowercased() == "Advanced".localized().lowercased() {
+            return 1
+        } else if self.difficulty?.lowercased() == "Expert".localized().lowercased() {
+            return 2
+        }
+        
+        return -1
+    }
+    
     /// Open the specific view controller
     ///
     /// - Parameter dic: [String: Category]
-    func openViewController(dic: [String: Category]) {
+    func openViewController(dic: [String: Any]) {
         
-        let subCategoryFound = dic["category"]
-        let difficultyFound = dic["difficulty"]
+        let subCategoryFound = dic["category"] as? Category
+        let difficultyFound = dic["difficulty"] as? Category
+        let segmentFound = dic["segment"] as? Segment
         
-        if let subCategoryFound = subCategoryFound, let difficultyFound = difficultyFound, subCategoryFound.id != -1 && difficultyFound.id != -1 {
+        if segmentFound?.id != -1 {
+            let storyboard = UIStoryboard(name: "Lesson", bundle: Bundle.main)
+            let viewController = (storyboard.instantiateViewController(withIdentifier: "ReviewLessonViewController") as? ReviewLessonViewController)!
+            viewController.reviewLessonViewModel.segments = ([segmentFound] as? [Segment])!
+            viewController.reviewLessonViewModel.selected = segmentFound
+            
+            let appDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+            if appDelegate.window?.rootViewController is UITabBarController {
+                let tabBarController = (appDelegate.window?.rootViewController as? UITabBarController)!
+                tabBarController.selectedIndex = 3
+                if tabBarController.selectedViewController is UINavigationController {
+                    let navigationController = (tabBarController.selectedViewController as? UINavigationController)!
+                    navigationController.pushViewController(viewController, animated: true)
+                }
+            }
+        } else  if let subCategoryFound = subCategoryFound, let difficultyFound = difficultyFound, subCategoryFound.id != -1 && difficultyFound.id != -1 {
             let storyboard = UIStoryboard(name: "Lesson", bundle: Bundle.main)
             let viewController = (storyboard.instantiateViewController(withIdentifier: "SegmentViewController") as? SegmentViewController)!
             viewController.segmentViewModel.subCategory = subCategoryFound

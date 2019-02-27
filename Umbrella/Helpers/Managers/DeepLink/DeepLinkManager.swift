@@ -22,7 +22,7 @@ class DeepLinkManager {
     fileprivate init() {
     }
     
-    private var resultDeepLink: (type: DeepLinkType, name: String?, difficulty: String?)?
+    private var resultDeepLink: ResultDeepLink!
     
     @discardableResult
     func handleDeeplink(url: URL) -> Bool {
@@ -37,16 +37,16 @@ class DeepLinkManager {
         }
 
         switch resultDeepLink.type {
-        case .lesson:
-            let lessonNavigation = LessonNavigation(categoryName: resultDeepLink.name, difficultyNumber: resultDeepLink.difficulty)
+        case .lesson?:
+            let lessonNavigation = LessonNavigation(category: resultDeepLink.category, subCategory: resultDeepLink.subCategory, difficulty: resultDeepLink.difficulty, file: resultDeepLink.file)
             lessonNavigation.goToScreen()
-        case .form:
-            let formNavigation = FormNavigation(nameForm: resultDeepLink.name)
+        case .form?:
+            let formNavigation = FormNavigation(file: resultDeepLink.file)
             formNavigation.goToScreen()
-        case .feed:
+        case .feed?:
             let feedNavigation = FeedNavigation()
             feedNavigation.goToScreen()
-        case .checklist:
+        case .checklist?:
             let checklistNavigation = ChecklistNavigation()
             checklistNavigation.goToScreen()
         default:

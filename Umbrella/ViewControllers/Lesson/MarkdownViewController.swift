@@ -80,10 +80,13 @@ extension MarkdownViewController : WKNavigationDelegate {
             if navigationAction.request.url?.scheme == "umbrella" {
                 UIApplication.shared.open(navigationAction.request.url!)
             } else {
-                let safariViewController = SFSafariViewController(url: navigationAction.request.url!)
-                safariViewController.delegate = self
-                UIApplication.shared.delegate!.window?!.rootViewController!.present(safariViewController, animated: true)
+                if (navigationAction.request.url?.scheme?.contains("http"))! {
+                    let safariViewController = SFSafariViewController(url: navigationAction.request.url!)
+                    safariViewController.delegate = self
+                    UIApplication.shared.delegate!.window?!.rootViewController!.present(safariViewController, animated: true)
+                }
                 decisionHandler(.cancel)
+                
                 return
             }
         default:

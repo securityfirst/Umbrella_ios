@@ -72,6 +72,7 @@ struct SegmentParser {
             }
             
             segment?.content = markdown
+            segment?.file = file.name
             
             if let object = array.searchParent(folderName: folder.path) {
                 let category = object as? Category

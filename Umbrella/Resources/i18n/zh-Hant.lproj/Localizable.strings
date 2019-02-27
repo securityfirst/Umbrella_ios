@@ -85,14 +85,14 @@
 "Favourites" = "最爱";
 "My Checklists" = "我的检查表";
 "Total done" = "完成總計";
-"Overview" = "Overview";
-"Custom" = "Custom";
-"Go to lessons and discover recommenced checklists or create your own custom checklists." = "Go to lessons and discover recommenced checklists or create your own custom checklists.";
-"New Checklist" = "New Checklist";
-"Name of Checklist" = "Name of Checklist";
-"Button + to add a new custom checklist." = "Button + to add a new custom checklist.";
-"Delete" = "Delete";
-"Title" = "Title";
+"Overview" = "概觀";
+"Custom" = "習慣";
+"Go to lessons and discover recommenced checklists or create your own custom checklists." = "去上課，發現重新開始的清單或創建自己的自定義清單。";
+"New Checklist" = "新清單";
+"Name of Checklist" = "清單名稱";
+"Button + to add a new custom checklist." = "按鈕+添加新的自定義清單。";
+"Delete" = "刪除";
+"Title" = "標題";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "您的密碼長度必須至少為8個字符，並且必須至少包含一個數字和一個大寫字母。";

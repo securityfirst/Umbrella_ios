@@ -221,6 +221,7 @@
 		A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */; };
 		A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF38120F3E76E008F3E43 /* FillFormViewController.swift */; };
 		A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */; };
+		A0E3D9372223FF210068621B /* ResultDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3D9362223FF210068621B /* ResultDeepLink.swift */; };
 		A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */; };
 		A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFC2108EC9100FB73FF /* LabelCell.swift */; };
 		A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFE210F38F100FB73FF /* ChoiceButton.swift */; };
@@ -568,6 +569,7 @@
 		A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		A0DFF38120F3E76E008F3E43 /* FillFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormViewController.swift; sourceTree = "<group>"; };
 		A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0E3D9362223FF210068621B /* ResultDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDeepLink.swift; sourceTree = "<group>"; };
 		A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		A0E81BFC2108EC9100FB73FF /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		A0E81BFE210F38F100FB73FF /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
@@ -1440,11 +1442,12 @@
 			children = (
 				A0EBC0102211BD1B006A0AC3 /* DeepLinkManager.swift */,
 				A0EBC00F2211BD1A006A0AC3 /* DeepLinkParser.swift */,
+				A0EBC0172211CECC006A0AC3 /* FormNavigation.swift */,
 				A0EBC0132211CB68006A0AC3 /* DeepLinkNavigationProtocol.swift */,
 				A0EBC0152211CEB9006A0AC3 /* LessonNavigation.swift */,
-				A0EBC0172211CECC006A0AC3 /* FormNavigation.swift */,
 				A0EBC0192211E9E5006A0AC3 /* FeedNavigation.swift */,
 				A0B8F8042213066400780F97 /* ChecklistNavigation.swift */,
+				A0E3D9362223FF210068621B /* ResultDeepLink.swift */,
 			);
 			path = DeepLink;
 			sourceTree = "<group>";
@@ -1920,6 +1923,7 @@
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
 				A0EBC002220D930E006A0AC3 /* UIPrintPageRenderer-Extensions.swift in Sources */,
 				A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */,
+				A0E3D9372223FF210068621B /* ResultDeepLink.swift in Sources */,
 				A05BA7F820E116FC00482003 /* Column.swift in Sources */,
 				A0AE1A2E214FE0370019F09B /* SegmentViewController.swift in Sources */,
 				A0CC7B552137F57400C28C3B /* ListRssViewModel.swift in Sources */,

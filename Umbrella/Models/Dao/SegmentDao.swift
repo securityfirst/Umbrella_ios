@@ -38,7 +38,7 @@ struct SegmentDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func list() -> [Segment] {
-        return self.sqlProtocol.select(withQuery: "SELECT id, name as title, [index], content, category_id FROM \(Segment.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as title, [index], file, content, category_id FROM \(Segment.table)")
     }
     
     /// Drop the table
@@ -53,7 +53,7 @@ struct SegmentDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Segment) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Segment.table) ('name', 'index', 'content', 'category_id') VALUES (\"\(object.name ?? "")\", \(object.index ?? -1), \"\(object.content!.toBase64())\", \(object.categoryId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Segment.table) ('name', 'file', 'index', 'content', 'category_id') VALUES (\"\(object.name ?? "")\", \"\(object.file ?? "")\", \(object.index ?? -1), \"\(object.content!.toBase64())\", \(object.categoryId))")
         return rowId
     }
     

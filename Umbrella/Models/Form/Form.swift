@@ -19,7 +19,7 @@ class Form: Codable, TableProtocol {
     //
     // MARK: - Properties
     var name: String
-    var fileName: String!
+    var file: String!
     var screens: [Screen]
     
     //
@@ -47,7 +47,7 @@ class Form: Codable, TableProtocol {
         case languageId = "language_id"
         case language
         case name = "title"
-        case fileName = "file_name"
+        case file = "file"
         case screens
     }
     
@@ -78,10 +78,10 @@ class Form: Codable, TableProtocol {
             self.name = ""
         }
         
-        if container.contains(.fileName) {
-            self.fileName = try container.decode(String.self, forKey: .fileName)
+        if container.contains(.file) {
+            self.file = try container.decode(String.self, forKey: .file)
         } else {
-            self.fileName = ""
+            self.file = ""
         }
         
         if container.contains(.screens) {
@@ -102,7 +102,7 @@ class Form: Codable, TableProtocol {
         let array = [
             Column(name: "id", type: .primaryKey),
             Column(name: "title", type: .string),
-            Column(name: "file_name", type: .string),
+            Column(name: "file", type: .string),
             Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array

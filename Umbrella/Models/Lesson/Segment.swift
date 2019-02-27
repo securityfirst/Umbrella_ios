@@ -18,6 +18,7 @@ class Segment: Codable, TableProtocol, NSCopying {
     //
     // MARK: - Properties
     var name: String?
+    var file: String?
     var index: Float?
     var content: String?
     var favourite: Bool = false
@@ -28,6 +29,7 @@ class Segment: Codable, TableProtocol, NSCopying {
         self.id = -1
         self.categoryId = -1
         self.name = ""
+        self.file = ""
         self.index = 0
         self.content = ""
         self.favourite = false
@@ -37,6 +39,17 @@ class Segment: Codable, TableProtocol, NSCopying {
         self.id = -1
         self.categoryId = -1
         self.name = name
+        self.file = ""
+        self.index = index
+        self.content = content
+        self.favourite = false
+    }
+
+    init(name: String, file: String, index: Float, content: String) {
+        self.id = -1
+        self.categoryId = -1
+        self.name = name
+        self.file = file
         self.index = index
         self.content = content
         self.favourite = false
@@ -48,6 +61,7 @@ class Segment: Codable, TableProtocol, NSCopying {
         case id
         case categoryId = "category_id"
         case name = "title"
+        case file
         case index
         case content
     }
@@ -73,6 +87,12 @@ class Segment: Codable, TableProtocol, NSCopying {
             self.name = ""
         }
         
+        if container.contains(.file) {
+            self.file = try container.decode(String.self, forKey: .file)
+        } else {
+            self.file = ""
+        }
+        
         if container.contains(.index) {
             self.index = try container.decode(Float.self, forKey: .index)
         } else {
@@ -93,6 +113,7 @@ class Segment: Codable, TableProtocol, NSCopying {
         copy.id = self.id
         copy.categoryId = self.categoryId
         copy.name = self.name
+        copy.file = self.file
         copy.index = self.index
         copy.content = self.content
         copy.favourite = self.favourite
@@ -111,6 +132,7 @@ class Segment: Codable, TableProtocol, NSCopying {
             Column(name: "id", type: .primaryKey),
             Column(name: "name", type: .string),
             Column(name: "index", type: .real),
+            Column(name: "file", type: .string),
             Column(name: "content", type: .string),
             Column(foreignKey: ForeignKey(key: "category_id", table: Table("category"), tableKey: "id"))
         ]

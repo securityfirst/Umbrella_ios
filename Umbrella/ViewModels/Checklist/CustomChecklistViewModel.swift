@@ -56,10 +56,12 @@ class CustomChecklistViewModel {
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         
         let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
-        let customChecklist = CustomChecklist(name: name, languageId: language!.id)
-        
-        let rowId = self.customChecklistDao.insert(customChecklist)
-        customChecklist.id = Int(rowId)
+        var customChecklist = CustomChecklist(name: name)
+        if language != nil {
+            customChecklist = CustomChecklist(name: name, languageId: language!.id)
+            let rowId = self.customChecklistDao.insert(customChecklist)
+            customChecklist.id = Int(rowId)
+        }
         return customChecklist
     }
     

@@ -13,9 +13,9 @@ class DeepLinkParser {
     static let shared = DeepLinkParser()
     private init() { }
     
-    func parseDeepLink(_ url: URL) -> (DeepLinkType, String?, String?) {
+    func parseDeepLink(_ url: URL) -> ResultDeepLink {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true), let host = components.host else {
-            return (.none, nil, nil)
+            return ResultDeepLink(type: .none)
         }
         
         var pathComponents = components.path.components(separatedBy: "/")
@@ -24,30 +24,57 @@ class DeepLinkParser {
         pathComponents.removeFirst()
         
         switch host {
-        case "lesson":
-            if pathComponents.count == 1 {
-                if let subCategory = pathComponents.first {
-                    return (type:.lesson, category: subCategory, difficulty: nil)
-                }
-            } else {
-                // Has specify difficulty level
-                if let subCategory = pathComponents.first, let difficulty = pathComponents.last {
-                    return (type:.lesson, category: subCategory, difficulty: difficulty)
-                }
-            }
         case "forms":
-            if let formName = pathComponents.first {
-                return (type:.form, formName: formName, nil)
+            if let fileName = pathComponents.first {
+                return ResultDeepLink(type: .form, file: fileName)
             } else {
-                return (type:.form, formName: "", nil)
+                return ResultDeepLink(type: .form)
             }
         case "feed":
-            return (type:.feed, nil, nil)
+            return ResultDeepLink(type: .feed)
         case "checklist":
-            return (type:.checklist, nil, nil)
+            return ResultDeepLink(type: .checklist)
         default:
-            break
+            //lessons
+            return parseLessons(host: host, pathComponents: pathComponents)
         }
-        return (.none, nil, nil)
+    }
+    
+    /// Parse of lessons
+    ///
+    /// - Parameters:
+    ///   - host: String
+    ///   - pathComponents: [String]
+    /// - Returns: ResultDeepLink
+    func parseLessons(host: String, pathComponents: [String]) -> ResultDeepLink {
+        if pathComponents.count == 1 {
+            if let object = pathComponents.first {
+                if object.contains(".md") {
+                    // umbrella://glossary/s_two-factor-authentication.md
+                    return ResultDeepLink(type: .lesson, category: host, subCategory: nil, difficulty: nil, file: object)
+                } else {
+                    // umbrella://information/malware
+                    return ResultDeepLink(type: .lesson, category: host, subCategory: object, difficulty: nil, file: nil)
+                }
+            }
+        } else if pathComponents.count == 2 {
+            if let subCategory = pathComponents.first, let object = pathComponents.last {
+                if object.contains(".md") {
+                    // umbrella://tools/messagging/s_mailvelope.md
+                    return ResultDeepLink(type: .lesson, category: host, subCategory: subCategory, difficulty: nil, file: object)
+                } else {
+                    // umbrella://communications/email/beginner
+                    return ResultDeepLink(type: .lesson, category: host, subCategory: subCategory, difficulty: object, file: nil)
+                }
+            }
+        } else if pathComponents.count == 3 {
+            // umbrella://communications/mobile-phones/beginner/s_burner-phones.md
+            if let subCategory = pathComponents.first, let file = pathComponents.last {
+                let difficulty = pathComponents[1]
+                return ResultDeepLink(type: .lesson, category: host, subCategory: subCategory, difficulty: difficulty, file: file)
+            }
+        }
+        
+        return ResultDeepLink(type: .none)
     }
 }

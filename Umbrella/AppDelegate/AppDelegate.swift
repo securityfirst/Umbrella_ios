@@ -79,9 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
-        print(self.window?.rootViewController?.children)
-        
         let foundViewController = self.window?.rootViewController?.children.filter { $0 is LoginViewController }
         
         if foundViewController?.count == 0 {
@@ -136,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("\(url.host!) \(url.path)")
+        print("\(url.host!)\(url.path)")
         if  url.scheme == "umbrella" {
             if deepLinkManager.handleDeeplink(url: url) {
                 deepLinkManager.checkDeepLink()

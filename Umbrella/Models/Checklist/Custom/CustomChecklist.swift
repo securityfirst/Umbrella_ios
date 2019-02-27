@@ -29,6 +29,13 @@ class CustomChecklist: Codable, TableProtocol {
         self.items = []
     }
     
+    init(name: String) {
+        self.id = -1
+        self.languageId = -1
+        self.name = name
+        self.items = []
+    }
+    
     init(name: String, languageId: Int) {
         self.id = -1
         self.languageId = languageId
