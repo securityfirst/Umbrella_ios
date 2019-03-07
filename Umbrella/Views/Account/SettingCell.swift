@@ -16,7 +16,11 @@ class SettingCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var optionSwitch: UISwitch!
+    @IBOutlet weak var iconImageView: UIImageView!
+    
     @IBOutlet weak var optionWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var iconWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var spaceTitleConstraint: NSLayoutConstraint!
     
     //
     // MARK: - Life cycle
@@ -76,6 +80,25 @@ class SettingCell: UITableViewCell {
                     self.subtitleLabel.text = "Manually".localized()
                 }
             }
+            
+            self.iconWidthConstraint.constant = 0
+            self.spaceTitleConstraint.constant = 0
+            self.iconImageView.image = nil
+            
+            if self.titleLabel.text == "Select Language".localized() {
+                self.iconWidthConstraint.constant = 20
+                self.spaceTitleConstraint.constant = 5
+                
+                if self.subtitleLabel.text == "English".localized() {
+                    self.iconImageView.image = #imageLiteral(resourceName: "GB")
+                } else if self.subtitleLabel.text == "Spanish".localized() {
+                    self.iconImageView.image = #imageLiteral(resourceName: "ES")
+                } else if self.subtitleLabel.text == "Chinese".localized() {
+                    self.iconImageView.image = #imageLiteral(resourceName: "CN")
+                }
+            }
+            
+            self.layoutIfNeeded()
         }
     }
     

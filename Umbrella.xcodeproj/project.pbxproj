@@ -83,6 +83,7 @@
 		A075248A20C824E200E91A4A /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248920C824E200E91A4A /* CheckList.swift */; };
 		A075248C20C8290300E91A4A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248B20C8290300E91A4A /* Language.swift */; };
 		A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */; };
+		A083881C2228489000EAAA42 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A083881B2228488F00EAAA42 /* ModelProtocol.swift */; };
 		A0848685214FFBA00099D669 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0848684214FFBA00099D669 /* SegmentCell.swift */; };
 		A0848687214FFD6E0099D669 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0848686214FFD6E0099D669 /* CheckListCell.swift */; };
 		A08486892150018B0099D669 /* SegmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08486882150018B0099D669 /* SegmentViewModel.swift */; };
@@ -428,6 +429,7 @@
 		A075248920C824E200E91A4A /* CheckList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		A075248B20C8290300E91A4A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitManagerSpec.swift; sourceTree = "<group>"; };
+		A083881B2228488F00EAAA42 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		A0848684214FFBA00099D669 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		A0848686214FFD6E0099D669 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
 		A08486882150018B0099D669 /* SegmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewModel.swift; sourceTree = "<group>"; };
@@ -1229,6 +1231,7 @@
 				A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */,
 				A0F6C3A821A56AB100A0FE85 /* SettingCellProtocol.swift */,
 				A01CC62021F7187C00E5D771 /* ExportProtocol.swift */,
+				A083881B2228488F00EAAA42 /* ModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1941,6 +1944,7 @@
 				A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */,
 				A0EBC0182211CECC006A0AC3 /* FormNavigation.swift in Sources */,
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
+				A083881C2228489000EAAA42 /* ModelProtocol.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
 				A01CC62521F7196700E5D771 /* HTML.swift in Sources */,

@@ -57,15 +57,15 @@ struct ChecklistCheckedDao: DaoProtocol {
         return rowId
     }
     
+    //
+    // MARK: - Custom functions
+ 
     /// Reset connection
     ///
     func resetConnection() {
         self.sqlProtocol.resetConnection()
     }
     
-    //
-    // MARK: - Custom functions
- 
     /// Delete all checklistChecked in database
     ///
     /// - Parameter checklistChecked: checklistChecked
@@ -86,6 +86,6 @@ struct ChecklistCheckedDao: DaoProtocol {
     ///
     /// - Returns: [ChecklistChecked]
     func reportOfItemsChecked() -> [ChecklistChecked] {
-        return self.sqlProtocol.select(withQuery: "SELECT subcategory_name, subcategory_id, difficulty_id, checklist_id, count(1) as total_checked, total_items_checklist, language_id FROM \(ChecklistChecked.table) GROUP BY checklist_id ORDER BY subcategory_name desc;")
+        return self.sqlProtocol.select(withQuery: "SELECT subcategory_name, subcategory_id, difficulty_id, checklist_id, count(case when item_id > 0 then 1 else null end) as total_checked, total_items_checklist, language_id FROM \(ChecklistChecked.table) GROUP BY checklist_id ORDER BY subcategory_name desc;")
     }
 }

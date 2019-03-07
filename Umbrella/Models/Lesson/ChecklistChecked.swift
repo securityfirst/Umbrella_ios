@@ -64,6 +64,18 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.languageId = -1
     }
     
+    init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, languageId: Int) {
+        self.id = -1
+        self.subCategoryName = subCategoryName
+        self.subCategoryId = subCategoryId
+        self.difficultyId = difficultyId
+        self.checklistId = checklistId
+        self.itemId = 0
+        self.totalChecked = 0
+        self.totalItemsChecklist = 0
+        self.languageId = languageId
+    }
+    
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalChecked: Int, totalItemsChecklist: Int) {
         self.id = -1
         self.subCategoryName = subCategoryName

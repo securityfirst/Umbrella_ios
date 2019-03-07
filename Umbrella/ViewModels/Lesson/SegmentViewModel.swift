@@ -39,6 +39,11 @@ class SegmentViewModel {
         return favouriteLessonDao
     }()
     
+    lazy var checklistCheckedDao: ChecklistCheckedDao = {
+        let checklistCheckedDao = ChecklistCheckedDao(sqlProtocol: self.sqlManager)
+        return checklistCheckedDao
+    }()
+    
     //
     // MARK: - Init
     init() {
@@ -169,6 +174,20 @@ class SegmentViewModel {
     /// - Parameter segmentId: Int
     func removeFavouriteChecklist(_ categoryId: Int, difficultyId: Int) {
         _ = self.favouriteLessonDao.remove(categoryId, difficultyId: difficultyId)
+    }
+    
+    /// Insert a new ChecklistChecked into the database
+    ///
+    /// - Parameter checklistChecked: ChecklistChecked
+    func insert(_ checklistChecked: ChecklistChecked) {
+        _ = self.checklistCheckedDao.insert(checklistChecked)
+    }
+    
+    /// Remove a ChecklistChecked into the database
+    ///
+    /// - Parameter checklistChecked: ChecklistChecked
+    func remove(_ checklistChecked: ChecklistChecked) {
+        _ = self.checklistCheckedDao.remove(checklistChecked)
     }
     
 }

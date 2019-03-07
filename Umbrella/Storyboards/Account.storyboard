@@ -245,18 +245,26 @@
                                                                 <action selector="changeSwitchAction:" destination="SUV-2Q-gSf" eventType="valueChanged" id="TpP-1U-a4K"/>
                                                             </connections>
                                                         </switch>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zfN-5q-iHY">
+                                                            <rect key="frame" x="16" y="29" width="0.0" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" id="90Z-0D-rCn"/>
+                                                                <constraint firstAttribute="height" constant="20" id="Sts-wu-QEy"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="width" relation="greaterThanOrEqual" secondItem="xc7-Tp-yxI" secondAttribute="width" id="0sq-Tp-0Oj"/>
-                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="top" secondItem="xc7-Tp-yxI" secondAttribute="bottom" constant="-1" id="5H3-JU-bcR"/>
-                                                        <constraint firstItem="YBB-Fh-FG4" firstAttribute="leading" secondItem="sOB-WS-pDn" secondAttribute="trailing" constant="19" id="8fN-Uo-XrE"/>
-                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="height" secondItem="xc7-Tp-yxI" secondAttribute="height" id="9FC-Vg-wAg"/>
+                                                        <constraint firstItem="zfN-5q-iHY" firstAttribute="top" secondItem="xc7-Tp-yxI" secondAttribute="bottom" id="0Nh-2M-9ys"/>
+                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="top" secondItem="xc7-Tp-yxI" secondAttribute="bottom" constant="-1" id="8Hw-UZ-fqK"/>
                                                         <constraint firstItem="xc7-Tp-yxI" firstAttribute="leading" secondItem="n4s-P3-wt7" secondAttribute="leading" constant="16" id="9Sf-XH-9lK"/>
+                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="leading" secondItem="zfN-5q-iHY" secondAttribute="trailing" id="CcF-SS-9Ex"/>
                                                         <constraint firstAttribute="trailing" secondItem="YBB-Fh-FG4" secondAttribute="trailing" constant="10" id="Fjy-0i-wMC"/>
                                                         <constraint firstItem="xc7-Tp-yxI" firstAttribute="top" secondItem="n4s-P3-wt7" secondAttribute="top" constant="8" id="SWd-h5-EVs"/>
-                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="leading" secondItem="n4s-P3-wt7" secondAttribute="leading" constant="16" id="jJi-RI-qq4"/>
+                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="height" secondItem="xc7-Tp-yxI" secondAttribute="height" id="cph-MY-Now"/>
+                                                        <constraint firstItem="sOB-WS-pDn" firstAttribute="width" secondItem="xc7-Tp-yxI" secondAttribute="width" id="hkH-zd-5ZJ"/>
                                                         <constraint firstItem="YBB-Fh-FG4" firstAttribute="centerY" secondItem="n4s-P3-wt7" secondAttribute="centerY" id="n7U-Wl-apo"/>
+                                                        <constraint firstItem="zfN-5q-iHY" firstAttribute="leading" secondItem="n4s-P3-wt7" secondAttribute="leading" constant="16" id="xzH-dy-KsN"/>
                                                         <constraint firstItem="YBB-Fh-FG4" firstAttribute="leading" secondItem="xc7-Tp-yxI" secondAttribute="trailing" constant="19" id="y3t-h8-tQX"/>
                                                     </constraints>
                                                 </view>
@@ -269,8 +277,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="iconImageView" destination="zfN-5q-iHY" id="fE3-TK-rgu"/>
+                                            <outlet property="iconWidthConstraint" destination="90Z-0D-rCn" id="Dle-Hj-C0I"/>
                                             <outlet property="optionSwitch" destination="YBB-Fh-FG4" id="Udw-v0-Qmp"/>
                                             <outlet property="optionWidthConstraint" destination="Mt7-2D-ZbA" id="yQc-oy-KGe"/>
+                                            <outlet property="spaceTitleConstraint" destination="CcF-SS-9Ex" id="5UZ-pA-eEF"/>
                                             <outlet property="subtitleLabel" destination="sOB-WS-pDn" id="jQX-69-fbh"/>
                                             <outlet property="titleLabel" destination="xc7-Tp-yxI" id="aj2-2a-Ls5"/>
                                         </connections>

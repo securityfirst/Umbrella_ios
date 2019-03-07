@@ -220,6 +220,19 @@ extension NewChecklistViewController: UITableViewDelegate {
         return (indexPath.row != self.newChecklistViewModel.customChecklist.items.count)
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
+            let customCheckItem = self.newChecklistViewModel.customChecklist.items[indexPath.row]
+            self.newChecklistViewModel.customChecklist.items.remove(at: indexPath.row)
+            self.newChecklistViewModel.removeCustomCheckItem(customCheckItem)
+            self.newCheckItemTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+        
+        delete.backgroundColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
+        
+        return [delete]
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let customCheckItem = self.newChecklistViewModel.customChecklist.items[indexPath.row]

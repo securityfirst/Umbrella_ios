@@ -119,10 +119,12 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         var difficultyId = -1
         
         if getDifficulty() >= 0 {
-            let difficulty = subCategory.categories[Int(getDifficulty())]
-            difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
-            difficultyId = difficulty.id
-            self.segmentViewModel.insert(difficultyRule)
+            let difficulty = subCategory.categories.filter { $0.name?.lowercased() == self.difficulty?.lowercased() }.first
+            if let difficulty = difficulty {
+                difficultyRule = DifficultyRule(categoryId: difficulty.parent, difficultyId: difficulty.id)
+                difficultyId = difficulty.id
+                self.segmentViewModel.insert(difficultyRule)
+            }
         } else {
             difficultyRule = DifficultyRule(categoryId: subCategoryFound.id)
             difficultyId = self.segmentViewModel.isExistRule(to: difficultyRule)

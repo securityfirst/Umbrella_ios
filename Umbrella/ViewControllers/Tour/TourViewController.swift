@@ -26,7 +26,11 @@ class TourViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tourScrollView.bounds = (self.parent?.view.bounds)!
+        if self.parent?.view.bounds != nil {
+            self.tourScrollView.bounds = (self.parent?.view.bounds)!
+        } else {
+            self.tourScrollView.bounds = (UIApplication.shared.keyWindow?.bounds)!
+        }
         
         addTourPageView(position: 0, icon: #imageLiteral(resourceName: "tour1"), backgroundColor: #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1), text: "Umbrella makes your security simple".localized())
         addTourPageView(position: 1, icon: #imageLiteral(resourceName: "tour2"), backgroundColor: #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1), text: "Get advice on everything from sending a secure email to safe travel".localized())

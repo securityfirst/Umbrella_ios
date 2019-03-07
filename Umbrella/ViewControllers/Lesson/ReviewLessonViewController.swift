@@ -14,109 +14,166 @@ class ReviewLessonViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var sideScrollView: SideScrollLessonView!
     @IBOutlet weak var reviewScrollView: UIScrollView!
-    var currentPage: CGFloat = 0
+    
+    var currentPage: Int = 0
     var button: UIButton!
+    var viewControllerIndexLoaded: [Int] = [Int]()
+    var viewControllerLoaded: [UIViewController?]!
+    var currentViewController: UIViewController!
     
     lazy var reviewLessonViewModel: ReviewLessonViewModel = {
         let reviewLessonViewModel = ReviewLessonViewModel()
         return reviewLessonViewModel
     }()
     
-    lazy var pages: [UIViewController] = {
-        return getViewControllers()
+    lazy var pages: Int = {
+        var count = 0
+        if let segments = self.reviewLessonViewModel.segments?.count, let checklists = self.reviewLessonViewModel.checkLists?.count {
+            count = segments + checklists
+        }
+        return count
     }()
     
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewControllerLoaded = [UIViewController?](repeating: nil, count: self.pages)
+        
         self.navigationItem.largeTitleDisplayMode = .automatic
-        
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
-        
-        if reviewLessonViewModel.isGlossary {
-            let favouriteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "iconFavourite").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(self.favouriteAction(_:)))
-            self.navigationItem.rightBarButtonItems = [shareBarButton, favouriteBarButton]
-        } else {
-            self.navigationItem.rightBarButtonItem = shareBarButton
-        }
+        self.navigationItem.rightBarButtonItem = shareBarButton
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        for (index, viewController) in pages.enumerated() {
-            var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
-            frame.origin.x = self.reviewScrollView.frame.size.width * CGFloat(index)
-            frame.size = self.reviewScrollView.frame.size
-            
-            if let subView = viewController.view {
-                subView.frame = frame
-                subView.tag = index
-                
-                self.reviewScrollView.addSubview(subView)
-            }
-        }
-        
-        self.reviewScrollView.contentSize = CGSize(width: self.reviewScrollView.frame.size.width * CGFloat(pages.count), height: self.reviewScrollView.frame.size.height)
+        self.reviewScrollView.contentSize = CGSize(width: self.reviewScrollView.frame.size.width * CGFloat(pages), height: self.reviewScrollView.frame.size.height)
         self.sideScrollView.dataSource = self
         self.sideScrollView.reloadData()
         
-        setCurrentPosition()
+        if self.reviewLessonViewModel.selected != nil {
+            self.currentPage = getIndexByObject()
+        }
+        
+        loadContentCurrentPosition()
     }
     
     //
     // MARK: - Functions
     
+    func getIndexByObject() -> Int {
+        var array: [Any] = [Any]()
+        
+        if let segments = self.reviewLessonViewModel.segments {
+            array.append(contentsOf: segments)
+        }
+        
+        if let checklists = self.reviewLessonViewModel.checkLists {
+            array.append(contentsOf: checklists)
+        }
+        
+        let selected = (self.reviewLessonViewModel.selected as? ModelProtocol)!
+        
+        for (index, object) in array.enumerated() {
+            let model = (object as? ModelProtocol)!
+            if model.id == selected.id {
+                return index
+            }
+        }
+        
+        return 0
+    }
+    
+    /// Get Viewcontroller
+    ///
+    /// - Returns: UIViewController
+    func getViewController(by index: Int) -> UIViewController {
+        var controller = UIViewController()
+        
+        if viewControllerIndexLoaded.contains(currentPage) {
+            if let controller = viewControllerLoaded[currentPage] {
+                self.currentViewController = controller
+                return self.currentViewController
+            }
+        }
+        
+        if let count = self.reviewLessonViewModel.segments?.count {
+            if index < count {
+                let segment = self.reviewLessonViewModel.segments?[index]
+                let viewController = (self.getViewController(withIdentifier: "MarkdownViewController") as? MarkdownViewController)!
+                viewController.markdownViewModel.segment = segment
+                controller = viewController
+                
+                viewControllerIndexLoaded.append(currentPage)
+                viewControllerLoaded[currentPage] = controller
+                self.currentViewController = controller
+                addViewLessonOnScrollView()
+            } else {
+                let checklist = self.reviewLessonViewModel.checkLists?[index - count]
+                let viewController = (self.getViewController(withIdentifier: "LessonCheckListViewController") as? LessonCheckListViewController)!
+                viewController.lessonCheckListViewModel.category = self.reviewLessonViewModel.category
+                viewController.lessonCheckListViewModel.checklist = checklist
+                controller = viewController
+                
+                viewControllerIndexLoaded.append(currentPage)
+                viewControllerLoaded[currentPage] = controller
+                self.currentViewController = controller
+                addViewLessonOnScrollView()
+            }
+        }
+        
+        return controller
+    }
+    
     /// Get Viewcontrollers
     ///
     /// - Returns: [UIViewController]
-    func getViewControllers() -> [UIViewController] {
-        var viewControllers = [UIViewController]()
+    func getObject(by index: Int) -> Any? {
         
-        self.reviewLessonViewModel.segments?.forEach({ (segment) in
-            let viewcontroller = (self.getViewController(withIdentifier: "MarkdownViewController") as? MarkdownViewController)!
-            viewcontroller.markdownViewModel.segment = segment
-            viewControllers.append(viewcontroller)
-        })
+        if let count = self.reviewLessonViewModel.segments?.count {
+            if index < count {
+                return self.reviewLessonViewModel.segments?[index]
+            } else {
+                return self.reviewLessonViewModel.checkLists?[index - count]
+            }
+        }
         
-        self.reviewLessonViewModel.checkLists?.forEach({ (checklist) in
-            let viewcontroller = (self.getViewController(withIdentifier: "LessonCheckListViewController") as? LessonCheckListViewController)!
-            viewcontroller.lessonCheckListViewModel.category = self.reviewLessonViewModel.category
-            viewcontroller.lessonCheckListViewModel.checklist = checklist
-            viewControllers.append(viewcontroller)
-        })
-        
-        return viewControllers
+        return nil
     }
     
     /// Get ViewController with Identifier
     ///
     /// - Parameter identifier: String
     /// - Returns: UIViewController
-    func getViewController(withIdentifier identifier: String) -> UIViewController {
+    fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController {
         return UIStoryboard(name: "Lesson", bundle: nil).instantiateViewController(withIdentifier: identifier)
     }
     
+    fileprivate func addViewLessonOnScrollView() {
+        var frame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+        frame.origin.x = self.reviewScrollView.frame.size.width * CGFloat(currentPage)
+        frame.size = self.reviewScrollView.frame.size
+        
+        if let subView = self.currentViewController.view {
+            subView.frame = frame
+            subView.tag = currentPage
+            self.reviewScrollView.addSubview(subView)
+        }
+    }
+    
     /// Set position of the workflow tabs
-    fileprivate func setCurrentPosition() {
-        var segment:Segment? = nil
-        var checklist:CheckList? = nil
+    fileprivate func loadContentCurrentPosition() {
+        
+        self.currentViewController = getViewController(by: self.currentPage)
         
         if self.reviewLessonViewModel.selected is Segment {
-            segment = (self.reviewLessonViewModel.selected as? Segment)
+            let segment = (self.reviewLessonViewModel.selected as? Segment)
+            loadSegment(index: currentPage, viewController: self.currentViewController, segment: segment)
         } else if self.reviewLessonViewModel.selected is CheckList {
-            checklist = (self.reviewLessonViewModel.selected as? CheckList)
-        }
-        
-        for (index, viewController) in pages.enumerated() {
-            if viewController is MarkdownViewController, loadSegment(index: index, viewController: viewController, segment: segment) {
-                break
-            }
-            
-            if viewController is LessonCheckListViewController, loadChecklist(index: index, viewController: viewController, checklist: checklist) {
-                break
-            }
+            let checklist = (self.reviewLessonViewModel.selected as? CheckList)
+            loadChecklist(index: currentPage, viewController: self.currentViewController, checklist: checklist)
         }
     }
     
@@ -127,23 +184,20 @@ class ReviewLessonViewController: UIViewController {
     ///   - viewController: UIViewController
     ///   - segment: Segment
     /// - Returns: Bool
-    fileprivate func loadSegment(index: Int, viewController: UIViewController, segment: Segment?) -> Bool {
-        let controller = (viewController as? MarkdownViewController)!
+    fileprivate func loadSegment(index: Int, viewController: UIViewController, segment: Segment?) {
+        let controller = (viewController as? MarkdownViewController)
         
-        if controller.markdownViewModel.segment?.id == segment?.id {
+        if controller?.markdownViewModel.segment?.id == segment?.id {
             self.sideScrollView.scrollViewDidPage(page: CGFloat(index))
             self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
             
             // Set title navigationController
-            if let name = controller.markdownViewModel.segment?.name {
+            if let name = controller?.markdownViewModel.segment?.name {
                 self.title = name
             }
             
-            controller.loadMarkdown()
-            return true
+            controller?.loadMarkdown()
         }
-        
-        return false
     }
     
     /// Load checklist selected
@@ -153,18 +207,21 @@ class ReviewLessonViewController: UIViewController {
     ///   - viewController: UIViewController
     ///   - segment: Segment
     /// - Returns: Bool
-    fileprivate func loadChecklist(index: Int, viewController: UIViewController, checklist: CheckList?) -> Bool {
-        let controller = (viewController as? LessonCheckListViewController)!
+    fileprivate func loadChecklist(index: Int, viewController: UIViewController, checklist: CheckList?) {
+        let controller = (viewController as? LessonCheckListViewController)
         
-        if controller.lessonCheckListViewModel.checklist?.id == checklist?.id {
+        if controller?.lessonCheckListViewModel.checklist?.id == checklist?.id {
             self.sideScrollView.scrollViewDidPage(page: CGFloat(index))
             self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
             
             // Set title navigationController
             self.title = "CheckList".localized()
-            return true
+            
+            if !viewControllerIndexLoaded.contains(currentPage) {
+                viewControllerIndexLoaded.append(currentPage)
+                viewControllerLoaded.insert(controller!, at: currentPage)
+            }
         }
-        return false
     }
     
     //
@@ -172,11 +229,10 @@ class ReviewLessonViewController: UIViewController {
     
     @IBAction func shareAction(_ sender: UIBarButtonItem) {
         var objectsToShare:[Any] = [Any]()
-        let viewController = self.pages[Int(currentPage)]
         
         // MarkdownViewController
-        if viewController is MarkdownViewController {
-            let controller = (viewController as? MarkdownViewController)!
+        if self.currentViewController is MarkdownViewController {
+            let controller = (self.currentViewController as? MarkdownViewController)!
             
             let name = controller.markdownViewModel.segment!.name!.components(separatedBy: .whitespacesAndNewlines).joined()
             let fm = FileManager.default
@@ -203,8 +259,8 @@ class ReviewLessonViewController: UIViewController {
             
         }
             // LessonCheckListViewController
-        else if viewController is LessonCheckListViewController {
-            let controller = (viewController as? LessonCheckListViewController)!
+        else if self.currentViewController is LessonCheckListViewController {
+            let controller = (self.currentViewController as? LessonCheckListViewController)!
             
             var content: String = ""
             
@@ -219,7 +275,7 @@ class ReviewLessonViewController: UIViewController {
             content += "<h1>Checklist</h1> \n"
             
             for checkItem in (controller.lessonCheckListViewModel.checklist?.items)! {
-                 content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
+                content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
             }
             
             content += """
@@ -229,7 +285,7 @@ class ReviewLessonViewController: UIViewController {
             """
             
             UIAlertController.alertSheet(title: "", message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
-
+                
                 if option == 0 {
                     // HTML
                     let html = HTML(nameFile: "Checklist.html", content: content)
@@ -263,37 +319,9 @@ class ReviewLessonViewController: UIViewController {
         }
     }
     
-    @IBAction func favouriteAction(_ sender: UIBarButtonItem) {
-        let viewController = self.pages[Int(currentPage)]
-        
-        // MarkdownViewController
-        if viewController is MarkdownViewController {
-            let controller = (viewController as? MarkdownViewController)!
-            
-            controller.markdownViewModel.segment!.favourite = !controller.markdownViewModel.segment!.favourite
-            
-            if controller.markdownViewModel.segment!.favourite {
-                
-                let favouriteSegment = FavouriteLesson(categoryId: self.reviewLessonViewModel.category!.id, difficultyId: 0, segmentId: controller.markdownViewModel.segment!.id)
-                
-                self.reviewLessonViewModel.insert(favouriteSegment)
-            } else {
-                self.reviewLessonViewModel.remove(controller.markdownViewModel.segment!.id)
-            }
-        }
-            // LessonCheckListViewController
-        else if viewController is LessonCheckListViewController {
-            let controller = (viewController as? LessonCheckListViewController)!
-            
-            controller.lessonCheckListViewModel.checklist!.favourite = !controller.lessonCheckListViewModel.checklist!.favourite
-            
-            if controller.lessonCheckListViewModel.checklist!.favourite {
-                let favouriteSegment = FavouriteLesson(categoryId: self.reviewLessonViewModel.category!.parent, difficultyId: self.reviewLessonViewModel.category!.id, segmentId: -1)
-                self.reviewLessonViewModel.insert(favouriteSegment)
-            } else {
-                self.reviewLessonViewModel.removeFavouriteChecklist(self.reviewLessonViewModel.category!.parent, difficultyId: self.reviewLessonViewModel.category!.id)
-            }
-        }
+    func updateTitleBar(page: CGFloat) {
+        self.sideScrollView.scrollViewDidPage(page: page)
+        self.view.endEditing(true)
     }
 }
 
@@ -306,28 +334,17 @@ extension ReviewLessonViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        updateDidScroll(scrollView)
+        let page = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        updateTitleBar(page: page)
     }
     
     func updateDidScroll(_ scrollView: UIScrollView) {
-        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        currentPage = pageNumber
-        self.sideScrollView.scrollViewDidPage(page: currentPage)
-        self.view.endEditing(true)
+        let page = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         
-        let viewController = self.pages[Int(currentPage)]
-        
-        if viewController is MarkdownViewController {
-            let controller = (viewController as? MarkdownViewController)!
-            if let name = controller.markdownViewModel.segment?.name {
-                self.title = name
-            }
-            self.reviewLessonViewModel.selected = controller.markdownViewModel.segment
-            controller.loadMarkdown()
-        } else if viewController is LessonCheckListViewController {
-            let controller = (viewController as? LessonCheckListViewController)!
-            self.title = "CheckList".localized()
-            self.reviewLessonViewModel.selected = controller.lessonCheckListViewModel.checklist
+        if page >= 0 {
+            self.currentPage = Int(page)
+            self.reviewLessonViewModel.selected = getObject(by: currentPage)
+            loadContentCurrentPosition()
         }
     }
 }
@@ -350,19 +367,19 @@ extension ReviewLessonViewController: SideScrollLessonViewDataSource {
         titleFormView.titleLabel?.adjustsFontSizeToFitWidth = true
         titleFormView.addSubview(titleFormView.titleLabel!)
         
-        let viewController = self.pages[index]
+        let object = self.getObject(by: index)
         
-        if viewController is LessonCheckListViewController {
+        if object is CheckList {
             titleFormView.setTitle("CheckList".localized())
         } else {
-            let controller = (viewController as? MarkdownViewController)!
-            titleFormView.setTitle(controller.markdownViewModel.segment?.name ?? "")
+            let segment = (object as? Segment)!
+            titleFormView.setTitle(segment.name ?? "")
         }
         
         return titleFormView
     }
     
     func numberOfTitles() -> Int {
-        return pages.count
+        return pages
     }
 }

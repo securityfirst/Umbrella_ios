@@ -340,7 +340,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                         <state key="normal" title="&lt; Back">
-                                            <color key="titleColor" red="0.33650993289999998" green="0.33650993289999998" blue="0.33650993289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="backAction:" destination="9Lg-m8-rEn" eventType="touchUpInside" id="G9H-7x-lfj"/>
@@ -354,7 +354,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                         <state key="normal" title="Next &gt;">
-                                            <color key="titleColor" red="0.33650993289999998" green="0.33650993289999998" blue="0.33650993289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="nextAction:" destination="9Lg-m8-rEn" eventType="touchUpInside" id="cWA-Qg-6QK"/>

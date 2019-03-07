@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class CheckList: Codable, TableProtocol, NSCopying {
+class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     
     // Used in parser from the database to object
     var id: Int
