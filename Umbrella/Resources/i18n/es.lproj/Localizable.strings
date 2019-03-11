@@ -72,6 +72,7 @@
 "Sources" = "Fuentes";
 "Select The Feed Sources" = "Seleccione las fuentes de alimentación";
 "Change repository" = "Cambiar repositorio";
+"Please select one country of the list." = "Por favor seleccione un país de la lista.";
 
 // Lessons
 "Favourites" = "Favoritos";

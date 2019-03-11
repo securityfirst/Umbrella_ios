@@ -15,6 +15,7 @@ class IntervalViewController: UIViewController {
     @IBOutlet weak var intervalText: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var spaceBottomConstraint: NSLayoutConstraint!
     lazy var locationViewModel: LocationViewModel = {
         let locationViewModel = LocationViewModel()
         return locationViewModel
@@ -30,10 +31,42 @@ class IntervalViewController: UIViewController {
         intervalText.delegate = self
         intervalText.becomeFirstResponder()
         saveButton.setTitle("Save".localized(), for: .normal)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Keyboard notification when change the frame
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame?.origin.y ?? 0
+            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                self.spaceBottomConstraint?.constant = 25.0
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: animationCurve,
+                               animations: { self.view.layoutIfNeeded() },
+                               completion: nil)
+            } else {
+                self.spaceBottomConstraint?.constant = (endFrame?.size.height)! - 40
+            }
+        }
     }
     
     //

@@ -198,6 +198,7 @@
 		A0CC7B5A2138048700C28C3B /* ImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B592138048700C28C3B /* ImageDownload.swift */; };
 		A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */; };
 		A0CC7B5E21384EB000C28C3B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B5D21384EB000C28C3B /* WebViewController.swift */; };
+		A0CEEAA922314AFA00483609 /* CountryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CEEAA822314AFA00483609 /* CountryHelper.swift */; };
 		A0CF27FC221B24770076976F /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CF27FB221B24760076976F /* UIViewController+Ext.swift */; };
 		A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170BE20CE93C000758A8D /* FolderProtocol.swift */; };
 		A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D170C020CE976700758A8D /* Array+Ext.swift */; };
@@ -548,6 +549,7 @@
 		A0CC7B592138048700C28C3B /* ImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownload.swift; sourceTree = "<group>"; };
 		A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		A0CC7B5D21384EB000C28C3B /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A0CEEAA822314AFA00483609 /* CountryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelper.swift; sourceTree = "<group>"; };
 		A0CF27FB221B24760076976F /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		A0D170BE20CE93C000758A8D /* FolderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderProtocol.swift; sourceTree = "<group>"; };
 		A0D170C020CE976700758A8D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
@@ -1212,6 +1214,7 @@
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
 				A0CC7B592138048700C28C3B /* ImageDownload.swift */,
 				A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */,
+				A0CEEAA822314AFA00483609 /* CountryHelper.swift */,
 				A01CC61D21F717DC00E5D771 /* Export */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
@@ -1999,6 +2002,7 @@
 				A0EBC005220D930E006A0AC3 /* HTMLPDFRenderer.swift in Sources */,
 				A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */,
 				A00386FE20F3A6F3004FAC8A /* UmbrellaView.swift in Sources */,
+				A0CEEAA922314AFA00483609 /* CountryHelper.swift in Sources */,
 				A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */,
 				A0AE1A30214FE3AF0019F09B /* DifficultyRule.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,

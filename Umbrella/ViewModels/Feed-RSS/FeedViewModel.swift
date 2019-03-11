@@ -36,6 +36,7 @@ class FeedViewModel: NSObject {
     ///   - completion: Closure
     ///   - failure: Closure
     func requestFeed(completion: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        self.feedItems.removeAll()
         
         var sourceString = ""
         for (index, value) in sources.enumerated() {

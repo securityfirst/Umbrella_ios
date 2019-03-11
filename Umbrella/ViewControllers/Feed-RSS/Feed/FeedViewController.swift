@@ -359,6 +359,7 @@ class FeedViewController: UIViewController {
                     self.feedView.feedTableView.isHidden = false
                     self.feedView.activityIndicatorView.isHidden = true
                     self.feedView.topConstraint.constant = 100
+                    self.feedView.feedTableView.reloadData()
                     return
                 }
                 

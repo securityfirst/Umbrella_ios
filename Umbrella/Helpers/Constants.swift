@@ -35,6 +35,12 @@ enum RSS {
     ]
 }
 
+enum City {
+    static let cities = [
+        ""
+    ]
+}
+
 enum Lessons {
     static let colors: [UIColor] = [#colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1), #colorLiteral(red: 0.9661672711, green: 0.7777593136, blue: 0.215906769, alpha: 1), #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)]
 }

@@ -40,31 +40,15 @@ class SettingLocationViewController: UIViewController {
     //
     // MARK: - Functions
     
-    /// Show error
-    fileprivate func showError() {
-        UIAlertController.alert(title: "Alert", message: "The city or country is not available or you have no internet connection.".localized(), cancelButtonTitle: "OK", otherButtons: nil, dismiss: { _ in
-            // Don't need to do nothing
-        }, cancel: {
-            // In this case we need to do nothing when user cancel the alert
-            print("cancelClicked")
-        })
-    }
-    
     /// Save place
     ///
-    /// - Parameter placeMark: CLPlacemark
-    fileprivate func savePlace(_ placeMark: CLPlacemark) {
-        if let city = placeMark.name, let country = placeMark.country, let countryCode = placeMark.isoCountryCode {
-            if city.lowercased() == self.locationText.text?.lowercased() {
-                NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": (city: city, country: country, countryCode: countryCode)])
-                UserDefaults.standard.set(city, forKey: "LocationCity")
-                UserDefaults.standard.set(country, forKey: "LocationCountry")
-                UserDefaults.standard.set(countryCode, forKey: "LocationCountryCode")
-                NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
-            } else {
-                self.showError()
-            }
-        }
+    /// - Parameter country: Country
+    fileprivate func savePlace(_ country: Country) {
+        NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": (city: country.name, country: country.name, countryCode: country.codeAlpha2)])
+        UserDefaults.standard.set(country.name, forKey: "LocationCity")
+        UserDefaults.standard.set(country.name, forKey: "LocationCountry")
+        UserDefaults.standard.set(country.codeAlpha2, forKey: "LocationCountryCode")
+        NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
     }
     
     //
@@ -72,18 +56,9 @@ class SettingLocationViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         if self.locationViewModel.cityArray.count > 0 {
-            if let placemark = self.locationViewModel.cityArray.first {
-                savePlace(placemark)
+            if let country = self.locationViewModel.cityArray.first {
+                savePlace(country)
             }
-        } else {
-            self.locationViewModel.geocode(of: self.locationText.text!, completion: {
-                self.cityTableView.reloadData()
-                if let placemark = self.locationViewModel.cityArray.first {
-                    self.savePlace(placemark)
-                }
-            }, failure: {
-                self.showError()
-            })
         }
     }
 }
@@ -111,22 +86,8 @@ extension SettingLocationViewController: UITextFieldDelegate {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
             
-            if updatedText.count >= 3 {
-                
-                for cell in self.cityTableView.visibleCells {
-                    let settingCell: SettingItemCell = (cell as? SettingItemCell)!
-                    settingCell.checkImageView.image = #imageLiteral(resourceName: "groupNormal")
-                }
-                
-                self.locationViewModel.geocode(of: updatedText, completion: {
-                    self.cityTableView.reloadData()
-                }, failure: {
-                    // It is not necessary show alert in this case
-                })
-            } else {
-                self.locationViewModel.cityArray.removeAll()
-                self.cityTableView.reloadData()
-            }
+            self.locationViewModel.searchCountry(name: updatedText)
+            self.cityTableView.reloadData()
         }
         
         return true
@@ -148,11 +109,8 @@ extension SettingLocationViewController: UITableViewDataSource {
         
         let cell: SettingItemCell = (tableView.dequeueReusableCell(withIdentifier: "SettingItemCell", for: indexPath) as? SettingItemCell)!
         
-        let location = self.locationViewModel.cityArray[indexPath.row]
-        
-        if let city = location.name, let country = location.country {
-            cell.titleLabel.text = "\(city) \(country)"
-        }
+        let country = self.locationViewModel.cityArray[indexPath.row]
+        cell.titleLabel.text = country.name
         
         return cell
     }
@@ -174,10 +132,8 @@ extension SettingLocationViewController: UITableViewDelegate {
             }
         }
         
-        let city = self.locationViewModel.cityArray[indexPath.row]
-        let cityString = "\(String(describing: city.name!))"
-        
-        self.locationText.text = cityString
-        savePlace(city)
+        let country = self.locationViewModel.cityArray[indexPath.row]
+        self.locationText.text = country.name
+        savePlace(country)
     }
 }

@@ -72,6 +72,7 @@
 "Sources" = "來源";
 "Select The Feed Sources" = "選擇Feed源";
 "Change repository" = "更改存储库";
+"Please select one country of the list." = "请选择列表中的一个国家/地区。";
 
 // Lessons
 "Favourites" = "最爱";

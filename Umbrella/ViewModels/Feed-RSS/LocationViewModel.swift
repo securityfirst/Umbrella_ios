@@ -14,7 +14,7 @@ class LocationViewModel {
     //
     // MARK: - Properties
     lazy var geocoder = CLGeocoder()
-    var cityArray: [CLPlacemark] = [CLPlacemark]()
+    var cityArray: [Country] = [Country]()
     
     //
     // MARK: - Init
@@ -25,23 +25,27 @@ class LocationViewModel {
     //
     // MARK: - Functions
     
-    /// Geocoder of a string to CLPlacemark
-    ///
-    /// - Parameters:
-    ///   - string: String
-    ///   - completion: Closure
-    func geocode(of string: String, completion: @escaping () -> Void, failure: @escaping () -> Void ) {
-        geocoder.geocodeAddressString(string) { (placemarks, error) in
-            if let error = error {
-                print("Unable to Forward Geocode Address (\(error))")
-                self.cityArray.removeAll()
-                failure()
-            }
-            
-            if let placemarks = placemarks, placemarks.count > 0 {
-                self.cityArray = placemarks
-            }
-            completion()
-        }
+//    /// Geocoder of a string to CLPlacemark
+//    ///
+//    /// - Parameters:
+//    ///   - string: String
+//    ///   - completion: Closure
+//    func geocode(of string: String, completion: @escaping () -> Void, failure: @escaping () -> Void ) {
+//        geocoder.geocodeAddressString(string) { (placemarks, error) in
+//            if let error = error {
+//                print("Unable to Forward Geocode Address (\(error))")
+//                self.cityArray.removeAll()
+//                failure()
+//            }
+//            
+//            if let placemarks = placemarks, placemarks.count > 0 {
+//                self.cityArray = placemarks
+//            }
+//            completion()
+//        }
+//    }
+    
+    func searchCountry(name: String) {
+        self.cityArray = CountryHelper.countries.filter { $0.name.lowercased().contains(name.lowercased()) }
     }
 }

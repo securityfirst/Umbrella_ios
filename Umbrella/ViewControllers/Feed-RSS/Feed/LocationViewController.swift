@@ -16,6 +16,9 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var cityTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var spaceBottomConstraint: NSLayoutConstraint!
+    
+    var country: Country!
     
     lazy var locationViewModel: LocationViewModel = {
         let locationViewModel = LocationViewModel()
@@ -32,6 +35,11 @@ class LocationViewController: UIViewController {
         self.locationText.delegate = self
         self.locationText.becomeFirstResponder()
         self.saveButton.setTitle("Save".localized(), for: .normal)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,32 +49,41 @@ class LocationViewController: UIViewController {
     //
     // MARK: - Functions
     
-    /// Show error
-    fileprivate func showError() {
-        UIAlertController.alert(title: "Alert".localized(), message: "The city or country is not available or you have no internet connection.".localized(), cancelButtonTitle: "OK", otherButtons: nil, dismiss: { _ in
-            // Don't need to do nothing
-        }, cancel: {
-            // In this case we need to do nothing when user cancel the alert
-            print("cancelClicked")
-        })
+    /// Keyboard notification when change the frame
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame?.origin.y ?? 0
+            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                self.spaceBottomConstraint?.constant = 25.0
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: animationCurve,
+                               animations: { self.view.layoutIfNeeded() },
+                               completion: nil)
+            } else {
+                self.spaceBottomConstraint?.constant = (endFrame?.size.height)! - 40
+            }
+        }
     }
     
     /// Save place
     ///
-    /// - Parameter placeMark: CLPlacemark
-    fileprivate func savePlace(_ placeMark: CLPlacemark) {
-        if let city = placeMark.name, let country = placeMark.country, let countryCode = placeMark.isoCountryCode {
-            if city.lowercased() == self.locationText.text?.lowercased() {
-                NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": (city: city, country: country, countryCode: countryCode)])
-                UserDefaults.standard.set(city, forKey: "LocationCity")
-                UserDefaults.standard.set(country, forKey: "LocationCountry")
-                UserDefaults.standard.set(countryCode, forKey: "LocationCountryCode")
-                NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.showError()
-            }
-        }
+    /// - Parameter country: Country
+    fileprivate func savePlace(_ country: Country) {
+        NotificationCenter.default.post(name: Notification.Name("UpdateLocation"), object: nil, userInfo: ["location": (city: country.name, country: country.name, countryCode: country.codeAlpha2)])
+        UserDefaults.standard.set(country.name, forKey: "LocationCity")
+        UserDefaults.standard.set(country.name, forKey: "LocationCountry")
+        UserDefaults.standard.set(country.codeAlpha2, forKey: "LocationCountryCode")
+        NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     //
@@ -74,18 +91,11 @@ class LocationViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         if self.locationViewModel.cityArray.count > 0 {
-            if let placemark = self.locationViewModel.cityArray.first {
-                savePlace(placemark)
+            if let country = self.country {
+                savePlace(country)
+            } else {
+                UIApplication.shared.keyWindow!.makeToast("Please select one country of the list.".localized(), duration: 3.0, position: .center)
             }
-        } else {
-            self.locationViewModel.geocode(of: self.locationText.text!, completion: {
-                self.cityTableView.reloadData()
-                if let placemark = self.locationViewModel.cityArray.first {
-                    self.savePlace(placemark)
-                }
-            }, failure: {
-                self.showError()
-            })
         }
     }
 }
@@ -113,16 +123,8 @@ extension LocationViewController: UITextFieldDelegate {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
             
-            if updatedText.count >= 3 {
-                self.locationViewModel.geocode(of: updatedText, completion: {
-                    self.cityTableView.reloadData()
-                }, failure: {
-                    // It is not necessary show alert in this case
-                })
-            } else {
-                self.locationViewModel.cityArray.removeAll()
-                self.cityTableView.reloadData()
-            }
+            self.locationViewModel.searchCountry(name: updatedText)
+            self.cityTableView.reloadData()
         }
         
         return true
@@ -144,11 +146,8 @@ extension LocationViewController: UITableViewDataSource {
         
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
         
-        let location = self.locationViewModel.cityArray[indexPath.row]
-        
-        if let city = location.name, let country = location.country {
-            cell.textLabel?.text = "\(city) \(country)"
-        }
+        let country = self.locationViewModel.cityArray[indexPath.row]
+        cell.textLabel?.text = country.name
         
         return cell
     }
@@ -160,9 +159,7 @@ extension LocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let city = self.locationViewModel.cityArray[indexPath.row]
-        let cityString = "\(String(describing: city.name!))"
-        
-        self.locationText.text = cityString
+        self.country = self.locationViewModel.cityArray[indexPath.row]
+        self.locationText.text = self.country.name
     }
 }
