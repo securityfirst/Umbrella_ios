@@ -25,7 +25,7 @@ class CustomChecklistViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emptyLabel?.text = "Button + to add a new custom checklist.".localized()
+        self.emptyLabel?.text = "Press + button to create your custom checklist.".localized()
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
@@ -44,7 +44,7 @@ class CustomChecklistViewController: UIViewController {
     /// Update Language
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
-        self.emptyLabel?.text = "Button + to add a new custom checklist.".localized()
+        self.emptyLabel?.text = "Press + button to create your custom checklist.".localized()
         self.customTableView?.reloadData()
     }
     
