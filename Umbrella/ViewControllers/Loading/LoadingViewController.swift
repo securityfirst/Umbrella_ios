@@ -8,6 +8,14 @@
 
 import UIKit
 import SQLite
+import SystemConfiguration
+
+enum ConnectionType {
+    case connectionTypeUnknown
+    case connectionTypeNone
+    case connectionType3G
+    case connectionTypeWiFi
+}
 
 class LoadingViewController: UIViewController {
     
@@ -45,6 +53,14 @@ class LoadingViewController: UIViewController {
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.messageLabel)
         
         if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
+            UIApplication.shared.isIdleTimerDisabled = true
+            
+            let status = connectionStatus()
+            
+            if status == ConnectionType.connectionType3G {
+                UIApplication.shared.keyWindow!.makeToast("Downloading content can take a few minutes. Please wait.".localized(), duration: 10.0, position: .bottom)
+            }
+            
             messageLabel.text = "Fetching Data".localized()
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
@@ -57,6 +73,7 @@ class LoadingViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.loadingViewModel.parseTent(completion: { progress in
                             DispatchQueue.main.async {
+                                UIApplication.shared.isIdleTimerDisabled = false
                                 self.messageLabel.text = "Updating the database".localized()
                                 self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
                                 
@@ -71,6 +88,7 @@ class LoadingViewController: UIViewController {
                 }
             }, failure: { _ in
                 DispatchQueue.main.async {
+                    UIApplication.shared.isIdleTimerDisabled = false
                     self.messageLabel.text = "Error in load the tent".localized()
                     self.activityIndicatorView.isHidden = true
                     self.retryButton.isHidden = false
@@ -90,6 +108,29 @@ class LoadingViewController: UIViewController {
                 }
             }
             print("Exist")
+        }
+    }
+    
+    func connectionStatus() -> ConnectionType {
+        let reachability = SCNetworkReachabilityCreateWithName(nil, "8.8.8.8")
+        
+        var flags : SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(reachability!, &flags) {
+            return .connectionTypeUnknown
+        }
+        
+        let connectionRequired = flags.contains(SCNetworkReachabilityFlags.connectionRequired)
+        let isReachable = flags.contains(SCNetworkReachabilityFlags.reachable)
+        let isWWAN = flags.contains(SCNetworkReachabilityFlags.isWWAN)
+        
+        if !connectionRequired && isReachable {
+            if isWWAN {
+                return .connectionType3G
+            } else {
+                return .connectionTypeWiFi
+            }
+        } else {
+            return .connectionTypeNone
         }
     }
     
