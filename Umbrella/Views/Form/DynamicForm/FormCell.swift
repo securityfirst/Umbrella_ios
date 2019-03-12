@@ -63,14 +63,14 @@ class FormCell: UITableViewCell {
         
         if viewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 && indexPath.row <= viewModel.umbrella.loadFormAnswersByCurrentLanguage().count - 1 {
             if indexPath.section == 0 {
+                let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
+                titleLabel.text = form.name
+                accessibility(enable: false)
+            } else if indexPath.section == 1 {
                 let form = viewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
                 titleLabel.text = loadForm(formId: form.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage()).name
                 self.editHeightConstraint.constant = 30
                 accessibility(enable: true)
-            } else if indexPath.section == 1 {
-                let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-                titleLabel.text = form.name
-                accessibility(enable: false)
             }
         } else if viewModel.umbrella.loadFormByCurrentLanguage().count > 0 && indexPath.row <= viewModel.umbrella.loadFormByCurrentLanguage().count - 1 {
             let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]

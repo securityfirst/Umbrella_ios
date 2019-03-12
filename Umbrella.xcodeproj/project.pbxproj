@@ -293,6 +293,7 @@
 		A0FDDF5F21BA94780078FCAA /* CustomChecklistDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */; };
 		A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */; };
 		A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */; };
+		A0FE4EE62238225A0048E591 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FE4EE52238225A0048E591 /* UITableView+Ext.swift */; };
 		A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */; };
 		A0FFE4F420CEA7C50026C0C7 /* FormParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */; };
 		A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */; };
@@ -643,6 +644,7 @@
 		A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistDao.swift; sourceTree = "<group>"; };
 		A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckItemDao.swift; sourceTree = "<group>"; };
 		A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistCheckedDao.swift; sourceTree = "<group>"; };
+		A0FE4EE52238225A0048E591 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		A0FFE4F120CEA7BB0026C0C7 /* CheckListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListParser.swift; sourceTree = "<group>"; };
 		A0FFE4F320CEA7C50026C0C7 /* FormParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormParser.swift; sourceTree = "<group>"; };
 		A0FFE4F520CEAD700026C0C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -1172,6 +1174,7 @@
 				A0CC7B5B2138058900C28C3B /* UIImageView+Ext.swift */,
 				A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */,
 				A0CF27FB221B24760076976F /* UIViewController+Ext.swift */,
+				A0FE4EE52238225A0048E591 /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1911,6 +1914,7 @@
 				A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
+				A0FE4EE62238225A0048E591 /* UITableView+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0AE0C7421B8420C005EA2A8 /* CustomChecklistCell.swift in Sources */,
 				A0F6C39B21A4421100A0FE85 /* SettingItem.swift in Sources */,

@@ -29,6 +29,8 @@ class FormViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.loadForms(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.updateForms(notification:)), name: Notification.Name("UpdateForms"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
@@ -41,6 +43,7 @@ class FormViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         // If user fill any form this function will update the umbrella.formAnswers
         self.loadFormActive()
         self.formTableView.reloadData()
@@ -61,6 +64,13 @@ class FormViewController: UIViewController {
     @objc func updateLanguage() {
         self.title = "Form".localized()
         self.formTableView?.reloadData()
+    }
+    
+    /// Receive the forms by notification
+    ///
+    /// - Parameter notification: notification with forms
+    @objc func updateForms(notification: Notification) {
+        self.formTableView.scrollToBottomRow()
     }
     
     /// Receive the forms by notification
@@ -233,9 +243,9 @@ extension FormViewController: UITableViewDataSource {
         
         if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
             if section == 0 {
-                return self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count
-            } else if section == 1 {
                 return self.formViewModel.umbrella.loadFormByCurrentLanguage().count
+            } else if section == 1 {
+                return self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count
             }
         }
         
@@ -256,9 +266,9 @@ extension FormViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
             if indexPath.section == 0 {
-                return 140.0
-            } else if indexPath.section == 1 {
                 return 106.0
+            } else if indexPath.section == 1 {
+                return 140.0
             }
         }
         
@@ -278,9 +288,9 @@ extension FormViewController: UITableViewDelegate {
         
         if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
             if section == 0 {
-                label.text = "Active".localized()
-            } else if section == 1 {
                 label.text = "Available forms".localized()
+            } else if section == 1 {
+                label.text = "Active".localized()
             }
         } else {
             label.text = "Available forms".localized()
@@ -296,17 +306,16 @@ extension FormViewController: UITableViewDelegate {
         
         if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
             if indexPath.section == 0 {
+                // Available Forms
+                let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
+                self.performSegue(withIdentifier: "fillFormSegue", sender: form)
+            } else if indexPath.section == 1 {
                 // Active
                 let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
                 
                 for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == form.id {
                     self.performSegue(withIdentifier: "fillFormSegue", sender: ["form": form, "formAnswer": formAnswer])
                 }
-                
-            } else if indexPath.section == 1 {
-                // Available Forms
-                let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-                self.performSegue(withIdentifier: "fillFormSegue", sender: form)
             }
         } else {
             // Available Forms
@@ -391,6 +400,9 @@ extension FormViewController: UIViewControllerPreviewingDelegate {
         if let indexPath = self.formTableView.indexPathForRow(at: cellPosition) {
             if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
                 if indexPath.section == 0 {
+                    let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
+                    fillFormViewController.fillFormViewModel.form = form
+                } else if indexPath.section == 1 {
                     // Active
                     let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
                     
@@ -399,10 +411,6 @@ extension FormViewController: UIViewControllerPreviewingDelegate {
                         fillFormViewController.fillFormViewModel.formAnswer = formAnswer
                         fillFormViewController.isNewForm = false
                     }
-                    
-                } else if indexPath.section == 1 {
-                    let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-                    fillFormViewController.fillFormViewModel.form = form
                 }
             } else {
                 let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]

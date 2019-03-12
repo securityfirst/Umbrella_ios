@@ -107,7 +107,15 @@ class FillFormViewController: UIViewController {
         
         if self.isMovingFromParent {
             self.saveForm()
+            delay(1) {
+                NotificationCenter.default.post(name: Notification.Name("UpdateForms"), object: nil)
+            }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
     }
     
     override func didReceiveMemoryWarning() {
