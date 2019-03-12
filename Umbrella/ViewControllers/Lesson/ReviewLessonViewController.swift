@@ -78,7 +78,7 @@ class ReviewLessonViewController: UIViewController {
         
         for (index, object) in array.enumerated() {
             let model = (object as? ModelProtocol)!
-            if model.id == selected.id {
+            if model.id == selected.id && model.name == selected.name {
                 return index
             }
         }
