@@ -46,6 +46,6 @@ class LocationViewModel {
 //    }
     
     func searchCountry(name: String) {
-        self.cityArray = CountryHelper.countries.filter { $0.name.lowercased().contains(name.lowercased()) }
+        self.cityArray = CountryHelper.countries.filter { $0.name.lowercased().hasPrefix(name.lowercased()) }
     }
 }

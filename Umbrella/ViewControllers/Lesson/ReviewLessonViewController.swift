@@ -41,7 +41,12 @@ class ReviewLessonViewController: UIViewController {
         
         self.viewControllerLoaded = [UIViewController?](repeating: nil, count: self.pages)
         
-        self.navigationItem.largeTitleDisplayMode = .automatic
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
+        
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem = shareBarButton
     }

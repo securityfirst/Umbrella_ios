@@ -30,7 +30,12 @@ class SegmentViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.largeTitleDisplayMode = .never
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
         
         if self.segmentViewModel.subCategory != nil {
             self.title = "\(self.segmentViewModel.subCategory!.name!) \(self.segmentViewModel.difficulty!.name!)"

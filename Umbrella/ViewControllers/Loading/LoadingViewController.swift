@@ -61,12 +61,31 @@ class LoadingViewController: UIViewController {
                 UIApplication.shared.keyWindow!.makeToast("Downloading content can take a few minutes. Please wait.".localized(), duration: 10.0, position: .bottom)
             }
             
-            messageLabel.text = "Fetching Data".localized()
+            var fakeCount: Float = 0.0
+            let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
+                fakeCount+=0.1
+                
+                self.messageLabel.text = String(format: "\("Fetching Data".localized()) %.1f%%", fakeCount)
+                
+                if fakeCount >= 1.0 {
+                    self.messageLabel.text = String(format: "\("Fetching Data".localized()) %.f%%", fakeCount)
+                    if timer.isValid {
+                        timer.invalidate()
+                    }
+                }
+            }
+            
+            messageLabel.text = "\("Fetching Data".localized()) 0%"
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
             loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
                 DispatchQueue.main.async {
                     self.progressView.setProgress(gitProgress/2.0, animated: true)
+                    self.messageLabel.text = String(format: "\("Fetching Data".localized()) %.f%%", gitProgress/2.0*100)
+                    
+                    if timer.isValid {
+                        timer.invalidate()
+                    }
                 }
                 
                 if gitProgress == 1.0 {
@@ -76,6 +95,8 @@ class LoadingViewController: UIViewController {
                                 UIApplication.shared.isIdleTimerDisabled = false
                                 self.messageLabel.text = "Updating the database".localized()
                                 self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
+                                print(gitProgress/2.0+progress/2.0)
+                                self.messageLabel.text = String(format: "\("Fetching Data".localized()) %.f%%", (gitProgress/2.0+progress/2.0)*100)
                                 
                                 if gitProgress + progress == 2.0 {
                                     NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
@@ -88,6 +109,11 @@ class LoadingViewController: UIViewController {
                 }
             }, failure: { _ in
                 DispatchQueue.main.async {
+                    
+                    if timer.isValid {
+                        timer.invalidate()
+                    }
+                    
                     UIApplication.shared.isIdleTimerDisabled = false
                     self.messageLabel.text = "Error in load the tent".localized()
                     self.activityIndicatorView.isHidden = true
