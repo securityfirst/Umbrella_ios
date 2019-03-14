@@ -57,7 +57,7 @@ class NewChecklistViewController: UIViewController {
     func saveChecklist() {
         self.newChecklistViewModel.customChecklist.items.forEach { customCheckItem in
             
-            if customCheckItem.name == "Title".localized() {
+            if customCheckItem.name == "Item".localized() {
                 return
             }
             
@@ -245,7 +245,7 @@ extension NewChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == self.newChecklistViewModel.customChecklist.items.count {
-            let customCheckItem = CustomCheckItem(name: "Title".localized(), checklistId: self.newChecklistViewModel.customChecklist.id)
+            let customCheckItem = CustomCheckItem(name: "Item".localized(), checklistId: self.newChecklistViewModel.customChecklist.id)
             self.newChecklistViewModel.customChecklist.items.append(customCheckItem)
             self.editIndexPath = IndexPath(row: -1, section: 0)
             self.view.endEditing(true)
@@ -276,7 +276,7 @@ extension NewChecklistViewController: NewCheckItemDelegate {
         if self.editIndexPath.row != indexPath.row {
             cell.modeEdit(enable: true)
             cell.editText.delegate = self
-            if cell.titleLabel.text != "Title".localized() {
+            if cell.titleLabel.text != "Item".localized() {
                 cell.editText.text = cell.titleLabel.text
             }
             cell.editText.becomeFirstResponder()

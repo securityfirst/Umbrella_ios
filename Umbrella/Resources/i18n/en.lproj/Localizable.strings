@@ -69,7 +69,7 @@
 "Security Feed Sources" = "Security Feed Sources";
 "The city or country is not available or you have no internet connection." = "The city or country is not available or you have no internet connection.";
 "Alert" = "Alert";
-"Enter interval" = "Enter interval";
+"Enter interval in minutes (one day = 1440 minutes)" = "Enter interval in minutes (one day = 1440 minutes)";
 "Sources" = "Sources";
 "Select The Feed Sources" = "Select The Feed Sources";
 "Change repository" = "Change repository";
@@ -94,7 +94,7 @@
 "Name of Checklist" = "Name of Checklist";
 "Press + button to create your custom checklist." = "Press + button to create your custom checklist.";
 "Delete" = "Delete";
-"Title" = "Title";
+"Item" = "Item";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Your password must be at least 8 characters long and must contain at least one digit and one capital letter.";

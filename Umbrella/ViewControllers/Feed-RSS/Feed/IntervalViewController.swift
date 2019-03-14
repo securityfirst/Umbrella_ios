@@ -14,8 +14,9 @@ class IntervalViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var intervalText: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    
     @IBOutlet weak var spaceBottomConstraint: NSLayoutConstraint!
+    var placeHolderLabel: UILabel!
+    
     lazy var locationViewModel: LocationViewModel = {
         let locationViewModel = LocationViewModel()
         return locationViewModel
@@ -27,9 +28,17 @@ class IntervalViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Interval".localized()
         intervalText.setBottomBorder()
-        intervalText.placeholder = "Enter interval".localized()
         intervalText.delegate = self
         intervalText.becomeFirstResponder()
+        
+        self.placeHolderLabel = UILabel(frame: intervalText.bounds)
+        self.placeHolderLabel.numberOfLines = 0
+        self.placeHolderLabel.font = UIFont(name: "Helvetica", size: 14)
+        self.placeHolderLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.placeHolderLabel.lineBreakMode = .byWordWrapping
+        self.placeHolderLabel.text = "Enter interval in minutes (one day = 1440 minutes)".localized()
+        self.intervalText.addSubview(placeHolderLabel)
+        
         saveButton.setTitle("Save".localized(), for: .normal)
         
         NotificationCenter.default.addObserver(self,
@@ -99,6 +108,15 @@ extension IntervalViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange,
+                                                       with: string)
+            
+            self.placeHolderLabel.isHidden = (updatedText.count != 0)
+        }
+        
         return true
     }
 }

@@ -69,7 +69,7 @@
 "Security Feed Sources" = "Fuentes de alimentación de seguridad";
 "The city or country is not available or you have no internet connection." = "La ciudad o el país no está disponible o no tiene conexión a Internet.";
 "Alert" = "Alerta";
-"Enter interval" = "Enter interval";
+"Enter interval in minutes (one day = 1440 minutes)" = "Introduzca el intervalo en minutos (un día = 1440 minutos)";
 "Sources" = "Fuentes";
 "Select The Feed Sources" = "Seleccione las fuentes de alimentación";
 "Change repository" = "Cambiar repositorio";
@@ -94,7 +94,7 @@
 "Name of Checklist" = "Nombre de la lista de verificación";
 "Press + button to create your custom checklist." = "Presione el botón + para crear su lista de verificación personalizada.";
 "Delete" = "Borrar";
-"Title" = "Título";
+"Item" = "Ítem";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Su contraseña debe tener al menos 8 caracteres y debe contener al menos un dígito y una letra mayúscula.";

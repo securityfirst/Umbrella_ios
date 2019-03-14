@@ -69,7 +69,7 @@
 "Security Feed Sources" = "安全Feed源";
 "The city or country is not available or you have no internet connection." = "無法使用城市或國家，或者您沒有互聯網連接。";
 "Alert" = "警報";
-"Enter interval" = "輸入間隔";
+"Enter interval in minutes (one day = 1440 minutes)" = "以分钟为单位输入间隔（一天= 1440分钟）";
 "Sources" = "來源";
 "Select The Feed Sources" = "選擇Feed源";
 "Change repository" = "更改存储库";
@@ -94,7 +94,7 @@
 "Name of Checklist" = "清单名称";
 "Press + button to create your custom checklist." = "按+按钮创建自定义清单。";
 "Delete" = "删除";
-"Title" = "标题";
+"Item" = "项目";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "您的密碼長度必須至少為8個字符，並且必須至少包含一個數字和一個大寫字母。";

@@ -52,7 +52,12 @@ class FeedViewController: UIViewController {
     var sourceLegend = ""
     var intervalSet = "" {
         didSet {
-            self.feedView.intervalLabel.text = "\(intervalSet.count == 0 ? "30" : intervalSet) min"
+            if intervalSet == "-1" {
+                self.feedView.intervalLabel.text = "Manually".localized()
+            } else {
+                self.feedView.intervalLabel.text = "\(intervalSet.count == 0 ? "30" : intervalSet) min"
+            }
+            
             checkState()
         }
     }
