@@ -61,6 +61,7 @@ class LoadingViewController: UIViewController {
                 UIApplication.shared.keyWindow!.makeToast("Downloading content can take a few minutes. Please wait.".localized(), duration: 10.0, position: .bottom)
             }
             
+            // I added this initial fake count, why the SwiftGit2 framework does not return me in the callback when it is downloading only when it finishes that it returns, so I put that fake percent from 0.0 to 1.0 so the user who thinks the download is stopped .
             var fakeCount: Float = 0.0
             let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
                 fakeCount+=0.1
@@ -79,6 +80,8 @@ class LoadingViewController: UIViewController {
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
             loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
+                
+                // SwiftGit2 callback
                 DispatchQueue.main.async {
                     self.progressView.setProgress(gitProgress/2.0, animated: true)
                     self.messageLabel.text = String(format: "\("Fetching Data".localized()) %.f%%", gitProgress/2.0*100)
@@ -93,10 +96,8 @@ class LoadingViewController: UIViewController {
                         self.loadingViewModel.parseTent(completion: { progress in
                             DispatchQueue.main.async {
                                 UIApplication.shared.isIdleTimerDisabled = false
-                                self.messageLabel.text = "Updating the database".localized()
                                 self.progressView.setProgress(gitProgress/2.0+progress/2.0, animated: true)
-                                print(gitProgress/2.0+progress/2.0)
-                                self.messageLabel.text = String(format: "\("Fetching Data".localized()) %.f%%", (gitProgress/2.0+progress/2.0)*100)
+                                self.messageLabel.text = String(format: "\("Updating the database".localized()) %.f%%", (gitProgress/2.0+progress/2.0)*100)
                                 
                                 if gitProgress + progress == 2.0 {
                                     NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))

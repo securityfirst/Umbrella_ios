@@ -31,7 +31,7 @@ class LocationViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Location".localized()
         self.locationText.setBottomBorder()
-        self.locationText.placeholder = "Enter location".localized()
+        self.locationText.placeholder = "Enter the country you want to see the feed for".localized()
         self.locationText.delegate = self
         self.locationText.becomeFirstResponder()
         self.saveButton.setTitle("Save".localized(), for: .normal)
@@ -122,8 +122,12 @@ extension LocationViewController: UITextFieldDelegate {
             let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
+            if updatedText.count == 0 {
+                self.locationViewModel.cityArray.removeAll()
+            } else {
+                self.locationViewModel.searchCountry(name: updatedText)
+            }
             
-            self.locationViewModel.searchCountry(name: updatedText)
             self.cityTableView.reloadData()
         }
         

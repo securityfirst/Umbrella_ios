@@ -274,8 +274,9 @@ extension SQLManager {
         do {
             if self.connect == nil {
                 self.connect = try Connection("\(path)/\(self.databaseName)")
-                try self.connect?.key(self.password)
                 try self.connect?.execute("PRAGMA foreign_keys = ON;")
+                try self.connect?.key(self.password)
+                
                 self.connect?.busyTimeout = SQLManager.timeout
                 self.connect?.busyHandler({ tries in
                     if tries >= 3 {

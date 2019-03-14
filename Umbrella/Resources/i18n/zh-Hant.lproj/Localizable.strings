@@ -52,7 +52,7 @@
 "Feed Sources" = "饲料来源";
 
 // Feed - Location
-"Enter location" = "输入位置";
+"Enter the country you want to see the feed for" = "輸入您要查看Feed的國家/地區";
 "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "您尚未設置Feed的位置和來源。 您必須這樣做以獲取您所在國家/地區的最新安全新聞。 您可以稍後在設置中隨時更改它。";
 "Set how often you want Umbrella to check for the latest security news." = "設置您希望 Umbrella 檢查最新安全新聞的頻率。";
 "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "我們不會將您的位置存儲時間超過必要的時間。Feed 提供商不知道您正在從他們那裡接收數據";

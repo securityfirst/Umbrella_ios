@@ -52,7 +52,7 @@
 "Feed Sources" = "Fuentes de alimentación";
 
 // Feed - Location
-"Enter location" = "Ingrese ubicación";
+"Enter the country you want to see the feed for" = "Ingresa el país para el que quieres ver el feed.";
 "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Aún no ha establecido la ubicación y las fuentes de las fuentes. Debe hacerlo para obtener las últimas noticias de seguridad para su país. Puede cambiarlas en cualquier momento más adelante en la configuración.";
 "Set how often you want Umbrella to check for the latest security news." = "Establezca la frecuencia con la que desea que Umbrella compruebe las últimas noticias de seguridad.";
 "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "No almacenamos su ubicación por más tiempo del necesario. Los proveedores de feeds no saben que está recibiendo datos de ellos.";

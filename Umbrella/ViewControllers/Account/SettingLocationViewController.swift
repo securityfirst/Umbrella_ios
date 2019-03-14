@@ -28,7 +28,7 @@ class SettingLocationViewController: UIViewController {
         self.title = "Location".localized()
         
         self.locationText.setBottomBorder()
-        self.locationText.placeholder = "Enter location".localized()
+        self.locationText.placeholder = "Enter the country you want to see the feed for".localized()
         self.locationText.delegate = self
         self.locationText.becomeFirstResponder()
     }

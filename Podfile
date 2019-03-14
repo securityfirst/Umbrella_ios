@@ -8,7 +8,7 @@ target 'Umbrella' do
   pod 'SwiftLint'
   pod 'Localize-Swift', '~> 2.0'
   pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Crashlytics', '~>  3.12'
   pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git'
   pod 'Files', :git => 'https://github.com/clayellis/Files.git'
   pod 'FeedKit', '~> 8.0'

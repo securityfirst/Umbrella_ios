@@ -28,14 +28,8 @@ class LocationViewModelSpec: QuickSpec {
             
             it("should do to geocode") {
                 let viewModel = LocationViewModel()
-                waitUntil(timeout: 30) { done in
-                    viewModel.geocode(of: "Yemen", completion: {
-                        expect(viewModel.cityArray.count) > 0
-                        done()
-                    }, failure: {
-                        done()
-                    })
-                }
+                viewModel.searchCountry(name: "Yemen")
+                expect(viewModel.cityArray.count) > 0
             }
             
             afterEach {
