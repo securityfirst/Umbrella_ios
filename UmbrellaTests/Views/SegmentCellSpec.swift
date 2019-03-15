@@ -47,7 +47,7 @@ class SegmentCellSpec: QuickSpec {
                 
                 let category = Category(name: "Tools", description: "Description", index: 0)
                 category.segments = [Segment(name: "Segment test", index: 1.0, content: "## Title")]
-                segmentViewModel.subCategory = category
+                segmentViewModel.difficulty = category
                 
                 cell.configure(withViewModel: segmentViewModel, indexPath: indexPath)
                 expect(cell).toNot(beNil())

@@ -15,6 +15,8 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    
     //
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -47,9 +49,15 @@ class FeedCell: UITableViewCell {
             }
         }
         
+        item.description = item.description.replacingOccurrences(of: "\n\n", with: "\n").replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "")
+        
+        if let heightConstraint = self.heightConstraint {
+            heightConstraint.constant = item.description.count > 0 ? 60 : 0
+        }
+        
         do {
             DispatchQueue.global(qos: .default).async {
-            let theAttributedString = try? NSAttributedString(data: item.description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            let theAttributedString = try? NSAttributedString(data: item.description.data(using: String.Encoding.utf16, allowLossyConversion: false)!, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
                 DispatchQueue.main.async {
                     
                     if let descriptionTextView = self.descriptionTextView {

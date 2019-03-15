@@ -38,12 +38,15 @@ class ChecklistViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.checklistViewModel.reportOfItemsChecked()
-        
-        self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
-        self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
-        
-        self.checklistReviewTableView.reloadData()
+        DispatchQueue.global(qos: .default).async {
+            self.checklistViewModel.reportOfItemsChecked()   
+            DispatchQueue.main.async {
+                self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+                self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+                
+                self.checklistReviewTableView.reloadData()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

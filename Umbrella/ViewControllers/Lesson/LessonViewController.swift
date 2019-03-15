@@ -44,8 +44,10 @@ class LessonViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Update list of segment favourites
-        self.favouriteSegments = self.lessonViewModel.loadFavourites()
+        DispatchQueue.global(qos: .default).async {
+            // Update list of segment favourites
+            self.favouriteSegments = self.lessonViewModel.loadFavourites()
+        }
     }
     
     override func didReceiveMemoryWarning() {

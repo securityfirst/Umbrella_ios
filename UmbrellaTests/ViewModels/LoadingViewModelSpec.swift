@@ -26,6 +26,8 @@ class LoadingViewModelSpec: QuickSpec {
                 UserDefaults.standard.synchronize()
             }
             
+            // Remove real request
+            // Put mock request
             it("should do the clone of the tent") {
                 Config.debug = false
                 waitUntil(timeout: 600) { done in
