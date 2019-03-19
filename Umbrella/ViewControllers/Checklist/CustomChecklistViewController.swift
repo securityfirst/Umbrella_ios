@@ -30,13 +30,15 @@ class CustomChecklistViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.customChecklistViewModel.loadCustomChecklist()
-        
-        self.emptyLabel.isHidden = !(self.customChecklistViewModel.customChecklists.count == 0)
-        self.customTableView.isHidden = (self.customChecklistViewModel.customChecklists.count == 0)
-        self.customTableView.reloadData()
+        super.viewWillAppear(animated)        
+        DispatchQueue.global(qos: .default).async {
+            self.customChecklistViewModel.loadCustomChecklist()
+            DispatchQueue.main.async {
+                self.emptyLabel.isHidden = !(self.customChecklistViewModel.customChecklists.count == 0)
+                self.customTableView.isHidden = (self.customChecklistViewModel.customChecklists.count == 0)
+                self.customTableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Functions
@@ -86,10 +88,6 @@ extension CustomChecklistViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Delete".localized()
-    }
 }
 
 // MARK: - UITableViewDelegate
@@ -101,6 +99,10 @@ extension CustomChecklistViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Delete".localized()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -119,20 +121,6 @@ extension CustomChecklistViewController: UITableViewDelegate {
         delete.backgroundColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
         
         return [delete]
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            let customChecklist = self.customChecklistViewModel.customChecklists[indexPath.row]
-            self.customChecklistViewModel.customChecklists.remove(at: indexPath.row)
-            self.customChecklistViewModel.removeCustomChecklist(customChecklist: customChecklist)
-            self.customTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            
-            if self.customChecklistViewModel.customChecklists.count == 0 {
-                self.emptyLabel.isHidden = !(self.customChecklistViewModel.customChecklists.count == 0)
-                self.customTableView.isHidden = (self.customChecklistViewModel.customChecklists.count == 0)
-            }
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

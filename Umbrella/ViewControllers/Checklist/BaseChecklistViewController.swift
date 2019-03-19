@@ -104,7 +104,6 @@ class BaseChecklistViewController: UIViewController {
     @IBAction func changeViewAction(_ sender: UISegmentedControl) {
         self.currentViewController?.view.removeFromSuperview()
         self.currentViewController?.removeFromParent()
-        
         displayCurrentTab(sender.selectedSegmentIndex)
     }
     

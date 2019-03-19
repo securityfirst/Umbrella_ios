@@ -170,6 +170,20 @@ class ChecklistViewModel {
         return results
     }
     
+    /// Insert a new ChecklistChecked into the database
+    ///
+    /// - Parameter checklistChecked: ChecklistChecked
+    func insert(_ checklistChecked: ChecklistChecked) {
+        _ = self.checklistCheckedDao.insert(checklistChecked)
+    }
+
+    /// Remove all checks of a subcategory, checklist and difficulty specify
+    ///
+    /// - Parameter checklistChecked: [ChecklistChecked]
+    func removelAllChecks( checklistChecked: ChecklistChecked) {
+       _ =  self.checklistCheckedDao.removeAllChecks(checklistChecked)
+    }
+    
     /// Remove ItemChecked of the list
     ///
     /// - Parameter checklistChecked: [ChecklistChecked]

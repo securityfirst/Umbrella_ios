@@ -33,13 +33,13 @@ class ChecklistViewController: UIViewController {
         super.viewDidLoad()
         updateLanguage()
         self.checklistReviewTableView?.register(ChecklistReviewHeaderView.nib, forHeaderFooterViewReuseIdentifier: ChecklistReviewHeaderView.identifier)
+        self.checklistReviewTableView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        super.viewWillAppear(animated)        
         DispatchQueue.global(qos: .default).async {
-            self.checklistViewModel.reportOfItemsChecked()   
+            self.checklistViewModel.reportOfItemsChecked()
             DispatchQueue.main.async {
                 self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
                 self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
@@ -103,6 +103,7 @@ extension ChecklistViewController: UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -131,6 +132,52 @@ extension ChecklistViewController: UITableViewDelegate {
             return headerView
         }
         return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Delete".localized()
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
+            
+            if indexPath.section == 1 {
+                // Favorite
+                let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
+                self.checklistViewModel.removelAllChecks(checklistChecked: checklistChecked)
+                self.checklistViewModel.favouriteChecklistChecked.remove(at: indexPath.row)
+                let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+                let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+                let newChecklistChecked = ChecklistChecked(subCategoryName: checklistChecked.subCategoryName, subCategoryId: checklistChecked.subCategoryId, difficultyId: checklistChecked.difficultyId, checklistId: checklistChecked.checklistId, languageId:language!.id)
+                newChecklistChecked.totalItemsChecklist = checklistChecked.totalItemsChecklist
+                self.checklistViewModel.insert(newChecklistChecked)
+                self.checklistViewModel.favouriteChecklistChecked.append(newChecklistChecked)
+            } else if indexPath.section == 2 {
+                // My checklists
+                let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
+                self.checklistViewModel.checklistChecked.remove(at: indexPath.row)
+                self.checklistViewModel.removelAllChecks(checklistChecked: checklistChecked)
+            }
+            
+            self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+            self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+            
+            self.checklistReviewTableView.reloadData()
+            
+            NotificationCenter.default.post(name: Notification.Name("UpdateChecklist"), object: nil)
+        }
+        
+        delete.backgroundColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
+        
+        return [delete]
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
+        }
+        
+        return true
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

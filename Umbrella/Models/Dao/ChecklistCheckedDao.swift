@@ -66,12 +66,21 @@ struct ChecklistCheckedDao: DaoProtocol {
         self.sqlProtocol.resetConnection()
     }
     
-    /// Delete all checklistChecked in database
+    /// Delete checklistChecked in database
     ///
     /// - Parameter checklistChecked: checklistChecked
     /// - Returns: bool
     func remove(_ checklistChecked: ChecklistChecked) -> Bool {
         let sql = "DELETE FROM \(ChecklistChecked.table) WHERE subcategory_id = \(checklistChecked.subCategoryId) AND difficulty_id = \(checklistChecked.difficultyId) AND checklist_id = \(checklistChecked.checklistId) AND item_id = \(checklistChecked.itemId)"
+        return self.sqlProtocol.remove(withQuery: sql)
+    }
+    
+    /// Delete all checklistChecked in database
+    ///
+    /// - Parameter checklistChecked: checklistChecked
+    /// - Returns: bool
+    func removeAllChecks(_ checklistChecked: ChecklistChecked) -> Bool {
+        let sql = "DELETE FROM \(ChecklistChecked.table) WHERE subcategory_id = \(checklistChecked.subCategoryId) AND difficulty_id = \(checklistChecked.difficultyId) AND checklist_id = \(checklistChecked.checklistId)"
         return self.sqlProtocol.remove(withQuery: sql)
     }
     
