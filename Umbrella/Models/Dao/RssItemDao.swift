@@ -53,11 +53,19 @@ struct RssItemDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: RssItem) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(RssItem.table) ('url') VALUES (\"\(object.url)\")")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(RssItem.table) ('url', 'custom') VALUES (\"\(object.url)\", \(object.custom))")
         return rowId
     }
     
     //
     // MARK: - Custom functions
     
+    /// Delete a object in database
+    ///
+    /// - Parameter object: object
+    /// - Returns: rowId of object inserted
+    func remove(_ object: RssItem) -> Bool {
+        let sql = "DELETE FROM \(RssItem.table) WHERE id = \(object.id)"
+        return self.sqlProtocol.remove(withQuery: sql)
+    }
 }

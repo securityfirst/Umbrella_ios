@@ -17,17 +17,26 @@ class RssItem: Codable, TableProtocol {
     //
     // MARK: - Properties
     var url: String
+    var custom: Int
     
     //
     // MARK: - Initializers
     init() {
         self.id = -1
         self.url = ""
+        self.custom = 0
     }
     
     init(url: String) {
         self.id = -1
         self.url = url
+        self.custom = 0
+    }
+    
+    init(url: String, isCustom: Int) {
+        self.id = -1
+        self.url = url
+        self.custom = isCustom
     }
     
     //
@@ -35,6 +44,7 @@ class RssItem: Codable, TableProtocol {
     enum CodingKeys: String, CodingKey {
         case id
         case url
+        case custom
     }
     
     required init(from decoder: Decoder) throws {
@@ -51,6 +61,12 @@ class RssItem: Codable, TableProtocol {
         } else {
             self.url = ""
         }
+        
+        if container.contains(.custom) {
+            self.custom = try container.decode(Int.self, forKey: .custom)
+        } else {
+            self.custom = 0
+        }
     }
     
     //
@@ -63,7 +79,8 @@ class RssItem: Codable, TableProtocol {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
-            Column(name: "url", type: .string)
+            Column(name: "url", type: .string),
+            Column(name: "custom", type: .int)
         ]
         return array
     }

@@ -27,19 +27,19 @@ class IntervalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Interval".localized()
-        intervalText.setBottomBorder()
-        intervalText.delegate = self
-        intervalText.becomeFirstResponder()
+        self.intervalText.setBottomBorder()
+        self.intervalText.delegate = self
+        self.intervalText.becomeFirstResponder()
         
-        self.placeHolderLabel = UILabel(frame: intervalText.bounds)
+        self.placeHolderLabel = UILabel(frame: self.intervalText.bounds)
         self.placeHolderLabel.numberOfLines = 0
         self.placeHolderLabel.font = UIFont(name: "Helvetica", size: 14)
         self.placeHolderLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         self.placeHolderLabel.lineBreakMode = .byWordWrapping
         self.placeHolderLabel.text = "Enter interval in minutes (one day = 1440 minutes)".localized()
-        self.intervalText.addSubview(placeHolderLabel)
-        
-        saveButton.setTitle("Save".localized(), for: .normal)
+        self.intervalText.addSubview(self.placeHolderLabel)
+        self.placeHolderLabel.alpha = 0
+        self.saveButton.setTitle("Save".localized(), for: .normal)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
@@ -49,6 +49,13 @@ class IntervalViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.placeHolderLabel.frame = self.intervalText.bounds
+        self.placeHolderLabel.alpha = 1
     }
     
     //

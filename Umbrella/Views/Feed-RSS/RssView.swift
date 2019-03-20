@@ -37,7 +37,9 @@ class RssView: UIView {
         self.rssTableView.estimatedRowHeight = 44.0
         
         self.emptyLabel.text = "There no RSS".localized()
-        loadRss()
+        self.loadRss()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(RssView.updateRss(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
     }
     
     //
@@ -45,9 +47,19 @@ class RssView: UIView {
     
     /// Load all the RSS
     func loadRss() {
-        rssViewModel.loadRSS {
+        self.rssViewModel.rssArray.removeAll()
+        self.rssViewModel.loadRSS {
             self.rssTableView.isHidden = (self.rssViewModel.rssArray.count == 0)
             self.rssTableView.reloadData()
+        }
+    }
+    
+    /// Update Rss
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func updateRss(notification: NSNotification) {
+        delay(1) {
+            self.loadRss()
         }
     }
 }
@@ -65,7 +77,7 @@ extension RssView: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RssCell = (tableView.dequeueReusableCell(withIdentifier: "RssCell", for: indexPath) as? RssCell)!
-        cell.configure(withViewModel: rssViewModel, indexPath: indexPath)
+        cell.configure(withViewModel: self.rssViewModel, indexPath: indexPath)
         return cell
     }
 }
@@ -77,8 +89,28 @@ extension RssView: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let item = self.rssViewModel.rssArray[indexPath.row]
-        if let rssFeed = item.rssFeed {
+        if let rssFeed = item.result.rssFeed {
             self.delegate.openRss(rss: rssFeed)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
+            let item = self.rssViewModel.rssArray[indexPath.row]
+            self.rssViewModel.rssArray.remove(at: indexPath.row)
+            self.rssViewModel.remove(item.rssItem)
+            
+            self.rssTableView.reloadData()
+        }
+        
+        delete.backgroundColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
+        
+        return [delete]
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let item = self.rssViewModel.rssArray[indexPath.row]
+        
+        return self.rssViewModel.isCustom(rssFeed: item)
     }
 }

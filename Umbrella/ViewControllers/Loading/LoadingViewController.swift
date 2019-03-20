@@ -75,7 +75,7 @@ class LoadingViewController: UIViewController {
                     }
                 }
             }
-            
+        
             messageLabel.text = "\("Fetching Data".localized()) 0%"
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             

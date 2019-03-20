@@ -33,15 +33,15 @@ class LocationViewController: UIViewController {
         self.locationText.setBottomBorder()
         self.locationText.delegate = self
         self.locationText.becomeFirstResponder()
-        
-        
-        self.placeHolderLabel = UILabel(frame: locationText.bounds)
+
+        self.placeHolderLabel = UILabel(frame: self.locationText.bounds)
         self.placeHolderLabel.numberOfLines = 0
         self.placeHolderLabel.font = UIFont(name: "Helvetica", size: 14)
         self.placeHolderLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         self.placeHolderLabel.lineBreakMode = .byWordWrapping
         self.placeHolderLabel.text = "Enter the country you want to see the feed for".localized()
-        self.locationText.addSubview(placeHolderLabel)
+        self.locationText.addSubview(self.placeHolderLabel)
+        self.placeHolderLabel.alpha = 0
         
         self.saveButton.setTitle("Save".localized(), for: .normal)
         
@@ -53,6 +53,13 @@ class LocationViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.placeHolderLabel.frame = self.locationText.bounds
+        self.placeHolderLabel.alpha = 1
     }
     
     //

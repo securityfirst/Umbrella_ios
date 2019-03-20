@@ -134,10 +134,6 @@ extension ChecklistViewController: UITableViewDelegate {
         return UIView()
     }
     
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Delete".localized()
-    }
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
             
