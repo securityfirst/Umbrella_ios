@@ -25,7 +25,7 @@ class ChecklistViewController: UIViewController {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.emptyLabel?.text = "Go to lessons and discover recommenced checklists or create your own custom checklists.".localized()
+        self.emptyLabel?.text = "Go to lessons and discover recommended checklists or create your own custom checklists.".localized()
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
@@ -59,7 +59,7 @@ class ChecklistViewController: UIViewController {
     /// Update Language
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
-        self.emptyLabel.text = "Go to lessons and discover recommenced checklists or create your own custom checklists.".localized()
+        self.emptyLabel.text = "Go to lessons and discover recommended checklists or create your own custom checklists.".localized()
         self.checklistReviewTableView?.reloadData()
     }
     
@@ -69,9 +69,9 @@ class ChecklistViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "checklistDetailSegue" {
             let destination = (segue.destination as? LessonCheckListViewController)!
-            let item = (sender as? (category: Category, checkList: CheckList))!
+            let item = (sender as? (category: Category, subCategory: Category, difficulty: Category, checkList: CheckList))!
             destination.lessonCheckListViewModel.checklist = item.checkList
-            destination.lessonCheckListViewModel.category = item.category
+            destination.lessonCheckListViewModel.category = item.difficulty
         }
     }
 }
@@ -183,17 +183,31 @@ extension ChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        var item = (Category(), CheckList())
+        var item = (category: Category(), subCategory: Category(), difficulty: Category(), checklist: CheckList())
         if indexPath.section == 1 {
             let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
-            item = self.checklistViewModel.getChecklistAndCategory(to: checklistChecked.checklistId)
+            item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         } else if indexPath.section == 2 {
             let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
-            item = self.checklistViewModel.getChecklistAndCategory(to: checklistChecked.checklistId)
+            item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         }
         
         if indexPath.section != 0 {
-            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+//            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+            let url = URL(string: "umbrella://\(normalizeName(name: item.category.name))/\(normalizeName(name: item.subCategory.name))/\(normalizeName(name: item.difficulty.name))/checklist/\(item.checklist.id)")
+            UIApplication.shared.open(url!)
         }
+    }
+    
+    /// Normalize name of a category
+    ///
+    /// - Parameter name: String
+    /// - Returns: String
+    func normalizeName(name: String?) -> String {
+        
+        if let name = name {
+            return name.replacingOccurrences(of: " ", with: "-").lowercased()
+        }
+        return ""
     }
 }

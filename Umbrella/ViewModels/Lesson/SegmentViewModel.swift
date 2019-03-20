@@ -85,7 +85,7 @@ class SegmentViewModel {
             if let segment = segment {
                 segment.favourite = true
             } else {
-                for checklist in (difficulty?.checkList)! {
+                for checklist in (difficulty?.checkLists)! {
                     if checklist.categoryId == favourite.difficultyId {
                         checklist.favourite = true
                     } else {

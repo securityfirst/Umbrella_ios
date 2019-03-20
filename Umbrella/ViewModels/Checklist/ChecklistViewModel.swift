@@ -32,7 +32,7 @@ class ChecklistViewModel {
                     //Difficulty
                     for difficulty in subCategory.categories {
                         //Checklists
-                        for _ in difficulty.checkList {
+                        for _ in difficulty.checkLists {
                             totalChecklists += 1
                         }
                     }
@@ -75,7 +75,7 @@ class ChecklistViewModel {
         self.checklistChecked = filterByGreatestDifficultyId()
     }
     
-    func getChecklistAndCategory(to checklistId: Int) -> (Category, CheckList) {
+    func getStructureOfObject(to checklistId: Int) -> (Category, Category, Category, CheckList) {
         
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
@@ -88,15 +88,15 @@ class ChecklistViewModel {
                     //Difficulty
                     for difficulty in subCategory.categories {
                         //Checklists
-                        for checklist in difficulty.checkList where checklist.id == checklistId {
-                            return (difficulty, checklist)
+                        for checklist in difficulty.checkLists where checklist.id == checklistId {
+                            return (category, subCategory, difficulty, checklist)
                         }
                     }
                 }
             }
         }
         
-        return (Category(),CheckList())
+        return (Category(), Category(), Category(), CheckList())
     }
     
     /// Search recursive for whole the categories

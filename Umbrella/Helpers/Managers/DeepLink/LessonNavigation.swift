@@ -17,6 +17,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
     let subCategory: String?
     let difficulty: String?
     let file: String?
+    let checklistId: String?
     
     lazy var segmentViewModel: SegmentViewModel = {
         let segmentViewModel = SegmentViewModel()
@@ -38,6 +39,22 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         self.subCategory = subCategory
         self.difficulty = difficulty
         self.file = file
+        self.checklistId = nil
+    }
+    
+    /// Init
+    ///
+    /// - Parameters:
+    ///   - category: String?
+    ///   - subCategory: String?
+    ///   - difficulty: String?
+    ///   - checklistId: String?
+    init(category: String?, subCategory: String?, difficulty: String?, file: String?, checklistId: String?) {
+        self.category = category
+        self.subCategory = subCategory
+        self.difficulty = difficulty
+        self.file = file
+        self.checklistId = checklistId
     }
     
     //
@@ -60,6 +77,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         var subCategoryFound = Category()
         var difficultyFound = Category()
         var segmentFound = Segment()
+        var checklistFound = CheckList()
         
         if let language = language {
             //Category
@@ -96,6 +114,15 @@ class LessonNavigation: DeepLinkNavigationProtocol {
                                 }
                             }
                             
+                            if (self.checklistId != nil) {
+                                if let checklistId = self.checklistId {
+                                    let result = difficultyFound.checkLists.filter { $0.id == Int(checklistId) }
+                                    if let checklist = result.first {
+                                        checklistFound = checklist
+                                    }
+                                }
+                            }
+                            
                             break
                         }
                     }
@@ -104,7 +131,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
             }
         }
         
-        return ["category": subCategoryFound, "difficulty":difficultyFound, "segment": segmentFound]
+        return ["category": subCategoryFound, "difficulty":difficultyFound, "segment": segmentFound, "checklist": checklistFound]
     }
     
     /// Validate the rule of difficulty
@@ -166,6 +193,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         let subCategoryFound = dic["category"] as? Category
         let difficultyFound = dic["difficulty"] as? Category
         let segmentFound = dic["segment"] as? Segment
+        let checklistFound = dic["checklist"] as? CheckList
         
         if segmentFound?.id != -1 {
             let storyboard = UIStoryboard(name: "Lesson", bundle: Bundle.main)
@@ -179,6 +207,25 @@ class LessonNavigation: DeepLinkNavigationProtocol {
                 tabBarController.selectedIndex = 3
                 if tabBarController.selectedViewController is UINavigationController {
                     let navigationController = (tabBarController.selectedViewController as? UINavigationController)!
+                    navigationController.pushViewController(viewController, animated: true)
+                }
+            }
+        } else  if let subCategoryFound = subCategoryFound, let difficultyFound = difficultyFound, let checklistFound = checklistFound, subCategoryFound.id != -1 && difficultyFound.id != -1 && checklistFound.id != -1 {
+            let storyboard = UIStoryboard(name: "Lesson", bundle: Bundle.main)
+            let viewController = (storyboard.instantiateViewController(withIdentifier: "ReviewLessonViewController") as? ReviewLessonViewController)!
+            
+            viewController.reviewLessonViewModel.category = difficultyFound
+            viewController.reviewLessonViewModel.segments = difficultyFound.segments
+            viewController.reviewLessonViewModel.checkLists = difficultyFound.checkLists
+            viewController.reviewLessonViewModel.selected = checklistFound
+            
+            let appDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+            if appDelegate.window?.rootViewController is UITabBarController {
+                let tabBarController = (appDelegate.window?.rootViewController as? UITabBarController)!
+                tabBarController.selectedIndex = 3
+                if tabBarController.selectedViewController is UINavigationController {
+                    let navigationController = (tabBarController.selectedViewController as? UINavigationController)!
+                    navigationController.popViewController(animated: false)
                     navigationController.pushViewController(viewController, animated: true)
                 }
             }

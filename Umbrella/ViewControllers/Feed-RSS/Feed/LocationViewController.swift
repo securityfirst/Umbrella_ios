@@ -17,7 +17,7 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var cityTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var spaceBottomConstraint: NSLayoutConstraint!
-    
+    var placeHolderLabel: UILabel!
     var country: Country!
     
     lazy var locationViewModel: LocationViewModel = {
@@ -31,9 +31,18 @@ class LocationViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Location".localized()
         self.locationText.setBottomBorder()
-        self.locationText.placeholder = "Enter the country you want to see the feed for".localized()
         self.locationText.delegate = self
         self.locationText.becomeFirstResponder()
+        
+        
+        self.placeHolderLabel = UILabel(frame: locationText.bounds)
+        self.placeHolderLabel.numberOfLines = 0
+        self.placeHolderLabel.font = UIFont(name: "Helvetica", size: 14)
+        self.placeHolderLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.placeHolderLabel.lineBreakMode = .byWordWrapping
+        self.placeHolderLabel.text = "Enter the country you want to see the feed for".localized()
+        self.locationText.addSubview(placeHolderLabel)
+        
         self.saveButton.setTitle("Save".localized(), for: .normal)
         
         NotificationCenter.default.addObserver(self,
@@ -122,6 +131,9 @@ extension LocationViewController: UITextFieldDelegate {
             let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
+            
+            self.placeHolderLabel.isHidden = (updatedText.count != 0)
+            
             if updatedText.count == 0 {
                 self.locationViewModel.cityArray.removeAll()
             } else {

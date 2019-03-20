@@ -351,8 +351,8 @@ extension UmbrellaDatabase {
             subCategory.segments.sort(by: { $0.index! < $1.index!})
             
             //Checklist
-            for index in 0..<subCategory.checkList.count {
-                let checkList = subCategory.checkList[index]
+            for index in 0..<subCategory.checkLists.count {
+                let checkList = subCategory.checkLists[index]
                 
                 checkList.categoryId = Int(subCategoryRowId)
                 let checkListRowId = self.checkListDao.insert(checkList)
@@ -369,7 +369,7 @@ extension UmbrellaDatabase {
             }
             
             //Sort by Index
-            subCategory.checkList.sort(by: { $0.index! < $1.index!})
+            subCategory.checkLists.sort(by: { $0.index! < $1.index!})
             
             insertIntoDatabase(category: subCategory, categoryRowId: subCategoryRowId, languageRowId: languageRowId)
         }
@@ -399,12 +399,12 @@ extension UmbrellaDatabase {
             subcategory.segments.sort(by: { $0.index! < $1.index!})
             
             //CheckList
-            subcategory.checkList = checkLists.filter { $0.categoryId == subcategory.id }
+            subcategory.checkLists = checkLists.filter { $0.categoryId == subcategory.id }
             
             //Sort by Index
-            subcategory.checkList.sort(by: { $0.index! < $1.index!})
+            subcategory.checkLists.sort(by: { $0.index! < $1.index!})
             
-            for checkList in subcategory.checkList {
+            for checkList in subcategory.checkLists {
                 checkList.items = checkItems.filter { $0.checkListId == checkList.id }
             }
             

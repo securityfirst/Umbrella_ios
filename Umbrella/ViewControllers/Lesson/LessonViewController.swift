@@ -259,7 +259,7 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             let category = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
             
             if category.template != Template.glossary.rawValue {
-                let dic = ["segments": category.segments, "checkLists": category.checkList , "category": category, "selected": category.segments.first!] as [String : Any]
+                let dic = ["segments": category.segments, "checkLists": category.checkLists , "category": category, "selected": category.segments.first!] as [String : Any]
                 self.performSegue(withIdentifier: "glossarySegue", sender: dic)
             } else {
                 self.performSegue(withIdentifier: "segmentSegue", sender: category)

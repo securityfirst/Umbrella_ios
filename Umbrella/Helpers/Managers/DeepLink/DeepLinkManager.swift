@@ -38,7 +38,7 @@ class DeepLinkManager {
 
         switch resultDeepLink.type {
         case .lesson?:
-            let lessonNavigation = LessonNavigation(category: resultDeepLink.category, subCategory: resultDeepLink.subCategory, difficulty: resultDeepLink.difficulty, file: resultDeepLink.file)
+            let lessonNavigation = LessonNavigation(category: resultDeepLink.category, subCategory: resultDeepLink.subCategory, difficulty: resultDeepLink.difficulty, file: resultDeepLink.file, checklistId: resultDeepLink.checklistId)
             lessonNavigation.goToScreen()
         case .form?:
             let formNavigation = FormNavigation(file: resultDeepLink.file)

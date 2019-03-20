@@ -132,11 +132,11 @@ extension SegmentViewController: UICollectionViewDelegate {
             let segment = self.segmentViewModel.getSegments()[indexPath.row]
             selected = segment
         } else if indexPath.section == 1 {
-            let checklist = self.segmentViewModel.difficulty?.checkList[indexPath.row]
+            let checklist = self.segmentViewModel.difficulty?.checkLists[indexPath.row]
             selected = checklist!
         }
         
-        self.performSegue(withIdentifier: "reviewLessonSegue", sender: ["segments": self.segmentViewModel.getSegments(), "checkLists": self.segmentViewModel.difficulty?.checkList ?? [CheckList](), "category": self.segmentViewModel.difficulty!, "selected": selected])
+        self.performSegue(withIdentifier: "reviewLessonSegue", sender: ["segments": self.segmentViewModel.getSegments(), "checkLists": self.segmentViewModel.difficulty?.checkLists ?? [CheckList](), "category": self.segmentViewModel.difficulty!, "selected": selected])
     }
 }
 
@@ -152,7 +152,7 @@ extension SegmentViewController: UICollectionViewDataSource {
         if section == 0 {
             return self.segmentViewModel.getSegments().count
         } else if section == 1, let difficulty = self.segmentViewModel.difficulty {
-            return difficulty.checkList.count
+            return difficulty.checkLists.count
         }
         
         return 0
@@ -267,7 +267,7 @@ extension SegmentViewController: ChecklistCellDelegate {
         
         if let indexPath = indexPath, indexPath.section == 1 {
             
-            let checklist = self.segmentViewModel.difficulty?.checkList[indexPath.row]
+            let checklist = self.segmentViewModel.difficulty?.checkLists[indexPath.row]
             
             if let checklist = checklist {
                 checklist.favourite = !checklist.favourite
@@ -297,7 +297,7 @@ extension SegmentViewController: ChecklistCellDelegate {
         
         if let indexPath = indexPath, indexPath.section == 1 {
             
-            let checklist = self.segmentViewModel.difficulty?.checkList[indexPath.row]
+            let checklist = self.segmentViewModel.difficulty?.checkLists[indexPath.row]
             
             if let checklist = checklist {
                 var content: String = ""

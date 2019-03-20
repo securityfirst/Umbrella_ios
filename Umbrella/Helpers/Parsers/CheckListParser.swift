@@ -43,7 +43,7 @@ struct CheckListParser {
             
             if let object = array.searchParent(folderName: folder.path) {
                 let categ = object as? Category
-                categ?.checkList.append(checkItem)
+                categ?.checkLists.append(checkItem)
             }
         } catch {
             print("CheckListParser: \(error)")

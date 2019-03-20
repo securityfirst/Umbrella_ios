@@ -28,9 +28,14 @@ class ReviewLessonViewController: UIViewController {
     
     lazy var pages: Int = {
         var count = 0
-        if let segments = self.reviewLessonViewModel.segments?.count, let checklists = self.reviewLessonViewModel.checkLists?.count {
-            count = segments + checklists
+        if let segments = self.reviewLessonViewModel.segments?.count {
+            count+=segments
         }
+        
+        if let checklists = self.reviewLessonViewModel.checkLists?.count {
+            count+=checklists
+        }
+        
         return count
     }()
     

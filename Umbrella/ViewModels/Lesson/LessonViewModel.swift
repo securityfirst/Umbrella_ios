@@ -113,9 +113,9 @@ class LessonViewModel {
     ///   - copyCategory: Category
     fileprivate func copyChecklists(_ category: Category, _ copyCategory: Category) {
         // Checklist
-        for checklist in category.checkList {
+        for checklist in category.checkLists {
             let copyChecklist = (checklist.copy() as? CheckList)!
-            copyCategory.checkList.append(copyChecklist)
+            copyCategory.checkLists.append(copyChecklist)
             
             // CheckItem
             for checkItem in checklist.items {

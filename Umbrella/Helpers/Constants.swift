@@ -41,8 +41,8 @@ enum Lessons {
 
 enum Sources {
     static let list = [
-        (name: "ReliefWeb", code: 0),
-        (name: "United Nations", code: 1),
+        (name: "ReliefWeb / United Nations", code: 0),
+//        (name: "United Nations", code: 1),
         (name: "UK Foreign Office Country Warnings", code: 2),
         (name: "Centres for Disease Control (CDC)", code: 3),
         (name: "Global Disaster and Alert Coordination System", code: 4),

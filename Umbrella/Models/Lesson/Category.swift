@@ -30,7 +30,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying, Hashable {
     var folderName: String?
     var categories: [Category]
     var segments: [Segment]
-    var checkList: [CheckList]
+    var checkLists: [CheckList]
     
     var hashValue: Int {
         return id.hashValue
@@ -50,7 +50,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying, Hashable {
         self.folderName = ""
         self.categories = []
         self.segments = []
-        self.checkList = []
+        self.checkLists = []
     }
     
     init(name: String, description: String, icon: String = "", index: Float, folderName: String = "") {
@@ -65,7 +65,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying, Hashable {
         self.folderName = folderName
         self.categories = []
         self.segments = []
-        self.checkList = []
+        self.checkLists = []
     }
     
     //
@@ -141,7 +141,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying, Hashable {
         
         self.categories = []
         self.segments = []
-        self.checkList = []
+        self.checkLists = []
     }
     
     //

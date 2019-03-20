@@ -73,6 +73,12 @@ class DeepLinkParser {
                 let difficulty = pathComponents[1]
                 return ResultDeepLink(type: .lesson, category: host, subCategory: subCategory, difficulty: difficulty, file: file)
             }
+        } else if pathComponents.count == 4 {
+            // umbrella://information/managing-information/beginner/checklist/2
+            if let subCategory = pathComponents.first, let checklistId = pathComponents.last {
+                let difficulty = pathComponents[1]
+                return ResultDeepLink(type: .lesson, category: host, subCategory: subCategory, difficulty: difficulty, checklistId: checklistId)
+            }
         }
         
         return ResultDeepLink(type: .none)
