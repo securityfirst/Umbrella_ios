@@ -40,6 +40,11 @@ class FeedCell: UITableViewCell {
         let item = viewModel.feedItems[indexPath.row]
         
         if let titleLabel = self.titleLabel {
+        
+            if item.title.first == " " {
+                item.title.removeFirst()
+            }
+            
             titleLabel.text = item.title
         }
         

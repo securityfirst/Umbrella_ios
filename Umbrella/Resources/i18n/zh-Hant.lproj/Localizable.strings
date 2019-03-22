@@ -23,6 +23,7 @@
 "Error in load the tent" = "加载帐篷时出错";
 "Getting the database" = "获取数据库";
 "Fetching Data" = "獲取數據";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella有很多課程和內容。 第一次使用應用程序時，這些應用程序將被下載，以便脫機工作。 這個過程最多需要3分鐘。";
 
 // Form
 "Active" = "活性";

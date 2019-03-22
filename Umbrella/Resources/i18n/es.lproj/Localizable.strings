@@ -23,6 +23,7 @@
 "Error in load the tent" = "Error al cargar la tienda";
 "Getting the database" = "Obteniendo la base de datos";
 "Fetching Data" = "Recuperacion de datos";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella tiene muchas lecciones y contenido. La primera vez que utiliza la aplicación, estas se descargan para que funcionen sin conexión. El proceso debe tomar unos 3 minutos como máximo.";
 
 // Form
 "Active" = "Activa";

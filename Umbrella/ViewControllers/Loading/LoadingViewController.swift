@@ -26,6 +26,7 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var tipsLabel: UILabel!
     var completion: (() -> Void)?
     
     lazy var loadingViewModel: LoadingViewModel = {
@@ -37,6 +38,8 @@ class LoadingViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tipsLabel.text = "Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most.".localized()
     }
     
     override func didReceiveMemoryWarning() {

@@ -79,7 +79,7 @@ class TourViewController: UIViewController {
         let request = URLRequest(url: url!)
         webView.load(request)
         
-        let acceptButton = UIButton(frame: CGRect(x: self.tourScrollView.frame.size.width-100, y: webView.frame.origin.y + webView.frame.size.height + 10, width: 80, height: 40))
+        let acceptButton = UIButton(frame: CGRect(x: self.tourScrollView.frame.size.width-120, y: webView.frame.origin.y + webView.frame.size.height + 10, width: 100, height: 40))
         acceptButton.setTitle("ACCEPT".localized(), for: .normal)
         acceptButton.titleLabel?.font = UIFont(name: TourViewController.robotoBold, size: 20)
         acceptButton.addTarget(self, action: #selector(acceptAction), for: .touchUpInside)
