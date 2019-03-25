@@ -30,7 +30,6 @@ class LoadingViewController: UIViewController {
     
     @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
     
-    
     var completion: (() -> Void)?
     
     lazy var loadingViewModel: LoadingViewModel = {

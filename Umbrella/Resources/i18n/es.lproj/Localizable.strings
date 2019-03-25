@@ -51,6 +51,7 @@
 "Save" = "Guardar";
 "Cancel" = "Cancelar";
 "Feed Sources" = "Fuentes de alimentación";
+"There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "Se produjo un error al intentar crear la fuente RSS. Por favor, asegúrese de que está utilizando la dirección correcta y vuelva a intentarlo.";
 
 // Feed - Location
 "Enter the country you want to see the feed for" = "Ingresa el país para el que quieres ver el feed.";

@@ -51,6 +51,7 @@
 "Save" = "保存";
 "Cancel" = "取消";
 "Feed Sources" = "饲料来源";
+"There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "尝试创建RSS源时出错。 请确保您使用的是正确的地址，然后重试。";
 
 // Feed - Location
 "Enter the country you want to see the feed for" = "输入您要查看Feed的国家/地区";

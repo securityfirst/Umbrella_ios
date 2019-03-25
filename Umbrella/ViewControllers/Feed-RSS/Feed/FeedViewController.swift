@@ -41,7 +41,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var securityFeedSourcesLabel: UILabel!
     
     @IBOutlet weak var setSourcesLabel: UILabel!
-
+    
     var loginViewController: LoginViewController!
     var tourViewController: TourViewController!
     var stepLocation: Bool = false
@@ -97,7 +97,7 @@ class FeedViewController: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title = "Feed".localized()
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
@@ -108,7 +108,7 @@ class FeedViewController: UIViewController {
         
         self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
-    
+        
         self.sourceLegend = self.sourceLegLabel.text ?? ""
         
         addBarButton.isEnabled = false
@@ -198,15 +198,15 @@ class FeedViewController: UIViewController {
     @objc func updateLanguage() {
         self.title = "Feed".localized()
         
-       self.feedView.emptyLabel.text = "There no Feed".localized()
+        self.feedView.emptyLabel.text = "There no Feed".localized()
         
         // Location
         self.changeLocationButton.setTitle("CHANGE LOCATION".localized(), for: .normal)
-       
+        
         self.locationViewLegLabel.text = "Location:".localized()
         self.setYourFeedLabel.text = "Set your Feed".localized()
         self.setNowLabel.text = "SET NOW".localized()
-       
+        
         self.securityFeedToLabel.text = "Security feed set to:".localized()
         self.emptyDisplayLebLabel.text = "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again.".localized()
         self.emptyChangeLocationLabel.setTitle("CHANGE LOCATION".localized(), for: .normal)
@@ -229,13 +229,13 @@ class FeedViewController: UIViewController {
         self.sourceLegend = self.sourceLegLabel.text ?? ""
     }
     
-//    /// Share action
-//    ///
-//    /// - Parameter sender: UIBarButtonItem
-//    @objc func shareAction(_ sender: UIBarButtonItem) {
-//        let app = (UIApplication.shared.delegate as? AppDelegate)!
-//        app.show()
-//    }
+    //    /// Share action
+    //    ///
+    //    /// - Parameter sender: UIBarButtonItem
+    //    @objc func shareAction(_ sender: UIBarButtonItem) {
+    //        let app = (UIApplication.shared.delegate as? AppDelegate)!
+    //        app.show()
+    //    }
     
     /// Refresh repository
     ///
@@ -524,8 +524,16 @@ class FeedViewController: UIViewController {
     /// - Parameter urlString: String
     /// - Returns: Bool
     func validateUrl (urlString: String) -> Bool {
-        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+        let urlRegEx = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
+        
+//        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
         return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
+    }
+    
+    func showRssError() {
+        DispatchQueue.main.async {
+            UIApplication.shared.keyWindow!.makeToast("There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again.".localized(), duration: 6.0, position: .center)
+        }
     }
     
     //
@@ -552,8 +560,17 @@ class FeedViewController: UIViewController {
             print(firstTextField.text ?? "")
             
             if let count = firstTextField.text?.count, count > 0, self.validateUrl(urlString: firstTextField.text!) {
-                self.rssView.rssViewModel.insert(firstTextField.text!)
-                self.rssView.loadRss()
+                
+                let rssItem = RssItem(url: firstTextField.text!, isCustom: 1)
+                self.rssView.rssViewModel.loadSpecifyRSS(rssItem: rssItem, completion: {
+                    self.rssView.rssViewModel.insert(firstTextField.text!)
+                    self.rssView.rssTableView.reloadData()
+                    self.rssView.rssTableView.scrollToBottomRow()
+                }, failure: { error in
+                    self.showRssError()
+                })
+            } else {
+                self.showRssError()
             }
         })
         

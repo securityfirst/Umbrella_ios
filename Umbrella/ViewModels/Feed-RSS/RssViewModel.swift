@@ -73,6 +73,29 @@ class RssViewModel {
         }
     }
     
+    /// Load all rss default
+    ///
+    /// - Parameter completion: closure
+    func loadSpecifyRSS(rssItem: RssItem, completion: @escaping (() -> Void), failure: @escaping ((Error) -> Void)) {
+        
+        let feedURL = URL(string: rssItem.url)!
+        let parser = FeedParser(URL: feedURL)
+        
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            let result = parser.parse()
+            
+            if result.isSuccess {
+                self.rssUrlArray.append(rssItem)
+                self.rssArray.append((rssItem,result))
+                DispatchQueue.main.async {
+                    completion()
+                }
+            } else {
+                failure(result.error!)
+            }
+        }
+    }
+    
     /// Insert a new Rss into the database
     ///
     /// - Parameter url: String

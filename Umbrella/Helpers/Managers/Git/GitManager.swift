@@ -63,7 +63,7 @@ class GitManager {
                 let documentsUrl = self.fileManager.urls(for: self.pathDirectory, in: .userDomainMask)
                 
                 //Create a clone of the Tent
-                Repository.clone(from: self.url, to: documentsUrl.first!, localClone: true, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Force) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
+                Repository.clone(from: self.url, to: documentsUrl.first!, localClone: false, bare: false, credentials: .default, checkoutStrategy: CheckoutStrategy.Safe) { (_, totalBytesWritten, totalBytesExpectedToWrite) in
                     print("Progress: \(Float(totalBytesWritten)) - \(Float(totalBytesExpectedToWrite))")
                     completion(Float(totalBytesWritten), Float(totalBytesExpectedToWrite))
                     }.analysis(ifSuccess: { result in
