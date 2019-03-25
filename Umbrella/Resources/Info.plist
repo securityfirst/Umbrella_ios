@@ -14,7 +14,7 @@
 			<key>CFBundleTypeName</key>
 			<string>Umbrella</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.data</string>
@@ -48,7 +48,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>10.2</string>
+	<string>10.3</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

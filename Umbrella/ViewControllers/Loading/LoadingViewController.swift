@@ -27,6 +27,10 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tipsLabel: UILabel!
+    
+    @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
+    
+    
     var completion: (() -> Void)?
     
     lazy var loadingViewModel: LoadingViewModel = {
@@ -54,8 +58,10 @@ class LoadingViewController: UIViewController {
     func loadTent(completion: @escaping () -> Void) {
         self.completion = completion
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.messageLabel)
+        self.viewHeightConstraint.constant = 230
+        self.tipsLabel.text = "Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most.".localized()
         
-        if !loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
+        if !self.loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
             UIApplication.shared.isIdleTimerDisabled = true
             
             let status = connectionStatus()
@@ -79,10 +85,10 @@ class LoadingViewController: UIViewController {
                 }
             }
         
-            messageLabel.text = "\("Fetching Data".localized()) 0%"
+            self.messageLabel.text = "\("Fetching Data".localized()) 0%"
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
-            loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
+            self.loadingViewModel.clone(witUrl: URL(string: repository)!, completion: { gitProgress in
                 
                 // SwiftGit2 callback
                 DispatchQueue.main.async {
@@ -126,9 +132,13 @@ class LoadingViewController: UIViewController {
                 }
             })
         } else {
+            
+            self.viewHeightConstraint.constant = 130
+            self.tipsLabel.text = ""
+            
             self.messageLabel.text = "Getting the database".localized()
             
-            loadingViewModel.loadUmbrellaOfDatabase()
+            self.loadingViewModel.loadUmbrellaOfDatabase()
             DispatchQueue.main.async {
                 self.progressView.setProgress(1.0, animated: true)
                 

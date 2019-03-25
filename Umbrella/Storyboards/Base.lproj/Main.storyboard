@@ -140,7 +140,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ct-hc-mXM">
-                                        <rect key="frame" x="16" y="22" width="218" height="110"/>
+                                        <rect key="frame" x="16" y="22" width="218" height="98.5"/>
                                         <string key="text">Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most.</string>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -160,7 +160,6 @@
                                     <constraint firstItem="9du-fN-06n" firstAttribute="leading" secondItem="76A-4f-Rcx" secondAttribute="leading" id="UcI-Zg-wK1"/>
                                     <constraint firstItem="tJ6-0c-0ll" firstAttribute="leading" secondItem="76A-4f-Rcx" secondAttribute="leading" constant="8" id="XfH-Oa-fsB"/>
                                     <constraint firstAttribute="bottom" secondItem="tJ6-0c-0ll" secondAttribute="bottom" constant="8" id="bBO-xG-jST"/>
-                                    <constraint firstItem="xhZ-VD-W19" firstAttribute="top" secondItem="7Ct-hc-mXM" secondAttribute="bottom" constant="9" id="k3J-AG-xSn"/>
                                     <constraint firstAttribute="trailing" secondItem="9du-fN-06n" secondAttribute="trailing" id="lmE-AQ-oqo"/>
                                     <constraint firstAttribute="width" constant="249" id="rvc-F3-DiH"/>
                                     <constraint firstItem="9du-fN-06n" firstAttribute="top" secondItem="d6y-wM-WHq" secondAttribute="bottom" constant="20" id="xbY-Tp-TWg"/>
@@ -199,6 +198,7 @@
                         <outlet property="progressView" destination="tJ6-0c-0ll" id="1Ym-iK-N7d"/>
                         <outlet property="retryButton" destination="xhZ-VD-W19" id="jwJ-pE-uJ9"/>
                         <outlet property="tipsLabel" destination="7Ct-hc-mXM" id="EHo-3G-zrB"/>
+                        <outlet property="viewHeightConstraint" destination="Erg-gR-l1C" id="CKP-iF-PXc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljl-1U-wlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
