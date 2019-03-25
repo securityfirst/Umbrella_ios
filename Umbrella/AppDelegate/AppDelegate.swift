@@ -44,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Fetch data once 30 minutes.
         UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
         
+//        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+//        tapGesture.delegate = self
+//        window?.addGestureRecognizer(tapGesture)
+        
         return true
     }
     
@@ -139,6 +143,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 deepLinkManager.checkDeepLink()
             }
         }
+        
+        return true
+    }
+}
+
+extension AppDelegate: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // User tapped on screen, do whatever you want to do here.
+        
+        print("Touches")
         
         return true
     }

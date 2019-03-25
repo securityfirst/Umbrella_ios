@@ -36,9 +36,9 @@ class FeedViewModel: NSObject {
     ///   - completion: Closure
     ///   - failure: Closure
     func requestFeed(completion: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        self.feedItems.removeAll()
+        // 1 = UN United Nations
+        var sourceString = "1,"
         
-        var sourceString = ""
         for (index, value) in sources.enumerated() {
             
             if index + 1 != sources.count {
@@ -53,6 +53,7 @@ class FeedViewModel: NSObject {
             guard let data = data, error == nil else { return }
             
             do {
+                self.feedItems.removeAll()
                 let feedsDecode = try JSONDecoder().decode([FeedItem].self, from: data)
                 self.feedItems = feedsDecode
                 completion()

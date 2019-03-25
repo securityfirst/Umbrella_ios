@@ -27,12 +27,22 @@ class SettingSourcesViewController: UIViewController {
         self.title = "Sources".localized()
         
         let sources = UserDefaults.standard.object(forKey: "Sources") as? [Int]
+//        if sources != nil {
+//            sources?.forEach { index in
+//                let item = self.settingSourceViewModel.items[index]
+//                item.checked = true
+//                self.selectedIndexPaths.insert(IndexPath(row: index, section: 0))
+//            }
+//        }
+        
         if sources != nil {
-            sources?.forEach { index in
-                
-                let item = self.settingSourceViewModel.items[index]
-                item.checked = true
-                self.selectedIndexPaths.insert(IndexPath(row: index, section: 0))
+            for (index,source) in Sources.list.enumerated() {
+                let result = sources?.filter { $0 == source.code }
+                if let result = result, result.count > 0 {
+                    let item = self.settingSourceViewModel.items[index]
+                    item.checked = true
+                    self.selectedIndexPaths.insert(IndexPath(row: index, section: 0))
+                }
             }
         }
     
@@ -88,7 +98,8 @@ extension SettingSourcesViewController: UITableViewDelegate {
         
         var indexs: [Int] = [Int]()
         for indexPath in self.selectedIndexPaths {
-            indexs.append(indexPath.row)
+            let source = Sources.list[indexPath.row]
+            indexs.append(source.code)
         }
         NotificationCenter.default.post(name: Notification.Name("UpdateSources"), object: nil, userInfo: ["sources": indexs])
         
