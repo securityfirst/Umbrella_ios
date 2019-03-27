@@ -44,9 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Fetch data once 30 minutes.
         UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
         
-//        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-//        tapGesture.delegate = self
-//        window?.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.delegate = self
+        window?.addGestureRecognizer(tapGesture)
         
         return true
     }
@@ -151,9 +151,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         // User tapped on screen, do whatever you want to do here.
+        let isAcceptedTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         
-        print("Touches")
+        if isAcceptedTerm {
+            print("Touches")
+        }
         
-        return true
+        return false
     }
 }

@@ -166,6 +166,34 @@ class DynamicFormView: UIView {
         }
     }
     
+    /// Save a list of singlechoice
+    ///
+    /// - Parameters:
+    ///   - cell: BaseFormCell
+    ///   - formAnswerId: Int64
+    ///   - formId: Int
+    ///   - itemForm: ItemForm
+    fileprivate func saveSingleChoice(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
+        let formCell = (cell as? SingleChoiceCell)!
+        
+        for view in formCell.subviews where view is ChoiceButton {
+            let button = (view as? ChoiceButton)!
+            
+            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index)
+            
+            for answer in dynamicFormViewModel.formAnswers where (answer.formId == formId && answer.itemFormId == itemForm.id && answer.optionItemId == button.index) {
+                formAnswer.id = answer.id
+            }
+            
+            if button.state {
+                _ = dynamicFormViewModel.save(formAnswer: formAnswer)
+            } else {
+                //Remove
+                _ = dynamicFormViewModel.remove(formAnswer: formAnswer)
+            }
+        }
+    }
+    
     //
     // MARK: - UIResponder
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -195,7 +223,7 @@ extension DynamicFormView: BaseFormCellDelegate {
         } else if cell is MultiChoiceCell {
             saveMultiChoice(cell, formAnswerId, formId, itemForm)
         } else if cell is SingleChoiceCell {
-            saveMultiChoice(cell, formAnswerId, formId, itemForm)
+            saveSingleChoice(cell, formAnswerId, formId, itemForm)
         }
     }
 }
@@ -214,8 +242,15 @@ extension DynamicFormView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if dynamicFormViewModel.screen.items[indexPath.row].formType == .multiChoice {
-            return CGFloat(dynamicFormViewModel.screen.items[indexPath.row].options.count * 30)
+        if dynamicFormViewModel.screen.items[indexPath.row].formType == .multiChoice || dynamicFormViewModel.screen.items[indexPath.row].formType == .singleChoice {
+            
+            var yLabel: CGFloat = 0.0
+            
+            if dynamicFormViewModel.screen.items[indexPath.row].label.count > 0 {
+                yLabel = 40.0
+            }
+            
+            return yLabel + CGFloat(dynamicFormViewModel.screen.items[indexPath.row].options.count * 33)
         }
         
         return dynamicFormViewModel.screen.items[indexPath.row].formType.values().sizeOfCell

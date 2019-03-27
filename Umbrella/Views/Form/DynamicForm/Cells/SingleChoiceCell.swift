@@ -39,12 +39,23 @@ class SingleChoiceCell: BaseFormCell {
     func configure(withViewModel viewModel:DynamicFormViewModel, indexPath: IndexPath) {
         let itemForm = viewModel.screen.items[indexPath.row]
         
+        var yLabel:CGFloat = 0.0
+        if itemForm.label.count > 0 {
+            let label = UILabel(frame: CGRect(x: 10, y: 5, width: self.frame.size.width - 10, height: 33))
+            label.text = itemForm.label
+            label.font = UIFont(name: "Roboto-Regular", size: 12)
+            label.numberOfLines = 2
+            label.adjustsFontSizeToFitWidth = true
+            self.addSubview(label)
+            yLabel = 40.0
+        }
+        
         for (index, optionItem) in itemForm.options.enumerated() {
             let xItem: CGFloat = 5.0
-            let height: CGFloat = 30.0
+            let height: CGFloat = 33.0
             
-            let button = ChoiceButton(frame: CGRect(x: xItem, y: CGFloat(index)*height, width: self.frame.size.width - xItem - 5.0, height: height))
-            button.button.setTitle(optionItem.label, for: .normal)
+            let button = ChoiceButton(frame: CGRect(x: xItem, y: (CGFloat(index)*height)+yLabel, width: self.frame.size.width - xItem - 5.0, height: height))
+            button.setTitle(optionItem.label)
             button.index = optionItem.id
             button.choiceType = .single
             button.setState(state: false)
@@ -57,6 +68,11 @@ class SingleChoiceCell: BaseFormCell {
                         button.setState(state: false)
                     }
                 }
+            }
+            
+            //Load answers
+            for formAnswer in viewModel.formAnswers where (formAnswer.itemFormId == itemForm.id && formAnswer.optionItemId == optionItem.id) {
+                button.setState(state: true)
             }
         }
     }

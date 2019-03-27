@@ -23,7 +23,7 @@ enum FormType {
         case .textInput:
             return ("TextFieldCell", 65.0)
         case .textArea:
-            return ("TextAreaCell", 130.0)
+            return ("TextAreaCell", 140.0)
         case .multiChoice:
             return ("MultiChoiceCell", 50.0)
         case .singleChoice:
