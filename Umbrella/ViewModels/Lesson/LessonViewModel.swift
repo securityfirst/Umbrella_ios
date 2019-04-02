@@ -58,7 +58,12 @@ class LessonViewModel {
     /// - Returns: [Category]
     func getCategories(ofLanguage lang: String = Locale.current.languageCode!) -> [Category] {
         
-        let language = umbrella?.languages.filter { $0.name == lang}.first
+        var language = umbrella?.languages.filter { $0.name == lang}.first
+        
+        if language == nil {
+            // if language doesn't exist get the default en - English
+            language = umbrella?.languages.filter { $0.name == "en"}.first
+        }
         
         if let language = language {
             

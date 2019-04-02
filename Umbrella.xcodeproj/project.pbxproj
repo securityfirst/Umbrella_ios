@@ -64,6 +64,7 @@
 		A0240485216231F5004057B5 /* FavouriteLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0240484216231F5004057B5 /* FavouriteLesson.swift */; };
 		A02404872162327F004057B5 /* FavouriteLessonDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02404862162327F004057B5 /* FavouriteLessonDao.swift */; };
 		A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E5EF92148185200DEFBFB /* LocationViewModel.swift */; };
+		A03AEE6A224BC7C9001C893D /* content.zip in Resources */ = {isa = PBXBuildFile; fileRef = A03AEE69224BC7C8001C893D /* content.zip */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
@@ -76,7 +77,7 @@
 		A0641EEC20D90F970044ADAB /* InputFileReaderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641EEB20D90F970044ADAB /* InputFileReaderSpec.swift */; };
 		A0641EEE20D911FD0044ADAB /* tool_cobian1.png in Resources */ = {isa = PBXBuildFile; fileRef = A0641EED20D911FC0044ADAB /* tool_cobian1.png */; };
 		A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9220AC47E800CE99E1 /* SQLManager.swift */; };
-		A064CE9620AC497D00CE99E1 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = A064CE9520AC497D00CE99E1 /* database.db */; };
+		A064CE9620AC497D00CE99E1 /* _database.db_ in Resources */ = {isa = PBXBuildFile; fileRef = A064CE9520AC497D00CE99E1 /* _database.db_ */; };
 		A064CE9820AC883900CE99E1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064CE9720AC883900CE99E1 /* Category.swift */; };
 		A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0659CD120C0353D0060F812 /* UmbrellaParser.swift */; };
 		A075248820C824B300E91A4A /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248720C824B300E91A4A /* Segment.swift */; };
@@ -186,6 +187,7 @@
 		A0C6CEAE20B70F1E005BC111 /* SegmentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */; };
 		A0C7326B215B9CA0003087BC /* ChecklistChecked.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */; };
 		A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */; };
+		A0CBC5B0224CCBE500C6C159 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = A0CBC5AF224CC8B900C6C159 /* database.db */; };
 		A0CC7B442135AEAC00C28C3B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B432135AEAC00C28C3B /* FeedView.swift */; };
 		A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B452135AEBC00C28C3B /* RssView.swift */; };
 		A0CC7B482136B16600C28C3B /* RssCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC7B472136B16600C28C3B /* RssCell.swift */; };
@@ -412,6 +414,7 @@
 		A0240484216231F5004057B5 /* FavouriteLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLesson.swift; sourceTree = "<group>"; };
 		A02404862162327F004057B5 /* FavouriteLessonDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLessonDao.swift; sourceTree = "<group>"; };
 		A02E5EF92148185200DEFBFB /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		A03AEE69224BC7C8001C893D /* content.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = content.zip; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
@@ -424,7 +427,7 @@
 		A0641EEB20D90F970044ADAB /* InputFileReaderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFileReaderSpec.swift; sourceTree = "<group>"; };
 		A0641EED20D911FC0044ADAB /* tool_cobian1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_cobian1.png; sourceTree = "<group>"; };
 		A064CE9220AC47E800CE99E1 /* SQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
-		A064CE9520AC497D00CE99E1 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
+		A064CE9520AC497D00CE99E1 /* _database.db_ */ = {isa = PBXFileReference; lastKnownFileType = file; path = _database.db_; sourceTree = "<group>"; };
 		A064CE9720AC883900CE99E1 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A0659CD120C0353D0060F812 /* UmbrellaParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParser.swift; sourceTree = "<group>"; };
 		A075248720C824B300E91A4A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
@@ -537,6 +540,7 @@
 		A0C6CEAD20B70F1E005BC111 /* SegmentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentParser.swift; sourceTree = "<group>"; };
 		A0C7326A215B9CA0003087BC /* ChecklistChecked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistChecked.swift; sourceTree = "<group>"; };
 		A0C7326C215B9F80003087BC /* ChecklistCheckedDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistCheckedDao.swift; sourceTree = "<group>"; };
+		A0CBC5AF224CC8B900C6C159 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
 		A0CC7B432135AEAC00C28C3B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		A0CC7B452135AEBC00C28C3B /* RssView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssView.swift; sourceTree = "<group>"; };
 		A0CC7B472136B16600C28C3B /* RssCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssCell.swift; sourceTree = "<group>"; };
@@ -891,7 +895,8 @@
 		A064CE9420AC497D00CE99E1 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				A064CE9520AC497D00CE99E1 /* database.db */,
+				A0CBC5AF224CC8B900C6C159 /* database.db */,
+				A064CE9520AC497D00CE99E1 /* _database.db_ */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -926,6 +931,14 @@
 				A0AA1564216E5767003753E5 /* SideScrollLesson */,
 			);
 			path = Lesson;
+			sourceTree = "<group>";
+		};
+		A0A3C9AE224BC36D007471C4 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				A03AEE69224BC7C8001C893D /* content.zip */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		A0AA1564216E5767003753E5 /* SideScrollLesson */ = {
@@ -1272,6 +1285,7 @@
 			isa = PBXGroup;
 			children = (
 				A0C404A121A17C1F0068BDDD /* icon-imported-document.png */,
+				A0A3C9AE224BC36D007471C4 /* Content */,
 				A00386F220F394F7004FAC8A /* Fonts */,
 				A064CE9420AC497D00CE99E1 /* Database */,
 				A007B3C82125732000B3D8C9 /* i18n */,
@@ -1698,10 +1712,12 @@
 				A0B0AA7320EE610A00933759 /* Lesson.storyboard in Resources */,
 				A0B0AA6D20EE605600933759 /* Feed.storyboard in Resources */,
 				A003811220FE316600CDA44D /* Roboto-Regular.ttf in Resources */,
-				A064CE9620AC497D00CE99E1 /* database.db in Resources */,
+				A064CE9620AC497D00CE99E1 /* _database.db_ in Resources */,
 				A003810F20FE315F00CDA44D /* Roboto-Condensed.ttf in Resources */,
+				A0CBC5B0224CCBE500C6C159 /* database.db in Resources */,
 				A003811020FE316100CDA44D /* Roboto-Light.ttf in Resources */,
 				A08F58C3212B05C500BEF571 /* terms.html in Resources */,
+				A03AEE6A224BC7C9001C893D /* content.zip in Resources */,
 				A003811120FE316400CDA44D /* Roboto-Medium.ttf in Resources */,
 				A003810D20FE315900CDA44D /* Roboto-Bold.ttf in Resources */,
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,

@@ -338,7 +338,7 @@ extension SQLManager {
             
             print(documentsURL ?? "")
             
-            do {
+            do {    
                 try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)
             } catch let error as NSError {
                 print("Couldn't copy file to final location! Error:\(error.description)")

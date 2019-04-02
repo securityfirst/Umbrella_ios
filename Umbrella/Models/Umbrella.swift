@@ -40,7 +40,13 @@ class Umbrella {
     func loadFormByCurrentLanguage() -> [Form] {
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         
-        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        var language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        if language == nil {
+            // if language doesn't exist get the default en - English
+            language = UmbrellaDatabase.languagesStatic.filter { $0.name == "en" }.first
+        }
+        
         return self.forms.filter { $0.languageId == language?.id}
     }
     

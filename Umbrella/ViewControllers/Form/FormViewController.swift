@@ -63,6 +63,7 @@ class FormViewController: UIViewController {
     
     @objc func updateLanguage() {
         self.title = "Form".localized()
+        self.navigationController?.popViewController(animated: true)
         self.formTableView?.reloadData()
     }
     

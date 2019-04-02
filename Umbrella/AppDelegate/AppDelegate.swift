@@ -35,19 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(Config.gitBaseURL.absoluteString)
             UserDefaults.standard.set(Config.gitBaseURL.absoluteString, forKey: "repository")
         }
-        
+
         let language = UserDefaults.standard.object(forKey: "Language")
         if language == nil {
-            UserDefaults.standard.set("en", forKey: "Language")
+            let langStr = Locale.current.languageCode
+            UserDefaults.standard.set(langStr, forKey: "Language")
         }
         
         // Fetch data once 30 minutes.
         UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-        tapGesture.delegate = self
-        window?.addGestureRecognizer(tapGesture)
-        
+//        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+//        tapGesture.delegate = self
+//        window?.addGestureRecognizer(tapGesture)
+
         return true
     }
     
@@ -154,7 +155,7 @@ extension AppDelegate: UIGestureRecognizerDelegate {
         let isAcceptedTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         
         if isAcceptedTerm {
-            print("Touches")
+//            print("Touches")
         }
         
         return false

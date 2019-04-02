@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xWb-aa-Jbo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xWb-aa-Jbo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4368" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,7 +103,7 @@
                                         <rect key="frame" x="8" y="220" width="233" height="2"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="9du-fN-06n">
-                                        <rect key="frame" x="0.0" y="191" width="249" height="21"/>
+                                        <rect key="frame" x="5" y="191" width="239" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="NW5-cj-xeX"/>
                                         </constraints>
@@ -157,10 +157,10 @@
                                     <constraint firstItem="d6y-wM-WHq" firstAttribute="centerX" secondItem="76A-4f-Rcx" secondAttribute="centerX" id="QM1-dj-6GZ"/>
                                     <constraint firstItem="7Ct-hc-mXM" firstAttribute="leading" secondItem="76A-4f-Rcx" secondAttribute="leading" constant="16" id="SqW-vw-mzL"/>
                                     <constraint firstItem="tJ6-0c-0ll" firstAttribute="top" secondItem="9du-fN-06n" secondAttribute="bottom" constant="8" id="TsL-n3-OTk"/>
-                                    <constraint firstItem="9du-fN-06n" firstAttribute="leading" secondItem="76A-4f-Rcx" secondAttribute="leading" id="UcI-Zg-wK1"/>
+                                    <constraint firstItem="9du-fN-06n" firstAttribute="leading" secondItem="76A-4f-Rcx" secondAttribute="leading" constant="5" id="UcI-Zg-wK1"/>
                                     <constraint firstItem="tJ6-0c-0ll" firstAttribute="leading" secondItem="76A-4f-Rcx" secondAttribute="leading" constant="8" id="XfH-Oa-fsB"/>
                                     <constraint firstAttribute="bottom" secondItem="tJ6-0c-0ll" secondAttribute="bottom" constant="8" id="bBO-xG-jST"/>
-                                    <constraint firstAttribute="trailing" secondItem="9du-fN-06n" secondAttribute="trailing" id="lmE-AQ-oqo"/>
+                                    <constraint firstAttribute="trailing" secondItem="9du-fN-06n" secondAttribute="trailing" constant="5" id="lmE-AQ-oqo"/>
                                     <constraint firstAttribute="width" constant="249" id="rvc-F3-DiH"/>
                                     <constraint firstItem="9du-fN-06n" firstAttribute="top" secondItem="d6y-wM-WHq" secondAttribute="bottom" constant="20" id="xbY-Tp-TWg"/>
                                     <constraint firstItem="xhZ-VD-W19" firstAttribute="centerX" secondItem="76A-4f-Rcx" secondAttribute="centerX" id="zP0-1S-det"/>

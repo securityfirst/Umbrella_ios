@@ -92,7 +92,8 @@ class TourViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.loadingViewController = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
         UIApplication.shared.keyWindow?.addSubview(self.loadingViewController.view)
-        self.loadingViewController.loadTent {
+        self.loadingViewController.loadContent {
+//        self.loadingViewController.loadTent {
             UserDefaults.standard.set(true, forKey: "acceptTerm")
             self.remove()
         }

@@ -65,6 +65,7 @@ struct CategoryParser {
             }
             
         } catch {
+            print("File: \(file.path)")
             print("CategoryParser: \(error)")
         }
     }

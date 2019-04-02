@@ -46,7 +46,7 @@ class LoadingViewModel {
     
     /// Parse of tent
     func parseTent(completion: @escaping (Float) -> Void) {
-        
+        print("\n\n")
         //Umbrella Parse of Tent
         self.umbrellaParser.parse { languages, forms in
             self.languages = languages
@@ -54,6 +54,7 @@ class LoadingViewModel {
             let umbrellaDatabase = UmbrellaDatabase(languages: self.languages, forms: self.forms, sqlProtocol: sqlManager)
             _ = umbrellaDatabase.dropTables()
             umbrellaDatabase.objectToDatabase(completion: { progress in
+//                print(progress)
                 completion(progress)
             })
         }
@@ -74,7 +75,7 @@ class LoadingViewModel {
     ///
     /// - Parameter url: url of documents
     /// - Returns: boolean
-    func checkIfExistClone(fileManager: FileManager = FileManager.default, pathDirectory: FileManager.SearchPathDirectory) -> Bool {
+    func checkIfExistClone(fileManager: FileManager = FileManager.default, pathDirectory: FileManager.SearchPathDirectory = .documentDirectory) -> Bool {
         let documentsUrl = fileManager.urls(for: pathDirectory, in: .userDomainMask)
         guard let url = documentsUrl.first else {
             return false
@@ -82,7 +83,7 @@ class LoadingViewModel {
         let gitManager = GitManager(url: url, pathDirectory: .documentDirectory)
         let finalDatabaseURL = url.appendingPathComponent("en")
         
-        return gitManager.checkIfExistClone() && ((try? finalDatabaseURL.checkResourceIsReachable()) ?? false)
+        return gitManager.checkIfExistClone() || ((try? finalDatabaseURL.checkResourceIsReachable()) ?? false)
     }
     
     /// Clone of the repository of the tent

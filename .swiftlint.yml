@@ -19,7 +19,7 @@ force_try:
 
 line_length: 400
 
-cyclomatic_complexity: 12
+cyclomatic_complexity: 14
 
 function_body_length:
     - 80 # warning

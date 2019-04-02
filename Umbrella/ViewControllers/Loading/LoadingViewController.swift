@@ -9,6 +9,7 @@
 import UIKit
 import SQLite
 import SystemConfiguration
+import Zip
 
 enum ConnectionType {
     case connectionTypeUnknown
@@ -60,7 +61,7 @@ class LoadingViewController: UIViewController {
         self.viewHeightConstraint.constant = 230
         self.tipsLabel.text = "Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most.".localized()
         
-        if !self.loadingViewModel.checkIfExistClone(pathDirectory: .documentDirectory) {
+        if !self.loadingViewModel.checkIfExistClone() {
             UIApplication.shared.isIdleTimerDisabled = true
             
             let status = connectionStatus()
@@ -83,7 +84,7 @@ class LoadingViewController: UIViewController {
                     }
                 }
             }
-        
+            
             self.messageLabel.text = "\("Fetching Data".localized()) 0%"
             let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
             
@@ -131,7 +132,6 @@ class LoadingViewController: UIViewController {
                 }
             })
         } else {
-            
             self.viewHeightConstraint.constant = 130
             self.tipsLabel.text = ""
             
@@ -150,7 +150,127 @@ class LoadingViewController: UIViewController {
         }
     }
     
-    func connectionStatus() -> ConnectionType {
+    /// Load the content localy
+    ///
+    /// - Parameter completion: Closure
+    func loadContent(completion: @escaping () -> Void) {
+        self.completion = completion
+        self.viewHeightConstraint.constant = 130
+        self.tipsLabel.text = ""
+        
+        self.messageLabel.text = "\("Loading the content".localized()) %0"
+        var unzipProgress:Float = 0.0
+        
+        // Content.zip to documents
+        let fileContent = self.copyContentToDocuments()
+        if let fileContent = fileContent {
+            //Unzip file
+            unzipContent(fileContent: fileContent, completion: { progress in
+                unzipProgress = progress
+                
+                DispatchQueue.main.async {
+                    self.progressView.setProgress(unzipProgress/1.0, animated: true)
+                    self.messageLabel.text = String(format: "\("Loading the content".localized()) %.f%%", unzipProgress/1.0*100)
+                }
+                
+                if progress == 1.0 {
+                    if self.moveContentofFolder() {
+                        self.removeFiles()
+                        self.loadingViewModel.loadUmbrellaOfDatabase()
+                        DispatchQueue.main.async {
+                            self.progressView.setProgress(1.0, animated: true)
+                            
+                            delay(1.5) {
+                                NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
+                                self.completion!()
+                                self.view.removeFromSuperview()
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    /// Unzip the content
+    ///
+    /// - Parameter completion: Closure
+    fileprivate func unzipContent(fileContent: URL, completion: @escaping (Float) -> Void) {
+        DispatchQueue.global(qos: .default).async {
+            do {
+                _ = try Zip.quickUnzipFile(fileContent, progress: { progress in
+                    DispatchQueue.main.async {
+                        completion(Float(progress))
+                    }
+                })
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    /// Copy content.zip to documents folder
+    ///
+    /// - Returns: URL
+    fileprivate func copyContentToDocuments() -> URL? {
+        do {
+            let documentsURL = Bundle.main.resourceURL?.appendingPathComponent("content.zip")
+            
+            let fileManager = FileManager.default
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                in: .userDomainMask)
+            
+            let fileContent = documentsUrl.first!.appendingPathComponent("content.zip")
+            try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: fileContent.path)
+            
+            return fileContent
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    /// Remove file that we won't use more.
+    /// folder content and file content.zip
+    fileprivate func removeFiles() {
+        do {
+            let fileManager = FileManager.default
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                in: .userDomainMask)
+            let content = documentsUrl.first!.appendingPathComponent("content")
+            let fileContent = documentsUrl.first!.appendingPathComponent("content.zip")
+            
+            try fileManager.removeItem(at: content)
+            try fileManager.removeItem(at: fileContent)
+        } catch {
+            print(error)
+        }
+    }
+    
+    /// Move content from documents/content/en to documents/en
+    fileprivate func moveContentofFolder() -> Bool {
+        do {
+            let fileManager = FileManager.default
+            let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                                in: .userDomainMask)
+            let content = documentsUrl.first!.appendingPathComponent("content")
+            
+            let folders = try? fileManager.contentsOfDirectory(atPath:content.path)
+            
+            for folder in folders! {
+                try fileManager.moveItem(at: documentsUrl.first!.appendingPathComponent("content/\(folder)"), to: documentsUrl.first!.appendingPathComponent(folder))
+            }
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
+    /// Check the status connection
+    ///
+    /// - Returns: ConnectionType
+    fileprivate func connectionStatus() -> ConnectionType {
         let reachability = SCNetworkReachabilityCreateWithName(nil, "8.8.8.8")
         
         var flags : SCNetworkReachabilityFlags = []

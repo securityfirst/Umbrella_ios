@@ -15,6 +15,7 @@ target 'Umbrella' do
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
   pod 'Yams'
   pod 'Toast-Swift', '~> 4.0.0'
+  pod 'Zip', '~> 1.1'
   
   target 'UmbrellaTests' do
     inherit! :search_paths

@@ -37,7 +37,6 @@ class RssViewModel {
     /// - Parameter completion: closure
     func loadRSS(feeds: [[String: String]] = RSS.feeds, completion: @escaping (() -> Void)) {
         self.count = 0
-        self.rssArray.removeAll()
         
         _ = self.rssItemDao.createTable()
         self.rssUrlArray = self.rssItemDao.list()
@@ -123,5 +122,9 @@ class RssViewModel {
         }
         
         return false
+    }
+    
+    func clearRss() {
+        self.rssArray.removeAll()
     }
 }

@@ -59,6 +59,7 @@ class LessonViewController: UIViewController {
     
     @objc func updateLanguage() {
         self.title = "Lessons".localized()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     /// Reset Lessons to Demo
