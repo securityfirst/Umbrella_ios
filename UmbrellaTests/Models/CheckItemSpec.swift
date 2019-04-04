@@ -51,7 +51,7 @@ class CheckItemSpec: QuickSpec {
                     expect(checkItem.name).to(equal(""))
                     expect(checkItem.isLabel).to(equal(false))
                 } catch {
-                    expect(error).to(beNil())
+                    expect(error).toNot(beNil())
                 }
             }
             

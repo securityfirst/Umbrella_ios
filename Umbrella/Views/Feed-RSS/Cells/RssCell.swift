@@ -35,6 +35,10 @@ class RssCell: UITableViewCell {
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:RssViewModel, indexPath: IndexPath) {
         
+        if viewModel.rssArray.count == 0 {
+            return
+        }
+        
         let item = viewModel.rssArray[indexPath.row]
         self.titleLabel.text = item.result.rssFeed?.title
         self.descriptionLabel.text = item.result.rssFeed?.description

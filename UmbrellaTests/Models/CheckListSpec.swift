@@ -55,7 +55,7 @@ class CheckListSpec: QuickSpec {
                     expect(checkList.index).to(equal(0))
                     expect(checkList.items.count).to(equal(0))
                 } catch {
-                    expect(error).to(beNil())
+                    expect(error).toNot(beNil())
                 }
             }
             

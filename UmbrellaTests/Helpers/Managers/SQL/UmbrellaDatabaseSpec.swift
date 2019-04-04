@@ -31,7 +31,7 @@ class UmbrellaDatabaseSpec: QuickSpec {
             category.segments.append(segment)
             
             let checkList = CheckList(index: 1.0, items: [CheckItem(name: "CheckItem1")])
-            category.checkList.append(checkList)
+            category.checkLists.append(checkList)
             language.categories.append(category)
             
             languages.append(language)

@@ -35,6 +35,7 @@ post_install do |installer_representation|
             config.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
             config.build_settings['ENABLE_BITCODE'] = 'NO'
             config.build_settings['ARCHS'] = 'arm64'
+            config.build_settings['SWIFT_VERSION'] = '4.2'
         end
     end
     

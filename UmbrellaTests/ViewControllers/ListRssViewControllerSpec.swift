@@ -53,7 +53,7 @@ class ListRssViewControllerSpec: QuickSpec {
                         
                         viewModel.loadRSS(feeds: [["url": "http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk"]], completion: {
                             let result = viewModel.rssArray.first
-                            viewController.listRssViewModel.items = (result?.rssFeed?.items)!
+                            viewController.listRssViewModel.items = (result?.result.rssFeed?.items)!
                             let cell = viewController.tableView(viewController.listRssTableView, cellForRowAt: IndexPath(row: 0, section: 0))
                             expect(cell).toNot(beNil())
                             done()
@@ -75,7 +75,7 @@ class ListRssViewControllerSpec: QuickSpec {
                         
                         viewModel.loadRSS(feeds: [["url": "http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk"]], completion: {
                             let result = viewModel.rssArray.first
-                            viewController.listRssViewModel.items = (result?.rssFeed?.items)!
+                            viewController.listRssViewModel.items = (result?.result.rssFeed?.items)!
                             let cell = viewController.tableView(viewController.listRssTableView, cellForRowAt: IndexPath(row: 0, section: 0))
                             expect(cell).toNot(beNil())
                             done()

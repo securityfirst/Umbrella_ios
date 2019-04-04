@@ -51,7 +51,7 @@ class FormSpec: QuickSpec {
                     expect(form.screens.count).to(equal(0))
                     expect(form.name).to(equal(""))
                 } catch {
-                    expect(error).to(beNil())
+                    expect(error).toNot(beNil())
                 }
             }
             

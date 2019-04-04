@@ -50,7 +50,7 @@ class ScreenSpec: QuickSpec {
                     let form = try YAMLDecoder().decode(Form.self, from: ymlInvalid)
                     expect(form.screens.count).to(equal(0))
                 } catch {
-                    expect(error).to(beNil())
+                    expect(error).toNot(beNil())
                 }
             }
             

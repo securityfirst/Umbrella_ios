@@ -46,7 +46,7 @@ class CategorySpec: QuickSpec {
                     expect(category.name).to(equal(""))
                     expect(category.index).to(equal(0))
                 } catch {
-                    expect(error).to(beNil())
+                    expect(error).toNot(beNil())
                 }
             }
             

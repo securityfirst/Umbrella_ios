@@ -53,7 +53,7 @@ class SegmentSpec: QuickSpec {
                     expect(segment.index).to(equal(0))
                     expect(segment.content).to(equal(""))
                 } catch {
-                    expect(error).to(beNil())
+                    expect(error).toNot(beNil())
                 }
             }
             
