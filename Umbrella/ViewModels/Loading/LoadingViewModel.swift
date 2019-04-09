@@ -68,7 +68,9 @@ class LoadingViewModel {
         self.forms = umbrellaDatabase.forms
         self.formAnswers = umbrellaDatabase.formAnswers
         
-        NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.languages, forms: self.forms, formAnswers: self.formAnswers))
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.languages, forms: self.forms, formAnswers: self.formAnswers))
+        }
     }
     
     /// Check if there is a clone

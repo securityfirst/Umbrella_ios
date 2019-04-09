@@ -11,13 +11,12 @@ import WebKit
 import SafariServices
 
 class TourViewController: UIViewController {
-
+    
     //
     // MARK: - Properties
     @IBOutlet weak var tourScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     var currentPage: Int = 0
-    var loadingViewController: LoadingViewController!
     
     static let robotoBold = "Roboto-Bold"
     
@@ -25,7 +24,7 @@ class TourViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if self.parent?.view.bounds != nil {
             self.tourScrollView.bounds = (self.parent?.view.bounds)!
         } else {
@@ -89,14 +88,8 @@ class TourViewController: UIViewController {
     
     /// Accept action
     @objc func acceptAction() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.loadingViewController = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
-        UIApplication.shared.keyWindow?.addSubview(self.loadingViewController.view)
-        self.loadingViewController.loadContent {
-//        self.loadingViewController.loadTent {
-            UserDefaults.standard.set(true, forKey: "acceptTerm")
-            self.remove()
-        }
+        UserDefaults.standard.set(true, forKey: "acceptTerm")
+        self.remove()
     }
     
     /// Add tour page in view

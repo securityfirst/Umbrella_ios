@@ -42,6 +42,7 @@ class FeedViewController: UIViewController {
     
     @IBOutlet weak var setSourcesLabel: UILabel!
     
+    var loadingViewController: LoadingViewController!
     var loginViewController: LoginViewController!
     var tourViewController: TourViewController!
     var stepLocation: Bool = false
@@ -138,6 +139,9 @@ class FeedViewController: UIViewController {
         } else {
             self.tourViewController = (storyboard.instantiateViewController(withIdentifier: "TourViewController") as? TourViewController)!
             UIApplication.shared.keyWindow?.rootViewController!.add(self.tourViewController)
+            
+            self.loadingViewController = LoadingViewController()
+            self.loadingViewController.startingTheUseTheContent()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)
@@ -526,7 +530,7 @@ class FeedViewController: UIViewController {
     func validateUrl (urlString: String) -> Bool {
         let urlRegEx = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
         
-//        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+        //        let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
         return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
     }
     

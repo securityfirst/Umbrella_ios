@@ -109,7 +109,7 @@ class LoadingViewController: UIViewController {
                                 self.messageLabel.text = String(format: "\("Updating the database".localized()) %.f%%", (gitProgress/2.0+progress/2.0)*100)
                                 
                                 if gitProgress + progress == 2.0 {
-                                    NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
+                                    self.loadTheDatabase()
                                     self.completion!()
                                     self.view.removeFromSuperview()
                                 }
@@ -150,45 +150,40 @@ class LoadingViewController: UIViewController {
         }
     }
     
+    /// Starting the Use The Content
+    func startingTheUseTheContent() {
+        loadTheDatabase()
+        loadContent()
+    }
+    
     /// Load the content localy
     ///
     /// - Parameter completion: Closure
-    func loadContent(completion: @escaping () -> Void) {
-        self.completion = completion
-        self.viewHeightConstraint.constant = 130
-        self.tipsLabel.text = ""
-        
-        self.messageLabel.text = "\("Loading the content".localized()) %0"
-        var unzipProgress:Float = 0.0
-        
-        // Content.zip to documents
-        let fileContent = self.copyContentToDocuments()
-        if let fileContent = fileContent {
-            //Unzip file
-            unzipContent(fileContent: fileContent, completion: { progress in
-                unzipProgress = progress
-                
-                DispatchQueue.main.async {
-                    self.progressView.setProgress(unzipProgress/1.0, animated: true)
-                    self.messageLabel.text = String(format: "\("Loading the content".localized()) %.f%%", unzipProgress/1.0*100)
-                }
-                
-                if progress == 1.0 {
-                    if self.moveContentofFolder() {
-                        self.removeFiles()
-                        self.loadingViewModel.loadUmbrellaOfDatabase()
-                        DispatchQueue.main.async {
-                            self.progressView.setProgress(1.0, animated: true)
+    fileprivate func loadContent() {
+        DispatchQueue.global(qos: .default).async {
+            // Content.zip to documents
+            let fileContent = self.copyContentToDocuments()
+            if let fileContent = fileContent {
+                //Unzip file
+                self.unzipContent(fileContent: fileContent, completion: { progress in
+                    
+                    if progress == 1.0 {
+                        if self.moveContentOfFolder() {
+                            self.removeFiles()
                             
-                            delay(1.5) {
-                                NotificationCenter.default.post(name: Notification.Name("UmbrellaTent"), object: Umbrella(languages: self.loadingViewModel.languages, forms: self.loadingViewModel.forms, formAnswers: self.loadingViewModel.formAnswers))
-                                self.completion!()
-                                self.view.removeFromSuperview()
-                            }
+                            print("Finished the unpack of the umbrella content.")
                         }
                     }
-                }
-            })
+                })
+            }
+        }
+    }
+    
+    /// Load list of file from the database
+    fileprivate func loadTheDatabase() {
+        DispatchQueue.global(qos: .default).async {
+            self.loadingViewModel.loadUmbrellaOfDatabase()
+            print("Loaded the database to objects.")
         }
     }
     
@@ -248,7 +243,7 @@ class LoadingViewController: UIViewController {
     }
     
     /// Move content from documents/content/en to documents/en
-    fileprivate func moveContentofFolder() -> Bool {
+    fileprivate func moveContentOfFolder() -> Bool {
         do {
             let fileManager = FileManager.default
             let documentsUrl = fileManager.urls(for: .documentDirectory,
