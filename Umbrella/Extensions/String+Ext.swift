@@ -15,7 +15,7 @@ extension String: Error {
 
 extension String {
     
-    /// Convert String to base64
+    /// Convert base64 to String
     ///
     /// - Returns: Base64
     func fromBase64() -> String? {
@@ -26,7 +26,7 @@ extension String {
         return String(data: data, encoding: .utf8)
     }
     
-    /// Convert base64 to String
+    /// Convert String to base64
     ///
     /// - Returns: String
     func toBase64() -> String {

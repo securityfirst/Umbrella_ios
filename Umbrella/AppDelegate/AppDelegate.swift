@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
 //        tapGesture.delegate = self
 //        window?.addGestureRecognizer(tapGesture)
-
+        
         return true
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 class ListRssCell: UITableViewCell {
-
+    
     //
     // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,7 +21,7 @@ class ListRssCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -45,7 +45,20 @@ class ListRssCell: UITableViewCell {
             self.authorLabel.text = Global.dateFormatter.string(from: date)
         }
         
-        self.descriptionLabel.text = item.description
+        //        self.descriptionLabel.text = item.description
+        if let description = item.description {
+            do {
+                DispatchQueue.global(qos: .default).async {
+                    let theAttributedString = try? NSAttributedString(data: description.data(using: String.Encoding.utf16, allowLossyConversion: false)!, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                    DispatchQueue.main.async {
+                        if let descriptionTextView = self.descriptionLabel {
+                            descriptionTextView.attributedText = theAttributedString
+                            descriptionTextView.layoutIfNeeded()
+                        }
+                    }
+                }
+            }
+        }
     }
-
+    
 }

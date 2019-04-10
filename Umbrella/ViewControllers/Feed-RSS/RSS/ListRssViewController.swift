@@ -16,6 +16,8 @@ class ListRssViewController: UIViewController {
     var rssModeView: Int = 0
     @IBOutlet weak var rssModeViewButtonItem: UIBarButtonItem!
     @IBOutlet weak var listRssTableView: UITableView!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    
     lazy var listRssViewModel: ListRssViewModel = {
         let listRssViewModel = ListRssViewModel()
         return listRssViewModel
@@ -32,8 +34,15 @@ class ListRssViewController: UIViewController {
         modeBarButton.tintColor = #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
         modeBarButton.accessibilityHint = "Card mode view".localized()
         self.navigationItem.rightBarButtonItem  = modeBarButton
+        self.listRssTableView.rowHeight = UITableView.automaticDimension
+        self.listRssTableView.estimatedRowHeight = 84.0
+        self.listRssTableView.alpha = 0
         
-        self.listRssTableView.reloadData()
+        delay(1) {
+            self.loadingActivityIndicator.isHidden = true
+            self.listRssTableView.alpha = 1
+            self.listRssTableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {

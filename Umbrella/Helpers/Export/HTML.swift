@@ -55,6 +55,7 @@ class HTML: ExportProtocol {
             var html = try Down(markdownString: self.content).toHTML()
             
             html = """
+            <meta http-equiv="content-type" content="text/html;charset=utf-8">
             <html>
                 <head>
                     <style>

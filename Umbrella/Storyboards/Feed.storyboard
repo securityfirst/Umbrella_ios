@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GPu-lm-ksX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GPu-lm-ksX">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -790,8 +790,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vac-by-TYn">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a77-LC-vks">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="457"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListRssCell" rowHeight="106" id="HG9-FJ-UPn" customClass="ListRssCell" customModule="Umbrella" customModuleProvider="target">
@@ -815,6 +818,9 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-3q-cP4">
                                                     <rect key="frame" x="15" y="57.5" width="290" height="41.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="PCi-P3-emz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -911,6 +917,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a77-LC-vks" secondAttribute="trailing" id="MOz-wZ-GQA"/>
+                            <constraint firstItem="vac-by-TYn" firstAttribute="centerY" secondItem="wE2-8N-Zbg" secondAttribute="centerY" id="ObX-zA-eCN"/>
+                            <constraint firstItem="vac-by-TYn" firstAttribute="centerX" secondItem="wE2-8N-Zbg" secondAttribute="centerX" id="Xwb-mr-TLe"/>
                             <constraint firstItem="e3l-ud-4eo" firstAttribute="bottom" secondItem="a77-LC-vks" secondAttribute="bottom" id="kIX-5l-LII"/>
                             <constraint firstItem="a77-LC-vks" firstAttribute="top" secondItem="e3l-ud-4eo" secondAttribute="top" id="s6L-ak-832"/>
                             <constraint firstItem="a77-LC-vks" firstAttribute="leading" secondItem="e3l-ud-4eo" secondAttribute="leading" id="vpc-PP-ZyA"/>
@@ -919,6 +927,7 @@
                     </view>
                     <connections>
                         <outlet property="listRssTableView" destination="a77-LC-vks" id="beG-29-YVN"/>
+                        <outlet property="loadingActivityIndicator" destination="vac-by-TYn" id="i8R-Hr-ugP"/>
                         <segue destination="Dja-O7-pqO" kind="show" identifier="webSegue" id="IEK-u9-GpE"/>
                     </connections>
                 </viewController>
@@ -1200,9 +1209,9 @@
         <image name="checkNormal" width="22" height="22"/>
         <image name="icViewDay" width="24" height="24"/>
         <image name="intervalIcon" width="77" height="75"/>
-        <image name="locationIcon" width="76" height="108"/>
+        <image name="locationIcon" width="38" height="54"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yLZ-ly-A9h"/>
+        <segue reference="IEK-u9-GpE"/>
     </inferredMetricsTieBreakers>
 </document>
