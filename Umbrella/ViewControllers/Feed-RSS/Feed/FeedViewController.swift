@@ -140,8 +140,8 @@ class FeedViewController: UIViewController {
             self.tourViewController = (storyboard.instantiateViewController(withIdentifier: "TourViewController") as? TourViewController)!
             UIApplication.shared.keyWindow?.rootViewController!.add(self.tourViewController)
             
-            self.loadingViewController = LoadingViewController()
-            self.loadingViewController.startingTheUseTheContent()
+//            self.loadingViewController = LoadingViewController()
+//            self.loadingViewController.startingTheUseTheContent()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)

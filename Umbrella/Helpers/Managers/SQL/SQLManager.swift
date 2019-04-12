@@ -52,7 +52,6 @@ class SQLManager: SQLProtocol {
         }
         
         var array = [[String: Any]]()
-        db?.busyTimeout = SQLManager.timeout
         
         do {
             if let stmt = try db?.prepare(query) {
@@ -92,7 +91,6 @@ class SQLManager: SQLProtocol {
         }
         
         var array = [[String: Any]]()
-        db?.busyTimeout = SQLManager.timeout
         
         do {
             if let stmt = try db?.prepare(query) {
@@ -182,7 +180,6 @@ class SQLManager: SQLProtocol {
     /// - Returns: rowId of insertion
     func remove(withQuery query:String) -> Bool {
         let db = openConnection()
-        db?.busyTimeout = SQLManager.timeout
         do {
             try db?.prepare(query).run()
             return true
@@ -203,7 +200,6 @@ class SQLManager: SQLProtocol {
             return -1
         }
         
-        db?.busyTimeout = SQLManager.timeout
         do {
             try db?.prepare(query).run()
             return (db?.lastInsertRowid)!
@@ -219,7 +215,6 @@ class SQLManager: SQLProtocol {
     /// - Returns: boolean if it was dropped
     func drop(tableName table: String) -> Bool {
         let db = openConnection()
-        db?.busyTimeout = SQLManager.timeout
         do {
             let tab = Table(table)
             try db?.run(tab.drop(ifExists: true))
@@ -291,7 +286,6 @@ extension SQLManager {
             //            #endif
             return self.connect
         } catch {
-            print(error)
             self.connect = nil
             return nil
         }
@@ -332,20 +326,14 @@ extension SQLManager {
         
         let finalDatabaseURL = documentsUrl.first!.appendingPathComponent(self.databaseName)
         
-        if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
-            
+        if !((try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
             let documentsURL = Bundle.main.resourceURL?.appendingPathComponent(self.databaseName)
-            
-            print(documentsURL ?? "")
             
             do {    
                 try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)
             } catch let error as NSError {
                 print("Couldn't copy file to final location! Error:\(error.description)")
             }
-            
-        } else {
-            //            print("Database file found at path: \(finalDatabaseURL.path)")
         }
     }
 }

@@ -42,7 +42,11 @@ struct SegmentParser {
         do {
             var segment: Segment?
             
-            let fileString = try file.readAsString()
+            var fileString = try file.readAsString()
+            
+            // When if it equal image tag put new line
+            fileString = fileString.replacingOccurrences(of: "![", with: "\n![")
+            
             var lines = fileString.components(separatedBy: "\n")
             
             // Get Header are 4 lines
@@ -61,10 +65,12 @@ struct SegmentParser {
             
             for line in lines {
                 var lineReplaced = ""
-                if line.contains("![image](") {
-                    lineReplaced = line.replacingOccurrences(of: "![image](", with: "![image](#DOCUMENTS\(path)") + "\n"
-                } else if line.contains("![](") {
-                    lineReplaced = line.replacingOccurrences(of: "![](", with: "![](#DOCUMENTS\(path)") + "\n"
+                
+                // Get the image tag to any language.
+                let imageTag = getImageTag(string: line)
+                
+                if let imageTag = imageTag, line.contains(imageTag) {
+                    lineReplaced = line.replacingOccurrences(of: imageTag, with: "\(imageTag)#DOCUMENTS\(path)") + "\n"
                 } else {
                     lineReplaced = line
                 }
@@ -80,6 +86,7 @@ struct SegmentParser {
             }
             
         } catch {
+            print("File: \(file.path)")
             print("SegmentParser: \(error)")
         }
     }
@@ -104,6 +111,26 @@ struct SegmentParser {
                 headerLines.append(item)
                 lines.remove(at: 0)
             }
+        }
+    }
+    
+    fileprivate func getImageTag(string: String) -> String? {
+        do {
+            let regex = try NSRegularExpression(pattern:"!\\[.*?\\]\\(", options: [])
+            var found = ""
+            let matches = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
+            
+            if (matches.count > 0) {
+                let range = matches[0].range(at: 0)
+                var index = string.index(string.startIndex, offsetBy: range.location + range.length)
+                found = String(string[..<index])
+                index = string.index(string.startIndex, offsetBy: range.location)
+                found = String(found[index...])
+                return found
+            }
+            return nil
+        } catch {
+            return nil
         }
     }
 }
