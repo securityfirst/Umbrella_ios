@@ -13,7 +13,7 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     
     // Used in parser from the database to object
     var id: Int
-    var name: String? = "Checklist".localized()
+    var name: String? = "Checklists".localized()
     var categoryId: Int
     
     //

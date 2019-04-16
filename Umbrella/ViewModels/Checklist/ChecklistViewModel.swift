@@ -120,11 +120,11 @@ class ChecklistViewModel {
         let category = searchCategoryBy(id: id)
         
         if let category = category {
-            if category.name == "Beginner".localized() {
+            if category.deeplink == "beginner" {
                 return (#imageLiteral(resourceName: "iconBeginner"), Lessons.colors[0])
-            } else if category.name == "Advanced".localized() {
+            } else if category.deeplink == "advanced" {
                 return (#imageLiteral(resourceName: "iconAdvanced"), Lessons.colors[1])
-            } else if category.name == "Expert".localized() {
+            } else if category.deeplink == "expert" {
                 return (#imageLiteral(resourceName: "iconExpert"), Lessons.colors[2])
             }
         }

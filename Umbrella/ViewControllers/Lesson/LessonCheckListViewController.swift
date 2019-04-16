@@ -25,7 +25,7 @@ class LessonCheckListViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "CheckList"
+        self.title = "Checklist".localized()
         
         self.lessonCheckListViewModel.updateChecklistWithItemChecked()
         self.checkListTableView.reloadData()

@@ -38,7 +38,7 @@ struct CategoryDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func list() -> [Category] {
-        return self.sqlProtocol.select(withQuery: "SELECT id, name as title, description, icon, [index], folder_name, language_id, parent, template FROM \(Category.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as title, description, icon, [index], folder_name, deeplink, language_id, parent, template FROM \(Category.table)")
     }
     
     /// Drop the table
@@ -53,7 +53,7 @@ struct CategoryDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Category) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Category.table) ('name', 'description', 'icon', 'index', 'folder_name', 'parent', 'language_id', 'template') VALUES (\"\(object.name ?? "")\", \"\(object.description ?? "")\", \"\(object.icon ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', \(object.parent), \(object.languageId), '\(object.template)')")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Category.table) ('name', 'description', 'icon', 'index', 'folder_name', 'deeplink', 'parent', 'language_id', 'template') VALUES (\"\(object.name ?? "")\", \"\(object.description ?? "")\", \"\(object.icon ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', '\(object.deeplink ?? "")', \(object.parent), \(object.languageId), '\(object.template)')")
         return rowId
     }
     

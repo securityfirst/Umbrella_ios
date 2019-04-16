@@ -38,15 +38,7 @@ class ChecklistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)        
-        DispatchQueue.global(qos: .default).async {
-            self.checklistViewModel.reportOfItemsChecked()
-            DispatchQueue.main.async {
-                self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
-                self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
-                
-                self.checklistReviewTableView.reloadData()
-            }
-        }
+        updateChecklist()
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,7 +52,19 @@ class ChecklistViewController: UIViewController {
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.emptyLabel.text = "Go to lessons and discover recommended checklists or create your own custom checklists.".localized()
-        self.checklistReviewTableView?.reloadData()
+        updateChecklist()
+    }
+    
+    func updateChecklist() {
+        DispatchQueue.global(qos: .default).async {
+            self.checklistViewModel.reportOfItemsChecked()
+            DispatchQueue.main.async {
+                self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+                self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+                
+                self.checklistReviewTableView.reloadData()
+            }
+        }
     }
     
     //
@@ -190,7 +194,7 @@ extension ChecklistViewController: UITableViewDelegate {
         
         if indexPath.section != 0 {
 //            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
-            let url = URL(string: "umbrella://\(normalizeName(name: item.category.name))/\(normalizeName(name: item.subCategory.name))/\(normalizeName(name: item.difficulty.name))/checklist/\(item.checklist.id)")
+            let url = URL(string: "umbrella://\(item.category.deeplink!)/\( item.subCategory.deeplink!)/\( item.difficulty.deeplink!)/checklist/\(item.checklist.id)")
             UIApplication.shared.open(url!)
         }
     }

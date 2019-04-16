@@ -28,6 +28,8 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
     var parent: Int
     var template: String
     var folderName: String?
+    var deeplink: String?
+    
     var categories: [Category]
     var segments: [Segment]
     var checkLists: [CheckList]
@@ -44,6 +46,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         self.icon = ""
         self.index = 0
         self.folderName = ""
+        self.deeplink = ""
         self.categories = []
         self.segments = []
         self.checkLists = []
@@ -59,6 +62,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         self.icon = icon
         self.index = index
         self.folderName = folderName
+        self.deeplink = ""
         self.categories = []
         self.segments = []
         self.checkLists = []
@@ -76,6 +80,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         case icon
         case index
         case folderName = "folder_name"
+        case deeplink
     }
     
     required init(from decoder: Decoder) throws {
@@ -135,6 +140,12 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
             self.folderName = ""
         }
         
+        if container.contains(.deeplink) {
+            self.deeplink = try container.decode(String.self, forKey: .deeplink)
+        } else {
+            self.deeplink = ""
+        }
+        
         self.categories = []
         self.segments = []
         self.checkLists = []
@@ -152,6 +163,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         copy.icon = self.icon
         copy.index = self.index
         copy.folderName = self.folderName
+        copy.deeplink = self.deeplink
         copy.parent = self.parent
         return copy
     }
@@ -172,6 +184,7 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
             Column(name: "icon", type: .string),
             Column(name: "index", type: .real),
             Column(name: "folder_name", type: .string),
+            Column(name: "deeplink", type: .string),
             Column(name: "parent", type: .int),
             Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]

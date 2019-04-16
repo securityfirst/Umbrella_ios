@@ -52,7 +52,6 @@ class LoadingViewModel {
             self.languages = languages
             self.forms = forms
             let umbrellaDatabase = UmbrellaDatabase(languages: self.languages, forms: self.forms, sqlProtocol: sqlManager)
-            _ = umbrellaDatabase.dropTables()
             umbrellaDatabase.objectToDatabase(completion: { progress in
 //                print(progress)
                 completion(progress)

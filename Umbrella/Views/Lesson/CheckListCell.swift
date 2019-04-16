@@ -21,6 +21,7 @@ class CheckListCell: UICollectionViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     weak var delegate: ChecklistCellDelegate?
     
+    @IBOutlet weak var titleLabel: UILabel!
     //
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -47,6 +48,8 @@ class CheckListCell: UICollectionViewCell {
     ///   - viewModel: ViewModel
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:SegmentViewModel, indexPath: IndexPath) {
+        
+        self.titleLabel.text = "Checklists".localized()
         
         if let headerView = self.headerView {
             headerView.backgroundColor = Lessons.colors[indexPath.row % Lessons.colors.count]

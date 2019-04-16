@@ -59,13 +59,13 @@ class DifficultyCell: UITableViewCell {
         self.headerView.backgroundColor = Lessons.colors[indexPath.row % Lessons.colors.count]
         self.descriptionLabel.text = difficulty.description
         
-        if difficulty.name == "Beginner".localized() {
+        if difficulty.deeplink == "beginner" {
             self.iconImageView.image = #imageLiteral(resourceName: "iconBeginner")
             self.headerView.backgroundColor = Lessons.colors[0]
-        } else if difficulty.name == "Advanced".localized() {
+        } else if difficulty.deeplink == "advanced" {
             self.iconImageView.image = #imageLiteral(resourceName: "iconAdvanced")
             self.headerView.backgroundColor = Lessons.colors[1]
-        } else if difficulty.name == "Expert".localized() {
+        } else if difficulty.deeplink == "expert" {
             self.iconImageView.image = #imageLiteral(resourceName: "iconExpert")
             self.headerView.backgroundColor = Lessons.colors[2]
         }

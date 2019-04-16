@@ -31,14 +31,7 @@ class CustomChecklistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)        
-        DispatchQueue.global(qos: .default).async {
-            self.customChecklistViewModel.loadCustomChecklist()
-            DispatchQueue.main.async {
-                self.emptyLabel.isHidden = !(self.customChecklistViewModel.customChecklists.count == 0)
-                self.customTableView.isHidden = (self.customChecklistViewModel.customChecklists.count == 0)
-                self.customTableView.reloadData()
-            }
-        }
+        updateChecklist()
     }
     
     // MARK: - Functions
@@ -47,7 +40,18 @@ class CustomChecklistViewController: UIViewController {
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.emptyLabel?.text = "Press + button to create your custom checklist.".localized()
-        self.customTableView?.reloadData()
+        updateChecklist()
+    }
+    
+    func updateChecklist() {
+        DispatchQueue.global(qos: .default).async {
+            self.customChecklistViewModel.loadCustomChecklist()
+            DispatchQueue.main.async {
+                self.emptyLabel.isHidden = !(self.customChecklistViewModel.customChecklists.count == 0)
+                self.customTableView.isHidden = (self.customChecklistViewModel.customChecklists.count == 0)
+                self.customTableView.reloadData()
+            }
+        }
     }
     
     //

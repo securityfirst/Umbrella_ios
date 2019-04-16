@@ -225,7 +225,7 @@ class ReviewLessonViewController: UIViewController {
             self.reviewScrollView.contentOffset = CGPoint(x: self.reviewScrollView.frame.size.width * CGFloat(index), y: 0)
             
             // Set title navigationController
-            self.title = "CheckList".localized()
+            self.title = "Checklist".localized()
             
             if !viewControllerIndexLoaded.contains(currentPage) {
                 viewControllerIndexLoaded.append(currentPage)
@@ -380,7 +380,7 @@ extension ReviewLessonViewController: SideScrollLessonViewDataSource {
         let object = self.getObject(by: index)
         
         if object is CheckList {
-            titleFormView.setTitle("CheckList".localized())
+            titleFormView.setTitle("Checklist".localized())
         } else {
             let segment = (object as? Segment)!
             titleFormView.setTitle(segment.name ?? "")

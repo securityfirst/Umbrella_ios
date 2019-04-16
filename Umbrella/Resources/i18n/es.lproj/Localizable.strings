@@ -84,6 +84,7 @@
 "Beginner" = "Beginner";
 "Advanced" = "Advanced";
 "Expert" = "Expert";
+"Checklist" = "Lista de verificación";
 
 //Checklists
 "Checklists total" = "Total de listas de control";

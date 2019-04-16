@@ -77,6 +77,7 @@ class NewChecklistViewController: UIViewController {
     
     /// Update Language
     @objc func updateLanguage() {
+        self.navigationController?.popToRootViewController(animated: false)
         self.newCheckItemTableView?.reloadData()
     }
     

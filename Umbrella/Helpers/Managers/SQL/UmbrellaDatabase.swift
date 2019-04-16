@@ -232,6 +232,9 @@ extension UmbrellaDatabase {
     /// Insert all the languages, categories, segments and checkList
     fileprivate func insertAllObjects(completion: @escaping (Float) -> Void) {
         
+        let totalCategories = self.languages.reduce(0, { $0 + $1.categories.count })
+        var countCategories = 0
+        
         // Language
         for language in self.languages {
             
@@ -244,8 +247,9 @@ extension UmbrellaDatabase {
             // To this moment we need to add whole category parent separete of subcategories
             // Categories
             for index in 0..<language.categories.count {
-                let category = language.categories[index]
+                countCategories+=1
                 
+                let category = language.categories[index]
                 category.languageId = Int(languageRowId)
                 let categoryRowId = self.categoryDao.insert(category)
                 category.id = Int(categoryRowId)
@@ -266,8 +270,8 @@ extension UmbrellaDatabase {
                 
                 // Add whole subCategories recursively
                 self.insertIntoDatabase(category: category, categoryRowId: categoryRowId, languageRowId: languageRowId)
-                
-                completion(Float(index+1)/Float(language.categories.count))
+                let percent = Float(countCategories)/Float(totalCategories)
+                completion(percent)
             }
         }
         

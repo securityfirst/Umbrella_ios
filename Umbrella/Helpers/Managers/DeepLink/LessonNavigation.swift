@@ -81,53 +81,46 @@ class LessonNavigation: DeepLinkNavigationProtocol {
         
         if let language = language {
             //Category
-            for category in language.categories {
-                let normalizeCategory = category.name?.replacingOccurrences(of: " ", with: "-").lowercased()
-                if self.category == normalizeCategory {
+            for category in language.categories where category.deeplink == self.category {
+                // if glossary for example umbrella://glossary/s_two-factor-authentication.md
+                if self.subCategory == nil && self.difficulty == nil {
+                    //Segment - File
+                    if (self.file != nil) {
+                        let result = category.segments.filter { $0.file == self.file }
+                        
+                        if let segment = result.first {
+                            segmentFound = segment
+                        }
+                    }
+                }
+                
+                //Subcategory
+                for subCategory in category.categories where self.subCategory == subCategory.deeplink {
+                    subCategoryFound = subCategory
+                    validateRuleOfDifficulty(subCategory, subCategoryFound, &difficultyFound)
                     
-                    // if glossary for example umbrella://glossary/s_two-factor-authentication.md
-                    if self.subCategory == nil && self.difficulty == nil {
-                        //Segment - File
-                        if (self.file != nil) {
-                            let result = category.segments.filter { $0.file == self.file }
-                            
-                            if let segment = result.first {
-                                segmentFound = segment
+                    //Segment - File
+                    if (self.file != nil) {
+                        let searchCategory = (difficultyFound.id > -1) ? difficultyFound : subCategory
+                        let result = searchCategory.segments.filter { $0.file == self.file }
+                        
+                        if let segment = result.first {
+                            segmentFound = segment
+                        }
+                    }
+                    
+                    if (self.checklistId != nil) {
+                        if let checklistId = self.checklistId {
+                            let result = difficultyFound.checkLists.filter { $0.id == Int(checklistId) }
+                            if let checklist = result.first {
+                                checklistFound = checklist
                             }
                         }
                     }
                     
-                    //Subcategory
-                    for subCategory in category.categories {
-                        let normalizeSubCategory = subCategory.name?.replacingOccurrences(of: " ", with: "-").lowercased()
-                        if self.subCategory == normalizeSubCategory {
-                            subCategoryFound = subCategory
-                            validateRuleOfDifficulty(subCategory, subCategoryFound, &difficultyFound)
-                            
-                            //Segment - File
-                            if (self.file != nil) {
-                                let searchCategory = (difficultyFound.id > -1) ? difficultyFound : subCategory
-                                let result = searchCategory.segments.filter { $0.file == self.file }
-                                
-                                if let segment = result.first {
-                                    segmentFound = segment
-                                }
-                            }
-                            
-                            if (self.checklistId != nil) {
-                                if let checklistId = self.checklistId {
-                                    let result = difficultyFound.checkLists.filter { $0.id == Int(checklistId) }
-                                    if let checklist = result.first {
-                                        checklistFound = checklist
-                                    }
-                                }
-                            }
-                            
-                            break
-                        }
-                    }
                     break
                 }
+                break
             }
         }
         

@@ -42,6 +42,9 @@ struct CategoryParser {
             let category = try YAMLDecoder().decode(Category.self, from: file.readAsString())
             category.folderName = folder.path
             
+            let components = folder.path.components(separatedBy: "/")
+            category.deeplink = components[components.count - 2]
+            
             if category.name == "" {
                 category.name = folder.name
             }

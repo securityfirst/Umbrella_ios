@@ -84,6 +84,7 @@
 "Beginner" = "Beginner";
 "Advanced" = "Advanced";
 "Expert" = "Expert";
+"Checklist" = "Checklist";
 
 //Checklists
 "Checklists total" = "Checklists total";
