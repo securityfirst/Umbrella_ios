@@ -89,16 +89,16 @@ class TourViewController: UIViewController {
     
     /// Accept action
     @objc func acceptAction() {
-//        UserDefaults.standard.set(true, forKey: "acceptTerm")
-//        self.remove()
+        UserDefaults.standard.set(true, forKey: "acceptTerm")
+        self.remove()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.loadingViewController = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
-        UIApplication.shared.keyWindow?.addSubview(self.loadingViewController.view)
-        self.loadingViewController.loadTent {
-            UserDefaults.standard.set(true, forKey: "acceptTerm")
-            self.remove()
-        }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        self.loadingViewController = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+//        UIApplication.shared.keyWindow?.addSubview(self.loadingViewController.view)
+//        self.loadingViewController.loadTent {
+//            UserDefaults.standard.set(true, forKey: "acceptTerm")
+//            self.remove()
+//        }
     }
     
     /// Add tour page in view
