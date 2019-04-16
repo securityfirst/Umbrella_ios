@@ -97,7 +97,7 @@ class FeedViewController: UIViewController {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.title = "Feed".localized()
+        self.title = "Feeds".localized()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
@@ -107,7 +107,7 @@ class FeedViewController: UIViewController {
         
         updateLanguage()
         
-        self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
+        self.segmentedControl.setTitle("Feeds".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
         
         self.sourceLegend = self.sourceLegLabel.text ?? ""
@@ -200,7 +200,7 @@ class FeedViewController: UIViewController {
     // MARK: - Functions
     
     @objc func updateLanguage() {
-        self.title = "Feed".localized()
+        self.title = "Feeds".localized()
         
         self.feedView.emptyLabel.text = "There no Feed".localized()
         
@@ -223,7 +223,7 @@ class FeedViewController: UIViewController {
         
         self.setSourcesLabel.text = "SET".localized()
         
-        self.segmentedControl.setTitle("Feed".localized(), forSegmentAt: 0)
+        self.segmentedControl.setTitle("Feeds".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("RSS".localized(), forSegmentAt: 1)
         self.setYourFeedLegLabel.text = "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings.".localized()
         self.intervalLegLabel.text = "Set how often you want Umbrella to check for the latest security news.".localized()

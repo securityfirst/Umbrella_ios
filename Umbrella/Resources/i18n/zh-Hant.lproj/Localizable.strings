@@ -12,8 +12,8 @@
 "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "这是填写 %d 表格的 %d。向左滑动三个手指到下一个或右后方。";
 
 // Menu
-"Feed" = "饲料";
-"Form" = "形成";
+"Feeds" = "飼料";
+"Forms" = "形式";
 "Checklists" = "清单";
 "Lessons" = "教训";
 "Account" = "帐户";

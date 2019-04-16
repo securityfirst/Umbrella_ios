@@ -12,8 +12,8 @@
 "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form.";
 
 // Menu
-"Feed" = "Feed";
-"Form" = "Form";
+"Feeds" = "Feeds";
+"Forms" = "Forms";
 "Checklists" = "Checklists";
 "Lessons" = "Lessons";
 "Account" = "Account";

@@ -12,8 +12,8 @@
 "This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Este es el formulario %d de los formularios %d para completar. Deslice tres dedos de la izquierda hacia atrás o hacia la derecha.";
 
 // Menu
-"Feed" = "Lista de entradas";
-"Form" = "Formulario";
+"Feeds" = "Lista de entradas";
+"Forms" = "Formularios";
 "Checklists" = "Listas de control";
 "Lessons" = "Lecciones";
 "Account" = "Cuenta";

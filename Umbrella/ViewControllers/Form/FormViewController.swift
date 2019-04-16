@@ -25,7 +25,7 @@ class FormViewController: UIViewController {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.title = "Form".localized()
+        self.title = "Forms".localized()
         
         NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.loadForms(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
         
@@ -62,7 +62,7 @@ class FormViewController: UIViewController {
     // MARK: - Functions
     
     @objc func updateLanguage() {
-        self.title = "Form".localized()
+        self.title = "Forms".localized()
         self.navigationController?.popViewController(animated: true)
         self.formTableView?.reloadData()
     }
