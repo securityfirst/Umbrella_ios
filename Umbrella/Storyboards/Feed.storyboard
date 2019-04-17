@@ -1112,7 +1112,7 @@
                                     <action selector="saveAction:" destination="9fl-Rs-sRr" eventType="touchUpInside" id="Q04-93-c5D"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select The Feed Sources" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVP-xb-jYl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select The Feed Sources" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="NVP-xb-jYl">
                                 <rect key="frame" x="20" y="124" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="lGT-99-xvQ"/>

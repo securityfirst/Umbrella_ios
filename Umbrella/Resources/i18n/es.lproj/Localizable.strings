@@ -9,7 +9,7 @@
 // Accessibility
 "selected" = "seleccionado";
 "deselected" = "deseleccionado";
-"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Este es el formulario %d de los formularios %d para completar. Deslice tres dedos de la izquierda hacia atrás o hacia la derecha.";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Este es el formulario %d de  %d formularios para completar. Deslice tres dedos de la izquierda hacia atrás o hacia la derecha.";
 
 // Menu
 "Feeds" = "Feeds";
@@ -22,17 +22,17 @@
 "Updating the database" = "Actualizando la base de datos";
 "Error in load the tent" = "Error al cargar la tienda.";
 "Getting the database" = "Obteniendo la base de datos";
-"Fetching Data" = "Obteniendo datos";
-"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella tiene muchas lecciones y contenido. La primera vez que utiliza la aplicación, estas se descargan para que funcionen desconectada. El proceso debe tomar aproximadamente 3 minutos como máximo.";
+"Fetching Data" = "Obteniendo Datos";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella tiene muchas lecciones y contenido. La primera vez que utiliza la aplicación, estas se descargan para que funcionen sin conexión. El proceso debe tomar aproximadamente 3 minutos como máximo.";
 "Loading the content" = "Cargando el contenido";
 
 // Form
-"Active" = "Activa";
+"Active" = "Activar";
 "Available forms" = "Formularios disponibles";
 "REMOVE" = "ELIMINAR";
 "EDIT" = "EDITAR";
 "SHARE" = "COMPARTIR";
-"Do you really want to remove this form?" = "¿Realmente quieres eliminar este formulario?";
+"Do you really want to remove this form?" = "¿Realmente quiere eliminar este formulario?";
 "No" = "No";
 "Yes" = "Sí";
 "Choose the format." = "Elija el formato.";
@@ -41,64 +41,64 @@
 "Get advice on everything from sending a secure email to safe travel" = "Consiga asesoramiento en muchos temas, desde enviar un correo electrónico privado hasta viajar seguro";
 "Umbrella makes your security simple" = "Umbrella hace que su seguridad sea sencilla";
 "Use checklists to mark your progress" = "Use listas de comprobación para seguir su progreso";
-"Stay up to date with the latest information on where you are" = "Permanezca al día con la última información sobre el lugar dónde se encuentra";
+"Stay up to date with the latest information on where you are" = "Permanezca al día con la última información sobre el lugar donde se encuentra";
 "Terms and Conditions" = "Términos y Condiciones";
 "ACCEPT" = "ACEPTAR";
-"Downloading content can take a few minutes. Please wait." = "La descarga de contenido puede tardar unos minutos. Por favor espera.";
+"Downloading content can take a few minutes. Please wait." = "La descarga de contenido puede tardar unos minutos. Por favor, espere.";
 
 // RSS
-"You chose the Card mode view" = "Elegiste la vista de modo de tarjeta";
-"You chose the List mode view" = "Escogiste la vista de modo de lista";
+"You chose the Card mode view" = "Eligió la vista de modo de Tarjeta";
+"You chose the List mode view" = "Eligió la vista de modo de Lista";
 "Save" = "Guardar";
 "Cancel" = "Cancelar";
-"Feed Sources" = "Fuentes de alimentación";
+"Feed Sources" = "Fuentes de Feed";
 "There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "Se produjo un error al intentar crear la fuente RSS. Por favor, asegúrese de estar usando la dirección correcta y vuelva a intentarlo.";
 
 // Feed - Location
-"Enter the country you want to see the feed for" = "Ingresa el país para el que quieres ver el feed.";
-"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Aún no has establecido la ubicación y las fuentes para el feed. Tienes que hacer eso para obtener las últimas noticias de seguridad para tu país. Puede cambiarlo en cualquier momento más tarde en la configuración.";
+"Enter the country you want to see the feed for" = "Ingrese el país del que quiere ver el feed.";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Aún no ha establecido la ubicación y las fuentes para el feed. Tiene que hacer eso para obtener las últimas noticias de seguridad para tu país. Puede cambiarlo en cualquier momento más tarde en la configuración.";
 "Set how often you want Umbrella to check for the latest security news." = "Establezca la frecuencia con la que desea que Umbrella compruebe las últimas noticias de seguridad.";
 "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "No almacenamos su ubicación por más tiempo del necesario. Los proveedores de feeds no saben que está recibiendo datos de ellos.";
-"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Establezca las fuentes de las que desea actualizaciones. Las fuentes de alimentación no pueden ver que está solicitando información de ellos.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Establezca las fuentes de las que desea actualizaciones. Las fuentes de feed no pueden ver que está solicitando información de ellos.";
 "Location:" = "Ubicación:";
-"CHANGE LOCATION" = "CAMBIAR LOCACIÓN";
-"Set your Feed" = "Establezca su alimentación";
-"SET NOW" = "CONFIGURAR AHORA";
+"CHANGE LOCATION" = "CAMBIAR UBICACIÓN";
+"Set your Feed" = "Establezca su Feed";
+"SET NOW" = "ESTABLECER AHORA";
 "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "No hay eventos para mostrar para su ubicación. Los mostraremos cuando ocurran. Tire para actualizar para comprobar de nuevo.";
 "Security feed set to:" = "Feed de seguridad establecido en:";
 "Interval" = "Intervalo";
-"SET" = "CONJUNTO";
+"SET" = "ESTABLECER";
 "Location" = "Ubicación";
-"Security Feed Sources" = "Fuentes de alimentación de seguridad";
+"Security Feed Sources" = "Fuentes de Feed de Seguridad";
 "The city or country is not available or you have no internet connection." = "La ciudad o el país no está disponible o no tiene conexión a Internet.";
 "Alert" = "Alerta";
 "Enter interval in minutes (one day = 1440 minutes)" = "Introduzca el intervalo en minutos (un día = 1440 minutos)";
 "Sources" = "Fuentes";
-"Select The Feed Sources" = "Seleccionar las fuentes de la suscripción (feed)";
+"Select The Feed Sources" = "Seleccionar las Fuentes de la Suscripción (feed)";
 "Change repository" = "Cambiar repositorio";
-"Please select one country of the list." = "Por favor seleccione un país de la lista.";
+"Please select one country of the list." = "Por favor, seleccione un país de la lista.";
 
 // Lessons
 "Favourites" = "Favoritos";
-"You do not have any Segment yet." = "Aún no tienes ningún segmento.";
+"You do not have any Segment yet." = "Aún no tiene ningún Segmento.";
 "Beginner" = "Principiante";
 "Advanced" = "Avanzado";
 "Expert" = "Experto";
 "Checklist" = "Lista de comprobación";
 
 //Checklists
-"Checklists total" = "Total de listas de control";
+"Checklists total" = "Total de listas de comprobación";
 "Favourites" = "Favoritos";
-"My Checklists" = "Mis listas de comprobación";
+"My Checklists" = "Mis Listas de comprobación";
 "Total done" = "Total completado";
-"Overview" = "Visión de conjunto";
+"Overview" = "Resumen";
 "Custom" = "Personalizado";
-"Go to lessons and discover recommended checklists or create your own custom checklists." = "Vaya a las lecciones y descubra las listas de verificación recomendadas o cree sus propias listas de verificación personalizadas.";
-"New Checklist" = "Nueva lista de verificación";
-"Name of Checklist" = "Nombre de la lista de verificación";
-"Press + button to create your custom checklist." = "Presione el botón + para crear su lista de verificación personalizada.";
+"Go to lessons and discover recommended checklists or create your own custom checklists." = "Vaya a las lecciones y descubra las listas de comprobación recomendadas o cree sus propias listas de comprobación personalizadas.";
+"New Checklist" = "Nueva Lista de comprobación";
+"Name of Checklist" = "Nombre de la Lista de comprobación";
+"Press + button to create your custom checklist." = "Presione el botón + para crear su lista de comprobación personalizada.";
 "Delete" = "Borrar";
-"Item" = "Artículo";
+"Item" = "Elemento";
 
 // Account
 "Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Su contraseña debe tener al menos 8 caracteres y debe contener al menos un dígito y una letra mayúscula.";
@@ -121,21 +121,21 @@
 "Don't ask for password again" = "No pedir la contraseña de nuevo";
 "Refresh from the server" = "Refrescar desde el servidor";
 "Select Language" = "Seleccionar idioma";
-"Import your data" = "Importa tus datos";
-"Export your data" = "Exporta tus datos";
+"Import your data" = "Importe sus datos";
+"Export your data" = "Exporte sus datos";
 "Refresh interval for custom feeds" = "Intervalo de actualización para feeds personalizados";
 "Your location" = "Su ubicación";
-"Security feed sources" = "Fuentes de alimentación de seguridad";
+"Security feed sources" = "Fuentes de feed de seguridad";
 "Show updates as notification" = "Mostrar actualizaciones como notificación";
 "GENERAL" = "GENERAL";
-"FEED" = "ALIMENTAR";
+"FEED" = "FEED";
 "English" = "Inglés";
 "Spanish" = "Español";
 "Chinese" = "Chino";
 "hour" = "hora";
-"hour(s)" = "hora(s)";
+"hour(s)" = "hora (s)";
 "hours" = "horas";
 "Manually" = "Manualmente";
-"Dashboard" = "Panel de instrumentos";
+"Dashboard" = "Tablero";
 "new customFeeds." = "nuevas customFeeds.";
-"You can enable access in Settings> Umbrela> Notifications" = "Puede habilitar el acceso en Configuración> Umbrela> Notificaciones";
+"You can enable access in Settings> Umbrela> Notifications" = "Puede habilitar el acceso en Configuración> Umbrella> Notificaciones";

@@ -7,15 +7,15 @@
  */
 
 // Accessibility
-"selected" = "選";
+"selected" = "選擇";
 "deselected" = "取消";
-"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "這是填寫%d表格的%d。向左滑動三個手指到下一個或右後方。";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "這是需要填寫的%d表格%d或多個表格。以三指向左滑動到下一個表格，或者向右滑動返回上一個表格。";
 
 // Menu
-"Feeds" = "飼料";
-"Forms" = "形式";
-"Checklists" = "清單";
-"Lessons" = "教訓";
+"Feeds" = "訊息訂閲";
+"Forms" = "表格";
+"Checklists" = "檢查表";
+"Lessons" = "課程";
 "Account" = "帳戶";
 
 // Loading
@@ -23,16 +23,16 @@
 "Error in load the tent" = "加載帳篷時出錯";
 "Getting the database" = "獲取數據庫";
 "Fetching Data" = "獲取數據";
-"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella有很多課程和內容。第一次使用應用程序時，這些應用程序將被下載，以便脫機工作。這個過程最多需要3分鐘。";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella涵蓋許多課程和內容。第一次使用該應用程序時，這些應用程序將被下載，以便脫機工作。該程序最多需要花上3分鐘。";
 "Loading the content" = "加載內容";
 
 // Form
-"Active" = "活性";
+"Active" = "有效";
 "Available forms" = "可用表格";
 "REMOVE" = "去掉";
 "EDIT" = "編輯";
 "SHARE" = "分享";
-"Do you really want to remove this form?" = "你真的想刪除這個表格嗎？";
+"Do you really want to remove this form?" = "你真的要刪除此表格嗎？";
 "No" = "否";
 "Yes" = "是";
 "Choose the format." = "選擇格式。";
@@ -41,42 +41,42 @@
 "Get advice on everything from sending a secure email to safe travel" = "獲得一切的安全忠告，從傳送安全電子郵件，到安全出行。";
 "Umbrella makes your security simple" = "Umbrella 讓您的安全更加簡單";
 "Use checklists to mark your progress" = "使用檢查表記錄您的進度";
-"Stay up to date with the latest information on where you are" = "保持最新的資訊，根據您所在的位置";
-"Terms and Conditions" = "條款和約束";
+"Stay up to date with the latest information on where you are" = "根據您所在的位置，保持最新的資訊";
+"Terms and Conditions" = "條款和條件";
 "ACCEPT" = "接受";
-"Downloading content can take a few minutes. Please wait." = "下載內容可能需要幾分鐘時間。請耐心等待。";
+"Downloading content can take a few minutes. Please wait." = "下載內容可能需要花上幾分鐘時間。請耐心等待。";
 
 // RSS
 "You chose the Card mode view" = "您選擇了卡模式視圖";
 "You chose the List mode view" = "您選擇了列表模式視圖";
 "Save" = "儲存";
 "Cancel" = "取消";
-"Feed Sources" = "飼料來源";
+"Feed Sources" = "訂閲來源";
 "There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "嘗試創建RSS源時出錯。請確保您使用的是正確的地址，然後重試。";
 
 // Feed - Location
-"Enter the country you want to see the feed for" = "輸入您要查看Feed的國家/地區";
-"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "您尚未設置Feed的位置和來源。您必須這樣做以獲取您所在國家/地區的最新安全新聞。您可以稍後在設置中隨時更改它。";
+"Enter the country you want to see the feed for" = "輸入您要查看訂閲的國家/地區";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "您尚未對訂閲設置位置和來源。您必須這樣做以獲取您所在國家/地區的最新安全新聞。您可以稍後在設置中隨時更改它。";
 "Set how often you want Umbrella to check for the latest security news." = "設置您希望Umbrella檢查最新安全新聞的頻率。";
-"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "我們不會將您的位置存儲時間超過必要的時間。 Feed提供商不知道您正在從他們那裡接收數據。";
-"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "設置要更新的源。 Feed源無法看到您要求他們提供信息。";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "我們不會將您的位置存儲超過必要的時間。 訊息來源提供商不知道您正在從他們那裡接收數據。";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "設置要更新的源。 訂閲來源無法檢測到您要求他們提供信息。";
 "Location:" = "地點：";
-"CHANGE LOCATION" = "換地點";
-"Set your Feed" = "設置Feed";
+"CHANGE LOCATION" = "更換地點";
+"Set your Feed" = "設置訊息來源";
 "SET NOW" = "現在設定";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "沒有可顯示您所在位置的活動。我們會在它們出現時顯示它們。拉動刷新以再次檢查。";
-"Security feed set to:" = "安全Feed設置為：";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "沒有可顯示您所在位置的活動。我們會在它們出現時顯示它們。向上或向下拉動以刷新畫面並再次檢測。";
+"Security feed set to:" = "關於安全訊息的訂閲設置為：";
 "Interval" = "間隔";
-"SET" = "組";
+"SET" = "設置";
 "Location" = "地點";
-"Security Feed Sources" = "安全Feed源";
-"The city or country is not available or you have no internet connection." = "無法使用城市或國家，或者您沒有互聯網連接。";
+"Security Feed Sources" = "關於安全訊息的訂閲來源";
+"The city or country is not available or you have no internet connection." = "該城市或國家尚未提供相關服務，或者您沒有互聯網連接。";
 "Alert" = "警報";
 "Enter interval in minutes (one day = 1440 minutes)" = "以分鐘為單位輸入間隔（一天= 1440分鐘）";
 "Sources" = "來源";
 "Select The Feed Sources" = "選擇訂閱來源";
 "Change repository" = "更改存儲庫";
-"Please select one country of the list." = "請選擇列表中的一個國家/地區。";
+"Please select one country of the list." = "請從列表中選擇一個國家/地區。";
 
 // Lessons
 "Favourites" = "最愛";
@@ -87,16 +87,16 @@
 "Checklist" = "檢查表";
 
 //Checklists
-"Checklists total" = "清單總計";
+"Checklists total" = "檢查表總計";
 "Favourites" = "最愛";
 "My Checklists" = "我的檢查表";
 "Total done" = "總計完成";
 "Overview" = "概觀";
-"Custom" = "習慣";
-"Go to lessons and discover recommended checklists or create your own custom checklists." = "轉到課程並發現推薦的清單或創建自己的自定義清單。";
-"New Checklist" = "新清單";
-"Name of Checklist" = "清單名稱";
-"Press + button to create your custom checklist." = "按+按鈕創建自定義清單。";
+"Custom" = "自定義";
+"Go to lessons and discover recommended checklists or create your own custom checklists." = "轉到相關課程並查找推薦的檢查表或創建自己的自定義檢查表。";
+"New Checklist" = "新的檢查表";
+"Name of Checklist" = "檢查表名稱";
+"Press + button to create your custom checklist." = "按+按鈕創建自定義檢查表。";
 "Delete" = "刪除";
 "Item" = "項目";
 
@@ -106,12 +106,12 @@
 "Confirm" = "確認";
 "Passwords do not match." = "密碼不匹配。";
 "Password too short." = "密碼太短。";
-"Password must have at least one digit." = "密碼必須至少有一位數。";
+"Password must have at least one digit." = "密碼必須至少有一位數字。";
 "Password must have at least one capital letter." = "密碼必須至少有一個大寫字母。";
 "Skip setting password" = "跳過設定密碼";
 "Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "您確定要在不設置密碼的情況下繼續使用該應用程序嗎？\n\n對於您輸入Umbrella的任何可識別數據，這會大大降低您的安全性。";
 "YES" = "是";
-"NO" = "沒有";
+"NO" = "否";
 "Settings" = "設定";
 "Set password" = "設定密碼";
 "Set your password" = "設定您的密碼";
@@ -123,19 +123,19 @@
 "Select Language" = "選擇語言";
 "Import your data" = "導入您的數據";
 "Export your data" = "導出您的數據";
-"Refresh interval for custom feeds" = "自定義Feed的刷新間隔";
+"Refresh interval for custom feeds" = "自定義訂閲的刷新間隔";
 "Your location" = "您的位置";
-"Security feed sources" = "安全源";
+"Security feed sources" = "關於安全訊息的訂閲來源";
 "Show updates as notification" = "將更新顯示為通知";
 "GENERAL" = "一般";
-"FEED" = "飼料";
-"English" = "英語";
-"Spanish" = "西班牙語";
+"FEED" = "訊息訂閲";
+"English" = "英文";
+"Spanish" = "西班牙文";
 "Chinese" = "中文";
 "hour" = "小時";
-"hour(s)" = "小時）";
+"hour(s)" = "一個小時 （或者一個小時以上）";
 "hours" = "小時";
 "Manually" = "手動";
 "Dashboard" = "儀表板";
-"new customFeeds." = "新的customFeeds。";
-"You can enable access in Settings> Umbrela> Notifications" = "您可以在'設置'>'Umbrela'>'通知'中啟用訪問權限";
+"new customFeeds." = "新的自定義訂閲。";
+"You can enable access in Settings> Umbrela> Notifications" = "您可以在“設置”>“Umbrela”>“通知”中啟用訪問權限";
