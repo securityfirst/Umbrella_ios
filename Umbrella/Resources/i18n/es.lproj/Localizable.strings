@@ -61,7 +61,7 @@
 "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "No almacenamos su ubicación por más tiempo del necesario. Los proveedores de feeds no saben que está recibiendo datos de ellos.";
 "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Establezca las fuentes de las que desea actualizaciones. Las fuentes de feed no pueden ver que está solicitando información de ellos.";
 "Location:" = "Ubicación:";
-"CHANGE LOCATION" = "CAMBIAR UBICACIÓN";
+"CHANGE FEED SETTINGS" = "CAMBIAR LOS AJUSTES DE FEED";
 "Set your Feed" = "Establezca su Feed";
 "SET NOW" = "ESTABLECER AHORA";
 "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "No hay eventos para mostrar para su ubicación. Los mostraremos cuando ocurran. Tire para actualizar para comprobar de nuevo.";

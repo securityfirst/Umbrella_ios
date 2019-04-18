@@ -61,7 +61,7 @@
 "We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "我們不會將您的位置存儲時間超過必要的時間。Feed 提供商不知道您正在從他們那裡接收數據";
 "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "設置要更新的源。 Feed源無法看到您要求他們提供信息。";
 "Location:" = "地點：";
-"CHANGE LOCATION" = "換地點";
+"CHANGE FEED SETTINGS" = "更改饲料设置";
 "Set your Feed" = "設置Feed";
 "SET NOW" = "現在設定";
 "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "您的位置無法顯示任何事件。 我們會在它們出現時顯示它們。 拉動刷新以再次檢查。";

@@ -253,10 +253,9 @@
                                                 <color key="textColor" red="0.72156862749999995" green="0.21176470589999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-E1-NBr">
-                                                <rect key="frame" x="130" y="38" width="140" height="29"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-E1-NBr">
+                                                <rect key="frame" x="50" y="38" width="220" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="140" id="ODa-ac-vO9"/>
                                                     <constraint firstAttribute="height" constant="29" id="Yd0-xi-oFB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
@@ -275,6 +274,7 @@
                                             <constraint firstAttribute="height" constant="69" id="9rD-zA-6PX"/>
                                             <constraint firstItem="bhv-Z1-m67" firstAttribute="leading" secondItem="eai-Wk-kTi" secondAttribute="leading" constant="5" id="KKG-kC-OV7"/>
                                             <constraint firstAttribute="trailing" secondItem="8fU-6I-tUi" secondAttribute="trailing" constant="14" id="TeS-GT-l8L"/>
+                                            <constraint firstItem="gJl-E1-NBr" firstAttribute="leading" secondItem="eai-Wk-kTi" secondAttribute="leading" constant="50" id="gpo-Sa-xBu"/>
                                             <constraint firstAttribute="bottom" secondItem="gJl-E1-NBr" secondAttribute="bottom" constant="2" id="m4r-pn-IPr"/>
                                             <constraint firstItem="bhv-Z1-m67" firstAttribute="top" secondItem="eai-Wk-kTi" secondAttribute="top" constant="14" id="qOv-rd-cTn"/>
                                             <constraint firstItem="8fU-6I-tUi" firstAttribute="top" secondItem="eai-Wk-kTi" secondAttribute="top" constant="14" id="qzF-lG-wLV"/>
@@ -304,11 +304,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfA-1x-YEW">
-                                                <rect key="frame" x="130" y="122" width="140" height="29"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfA-1x-YEW">
+                                                <rect key="frame" x="50" y="122" width="220" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="UnH-vF-JQN"/>
-                                                    <constraint firstAttribute="width" constant="140" id="Ytg-Ej-LyO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <state key="normal" title="CHANGE LOCATION">
@@ -333,6 +332,7 @@
                                             <constraint firstItem="HfA-1x-YEW" firstAttribute="top" secondItem="v3j-E0-PcK" secondAttribute="bottom" constant="5" id="fYs-TM-Edc"/>
                                             <constraint firstAttribute="trailing" secondItem="v3j-E0-PcK" secondAttribute="trailing" constant="20" id="kgc-Xk-JCK"/>
                                             <constraint firstItem="v3j-E0-PcK" firstAttribute="leading" secondItem="NnQ-5A-BtS" secondAttribute="leading" constant="20" id="mCH-g0-q8w"/>
+                                            <constraint firstItem="HfA-1x-YEW" firstAttribute="leading" secondItem="NnQ-5A-BtS" secondAttribute="leading" constant="50" id="wdU-my-Gcn"/>
                                             <constraint firstItem="Ana-mS-gY7" firstAttribute="leading" secondItem="NnQ-5A-BtS" secondAttribute="leading" constant="18" id="zuT-Wj-s32"/>
                                         </constraints>
                                     </view>
@@ -433,7 +433,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET NOW" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="lqE-vZ-WVL">
-                                                        <rect key="frame" x="200" y="122" width="65" height="22"/>
+                                                        <rect key="frame" x="197" y="122" width="68" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="60V-vG-i8M"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="sWE-Qm-iQW"/>
@@ -1212,6 +1212,6 @@
         <image name="locationIcon" width="38" height="54"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IEK-u9-GpE"/>
+        <segue reference="yLZ-ly-A9h"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -205,7 +205,7 @@ class FeedViewController: UIViewController {
         self.feedView.emptyLabel.text = "There no Feed".localized()
         
         // Location
-        self.changeLocationButton.setTitle("CHANGE LOCATION".localized(), for: .normal)
+        self.changeLocationButton.setTitle("CHANGE FEED SETTINGS".localized(), for: .normal)
         
         self.locationViewLegLabel.text = "Location:".localized()
         self.setYourFeedLabel.text = "Set your Feed".localized()
@@ -213,7 +213,7 @@ class FeedViewController: UIViewController {
         
         self.securityFeedToLabel.text = "Security feed set to:".localized()
         self.emptyDisplayLebLabel.text = "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again.".localized()
-        self.emptyChangeLocationLabel.setTitle("CHANGE LOCATION".localized(), for: .normal)
+        self.emptyChangeLocationLabel.setTitle("CHANGE FEED SETTINGS".localized(), for: .normal)
         
         self.intervalLabel.text = "Interval".localized()
         self.setIntervalLabel.text = "SET".localized()
