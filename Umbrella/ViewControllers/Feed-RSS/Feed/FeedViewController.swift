@@ -561,7 +561,6 @@ class FeedViewController: UIViewController {
         }
         let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertAction.Style.destructive, handler: { _ in
             let firstTextField = alertController.textFields![0] as UITextField
-            print(firstTextField.text ?? "")
             
             if let count = firstTextField.text?.count, count > 0, self.validateUrl(urlString: firstTextField.text!) {
                 

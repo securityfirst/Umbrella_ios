@@ -305,20 +305,7 @@ extension FormViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
-            if indexPath.section == 0 {
-                // Available Forms
-                let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-                self.performSegue(withIdentifier: "fillFormSegue", sender: form)
-            } else if indexPath.section == 1 {
-                // Active
-                let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
-                
-                for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == form.id {
-                    self.performSegue(withIdentifier: "fillFormSegue", sender: ["form": form, "formAnswer": formAnswer])
-                }
-            }
-        } else {
+        if indexPath.section == 0 {
             // Available Forms
             let form = self.formViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
             self.performSegue(withIdentifier: "fillFormSegue", sender: form)
@@ -372,17 +359,17 @@ extension FormViewController: FormCellDelegate {
             }
             
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-
+            
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
-
+            
             activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
                 if !completed {
                     // User canceled
                     return
                 }
             }
-
+            
             self.present(activityVC, animated: true, completion: nil)
         }, cancel: {
             print("cancel")

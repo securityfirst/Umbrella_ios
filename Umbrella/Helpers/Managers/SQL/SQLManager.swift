@@ -34,6 +34,8 @@ class SQLManager: SQLProtocol {
         self.databaseName = databaseName
         self.password = password
         self.copyDatabaseIfNeeded()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SQLManager.resetAllConnections(notification:)), name: Notification.Name("ResetRepository"), object: nil)
     }
     
     //
@@ -281,9 +283,9 @@ extension SQLManager {
                 })
             }
             
-            //            #if DEBUG
-            //            connect.trace { print($0) }
-            //            #endif
+//            #if DEBUG
+//            self.connect?.trace { print($0) }
+//            #endif
             return self.connect
         } catch {
             self.connect = nil
@@ -294,6 +296,13 @@ extension SQLManager {
     /// Reset connection
     func resetConnection() {
         self.connect = nil
+    }
+    
+    /// Reset all connections
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func resetAllConnections(notification: NSNotification) {
+        resetConnection()
     }
     
     /// Change password

@@ -43,6 +43,7 @@ class CustomChecklistViewController: UIViewController {
         updateChecklist()
     }
     
+    /// Loading the checklist
     func updateChecklist() {
         DispatchQueue.global(qos: .default).async {
             self.customChecklistViewModel.loadCustomChecklist()

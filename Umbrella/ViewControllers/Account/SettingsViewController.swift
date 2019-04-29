@@ -50,19 +50,17 @@ class SettingsViewController: UIViewController {
     
     /// Refresh data of the repository
     fileprivate func refreshRepo() {
-        let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
-        let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
-        _ = umbrellaDatabase.dropTables()
-        
         let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
         let gitManager = GitManager(url: URL(string: repository)!, pathDirectory: .documentDirectory)
         
+        UserDefaults.standard.set(false, forKey: "passwordCustom")
+        UserDefaults.standard.synchronize()
+        
         do {
             try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
-            UserDefaults.standard.set(false, forKey: "passwordCustom")
-            UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name("ResetRepository"), object: nil)
             
+            NotificationCenter.default.post(name: Notification.Name("ResetRepository"), object: nil)
+        
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
             UIApplication.shared.keyWindow?.addSubview(controller.view)

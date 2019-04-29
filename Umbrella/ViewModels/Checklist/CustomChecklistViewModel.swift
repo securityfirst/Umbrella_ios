@@ -70,4 +70,13 @@ class CustomChecklistViewModel {
         _ = self.customCheckItemDao.removeAll(customChecklist.id)
         _ = self.customChecklistDao.remove(customChecklist)
     }
+    
+    func removeCustomChecklistAll() {
+        let list = self.customChecklistDao.list()
+        for customChecklist in list {
+            _ = self.customChecklistCheckedDao.removeAll(customChecklist.id)
+            _ = self.customCheckItemDao.removeAll(customChecklist.id)
+            _ = self.customChecklistDao.remove(customChecklist)
+        }
+    }
 }

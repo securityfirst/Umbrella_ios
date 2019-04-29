@@ -20,6 +20,7 @@ class NewChecklistViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var newCheckItemTableView: UITableView!
     var editIndexPath: IndexPath = IndexPath(row: -1, section: 0)
+    var editBeforeAddedNewItemIndexPath: IndexPath = IndexPath(row: -1, section: 0)
     
     //
     // MARK: - Life cycle
@@ -259,6 +260,7 @@ extension NewChecklistViewController: UITableViewDelegate {
 extension NewChecklistViewController: NewCheckItemDelegate {
     
     func checkAction(indexPath: IndexPath) {
+        let cell: NewCheckItemCell = (self.newCheckItemTableView.cellForRow(at: indexPath) as? NewCheckItemCell)!
         let item = self.newChecklistViewModel.customChecklist.items[indexPath.row]
         item.checked = !item.checked
         
@@ -270,7 +272,12 @@ extension NewChecklistViewController: NewCheckItemDelegate {
             }
         }
         self.newChecklistViewModel.updateChecklistCheckedOfCustomChecklist(customChecklistId: newChecklistViewModel.customChecklist.id)
-        self.newCheckItemTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+
+        if cell.editText.isHidden {
+            self.newCheckItemTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        } else {
+            cell.checkImageView.image = item.checked ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
+        }
     }
     
     func editTextAction(indexPath: IndexPath, cell: NewCheckItemCell) {
@@ -284,6 +291,7 @@ extension NewChecklistViewController: NewCheckItemDelegate {
             
             let oldIndePath = IndexPath(row: self.editIndexPath.row, section: self.editIndexPath.section)
             self.editIndexPath = indexPath
+            self.editBeforeAddedNewItemIndexPath = indexPath
             self.newCheckItemTableView.reloadRows(at: [oldIndePath], with: UITableView.RowAnimation.automatic)
         }
     }
@@ -311,5 +319,22 @@ extension NewChecklistViewController: UITextFieldDelegate {
         
         self.view.endEditing(true)
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let item = self.newChecklistViewModel.customChecklist.items[self.editBeforeAddedNewItemIndexPath.row]
+        let cell: NewCheckItemCell = (self.newCheckItemTableView.cellForRow(at: self.editBeforeAddedNewItemIndexPath) as? NewCheckItemCell)!
+        cell.modeEdit(enable: false)
+        if cell.editText.text!.count > 0 {
+            cell.titleLabel.text = cell.editText.text
+            item.name = cell.titleLabel.text!
+        }
+        
+        self.editBeforeAddedNewItemIndexPath = IndexPath(row: -1, section: 0)
+        
+        if item.id != -1 {
+            let rowId = self.newChecklistViewModel.insertCustomCheckItem(item)
+            item.id = Int(rowId)
+        }
     }
 }

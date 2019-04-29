@@ -37,8 +37,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ui8-gA-Gtv" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                     <rect key="frame" x="22" y="12" width="331" height="82"/>
                                                     <subviews>
-                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0G-SA-5KS">
-                                                            <rect key="frame" x="110" y="76" width="60" height="0.0"/>
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0G-SA-5KS">
+                                                            <rect key="frame" x="11" y="76" width="60" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="ah5-Yl-8zX"/>
                                                             </constraints>
@@ -51,7 +51,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-3R-ejq">
-                                                            <rect key="frame" x="180" y="76" width="60" height="0.0"/>
+                                                            <rect key="frame" x="135.66666666666666" y="76" width="60" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="NgN-Xn-WIY"/>
                                                                 <constraint firstAttribute="height" id="QDU-J8-QWU"/>
@@ -64,7 +64,7 @@
                                                                 <action selector="editAction:" destination="Wyp-D2-NhD" eventType="touchUpInside" id="9mJ-Tg-vx7"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-9u-VkU">
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-9u-VkU">
                                                             <rect key="frame" x="250" y="76" width="70" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="70" id="vwk-tN-87r"/>
@@ -91,12 +91,12 @@
                                                         <constraint firstItem="IzR-f5-1z2" firstAttribute="top" secondItem="ui8-gA-Gtv" secondAttribute="top" constant="17" id="Do1-PZ-nIf"/>
                                                         <constraint firstItem="lxC-9u-VkU" firstAttribute="height" secondItem="Gbh-3R-ejq" secondAttribute="height" id="FoG-zw-Fzo"/>
                                                         <constraint firstItem="K0G-SA-5KS" firstAttribute="height" secondItem="Gbh-3R-ejq" secondAttribute="height" id="Rzl-HM-mc6"/>
+                                                        <constraint firstItem="K0G-SA-5KS" firstAttribute="leading" secondItem="ui8-gA-Gtv" secondAttribute="leading" constant="11" id="YwS-Bj-MRl"/>
                                                         <constraint firstAttribute="trailing" secondItem="lxC-9u-VkU" secondAttribute="trailing" constant="11" id="b5P-rN-usB"/>
                                                         <constraint firstItem="Gbh-3R-ejq" firstAttribute="top" secondItem="IzR-f5-1z2" secondAttribute="bottom" constant="12" id="lX0-8W-fLd"/>
-                                                        <constraint firstItem="lxC-9u-VkU" firstAttribute="leading" secondItem="Gbh-3R-ejq" secondAttribute="trailing" constant="10" id="oPB-uf-zQy"/>
+                                                        <constraint firstItem="Gbh-3R-ejq" firstAttribute="centerX" secondItem="ui8-gA-Gtv" secondAttribute="centerX" id="mhf-HO-CEK"/>
                                                         <constraint firstAttribute="bottom" secondItem="Gbh-3R-ejq" secondAttribute="bottom" constant="6" id="py0-RH-maq"/>
                                                         <constraint firstAttribute="bottom" secondItem="lxC-9u-VkU" secondAttribute="bottom" constant="6" id="rHi-gh-MMs"/>
-                                                        <constraint firstItem="Gbh-3R-ejq" firstAttribute="leading" secondItem="K0G-SA-5KS" secondAttribute="trailing" constant="10" id="uBD-qF-6ao"/>
                                                         <constraint firstAttribute="bottom" secondItem="K0G-SA-5KS" secondAttribute="bottom" constant="6" id="utN-h5-2V9"/>
                                                     </constraints>
                                                 </view>

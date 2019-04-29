@@ -75,4 +75,5 @@ struct CustomChecklistDao: DaoProtocol {
         let sql = "DELETE FROM \(CustomChecklist.table) WHERE id = \(object.id)"
         return self.sqlProtocol.remove(withQuery: sql)
     }
+    
 }

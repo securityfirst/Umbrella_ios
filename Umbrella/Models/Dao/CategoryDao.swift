@@ -53,7 +53,9 @@ struct CategoryDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Category) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Category.table) ('name', 'description', 'icon', 'index', 'folder_name', 'deeplink', 'parent', 'language_id', 'template') VALUES (\"\(object.name ?? "")\", \"\(object.description ?? "")\", \"\(object.icon ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', '\(object.deeplink ?? "")', \(object.parent), \(object.languageId), '\(object.template)')")
+        let rowId = self.sqlProtocol.insert(withQuery: """
+            INSERT INTO \(Category.table) ('name', 'description', 'icon', 'index', 'folder_name', 'deeplink', 'parent', 'language_id', 'template') VALUES (\"\(object.name ?? "")\", \"\(object.description ?? "")\", \"\(object.icon ?? "")\", \(object.index ?? -1), '\(object.folderName ?? "")', '\(object.deeplink ?? "")', \(object.parent), \(object.languageId), '\(object.template)')
+            """)
         return rowId
     }
     

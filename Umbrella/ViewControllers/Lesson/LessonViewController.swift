@@ -84,6 +84,41 @@ class LessonViewController: UIViewController {
         }
     }
     
+    /// Check if exist file in documents
+    ///
+    /// - Parameter file: String
+    /// - Returns: Bool
+    fileprivate func checkIfExistFile(file: String) -> Bool {
+        
+        if file.contains("/en/") {
+            return true
+        }
+        
+        let fileManager = FileManager.default
+        let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                            in: .userDomainMask)
+        guard documentsUrl.count != 0 else {
+            return false
+        }
+        
+        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent(file)
+        
+        if ( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
+            return true
+        }
+        
+        return false
+    }
+    
+    /// Change file string to the default language EN
+    ///
+    /// - Parameters:
+    ///   - file: String
+    fileprivate func changeFileToDefaultLanguange(file: inout String) {
+        let languageCurrent: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        file = file.replacingOccurrences(of: file, with: file.replacingOccurrences(of: "/\(languageCurrent)/", with: "/en/"))
+    }
+    
     //
     // MARK: - UIStoryboardSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -195,7 +230,11 @@ extension LessonViewController: UITableViewDelegate {
                     documents.removeLast()
                     documents = documents.replacingOccurrences(of: "file://", with: "")
                     
-                    let file = "\(documents)\(path)\(item.icon ?? "")"
+                    var file = "\(documents)\(path)\(item.icon ?? "")"
+                    
+                    if !checkIfExistFile(file: file) {
+                        changeFileToDefaultLanguange(file: &file)
+                    }
                     headerView.iconImageView.image = UIImage(contentsOfFile: file)
                 }
             }
@@ -260,7 +299,7 @@ extension LessonViewController: CategoryHeaderViewDelegate {
             let category = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
             
             if category.template != Template.glossary.rawValue {
-                let dic = ["segments": category.segments, "checkLists": category.checkLists , "category": category, "selected": category.segments.first!] as [String : Any]
+                let dic = ["segments": category.segments, "checkLists": category.checkLists , "category": category, "selected": category.segments.count == 0 ? (Any).self : category.segments.first!] as [String : Any]
                 self.performSegue(withIdentifier: "glossarySegue", sender: dic)
             } else {
                 self.performSegue(withIdentifier: "segmentSegue", sender: category)

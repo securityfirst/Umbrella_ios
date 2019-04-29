@@ -83,6 +83,10 @@ class ReviewLessonViewController: UIViewController {
         if let checklists = self.reviewLessonViewModel.checkLists {
             array.append(contentsOf: checklists)
         }
+
+        if (((self.reviewLessonViewModel.selected as? ModelProtocol) == nil)) {
+            return 0
+        }
         
         let selected = (self.reviewLessonViewModel.selected as? ModelProtocol)!
         
@@ -121,16 +125,18 @@ class ReviewLessonViewController: UIViewController {
                 self.currentViewController = controller
                 addViewLessonOnScrollView()
             } else {
-                let checklist = self.reviewLessonViewModel.checkLists?[index - count]
-                let viewController = (self.getViewController(withIdentifier: "LessonCheckListViewController") as? LessonCheckListViewController)!
-                viewController.lessonCheckListViewModel.category = self.reviewLessonViewModel.category
-                viewController.lessonCheckListViewModel.checklist = checklist
-                controller = viewController
-                
-                viewControllerIndexLoaded.append(currentPage)
-                viewControllerLoaded[currentPage] = controller
-                self.currentViewController = controller
-                addViewLessonOnScrollView()
+                if self.reviewLessonViewModel.checkLists?.count ?? 0 > 0 {
+                    let checklist = self.reviewLessonViewModel.checkLists?[index - count]
+                    let viewController = (self.getViewController(withIdentifier: "LessonCheckListViewController") as? LessonCheckListViewController)!
+                    viewController.lessonCheckListViewModel.category = self.reviewLessonViewModel.category
+                    viewController.lessonCheckListViewModel.checklist = checklist
+                    controller = viewController
+                    
+                    viewControllerIndexLoaded.append(currentPage)
+                    viewControllerLoaded[currentPage] = controller
+                    self.currentViewController = controller
+                    addViewLessonOnScrollView()
+                }
             }
         }
         

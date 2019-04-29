@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(Config.gitBaseURL.absoluteString, forKey: "repository")
         }
 
+        
         let language = UserDefaults.standard.object(forKey: "Language")
         if language == nil {
             let langStr = Locale.current.languageCode
@@ -116,7 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      performFetchWithCompletionHandler completionHandler:
         @escaping (UIBackgroundFetchResult) -> Void) {
         
-        print(application.backgroundRefreshStatus)
         if application.backgroundRefreshStatus == .available {
             print("Available")
         }
@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("\(url.host!)\(url.path)")
+//        print("\(url.host!)\(url.path)")
         if  url.scheme == "umbrella" {
             if deepLinkManager.handleDeeplink(url: url) {
                 deepLinkManager.checkDeepLink()

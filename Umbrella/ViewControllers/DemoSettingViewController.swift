@@ -41,10 +41,8 @@ class DemoSettingViewController: UIViewController {
         
         var url = ""
         if segmentedControl.selectedSegmentIndex == 0 {
-            print("0")
             url = "https://github.com/securityfirst/umbrella-content"
         } else if segmentedControl.selectedSegmentIndex == 1 {
-            print("1")
             url = "https://github.com/klaidliadon/umbrella-content"
         }
         
@@ -62,30 +60,30 @@ class DemoSettingViewController: UIViewController {
         
         if repository != url {
          
-            UserDefaults.standard.set(url, forKey: "repository")
-            UserDefaults.standard.set(false, forKey: "acceptTerm")
-            UserDefaults.standard.synchronize()
-        
-            let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
-            let umbrellaDatabase = UmbrellaDatabase(sqlProtocol: sqlManager)
-            _ = umbrellaDatabase.dropTables()
+            self.view.isHidden = true
+            self.view.endEditing(true)
             
-            let gitManager = GitManager(url: URL(string: url)!, pathDirectory: .documentDirectory)
+            UserDefaults.standard.set(url, forKey: "repository")
+            UserDefaults.standard.set(false, forKey: "passwordCustom")
+            UserDefaults.standard.synchronize()
+            
+            let repository = (UserDefaults.standard.object(forKey: "repository") as? String)!
+            let gitManager = GitManager(url: URL(string: repository)!, pathDirectory: .documentDirectory)
             
             do {
                 try gitManager.deleteCloneInFolder(pathDirectory: .documentDirectory)
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "TourViewController")
-                self.present(controller, animated: false, completion: nil)
                 NotificationCenter.default.post(name: Notification.Name("ResetRepository"), object: nil)
-                self.view.isHidden = true
-                self.view.endEditing(true)
-//                exit(0)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                UIApplication.shared.keyWindow?.addSubview(controller.view)
+                controller.loadTent {
+                    print("Finished load tent")
+                }
             } catch {
                 print(error)
             }
-            
         } else {
             self.view.isHidden = true
             self.view.endEditing(true)

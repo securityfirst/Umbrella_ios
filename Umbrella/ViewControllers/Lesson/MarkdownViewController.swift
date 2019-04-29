@@ -101,7 +101,6 @@ class MarkdownViewController: UIViewController {
     ///   - file: String
     fileprivate func changeFileToDefaultLanguange(content: inout String, file: String?) {
         if let file = file {
-            print(file.components(separatedBy: "/"))
             let language = file.components(separatedBy: "/")[1]
             content = content.replacingOccurrences(of: file, with: file.replacingOccurrences(of: "/\(language)/", with: "/en/"))
         }

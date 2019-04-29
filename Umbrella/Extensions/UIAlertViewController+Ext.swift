@@ -82,7 +82,7 @@ extension UIAlertController {
     public class func alertSheet(title: String?, message: String?, buttons: NSArray?, dismiss: DismissBlock? = nil, cancel: CancelBlock? = nil) {
         
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        alertVC.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: { _ in
             if cancel != nil {
                 cancel!()
             }

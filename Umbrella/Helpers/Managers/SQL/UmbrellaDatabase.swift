@@ -105,9 +105,9 @@ struct UmbrellaDatabase {
     ///
     /// - Returns: Bool
     func dropTables() -> Bool {
-        let customChecklistCheckedSuccess = self.customChecklistCheckedDao.createTable()
-        let customCheckItemSuccess = self.customCheckItemDao.createTable()
-        let customChecklistSuccess = self.customChecklistDao.createTable()
+        let customChecklistCheckedSuccess = self.customChecklistCheckedDao.dropTable()
+        let customCheckItemSuccess = self.customCheckItemDao.dropTable()
+        let customChecklistSuccess = self.customChecklistDao.dropTable()
         let rssItemSuccess = self.rssItemDao.dropTable()
         let checklistCheckedSuccess = self.checklistCheckedDao.dropTable()
         let favouriteSegmentSuccess = self.favouriteLessonDao.dropTable()
