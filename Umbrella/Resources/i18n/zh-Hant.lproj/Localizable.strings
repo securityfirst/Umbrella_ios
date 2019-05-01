@@ -132,6 +132,10 @@
 "English" = "英文";
 "Spanish" = "西班牙文";
 "Chinese" = "中文";
+"Arabic" = "阿拉伯";
+"Iranian" = "伊朗的";
+"French" = "法國";
+"Russian" = "俄語";
 "hour" = "小時";
 "hour(s)" = "一個小時 （或者一個小時以上）";
 "hours" = "小時";

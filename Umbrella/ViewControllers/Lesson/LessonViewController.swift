@@ -17,8 +17,10 @@ class LessonViewController: UIViewController {
         let lessonViewModel = LessonViewModel()
         return lessonViewModel
     }()
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     @IBOutlet weak var lessonTableView: UITableView!
     var favouriteSegments: [Segment] = [Segment]()
+    var isLoadingContent: Bool = false
     
     //
     // MARK: - Life cycle
@@ -39,6 +41,9 @@ class LessonViewController: UIViewController {
         self.lessonTableView?.register(CategoryHeaderView.nib, forHeaderFooterViewReuseIdentifier: CategoryHeaderView.identifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LessonViewController.resetLessons(notification:)), name: Notification.Name("ResetRepository"), object: nil)
+        
+        self.loadingActivity.isHidden = false
+        self.lessonTableView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +52,11 @@ class LessonViewController: UIViewController {
         DispatchQueue.global(qos: .default).async {
             // Update list of segment favourites
             self.favouriteSegments = self.lessonViewModel.loadFavourites()
+        }
+        
+        if self.isLoadingContent {
+            self.loadingActivity.isHidden = true
+            self.lessonTableView.isHidden = false
         }
     }
     
@@ -76,10 +86,15 @@ class LessonViewController: UIViewController {
     /// - Parameter notification: notification with umbrella
     @objc func loadTent(notification: Notification) {
         let umbrella = notification.object as? Umbrella
-        
         self.lessonViewModel.umbrella = umbrella
+        self.isLoadingContent = true
+        
+        if let loadingActivity = self.loadingActivity {
+            loadingActivity.isHidden = true
+        }
         
         if let tableview = self.lessonTableView {
+            tableview.isHidden = false
             tableview.reloadData()
         }
     }

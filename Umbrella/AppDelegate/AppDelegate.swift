@@ -25,9 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Fabric
         #if APPSTORE
-            Fabric.with([])
+        Fabric.with([])
         #else
-            Fabric.with([Crashlytics.self])
+        Fabric.with([Crashlytics.self])
         #endif
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(show))
@@ -39,20 +39,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(Config.gitBaseURL.absoluteString)
             UserDefaults.standard.set(Config.gitBaseURL.absoluteString, forKey: "repository")
         }
-
         
-        let language = UserDefaults.standard.object(forKey: "Language")
+        var language = UserDefaults.standard.object(forKey: "Language")
         if language == nil {
             let langStr = Locale.current.languageCode
             UserDefaults.standard.set(langStr, forKey: "Language")
         }
         
+        language = UserDefaults.standard.object(forKey: "Language")
+        
+        if let language: String = language as? String {
+            // Arabic(ar) or Persian Iranian(fa)
+            if language == "ar" || language == "fa" {
+                UIView.appearance().semanticContentAttribute = .forceRightToLeft
+            } else {
+                UIView.appearance().semanticContentAttribute = .forceLeftToRight
+            }
+        }
+        
         // Fetch data once 30 minutes.
         UIApplication.shared.setMinimumBackgroundFetchInterval(1800)
         
-//        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-//        tapGesture.delegate = self
-//        window?.addGestureRecognizer(tapGesture)
+        //        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        //        tapGesture.delegate = self
+        //        window?.addGestureRecognizer(tapGesture)
         
         return true
     }
@@ -142,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        print("\(url.host!)\(url.path)")
+        //        print("\(url.host!)\(url.path)")
         if  url.scheme == "umbrella" {
             if deepLinkManager.handleDeeplink(url: url) {
                 deepLinkManager.checkDeepLink()
@@ -159,7 +169,7 @@ extension AppDelegate: UIGestureRecognizerDelegate {
         let isAcceptedTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         
         if isAcceptedTerm {
-//            print("Touches")
+            //            print("Touches")
         }
         
         return false

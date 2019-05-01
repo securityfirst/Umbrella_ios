@@ -37,6 +37,10 @@ class SettingsViewModel {
             languageSelected = "Spanish".localized()
         } else if language == "zh-Hant" {
             languageSelected = "Chinese".localized()
+        } else if language == "ar" {
+            languageSelected = "Arabic".localized()
+        } else if language == "fa" {
+            languageSelected = "Iranian".localized()
         }
         
         self.items = [

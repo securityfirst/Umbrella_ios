@@ -62,6 +62,7 @@ class HTML: ExportProtocol {
                         body{
                             color:#444444;
                             font-size:300%;
+                            padding: 50px 50px 50px 50px; 
                         }
                         img{
                             width:100%

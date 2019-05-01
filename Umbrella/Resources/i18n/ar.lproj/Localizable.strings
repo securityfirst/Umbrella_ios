@@ -1,0 +1,145 @@
+/*
+ Localizable.strings
+ Umbrella
+ 
+ Created by Lucas Correa on 16/08/2018.
+ Copyright © 2018 Security First. All rights reserved.
+ */
+
+// Accessibility
+"selected" = "مختارة";
+"deselected" = "إلغاء تحديد";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "هذا هو النموذج %d من النماذج %d ليتم ملؤها. اسحب ثلاثة أصابع على اليسار إلى النموذج الخلفي أو الأيمن.";
+
+// Menu
+"Feeds" = "خلاصات";
+"Forms" = "الإكمال التلقائي";
+"Checklists" = "قوائم";
+"Lessons" = "الدروس";
+"Account" = "الحساب";
+
+// Loading
+"Updating the database" = "تحديث قاعدة البيانات";
+"Error in load the tent" = "خطأ في تحميل الخيمة";
+"Getting the database" = "الحصول على قاعدة البيانات";
+"Fetching Data" = "جلب البيانات";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "تحتوي Umbrella على الكثير من الدروس والمحتوى. في المرة الأولى التي تستخدم فيها التطبيق يتم تنزيلها بحيث تعمل دون اتصال بالإنترنت. يجب أن تستغرق العملية حوالي 3 دقائق على الأكثر.";
+"Loading the content" = "تحميل المحتوى";
+
+// Form
+"Active" = "نشيط";
+"Available forms" = "النماذج المتاحة";
+"REMOVE" = "إزالة";
+"EDIT" = "تصحيح";
+"SHARE" = "مشاركة";
+"Do you really want to remove this form?" = "هل تريد حقًا إزالة هذا النموذج؟";
+"No" = "‮لا";
+"Yes" = "‮نعم";
+"Choose the format." = "اختر التنسيق.";
+
+// Tour
+"Get advice on everything from sending a secure email to safe travel" = "الحصول على المشورة بشأن كل شيء من إرسال بريد إلكتروني آمن إلى السفر الآمن";
+"Umbrella makes your security simple" = "تجعل Umbrella أمنك بسيط";
+"Use checklists to mark your progress" = "استخدم قوائم التحقق لتمييز تقدمك";
+"Stay up to date with the latest information on where you are" = "ابق على اطلاع بأحدث المعلومات حول مكان وجودك";
+"Terms and Conditions" = "الأحكام والشروط";
+"ACCEPT" = "قبول";
+"Downloading content can take a few minutes. Please wait." = "يمكن أن يستغرق تنزيل المحتوى بضع دقائق. ارجوك انتظر.";
+
+// RSS
+"You chose the Card mode view" = "لقد اخترت طريقة عرض وضع البطاقة";
+"You chose the List mode view" = "لقد اخترت طريقة عرض القائمة";
+"Save" = "حفظ";
+"Cancel" = "إلغاء";
+"Feed Sources" = "مصادر التغذية";
+"There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "حدث خطأ عند محاولة إنشاء موجز RSS. يرجى التأكد من أنك تستخدم العنوان الصحيح والمحاولة مرة أخرى.";
+
+// Feed - Location
+"Enter the country you want to see the feed for" = "أدخل البلد الذي تريد أن ترى الخلاصة له";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "لم تحدد موقعًا ومصادر الخلاصة حتى الآن. يجب عليك القيام بذلك للحصول على أحدث الأخبار الأمنية لبلدك. يمكنك تغييرها في أي وقت لاحق في الإعدادات.";
+"Set how often you want Umbrella to check for the latest security news." = "حدد عدد المرات التي تريد فيها Umbrella للتحقق من أحدث الأخبار الأمنية.";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "نحن لا نخزن موقعك لفترة أطول من اللازم. لا يعرف مقدمو الخلاصات أنك تتلقى بيانات منهم.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "قم بتعيين المصادر التي تريد التحديثات منها. لا يمكن لمصادر الخلاصة رؤية أنك تطلب معلومات منهم.";
+"Location:" = "موقع:";
+"CHANGE LOCATION" = "تغيير الموقع";
+"Set your Feed" = "تعيين الخلاصة";
+"SET NOW" = "أعد الآن";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "لا توجد أحداث لعرضها لموقعك. سنقوم بعرضها عند حدوثها. سحب لتحديث للتحقق مرة أخرى.";
+"Security feed set to:" = "تم تعيين خلاصة الأمان على:";
+"Interval" = "فترة";
+"SET" = "عيّن";
+"Location" = "الموقع";
+"Security Feed Sources" = "مصادر تغذية الأمان";
+"The city or country is not available or you have no internet connection." = "المدينة أو البلد غير متوفر أو ليس لديك اتصال بالإنترنت.";
+"Alert" = "انذار";
+"Enter interval in minutes (one day = 1440 minutes)" = "أدخل الفاصل الزمني بالدقائق (يوم واحد = 1440 دقيقة)";
+"Sources" = "مصادر";
+"Select The Feed Sources" = "حدد مصادر الخلاصة";
+"Change repository" = "تغيير المخزون";
+"Please select one country of the list." = "يرجى اختيار بلد واحد من القائمة.";
+
+// Lessons
+"Favourites" = "المفضلة";
+"You do not have any Segment yet." = "ليس لديك أي شريحة حتى الآن.";
+"Beginner" = "مبتدئ";
+"Advanced" = "المتقدمة";
+"Expert" = "خبير";
+"Checklist" = "قائمة تدقيق";
+
+//Checklists
+"Checklists total" = "مجموع قوائم المراجعة";
+"Favourites" = "المفضلة";
+"My Checklists" = "قوائم المراجعة الخاصة بي";
+"Total done" = "مجموع القيام به";
+"Overview" = "نظرة عامة";
+"Custom" = "مخصص";
+"Go to lessons and discover recommended checklists or create your own custom checklists." = "انتقل إلى الدروس واكتشف قوائم المراجعة الموصى بها أو قم بإنشاء قوائم التحقق المخصصة الخاصة بك.";
+"New Checklist" = "قائمة مراجعة جديدة";
+"Name of Checklist" = "اسم قائمة التحقق";
+"Press + button to create your custom checklist." = "اضغط على زر + لإنشاء قائمة التحقق المخصصة الخاصة بك.";
+"Delete" = "حذف";
+"Item" = "بند";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "يجب أن يكون طول كلمة المرور 8 أحرف على الأقل ويجب أن يحتوي على رقم واحد على الأقل وحرف كبير.";
+"Password" = "‮كلمة السّر";
+"Confirm" = "تأكيد ";
+"Passwords do not match." = "كلمة المرور غير مطابقة.";
+"Password too short." = "كلمة المرور قصيرة جدا.";
+"Password must have at least one digit." = "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل.";
+"Password must have at least one capital letter." = "يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل.";
+"Skip setting password" = "تخطي إعداد كلمة المرور";
+"Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "هل أنت متأكد من أنك تريد متابعة استخدام التطبيق دون تعيين كلمة المرور؟\n\nهذا يقلل الامان الخاص بك إلى حد كبير فيما يتعلق بأي بيانات يمكن إدخالها في المظلة.";
+"YES" = "نعم";
+"NO" = "لا";
+"Settings" = "الإعدادات";
+"Set password" = "ضبط كلمة السر";
+"Set your password" = "ضع كلمة مرور";
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "يجب أن يكون طول كلمة المرور 8 أحرف على الأقل ويجب أن يحتوي على رقم واحد على الأقل وحرف كبير.";
+"Skip" = "تخطي";
+"Skip password" = "تخطي كلمة المرور";
+"Don't ask for password again" = "لا تسأل عن كلمة المرور مرة أخرى";
+"Refresh from the server" = "تحديث من الخادم";
+"Select Language" = "اختار اللغة";
+"Import your data" = "استيراد البيانات الخاصة بك";
+"Export your data" = "تصدير البيانات الخاصة بك";
+"Refresh interval for custom feeds" = "تحديث الفاصل للخلاصات المخصصة";
+"Your location" = "موقعك";
+"Security feed sources" = "مصادر تغذية الأمان";
+"Show updates as notification" = "عرض التحديثات كإشعار";
+"GENERAL" = "عام";
+"FEED" = "FEED";
+"English" = "الإنجليزية";
+"Spanish" = "الأسبانية";
+"Chinese" = "صينى";
+"Arabic" = "عربى";
+"Iranian" = "إيراني";
+"French" = "الفرنسية";
+"Russian" = "الروسية";
+"hour" = "ساعة";
+"hour(s)" = "ساعة (ات)";
+"hours" = "ساعات";
+"Manually" = "يدويا";
+"Dashboard" = "لوحة القيادة";
+"new customFeeds." = "customFeeds جديدة.";
+"You can enable access in Settings> Umbrela> Notifications" = "يمكنك تمكين الوصول في الإعدادات> Umbrela> الإشعارات";

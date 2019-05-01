@@ -15,11 +15,13 @@ class FormViewController: UIViewController {
     //
     // MARK: - Properties
     @IBOutlet weak var formTableView: UITableView!
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
     lazy var formViewModel: FormViewModel = {
         let formViewModel = FormViewModel()
         return formViewModel
     }()
+    var isLoadingContent: Bool = false
     
     //
     // MARK: - Life cycle
@@ -40,6 +42,8 @@ class FormViewController: UIViewController {
         if UIApplication.shared.keyWindow?.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             registerForPreviewing(with: self, sourceView: view)
         }
+        self.loadingActivity.isHidden = false
+        self.formTableView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +52,11 @@ class FormViewController: UIViewController {
         self.loadFormActive()
         self.formTableView.reloadData()
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self.navigationItem.title)
+        
+        if self.isLoadingContent {
+            self.loadingActivity.isHidden = true
+            self.formTableView.isHidden = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,7 +90,13 @@ class FormViewController: UIViewController {
         let umbrella = notification.object as? Umbrella
         self.formViewModel.umbrella = umbrella!
         
+        self.isLoadingContent = true
+        if let loadingActivity = self.loadingActivity {
+            loadingActivity.isHidden = true
+        }
+        
         if let tableView = self.formTableView {
+            tableView.isHidden = false
             tableView.reloadData()
         }
     }

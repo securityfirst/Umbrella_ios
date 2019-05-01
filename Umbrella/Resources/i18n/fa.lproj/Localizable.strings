@@ -1,0 +1,145 @@
+/*
+ Localizable.strings
+ Umbrella
+ 
+ Created by Lucas Correa on 16/08/2018.
+ Copyright © 2018 Security First. All rights reserved.
+ */
+
+// Accessibility
+"selected" = "انتخاب شد";
+"deselected" = "انتخاب نشده";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "این فرم فرم %dاز فرم های %dبرای پر کردن است. سه انگشت را به سمت چپ برای شکل بعدی یا به سمت راست برای برگشت به فرم قبلی بکشید.";
+
+// Menu
+"Feeds" = "باز خور";
+"Forms" = "فرم‌ها";
+"Checklists" = "چک لیست";
+"Lessons" = "درس‌ها";
+"Account" = "حساب کاربری";
+
+// Loading
+"Updating the database" = "به روز رسانی پایگاه داده";
+"Error in load the tent" = "خطا در بارگیری چادر";
+"Getting the database" = "گرفتن پایگاه داده";
+"Fetching Data" = "جمع آوری داده ها";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella دارای بسیاری از درسها و مطالب است. اولین بار که از برنامه استفاده میکنید، آنها دانلود میشوند برای آنکه آفلاین کار کنند. این روند باید حداکثر 3 دقیقه طول بکشد.";
+"Loading the content" = "بارگذاری محتوا";
+
+// Form
+"Active" = "فعال";
+"Available forms" = "فرم های موجود";
+"REMOVE" = "حذف";
+"EDIT" = "ویرایش کنید";
+"SHARE" = "اشتراک گذاری";
+"Do you really want to remove this form?" = "آیا واقعا می خواهید این فرم را حذف کنید؟";
+"No" = "خیر";
+"Yes" = "بله";
+"Choose the format." = "فرمت مورد نظر را انتخاب کنید";
+
+// Tour
+"Get advice on everything from sending a secure email to safe travel" = "از ارسال یک ایمیل ایمن به سفر ایمن در مورد همه چی توصیه دریافت کنید";
+"Umbrella makes your security simple" = "چتر امنیت شما را ساده می کند";
+"Use checklists to mark your progress" = "برای مشاهده پیشرفت خود از چک لیست استفاده کنید";
+"Stay up to date with the latest information on where you are" = "با آخرین اطلاعات در جایی که هستی به روز بمانید";
+"Terms and Conditions" = "شرایط و ضوابط";
+"ACCEPT" = "تایید کنید";
+"Downloading content can take a few minutes. Please wait." = "بارگیری مطالب ممکن است چند دقیقه طول بکشد. لطفا صبر کنید.";
+
+// RSS
+"You chose the Card mode view" = "شما نمایش وضعیت کارت را انتخاب کردید";
+"You chose the List mode view" = "شما حالت نمایش لیست را انتخاب کردید";
+"Save" = "ذخيره";
+"Cancel" = "لغو";
+"Feed Sources" = "منابع تغذیه";
+"There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "هنگام تلاش برای ایجاد خوراک RSS، خطایی رخ داد. لطفا مطمئن شوید که از آدرس صحیح استفاده کرده اید و دوباره امتحان کنید.";
+
+// Feed - Location
+"Enter the country you want to see the feed for" = "کشور مورد نظر خود را وارد کنید";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "شما هنوز مکان و منابع خوراکی را تعیین نکرده اید. شما برای دریافت آخرین اخبار امنیتی برای کشور خود باید این کار را انجام دهید. بعدا می توانید در تنظیمات آن را تغییر دهید.";
+"Set how often you want Umbrella to check for the latest security news." = "تنظیم کنید که می خواهید چتر برای هر از چند وقت، آخرین اخبار امنیتی را بررسی کند.";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "ما موقعیت مکانی شما را برای مدت طولانی تر از حد لازم ذخیره نمی کنیم. ارائه دهندگان غذا نمی دانند شما از آنها اطلاعات دریافت می کنید.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "منابعی را که میخواهید بهروزرسانی را از آن انجام دهید را تنظیم کنید. منابع تغذیه نمی توانند ببینند که از آنها درخواست اطلاعات می کنید.";
+"Location:" = "موقعیت:";
+"CHANGE LOCATION" = "تغییر موقعیت";
+"Set your Feed" = "خوراک خود را تنظیم کنید";
+"SET NOW" = "حالا تنظیم کن";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "هیچ رویدادی برای نمایش مکان شما وجود ندارد. ما آنها را هنگامی که رخ دهند،نمایش خواهیم داد. برای بازنشانی دوباره بکشید تا دوباره بررسی شود.";
+"Security feed set to:" = "خوراک امنیتی تنظیم شده است:";
+"Interval" = "فاصله";
+"SET" = "تنظیم";
+"Location" = "موقعيت";
+"Security Feed Sources" = "منبع تغذیه امنیت";
+"The city or country is not available or you have no internet connection." = "شهر یا کشور در دسترس نیست یا شما هیچ اتصال اینترنتی ندارید.";
+"Alert" = "هشدار";
+"Enter interval in minutes (one day = 1440 minutes)" = "فاصله را به صورت دقیقه وارد کنید (یک روز = 1440 دقیقه)";
+"Sources" = "منابع";
+"Select The Feed Sources" = "منابع منبع را انتخاب کنید";
+"Change repository" = "تغییر مخزن";
+"Please select one country of the list." = "لطفا یک کشور از لیست را انتخاب کنید.";
+
+// Lessons
+"Favourites" = "مورد علاقه های شما";
+"You do not have any Segment yet." = "شما هنوز هیچ بخشی ندارید";
+"Beginner" = "مبتدی";
+"Advanced" = "پیشرفته";
+"Expert" = "کارشناس";
+"Checklist" = "چک لیست";
+
+//Checklists
+"Checklists total" = "چک لیستها کل";
+"Favourites" = "مورد علاقه های شما";
+"My Checklists" = "چک لیست من";
+"Total done" = "کل انجام شده است";
+"Overview" = "بررسی اجمالی";
+"Custom" = "سفارشی";
+"Go to lessons and discover recommended checklists or create your own custom checklists." = "برو به قسمت توضیحات و چک لیست های توصیه شده یا لیست های سفارشی خود را ایجاد کنید.";
+"New Checklist" = "چک لیست جدید";
+"Name of Checklist" = "نام چک لیست";
+"Press + button to create your custom checklist." = "برای ایجاد چک لیست دلخواه خود، دکمه + را فشار دهید.";
+"Delete" = "پاک کردن";
+"Item" = "مورد";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "گذرواژه شما باید حداقل 8 کاراکتر داشته و باید حداقل یک رقم و یک حرف بزرگ داشته باشد.";
+"Password" = "گذرواژه";
+"Confirm" = "تایید ";
+"Passwords do not match." = "رمزهای ورود مطابقت ندارند.";
+"Password too short." = "رمز عبور خیلی کوتاه است.";
+"Password must have at least one digit." = "رمز عبور باید حداقل یک رقم داشته باشد.";
+"Password must have at least one capital letter." = "رمز عبور باید حداقل یک حرف بزرگ داشته باشد.";
+"Skip setting password" = "رد شدن از تنظیمات گذرواژه ";
+"Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "آیا مطمئن هستید که میخواهید بدون استفاده از گذرواژه از برنامه استفاده کنید؟\n\nاین به طور قابل توجهی ایمنی شما را با توجه به اطلاعات قابل شناسایی که در چتر وارد می کنید، کاهش میدهد.";
+"YES" = "بله";
+"NO" = "نه";
+"Settings" = "تنظیمات";
+"Set password" = "گذاشتن رمز عبور";
+"Set your password" = "کلمه ی عبور خود را تنظیم کنید";
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "گذرواژه شما باید حداقل 8 کاراکتر داشته و باید حداقل یک رقم و یک حرف بزرگ داشته باشد.";
+"Skip" = "پرش";
+"Skip password" = "رد شدن از گذرواژه";
+"Don't ask for password again" = "دوباره برای رمز عبور درخواست نکن";
+"Refresh from the server" = "تازه از سرور";
+"Select Language" = "زبان را انتخاب کنید";
+"Import your data" = "داده های خود را وارد کنید";
+"Export your data" = "دادههایتان را صادر کنید";
+"Refresh interval for custom feeds" = "بازخوانی فاصله برای فید های سفارشی";
+"Your location" = "موقعیت شما";
+"Security feed sources" = "منبع تغذیه امنیت";
+"Show updates as notification" = "نمایش به روز رسانی به عنوان اطلاع رسانی";
+"GENERAL" = "عمومی";
+"FEED" = "خوراک";
+"English" = "انگلیسی";
+"Spanish" = "اسپانیایی";
+"Chinese" = "چینی ها";
+"Arabic" = "عربی";
+"Iranian" = "ایرانی";
+"French" = "فرانسوی";
+"Russian" = "روسی";
+"hour" = "ساعت";
+"hour(s)" = "ساعت (ها)";
+"hours" = "ساعت ها";
+"Manually" = "به صورت دستی";
+"Dashboard" = "پنل";
+"new customFeeds." = "خوراک سفارشی جدید";
+"You can enable access in Settings> Umbrela> Notifications" = "شما می توانید دسترسی را در تنظیمات> چتر> اعلان ها فعال کنید";

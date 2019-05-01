@@ -36,6 +36,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.setNeedsDisplay()
         self.settingsTableView.reloadData()
     }
     
@@ -154,7 +155,6 @@ extension SettingsViewController: UITableViewDataSource {
         let cell: SettingCell = (tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as? SettingCell)!
         
         cell.configure(withViewModel: self.settingsViewModel, indexPath: indexPath)
-        
         return cell
     }
 }

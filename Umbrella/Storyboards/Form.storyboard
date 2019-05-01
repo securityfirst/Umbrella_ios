@@ -23,6 +23,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QTI-IZ-ifk">
+                                <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WKO-es-iPn">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,13 +132,16 @@
                             <constraint firstItem="WKO-es-iPn" firstAttribute="leading" secondItem="Fm0-dG-u7a" secondAttribute="leading" id="4vu-8t-OAN"/>
                             <constraint firstAttribute="bottom" secondItem="WKO-es-iPn" secondAttribute="bottom" id="6G2-Pg-0XP"/>
                             <constraint firstItem="WKO-es-iPn" firstAttribute="trailing" secondItem="Fm0-dG-u7a" secondAttribute="trailing" id="ABV-5i-SgV"/>
+                            <constraint firstItem="QTI-IZ-ifk" firstAttribute="centerY" secondItem="HN5-zu-6Hx" secondAttribute="centerY" id="LRM-Eb-a2h"/>
                             <constraint firstItem="WKO-es-iPn" firstAttribute="top" secondItem="Fm0-dG-u7a" secondAttribute="top" id="r95-7B-6Ie"/>
+                            <constraint firstItem="QTI-IZ-ifk" firstAttribute="centerX" secondItem="HN5-zu-6Hx" secondAttribute="centerX" id="vcX-eu-eR7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fm0-dG-u7a"/>
                     </view>
                     <navigationItem key="navigationItem" title="Forms" id="78Q-sc-xtA"/>
                     <connections>
                         <outlet property="formTableView" destination="WKO-es-iPn" id="Svx-9U-45e"/>
+                        <outlet property="loadingActivity" destination="QTI-IZ-ifk" id="uJE-5I-ngM"/>
                         <segue destination="9Lg-m8-rEn" kind="show" identifier="fillFormSegue" id="P7r-Mh-DwG"/>
                     </connections>
                 </viewController>

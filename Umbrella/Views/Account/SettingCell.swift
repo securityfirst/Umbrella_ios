@@ -44,6 +44,17 @@ class SettingCell: UITableViewCell {
     func configure(withViewModel viewModel:SettingsViewModel, indexPath: IndexPath) {
         
         if let tableSection = TableSection(rawValue: indexPath.section), let item = viewModel.items[tableSection]?[indexPath.row] {
+            
+            let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+            // Arabic(ar) or Persian Iranian(fa)
+            if language == "ar" || language == "fa" {
+                self.titleLabel.textAlignment = .right
+                self.subtitleLabel.textAlignment = .right
+            } else {
+                self.titleLabel.textAlignment = .left
+                self.subtitleLabel.textAlignment = .left
+            }
+            
             self.titleLabel.text = item.title
             self.subtitleLabel.text = item.subtitle
             self.accessoryType = item.hasAccessory ? .disclosureIndicator : .none
@@ -95,6 +106,10 @@ class SettingCell: UITableViewCell {
                     self.iconImageView.image = #imageLiteral(resourceName: "ES")
                 } else if self.subtitleLabel.text == "Chinese".localized() {
                     self.iconImageView.image = #imageLiteral(resourceName: "CN")
+                } else if self.subtitleLabel.text == "Arabic".localized() {
+                    self.iconImageView.image = #imageLiteral(resourceName: "AR")
+                } else if self.subtitleLabel.text == "Iranian".localized() {
+                    self.iconImageView.image = #imageLiteral(resourceName: "IR")
                 }
             }
             

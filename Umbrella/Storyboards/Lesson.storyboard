@@ -29,6 +29,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iyW-as-9Nu">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-Wu-u8L">
                                 <rect key="frame" x="0.0" y="167" width="320" height="401"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,6 +80,8 @@
                         <constraints>
                             <constraint firstItem="3rt-qD-udK" firstAttribute="trailing" secondItem="IJo-xM-Qev" secondAttribute="trailing" id="0dn-4i-Kb1"/>
                             <constraint firstItem="BlC-Wu-u8L" firstAttribute="top" secondItem="3rt-qD-udK" secondAttribute="bottom" id="8iK-rc-V16"/>
+                            <constraint firstItem="iyW-as-9Nu" firstAttribute="centerY" secondItem="zV5-wv-gOL" secondAttribute="centerY" id="9FP-Nc-E4u"/>
+                            <constraint firstItem="iyW-as-9Nu" firstAttribute="centerX" secondItem="zV5-wv-gOL" secondAttribute="centerX" id="In8-2H-3U7"/>
                             <constraint firstItem="BlC-Wu-u8L" firstAttribute="leading" secondItem="IJo-xM-Qev" secondAttribute="leading" id="L50-gH-efV"/>
                             <constraint firstItem="3rt-qD-udK" firstAttribute="top" secondItem="IJo-xM-Qev" secondAttribute="top" id="NB8-SC-shE"/>
                             <constraint firstItem="3rt-qD-udK" firstAttribute="leading" secondItem="IJo-xM-Qev" secondAttribute="leading" id="VAE-fM-NFh"/>
@@ -89,6 +94,7 @@
                     <navigationItem key="navigationItem" title="Lessons" id="PmF-gL-Sc9"/>
                     <connections>
                         <outlet property="lessonTableView" destination="BlC-Wu-u8L" id="YG3-q0-JYJ"/>
+                        <outlet property="loadingActivity" destination="iyW-as-9Nu" id="MuZ-DS-Mrd"/>
                         <segue destination="pB0-aF-ga4" kind="show" identifier="difficultySegue" id="iyB-RK-iZg"/>
                         <segue destination="B2x-lK-1Wv" kind="show" identifier="segmentSegue" id="Wln-tG-fek"/>
                         <segue destination="Xih-sS-bEp" kind="show" identifier="glossarySegue" id="0CJ-vw-xmI"/>
@@ -717,7 +723,7 @@
         <image name="iconShare" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MFc-0B-sLb"/>
-        <segue reference="6fs-CU-3FT"/>
+        <segue reference="0CJ-vw-xmI"/>
+        <segue reference="Wln-tG-fek"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -87,6 +87,17 @@ extension SettingLanguageViewController: UITableViewDelegate {
             }
         }
         
+        // Arabic(ar) or Persian Iranian(fa)
+        if itemSelected.value == "ar" || itemSelected.value == "fa" {
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+            UITabBar.appearance().semanticContentAttribute = .forceRightToLeft
+            UINavigationBar.appearance().semanticContentAttribute = .forceRightToLeft
+        } else {
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+            UITabBar.appearance().semanticContentAttribute = .forceLeftToRight
+            UINavigationBar.appearance().semanticContentAttribute = .forceLeftToRight
+        }
+        
         UserDefaults.standard.set(itemSelected.value, forKey: "Language")
         Localize.setCurrentLanguage(itemSelected.value)
         

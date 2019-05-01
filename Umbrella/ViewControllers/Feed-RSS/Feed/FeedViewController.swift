@@ -231,6 +231,28 @@ class FeedViewController: UIViewController {
         self.sourceLegLabel.text = "Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them.".localized()
         
         self.sourceLegend = self.sourceLegLabel.text ?? ""
+        
+        let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        // Arabic(ar) or Persian Iranian(fa)
+        if language == "ar" || language == "fa" {
+            self.setYourFeedLabel.textAlignment = .right
+            self.setYourFeedLegLabel.textAlignment = .right
+            self.intervalLabel.textAlignment = .right
+            self.intervalLegLabel.textAlignment = .right
+            self.locationLabel.textAlignment = .right
+            self.locationLegLabel.textAlignment = .right
+            self.securityFeedSourcesLabel.textAlignment = .right
+            self.sourceLegLabel.textAlignment = .right
+        } else {
+            self.setYourFeedLabel.textAlignment = .left
+            self.setYourFeedLegLabel.textAlignment = .left
+            self.intervalLabel.textAlignment = .left
+            self.intervalLegLabel.textAlignment = .left
+            self.locationLabel.textAlignment = .left
+            self.locationLegLabel.textAlignment = .left
+            self.securityFeedSourcesLabel.textAlignment = .left
+            self.sourceLegLabel.textAlignment = .left
+        }
     }
     
     //    /// Share action

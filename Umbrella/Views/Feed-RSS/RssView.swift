@@ -8,6 +8,7 @@
 
 import UIKit
 import FeedKit
+import Localize_Swift
 
 protocol RssViewDelegate: class {
     func openRss(rss: RSSFeed)
@@ -40,6 +41,7 @@ class RssView: UIView {
         self.loadRss()
         
         NotificationCenter.default.addObserver(self, selector: #selector(RssView.updateRss(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
     }
     
     //
@@ -52,6 +54,10 @@ class RssView: UIView {
             self.rssTableView.isHidden = (self.rssViewModel.rssArray.count == 0)
             self.rssTableView.reloadData()
         }
+    }
+    
+    @objc func updateLanguage() {
+        self.rssTableView.reloadData()
     }
     
     /// Update Rss
@@ -109,8 +115,12 @@ extension RssView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let item = self.rssViewModel.rssArray[indexPath.row]
         
-        return self.rssViewModel.isCustom(rssFeed: item)
+        if self.rssViewModel.rssArray.indexExists(indexPath.row) {
+            let item = self.rssViewModel.rssArray[indexPath.row]
+            return self.rssViewModel.isCustom(rssFeed: item)
+        }
+        
+        return false
     }
 }

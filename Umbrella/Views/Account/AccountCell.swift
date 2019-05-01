@@ -39,5 +39,13 @@ class AccountCell: UITableViewCell {
         
         let item = viewModel.items[indexPath.row]
         self.nameLabel.text = item.name
+        
+        let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        // Arabic(ar) or Persian Iranian(fa)
+        if language == "ar" || language == "fa" {
+            self.nameLabel.textAlignment = .right
+        } else {
+            self.nameLabel.textAlignment = .left
+        }
     }
 }
