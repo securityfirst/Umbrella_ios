@@ -30,8 +30,10 @@ class CustomChecklistViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)        
-        updateChecklist()
+        super.viewWillAppear(animated)
+        if UmbrellaDatabase.loadedContent {
+            updateChecklist()
+        }
     }
     
     // MARK: - Functions
@@ -40,7 +42,9 @@ class CustomChecklistViewController: UIViewController {
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.emptyLabel?.text = "Press + button to create your custom checklist.".localized()
-        updateChecklist()
+        if UmbrellaDatabase.loadedContent {
+            updateChecklist()
+        }
     }
     
     /// Loading the checklist

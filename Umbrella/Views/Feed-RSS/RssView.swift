@@ -21,6 +21,8 @@ class RssView: UIView {
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var rssTableView: UITableView!
     
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
+    
     lazy var rssViewModel: RssViewModel = {
         let rssViewModel = RssViewModel()
         return rssViewModel
@@ -38,10 +40,12 @@ class RssView: UIView {
         self.rssTableView.estimatedRowHeight = 44.0
         
         self.emptyLabel.text = "There no RSS".localized()
-        self.loadRss()
         
         NotificationCenter.default.addObserver(self, selector: #selector(RssView.updateRss(notification:)), name: Notification.Name("UmbrellaTent"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
+        
+        self.loadingActivity.isHidden = false
+        self.rssTableView.isHidden = true
     }
     
     //
@@ -49,10 +53,14 @@ class RssView: UIView {
     
     /// Load all the RSS
     func loadRss() {
-        self.rssViewModel.clearRss()
-        self.rssViewModel.loadRSS {
-            self.rssTableView.isHidden = (self.rssViewModel.rssArray.count == 0)
-            self.rssTableView.reloadData()
+        if UmbrellaDatabase.loadedContent {
+            self.loadingActivity.isHidden = true
+            self.rssTableView.isHidden = false
+            self.rssViewModel.clearRss()
+            self.rssViewModel.loadRSS {
+                self.rssTableView.isHidden = (self.rssViewModel.rssArray.count == 0)
+                self.rssTableView.reloadData()
+            }
         }
     }
     

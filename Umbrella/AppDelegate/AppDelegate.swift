@@ -24,11 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Fabric
-        #if APPSTORE
-        Fabric.with([])
-        #else
-        Fabric.with([Crashlytics.self])
-        #endif
+//        #if !APPSTORE
+//            Fabric.with([Crashlytics.self])
+//        #endif
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(show))
         longPressGesture.numberOfTouchesRequired = 2

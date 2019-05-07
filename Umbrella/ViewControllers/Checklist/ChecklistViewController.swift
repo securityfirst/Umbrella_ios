@@ -31,14 +31,15 @@ class ChecklistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLanguage()
         self.checklistReviewTableView?.register(ChecklistReviewHeaderView.nib, forHeaderFooterViewReuseIdentifier: ChecklistReviewHeaderView.identifier)
         self.checklistReviewTableView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)        
-        updateChecklist()
+        if UmbrellaDatabase.loadedContent {
+            updateChecklist()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +53,9 @@ class ChecklistViewController: UIViewController {
     @objc func updateLanguage() {
         self.title = "Checklists".localized()
         self.emptyLabel.text = "Go to lessons and discover recommended checklists or create your own custom checklists.".localized()
-        updateChecklist()
+        if UmbrellaDatabase.loadedContent {
+            updateChecklist()
+        }
     }
     
     /// Loading the checklist

@@ -45,6 +45,8 @@ class ChecklistReviewCell: UITableViewCell {
         if indexPath.section == 0 {
             let checklistChecked = viewModel.totalDoneChecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
+            
+            print("Total Done: \(checklistChecked?.totalChecked ?? 0) / \(checklistChecked?.totalItemsChecklist ?? 0) * 100")
             if checklistChecked?.totalChecked == 0 {
                 percent = "0%"
             } else {

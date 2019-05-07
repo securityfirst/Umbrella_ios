@@ -32,15 +32,16 @@ class ChecklistViewModel {
                     //Difficulty
                     for difficulty in subCategory.categories {
                         //Checklists
-                        for _ in difficulty.checkLists {
-                            totalChecklists += 1
+                        for checklist in difficulty.checkLists {
+                            totalChecklists += checklist.items.filter { $0.isLabel == false }.count
                         }
                     }
                 }
             }
             
+            let totalFavoriteChecked = self.favouriteChecklistChecked.filter { $0.totalChecked > 0 }
             totalDoneChecklistChecked.totalItemsChecklist = totalChecklists
-            totalDoneChecklistChecked.totalChecked = self.checklistChecked.count + self.favouriteChecklistChecked.count
+            totalDoneChecklistChecked.totalChecked = self.checklistChecked.reduce(0, {$0 + $1.totalChecked}) + totalFavoriteChecked.reduce(0, {$0 + $1.totalChecked})
         }
         return totalDoneChecklistChecked
     }

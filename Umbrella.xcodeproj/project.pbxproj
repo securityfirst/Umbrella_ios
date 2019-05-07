@@ -1832,7 +1832,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f25eccbeaeeb109eecb8bcd8bd9bdb5ae8275cee 19c68129629b1e03bb34208315d4732db9d9666cf7b5e025729ee192c2ca783b";
+			shellScript = "#if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n#    ✅ echo \"Fabric is available.\"\n#    \"${PODS_ROOT}/Fabric/run\" f25eccbeaeeb109eecb8bcd8bd9bdb5ae8275cee 19c68129629b1e03bb34208315d4732db9d9666cf7b5e025729ee192c2ca783b\n#else \n#    ✅ echo \"Appstore does not have Fabric.\"\n#fi\n\n";
 		};
 		E9E6A98A10749655FC8F9303 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

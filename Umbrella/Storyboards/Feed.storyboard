@@ -139,7 +139,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2U-0I-zK3" userLabel="Rss" customClass="RssView" customModule="Umbrella" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="157" width="320" height="411"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdM-re-zGM">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Tc2-fs-t9J">
+                                        <rect key="frame" x="150" y="195.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdM-re-zGM">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <nil key="textColor"/>
@@ -206,16 +209,19 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="VNI-YZ-qry" secondAttribute="bottom" id="2eh-Ic-3SR"/>
+                                    <constraint firstItem="Tc2-fs-t9J" firstAttribute="centerY" secondItem="x2U-0I-zK3" secondAttribute="centerY" id="6PJ-fo-T4D"/>
                                     <constraint firstItem="hdM-re-zGM" firstAttribute="leading" secondItem="x2U-0I-zK3" secondAttribute="leading" id="Y9F-aN-fcw"/>
                                     <constraint firstAttribute="trailing" secondItem="VNI-YZ-qry" secondAttribute="trailing" id="ads-Qp-lku"/>
                                     <constraint firstAttribute="trailing" secondItem="hdM-re-zGM" secondAttribute="trailing" id="d6A-Fe-elM"/>
                                     <constraint firstItem="hdM-re-zGM" firstAttribute="top" secondItem="x2U-0I-zK3" secondAttribute="top" id="ddL-lT-zdS"/>
                                     <constraint firstItem="VNI-YZ-qry" firstAttribute="top" secondItem="x2U-0I-zK3" secondAttribute="top" id="fcZ-WU-Bpf"/>
                                     <constraint firstItem="VNI-YZ-qry" firstAttribute="leading" secondItem="x2U-0I-zK3" secondAttribute="leading" id="hFd-TF-ppT"/>
+                                    <constraint firstItem="Tc2-fs-t9J" firstAttribute="centerX" secondItem="x2U-0I-zK3" secondAttribute="centerX" id="iuQ-Z8-QVD"/>
                                     <constraint firstAttribute="bottom" secondItem="hdM-re-zGM" secondAttribute="bottom" id="kTD-u5-hVJ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="emptyLabel" destination="hdM-re-zGM" id="d0X-fA-2E4"/>
+                                    <outlet property="loadingActivity" destination="Tc2-fs-t9J" id="KM1-S9-GQv"/>
                                     <outlet property="rssTableView" destination="VNI-YZ-qry" id="GRA-8U-a37"/>
                                 </connections>
                             </view>
