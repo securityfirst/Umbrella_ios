@@ -39,14 +39,16 @@ class FillFormViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(FillFormViewController.self))
+                    
+                    print("\n\n\n \(window.rootViewController) \n\n\n")
+                expect(window.rootViewController).toEventually(beAnInstanceOf(FillFormViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
             
             describe(".viewDidAppear") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidAppear(true)
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(FillFormViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(FillFormViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
         }

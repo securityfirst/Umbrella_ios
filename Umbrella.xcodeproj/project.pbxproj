@@ -1621,7 +1621,6 @@
 				A0B9D42020AAE03600B2B796 /* Resources */,
 				82674C40E9961726A75A0971 /* [CP] Embed Pods Frameworks */,
 				A0B9D46520AB9C3800B2B796 /* Run Script - SwiftLint */,
-				A0B9D46620AB9CC300B2B796 /* Run Script - Fabric */,
 				A0A166F82152B2EC00A91B53 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1819,20 +1818,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		A0B9D46620AB9CC300B2B796 /* Run Script - Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script - Fabric";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n#    ✅ echo \"Fabric is available.\"\n#    \"${PODS_ROOT}/Fabric/run\" f25eccbeaeeb109eecb8bcd8bd9bdb5ae8275cee 19c68129629b1e03bb34208315d4732db9d9666cf7b5e025729ee192c2ca783b\n#else \n#    ✅ echo \"Appstore does not have Fabric.\"\n#fi\n\n";
 		};
 		E9E6A98A10749655FC8F9303 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

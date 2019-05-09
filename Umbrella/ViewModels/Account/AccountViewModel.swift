@@ -30,9 +30,7 @@ class AccountViewModel {
     func loadItems() {
         self.items = [
             (name: "Settings".localized(), type: AccountItem.settings),
-            //            (name: "Mask", type: AccountItem.mask),
             (name: "Set password".localized(), type: AccountItem.setPassword)
-            //            (name: "Switch repo", type: AccountItem.switchRepo)
         ]
     }
 }

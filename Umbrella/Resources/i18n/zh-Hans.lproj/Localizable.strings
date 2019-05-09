@@ -133,7 +133,7 @@
 "Spanish" = "西班牙語";
 "Chinese" = "中文";
 "Arabic" = "阿拉伯";
-"Iranian" = "伊朗的";
+"Farsi" = "波斯语";
 "French" = "法国";
 "Russian" = "俄语";
 "hour" = "小時";
@@ -143,3 +143,6 @@
 "Dashboard" = "儀表板";
 "new customFeeds." = "新的customFeeds。";
 "You can enable access in Settings> Umbrela> Notifications" = "您可以在“設置> Umbrela> 通知中啟用訪問權限";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
+"Secondary" = "Secondary";
+"Change" = "Change";

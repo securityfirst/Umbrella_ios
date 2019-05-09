@@ -46,7 +46,7 @@ class SegmentViewControllerSpec: QuickSpec {
                     let navigationController: UINavigationController = (window.rootViewController as? UINavigationController)!
                    let segmentViewController = navigationController.viewControllers.first
                     segmentViewController?.viewDidLoad()
-                    expect(segmentViewController).toEventually(beAnInstanceOf(SegmentViewController.self))
+                    expect(segmentViewController).toEventually(beAnInstanceOf(SegmentViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
         }

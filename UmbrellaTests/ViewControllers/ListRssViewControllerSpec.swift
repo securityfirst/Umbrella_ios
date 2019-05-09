@@ -35,7 +35,7 @@ class ListRssViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(ListRssViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(ListRssViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
             

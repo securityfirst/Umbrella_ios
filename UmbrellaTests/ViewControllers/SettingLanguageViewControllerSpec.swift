@@ -33,7 +33,7 @@ class SettingLanguageViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(SettingLanguageViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(SettingLanguageViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
         }

@@ -8,11 +8,15 @@
 
 import UIKit
 import Files
+import Localize_Swift
 
 class DemoSettingViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var gitText: UITextField!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var changeButton: UIButton!
     
     var documentsFolder: Folder = {
         let system = FileSystem()
@@ -30,6 +34,11 @@ class DemoSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gitText.text = "https://github.com/"
+        self.titleLabel.text = "Change repository".localized()
+       self.messageLabel.text = "Loading data from new repository will reset all the progress you made. Back up before you do it!".localized()
+        self.segmentedControl.setTitle("Security First".localized(), forSegmentAt: 0)
+        self.segmentedControl.setTitle("Secondary".localized(), forSegmentAt: 1)
+        self.changeButton.setTitle("Change".localized(), for: .normal)
     }
     
     @IBAction func closeAction(_ sender: Any) {

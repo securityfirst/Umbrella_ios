@@ -33,7 +33,7 @@ class ReviewLessonViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(ReviewLessonViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(ReviewLessonViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
         }

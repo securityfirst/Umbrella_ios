@@ -108,7 +108,7 @@ class SettingCell: UITableViewCell {
                     self.iconImageView.image = #imageLiteral(resourceName: "CN")
                 } else if self.subtitleLabel.text == "Arabic".localized() {
                     self.iconImageView.image = #imageLiteral(resourceName: "AR")
-                } else if self.subtitleLabel.text == "Iranian".localized() {
+                } else if self.subtitleLabel.text == "Farsi".localized() {
                     self.iconImageView.image = #imageLiteral(resourceName: "IR")
                 }
             }

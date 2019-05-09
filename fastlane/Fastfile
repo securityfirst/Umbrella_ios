@@ -13,7 +13,7 @@ platform :ios do
   desc "Create file of coverage to Sonarqube"
   lane :metrics do
     #We need to put "../DerivedData" because when it is executed it is in folder fastlane
-    sh("xcodebuild -workspace ../Umbrella.xcworkspace -scheme Umbrella -sdk iphonesimulator -enableCodeCoverage YES -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.1' GCC_GENERATE_TEST_COVERAGE_FILES=YES build test -derivedDataPath ../DerivedData")
+    sh("xcodebuild -workspace ../Umbrella.xcworkspace -scheme Umbrella -sdk iphonesimulator -enableCodeCoverage YES -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.2' GCC_GENERATE_TEST_COVERAGE_FILES=YES build test -derivedDataPath ../DerivedData")
     sh("xcrun llvm-cov show -instr-profile=$(find ../DerivedData -iname 'Coverage.profdata') ../DerivedData/Build/Products/Debug-iphonesimulator/Umbrella.app/Umbrella > ../DerivedData/Coverage.report")
     sonar
 

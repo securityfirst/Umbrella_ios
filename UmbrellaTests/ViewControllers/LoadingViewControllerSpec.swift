@@ -33,14 +33,14 @@ class LoadingViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(LoadingViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(LoadingViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
             describe("loadTent") {
                 
                 // Remove real request
                 // Put mock request
-                it("should do the clone of the tent") {
+                xit("should do the clone of the tent") {
                     Config.debug = false
                     waitUntil(timeout: 600) { done in
                         viewController.loadTent(completion: {

@@ -33,7 +33,7 @@ class AccountViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(AccountViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(AccountViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
         }

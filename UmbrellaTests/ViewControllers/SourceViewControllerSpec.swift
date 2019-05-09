@@ -33,7 +33,7 @@ class SourceViewControllerSpec: QuickSpec {
             describe(".viewDidLoad") {
                 it ("should be presented") {
                     window.rootViewController?.viewDidLoad()
-                    expect(window.rootViewController).toEventually(beAnInstanceOf(SourceViewController.self))
+                    expect(window.rootViewController).toEventually(beAnInstanceOf(SourceViewController.self), timeout: 5.5, pollInterval: 0.2)
                 }
             }
         }

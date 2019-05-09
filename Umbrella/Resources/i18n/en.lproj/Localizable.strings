@@ -133,7 +133,7 @@
 "Spanish" = "Spanish";
 "Chinese" = "Chinese";
 "Arabic" = "Arabic";
-"Iranian" = "Iranian";
+"Farsi" = "Farsi";
 "French" = "French";
 "Russian" = "Russian";
 "hour" = "hour";
@@ -143,3 +143,6 @@
 "Dashboard" = "Dashboard";
 "new customFeeds." = "new customFeeds.";
 "You can enable access in Settings> Umbrela> Notifications" = "You can enable access in Settings> Umbrela> Notifications";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
+"Secondary" = "Secondary";
+"Change" = "Change";

@@ -133,7 +133,7 @@
 "Spanish" = "الأسبانية";
 "Chinese" = "صينى";
 "Arabic" = "عربى";
-"Iranian" = "إيراني";
+"Farsi" = "فارسی";
 "French" = "الفرنسية";
 "Russian" = "الروسية";
 "hour" = "ساعة";
@@ -143,3 +143,6 @@
 "Dashboard" = "لوحة القيادة";
 "new customFeeds." = "customFeeds جديدة.";
 "You can enable access in Settings> Umbrela> Notifications" = "يمكنك تمكين الوصول في الإعدادات> Umbrela> الإشعارات";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
+"Secondary" = "Secondary";
+"Change" = "Change";
