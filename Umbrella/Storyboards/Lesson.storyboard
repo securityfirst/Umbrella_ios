@@ -97,7 +97,7 @@
                         <outlet property="loadingActivity" destination="iyW-as-9Nu" id="MuZ-DS-Mrd"/>
                         <segue destination="pB0-aF-ga4" kind="show" identifier="difficultySegue" id="iyB-RK-iZg"/>
                         <segue destination="B2x-lK-1Wv" kind="show" identifier="segmentSegue" id="Wln-tG-fek"/>
-                        <segue destination="Xih-sS-bEp" kind="show" identifier="glossarySegue" id="0CJ-vw-xmI"/>
+                        <segue destination="Xih-sS-bEp" kind="show" identifier="categoryJustSegmentsSegue" id="0CJ-vw-xmI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pz-vO-grM" userLabel="First Responder" sceneMemberID="firstResponder"/>

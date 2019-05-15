@@ -18,13 +18,14 @@ class SegmentViewController: UIViewController {
         let segmentViewModel = SegmentViewModel()
         return segmentViewModel
     }()
+    var menuView: BTNavigationDropdownMenu?
+    var wkWebView: WKWebView!
+    var fileNameShare: String = ""
     
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentCollectionView: UICollectionView!
-    var menuView: BTNavigationDropdownMenu?
-    var wkWebView: WKWebView!
-    var fileNameShare: String = ""
+    
     
     //
     // MARK: - Life cycle

@@ -1,0 +1,45 @@
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "3oP-hM-gh3"; */
+"3oP-hM-gh3.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "4Hy-2a-c4B"; */
+"4Hy-2a-c4B.normalTitle" = "X";
+
+/* Class = "UILabel"; text = "Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most."; ObjectID = "7Ct-hc-mXM"; */
+"7Ct-hc-mXM.text" = "Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most.";
+
+/* Class = "UILabel"; text = "Loading data from new repository will reset all the progress you made. Back up before you do it!"; ObjectID = "ADQ-HH-ZrN"; */
+"ADQ-HH-ZrN.text" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
+
+/* Class = "UITextField"; placeholder = "http://"; ObjectID = "LNP-l4-LI9"; */
+"LNP-l4-LI9.placeholder" = "http://";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "PeI-cV-J3h"; */
+"PeI-cV-J3h.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "R5C-GL-o5c"; */
+"R5C-GL-o5c.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Change"; ObjectID = "RfL-bS-sGd"; */
+"RfL-bS-sGd.normalTitle" = "Change";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Rfn-7H-BwQ"; */
+"Rfn-7H-BwQ.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "dvu-4s-Ag2"; */
+"dvu-4s-Ag2.normalTitle" = "X";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "lsq-Wg-QFh"; */
+"lsq-Wg-QFh.title" = "Item";
+
+/* Class = "UISegmentedControl"; mEn-oN-cJ5.segmentTitles[0] = "Security First"; ObjectID = "mEn-oN-cJ5"; */
+"mEn-oN-cJ5.segmentTitles[0]" = "Security First";
+
+/* Class = "UISegmentedControl"; mEn-oN-cJ5.segmentTitles[1] = "Secondary"; ObjectID = "mEn-oN-cJ5"; */
+"mEn-oN-cJ5.segmentTitles[1]" = "Secondary";
+
+/* Class = "UIButton"; normalTitle = "Retry again!"; ObjectID = "xhZ-VD-W19"; */
+"xhZ-VD-W19.normalTitle" = "Retry again!";
+
+/* Class = "UILabel"; text = "Demo"; ObjectID = "zsK-xL-Snp"; */
+"zsK-xL-Snp.text" = "Demo";

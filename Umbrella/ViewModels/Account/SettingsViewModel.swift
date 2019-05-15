@@ -42,6 +42,12 @@ class SettingsViewModel {
         } else if language == "fa" {
             languageSelected = "Farsi".localized()
         }
+//        else if language == "fr" {
+//            languageSelected = "French".localized()
+//        }
+        else if language == "ru" {
+            languageSelected = "Russian".localized()
+        }
         
         self.items = [
             .general: [

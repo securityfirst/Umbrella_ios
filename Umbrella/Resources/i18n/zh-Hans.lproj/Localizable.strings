@@ -54,7 +54,7 @@
 "Feed Sources" = "饲料来源";
 "There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "尝试创建RSS源时出错。 请确保您使用的是正确的地址，然后重试。";
 
-// Feed - Location
+// Feed
 "Enter the country you want to see the feed for" = "输入您要查看Feed的国家/地区";
 "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "您尚未設置Feed的位置和來源。 您必須這樣做以獲取您所在國家/地區的最新安全新聞。 您可以稍後在設置中隨時更改它。";
 "Set how often you want Umbrella to check for the latest security news." = "設置您希望 Umbrella 檢查最新安全新聞的頻率。";
@@ -77,6 +77,7 @@
 "Select The Feed Sources" = "選擇Feed源";
 "Change repository" = "更改存储库";
 "Please select one country of the list." = "请选择列表中的一个国家/地区。";
+"Select All" = "全选";
 
 // Lessons
 "Favourites" = "最爱";
@@ -143,6 +144,6 @@
 "Dashboard" = "儀表板";
 "new customFeeds." = "新的customFeeds。";
 "You can enable access in Settings> Umbrela> Notifications" = "您可以在“設置> Umbrela> 通知中啟用訪問權限";
-"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
-"Secondary" = "Secondary";
-"Change" = "Change";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "从新存储库加载数据将重置您所做的所有进度。 在你做之前备份！";
+"Secondary" = "次要";
+"Change" = "更改";

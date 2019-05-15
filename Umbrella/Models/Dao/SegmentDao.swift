@@ -53,7 +53,7 @@ struct SegmentDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: Segment) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Segment.table) ('name', 'file', 'index', 'content', 'category_id') VALUES (\"\(object.name ?? "")\", \"\(object.file ?? "")\", \(object.index ?? -1), \"\(object.content!.toBase64())\", \(object.categoryId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(Segment.table) ('name', 'file', 'index', 'content', 'category_id') VALUES (\"\(object.name?.replacingOccurrences(of: "\"", with: "'") ?? "")\", \"\(object.file ?? "")\", \(object.index ?? -1), \"\(object.content!.toBase64())\", \(object.categoryId))")
         return rowId
     }
     

@@ -206,6 +206,7 @@ class SQLManager: SQLProtocol {
             try db?.prepare(query).run()
             return (db?.lastInsertRowid)!
         } catch {
+            print(query)
             print(error)
             return -1
         }

@@ -163,7 +163,7 @@ class LessonViewController: UIViewController {
                 segmentViewController.segmentViewModel.difficulties = subCategory.categories
             }
             
-        } else if segue.identifier == "glossarySegue" {
+        } else if segue.identifier == "categoryJustSegmentsSegue" {
             let reviewLessonViewController = (segue.destination as? ReviewLessonViewController)!
             
             let dictionary = (sender as? [String: Any])!
@@ -313,11 +313,11 @@ extension LessonViewController: CategoryHeaderViewDelegate {
         } else if self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1].categories.count == 0 {
             let category = self.lessonViewModel.getCategories(ofLanguage: languageName)[section - 1]
             
-            if category.template != Template.glossary.rawValue {
-                let dic = ["segments": category.segments, "checkLists": category.checkLists , "category": category, "selected": category.segments.count == 0 ? (Any).self : category.segments.first!] as [String : Any]
-                self.performSegue(withIdentifier: "glossarySegue", sender: dic)
-            } else {
+            if category.template == Template.glossary.rawValue {
                 self.performSegue(withIdentifier: "segmentSegue", sender: category)
+            } else {
+                let dic = ["segments": category.segments, "checkLists": category.checkLists , "category": category, "selected": category.segments.count == 0 ? (Any).self : category.segments.first!] as [String : Any]
+                self.performSegue(withIdentifier: "categoryJustSegmentsSegue", sender: dic)
             }
         } else {
             collapsed = true

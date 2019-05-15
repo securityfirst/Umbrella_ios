@@ -66,6 +66,14 @@ class SegmentViewModel {
         }
         
         if let difficulty = difficulty {
+            
+            if difficulty.template == Template.glossary.rawValue {
+                let segments = difficulty.segments.sorted(by: { $0.name! < $1.name! })
+                for (index, segment) in segments.enumerated() {
+                    segment.index = Float(index + 1)
+                }
+                return segments
+            }
             return difficulty.segments
         }
         

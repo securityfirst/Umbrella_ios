@@ -111,6 +111,12 @@ class SettingCell: UITableViewCell {
                 } else if self.subtitleLabel.text == "Farsi".localized() {
                     self.iconImageView.image = #imageLiteral(resourceName: "IR")
                 }
+//                else if self.subtitleLabel.text == "French".localized() {
+//                    self.iconImageView.image = #imageLiteral(resourceName: "FR")
+//                }
+                else if self.subtitleLabel.text == "Russian".localized() {
+                    self.iconImageView.image = #imageLiteral(resourceName: "RU")
+                }
             }
             
             self.layoutIfNeeded()

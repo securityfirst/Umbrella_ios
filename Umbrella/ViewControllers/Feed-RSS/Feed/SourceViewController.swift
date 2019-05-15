@@ -38,6 +38,11 @@ class SourceViewController: UIViewController {
             }
         }
         
+        if sources?.count == Sources.list.count {
+            //Added indexPath of "Select All" as checked
+            self.selectedIndexPaths.insert(IndexPath(row: Sources.list.count, section: 0))
+        }
+        
         saveButton.setTitle("Save".localized(), for: .normal)
         self.sourceTableView.reloadData()
     }
@@ -52,6 +57,7 @@ class SourceViewController: UIViewController {
         
         NotificationCenter.default.post(name: Notification.Name("ContinueWizard"), object: nil)
         
+        self.selectedIndexPaths.remove(IndexPath(row: Sources.list.count, section: 0))
         var indexs: [Int] = [Int]()
         for indexPath in self.selectedIndexPaths {
             let source = Sources.list[indexPath.row]
@@ -74,17 +80,21 @@ extension SourceViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Sources.list.count
+        return Sources.list.count + 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: SourceCell = (tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as? SourceCell)!
         
-        let source = Sources.list[indexPath.row]
-        cell.titleLabel?.text = source.name
-        
-        cell.checkImageView.image = self.selectedIndexPaths.contains(indexPath) ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
+        if Sources.list.count == indexPath.row {
+            cell.titleLabel?.text = "Select All".localized()
+            cell.checkImageView.image = self.selectedIndexPaths.contains(indexPath) ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
+        } else {
+            let source = Sources.list[indexPath.row]
+            cell.titleLabel?.text = source.name
+            cell.checkImageView.image = self.selectedIndexPaths.contains(indexPath) ? #imageLiteral(resourceName: "checkSelected") : #imageLiteral(resourceName: "groupNormal")
+        }
         
         return cell
     }
@@ -100,12 +110,29 @@ extension SourceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if Sources.list.count == indexPath.row {
+            let sourceIndexes = Sources.list.indices
+            self.selectedIndexPaths.removeAll()
+            
+            for index in sourceIndexes {
+                self.selectedIndexPaths.insert(IndexPath(row: index, section: 0))
+            }
+            self.selectedIndexPaths.insert(IndexPath(row: Sources.list.count, section: 0))
+            tableView.reloadData()
+            return
+        }
+        
         if self.selectedIndexPaths.contains(indexPath) {
+            self.selectedIndexPaths.remove(IndexPath(row: Sources.list.count, section: 0))
             self.selectedIndexPaths.remove(indexPath)
         } else {
             self.selectedIndexPaths.insert(indexPath)
+            
+            if self.selectedIndexPaths.count == Sources.list.count {
+                self.selectedIndexPaths.insert(IndexPath(row: Sources.list.count, section: 0))
+            }
         }
         
-        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        tableView.reloadRows(at: [indexPath, IndexPath(row: Sources.list.count, section: 0)], with: UITableView.RowAnimation.automatic)
     }
 }

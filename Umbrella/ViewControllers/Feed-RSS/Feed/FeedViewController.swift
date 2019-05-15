@@ -232,6 +232,8 @@ class FeedViewController: UIViewController {
         
         self.sourceLegend = self.sourceLegLabel.text ?? ""
         
+        loadSetup()
+        
         let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         // Arabic(ar) or Persian Iranian(fa)
         if language == "ar" || language == "fa" {
@@ -254,14 +256,6 @@ class FeedViewController: UIViewController {
             self.sourceLegLabel.textAlignment = .left
         }
     }
-    
-    //    /// Share action
-    //    ///
-    //    /// - Parameter sender: UIBarButtonItem
-    //    @objc func shareAction(_ sender: UIBarButtonItem) {
-    //        let app = (UIApplication.shared.delegate as? AppDelegate)!
-    //        app.show()
-    //    }
     
     /// Refresh repository
     ///

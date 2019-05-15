@@ -521,6 +521,8 @@
 		A0B9D43C20AAE03900B2B796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0B9D45620AAE1CE00B2B796 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A0BAC1492289617E00D884F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		A0BAC14A2289617E00D884F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0C404A121A17C1F0068BDDD /* icon-imported-document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-imported-document.png"; sourceTree = "<group>"; };
 		A0C404A321A19FCF0068BDDD /* AskForPasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AskForPasswordView.xib; sourceTree = "<group>"; };
 		A0C404A521A19FEC0068BDDD /* AskForPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForPasswordView.swift; sourceTree = "<group>"; };
@@ -1696,6 +1698,7 @@
 				"zh-Hans",
 				fa,
 				ar,
+				ru,
 			);
 			mainGroup = A0B9D41920AAE03600B2B796;
 			productRefGroup = A0B9D42320AAE03600B2B796 /* Products */;
@@ -2149,6 +2152,7 @@
 				A007B3C721256D9E00B3D8C9 /* zh-Hans */,
 				A016A34A2277347B00B55A15 /* fa */,
 				A0ABA14822773782001CDEA8 /* ar */,
+				A0BAC14A2289617E00D884F9 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2159,6 +2163,7 @@
 				A0B9D42A20AAE03600B2B796 /* Base */,
 				A016A3492277347A00B55A15 /* fa */,
 				A0ABA14722773780001CDEA8 /* ar */,
+				A0BAC1492289617E00D884F9 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

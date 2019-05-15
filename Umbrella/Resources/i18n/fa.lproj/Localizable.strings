@@ -54,7 +54,7 @@
 "Feed Sources" = "منابع تغذیه";
 "There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "هنگام تلاش برای ایجاد خوراک RSS، خطایی رخ داد. لطفا مطمئن شوید که از آدرس صحیح استفاده کرده اید و دوباره امتحان کنید.";
 
-// Feed - Location
+// Feed
 "Enter the country you want to see the feed for" = "کشور مورد نظر خود را وارد کنید";
 "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "شما هنوز مکان و منابع خوراکی را تعیین نکرده اید. شما برای دریافت آخرین اخبار امنیتی برای کشور خود باید این کار را انجام دهید. بعدا می توانید در تنظیمات آن را تغییر دهید.";
 "Set how often you want Umbrella to check for the latest security news." = "تنظیم کنید که می خواهید چتر برای هر از چند وقت، آخرین اخبار امنیتی را بررسی کند.";
@@ -77,6 +77,7 @@
 "Select The Feed Sources" = "منابع منبع را انتخاب کنید";
 "Change repository" = "تغییر مخزن";
 "Please select one country of the list." = "لطفا یک کشور از لیست را انتخاب کنید.";
+"Select All" = "انتخاب همه";
 
 // Lessons
 "Favourites" = "مورد علاقه های شما";
@@ -143,6 +144,6 @@
 "Dashboard" = "پنل";
 "new customFeeds." = "خوراک سفارشی جدید";
 "You can enable access in Settings> Umbrela> Notifications" = "شما می توانید دسترسی را در تنظیمات> چتر> اعلان ها فعال کنید";
-"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
-"Secondary" = "Secondary";
-"Change" = "Change";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "بارگیری داده ها از مخزن جدید تمام پیشرفت هایی را که ایجاد کرده اید تنظیم مجدد می کند. قبل از انجام این کار از قبل پشتیبان بگیرید";
+"Secondary" = "ثانوی";
+"Change" = "تغییر دادن";

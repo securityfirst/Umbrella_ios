@@ -1,0 +1,149 @@
+/*
+ Localizable.strings
+ Umbrella
+ 
+ Created by Lucas Correa on 16/08/2018.
+ Copyright © 2018 Security First. All rights reserved.
+ */
+
+// Accessibility
+"selected" = "выбрано";
+"deselected" = "не выбрано";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Это форма %d из %d форм для заполнения. Проведите тремя пальцами слева направо или справа налево, чтобы перелистнуть.";
+
+// Menu
+"Feeds" = "Каналы";
+"Forms" = "Формы";
+"Checklists" = "Контрольные списки";
+"Lessons" = "Уроки";
+"Account" = "Учетная запись";
+
+// Loading
+"Updating the database" = "Обновление базы данных";
+"Error in load the tent" = "Ошибка при загрузке содержимого";
+"Getting the database" = "Получение базы данных";
+"Fetching Data" = "Получение данных";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella содержит много уроков и контента. Они загружаются при первом запуске приложения, чтобы вы могли работать с содержимым в автономном режиме. Обычно этот процесс занимает не более 3 минут.";
+"Loading the content" = "Загрузка контента";
+
+// Form
+"Active" = "Активно";
+"Available forms" = "Доступные формы";
+"REMOVE" = "УДАЛИТЬ";
+"EDIT" = "РЕДАКТИРОВАТЬ";
+"SHARE" = "ПОДЕЛИТЬСЯ";
+"Do you really want to remove this form?" = "Вы действительно хотите удалить эту форму?";
+"No" = "Нет";
+"Yes" = "Да";
+"Choose the format." = "Выберите формат.";
+
+// Tour
+"Get advice on everything from sending a secure email to safe travel" = "Получите рекомендацию по всем вопросам - от отправки защищенного письма до безопасного путешествия";
+"Umbrella makes your security simple" = "Umbrella делает вашу безопасность простой";
+"Use checklists to mark your progress" = "Используйте контрольные списки, чтобы отмечать свой прогресс";
+"Stay up to date with the latest information on where you are" = "Будьте в курсе последней информации о месте, где вы находитесь";
+"Terms and Conditions" = "Условия использования";
+"ACCEPT" = "ПРИНЯТЬ";
+"Downloading content can take a few minutes. Please wait." = "Загрузка контента может занять несколько минут. Пожалуйста, подождите.";
+
+// RSS
+"You chose the Card mode view" = "Вы выбрали режим просмотра карточек";
+"You chose the List mode view" = "Вы выбрали режим просмотра списка";
+"Save" = "Сохранить";
+"Cancel" = "Отмена";
+"Feed Sources" = "Источники каналов";
+"There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "Произошла ошибка при попытке создать канал RSS. Пожалуйста, убедитесь, что вы используете правильный адрес и попробуйте снова.";
+
+// Feed
+"Enter the country you want to see the feed for" = "Введите страну, новости которой вы хотите просматривать";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Вы еще не установили местоположение и источники каналов. Вы должны сделать это, чтобы получать последние новости безопасности для вашей страны. Вы можете изменить это в любое время позже в настройках.";
+"Set how often you want Umbrella to check for the latest security news." = "Установите, как часто Umbrella будет проверять последние новости безопасности.";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "Мы не храним ваше местоположение дольше, чем необходимо. Поставщики каналов не знают, что вы получаете данные от них.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Укажите источники, из которых вы хотите получать обновления. Источники каналов не видят, что вы запрашиваете у них информацию.";
+"Location:" = "Местоположение:";
+"CHANGE LOCATION" = "ИЗМЕНИТЬ МЕСТОПОЛОЖЕНИЕ";
+"Set your Feed" = "Настройте свой канал";
+"SET NOW" = "УСТАНОВИТЬ СЕЙЧАС";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "Для вашего местоположения нет событий. Мы покажем их, когда они появятся. Потяните вниз, чтобы обновить данные.";
+"Security feed set to:" = "Новости безопасности заданы для:";
+"Interval" = "Интервал";
+"SET" = "ЗАДАТЬ";
+"Location" = "Местоположение";
+"Security Feed Sources" = "Источники новостей безопасности";
+"The city or country is not available or you have no internet connection." = "Город или страна недоступны или у вас нет подключения к интернету.";
+"Alert" = "Предупреждение";
+"Enter interval in minutes (one day = 1440 minutes)" = "Введите интервал в минутах (один день = 1440 минут)";
+"Sources" = "Источники";
+"Select The Feed Sources" = "Выберите источники каналов";
+"Change repository" = "Изменить хранилище";
+"Please select one country of the list." = "Пожалуйста, выберите страну из списка.";
+"Select All" = "Выбрать все";
+
+// Lessons
+"Favourites" = "Избранное";
+"You do not have any Segment yet." = "У вас еще нет сегмента.";
+"Beginner" = "Начинающий";
+"Advanced" = "Продвинутый";
+"Expert" = "Эксперт";
+"Checklist" = "Контрольный список";
+
+//Checklists
+"Checklists total" = "Контрольных списков всего";
+"Favourites" = "Избранное";
+"My Checklists" = "Мои контрольные списки";
+"Total done" = "Всего сделано";
+"Overview" = "Обзор";
+"Custom" = "Пользовательское";
+"Go to lessons and discover recommended checklists or create your own custom checklists." = "Перейдите на уроки и найдите рекомендуемые контрольные списки или создайте свои собственные.";
+"New Checklist" = "Новый контрольный список";
+"Name of Checklist" = "Название контрольного списка";
+"Press + button to create your custom checklist." = "Нажмите +, чтобы создать новый контрольный список.";
+"Delete" = "Удалить";
+"Item" = "Пункт";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Ваш пароль должен содержать не менее 8 символов и содержать как минимум одну цифру и одну заглавную букву.";
+"Password" = "Пароль";
+"Confirm" = "Подтвердить";
+"Passwords do not match." = "Пароли не совпадают.";
+"Password too short." = "Пароль слишком короткий.";
+"Password must have at least one digit." = "Пароль должен содержать хотя бы одну цифру.";
+"Password must have at least one capital letter." = "Пароль должен содержать хотя бы одну заглавную букву.";
+"Skip setting password" = "Пропустить установку пароля";
+"Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "Вы уверены, что хотите продолжить использовать приложение без пароля?\n\nЭто значительно снижает вашу безопасность в отношении любых идентифицируемых данных, которые вы вводите в Umbrella.";
+"YES" = "ДА";
+"NO" = "НЕТ";
+"Settings" = "Настройки";
+"Set password" = "Задать пароль";
+"Set your password" = "Установите свой пароль";
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Ваш пароль должен содержать не менее 8 символов и содержать как минимум одну цифру и одну заглавную букву.";
+"Skip" = "Пропустить";
+"Skip password" = "Сбросить пароль";
+"Don't ask for password again" = "Не запрашивать пароль еще раз";
+"Refresh from the server" = "Обновить с сервера";
+"Select Language" = "Выберите язык";
+"Import your data" = "Импорт данных";
+"Export your data" = "Экспорт данных";
+"Refresh interval for custom feeds" = "Интервал обновления пользовательских каналов";
+"Your location" = "Ваше местоположение";
+"Security feed sources" = "Источники новостей безопасности";
+"Show updates as notification" = "Показывать обновления как уведомление";
+"GENERAL" = "ОСНОВНОЕ";
+"FEED" = "КАНАЛ";
+"English" = "английский";
+"Spanish" = "испанский";
+"Chinese" = "китайский язык";
+"Arabic" = "арабский";
+"Farsi" = "фарси";
+"French" = "Французский";
+"Russian" = "русский";
+"hour" = "час";
+"hour(s)" = "час(ов)";
+"hours" = "часов";
+"Manually" = "Вручную";
+"Dashboard" = "Панель управления";
+"new customFeeds." = "новые пользовательские каналы.";
+"You can enable access in Settings> Umbrela> Notifications" = "Вы можете включить доступ через Настройки> Umbrela> Уведомления";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Загрузка данных из нового репозитория сбросит весь достигнутый вами прогресс. Сделайте резервную копию, прежде чем сделать это!";
+"Secondary" = "второстепенный";
+"Change" = "+ Изменить";

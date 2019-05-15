@@ -54,7 +54,7 @@
 "Feed Sources" = "Fuentes de Feed";
 "There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "Se produjo un error al intentar crear la fuente RSS. Por favor, asegúrese de estar usando la dirección correcta y vuelva a intentarlo.";
 
-// Feed - Location
+// Feed
 "Enter the country you want to see the feed for" = "Ingrese el país del que quiere ver el feed.";
 "You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Aún no ha establecido la ubicación y las fuentes para el feed. Tiene que hacer eso para obtener las últimas noticias de seguridad para tu país. Puede cambiarlo en cualquier momento más tarde en la configuración.";
 "Set how often you want Umbrella to check for the latest security news." = "Establezca la frecuencia con la que desea que Umbrella compruebe las últimas noticias de seguridad.";
@@ -77,6 +77,7 @@
 "Select The Feed Sources" = "Seleccionar las Fuentes de la Suscripción (feed)";
 "Change repository" = "Cambiar repositorio";
 "Please select one country of the list." = "Por favor, seleccione un país de la lista.";
+"Select All" = "Seleccionar todo";
 
 // Lessons
 "Favourites" = "Favoritos";
@@ -143,6 +144,6 @@
 "Dashboard" = "Tablero";
 "new customFeeds." = "nuevas customFeeds.";
 "You can enable access in Settings> Umbrela> Notifications" = "Puede habilitar el acceso en Configuración> Umbrella> Notificaciones";
-"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
-"Secondary" = "Secondary";
-"Change" = "Change";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "La carga de datos desde el nuevo repositorio restablecerá todo el progreso realizado. Copia de seguridad antes de hacerlo!";
+"Secondary" = "Secundario";
+"Change" = "Cambio";

@@ -34,8 +34,14 @@ class DemoSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gitText.text = "https://github.com/"
+        
+        updateLanguage()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
+    }
+    
+    @objc func updateLanguage() {
         self.titleLabel.text = "Change repository".localized()
-       self.messageLabel.text = "Loading data from new repository will reset all the progress you made. Back up before you do it!".localized()
+        self.messageLabel.text = "Loading data from new repository will reset all the progress you made. Back up before you do it!".localized()
         self.segmentedControl.setTitle("Security First".localized(), forSegmentAt: 0)
         self.segmentedControl.setTitle("Secondary".localized(), forSegmentAt: 1)
         self.changeButton.setTitle("Change".localized(), for: .normal)
