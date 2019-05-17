@@ -1,5 +1,5 @@
 app_identifier("org.secfirst.umbrella") # The bundle identifier of your app
-apple_id("contato@lucascorrea.com") # Your Apple email address
+apple_id("lucas@secfirst.org") # Your Apple email address
 
 
 # For more information about the Appfile, see:

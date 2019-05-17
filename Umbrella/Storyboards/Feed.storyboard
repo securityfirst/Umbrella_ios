@@ -353,7 +353,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRb-V8-g7M" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
+                                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRb-V8-g7M" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                             <rect key="frame" x="25" y="21" width="270" height="118"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-gG-P39">
@@ -368,7 +368,7 @@
                                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCS-ri-Vpr">
+                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCS-ri-Vpr">
                                                                     <rect key="frame" x="5" y="77" width="260" height="33"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
@@ -977,27 +977,31 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-Am-x1u">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ko8-72-JYu">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2J-4t-qSq">
                                 <rect key="frame" x="0.0" y="111" width="320" height="413"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ko8-72-JYu" firstAttribute="leading" secondItem="ASE-EV-br6" secondAttribute="leading" id="H6c-5n-QvF"/>
+                            <constraint firstItem="O2J-4t-qSq" firstAttribute="top" secondItem="ASE-EV-br6" secondAttribute="top" id="Epw-MN-yvW"/>
+                            <constraint firstItem="O2J-4t-qSq" firstAttribute="leading" secondItem="ASE-EV-br6" secondAttribute="leading" id="M5Z-5D-pWv"/>
                             <constraint firstItem="KJn-dl-WIr" firstAttribute="bottom" secondItem="ASE-EV-br6" secondAttribute="bottom" id="PyR-Il-whm"/>
                             <constraint firstItem="mxV-Am-x1u" firstAttribute="centerX" secondItem="Qbd-ln-X31" secondAttribute="centerX" id="WuZ-w2-BrG"/>
-                            <constraint firstItem="KJn-dl-WIr" firstAttribute="top" secondItem="ko8-72-JYu" secondAttribute="bottom" id="eUM-T7-NIY"/>
-                            <constraint firstItem="ko8-72-JYu" firstAttribute="top" secondItem="ASE-EV-br6" secondAttribute="top" id="gCq-3H-bsM"/>
                             <constraint firstItem="mxV-Am-x1u" firstAttribute="centerY" secondItem="Qbd-ln-X31" secondAttribute="centerY" id="jpk-co-IaG"/>
-                            <constraint firstItem="ASE-EV-br6" firstAttribute="trailing" secondItem="ko8-72-JYu" secondAttribute="trailing" id="mSc-tt-L8V"/>
                             <constraint firstItem="KJn-dl-WIr" firstAttribute="trailing" secondItem="ASE-EV-br6" secondAttribute="trailing" id="vVX-hs-A5w"/>
                             <constraint firstItem="KJn-dl-WIr" firstAttribute="leading" secondItem="ASE-EV-br6" secondAttribute="leading" id="wj0-Wc-XAJ"/>
+                            <constraint firstItem="KJn-dl-WIr" firstAttribute="top" secondItem="O2J-4t-qSq" secondAttribute="bottom" id="ySq-x3-LlT"/>
+                            <constraint firstItem="ASE-EV-br6" firstAttribute="trailing" secondItem="O2J-4t-qSq" secondAttribute="trailing" id="yqc-0j-Vpy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ASE-EV-br6"/>
                     </view>
                     <connections>
-                        <outlet property="detailWebView" destination="ko8-72-JYu" id="MGt-al-sYs"/>
+                        <outlet property="detailWebView" destination="O2J-4t-qSq" id="fbC-oq-WrP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlI-4v-hzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

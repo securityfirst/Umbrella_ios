@@ -64,6 +64,11 @@ class FeedViewModel: NSObject {
             }.resume()
     }
     
+    /// Remove all items
+    func cleanFeed() {
+        self.feedItems.removeAll()
+    }
+    
     /// Request feed in background
     ///
     /// - Parameters:

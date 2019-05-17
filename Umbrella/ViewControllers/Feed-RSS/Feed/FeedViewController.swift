@@ -201,7 +201,7 @@ class FeedViewController: UIViewController {
     
     @objc func updateLanguage() {
         self.title = "Feeds".localized()
-        
+
         self.feedView.emptyLabel.text = "There no Feed".localized()
         
         // Location
@@ -395,7 +395,10 @@ class FeedViewController: UIViewController {
                 self.locationChosenView.isHidden = false
                 self.feedView.activityIndicatorView.isHidden = true
                 self.feedView.feedTableView.reloadData()
-                self.feedView.feedTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+                
+                if self.feedView.feedViewModel.feedItems.count > 0 {
+                    self.feedView.feedTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+                }
             }
         }, failure: { (error) in
             DispatchQueue.main.async {

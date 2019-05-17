@@ -8,7 +8,10 @@ platform :ios do
     if !File.exists? "../DerivedData"
       Dir.mkdir "../DerivedData"
     end
+
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   end
+
 
   desc "Create file of coverage to Sonarqube"
   lane :metrics do
@@ -16,18 +19,44 @@ platform :ios do
     sh("xcodebuild -workspace ../Umbrella.xcworkspace -scheme Umbrella -sdk iphonesimulator -enableCodeCoverage YES -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.2' GCC_GENERATE_TEST_COVERAGE_FILES=YES build test -derivedDataPath ../DerivedData")
     sh("xcrun llvm-cov show -instr-profile=$(find ../DerivedData -iname 'Coverage.profdata') ../DerivedData/Build/Products/Debug-iphonesimulator/Umbrella.app/Umbrella > ../DerivedData/Coverage.report")
     sonar
-
   end
+
+  desc "Testflight"
+  lane :beta do
+    changelog = prompt(
+      text: "Changelog: ",
+      multi_line_end_keyword: "END"
+    )
+    increment_build_number
+    build_app(workspace: "Umbrella.xcworkspace", scheme: "Umbrella", configuration: "Appstore", export_xcargs: "-allowProvisioningUpdates")
+    upload_to_testflight(changelog: changelog, skip_waiting_for_build_processing: true)
+  end
+
+
 
   after_all do |lane|
     if File.exists? "../DerivedData"
       FileUtils.rm_rf("../DerivedData")
     end
+
+    if lane == :beta
+      version = get_version_number()
+      build = get_build_number()
+
+      message = "Umbrella iOS version #{version} build #{build} successfully sent to Testflight."
+      notification message unless Helper.is_ci? #if I'm running it locally, show a terminal OS X notification
+
+      slack(
+        message: message
+      )
+
+      error do |lane, exception|
+        slack(
+          message: exception.message,
+          success: false
+        )
+      end
+    end
   end
 
-#  error do |lane, exception|
-#    if File.exists? "../DerivedData"
-#      FileUtils.rm_rf("../DerivedData")
-#    end
-#  end
 end

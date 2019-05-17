@@ -26,7 +26,6 @@ class SegmentViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentCollectionView: UICollectionView!
     
-    
     //
     // MARK: - Life cycle
     override func viewDidLoad() {

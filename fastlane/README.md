@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios metrics
 ```
 Create file of coverage to Sonarqube
+### ios beta
+```
+fastlane ios beta
+```
+Testflight
 
 ----
 

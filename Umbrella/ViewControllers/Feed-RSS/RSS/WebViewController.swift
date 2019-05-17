@@ -14,7 +14,7 @@ class WebViewController: UIViewController {
 
     //
     // MARK: - Properties
-    @IBOutlet weak var detailWebView: UIWebView!
+    @IBOutlet weak var detailWebView: WKWebView!
     lazy var webViewModel: WebViewModel = {
         let webViewModel = WebViewModel()
         return webViewModel
@@ -27,14 +27,6 @@ class WebViewController: UIViewController {
 
         self.detailWebView.isHidden = true
         
-        if let link = webViewModel.link {
-            let request = URLRequest(url: URL(string: link)!)
-            self.detailWebView.delegate = self
-            self.detailWebView.loadRequest(request)
-            
-            self.title = webViewModel.title
-        }
-        
         let shareBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem  = shareBarButton
     }
@@ -42,6 +34,19 @@ class WebViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let link = webViewModel.link {
+            print(link)
+            let request = URLRequest(url: URL(string: link)!)
+            self.detailWebView.navigationDelegate = self
+            self.detailWebView.load(request)
+            
+            self.title = webViewModel.title
+        }
     }
 
     //
@@ -80,9 +85,9 @@ class WebViewController: UIViewController {
     }
 }
 
-extension WebViewController: UIWebViewDelegate {
+extension WebViewController: WKNavigationDelegate {
 
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.detailWebView.isHidden = false
     }
 }
