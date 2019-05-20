@@ -59,4 +59,12 @@ struct CheckListDao: DaoProtocol {
     
     //
     // MARK: - Custom functions
+    
+    /// Get Checklist
+    ///
+    /// - Returns: CheckList
+    func getChecklist(id: Int) -> CheckList? {
+        let objects: [CheckList?] = self.sqlProtocol.select(withQuery: "SELECT * FROM \(CheckList.table) WHERE id = \(id)")
+        return objects.first ?? nil
+    }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ChecklistReviewCellDelegate: class {
+    func shareChecklist(cell: ChecklistReviewCell, indexPath: IndexPath)
+}
+
 class ChecklistReviewCell: UITableViewCell {
     
     //
@@ -16,6 +20,11 @@ class ChecklistReviewCell: UITableViewCell {
     @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareWidthConstraint: NSLayoutConstraint!
+    
+    weak var delegate: ChecklistReviewCellDelegate?
+    var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,11 +46,12 @@ class ChecklistReviewCell: UITableViewCell {
     ///   - viewModel: ViewModel
     ///   - indexPath: IndexPath
     func configure(withViewModel viewModel:ChecklistViewModel, indexPath: IndexPath) {
-        
+        self.indexPath = indexPath
         var title = ""
         var percent = ""
         self.widthConstraint.constant = 44
-        
+        self.shareWidthConstraint.constant = 40
+        self.shareButton.isHidden = false
         if indexPath.section == 0 {
             let checklistChecked = viewModel.totalDoneChecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
@@ -55,6 +65,8 @@ class ChecklistReviewCell: UITableViewCell {
             self.widthConstraint.constant = 80
             self.iconImageView.image = UIImage(named: "icTotalDone")
             self.iconImageView.backgroundColor = UIColor.clear
+            self.shareWidthConstraint.constant = 0
+            self.shareButton.isHidden = true
         } else if indexPath.section == 1 {
             let checklistChecked = viewModel.favouriteChecklistChecked[indexPath.row]
             let iconAndColor = viewModel.difficultyIconBy(id: checklistChecked.difficultyId)
@@ -76,5 +88,12 @@ class ChecklistReviewCell: UITableViewCell {
         self.titleLabel.text = title
         self.percentLabel.text = percent
         self.layoutIfNeeded()
+    }
+    
+    //
+    // MARK: - Actions
+    
+    @IBAction func shareAction(_ sender: Any) {
+        self.delegate?.shareChecklist(cell: self, indexPath: self.indexPath)
     }
 }

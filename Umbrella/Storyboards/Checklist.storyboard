@@ -49,16 +49,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-SQ-Ggr" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                     <rect key="frame" x="18" y="13" width="339" height="70"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Managing Information" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZMC-vH-WAN">
-                                                            <rect key="frame" x="63" y="8" width="203" height="54"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZMC-vH-WAN">
+                                                            <rect key="frame" x="63" y="8" width="186" height="54"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                             <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-1p-of3">
-                                                            <rect key="frame" x="274" y="20" width="60" height="30"/>
+                                                            <rect key="frame" x="289" y="20" width="45" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="hc3-RL-uuU"/>
+                                                                <constraint firstAttribute="width" constant="45" id="hc3-RL-uuU"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                             <color key="textColor" red="0.28235294117647058" green="0.72156862745098038" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,18 +77,32 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcP-R0-fGo">
+                                                            <rect key="frame" x="249" y="15" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="MUb-tz-XFB"/>
+                                                                <constraint firstAttribute="height" constant="40" id="m2d-ct-DCY"/>
+                                                            </constraints>
+                                                            <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                            <state key="normal" image="iconShare"/>
+                                                            <connections>
+                                                                <action selector="shareAction:" destination="z9f-gl-ehD" eventType="touchUpInside" id="tWg-8Z-Rrm"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="ZMC-vH-WAN" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="8" id="1ag-2O-I2W"/>
                                                         <constraint firstAttribute="trailing" secondItem="rLy-1p-of3" secondAttribute="trailing" constant="5" id="1kb-nW-5BQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZMC-vH-WAN" secondAttribute="bottom" constant="8" id="GS0-Uh-ofq"/>
+                                                        <constraint firstItem="rLy-1p-of3" firstAttribute="leading" secondItem="DcP-R0-fGo" secondAttribute="trailing" id="I9h-HG-Rwh"/>
                                                         <constraint firstItem="TGl-Z1-ggt" firstAttribute="centerY" secondItem="a2q-SQ-Ggr" secondAttribute="centerY" id="LKW-VR-I4g"/>
                                                         <constraint firstItem="ZMC-vH-WAN" firstAttribute="leading" secondItem="TGl-Z1-ggt" secondAttribute="trailing" constant="8" id="ViB-xR-BBS"/>
                                                         <constraint firstItem="rLy-1p-of3" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="20" id="Y2h-uq-tnA"/>
                                                         <constraint firstAttribute="bottom" secondItem="rLy-1p-of3" secondAttribute="bottom" constant="20" id="cbR-b8-MTC"/>
-                                                        <constraint firstItem="rLy-1p-of3" firstAttribute="leading" secondItem="ZMC-vH-WAN" secondAttribute="trailing" constant="8" id="gu9-bU-lNg"/>
+                                                        <constraint firstItem="DcP-R0-fGo" firstAttribute="leading" secondItem="ZMC-vH-WAN" secondAttribute="trailing" id="gtR-z3-vem"/>
                                                         <constraint firstItem="TGl-Z1-ggt" firstAttribute="leading" secondItem="a2q-SQ-Ggr" secondAttribute="leading" constant="11" id="qVI-ZU-WUK"/>
+                                                        <constraint firstItem="DcP-R0-fGo" firstAttribute="centerY" secondItem="a2q-SQ-Ggr" secondAttribute="centerY" id="wL0-1S-CHK"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -102,6 +116,8 @@
                                         <connections>
                                             <outlet property="iconImageView" destination="TGl-Z1-ggt" id="OVu-8O-vEg"/>
                                             <outlet property="percentLabel" destination="rLy-1p-of3" id="YTM-lY-I7M"/>
+                                            <outlet property="shareButton" destination="DcP-R0-fGo" id="Fyz-46-bGf"/>
+                                            <outlet property="shareWidthConstraint" destination="MUb-tz-XFB" id="yvf-wr-q2R"/>
                                             <outlet property="titleLabel" destination="ZMC-vH-WAN" id="AWs-5x-CQe"/>
                                             <outlet property="widthConstraint" destination="9Hs-87-PGE" id="C1O-X5-JHz"/>
                                         </connections>
@@ -592,6 +608,7 @@
         <image name="checklistsAddIcon" width="32" height="29"/>
         <image name="icDoneAll" width="24" height="24"/>
         <image name="iconBeginner" width="65" height="65"/>
+        <image name="iconShare" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TOh-4F-YMH"/>

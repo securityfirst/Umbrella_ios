@@ -59,4 +59,11 @@ struct CheckItemDao: DaoProtocol {
     
     //
     // MARK: - Custom functions
+    
+    /// Get CheckItem by checklistId
+    ///
+    /// - Returns: [CheckItem]
+    func getCheckItems(checklistId: Int) -> [CheckItem] {
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as [check], is_label, checklist_id FROM \(CheckItem.table) WHERE checklist_id = \(checklistId)")
+    }
 }

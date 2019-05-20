@@ -49,6 +49,16 @@ class ChecklistViewModel {
     var favouriteChecklistChecked: [ChecklistChecked] = [ChecklistChecked]()
     
     var sqlManager: SQLManager
+    lazy var checkListDao: CheckListDao = {
+        let checkListDao = CheckListDao(sqlProtocol: self.sqlManager)
+        return checkListDao
+    }()
+    
+    lazy var checkItemDao: CheckItemDao = {
+        let checkItemDao = CheckItemDao(sqlProtocol: self.sqlManager)
+        return checkItemDao
+    }()
+    
     lazy var checklistCheckedDao: ChecklistCheckedDao = {
         let checklistCheckedDao = ChecklistCheckedDao(sqlProtocol: self.sqlManager)
         return checklistCheckedDao
@@ -76,6 +86,10 @@ class ChecklistViewModel {
         self.checklistChecked = filterByGreatestDifficultyId()
     }
     
+    /// Get structure of object Category>Subcategory>Difficulty>Checklist
+    ///
+    /// - Parameter checklistId: Int
+    /// - Returns: (Category, Category, Category, CheckList)
     func getStructureOfObject(to checklistId: Int) -> (Category, Category, Category, CheckList) {
         
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
@@ -117,6 +131,37 @@ class ChecklistViewModel {
         return nil
     }
     
+    /// Get checklist by id
+    ///
+    /// - Parameter checklistId: Int
+    /// - Returns: Checklist
+    func getChecklist(checklistId: Int) -> CheckList {
+        
+        let checklist = self.checkListDao.getChecklist(id: checklistId)
+        
+        if let checklist = checklist {
+            let checkItems = self.checkItemDao.getCheckItems(checklistId: checklistId)
+            checklist.items = checkItems
+            
+            let checkedList = self.checklistCheckedDao.list(checklistId: checklistId)
+            
+            for item in checklist.items {
+                
+                let checked = checkedList.filter {$0.itemId == item.id}.first
+                
+                item.checked = (checked != nil)
+            }
+            
+            return checklist
+        }
+        
+        return CheckList()
+    }
+    
+    /// Get Icon and color by Id
+    ///
+    /// - Parameter id: Int
+    /// - Returns: (UIImage?, UIColor?)
     func difficultyIconBy(id: Int) -> (image: UIImage?, color: UIColor?) {
         let category = searchCategoryBy(id: id)
         
@@ -177,12 +222,12 @@ class ChecklistViewModel {
     func insert(_ checklistChecked: ChecklistChecked) {
         _ = self.checklistCheckedDao.insert(checklistChecked)
     }
-
+    
     /// Remove all checks of a subcategory, checklist and difficulty specify
     ///
     /// - Parameter checklistChecked: [ChecklistChecked]
     func removelAllChecks( checklistChecked: ChecklistChecked) {
-       _ =  self.checklistCheckedDao.removeAllChecks(checklistChecked)
+        _ =  self.checklistCheckedDao.removeAllChecks(checklistChecked)
     }
     
     /// Remove ItemChecked of the list

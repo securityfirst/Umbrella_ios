@@ -108,7 +108,7 @@ extension ChecklistViewController: UITableViewDataSource {
         
         let cell: ChecklistReviewCell = (tableView.dequeueReusableCell(withIdentifier: "ChecklistReviewCell", for: indexPath) as? ChecklistReviewCell)!
         cell.configure(withViewModel: self.checklistViewModel, indexPath: indexPath)
-        
+        cell.delegate = self
         return cell
     }
     
@@ -197,7 +197,7 @@ extension ChecklistViewController: UITableViewDelegate {
         }
         
         if indexPath.section != 0 {
-//            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+            //            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
             let url = URL(string: "umbrella://\(item.category.deeplink!)/\( item.subCategory.deeplink!)/\( item.difficulty.deeplink!)/checklist/\(item.checklist.id)")
             UIApplication.shared.open(url!)
         }
@@ -213,5 +213,78 @@ extension ChecklistViewController: UITableViewDelegate {
             return name.replacingOccurrences(of: " ", with: "-").lowercased()
         }
         return ""
+    }
+}
+
+// MARK: - ChecklistReviewCellDelegate
+extension ChecklistViewController: ChecklistReviewCellDelegate {
+    func shareChecklist(cell: ChecklistReviewCell, indexPath: IndexPath) {
+        var objectsToShare:[Any] = [Any]()
+        
+        var checklistChecked: ChecklistChecked? = ChecklistChecked()
+        if indexPath.section == 1 {
+            checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
+        } else if indexPath.section == 2 {
+            checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
+        }
+        
+        if let checklistChecked = checklistChecked {
+            let checklist = self.checklistViewModel.getChecklist(checklistId: checklistChecked.checklistId)
+            
+            var content: String = ""
+            
+            content += """
+            <html>
+            <head>
+            <meta charset="UTF-8"> \n
+            """
+            content += "<title>Checklist</title> \n"
+            content += "</head> \n"
+            content += "<body style=\"display:block;width:100%;\"> \n"
+            content += "<h1>Checklist</h1> \n"
+            
+            for checkItem in checklist.items {
+                content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
+            }
+            
+            content += """
+            </form>
+            </body>
+            </html>
+            """
+            
+            UIAlertController.alertSheet(title: "", message: "Choose the format.".localized(), buttons: ["HTML", "PDF"], dismiss: { (option) in
+                
+                if option == 0 {
+                    // HTML
+                    let html = HTML(nameFile: "Checklist.html", content: content)
+                    let export = Export(html)
+                    let url = export.makeExport()
+                    objectsToShare = [url]
+                } else if option == 1 {
+                    //PDF
+                    let pdf = PDF(nameFile: "Checklist.pdf", content: content)
+                    let export = Export(pdf)
+                    let url = export.makeExport()
+                    objectsToShare = [url]
+                }
+                
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                
+                //New Excluded Activities Code
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.copyToPasteboard]
+                
+                activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                    if !completed {
+                        // User canceled
+                        return
+                    }
+                }
+                
+                self.present(activityVC, animated: true, completion: nil)
+            }, cancel: {
+                print("cancel")
+            })
+        }
     }
 }
