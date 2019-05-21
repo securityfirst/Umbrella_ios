@@ -87,7 +87,7 @@ extension SettingLanguageViewController: UITableViewDelegate {
             }
         }
         
-        // Arabic(ar) or Persian Iranian(fa)
+        // Arabic(ar) or Persian Farsi(fa)
         if itemSelected.value == "ar" || itemSelected.value == "fa" {
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
             UITabBar.appearance().semanticContentAttribute = .forceRightToLeft

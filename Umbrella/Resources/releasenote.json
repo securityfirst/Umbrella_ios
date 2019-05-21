@@ -1,0 +1,23 @@
+{
+    "en": {
+        "releasenote": "- Added Arabic/Farsi/Russian language\n- Added share button on the checklist tab\n- Bugfixes"
+    },
+    "es": {
+        "releasenote": "- Agregado árabe/farsi/idioma ruso \n- Se agregó el botón de compartir en la pestaña de la lista de verificación \n- Corrección de errores"
+    },
+    "zh-Hant": {
+        "releasenote": " - 增加了阿拉伯語/波斯語/俄語\n- 在核對清單選項卡上添加了分享按鈕\n- Bug修復"
+    },
+    "fa": {
+        "releasenote": "- زبان عربی/فارسی/روسی اضافه شده است\n- اضافه شدن دکمه اشتراک در برگه چک لیست \n- رفع اشکالات"
+    },
+    "ar": {
+        "releasenote": "- أضيفت العربية/الفارسية/اللغة الروسية\n- تمت إضافة زر المشاركة في علامة تبويب قائمة التحقق \n- اصلاحات الشوائب"
+    },
+    "ru": {
+        "releasenote": "- Добавлен арабский/фарси/русский язык \n- Добавлена кнопка поделиться на вкладке контрольного списка \n- Исправление ошибок"
+    },
+    "fr": {
+        "releasenote": "- Ajout de la langue arabe/farsi/russe \n- Ajout du bouton de partage dans l'onglet de la liste de contrôle \n- corrections de bugs"
+    }
+}

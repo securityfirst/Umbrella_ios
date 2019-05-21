@@ -115,6 +115,8 @@
 		A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */; };
 		A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */; };
 		A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1567216E577F003753E5 /* TitleLessonView.swift */; };
+		A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */; };
+		A0ACE2852292D05400068385 /* releasenote.json in Resources */ = {isa = PBXBuildFile; fileRef = A0ACE2842292D05400068385 /* releasenote.json */; };
 		A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */; };
 		A0AE0C7021B83C51005EA2A8 /* CustomChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C6F21B83C51005EA2A8 /* CustomChecklist.swift */; };
 		A0AE0C7221B83C62005EA2A8 /* CustomCheckItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C7121B83C62005EA2A8 /* CustomCheckItem.swift */; };
@@ -465,6 +467,8 @@
 		A0AA1567216E577F003753E5 /* TitleLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLessonView.swift; sourceTree = "<group>"; };
 		A0ABA14722773780001CDEA8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		A0ABA14822773782001CDEA8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteViewController.swift; sourceTree = "<group>"; };
+		A0ACE2842292D05400068385 /* releasenote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = releasenote.json; sourceTree = "<group>"; };
 		A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewModel.swift; sourceTree = "<group>"; };
 		A0AE0C6F21B83C51005EA2A8 /* CustomChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklist.swift; sourceTree = "<group>"; };
 		A0AE0C7121B83C62005EA2A8 /* CustomCheckItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckItem.swift; sourceTree = "<group>"; };
@@ -956,6 +960,14 @@
 			path = SideScrollLesson;
 			sourceTree = "<group>";
 		};
+		A0ACE2832292B4C800068385 /* ReleaseNote */ = {
+			isa = PBXGroup;
+			children = (
+				A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */,
+			);
+			path = ReleaseNote;
+			sourceTree = "<group>";
+		};
 		A0AE0C6E21B83C3B005EA2A8 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -1217,6 +1229,7 @@
 			isa = PBXGroup;
 			children = (
 				A006B5D321721AAE00B68309 /* DemoSettingViewController.swift */,
+				A0ACE2832292B4C800068385 /* ReleaseNote */,
 				A08F58BF212AE52800BEF571 /* Tour */,
 				A0B0AA8520F375A000933759 /* Loading */,
 				A0B0AA8020EE707D00933759 /* Feed-RSS */,
@@ -1298,6 +1311,7 @@
 				A08F58C2212B05C400BEF571 /* terms.html */,
 				A0B9D43120AAE03900B2B796 /* Info.plist */,
 				A0B9D42C20AAE03900B2B796 /* Assets.xcassets */,
+				A0ACE2842292D05400068385 /* releasenote.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1731,6 +1745,7 @@
 				A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */,
 				A0DFF37C20F3B74B008F3E43 /* SFProText-SemiBold.ttf in Resources */,
 				A0B0AA6F20EE60B900933759 /* Form.storyboard in Resources */,
+				A0ACE2852292D05400068385 /* releasenote.json in Resources */,
 				A0D19D87215E51AE00B5F5FE /* ChecklistReviewHeaderView.xib in Resources */,
 				A0B9D42B20AAE03600B2B796 /* Main.storyboard in Resources */,
 				A0B0AA7520EE612900933759 /* Account.storyboard in Resources */,
@@ -1978,6 +1993,7 @@
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
 				A0EBC007220D930E006A0AC3 /* FileManager-Extensions.swift in Sources */,
 				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
+				A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */,
 				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
 				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
 				A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */,
@@ -2241,7 +2257,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2412,7 +2428,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2445,7 +2461,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2576,7 +2592,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2685,7 +2701,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

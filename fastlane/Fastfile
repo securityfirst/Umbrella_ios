@@ -29,7 +29,7 @@ platform :ios do
     )
     increment_build_number
     build_app(workspace: "Umbrella.xcworkspace", scheme: "Umbrella", configuration: "Appstore", export_xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(changelog: changelog, skip_waiting_for_build_processing: true)
+    upload_to_testflight(changelog: changelog)
   end
 
 
@@ -44,7 +44,6 @@ platform :ios do
       build = get_build_number()
 
       message = "Umbrella iOS version #{version} build #{build} successfully sent to Testflight."
-      notification message unless Helper.is_ci? #if I'm running it locally, show a terminal OS X notification
 
       slack(
         message: message

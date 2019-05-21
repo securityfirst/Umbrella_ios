@@ -147,3 +147,6 @@
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
 "Secondary" = "Secondary";
 "Change" = "Change";
+
+//Release note
+"What is new?" = "What is new?";

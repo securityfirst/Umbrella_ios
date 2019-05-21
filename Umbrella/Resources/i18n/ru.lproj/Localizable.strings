@@ -147,3 +147,6 @@
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Загрузка данных из нового репозитория сбросит весь достигнутый вами прогресс. Сделайте резервную копию, прежде чем сделать это!";
 "Secondary" = "второстепенный";
 "Change" = "+ Изменить";
+
+//Release note
+"What is new?" = "Что нового?";

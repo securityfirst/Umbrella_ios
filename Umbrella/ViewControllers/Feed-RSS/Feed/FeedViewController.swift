@@ -45,6 +45,7 @@ class FeedViewController: UIViewController {
     var loadingViewController: LoadingViewController!
     var loginViewController: LoginViewController!
     var tourViewController: TourViewController!
+    var releaseNoteViewController: ReleaseNoteViewController!
     var stepLocation: Bool = false
     var stepSources: Bool = false
     var isStartingSetup: Bool = false
@@ -105,6 +106,15 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Show release note just first time.
+        // I'm checking whether the version and build are different, if yes, show release note.
+        var showReleaseNote = false
+        let releaseNoteVersion = UserDefaults.standard.object(forKey: "ReleaseNote") as? String
+        if releaseNoteVersion == nil || releaseNoteVersion != version() {
+            UserDefaults.standard.set(version(), forKey: "ReleaseNote")
+            showReleaseNote = true
+        }
+
         updateLanguage()
         
         self.segmentedControl.setTitle("Feeds".localized(), forSegmentAt: 0)
@@ -123,6 +133,8 @@ class FeedViewController: UIViewController {
         let isAcceptedTerm = UserDefaults.standard.bool(forKey: "acceptTerm")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        self.releaseNoteViewController = (storyboard.instantiateViewController(withIdentifier: "ReleaseNoteViewController") as? ReleaseNoteViewController)!
+        
         if isAcceptedTerm {
             let passwordCustom: Bool = UserDefaults.standard.object(forKey: "passwordCustom") as? Bool ?? false
             if passwordCustom {
@@ -134,6 +146,9 @@ class FeedViewController: UIViewController {
                 UIApplication.shared.keyWindow?.addSubview(controller.view)
                 controller.loadTent {
                     print("Finished load tent")
+                    if showReleaseNote {
+                        UIApplication.shared.keyWindow?.addSubview(self.releaseNoteViewController.view)
+                    }
                 }
             }
         } else {
@@ -142,6 +157,12 @@ class FeedViewController: UIViewController {
             
             self.loadingViewController = LoadingViewController()
             self.loadingViewController.startingTheUseTheContent()
+            
+            self.tourViewController.didAcceptTerm = {
+                if showReleaseNote {
+                    UIApplication.shared.keyWindow?.addSubview(self.releaseNoteViewController.view)
+                }
+            }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.updateLocation(notification:)), name: Notification.Name("UpdateLocation"), object: nil)
@@ -199,6 +220,13 @@ class FeedViewController: UIViewController {
     //
     // MARK: - Functions
     
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = (dictionary["CFBundleShortVersionString"] as? String)!
+        let build = (dictionary["CFBundleVersion"] as? String)!
+        return "\(version).\(build)"
+    }
+    
     @objc func updateLanguage() {
         self.title = "Feeds".localized()
 
@@ -235,7 +263,7 @@ class FeedViewController: UIViewController {
         loadSetup()
         
         let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
-        // Arabic(ar) or Persian Iranian(fa)
+        // Arabic(ar) or Persian Farsi(fa)
         if language == "ar" || language == "fa" {
             self.setYourFeedLabel.textAlignment = .right
             self.setYourFeedLegLabel.textAlignment = .right

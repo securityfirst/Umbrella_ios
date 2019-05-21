@@ -44,7 +44,7 @@ class RssCell: UITableViewCell {
         self.descriptionLabel.text = item.result.rssFeed?.description
         
         let language: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
-        // Arabic(ar) or Persian Iranian(fa)
+        // Arabic(ar) or Persian Farsi(fa)
         if language == "ar" || language == "fa" {
             self.titleLabel.textAlignment = .right
             self.descriptionLabel.textAlignment = .right

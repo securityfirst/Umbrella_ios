@@ -10,11 +10,100 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
         <array key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
         </array>
     </customFonts>
     <scenes>
+        <!--Release Note View Controller-->
+        <scene sceneID="Zld-Ry-1Yf">
+            <objects>
+                <viewController storyboardIdentifier="ReleaseNoteViewController" id="zgd-4D-7lc" customClass="ReleaseNoteViewController" customModule="Umbrella" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ABB-t7-G01">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXj-Kg-PiR">
+                                <rect key="frame" x="63" y="213.5" width="249" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is new?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="E6r-RU-Nbd">
+                                        <rect key="frame" x="15" y="7" width="219" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="6nw-9M-c7g"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="-" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb2-ZF-5Wo">
+                                        <rect key="frame" x="11" y="46.5" width="227" height="146"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5m-bX-UEg">
+                                        <rect key="frame" x="62" y="199.5" width="125" height="30"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="okAction:" destination="zgd-4D-7lc" eventType="touchUpInside" id="Vpf-Vm-i9S"/>
+                                            <action selector="retryAction:" destination="9dr-gm-E9m" eventType="touchUpInside" id="MjW-SK-CBz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="vb2-ZF-5Wo" firstAttribute="leading" secondItem="yXj-Kg-PiR" secondAttribute="leading" constant="11" id="9eO-Ei-eVr"/>
+                                    <constraint firstItem="E6r-RU-Nbd" firstAttribute="top" secondItem="yXj-Kg-PiR" secondAttribute="top" constant="7" id="DA8-uT-pH9"/>
+                                    <constraint firstAttribute="width" constant="249" id="E6e-DZ-Bye"/>
+                                    <constraint firstAttribute="trailing" secondItem="p5m-bX-UEg" secondAttribute="trailing" constant="62" id="Frq-id-SEt"/>
+                                    <constraint firstItem="E6r-RU-Nbd" firstAttribute="leading" secondItem="yXj-Kg-PiR" secondAttribute="leading" constant="15" id="MIV-xh-xUM"/>
+                                    <constraint firstItem="p5m-bX-UEg" firstAttribute="top" secondItem="vb2-ZF-5Wo" secondAttribute="bottom" constant="7" id="MlG-bv-JIH"/>
+                                    <constraint firstAttribute="trailing" secondItem="vb2-ZF-5Wo" secondAttribute="trailing" constant="11" id="YRM-k6-Bcq"/>
+                                    <constraint firstAttribute="height" constant="240" id="b6H-OD-RCB"/>
+                                    <constraint firstAttribute="bottom" secondItem="p5m-bX-UEg" secondAttribute="bottom" constant="10.5" id="juM-bg-bMF"/>
+                                    <constraint firstItem="p5m-bX-UEg" firstAttribute="leading" secondItem="yXj-Kg-PiR" secondAttribute="leading" constant="62" id="lia-VE-Xj1"/>
+                                    <constraint firstAttribute="trailing" secondItem="E6r-RU-Nbd" secondAttribute="trailing" constant="15" id="rTO-ID-fsu"/>
+                                    <constraint firstItem="vb2-ZF-5Wo" firstAttribute="top" secondItem="E6r-RU-Nbd" secondAttribute="bottom" constant="6.5" id="sgl-dn-707"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.4590556569" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yXj-Kg-PiR" firstAttribute="centerY" secondItem="ABB-t7-G01" secondAttribute="centerY" id="21b-g4-DbA"/>
+                            <constraint firstItem="yXj-Kg-PiR" firstAttribute="centerX" secondItem="ABB-t7-G01" secondAttribute="centerX" id="XhP-XV-VxU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3C8-7z-jcB"/>
+                    </view>
+                    <connections>
+                        <outlet property="noteTextView" destination="vb2-ZF-5Wo" id="pwg-Mm-dDB"/>
+                        <outlet property="titleLabel" destination="E6r-RU-Nbd" id="ZsP-5u-KUz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0x5-HG-Zzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1671.2" y="975.56221889055485"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oBA-yM-LOJ">
             <objects>

@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         language = UserDefaults.standard.object(forKey: "Language")
         
         if let language: String = language as? String {
-            // Arabic(ar) or Persian Iranian(fa)
+            // Arabic(ar) or Persian Farsi(fa)
             if language == "ar" || language == "fa" {
                 UIView.appearance().semanticContentAttribute = .forceRightToLeft
             } else {
@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
         //        tapGesture.delegate = self
         //        window?.addGestureRecognizer(tapGesture)
-        
         return true
     }
     

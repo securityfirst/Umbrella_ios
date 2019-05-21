@@ -18,6 +18,7 @@ class TourViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     var currentPage: Int = 0
     var loadingViewController: LoadingViewController!
+    var didAcceptTerm: (()->Void)?
     
     static let robotoBold = "Roboto-Bold"
     
@@ -91,6 +92,7 @@ class TourViewController: UIViewController {
     @objc func acceptAction() {
         UserDefaults.standard.set(true, forKey: "acceptTerm")
         self.remove()
+        self.didAcceptTerm?()
         
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        self.loadingViewController = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!

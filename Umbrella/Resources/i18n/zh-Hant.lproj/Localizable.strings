@@ -147,3 +147,6 @@
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "從新存儲庫加載數據將重置您所做的所有進度。 在你做之前備份！";
 "Secondary" = "次要";
 "Change" = "更改";
+
+//Release note
+"What is new?" = "什麼是新的？";

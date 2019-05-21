@@ -107,7 +107,6 @@ extension UIAlertController {
         }
         self.topViewController()?.present(alertVC, animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - UIViewController
