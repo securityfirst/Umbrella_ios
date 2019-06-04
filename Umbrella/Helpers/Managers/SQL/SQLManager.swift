@@ -56,6 +56,7 @@ class SQLManager: SQLProtocol {
         var array = [[String: Any]]()
         
         do {
+            print(query)
             if let stmt = try db?.prepare(query) {
                 for row in stmt {
                     var dictionary = [String:Any]()
@@ -289,6 +290,7 @@ extension SQLManager {
 //            #endif
             return self.connect
         } catch {
+            print(error)
             self.connect = nil
             return nil
         }

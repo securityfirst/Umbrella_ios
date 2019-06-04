@@ -70,8 +70,8 @@ class LessonViewModel {
             if self.isSearch {
                 return filterCategories()
             }
-            
-            return language.categories
+
+            return language.categories.filter { Int($0.index ?? -1) > 0 }
         }
         
         return [Category]()

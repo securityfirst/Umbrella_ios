@@ -16,6 +16,12 @@ class LessonCheckListViewController: UIViewController {
         let lessonCheckListViewModel = LessonCheckListViewModel()
         return lessonCheckListViewModel
     }()
+    
+    lazy var pathwayViewModel: PathwayViewModel = {
+        let pathwayViewModel = PathwayViewModel()
+        return pathwayViewModel
+    }()
+    
     @IBOutlet weak var checkListTableView: UITableView!
     
     @IBOutlet weak var progressView: UIProgressView!
@@ -28,7 +34,12 @@ class LessonCheckListViewController: UIViewController {
         self.title = "Checklist".localized()
         
         self.lessonCheckListViewModel.updateChecklistWithItemChecked()
+        self.pathwayViewModel.updateChecklistWithItemChecked()
         self.checkListTableView.reloadData()
+        
+        if let checklist = self.pathwayViewModel.checklist {
+            self.title = checklist.name
+        }
         
         let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem  = modeBarButton
@@ -36,6 +47,12 @@ class LessonCheckListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LessonCheckListViewController.updateChecklist(notification:)), name: Notification.Name("UpdateChecklist"), object: nil)
         
         updateProgress()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     //
@@ -118,69 +135,13 @@ class LessonCheckListViewController: UIViewController {
     /// - Parameter notification: NSNotification
     @objc func updateChecklist(notification: NSNotification) {
         self.lessonCheckListViewModel.updateChecklistWithItemChecked()
+        self.pathwayViewModel.updateChecklistWithItemChecked()
         self.checkListTableView.reloadData()
         
         updateProgress()
     }
     
-}
-
-// MARK: - UITableViewDataSource
-extension LessonCheckListViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let checklist = self.lessonCheckListViewModel.checklist {
-            return checklist.items.count
-        }
-        
-        return 0
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if let checklist = self.lessonCheckListViewModel.checklist {
-            let item: CheckItem = checklist.items[indexPath.row]
-            
-            if item.isLabel {
-                let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
-                
-                cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
-                
-                return cell
-            } else {
-                let cell: FillCheckListCell = (tableView.dequeueReusableCell(withIdentifier: "FillCheckListCell", for: indexPath) as? FillCheckListCell)!
-                
-                cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
-                
-                return cell
-            }
-        }
-        return UITableViewCell()
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension LessonCheckListViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
-        
-        if item.isLabel {
-            return 50.0
-        } else {
-            return 80.0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+    fileprivate func checkOrUncheckCell(_ indexPath: IndexPath) {
         var categoryFound: Category? = nil
         
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
@@ -202,23 +163,134 @@ extension LessonCheckListViewController: UITableViewDelegate {
         }
         
         let subCategory = categoryFound
-        let difficulty = self.lessonCheckListViewModel.category
-        let checklist = self.lessonCheckListViewModel.checklist
-        let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
         
-        let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
-        checklistChecked.languageId = language!.id
-        item.checked = !item.checked
-        
-        if item.checked {
-            self.lessonCheckListViewModel.insert(checklistChecked)
+        // If subCategory is nil so it is Pathway
+        if subCategory == nil {
+            let item: CheckItem = self.pathwayViewModel.checklist!.items[indexPath.row]
+            item.checked = !item.checked
+            let checklist = self.pathwayViewModel.checklist
+            let pathwayChecklistChecked = PathwayChecklistChecked(name: checklist!.name ?? "" , checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
+            pathwayChecklistChecked.languageId = language!.id
+            
+            if item.checked {
+                self.pathwayViewModel.insert(pathwayChecklistChecked)
+            } else {
+                self.pathwayViewModel.remove(pathwayChecklistChecked)
+            }
         } else {
-            self.lessonCheckListViewModel.remove(checklistChecked)
+            let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
+            item.checked = !item.checked
+            let difficulty = self.lessonCheckListViewModel.category
+            let checklist = self.lessonCheckListViewModel.checklist
+            let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
+            checklistChecked.languageId = language!.id
+            
+            if item.checked {
+                self.lessonCheckListViewModel.insert(checklistChecked)
+            } else {
+                self.lessonCheckListViewModel.remove(checklistChecked)
+            }
         }
         
         self.updateProgress()
-
+        
         // I have created this notification to update when a user marks check or uncheck an item on the checklist tab or lesson tab. This way both will be updated
         NotificationCenter.default.post(name: Notification.Name("UpdateChecklist"), object: nil)
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension LessonCheckListViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if let checklist = self.pathwayViewModel.checklist {
+            return checklist.items.count
+        }
+        
+        if let checklist = self.lessonCheckListViewModel.checklist {
+            return checklist.items.count
+        }
+        
+        return 0
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let checklist = self.pathwayViewModel.checklist {
+            let item: CheckItem = checklist.items[indexPath.row]
+            
+            if item.isLabel {
+                let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
+                
+                cell.configure(withViewModel: self.pathwayViewModel, indexPath: indexPath)
+                
+                return cell
+            } else {
+                let cell: FillCheckListCell = (tableView.dequeueReusableCell(withIdentifier: "FillCheckListCell", for: indexPath) as? FillCheckListCell)!
+                
+                cell.configure(withViewModel: self.pathwayViewModel, indexPath: indexPath)
+                cell.delegate = self
+                return cell
+            }
+        }
+        
+        if let checklist = self.lessonCheckListViewModel.checklist {
+            let item: CheckItem = checklist.items[indexPath.row]
+            
+            if item.isLabel {
+                let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
+                
+                cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
+                
+                return cell
+            } else {
+                let cell: FillCheckListCell = (tableView.dequeueReusableCell(withIdentifier: "FillCheckListCell", for: indexPath) as? FillCheckListCell)!
+                
+                cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
+                cell.delegate = self
+                return cell
+            }
+        }
+    
+        return UITableViewCell()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension LessonCheckListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        var item: CheckItem = CheckItem()
+        
+        if let checklist = self.pathwayViewModel.checklist {
+            item = checklist.items[indexPath.row]
+        }
+        
+        if let checklist = self.lessonCheckListViewModel.checklist {
+            item = checklist.items[indexPath.row]
+        }
+        
+        if item.isLabel {
+            return 50.0
+        } else {
+            return 80.0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        checkOrUncheckCell(indexPath)
+    }
+}
+
+extension LessonCheckListViewController: FillChecklistCellDelegate {
+    func checkOrUncheck(cell: FillCheckListCell, indexPath: IndexPath) {
+        checkOrUncheckCell(indexPath)
     }
 }

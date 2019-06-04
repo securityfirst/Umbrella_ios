@@ -276,6 +276,7 @@ extension SegmentViewController: ChecklistCellDelegate {
                 let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
                 let checklistChecked = ChecklistChecked(subCategoryName: self.segmentViewModel.subCategory!.name ?? "", subCategoryId: self.segmentViewModel.subCategory!.id, difficultyId: self.segmentViewModel.difficulty!.id, checklistId: checklist.id, languageId:language!.id)
                 checklistChecked.totalItemsChecklist = checklist.countItemCheck()
+                
                 if checklist.favourite {
                     let favouriteSegment = FavouriteLesson(categoryId: self.segmentViewModel.difficulty!.parent, difficultyId: self.segmentViewModel.difficulty!.id, segmentId: -1)
                     self.segmentViewModel.insert(favouriteSegment)

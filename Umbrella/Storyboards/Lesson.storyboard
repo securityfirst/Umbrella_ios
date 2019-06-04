@@ -497,18 +497,30 @@
                                                                 <constraint firstAttribute="width" constant="23" id="c8h-5H-cQt"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zzd-wL-xYF">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zzd-wL-xYF">
                                                             <rect key="frame" x="48" y="8" width="234" height="44"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                             <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4p-gc-OPl" customClass="MarkdownWebView" customModule="Umbrella" customModuleProvider="target">
+                                                            <rect key="frame" x="48" y="0.0" width="234" height="60"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <wkWebViewConfiguration key="configuration">
+                                                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                                <wkPreferences key="preferences"/>
+                                                            </wkWebViewConfiguration>
+                                                        </wkWebView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="n4p-gc-OPl" secondAttribute="trailing" constant="8" id="21Y-ip-oms"/>
                                                         <constraint firstItem="VDi-ap-0hC" firstAttribute="centerY" secondItem="hje-4T-vnW" secondAttribute="centerY" id="879-8b-IGZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="zzd-wL-xYF" secondAttribute="bottom" constant="8" id="QCq-lk-uBE"/>
+                                                        <constraint firstAttribute="bottom" secondItem="n4p-gc-OPl" secondAttribute="bottom" id="WQt-Cg-Fle"/>
                                                         <constraint firstItem="zzd-wL-xYF" firstAttribute="top" secondItem="hje-4T-vnW" secondAttribute="top" constant="8" id="a5g-HB-fK9"/>
+                                                        <constraint firstItem="n4p-gc-OPl" firstAttribute="top" secondItem="hje-4T-vnW" secondAttribute="top" id="bDF-Qi-YQs"/>
+                                                        <constraint firstItem="n4p-gc-OPl" firstAttribute="leading" secondItem="VDi-ap-0hC" secondAttribute="trailing" constant="8" id="dHR-mN-uye"/>
                                                         <constraint firstItem="VDi-ap-0hC" firstAttribute="leading" secondItem="hje-4T-vnW" secondAttribute="leading" constant="17" id="fzW-wf-zOs"/>
                                                         <constraint firstItem="zzd-wL-xYF" firstAttribute="leading" secondItem="VDi-ap-0hC" secondAttribute="trailing" constant="8" id="tVl-Th-n0q"/>
                                                         <constraint firstAttribute="trailing" secondItem="zzd-wL-xYF" secondAttribute="trailing" constant="8" id="u7i-ce-9J9"/>
@@ -524,6 +536,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkImageView" destination="VDi-ap-0hC" id="yvI-B3-G2T"/>
+                                            <outlet property="markdownWebView" destination="n4p-gc-OPl" id="8fR-VX-SFb"/>
                                             <outlet property="titleLabel" destination="zzd-wL-xYF" id="F5M-95-fa5"/>
                                         </connections>
                                     </tableViewCell>
@@ -599,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EV-9K-iWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3829.5999999999999" y="2735.9820089955024"/>
+            <point key="canvasLocation" x="3828.75" y="2735.9154929577467"/>
         </scene>
         <!--Review Lesson View Controller-->
         <scene sceneID="4al-RU-09y">

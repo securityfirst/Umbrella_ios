@@ -46,6 +46,7 @@ class FeedViewController: UIViewController {
     var loginViewController: LoginViewController!
     var tourViewController: TourViewController!
     var releaseNoteViewController: ReleaseNoteViewController!
+    var pathwayViewController: PathwayViewController!
     var stepLocation: Bool = false
     var stepSources: Bool = false
     var isStartingSetup: Bool = false
@@ -59,7 +60,6 @@ class FeedViewController: UIViewController {
             } else {
                 self.feedView.intervalLabel.text = "\(intervalSet.count == 0 ? "30" : intervalSet) min"
             }
-            
             checkState()
         }
     }
@@ -146,9 +146,8 @@ class FeedViewController: UIViewController {
                 UIApplication.shared.keyWindow?.addSubview(controller.view)
                 controller.loadTent {
                     print("Finished load tent")
-                    if showReleaseNote {
-                        UIApplication.shared.keyWindow?.addSubview(self.releaseNoteViewController.view)
-                    }
+                    let showPathwayFirstTime = self.showPathway()
+                    self.showReleaseNote(show: showReleaseNote, showPathway: showPathwayFirstTime)
                 }
             }
         } else {
@@ -157,11 +156,11 @@ class FeedViewController: UIViewController {
             
             self.loadingViewController = LoadingViewController()
             self.loadingViewController.startingTheUseTheContent()
-            
+
+            //FIXME: Pathway
             self.tourViewController.didAcceptTerm = {
-                if showReleaseNote {
-                    UIApplication.shared.keyWindow?.addSubview(self.releaseNoteViewController.view)
-                }
+                let showPathwayFirstTime = self.showPathway()
+                self.showReleaseNote(show: showReleaseNote, showPathway: showPathwayFirstTime)
             }
         }
         
@@ -220,6 +219,39 @@ class FeedViewController: UIViewController {
     //
     // MARK: - Functions
     
+    func showReleaseNote(show: Bool, showPathway: Bool) {
+        if !showPathway {
+            self.pathwayViewController.didClosePathway = {
+                if show {
+                    UIApplication.shared.keyWindow?.addSubview(self.releaseNoteViewController.view)
+                }
+            }
+        } else {
+            if show {
+                UIApplication.shared.keyWindow?.addSubview(self.releaseNoteViewController.view)
+            }
+        }
+    }
+    
+    /// Show Pathway screen
+    ///
+    /// - Returns: Bool
+    func showPathway() -> Bool {
+        let showPathway = UserDefaults.standard.bool(forKey: "ShowPathway")
+        if !showPathway {
+            UserDefaults.standard.set(true, forKey: "ShowPathway")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.pathwayViewController = (storyboard.instantiateViewController(withIdentifier: "PathwayViewController") as? PathwayViewController)!
+            self.present(self.pathwayViewController, animated: true, completion: nil)
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    /// Get Version and build from app
+    ///
+    /// - Returns: String
     func version() -> String {
         let dictionary = Bundle.main.infoDictionary!
         let version = (dictionary["CFBundleShortVersionString"] as? String)!
@@ -227,6 +259,7 @@ class FeedViewController: UIViewController {
         return "\(version).\(build)"
     }
     
+    /// Update text when language changed
     @objc func updateLanguage() {
         self.title = "Feeds".localized()
 
@@ -581,6 +614,7 @@ class FeedViewController: UIViewController {
         return NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: urlString)
     }
     
+    /// Show rss error
     func showRssError() {
         DispatchQueue.main.async {
             UIApplication.shared.keyWindow!.makeToast("There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again.".localized(), duration: 6.0, position: .center)
@@ -606,7 +640,7 @@ class FeedViewController: UIViewController {
             textField.placeholder = "http://"
             textField.keyboardType = UIKeyboardType.URL
         }
-        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertAction.Style.destructive, handler: { _ in
+        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertAction.Style.default, handler: { _ in
             let firstTextField = alertController.textFields![0] as UITextField
             
             if let count = firstTextField.text?.count, count > 0, self.validateUrl(urlString: firstTextField.text!) {

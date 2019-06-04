@@ -66,4 +66,17 @@ struct LanguageDao: DaoProtocol {
     //
     // MARK: - Custom functions
     
+    /// List of object
+    ///
+    /// - Returns: a list of object
+    func getLanguage(name: String) -> Language {
+        
+        let languages:[Language] = self.sqlProtocol.select(withQuery: "SELECT * FROM \(Language.table) WHERE name = '\(name)'")
+        
+        if let language = languages.first {
+            return language
+        }
+        
+        return Language()
+    }
 }

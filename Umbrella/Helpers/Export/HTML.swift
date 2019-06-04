@@ -59,49 +59,95 @@ class HTML: ExportProtocol {
             <html>
                 <head>
                     <style>
-                        body{
-                            color:#444444;
-                            font-size:300%;
-                            padding: 50px 50px 50px 50px; 
-                        }
-                        img{
-                            width:100%
-                        }
-                        h1{
-                            color:#33b5e5;
-                            font-weight:normal;
-                        }
-                        h2{
-                            color:#9ABE2E;
-                            font-weight:normal;
-                        }
-                        getDifficultyFromId{
-                            color:#33b5e5
-                        }
-                        .button,.button:link{
-                            display:block;
-                            text-decoration:none;
-                            color:white;
-                            border:none;
-                            width:100%;
-                            text-align:center;
-                            border-radius:3px;
-                            padding-top:10px;
-                            padding-bottom:10px;
-                        }
-                        .green{
-                            background:#9ABE2E
-                        }
-                        .purple{
-                            background:#b83656
-                        }
-                        .yellow{
-                            background:#f3bc2b
-                        }
+                            body {
+                                color:#444444;
+                                font-size:300%;
+                                padding: 50px 50px 50px 50px;
+                            }
+                            img {
+                                width:100%
+                            }
+                            h1 {
+                                color:#33b5e5;
+                                font-weight:normal;
+                            }
+                            h2 {
+                                color:#9ABE2E;
+                                font-weight:normal;
+                            }
+                            getDifficultyFromId {
+                                color:#33b5e5
+                            }
+                            .button,.button:link {
+                                display:block;
+                                text-decoration:none;
+                                color:white;
+                                border:none;
+                                width:100%;
+                                text-align:center;
+                                border-radius:3px;
+                                padding-top:10px;
+                                padding-bottom:10px;
+                            }
+                            .green {
+                                background:#9ABE2E
+                            }
+                            .purple {
+                                background:#b83656
+                            }
+                            .yellow {
+                                background:#f3bc2b
+                            }
                     </style>
                 </head>
                 <body>
                 \(html)
+                </body>
+            </html>
+            """
+            self.content = html
+        } catch {
+            print("Convert to html error: \(error)")
+        }
+    }
+    
+    /// Prepare html with style of the content
+    ///
+    /// - Returns: String
+    func prepareHtmlWithStyleDeeplink() {
+        do {
+            var html = try Down(markdownString: self.content).toHTML()
+            
+            html = """
+            <meta http-equiv="content-type" content="text/html;charset=utf-8">
+            <html>
+                <head>
+                    <style>
+                            body {
+                                color:#444444;
+                                font-size:370%;
+                                height: 100%;
+                                width: 100%;
+                            }
+                            .center p {
+                                position: relative;
+                                top: 50%;
+                                text-align: #align#;
+                                -webkit-transform: translateY(-55%);
+                                -ms-transform: translateY(-55%);
+                                transform: translateY(-55%);
+                            }
+                            section {
+                                display: block;
+                                height: 200px;
+                                position: relative;
+                            }
+                    </style>
+                </head>
+                <body>
+                    <section class="center">
+                        \(html)
+                    </section>
                 </body>
             </html>
             """

@@ -114,7 +114,7 @@ class BaseChecklistViewController: UIViewController {
             textField.keyboardType = UIKeyboardType.alphabet
             textField.autocapitalizationType = .sentences
         }
-        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertAction.Style.destructive, handler: { _ in
+        let saveAction = UIAlertAction(title: "Save".localized(), style: UIAlertAction.Style.default, handler: { _ in
             let firstTextField = alertController.textFields![0] as UITextField
             
             if let count = firstTextField.text?.count, count > 0 {

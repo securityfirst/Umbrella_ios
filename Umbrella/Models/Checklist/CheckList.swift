@@ -13,7 +13,7 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     
     // Used in parser from the database to object
     var id: Int
-    var name: String? = "Checklists".localized()
+    var name: String?
     var categoryId: Int
     
     //
@@ -26,14 +26,16 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     // MARK: - Initializers
     init() {
         self.id = -1
+        self.name = ""
         self.categoryId = -1
         self.index = 0
         self.items = []
         self.favourite = false
     }
     
-    init(index: Float, items: [CheckItem]) {
+    init(name: String, index: Float, items: [CheckItem]) {
         self.id = -1
+        self.name = ""
         self.categoryId = -1
         self.index = index
         self.items = items
@@ -44,6 +46,7 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
+        case name = "title"
         case categoryId = "category_id"
         case index
         case items = "list"
@@ -56,6 +59,12 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
             self.id = try container.decode(Int.self, forKey: .id)
         } else {
             self.id = -1
+        }
+        
+        if container.contains(.name) {
+            self.name = try container.decode(String.self, forKey: .name)
+        } else {
+            self.name = ""
         }
         
         if container.contains(.categoryId) {
@@ -82,6 +91,7 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     func copy(with zone: NSZone? = nil) -> Any {
         let copy = CheckList()
         copy.id = self.id
+        copy.name = self.name
         copy.categoryId = self.categoryId
         copy.index = self.index
         copy.favourite = self.favourite
@@ -106,6 +116,7 @@ class CheckList: Codable, TableProtocol, NSCopying, ModelProtocol {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
+            Column(name: "name", type: .string),
             Column(name: "index", type: .real),
             Column(foreignKey: ForeignKey(key: "category_id", table: Table("category"), tableKey: "id"))
         ]

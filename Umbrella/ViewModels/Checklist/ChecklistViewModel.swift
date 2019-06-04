@@ -26,7 +26,7 @@ class ChecklistViewModel {
         
         if let language = language {
             //Category
-            for category in language.categories {
+            for category in language.categories.filter({ Int($0.index ?? -1) > 0 }) {
                 //Subcategory
                 for subCategory in category.categories {
                     //Difficulty
@@ -97,7 +97,7 @@ class ChecklistViewModel {
         
         if let language = language {
             //Category
-            for category in language.categories {
+            for category in language.categories.filter({ Int($0.index ?? -1) > 0 }) {
                 //Subcategory
                 for subCategory in category.categories {
                     //Difficulty

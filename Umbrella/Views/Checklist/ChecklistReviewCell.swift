@@ -52,7 +52,7 @@ class ChecklistReviewCell: UITableViewCell {
         self.widthConstraint.constant = 44
         self.shareWidthConstraint.constant = 40
         self.shareButton.isHidden = false
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             let checklistChecked = viewModel.totalDoneChecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
             
@@ -67,7 +67,7 @@ class ChecklistReviewCell: UITableViewCell {
             self.iconImageView.backgroundColor = UIColor.clear
             self.shareWidthConstraint.constant = 0
             self.shareButton.isHidden = true
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
             let checklistChecked = viewModel.favouriteChecklistChecked[indexPath.row]
             let iconAndColor = viewModel.difficultyIconBy(id: checklistChecked.difficultyId)
             

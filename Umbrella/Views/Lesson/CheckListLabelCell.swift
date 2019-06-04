@@ -45,5 +45,21 @@ class CheckListLabelCell: UITableViewCell {
             }
         }
     }
+    
+    /// Configure the cell with viewModel
+    ///
+    /// - Parameters:
+    ///   - viewModel: ViewModel
+    ///   - indexPath: IndexPath
+    func configure(withViewModel viewModel:PathwayViewModel, indexPath: IndexPath) {
+        
+        if let checkList = viewModel.checklist {
+            let item = checkList.items[indexPath.row]
+            
+            if let titleLabel = self.titleLabel {
+                titleLabel.text = item.name
+            }
+        }
+    }
 
 }

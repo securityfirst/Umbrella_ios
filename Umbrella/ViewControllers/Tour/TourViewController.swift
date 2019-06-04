@@ -18,7 +18,7 @@ class TourViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     var currentPage: Int = 0
     var loadingViewController: LoadingViewController!
-    var didAcceptTerm: (()->Void)?
+    var didAcceptTerm: (() -> Void)?
     
     static let robotoBold = "Roboto-Bold"
     

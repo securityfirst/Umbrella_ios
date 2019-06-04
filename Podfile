@@ -7,14 +7,15 @@ target 'Umbrella' do
 
   pod 'SwiftLint'
   pod 'Localize-Swift', '~> 2.0'
-  pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git'
+  pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git', :tag => '0.11.6'
   pod 'Files', :git => 'https://github.com/clayellis/Files.git'
   pod 'FeedKit', '~> 8.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
   pod 'Yams'
   pod 'Toast-Swift', '~> 4.0.0'
   pod 'Zip', '~> 1.1'
-  
+#  pod 'SQLiteMigrationManager.swift', '0.6.0'
+
   target 'UmbrellaTests' do
     inherit! :search_paths
 

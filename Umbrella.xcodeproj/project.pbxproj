@@ -64,6 +64,9 @@
 		A0240485216231F5004057B5 /* FavouriteLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0240484216231F5004057B5 /* FavouriteLesson.swift */; };
 		A02404872162327F004057B5 /* FavouriteLessonDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02404862162327F004057B5 /* FavouriteLessonDao.swift */; };
 		A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E5EF92148185200DEFBFB /* LocationViewModel.swift */; };
+		A0325E8722A019F200C8B5FA /* MigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0325E8622A019F200C8B5FA /* MigrationManager.swift */; };
+		A0325E8922A01DD900C8B5FA /* Migrations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0325E8822A01DD900C8B5FA /* Migrations.bundle */; };
+		A0325E8B22A02B1100C8B5FA /* SQLiteMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0325E8A22A02B1100C8B5FA /* SQLiteMigrationManager.swift */; };
 		A03AEE6A224BC7C9001C893D /* content.zip in Resources */ = {isa = PBXBuildFile; fileRef = A03AEE69224BC7C8001C893D /* content.zip */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
@@ -152,6 +155,9 @@
 		A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */; };
 		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
 		A0B1AF4C21E3A3EF00ADD6CB /* MarkdownWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */; };
+		A0B65AA5229D3BB6001A3903 /* PathwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B65AA2229D3BB5001A3903 /* PathwayCell.swift */; };
+		A0B65AA6229D3BB6001A3903 /* PathwayChecklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B65AA3229D3BB5001A3903 /* PathwayChecklistCell.swift */; };
+		A0B65AA7229D3BB6001A3903 /* PathwaySeeAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B65AA4229D3BB5001A3903 /* PathwaySeeAllCell.swift */; };
 		A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */; };
 		A0B66B422190A5CB00D46653 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B412190A5CB00D46653 /* AccountCell.swift */; };
 		A0B66B462192043000D46653 /* CategoryCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B66B452192043000D46653 /* CategoryCellSpec.swift */; };
@@ -234,6 +240,11 @@
 		A0E81C01210F62AC00FB73FF /* BaseFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81C00210F62AC00FB73FF /* BaseFormCell.swift */; };
 		A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */; };
 		A0E81C062110B27400FB73FF /* FormAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81C052110B27400FB73FF /* FormAnswer.swift */; };
+		A0E87CFC2296F32900BD8802 /* PathwayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E87CFB2296F32900BD8802 /* PathwayViewController.swift */; };
+		A0E87D03229BEBD000BD8802 /* PathwayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E87D02229BEBD000BD8802 /* PathwayViewModel.swift */; };
+		A0E87D06229BFAD500BD8802 /* PathwayChecklistChecked.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E87D05229BFAD500BD8802 /* PathwayChecklistChecked.swift */; };
+		A0E87D08229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E87D07229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift */; };
+		A0E87D0A229C2EFD00BD8802 /* PathwayDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E87D09229C2EFD00BD8802 /* PathwayDao.swift */; };
 		A0EBC002220D930E006A0AC3 /* UIPrintPageRenderer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBBFFC220D930E006A0AC3 /* UIPrintPageRenderer-Extensions.swift */; };
 		A0EBC003220D930E006A0AC3 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBBFFD220D930E006A0AC3 /* SwiftyTimer.swift */; };
 		A0EBC004220D930E006A0AC3 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBBFFE220D930E006A0AC3 /* Log.swift */; };
@@ -418,6 +429,9 @@
 		A0240484216231F5004057B5 /* FavouriteLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLesson.swift; sourceTree = "<group>"; };
 		A02404862162327F004057B5 /* FavouriteLessonDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLessonDao.swift; sourceTree = "<group>"; };
 		A02E5EF92148185200DEFBFB /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		A0325E8622A019F200C8B5FA /* MigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationManager.swift; sourceTree = "<group>"; };
+		A0325E8822A01DD900C8B5FA /* Migrations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Migrations.bundle; sourceTree = "<group>"; };
+		A0325E8A22A02B1100C8B5FA /* SQLiteMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteMigrationManager.swift; sourceTree = "<group>"; };
 		A03AEE69224BC7C8001C893D /* content.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = content.zip; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
@@ -504,6 +518,9 @@
 		A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownWebView.swift; sourceTree = "<group>"; };
+		A0B65AA2229D3BB5001A3903 /* PathwayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathwayCell.swift; sourceTree = "<group>"; };
+		A0B65AA3229D3BB5001A3903 /* PathwayChecklistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathwayChecklistCell.swift; sourceTree = "<group>"; };
+		A0B65AA4229D3BB5001A3903 /* PathwaySeeAllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathwaySeeAllCell.swift; sourceTree = "<group>"; };
 		A0B66B3F2190A4F400D46653 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		A0B66B412190A5CB00D46653 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		A0B66B452192043000D46653 /* CategoryCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellSpec.swift; sourceTree = "<group>"; };
@@ -595,6 +612,11 @@
 		A0E81C00210F62AC00FB73FF /* BaseFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFormCell.swift; sourceTree = "<group>"; };
 		A0E81C032110B1C400FB73FF /* FormAnswerDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAnswerDao.swift; sourceTree = "<group>"; };
 		A0E81C052110B27400FB73FF /* FormAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAnswer.swift; sourceTree = "<group>"; };
+		A0E87CFB2296F32900BD8802 /* PathwayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathwayViewController.swift; sourceTree = "<group>"; };
+		A0E87D02229BEBD000BD8802 /* PathwayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathwayViewModel.swift; sourceTree = "<group>"; };
+		A0E87D05229BFAD500BD8802 /* PathwayChecklistChecked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathwayChecklistChecked.swift; sourceTree = "<group>"; };
+		A0E87D07229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathwayChecklistCheckedDao.swift; sourceTree = "<group>"; };
+		A0E87D09229C2EFD00BD8802 /* PathwayDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathwayDao.swift; sourceTree = "<group>"; };
 		A0EBBFFC220D930E006A0AC3 /* UIPrintPageRenderer-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPrintPageRenderer-Extensions.swift"; sourceTree = "<group>"; };
 		A0EBBFFD220D930E006A0AC3 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		A0EBBFFE220D930E006A0AC3 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -871,6 +893,8 @@
 				A05BA7F920E1188700482003 /* ForeignKey.swift */,
 				A064CE9220AC47E800CE99E1 /* SQLManager.swift */,
 				A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */,
+				A0325E8622A019F200C8B5FA /* MigrationManager.swift */,
+				A0325E8A22A02B1100C8B5FA /* SQLiteMigrationManager.swift */,
 			);
 			path = SQL;
 			sourceTree = "<group>";
@@ -1076,6 +1100,7 @@
 			children = (
 				A0B0AA6820EE575400933759 /* TabBar.swift */,
 				A00386FD20F3A6F3004FAC8A /* UmbrellaView.swift */,
+				A0B65AA1229D3BB5001A3903 /* Pathway */,
 				A003811320FE368B00CDA44D /* Form */,
 				A0CC7B422135AE7100C28C3B /* Feed-RSS */,
 				A099D09B214A7BDE0064AD18 /* Lesson */,
@@ -1091,6 +1116,16 @@
 				A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */,
 			);
 			path = Git;
+			sourceTree = "<group>";
+		};
+		A0B65AA1229D3BB5001A3903 /* Pathway */ = {
+			isa = PBXGroup;
+			children = (
+				A0B65AA2229D3BB5001A3903 /* PathwayCell.swift */,
+				A0B65AA3229D3BB5001A3903 /* PathwayChecklistCell.swift */,
+				A0B65AA4229D3BB5001A3903 /* PathwaySeeAllCell.swift */,
+			);
+			path = Pathway;
 			sourceTree = "<group>";
 		};
 		A0B66B432190A5D100D46653 /* Account */ = {
@@ -1137,6 +1172,8 @@
 				A0FDDF5E21BA94780078FCAA /* CustomChecklistDao.swift */,
 				A0FDDF6021BA94860078FCAA /* CustomCheckItemDao.swift */,
 				A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */,
+				A0E87D07229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift */,
+				A0E87D09229C2EFD00BD8802 /* PathwayDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -1221,6 +1258,7 @@
 				A0FFE50220CEEB010026C0C7 /* Checklist */,
 				A0C404A721A2C27A0068BDDD /* CustomPassword.swift */,
 				A0F6C39A21A4421100A0FE85 /* SettingItem.swift */,
+				A0E87D05229BFAD500BD8802 /* PathwayChecklistChecked.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1229,6 +1267,7 @@
 			isa = PBXGroup;
 			children = (
 				A006B5D321721AAE00B68309 /* DemoSettingViewController.swift */,
+				A0E87CFD2296F33100BD8802 /* Pathway */,
 				A0ACE2832292B4C800068385 /* ReleaseNote */,
 				A08F58BF212AE52800BEF571 /* Tour */,
 				A0B0AA8520F375A000933759 /* Loading */,
@@ -1277,6 +1316,7 @@
 		A0B9D45B20AAE1CE00B2B796 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A0E87D01229BEBD000BD8802 /* Pathway */,
 				A0D19D79215E49FA00B5F5FE /* Loading */,
 				A0D19D7A215E4A0800B5F5FE /* Form */,
 				A0D19D7B215E4A1800B5F5FE /* Feed-RSS */,
@@ -1304,6 +1344,7 @@
 			isa = PBXGroup;
 			children = (
 				A0C404A121A17C1F0068BDDD /* icon-imported-document.png */,
+				A0325E8822A01DD900C8B5FA /* Migrations.bundle */,
 				A0A3C9AE224BC36D007471C4 /* Content */,
 				A00386F220F394F7004FAC8A /* Fonts */,
 				A064CE9420AC497D00CE99E1 /* Database */,
@@ -1465,6 +1506,22 @@
 				A0038130210741B500CDA44D /* SingleChoiceCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A0E87CFD2296F33100BD8802 /* Pathway */ = {
+			isa = PBXGroup;
+			children = (
+				A0E87CFB2296F32900BD8802 /* PathwayViewController.swift */,
+			);
+			path = Pathway;
+			sourceTree = "<group>";
+		};
+		A0E87D01229BEBD000BD8802 /* Pathway */ = {
+			isa = PBXGroup;
+			children = (
+				A0E87D02229BEBD000BD8802 /* PathwayViewModel.swift */,
+			);
+			path = Pathway;
 			sourceTree = "<group>";
 		};
 		A0EBBFFB220D930E006A0AC3 /* HTMLPDFRenderer */ = {
@@ -1753,6 +1810,7 @@
 				A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */,
 				A003810E20FE315C00CDA44D /* Roboto-BoldCondensed.ttf in Resources */,
 				A0B0AA7120EE60E300933759 /* Checklist.storyboard in Resources */,
+				A0325E8922A01DD900C8B5FA /* Migrations.bundle in Resources */,
 				A0C404A221A17C200068BDDD /* icon-imported-document.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1891,13 +1949,16 @@
 				A0AE1A2A214BEFC50019F09B /* DifficultyViewController.swift in Sources */,
 				A0C404A821A2C27B0068BDDD /* CustomPassword.swift in Sources */,
 				A0C6CE9C20B1EBB8005BC111 /* Global.swift in Sources */,
+				A0B65AA6229D3BB6001A3903 /* PathwayChecklistCell.swift in Sources */,
 				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
 				A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */,
 				A003810C20FE2AA500CDA44D /* TitleFormView.swift in Sources */,
 				A0F6C3AD21A6BB5000A0FE85 /* SettingLocationViewController.swift in Sources */,
+				A0E87D08229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift in Sources */,
 				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
 				A0848687214FFD6E0099D669 /* CheckListCell.swift in Sources */,
+				A0B65AA5229D3BB6001A3903 /* PathwayCell.swift in Sources */,
 				A003812F210741A500CDA44D /* MultiChoiceCell.swift in Sources */,
 				A0EBC0142211CB69006A0AC3 /* DeepLinkNavigationProtocol.swift in Sources */,
 				A0D8BCAD20E246C90052028F /* OptionItemDao.swift in Sources */,
@@ -1911,17 +1972,21 @@
 				A075248C20C8290300E91A4A /* Language.swift in Sources */,
 				A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */,
 				A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */,
+				A0E87CFC2296F32900BD8802 /* PathwayViewController.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
 				A0B8CC7121AC076600AEAF50 /* SettingLanguageViewModel.swift in Sources */,
 				A0EBC0162211CEB9006A0AC3 /* LessonNavigation.swift in Sources */,
 				A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */,
 				A0AE0C7021B83C51005EA2A8 /* CustomChecklist.swift in Sources */,
+				A0E87D06229BFAD500BD8802 /* PathwayChecklistChecked.swift in Sources */,
 				A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A0FE4EE62238225A0048E591 /* UITableView+Ext.swift in Sources */,
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0AE0C7421B8420C005EA2A8 /* CustomChecklistCell.swift in Sources */,
+				A0B65AA7229D3BB6001A3903 /* PathwaySeeAllCell.swift in Sources */,
+				A0E87D0A229C2EFD00BD8802 /* PathwayDao.swift in Sources */,
 				A0F6C39B21A4421100A0FE85 /* SettingItem.swift in Sources */,
 				A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */,
 				A02115B3213EB331004B5B73 /* WebViewModel.swift in Sources */,
@@ -1933,6 +1998,7 @@
 				A0C404A621A19FEC0068BDDD /* AskForPasswordView.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */,
+				A0325E8B22A02B1100C8B5FA /* SQLiteMigrationManager.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
@@ -1949,6 +2015,7 @@
 				A0D19D7F215E4A6300B5F5FE /* ChecklistViewModel.swift in Sources */,
 				A0F6C3A921A56AB100A0FE85 /* SettingCellProtocol.swift in Sources */,
 				A01CC61F21F717FD00E5D771 /* Export.swift in Sources */,
+				A0E87D03229BEBD000BD8802 /* PathwayViewModel.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
@@ -1966,6 +2033,7 @@
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
 				A01CC62121F7187C00E5D771 /* ExportProtocol.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
+				A0325E8722A019F200C8B5FA /* MigrationManager.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
 				A006B5D421721AAF00B68309 /* DemoSettingViewController.swift in Sources */,
 				A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */,

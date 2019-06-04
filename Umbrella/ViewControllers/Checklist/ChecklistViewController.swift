@@ -18,8 +18,15 @@ class ChecklistViewController: UIViewController {
         return checklistViewModel
     }()
     
+    lazy var pathwayViewModel: PathwayViewModel = {
+        let pathwayViewModel = PathwayViewModel()
+        return pathwayViewModel
+    }()
+    
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var checklistReviewTableView: UITableView!
+    
+    var pathwayViewController: PathwayViewController!
     
     //
     // MARK: - Life cycle
@@ -31,6 +38,7 @@ class ChecklistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.checklistReviewTableView?.register(ChecklistReviewHeaderView.nib, forHeaderFooterViewReuseIdentifier: ChecklistReviewHeaderView.identifier)
         self.checklistReviewTableView.isHidden = true
     }
@@ -62,13 +70,35 @@ class ChecklistViewController: UIViewController {
     func updateChecklist() {
         DispatchQueue.global(qos: .default).async {
             self.checklistViewModel.reportOfItemsChecked()
-            DispatchQueue.main.async {
-                self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
-                self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+            
+            let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+            let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+            
+            if let language = language {
+                let success = self.pathwayViewModel.listPathways(languageId: language.id)
+                if success {
+                    self.pathwayViewModel.updatePathways()
+                }
                 
-                self.checklistReviewTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.emptyLabel.isHidden = true
+                    self.checklistReviewTableView.isHidden = false
+                    //                self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+                    //                self.checklistReviewTableView.isHidden = (self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
+                    
+                    self.checklistReviewTableView.reloadData()
+                }
             }
         }
+    }
+    
+    /// Show Pathway screen
+    ///
+    /// - Returns: Bool
+    func showPathway() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.pathwayViewController = (storyboard.instantiateViewController(withIdentifier: "PathwayViewController") as? PathwayViewController)!
+        self.present(self.pathwayViewController, animated: true, completion: nil)
     }
     
     //
@@ -76,10 +106,11 @@ class ChecklistViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "checklistDetailSegue" {
+            
             let destination = (segue.destination as? LessonCheckListViewController)!
-            let item = (sender as? (category: Category, subCategory: Category, difficulty: Category, checkList: CheckList))!
-            destination.lessonCheckListViewModel.checklist = item.checkList
-            destination.lessonCheckListViewModel.category = item.difficulty
+            let item = (sender as? (category: Category, subCategory: Category, difficulty: Category, checklist: CheckList))!
+            destination.pathwayViewModel.checklist = item.checklist
+            destination.pathwayViewModel.category = item.category
         }
     }
 }
@@ -88,28 +119,46 @@ class ChecklistViewController: UIViewController {
 extension ChecklistViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return 1
+            let checklists = self.pathwayViewModel.pathwayFavorite()
+            return checklists.count + 1
         } else if section == 1 {
-            return self.checklistViewModel.favouriteChecklistChecked.count
+            return 1
         } else if section == 2 {
+            return self.checklistViewModel.favouriteChecklistChecked.count
+        } else if section == 3 {
             return self.checklistViewModel.checklistChecked.count
         }
         
-        return self.checklistViewModel.checklistChecked.count
+        return 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: ChecklistReviewCell = (tableView.dequeueReusableCell(withIdentifier: "ChecklistReviewCell", for: indexPath) as? ChecklistReviewCell)!
-        cell.configure(withViewModel: self.checklistViewModel, indexPath: indexPath)
-        cell.delegate = self
-        return cell
+        if indexPath.section == 0 {
+            let checklists = self.pathwayViewModel.pathwayFavorite()
+            
+            print("\(indexPath.row) \(checklists.count)")
+            if indexPath.row == checklists.count {
+                let cell: PathwaySeeAllCell = (tableView.dequeueReusableCell(withIdentifier: "PathwaySeeAllCell", for: indexPath) as? PathwaySeeAllCell)!
+                return cell
+            } else {
+                let cell: PathwayChecklistCell = (tableView.dequeueReusableCell(withIdentifier: "PathwayChecklistCell", for: indexPath) as? PathwayChecklistCell)!
+                cell.configure(withViewModel: self.pathwayViewModel, indexPath: indexPath)
+                cell.delegate = self
+                return cell
+            }
+        } else {
+            let cell: ChecklistReviewCell = (tableView.dequeueReusableCell(withIdentifier: "ChecklistReviewCell", for: indexPath) as? ChecklistReviewCell)!
+            cell.configure(withViewModel: self.checklistViewModel, indexPath: indexPath)
+            cell.delegate = self
+            return cell
+        }
     }
     
 }
@@ -118,6 +167,13 @@ extension ChecklistViewController: UITableViewDataSource {
 extension ChecklistViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 0 {
+            let checklists = self.pathwayViewModel.pathwayFavorite()
+            if indexPath.row == checklists.count {
+                return 44
+            }
+        }
         return 96.0
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -128,10 +184,12 @@ extension ChecklistViewController: UITableViewDelegate {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ChecklistReviewHeaderView.identifier) as? ChecklistReviewHeaderView {
             
             if section == 0 {
-                headerView.titleLabel.text = "Checklists total".localized()
+                headerView.titleLabel.text = "Top Tips".localized()
             } else if section == 1 {
-                headerView.titleLabel.text = "Favourites".localized()
+                headerView.titleLabel.text = "Checklists total".localized()
             } else if section == 2 {
+                headerView.titleLabel.text = "Favourites".localized()
+            } else if section == 3 {
                 headerView.titleLabel.text = "My Checklists".localized()
             }
             
@@ -145,7 +203,7 @@ extension ChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
             
-            if indexPath.section == 1 {
+            if indexPath.section == 2 {
                 // Favorite
                 let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
                 self.checklistViewModel.removelAllChecks(checklistChecked: checklistChecked)
@@ -156,7 +214,7 @@ extension ChecklistViewController: UITableViewDelegate {
                 newChecklistChecked.totalItemsChecklist = checklistChecked.totalItemsChecklist
                 self.checklistViewModel.insert(newChecklistChecked)
                 self.checklistViewModel.favouriteChecklistChecked.append(newChecklistChecked)
-            } else if indexPath.section == 2 {
+            } else if indexPath.section == 3 {
                 // My checklists
                 let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
                 self.checklistViewModel.checklistChecked.remove(at: indexPath.row)
@@ -177,7 +235,7 @@ extension ChecklistViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 || indexPath.section == 1 {
             return false
         }
         
@@ -188,16 +246,27 @@ extension ChecklistViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         var item = (category: Category(), subCategory: Category(), difficulty: Category(), checklist: CheckList())
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            let checklists = self.pathwayViewModel.pathwayFavorite()
+            
+            if indexPath.row == checklists.count {
+                self.showPathway()
+            } else {
+                print("Item")
+                let checklist = self.pathwayViewModel.pathwayFavorite()[indexPath.row]
+                item.checklist = checklist
+                item.category = self.pathwayViewModel.category!
+                self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+            }
+        } else if indexPath.section == 2 {
             let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 3 {
             let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         }
         
-        if indexPath.section != 0 {
-            //            self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
+        if indexPath.section != 1 {
             let url = URL(string: "umbrella://\(item.category.deeplink!)/\( item.subCategory.deeplink!)/\( item.difficulty.deeplink!)/checklist/\(item.checklist.id)")
             UIApplication.shared.open(url!)
         }
@@ -222,9 +291,9 @@ extension ChecklistViewController: ChecklistReviewCellDelegate {
         var objectsToShare:[Any] = [Any]()
         
         var checklistChecked: ChecklistChecked? = ChecklistChecked()
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 3 {
             checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
         }
         
@@ -286,5 +355,20 @@ extension ChecklistViewController: ChecklistReviewCellDelegate {
                 print("cancel")
             })
         }
+    }
+}
+
+// MARK: - PathwayChecklistCellDelegate
+extension ChecklistViewController: PathwayChecklistCellDelegate {
+    func deletePathwayChecklist(cell: PathwayChecklistCell, indexPath: IndexPath) {
+        UIAlertController.alert(title: "Alert".localized(), message: "Do you really want to remove this item?".localized(), cancelButtonTitle: "No".localized(), otherButtons: ["Yes".localized()], dismiss: { _ in
+            
+            let checklist: CheckList = self.pathwayViewModel.pathwayFavorite()[indexPath.row]
+            self.pathwayViewModel.removelAllChecks(checklist: checklist)
+            checklist.favourite = false
+            self.checklistReviewTableView.reloadData()
+        }, cancel: {
+            print("cancelClicked")
+        })
     }
 }

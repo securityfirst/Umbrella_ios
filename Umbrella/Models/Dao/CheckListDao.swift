@@ -53,7 +53,7 @@ struct CheckListDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: CheckList) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckList.table) ('index', 'category_id') VALUES (\(object.index ?? -1), \(object.categoryId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(CheckList.table) ('index', 'category_id', 'name') VALUES (\(object.index ?? -1), \(object.categoryId), \"\(object.name ?? "")\")")
         return rowId
     }
     

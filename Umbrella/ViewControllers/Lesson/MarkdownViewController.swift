@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-import Down
 import SafariServices
 
 class MarkdownViewController: UIViewController {

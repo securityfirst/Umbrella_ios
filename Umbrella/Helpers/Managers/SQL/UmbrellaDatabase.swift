@@ -32,6 +32,8 @@ struct UmbrellaDatabase {
     let customCheckItemDao: CustomCheckItemDao
     let customChecklistCheckedDao: CustomChecklistCheckedDao
     
+    let pathwayChecklistCheckedDao: PathwayChecklistCheckedDao
+    
     static var languagesStatic: [Language] = [Language]()
     static var umbrellaStatic: Umbrella = Umbrella()
     static var loadedContent: Bool = false
@@ -70,6 +72,7 @@ struct UmbrellaDatabase {
         self.customChecklistDao = CustomChecklistDao(sqlProtocol: self.sqlProtocol)
         self.customCheckItemDao = CustomCheckItemDao(sqlProtocol: self.sqlProtocol)
         self.customChecklistCheckedDao = CustomChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
+        self.pathwayChecklistCheckedDao = PathwayChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
     }
     
     //
@@ -94,8 +97,9 @@ struct UmbrellaDatabase {
         let customChecklistSuccess = self.customChecklistDao.createTable()
         let customCheckItemSuccess = self.customCheckItemDao.createTable()
         let customChecklistCheckedSuccess = self.customChecklistCheckedDao.createTable()
+        let pathwayChecklistCheckedSuccess = self.pathwayChecklistCheckedDao.createTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess && pathwayChecklistCheckedSuccess {
             return true
         } else {
             return false
@@ -106,6 +110,7 @@ struct UmbrellaDatabase {
     ///
     /// - Returns: Bool
     func dropTables() -> Bool {
+        let pathwayChecklistCheckedSuccess = self.pathwayChecklistCheckedDao.dropTable()
         let customChecklistCheckedSuccess = self.customChecklistCheckedDao.dropTable()
         let customCheckItemSuccess = self.customCheckItemDao.dropTable()
         let customChecklistSuccess = self.customChecklistDao.dropTable()
@@ -124,7 +129,7 @@ struct UmbrellaDatabase {
         let categorySuccess = self.categoryDao.dropTable()
         let languageSuccess = self.languageDao.dropTable()
         
-        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess {
+        if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess && pathwayChecklistCheckedSuccess {
             return true
         } else {
             return false
@@ -173,6 +178,16 @@ struct UmbrellaDatabase {
                 
                 //Sort by Index
                 category.segments.sort(by: { $0.index! < $1.index!})
+                
+                //Checklists
+                category.checkLists = checkListArray.filter { $0.categoryId == category.id }
+                
+                //Sort by Index
+                category.checkLists.sort(by: { $0.index! < $1.index!})
+                
+                for checkList in category.checkLists {
+                    checkList.items = checkItemArray.filter { $0.checkListId == checkList.id }
+                }
                 
                 //Recursively
                 convertToObject(category, categoryArray, language, segmentArray, checkListArray, checkItemArray)
@@ -266,6 +281,24 @@ extension UmbrellaDatabase {
                     segment.categoryId = Int(categoryRowId)
                     let segmentRowId = self.segmentDao.insert(segment)
                     segment.id = Int(segmentRowId)
+                }
+                
+                //Checklist
+                for index in 0..<category.checkLists.count {
+                    let checkList = category.checkLists[index]
+                    
+                    checkList.categoryId = Int(categoryRowId)
+                    let checkListRowId = self.checkListDao.insert(checkList)
+                    checkList.id = Int(checkListRowId)
+                    
+                    //CheckItem
+                    for index in 0..<checkList.items.count {
+                        let checkItem = checkList.items[index]
+                        
+                        checkItem.checkListId = Int(checkList.id)
+                        let checkListRowId = self.checkItemDao.insert(checkItem)
+                        checkItem.id = Int(checkListRowId)
+                    }
                 }
                 
                 //Sort by Index

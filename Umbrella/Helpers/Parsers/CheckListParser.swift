@@ -40,6 +40,7 @@ struct CheckListParser {
     func parse() {
         do {
             let checkItem = try YAMLDecoder().decode(CheckList.self, from: file.readAsString())
+            checkItem.name = normalized(name: file.name)
             
             if let object = array.searchParent(folderName: folder.path) {
                 let categ = object as? Category
@@ -48,5 +49,11 @@ struct CheckListParser {
         } catch {
             print("CheckListParser: \(error)")
         }
+    }
+    
+    fileprivate func normalized(name: String) -> String {
+        let nameNormalized = name.replacingOccurrences(of: "c_", with: "").replacingOccurrences(of: "-", with: " ").replacingOccurrences(of: ".yml", with: "")
+        
+        return nameNormalized.capitalized
     }
 }

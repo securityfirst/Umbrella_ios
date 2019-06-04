@@ -109,7 +109,9 @@ class LoadingViewController: UIViewController {
                                 self.messageLabel.text = String(format: "\("Updating the database".localized()) %.f%%", (gitProgress/2.0+progress/2.0)*100)
                                 
                                 if gitProgress + progress == 2.0 {
-                                    self.loadTheDatabase()
+                                    if self.migration() {
+                                        self.loadTheDatabase()
+                                    }
                                     self.completion!()
                                     self.view.removeFromSuperview()
                                 }
@@ -137,7 +139,10 @@ class LoadingViewController: UIViewController {
             
             self.messageLabel.text = "Getting the database".localized()
             
-            self.loadingViewModel.loadUmbrellaOfDatabase()
+            if self.migration() {
+                self.loadTheDatabase()
+            }
+            
             DispatchQueue.main.async {
                 self.progressView.setProgress(1.0, animated: true)
                 
@@ -152,8 +157,10 @@ class LoadingViewController: UIViewController {
     
     /// Starting the Use The Content
     func startingTheUseTheContent() {
-        loadTheDatabase()
-        loadContent()
+        if self.migration() {
+            self.loadTheDatabase()
+        }
+        self.loadContent()
     }
     
     /// Load the content localy
@@ -170,7 +177,6 @@ class LoadingViewController: UIViewController {
                     if progress == 1.0 {
                         if self.moveContentOfFolder() {
                             self.removeFiles()
-                            
                             print("Finished the unpack of the umbrella content.")
                         }
                     }
@@ -179,8 +185,21 @@ class LoadingViewController: UIViewController {
         }
     }
     
+    fileprivate func migration() -> Bool {
+        let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        let database = MigrationManager(sqlManager: sqlManager)
+        
+        do {
+            try database.migrateIfNeeded()
+            return true
+        } catch {
+            print("failed to migrate database: \(error)")
+            return false
+        }
+    }
+    
     /// Load list of file from the database
-    fileprivate func loadTheDatabase() {
+    func loadTheDatabase() {
         DispatchQueue.global(qos: .default).async {
             self.loadingViewModel.loadUmbrellaOfDatabase()
             print("Loaded the database to objects.")
