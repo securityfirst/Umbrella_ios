@@ -109,11 +109,15 @@ class LoadingViewController: UIViewController {
                                 self.messageLabel.text = String(format: "\("Updating the database".localized()) %.f%%", (gitProgress/2.0+progress/2.0)*100)
                                 
                                 if gitProgress + progress == 2.0 {
-                                    if self.migration() {
-                                        self.loadTheDatabase()
-                                    }
-                                    self.completion!()
-                                    self.view.removeFromSuperview()
+                                    print("Finished.")
+                                    delay(10, closure: {
+                                        if self.migration(skip: true) {
+                                            self.loadTheDatabase()
+                                        }
+                                        self.completion!()
+                                        self.view.removeFromSuperview()
+                                    })
+                                    
                                 }
                             }
                         })
@@ -185,12 +189,16 @@ class LoadingViewController: UIViewController {
         }
     }
     
-    fileprivate func migration() -> Bool {
+    fileprivate func migration(skip: Bool = false) -> Bool {
         let sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
         let database = MigrationManager(sqlManager: sqlManager)
         
         do {
-            try database.migrateIfNeeded()
+            if skip {
+                try database.skipAllMigration()
+            } else {
+                try database.migrateIfNeeded()
+            }
             return true
         } catch {
             print("failed to migrate database: \(error)")

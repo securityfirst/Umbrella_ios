@@ -20,4 +20,9 @@ class PathwaySeeAllCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    /// Configure the cell
+    func configure() {
+        self.titleLabel.text = "See all".localized()
+    }
+    
 }

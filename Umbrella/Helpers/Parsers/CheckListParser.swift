@@ -40,13 +40,14 @@ struct CheckListParser {
     func parse() {
         do {
             let checkItem = try YAMLDecoder().decode(CheckList.self, from: file.readAsString())
-            checkItem.name = normalized(name: file.name)
+//            checkItem.name = normalized(name: file.name)
             
             if let object = array.searchParent(folderName: folder.path) {
                 let categ = object as? Category
                 categ?.checkLists.append(checkItem)
             }
         } catch {
+            print("File: \(file.path)")
             print("CheckListParser: \(error)")
         }
     }

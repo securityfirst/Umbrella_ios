@@ -146,6 +146,7 @@ extension ChecklistViewController: UITableViewDataSource {
             print("\(indexPath.row) \(checklists.count)")
             if indexPath.row == checklists.count {
                 let cell: PathwaySeeAllCell = (tableView.dequeueReusableCell(withIdentifier: "PathwaySeeAllCell", for: indexPath) as? PathwaySeeAllCell)!
+                cell.configure()
                 return cell
             } else {
                 let cell: PathwayChecklistCell = (tableView.dequeueReusableCell(withIdentifier: "PathwayChecklistCell", for: indexPath) as? PathwayChecklistCell)!

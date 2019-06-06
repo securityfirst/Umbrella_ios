@@ -46,6 +46,7 @@ struct FormParser {
             form.file = self.file.name
             return form
         } catch {
+            print("File: \(file.path)")
             print("FormParser: \(error)")
         }
         

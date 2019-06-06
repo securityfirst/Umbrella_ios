@@ -150,3 +150,12 @@
 
 //Release note
 "What is new?" = "Что нового?";
+
+//Pathways
+"Top Tips" = "Лучшие советы";
+"See all" = "Увидеть все";
+"What do you need most?" = "Что тебе нужно больше всего?";
+"Select a guide to start your security journey, or bookmark any guide for later." = "Выберите руководство, чтобы начать безопасное путешествие, или добавьте в закладки любое руководство на потом.";
+"SHOW ME" = "ПОКАЖИ МНЕ";
+"NO THANKS, I'LL EXPLORE ON MY OWN" = "НЕТ СПАСИБО, Я ИЗУЧУ НА СВОЕМ";
+"Do you really want to remove this item?" = "Вы действительно хотите удалить этот элемент?";

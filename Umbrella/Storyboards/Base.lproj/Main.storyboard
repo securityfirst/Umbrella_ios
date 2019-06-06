@@ -626,11 +626,11 @@
                     </view>
                     <connections>
                         <outlet property="loadingActivityIndicator" destination="OUf-mC-amz" id="4Bi-wi-v9X"/>
-                        <outlet property="messageLabel" destination="mzY-ZH-VzP" id="nVH-84-Mgc"/>
+                        <outlet property="messageLabel" destination="8hL-NU-UbU" id="lFb-KI-Rf9"/>
                         <outlet property="noThanksButton" destination="h1B-6t-57l" id="pYa-ho-m4f"/>
                         <outlet property="pathwayTableview" destination="tQV-o0-8dw" id="M2T-HO-g5j"/>
                         <outlet property="showMeButton" destination="e5p-JH-UmT" id="1Fu-Pt-wny"/>
-                        <outlet property="titleLabel" destination="8hL-NU-UbU" id="bjm-UR-2kY"/>
+                        <outlet property="titleLabel" destination="mzY-ZH-VzP" id="4nJ-Hx-lqo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynw-Ad-re3" userLabel="First Responder" sceneMemberID="firstResponder"/>

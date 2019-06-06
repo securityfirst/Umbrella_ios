@@ -26,6 +26,14 @@ class MigrationManager {
         }
     }
     
+    func skipAllMigration() throws {
+        if !sqliteMigrationManager.hasMigrationsTable() {
+            try sqliteMigrationManager.createMigrationsTable()
+        }
+        
+        try sqliteMigrationManager.skipAllMigrations()
+    }
+    
     static func migrationsBundle() -> Bundle {
         guard let bundleURL = Bundle.main.url(forResource: "Migrations", withExtension: "bundle") else {
             fatalError("could not find migrations bundle")

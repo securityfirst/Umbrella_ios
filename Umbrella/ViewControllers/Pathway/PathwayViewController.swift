@@ -29,6 +29,10 @@ class PathwayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.titleLabel.text = "What do you need most?".localized()
+        self.messageLabel.text = "Select a guide to start your security journey, or bookmark any guide for later.".localized()
+        self.showMeButton.setTitle("SHOW ME".localized(), for: .normal)
+        self.noThanksButton.setTitle("NO THANKS, I'LL EXPLORE ON MY OWN".localized(), for: .normal)
         loadPathways()
     }
     
@@ -102,9 +106,9 @@ extension PathwayViewController: UITableViewDelegate {
             checklist.favourite = !checklist.favourite
             
             let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
-            let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+            let language = self.pathwayViewModel.getLanguage(name: languageName)
             
-            let pathwayChecklistChecked = PathwayChecklistChecked(name: checklist.name ?? "" , checklistId: checklist.id, languageId: language!.id)
+            let pathwayChecklistChecked = PathwayChecklistChecked(name: checklist.name ?? "" , checklistId: checklist.id, languageId: language.id)
             
             pathwayChecklistChecked.totalItemsChecklist = checklist.countItemCheck()
             

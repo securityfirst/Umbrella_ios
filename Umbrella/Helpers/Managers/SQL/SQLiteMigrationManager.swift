@@ -171,7 +171,15 @@ public struct SQLiteMigrationManager {
         try pendingMigrations().filter { $0.version <= toVersion }.forEach { migration in
             try db.transaction {
                 try migration.migrateDatabase(self.db)
-                let _ = try self.db.run(MigrationDB.table.insert(MigrationDB.version <- migration.version))
+                _ = try self.db.run(MigrationDB.table.insert(MigrationDB.version <- migration.version))
+            }
+        }
+    }
+    
+    public func skipAllMigrations() throws {
+        try pendingMigrations().forEach { migration in
+            try db.transaction {
+                _ = try self.db.run(MigrationDB.table.insert(MigrationDB.version <- migration.version))
             }
         }
     }

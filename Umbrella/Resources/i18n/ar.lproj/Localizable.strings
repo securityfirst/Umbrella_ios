@@ -151,3 +151,12 @@
 
 //Release note
 "What is new?" = "ما الجديد؟";
+
+//Pathways
+"Top Tips" = "نصائح الأعلى";
+"See all" = "اظهار الكل";
+"What do you need most?" = "ماذا تحتاج أكثر؟";
+"Select a guide to start your security journey, or bookmark any guide for later." = "حدد دليلًا لبدء رحلة الأمان ، أو قم بوضع إشارة مرجعية على أي دليل في وقت لاحق.";
+"SHOW ME" = "أرني";
+"NO THANKS, I'LL EXPLORE ON MY OWN" = "لا شكرا ، سأستكشف في بلدي";
+"Do you really want to remove this item?" = "هل تريد حقًا إزالة هذا العنصر؟";
