@@ -116,6 +116,8 @@
 		A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1565216E577F003753E5 /* SideScrollProtocol.swift */; };
 		A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */; };
 		A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1567216E577F003753E5 /* TitleLessonView.swift */; };
+		A0AC2ACF22AAAA9700A135D7 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0AC2ACE22AAAA9700A135D7 /* Chat.storyboard */; };
+		A0AC2AD122AAAC4100A135D7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC2AD022AAAC4100A135D7 /* ChatViewController.swift */; };
 		A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */; };
 		A0ACE2852292D05400068385 /* releasenote.json in Resources */ = {isa = PBXBuildFile; fileRef = A0ACE2842292D05400068385 /* releasenote.json */; };
 		A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */; };
@@ -479,6 +481,8 @@
 		A0AA1567216E577F003753E5 /* TitleLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLessonView.swift; sourceTree = "<group>"; };
 		A0ABA14722773780001CDEA8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		A0ABA14822773782001CDEA8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A0AC2ACE22AAAA9700A135D7 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		A0AC2AD022AAAC4100A135D7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteViewController.swift; sourceTree = "<group>"; };
 		A0ACE2842292D05400068385 /* releasenote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = releasenote.json; sourceTree = "<group>"; };
 		A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewModel.swift; sourceTree = "<group>"; };
@@ -1271,6 +1275,7 @@
 				A0B0AA8220EE709100933759 /* Checklist */,
 				A0B0AA8320EE709A00933759 /* Lesson */,
 				A0B0AA8420EE70A200933759 /* Account */,
+				A0AC2AD022AAAC4100A135D7 /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1331,6 +1336,7 @@
 				A0B0AA7020EE60E300933759 /* Checklist.storyboard */,
 				A0B0AA7220EE610A00933759 /* Lesson.storyboard */,
 				A0B0AA7420EE612900933759 /* Account.storyboard */,
+				A0AC2ACE22AAAA9700A135D7 /* Chat.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1787,6 +1793,7 @@
 				A0B0AA7320EE610A00933759 /* Lesson.storyboard in Resources */,
 				A0B0AA6D20EE605600933759 /* Feed.storyboard in Resources */,
 				A003811220FE316600CDA44D /* Roboto-Regular.ttf in Resources */,
+				A0AC2ACF22AAAA9700A135D7 /* Chat.storyboard in Resources */,
 				A064CE9620AC497D00CE99E1 /* _database.db_ in Resources */,
 				A003810F20FE315F00CDA44D /* Roboto-Condensed.ttf in Resources */,
 				A0CBC5B0224CCBE500C6C159 /* database.db in Resources */,
@@ -2094,6 +2101,7 @@
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
+				A0AC2AD122AAAC4100A135D7 /* ChatViewController.swift in Sources */,
 				A0C404AA21A2C4980068BDDD /* LoginViewController.swift in Sources */,
 				A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,

@@ -647,11 +647,11 @@
             </objects>
             <point key="canvasLocation" x="30" y="1117"/>
         </scene>
-        <!--Account-->
+        <!--Chat-->
         <scene sceneID="mz6-Qz-iUy">
             <objects>
-                <viewControllerPlaceholder storyboardName="Account" id="tCL-2E-0dL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R5C-GL-o5c"/>
+                <viewControllerPlaceholder storyboardName="Chat" id="tCL-2E-0dL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="icAccountBox" id="R5C-GL-o5c"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3E-sA-ure" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -659,6 +659,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icAccountBox" width="24" height="24"/>
         <image name="icStarBorder" width="20" height="19"/>
     </resources>
 </document>
