@@ -104,5 +104,46 @@ extension SettingLanguageViewController: UITableViewDelegate {
         tableView.reloadData()
         
         self.navigationController?.popViewController(animated: true)
+       
+        self.changePositionTabBar(language: itemSelected.value)
+    }
+    
+    func changePositionTabBar(language: String) {
+        
+        var feedNavigationController = UINavigationController()
+        var formNavigationController = UINavigationController()
+        var checklistNavigationController = UINavigationController()
+        var lessonNavigationController = UINavigationController()
+        var accountNavigationController = UINavigationController()
+        
+        for navigationController in (self.tabBarController?.viewControllers)! {
+            let navigationController = (navigationController as? UINavigationController)!
+            print(navigationController.viewControllers)
+            if navigationController.containsViewController(ofKind: FeedViewController.self) {
+                feedNavigationController = navigationController
+            }
+            
+            if navigationController.containsViewController(ofKind: FormViewController.self) {
+                formNavigationController = navigationController
+            }
+            
+            if navigationController.containsViewController(ofKind: BaseChecklistViewController.self) {
+                checklistNavigationController = navigationController
+            }
+            
+            if navigationController.containsViewController(ofKind: LessonViewController.self) {
+                lessonNavigationController = navigationController
+            }
+            
+            if navigationController.containsViewController(ofKind: AccountViewController.self) {
+                accountNavigationController = navigationController
+            }
+        }
+        
+         if language == "ar" || language == "fa" {
+            self.tabBarController?.setViewControllers([accountNavigationController, lessonNavigationController, checklistNavigationController, formNavigationController, feedNavigationController], animated: false)
+         } else {
+            self.tabBarController?.setViewControllers([feedNavigationController, formNavigationController,  checklistNavigationController, lessonNavigationController, accountNavigationController  ], animated: false)
+        }
     }
 }

@@ -580,6 +580,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oWx-eE-3Gd">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="daV-rB-1Gk">
                                 <rect key="frame" x="0.0" y="40" width="320" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -615,16 +618,28 @@
                                                                 <wkPreferences key="preferences"/>
                                                             </wkWebViewConfiguration>
                                                         </wkWebView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwg-Ev-JSd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="55" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="55" id="fS4-Xs-GQu"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="checkAction:" destination="mC0-zU-boB" eventType="touchUpInside" id="NPN-Ba-N1c"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Bwg-Ev-JSd" secondAttribute="bottom" id="0iy-RF-GjY"/>
                                                         <constraint firstAttribute="bottom" secondItem="Nwo-FM-5Ry" secondAttribute="bottom" constant="8" id="4uk-NO-TMW"/>
                                                         <constraint firstAttribute="trailing" secondItem="0DK-je-XSi" secondAttribute="trailing" constant="8" id="887-iA-Y9u"/>
+                                                        <constraint firstItem="Bwg-Ev-JSd" firstAttribute="leading" secondItem="ind-za-1kd" secondAttribute="leading" id="Ceh-BW-0Xa"/>
                                                         <constraint firstItem="Nwo-FM-5Ry" firstAttribute="leading" secondItem="zs1-UW-fTe" secondAttribute="trailing" constant="8" id="FBr-IL-cgw"/>
                                                         <constraint firstItem="zs1-UW-fTe" firstAttribute="centerY" secondItem="ind-za-1kd" secondAttribute="centerY" id="Jrb-vh-O7m"/>
                                                         <constraint firstAttribute="bottom" secondItem="0DK-je-XSi" secondAttribute="bottom" id="LEL-P6-FFB"/>
                                                         <constraint firstAttribute="trailing" secondItem="Nwo-FM-5Ry" secondAttribute="trailing" constant="8" id="Nxs-mx-abY"/>
                                                         <constraint firstItem="0DK-je-XSi" firstAttribute="leading" secondItem="zs1-UW-fTe" secondAttribute="trailing" constant="8" id="RSE-C9-B1R"/>
+                                                        <constraint firstItem="Bwg-Ev-JSd" firstAttribute="top" secondItem="ind-za-1kd" secondAttribute="top" id="Vts-iE-DIH"/>
                                                         <constraint firstItem="Nwo-FM-5Ry" firstAttribute="top" secondItem="ind-za-1kd" secondAttribute="top" constant="8" id="W9p-BS-FDX"/>
                                                         <constraint firstItem="zs1-UW-fTe" firstAttribute="leading" secondItem="ind-za-1kd" secondAttribute="leading" constant="17" id="YGo-OB-hSc"/>
                                                         <constraint firstItem="0DK-je-XSi" firstAttribute="top" secondItem="ind-za-1kd" secondAttribute="top" id="xUR-Og-jQI"/>
@@ -696,7 +711,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oWx-eE-3Gd" firstAttribute="centerY" secondItem="tnL-bB-vHW" secondAttribute="centerY" id="597-pa-gI3"/>
                             <constraint firstItem="baU-AI-kPq" firstAttribute="centerX" secondItem="tnL-bB-vHW" secondAttribute="centerX" id="5Lf-lp-Hga"/>
+                            <constraint firstItem="oWx-eE-3Gd" firstAttribute="centerX" secondItem="tnL-bB-vHW" secondAttribute="centerX" id="AlV-AV-hWc"/>
                             <constraint firstItem="iGU-kr-qBT" firstAttribute="leading" secondItem="tnL-bB-vHW" secondAttribute="leading" id="BfL-2V-av6"/>
                             <constraint firstItem="baU-AI-kPq" firstAttribute="top" secondItem="bhb-x0-o5a" secondAttribute="top" constant="5" id="BtN-Pf-49O"/>
                             <constraint firstItem="iGU-kr-qBT" firstAttribute="top" secondItem="bhb-x0-o5a" secondAttribute="top" id="JqU-2a-R5e"/>

@@ -111,6 +111,7 @@ class ChecklistViewController: UIViewController {
             let item = (sender as? (category: Category, subCategory: Category, difficulty: Category, checklist: CheckList))!
             destination.pathwayViewModel.checklist = item.checklist
             destination.pathwayViewModel.category = item.category
+            destination.isLoadingPathwayItems = true
         }
     }
 }
@@ -125,10 +126,10 @@ extension ChecklistViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
+            return 1
+        } else if section == 1 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             return checklists.count + 1
-        } else if section == 1 {
-            return 1
         } else if section == 2 {
             return self.checklistViewModel.favouriteChecklistChecked.count
         } else if section == 3 {
@@ -140,7 +141,7 @@ extension ChecklistViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             
             print("\(indexPath.row) \(checklists.count)")
@@ -169,7 +170,7 @@ extension ChecklistViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             if indexPath.row == checklists.count {
                 return 44
@@ -185,9 +186,9 @@ extension ChecklistViewController: UITableViewDelegate {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ChecklistReviewHeaderView.identifier) as? ChecklistReviewHeaderView {
             
             if section == 0 {
-                headerView.titleLabel.text = "Top Tips".localized()
-            } else if section == 1 {
                 headerView.titleLabel.text = "Checklists total".localized()
+            } else if section == 1 {
+                headerView.titleLabel.text = "Top Tips".localized()
             } else if section == 2 {
                 headerView.titleLabel.text = "Favourites".localized()
             } else if section == 3 {
@@ -247,13 +248,12 @@ extension ChecklistViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         var item = (category: Category(), subCategory: Category(), difficulty: Category(), checklist: CheckList())
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             
             if indexPath.row == checklists.count {
                 self.showPathway()
             } else {
-                print("Item")
                 let checklist = self.pathwayViewModel.pathwayFavorite()[indexPath.row]
                 item.checklist = checklist
                 item.category = self.pathwayViewModel.category!
@@ -267,7 +267,7 @@ extension ChecklistViewController: UITableViewDelegate {
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         }
         
-        if indexPath.section != 1 {
+        if indexPath.section != 0 {
             let url = URL(string: "umbrella://\(item.category.deeplink!)/\( item.subCategory.deeplink!)/\( item.difficulty.deeplink!)/checklist/\(item.checklist.id)")
             UIApplication.shared.open(url!)
         }

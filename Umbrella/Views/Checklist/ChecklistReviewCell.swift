@@ -52,7 +52,7 @@ class ChecklistReviewCell: UITableViewCell {
         self.widthConstraint.constant = 44
         self.shareWidthConstraint.constant = 40
         self.shareButton.isHidden = false
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             let checklistChecked = viewModel.totalDoneChecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
             

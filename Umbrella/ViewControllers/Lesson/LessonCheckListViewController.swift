@@ -27,32 +27,139 @@ class LessonCheckListViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressLabel: UILabel!
     
+    var isLoadingPathwayItems: Bool = false
+    
     //
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Checklist".localized()
         
-        self.lessonCheckListViewModel.updateChecklistWithItemChecked()
-        self.pathwayViewModel.updateChecklistWithItemChecked()
-        self.checkListTableView.reloadData()
-        
-        if let checklist = self.pathwayViewModel.checklist {
-            self.title = checklist.name
-        }
-        
         let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(self.shareAction(_:)))
         self.navigationItem.rightBarButtonItem  = modeBarButton
         
         NotificationCenter.default.addObserver(self, selector: #selector(LessonCheckListViewController.updateChecklist(notification:)), name: Notification.Name("UpdateChecklist"), object: nil)
-        
-        updateProgress()
         
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = .never
         } else {
             // Fallback on earlier versions
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.view.tag != 99 {
+            self.view.tag = 99
+            if isLoadingPathwayItems {
+                
+                self.checkListTableView.isHidden = true
+                self.progressView.isHidden = true
+                self.progressLabel.isHidden = true
+                
+                if let checklist = self.pathwayViewModel.checklist {
+                    self.title = checklist.name
+                }
+                
+                delay(1) {
+                    self.checkListTableView.isHidden = false
+                }
+            }
+            
+            DispatchQueue.global(qos: .background).async {
+                self.lessonCheckListViewModel.updateChecklistWithItemChecked()
+                self.pathwayViewModel.updateChecklistWithItemChecked()
+                
+                DispatchQueue.main.async {
+                    self.checkListTableView.reloadData()
+                    self.updateProgress()
+                }
+            }
+        }
+    }
+    
+    //
+    // MARK: - Functions
+    
+    /// Update the progress of the progressBar
+    fileprivate func updateProgress() {
+        if let currentChecked = (self.lessonCheckListViewModel.checklist?.items.filter {$0.checked == true }.count), let totalItemInChecklist = self.lessonCheckListViewModel.checklist?.countItemCheck() {
+            self.progressView.setProgress(Float(currentChecked)/Float(totalItemInChecklist), animated: true)
+            self.progressLabel.text = "\(Int(CGFloat(currentChecked) / CGFloat(totalItemInChecklist) * 100))%"
+        }
+    }
+    
+    /// Update Checklist
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func updateChecklist(notification: NSNotification) {
+        self.lessonCheckListViewModel.updateChecklistWithItemChecked()
+        self.pathwayViewModel.updateChecklistWithItemChecked()
+        self.checkListTableView.reloadData()
+        
+        updateProgress()
+    }
+    
+    /// Check or uncheck a item
+    ///
+    /// - Parameter indexPath: IndexPath
+    fileprivate func checkOrUncheckCell(_ indexPath: IndexPath) {
+        var categoryFound: Category? = nil
+        
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        for category in UmbrellaDatabase.categories(lang: languageName) {
+            if category.id == self.lessonCheckListViewModel.category?.parent {
+                categoryFound = category
+                break
+            }
+            
+            let categoryFilter = category.categories.filter {$0.id == self.lessonCheckListViewModel.category?.parent }.first
+            
+            if let category = categoryFilter {
+                categoryFound = category
+                break
+            }
+        }
+        
+        let subCategory = categoryFound
+        
+        // If subCategory is nil so it is Pathway
+        if subCategory == nil {
+            let item: CheckItem = self.pathwayViewModel.checklist!.items[indexPath.row]
+            item.checked = !item.checked
+            let checklist = self.pathwayViewModel.checklist
+            let pathwayChecklistChecked = PathwayChecklistChecked(name: checklist!.name ?? "" , checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
+            pathwayChecklistChecked.languageId = language!.id
+            
+            if item.checked {
+                self.pathwayViewModel.insert(pathwayChecklistChecked)
+            } else {
+                self.pathwayViewModel.remove(pathwayChecklistChecked)
+            }
+        } else {
+            let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
+            item.checked = !item.checked
+            let difficulty = self.lessonCheckListViewModel.category
+            let checklist = self.lessonCheckListViewModel.checklist
+            let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
+            checklistChecked.languageId = language!.id
+            
+            if item.checked {
+                self.lessonCheckListViewModel.insert(checklistChecked)
+            } else {
+                self.lessonCheckListViewModel.remove(checklistChecked)
+            }
+        }
+        
+        self.updateProgress()
+        
+        // I have created this notification to update when a user marks check or uncheck an item on the checklist tab or lesson tab. This way both will be updated
+        NotificationCenter.default.post(name: Notification.Name("UpdateChecklist"), object: nil)
     }
     
     //
@@ -117,86 +224,6 @@ class LessonCheckListViewController: UIViewController {
             print("cancel")
         })
     }
-    
-    //
-    // MARK: - Functions
-    
-    /// Update the progress of the progressBar
-    fileprivate func updateProgress() {
-        
-        if let currentChecked = (self.lessonCheckListViewModel.checklist?.items.filter {$0.checked == true }.count), let totalItemInChecklist = self.lessonCheckListViewModel.checklist?.countItemCheck() {
-            self.progressView.setProgress(Float(currentChecked)/Float(totalItemInChecklist), animated: true)
-            self.progressLabel.text = "\(Int(CGFloat(currentChecked) / CGFloat(totalItemInChecklist) * 100))%"
-        }
-    }
-    
-    /// Update Checklist
-    ///
-    /// - Parameter notification: NSNotification
-    @objc func updateChecklist(notification: NSNotification) {
-        self.lessonCheckListViewModel.updateChecklistWithItemChecked()
-        self.pathwayViewModel.updateChecklistWithItemChecked()
-        self.checkListTableView.reloadData()
-        
-        updateProgress()
-    }
-    
-    fileprivate func checkOrUncheckCell(_ indexPath: IndexPath) {
-        var categoryFound: Category? = nil
-        
-        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
-        
-        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
-        
-        for category in UmbrellaDatabase.categories(lang: languageName) {
-            if category.id == self.lessonCheckListViewModel.category?.parent {
-                categoryFound = category
-                break
-            }
-            
-            let categoryFilter = category.categories.filter {$0.id == self.lessonCheckListViewModel.category?.parent }.first
-            
-            if let category = categoryFilter {
-                categoryFound = category
-                break
-            }
-        }
-        
-        let subCategory = categoryFound
-        
-        // If subCategory is nil so it is Pathway
-        if subCategory == nil {
-            let item: CheckItem = self.pathwayViewModel.checklist!.items[indexPath.row]
-            item.checked = !item.checked
-            let checklist = self.pathwayViewModel.checklist
-            let pathwayChecklistChecked = PathwayChecklistChecked(name: checklist!.name ?? "" , checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
-            pathwayChecklistChecked.languageId = language!.id
-            
-            if item.checked {
-                self.pathwayViewModel.insert(pathwayChecklistChecked)
-            } else {
-                self.pathwayViewModel.remove(pathwayChecklistChecked)
-            }
-        } else {
-            let item: CheckItem = self.lessonCheckListViewModel.checklist!.items[indexPath.row]
-            item.checked = !item.checked
-            let difficulty = self.lessonCheckListViewModel.category
-            let checklist = self.lessonCheckListViewModel.checklist
-            let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
-            checklistChecked.languageId = language!.id
-            
-            if item.checked {
-                self.lessonCheckListViewModel.insert(checklistChecked)
-            } else {
-                self.lessonCheckListViewModel.remove(checklistChecked)
-            }
-        }
-        
-        self.updateProgress()
-        
-        // I have created this notification to update when a user marks check or uncheck an item on the checklist tab or lesson tab. This way both will be updated
-        NotificationCenter.default.post(name: Notification.Name("UpdateChecklist"), object: nil)
-    }
 }
 
 // MARK: - UITableViewDataSource
@@ -246,7 +273,6 @@ extension LessonCheckListViewController: UITableViewDataSource {
                 let cell: CheckListLabelCell = (tableView.dequeueReusableCell(withIdentifier: "CheckListLabelCell", for: indexPath) as? CheckListLabelCell)!
                 
                 cell.configure(withViewModel: self.lessonCheckListViewModel, indexPath: indexPath)
-                
                 return cell
             } else {
                 let cell: FillCheckListCell = (tableView.dequeueReusableCell(withIdentifier: "FillCheckListCell", for: indexPath) as? FillCheckListCell)!
@@ -256,7 +282,7 @@ extension LessonCheckListViewController: UITableViewDataSource {
                 return cell
             }
         }
-    
+        
         return UITableViewCell()
     }
 }
@@ -285,7 +311,7 @@ extension LessonCheckListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        checkOrUncheckCell(indexPath)
+        //        checkOrUncheckCell(indexPath)
     }
 }
 

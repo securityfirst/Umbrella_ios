@@ -23,6 +23,7 @@ class FillCheckListCell: UITableViewCell {
     var indexPath = IndexPath(row: 0, section: 0)
     weak var delegate: FillChecklistCellDelegate?
     var touchDeeplink = false
+    
     //
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -91,26 +92,11 @@ class FillCheckListCell: UITableViewCell {
             self.markdownWebView.navigationDelegate = self
             self.markdownWebView.loadHTMLString(html.content, baseURL: nil)
             self.markdownWebView.scrollView.isScrollEnabled = false
-            
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-            gesture.delegate = self
-            for recognizer in self.markdownWebView.gestureRecognizers ?? [] {
-                self.markdownWebView.removeGestureRecognizer(recognizer)
-            }
-            self.markdownWebView.addGestureRecognizer(gesture)
         }
     }
     
-    @objc func tap() {
-        print(Date())
-        self.touchDeeplink = false
-        delay(0.35) {
-            if !self.touchDeeplink {
-                print("touch on cell")
-                self.delegate?.checkOrUncheck(cell: self, indexPath: self.indexPath)
-            }
-            self.touchDeeplink = false
-        }
+    @IBAction func checkAction(_ sender: Any) {
+        self.delegate?.checkOrUncheck(cell: self, indexPath: self.indexPath)
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

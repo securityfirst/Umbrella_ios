@@ -36,6 +36,19 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setNeedsDisplay()
+        
+        let language = UserDefaults.standard.object(forKey: "Language")
+        
+        if let language: String = language as? String {
+            // Arabic(ar) or Persian Farsi(fa)
+            if language == "ar" || language == "fa" {
+                self.navigationController?.navigationBar.semanticContentAttribute = .forceRightToLeft
+            } else {
+                self.navigationController?.navigationBar.semanticContentAttribute = .forceLeftToRight
+            }
+        }
+            
         self.view.setNeedsDisplay()
         self.settingsTableView.reloadData()
     }
