@@ -157,7 +157,6 @@ class FeedViewController: UIViewController {
             self.loadingViewController = LoadingViewController()
             self.loadingViewController.startingTheUseTheContent()
 
-            //FIXME: Pathway
             self.tourViewController.didAcceptTerm = {
                 let showPathwayFirstTime = self.showPathway()
                 self.showReleaseNote(show: showReleaseNote, showPathway: showPathwayFirstTime)
