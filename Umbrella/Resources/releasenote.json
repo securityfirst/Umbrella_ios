@@ -1,23 +1,23 @@
 {
     "en": {
-        "releasenote": "- Added Pathways\n- Bugfixes"
+        "releasenote": "- Added pathways, a tool that helps you quickly react to security challenges.\n- Bugfixes"
     },
     "es": {
-        "releasenote": "- Rutas añadidas\n- Corrección de errores"
+        "releasenote": "- Rutas adicionales, una herramienta que le ayuda a reaccionar rápidamente ante los desafíos de seguridad.\n- Corrección de errores"
     },
     "zh-Hant": {
-        "releasenote": " - 添加了Pathways\n- Bug修復"
+        "releasenote": " - 添加了路徑，這是一種可以幫助您快速應對安全挑戰的工具。\n- Bug修復"
     },
     "fa": {
-        "releasenote": "- اضافه شدن مسیرها \n- رفع اشکالات "
+        "releasenote": "- مسیرهای اضافه شده، یک ابزار است که به شما کمک می کند به سرعت به چالش های امنیتی واکنش نشان دهید. \n - رفع اشکالات"
     },
     "ar": {
-        "releasenote": "- أضيفت مسارات \n- بوجفيكسيس"
+        "releasenote": "- مسارات مضافة ، وهي أداة تساعدك على الاستجابة السريعة للتحديات الأمنية. \n - الأخطاء"
     },
     "ru": {
-        "releasenote": "- Добавлены пути \n- Исправления"
+        "releasenote": "- Добавлены пути, инструмент, который поможет вам быстро реагировать на проблемы безопасности.\n- Исправления"
     },
     "fr": {
-        "releasenote": "- Ajout de chemins \n- Corrections de bugs"
+        "releasenote": "- Des itinéraires supplémentaires, un outil qui vous permet de réagir rapidement aux problèmes de sécurité.\n- Corrections de bugs"
     }
 }
