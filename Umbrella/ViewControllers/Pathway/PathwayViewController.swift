@@ -61,8 +61,10 @@ class PathwayViewController: UIViewController {
             let tabBarController = (appDelegate.window?.rootViewController as? UITabBarController)!
             tabBarController.selectedIndex = 2
         }
-        self.didClosePathway?()
-        self.dismiss(animated: true, completion: nil)
+        
+        self.dismiss(animated: true) {
+            self.didClosePathway?()
+        }
     }
 }
 
