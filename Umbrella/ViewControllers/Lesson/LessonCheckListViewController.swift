@@ -63,7 +63,7 @@ class LessonCheckListViewController: UIViewController {
                     self.title = checklist.name
                 }
                 
-                delay(1) {
+                delay(2.5) {
                     self.checkListTableView.isHidden = false
                 }
             }

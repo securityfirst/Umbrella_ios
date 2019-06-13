@@ -128,12 +128,12 @@ extension ChecklistViewController: UITableViewDataSource {
         if section == 0 {
             return 1
         } else if section == 1 {
+            return self.checklistViewModel.favouriteChecklistChecked.count
+        } else if section == 2 {
+            return self.checklistViewModel.checklistChecked.count
+        } else if section == 3 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             return checklists.count + 1
-        } else if section == 2 {
-            return self.checklistViewModel.favouriteChecklistChecked.count
-        } else if section == 3 {
-            return self.checklistViewModel.checklistChecked.count
         }
         
         return 0
@@ -141,7 +141,7 @@ extension ChecklistViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 1 {
+        if indexPath.section == 3 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             
             print("\(indexPath.row) \(checklists.count)")
@@ -170,7 +170,7 @@ extension ChecklistViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 1 {
+        if indexPath.section == 3 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             if indexPath.row == checklists.count {
                 return 44
@@ -188,11 +188,11 @@ extension ChecklistViewController: UITableViewDelegate {
             if section == 0 {
                 headerView.titleLabel.text = "Checklists total".localized()
             } else if section == 1 {
-                headerView.titleLabel.text = "Top Tips".localized()
-            } else if section == 2 {
                 headerView.titleLabel.text = "Favourites".localized()
-            } else if section == 3 {
+            } else if section == 2 {
                 headerView.titleLabel.text = "My Checklists".localized()
+            } else if section == 3 {
+                headerView.titleLabel.text = "Top Tips".localized()
             }
             
             headerView.section = section
@@ -205,7 +205,7 @@ extension ChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { (action, indexPath) in
             
-            if indexPath.section == 2 {
+            if indexPath.section == 1 {
                 // Favorite
                 let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
                 self.checklistViewModel.removelAllChecks(checklistChecked: checklistChecked)
@@ -216,7 +216,7 @@ extension ChecklistViewController: UITableViewDelegate {
                 newChecklistChecked.totalItemsChecklist = checklistChecked.totalItemsChecklist
                 self.checklistViewModel.insert(newChecklistChecked)
                 self.checklistViewModel.favouriteChecklistChecked.append(newChecklistChecked)
-            } else if indexPath.section == 3 {
+            } else if indexPath.section == 2 {
                 // My checklists
                 let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
                 self.checklistViewModel.checklistChecked.remove(at: indexPath.row)
@@ -237,7 +237,7 @@ extension ChecklistViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 || indexPath.section == 1 {
+        if indexPath.section == 0 || indexPath.section == 3 {
             return false
         }
         
@@ -248,7 +248,7 @@ extension ChecklistViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         var item = (category: Category(), subCategory: Category(), difficulty: Category(), checklist: CheckList())
-        if indexPath.section == 1 {
+        if indexPath.section == 3 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             
             if indexPath.row == checklists.count {
@@ -259,10 +259,10 @@ extension ChecklistViewController: UITableViewDelegate {
                 item.category = self.pathwayViewModel.category!
                 self.performSegue(withIdentifier: "checklistDetailSegue", sender: item)
             }
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 1 {
             let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 2 {
             let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         }
@@ -278,7 +278,6 @@ extension ChecklistViewController: UITableViewDelegate {
     /// - Parameter name: String
     /// - Returns: String
     func normalizeName(name: String?) -> String {
-        
         if let name = name {
             return name.replacingOccurrences(of: " ", with: "-").lowercased()
         }
@@ -292,9 +291,9 @@ extension ChecklistViewController: ChecklistReviewCellDelegate {
         var objectsToShare:[Any] = [Any]()
         
         var checklistChecked: ChecklistChecked? = ChecklistChecked()
-        if indexPath.section == 2 {
+        if indexPath.section == 1 {
             checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
-        } else if indexPath.section == 3 {
+        } else if indexPath.section == 2 {
             checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
         }
         

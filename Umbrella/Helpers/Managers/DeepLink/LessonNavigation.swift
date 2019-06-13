@@ -197,7 +197,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
             let appDelegate = (UIApplication.shared.delegate as? AppDelegate)!
             if appDelegate.window?.rootViewController is UITabBarController {
                 let tabBarController = (appDelegate.window?.rootViewController as? UITabBarController)!
-                tabBarController.selectedIndex = 3
+//                tabBarController.selectedIndex = 3
                 if tabBarController.selectedViewController is UINavigationController {
                     let navigationController = (tabBarController.selectedViewController as? UINavigationController)!
                     navigationController.pushViewController(viewController, animated: true)
@@ -215,7 +215,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
             let appDelegate = (UIApplication.shared.delegate as? AppDelegate)!
             if appDelegate.window?.rootViewController is UITabBarController {
                 let tabBarController = (appDelegate.window?.rootViewController as? UITabBarController)!
-                tabBarController.selectedIndex = 3
+//                tabBarController.selectedIndex = 3
                 if tabBarController.selectedViewController is UINavigationController {
                     let navigationController = (tabBarController.selectedViewController as? UINavigationController)!
                     navigationController.popViewController(animated: false)
@@ -232,7 +232,7 @@ class LessonNavigation: DeepLinkNavigationProtocol {
             let appDelegate = (UIApplication.shared.delegate as? AppDelegate)!
             if appDelegate.window?.rootViewController is UITabBarController {
                 let tabBarController = (appDelegate.window?.rootViewController as? UITabBarController)!
-                tabBarController.selectedIndex = 3
+//                tabBarController.selectedIndex = 3
                 if tabBarController.selectedViewController is UINavigationController {
                     let navigationController = (tabBarController.selectedViewController as? UINavigationController)!
                     navigationController.pushViewController(viewController, animated: true)

@@ -22,7 +22,6 @@ class FillCheckListCell: UITableViewCell {
     @IBOutlet weak var markdownWebView: MarkdownWebView!
     var indexPath = IndexPath(row: 0, section: 0)
     weak var delegate: FillChecklistCellDelegate?
-    var touchDeeplink = false
     
     //
     // MARK: - Life cycle
@@ -114,8 +113,6 @@ extension FillCheckListCell : WKNavigationDelegate {
         switch navigationAction.navigationType {
         case .linkActivated:
             if navigationAction.request.url?.scheme == "umbrella" {
-                print(Date())
-                self.touchDeeplink = true
                 UIApplication.shared.open(navigationAction.request.url!)
             } else {
                 if (navigationAction.request.url?.scheme?.contains("http"))! {

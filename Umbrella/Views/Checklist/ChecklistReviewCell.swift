@@ -67,7 +67,7 @@ class ChecklistReviewCell: UITableViewCell {
             self.iconImageView.backgroundColor = UIColor.clear
             self.shareWidthConstraint.constant = 0
             self.shareButton.isHidden = true
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 1 {
             let checklistChecked = viewModel.favouriteChecklistChecked[indexPath.row]
             let iconAndColor = viewModel.difficultyIconBy(id: checklistChecked.difficultyId)
             
