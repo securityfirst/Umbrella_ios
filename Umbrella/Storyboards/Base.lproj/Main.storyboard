@@ -321,6 +321,7 @@
                                             <constraint firstAttribute="height" constant="30" id="VAq-1A-hnu"/>
                                             <constraint firstAttribute="width" constant="30" id="gTQ-og-CPF"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
                                         <state key="normal" title="X">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>

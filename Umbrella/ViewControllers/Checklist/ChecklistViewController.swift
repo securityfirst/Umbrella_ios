@@ -26,6 +26,7 @@ class ChecklistViewController: UIViewController {
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var checklistReviewTableView: UITableView!
     
+    var navigationItemCustom: NavigationItemCustom!
     var pathwayViewController: PathwayViewController!
     
     //
@@ -41,6 +42,8 @@ class ChecklistViewController: UIViewController {
         
         self.checklistReviewTableView?.register(ChecklistReviewHeaderView.nib, forHeaderFooterViewReuseIdentifier: ChecklistReviewHeaderView.identifier)
         self.checklistReviewTableView.isHidden = true
+        
+        self.navigationItemCustom = NavigationItemCustom(viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +51,14 @@ class ChecklistViewController: UIViewController {
         if UmbrellaDatabase.loadedContent {
             updateChecklist()
         }
+        
+        self.navigationItemCustom.showItems(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationItemCustom.showItems(false)
     }
     
     override func didReceiveMemoryWarning() {

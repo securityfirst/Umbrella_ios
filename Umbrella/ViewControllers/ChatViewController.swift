@@ -10,6 +10,8 @@ import UIKit
 
 class ChatViewController: UIViewController {
 
+    var navigationItemCustom: NavigationItemCustom!
+    
     //
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -22,6 +24,17 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationItemCustom = NavigationItemCustom(viewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItemCustom.showItems(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationItemCustom.showItems(false)
     }
 }

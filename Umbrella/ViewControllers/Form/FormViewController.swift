@@ -17,6 +17,8 @@ class FormViewController: UIViewController {
     @IBOutlet weak var formTableView: UITableView!
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
+    var navigationItemCustom: NavigationItemCustom!
+    
     lazy var formViewModel: FormViewModel = {
         let formViewModel = FormViewModel()
         return formViewModel
@@ -44,6 +46,14 @@ class FormViewController: UIViewController {
         }
         self.loadingActivity.isHidden = false
         self.formTableView.isHidden = true
+        
+        self.navigationItemCustom = NavigationItemCustom(viewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItemCustom.showItems(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +67,12 @@ class FormViewController: UIViewController {
             self.loadingActivity.isHidden = true
             self.formTableView.isHidden = false
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationItemCustom.showItems(false)
     }
     
     override func didReceiveMemoryWarning() {

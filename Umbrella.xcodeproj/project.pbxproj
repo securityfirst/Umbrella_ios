@@ -257,6 +257,7 @@
 		A0EBC0162211CEB9006A0AC3 /* LessonNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBC0152211CEB9006A0AC3 /* LessonNavigation.swift */; };
 		A0EBC0182211CECC006A0AC3 /* FormNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBC0172211CECC006A0AC3 /* FormNavigation.swift */; };
 		A0EBC01A2211E9E6006A0AC3 /* FeedNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBC0192211E9E5006A0AC3 /* FeedNavigation.swift */; };
+		A0EEE63222B391BF0074AB77 /* NavigationItemCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EEE63122B391BF0074AB77 /* NavigationItemCustom.swift */; };
 		A0F1346921C402A000357B59 /* CustomChecklistViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1346821C4029F00357B59 /* CustomChecklistViewControllerSpec.swift */; };
 		A0F1346B21C402B000357B59 /* NewChecklistViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1346A21C402B000357B59 /* NewChecklistViewControllerSpec.swift */; };
 		A0F1346D21C4030400357B59 /* CustomChecklistViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1346C21C4030400357B59 /* CustomChecklistViewModelSpec.swift */; };
@@ -630,6 +631,7 @@
 		A0EBC0152211CEB9006A0AC3 /* LessonNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonNavigation.swift; sourceTree = "<group>"; };
 		A0EBC0172211CECC006A0AC3 /* FormNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNavigation.swift; sourceTree = "<group>"; };
 		A0EBC0192211E9E5006A0AC3 /* FeedNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedNavigation.swift; sourceTree = "<group>"; };
+		A0EEE63122B391BF0074AB77 /* NavigationItemCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemCustom.swift; sourceTree = "<group>"; };
 		A0F1346821C4029F00357B59 /* CustomChecklistViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0F1346A21C402B000357B59 /* NewChecklistViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChecklistViewControllerSpec.swift; sourceTree = "<group>"; };
 		A0F1346C21C4030400357B59 /* CustomChecklistViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewModelSpec.swift; sourceTree = "<group>"; };
@@ -1293,6 +1295,7 @@
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 				A0EBBFFB220D930E006A0AC3 /* HTMLPDFRenderer */,
+				A0EEE63122B391BF0074AB77 /* NavigationItemCustom.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1925,6 +1928,7 @@
 			files = (
 				A002B6412173975100C180E9 /* FeedItem.swift in Sources */,
 				A0D19D81215E4A9600B5F5FE /* ChecklistReviewCell.swift in Sources */,
+				A0EEE63222B391BF0074AB77 /* NavigationItemCustom.swift in Sources */,
 				A0EBC004220D930E006A0AC3 /* Log.swift in Sources */,
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
 				A0C404BC21A428B70068BDDD /* SettingIntervalViewController.swift in Sources */,

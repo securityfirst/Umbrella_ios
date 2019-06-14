@@ -33,6 +33,15 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let modeBarButton = UIBarButtonItem(title: "X", style: .plain, target:  self, action: #selector(close))
+        modeBarButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "ChalkboardSE-Bold", size: 25)!], for: .normal)
+        self.navigationItem.rightBarButtonItem  = modeBarButton
+        
+    }
+    
+    @objc func close() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

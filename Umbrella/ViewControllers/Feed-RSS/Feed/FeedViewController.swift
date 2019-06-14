@@ -42,6 +42,7 @@ class FeedViewController: UIViewController {
     
     @IBOutlet weak var setSourcesLabel: UILabel!
     
+    var navigationItemCustom: NavigationItemCustom!
     var loadingViewController: LoadingViewController!
     var loginViewController: LoginViewController!
     var tourViewController: TourViewController!
@@ -187,13 +188,8 @@ class FeedViewController: UIViewController {
         self.feedView.emptyView.isHidden = true
         
         loadSetup()
-//        #selector(self.rssModeViewAction(_:))
-        let accountButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icAccountBox"), style: .plain, target: self, action: nil)
-        accountButton.tintColor = #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
         
-        let notificationButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icAccountBox"), style: .plain, target: self, action: nil)
-        notificationButton.tintColor = #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
-        self.navigationItem.rightBarButtonItems = [accountButton, notificationButton]
+        self.navigationItemCustom = NavigationItemCustom(viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -204,6 +200,13 @@ class FeedViewController: UIViewController {
         }
         
         self.continueWizard = false
+        
+        self.navigationItemCustom.showItems(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItemCustom.showItems(false)
     }
     
     override func didReceiveMemoryWarning() {

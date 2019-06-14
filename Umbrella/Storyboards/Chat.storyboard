@@ -30,7 +30,7 @@
         <scene sceneID="3o3-oN-SPM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Hq-bP-iO1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chat" image="AR" id="Oy9-Rz-QKP"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="icChat" id="Oy9-Rz-QKP"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="zkF-8X-rdf">
@@ -48,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AR" width="28" height="20"/>
+        <image name="icChat" width="20" height="20"/>
     </resources>
 </document>

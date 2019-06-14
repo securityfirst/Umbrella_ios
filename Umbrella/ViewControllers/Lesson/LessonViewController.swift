@@ -17,8 +17,11 @@ class LessonViewController: UIViewController {
         let lessonViewModel = LessonViewModel()
         return lessonViewModel
     }()
+    
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     @IBOutlet weak var lessonTableView: UITableView!
+    
+    var navigationItemCustom: NavigationItemCustom!
     var favouriteSegments: [Segment] = [Segment]()
     var isLoadingContent: Bool = false
     
@@ -44,6 +47,8 @@ class LessonViewController: UIViewController {
         
         self.loadingActivity.isHidden = false
         self.lessonTableView.isHidden = true
+        
+        self.navigationItemCustom = NavigationItemCustom(viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +63,14 @@ class LessonViewController: UIViewController {
             self.loadingActivity.isHidden = true
             self.lessonTableView.isHidden = false
         }
+        
+        self.navigationItemCustom.showItems(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationItemCustom.showItems(false)
     }
     
     override func didReceiveMemoryWarning() {

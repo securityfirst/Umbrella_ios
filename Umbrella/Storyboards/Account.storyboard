@@ -408,7 +408,7 @@
         <!--Account-->
         <scene sceneID="WKZ-rO-hlq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oPT-bT-Xe7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="oPT-bT-Xe7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="icAccountBox" id="xtd-Yi-225"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="SSI-cB-uD5">
