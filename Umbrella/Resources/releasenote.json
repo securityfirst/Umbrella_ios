@@ -1,23 +1,23 @@
 {
     "en": {
-        "releasenote": "- Added French language. \n- Bugfixes."
+        "releasenote": "- Added Chat tab.\n- Bugfixes"
     },
     "es": {
-        "releasenote": "- Añadido idioma francés. \n- Corrección de errores."
+        "releasenote": "- Añadida la pestaña de chat.\n- Corrección de errores"
     },
     "zh-Hant": {
-        "releasenote": "-添加了法語。 \n-錯誤修正."
+        "releasenote": " - 添加聊天标签。\n- Bug修復"
     },
     "fa": {
-        "releasenote": "- اضافه شدن زبان فرانسوی. \n- رفع اشکالات"
+        "releasenote": "- تب اضافه شده چت \n - رفع اشکالات"
     },
     "ar": {
-        "releasenote": "- أضيفت اللغة الفرنسية. \n- الأخطاء"
+        "releasenote": "- اصلاحات الشوائب. \n - الأخطاء"
     },
     "ru": {
-        "releasenote": "- Добавлен французский язык. \n- Исправления."
+        "releasenote": "- Исправление ошибок.\n- Исправления"
     },
     "fr": {
-        "releasenote": "- Ajout de la langue française. \n- Correction de bugs."
+        "releasenote": "- Des itinéraires supplémentaires, un outil qui vous permet de réagir rapidement aux problèmes de sécurité.\n- Corrections de bugs"
     }
 }

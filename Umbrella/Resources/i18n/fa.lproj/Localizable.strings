@@ -17,6 +17,7 @@
 "Checklists" = "چک لیست";
 "Lessons" = "درس‌ها";
 "Account" = "حساب کاربری";
+"Chat" = "چت";
 
 // Loading
 "Updating the database" = "به روز رسانی پایگاه داده";
@@ -159,3 +160,22 @@
 "SHOW ME" = "نشان بده";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "از شما ممنونم، من در مورد خودم تحقیق خواهم کرد";
 "Do you really want to remove this item?" = "آیا واقعا می خواهید این مورد را حذف کنید؟";
+
+//Chat
+"Username" = "نام کاربری";
+"Password" = "کلمه عبور";
+"Confirm" = "تایید";
+"Email (Optional)" = "ایمیل (اختیاری)";
+"SIGN IN" = "ورود";
+"SIGN IN INSTEAD" = "ثبت نام در محل";
+"REGISTER" = "ثبت نام";
+"CREATE ACCOUNT" = "ایجاد حساب";
+"Enter username, password and confirm." = "نام کاربری، رمز عبور و تأیید را وارد کنید";
+"Username or password is invalid" = "نام کاربری یا رمز عبور نامعتبر است";
+"Enter username and password." = "نام کاربری و رمز عبور را وارد کنید";
+"User ID already taken." = "شناسه کاربری که قبلا گرفته شده است";
+"Do you really want to Chat log out?" = "واقعا میخواهی چت کنی؟";
+"Chat log out" = "خروج از چت";
+"Not sure of your password?" = "رمز عبور شما مطمئن نیستید؟";
+"Set a new one" = "یک جدید را تنظیم کنید";
+"Email is invalid." = "ایمیل نامعتبر است.";

@@ -17,6 +17,7 @@
 "Checklists" = "Checklists";
 "Lessons" = "Lessons";
 "Account" = "Account";
+"Chat" = "Chat";
 
 // Loading
 "Updating the database" = "Updating the database";
@@ -159,3 +160,22 @@
 "SHOW ME" = "SHOW ME";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "NO THANKS, I'LL EXPLORE ON MY OWN";
 "Do you really want to remove this item?" = "Do you really want to remove this item?";
+
+//Chat
+"Username" = "Username";
+"Password" = "Password";
+"Confirm" = "Confirm";
+"Email (Optional)" = "Email (Optional)";
+"SIGN IN" = "SIGN IN";
+"SIGN IN INSTEAD" = "SIGN IN INSTEAD";
+"REGISTER" = "REGISTER";
+"CREATE ACCOUNT" = "CREATE ACCOUNT";
+"Enter username, password and confirm." = "Enter username, password and confirm.";
+"Username or password is invalid" = "Username or password is invalid";
+"Enter username and password." = "Enter username and password.";
+"User ID already taken." = "User ID already taken.";
+"Do you really want to Chat log out?" = "Do you really want to Chat log out?";
+"Chat log out" = "Chat log out";
+"Not sure of your password?" = "Not sure of your password?";
+"Set a new one" = "Set a new one";
+"Email is invalid." = "Email is invalid.";

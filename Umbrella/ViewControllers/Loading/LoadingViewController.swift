@@ -54,6 +54,18 @@ class LoadingViewController: UIViewController {
     //
     // MARK: - Functions
     
+    func showLoading(view: UIView) {
+        view.addSubview(self.view)
+        self.viewHeightConstraint.constant = 130
+        self.tipsLabel.text = ""
+        self.messageLabel.text = ""
+        self.progressView.isHidden = true
+    }
+    
+    func closeLoading() {
+        self.view.removeFromSuperview()
+    }
+    
     /// Load the tent, do a clone, parse and add on database
     func loadTent(completion: @escaping () -> Void) {
         self.completion = completion

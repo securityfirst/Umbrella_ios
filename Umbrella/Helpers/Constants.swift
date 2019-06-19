@@ -53,3 +53,7 @@ enum Sources {
 enum Feed {
     static let feedUrl = "https://api.secfirst.org/v3/feed?country=%@&sources=%@&since=0"
 }
+
+enum Matrix {
+    static let baseUrlString = "https://comms.secfirst.org/_matrix/client/r0/"
+}

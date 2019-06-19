@@ -13,6 +13,7 @@ enum AccountItem : String {
     case mask
     case setPassword
     case switchRepo
+    case matrixLogout
 }
 
 class AccountViewModel {
@@ -20,11 +21,18 @@ class AccountViewModel {
     //
     // MARK: - Properties
     var items: [(name: String, type: Any)]!
+    var sqlManager: SQLManager
+    lazy var userMatrixDao: UserMatrixDao = {
+        let userMatrixDao = UserMatrixDao(sqlProtocol: self.sqlManager)
+        return userMatrixDao
+    }()
     
     //
     // MARK: - Init
     init() {
-        loadItems()
+        self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
+        _ = userMatrixDao.createTable()
+        self.loadItems()
     }
     
     func loadItems() {
@@ -32,5 +40,15 @@ class AccountViewModel {
             (name: "Settings".localized(), type: AccountItem.settings),
             (name: "Set password".localized(), type: AccountItem.setPassword)
         ]
+        
+        if self.userMatrixDao.list().count > 0 {
+            self.items.append((name: "Chat log out".localized(), type: AccountItem.matrixLogout))
+        }
+        
+    }
+    
+    func isLogged() -> Bool {
+        let users = userMatrixDao.list()
+        return users.count > 0
     }
 }

@@ -17,6 +17,7 @@
 "Checklists" = "檢查表";
 "Lessons" = "課程";
 "Account" = "帳戶";
+"Chat" = "聊";
 
 // Loading
 "Updating the database" = "更新數據庫";
@@ -159,3 +160,22 @@
 "SHOW ME" = "給我看看";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "不，謝謝，我會自己探索自己";
 "Do you really want to remove this item?" = "你真的想要刪除這個項目嗎？";
+
+//Chat
+"Username" = "用戶名";
+"Password" = "密碼";
+"Confirm" = "確認";
+"Email (Optional)" = "電子郵件（可選）";
+"SIGN IN" = "登入";
+"SIGN IN INSTEAD" = "登錄INSTEAD";
+"REGISTER" = "寄存器";
+"CREATE ACCOUNT" = "創建帳號";
+"Enter username, password and confirm." = "輸入用戶名，密碼並確認。";
+"Username or password is invalid" = "用戶名或密碼無效";
+"Enter username and password." = "輸入用戶名和密碼。";
+"User ID already taken." = "已使用用戶ID。";
+"Do you really want to Chat log out?" = "你真的想聊天退出嗎？";
+"Chat log out" = "聊天註銷";
+"Not sure of your password?" = "不確定你的密碼？";
+"Set a new one" = "設置一個新的";
+"Email is invalid." = "電子郵件無效。";

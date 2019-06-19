@@ -17,6 +17,7 @@
 "Checklists" = "قوائم";
 "Lessons" = "الدروس";
 "Account" = "الحساب";
+"Chat" = "دردشة";
 
 // Loading
 "Updating the database" = "تحديث قاعدة البيانات";
@@ -160,3 +161,22 @@
 "SHOW ME" = "أرني";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "لا شكرا ، سأستكشف في بلدي";
 "Do you really want to remove this item?" = "هل تريد حقًا إزالة هذا العنصر؟";
+
+//Chat
+"Username" = "اسم المستخدم";
+"Password" = "كلمه السر";
+"Confirm" = "تؤكد";
+"Email (Optional)" = "البريد الإلكتروني اختياري)";
+"SIGN IN" = "تسجيل الدخول";
+"SIGN IN INSTEAD" = "التوقيع بدلا من ذلك";
+"REGISTER" = "تسجيل";
+"CREATE ACCOUNT" = "إنشاء حساب";
+"Enter username, password and confirm." = "أدخل اسم المستخدم وكلمة المرور والتأكيد.";
+"Username or password is invalid" = "اسم المستخدم او كلمة المرور غير صحيحة";
+"Enter username and password." = "أدخل اسم المستخدم وكلمة المرور.";
+"User ID already taken." = "معرف المستخدم مأخوذ بالفعل.";
+"Do you really want to Chat log out?" = "هل تريد حقًا تسجيل الدخول إلى الدردشة؟";
+"Chat log out" = "دردشة تسجيل الخروج";
+"Not sure of your password?" = "لست متأكدا من كلمة مرورك؟";
+"Set a new one" = "تعيين واحدة جديدة";
+"Email is invalid." = "البريد الإلكتروني غير صالح.";

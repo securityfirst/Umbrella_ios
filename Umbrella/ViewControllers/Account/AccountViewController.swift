@@ -18,6 +18,11 @@ class AccountViewController: UIViewController {
         let accountViewModel = AccountViewModel()
         return accountViewModel
     }()
+    
+    lazy var chatCredentialViewModel: ChatCredentialViewModel = {
+        let chatCredentialViewModel = ChatCredentialViewModel()
+        return chatCredentialViewModel
+    }()
     var askForPasswordView: AskForPasswordView!
     
     @IBOutlet weak var accountTableView: UITableView!
@@ -172,7 +177,31 @@ extension AccountViewController: UITableViewDelegate {
         case AccountItem.switchRepo:
             let app = (UIApplication.shared.delegate as? AppDelegate)!
             app.show()
+        case AccountItem.matrixLogout:
+            let alertController = UIAlertController(title: "Alert".localized(), message: "Do you really want to Chat log out?".localized(), preferredStyle: UIAlertController.Style.alert)
+            let saveAction = UIAlertAction(title: "YES".localized(), style: UIAlertAction.Style.default, handler: { (action) in
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                controller.showLoading(view: self.view)
+                self.chatCredentialViewModel.logout(success: { (success) in
+                    controller.closeLoading()
+                    self.accountViewModel.loadItems()
+                    self.accountTableView.reloadData()
+                }, failure: { (response, object, error) in
+                    controller.closeLoading()
+                    self.accountViewModel.loadItems()
+                    self.accountTableView.reloadData()
+                })
+            })
             
+            let cancelAction = UIAlertAction(title: "NO".localized(), style: UIAlertAction.Style.cancel, handler: { (action) in
+            })
+            
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         default:
             break
         }

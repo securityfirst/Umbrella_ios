@@ -68,6 +68,8 @@
 		A0325E8922A01DD900C8B5FA /* Migrations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0325E8822A01DD900C8B5FA /* Migrations.bundle */; };
 		A0325E8B22A02B1100C8B5FA /* SQLiteMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0325E8A22A02B1100C8B5FA /* SQLiteMigrationManager.swift */; };
 		A03AEE6A224BC7C9001C893D /* content.zip in Resources */ = {isa = PBXBuildFile; fileRef = A03AEE69224BC7C8001C893D /* content.zip */; };
+		A04131F122B3D8BD00DF1008 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04131F022B3D8BD00DF1008 /* ChatViewController.swift */; };
+		A04131F322B3D8DE00DF1008 /* ChatSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04131F222B3D8DE00DF1008 /* ChatSignInViewController.swift */; };
 		A05BA7F820E116FC00482003 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F720E116FC00482003 /* Column.swift */; };
 		A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7F920E1188700482003 /* ForeignKey.swift */; };
 		A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05BA7FC20E11F6D00482003 /* LanguageDao.swift */; };
@@ -87,6 +89,14 @@
 		A075248A20C824E200E91A4A /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248920C824E200E91A4A /* CheckList.swift */; };
 		A075248C20C8290300E91A4A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248B20C8290300E91A4A /* Language.swift */; };
 		A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */; };
+		A081C2C322B787FD00EE725F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2C222B787FD00EE725F /* Service.swift */; };
+		A081C2C822B7885900EE725F /* UmbrellaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2C722B7885900EE725F /* UmbrellaRouter.swift */; };
+		A081C2CA22B7887800EE725F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2C922B7887800EE725F /* NetworkClient.swift */; };
+		A081C2CC22B7888C00EE725F /* UmbrellaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2CB22B7888C00EE725F /* UmbrellaClient.swift */; };
+		A081C2CF22B78ABA00EE725F /* ChatCredentialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */; };
+		A081C2D122B79FCD00EE725F /* UserMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D022B79FCC00EE725F /* UserMatrix.swift */; };
+		A081C2D322B7CFC700EE725F /* UserMatrixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D222B7CFC700EE725F /* UserMatrixDao.swift */; };
+		A081C2D522B8D24E00EE725F /* UmbrellaMatrixUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D422B8D24D00EE725F /* UmbrellaMatrixUserService.swift */; };
 		A083881C2228489000EAAA42 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A083881B2228488F00EAAA42 /* ModelProtocol.swift */; };
 		A0848685214FFBA00099D669 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0848684214FFBA00099D669 /* SegmentCell.swift */; };
 		A0848687214FFD6E0099D669 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0848686214FFD6E0099D669 /* CheckListCell.swift */; };
@@ -117,7 +127,6 @@
 		A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1566216E577F003753E5 /* SideScrollLessonView.swift */; };
 		A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA1567216E577F003753E5 /* TitleLessonView.swift */; };
 		A0AC2ACF22AAAA9700A135D7 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0AC2ACE22AAAA9700A135D7 /* Chat.storyboard */; };
-		A0AC2AD122AAAC4100A135D7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AC2AD022AAAC4100A135D7 /* ChatViewController.swift */; };
 		A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */; };
 		A0ACE2852292D05400068385 /* releasenote.json in Resources */ = {isa = PBXBuildFile; fileRef = A0ACE2842292D05400068385 /* releasenote.json */; };
 		A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */; };
@@ -233,6 +242,7 @@
 		A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */; };
 		A0DFF38220F3E76E008F3E43 /* FillFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF38120F3E76E008F3E43 /* FillFormViewController.swift */; };
 		A0DFF3E320F50289008F3E43 /* FormViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */; };
+		A0E3A88D22B544EB00C9F619 /* ChatRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3A88C22B544EB00C9F619 /* ChatRegisterViewController.swift */; };
 		A0E3D9372223FF210068621B /* ResultDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3D9362223FF210068621B /* ResultDeepLink.swift */; };
 		A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */; };
 		A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81BFC2108EC9100FB73FF /* LabelCell.swift */; };
@@ -433,6 +443,8 @@
 		A0325E8822A01DD900C8B5FA /* Migrations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Migrations.bundle; sourceTree = "<group>"; };
 		A0325E8A22A02B1100C8B5FA /* SQLiteMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteMigrationManager.swift; sourceTree = "<group>"; };
 		A03AEE69224BC7C8001C893D /* content.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = content.zip; sourceTree = "<group>"; };
+		A04131F022B3D8BD00DF1008 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A04131F222B3D8DE00DF1008 /* ChatSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSignInViewController.swift; sourceTree = "<group>"; };
 		A05BA7F720E116FC00482003 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		A05BA7F920E1188700482003 /* ForeignKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignKey.swift; sourceTree = "<group>"; };
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
@@ -453,6 +465,14 @@
 		A075248920C824E200E91A4A /* CheckList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		A075248B20C8290300E91A4A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitManagerSpec.swift; sourceTree = "<group>"; };
+		A081C2C222B787FD00EE725F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		A081C2C722B7885900EE725F /* UmbrellaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRouter.swift; sourceTree = "<group>"; };
+		A081C2C922B7887800EE725F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		A081C2CB22B7888C00EE725F /* UmbrellaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaClient.swift; sourceTree = "<group>"; };
+		A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCredentialViewModel.swift; sourceTree = "<group>"; };
+		A081C2D022B79FCC00EE725F /* UserMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMatrix.swift; sourceTree = "<group>"; };
+		A081C2D222B7CFC700EE725F /* UserMatrixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMatrixDao.swift; sourceTree = "<group>"; };
+		A081C2D422B8D24D00EE725F /* UmbrellaMatrixUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UmbrellaMatrixUserService.swift; sourceTree = "<group>"; };
 		A083881B2228488F00EAAA42 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		A0848684214FFBA00099D669 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		A0848686214FFD6E0099D669 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
@@ -483,7 +503,6 @@
 		A0ABA14722773780001CDEA8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		A0ABA14822773782001CDEA8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0AC2ACE22AAAA9700A135D7 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		A0AC2AD022AAAC4100A135D7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A0ACE2812292B4C200068385 /* ReleaseNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteViewController.swift; sourceTree = "<group>"; };
 		A0ACE2842292D05400068385 /* releasenote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = releasenote.json; sourceTree = "<group>"; };
 		A0AE0C6C21B83BFD005EA2A8 /* CustomChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewModel.swift; sourceTree = "<group>"; };
@@ -607,6 +626,7 @@
 		A0DFF37F20F3C1F0008F3E43 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		A0DFF38120F3E76E008F3E43 /* FillFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormViewController.swift; sourceTree = "<group>"; };
 		A0DFF3E220F50289008F3E43 /* FormViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewControllerSpec.swift; sourceTree = "<group>"; };
+		A0E3A88C22B544EB00C9F619 /* ChatRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRegisterViewController.swift; sourceTree = "<group>"; };
 		A0E3D9362223FF210068621B /* ResultDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDeepLink.swift; sourceTree = "<group>"; };
 		A0E81BFA2108D37200FB73FF /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		A0E81BFC2108EC9100FB73FF /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
@@ -887,6 +907,16 @@
 			path = RSS;
 			sourceTree = "<group>";
 		};
+		A04131EF22B3D8BD00DF1008 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A04131F022B3D8BD00DF1008 /* ChatViewController.swift */,
+				A04131F222B3D8DE00DF1008 /* ChatSignInViewController.swift */,
+				A0E3A88C22B544EB00C9F619 /* ChatRegisterViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		A05BA7FB20E11B5700482003 /* SQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +964,41 @@
 				A064CE9520AC497D00CE99E1 /* _database.db_ */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		A081C2C022B787C600EE725F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A081C2C222B787FD00EE725F /* Service.swift */,
+				A081C2D422B8D24D00EE725F /* UmbrellaMatrixUserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A081C2C122B787D200EE725F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A081C2C722B7885900EE725F /* UmbrellaRouter.swift */,
+				A081C2C922B7887800EE725F /* NetworkClient.swift */,
+				A081C2C422B7880A00EE725F /* Clients */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A081C2C422B7880A00EE725F /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				A081C2CB22B7888C00EE725F /* UmbrellaClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		A081C2CD22B78A9500EE725F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		A08F58BC212AC05400BEF571 /* DynamicForm */ = {
@@ -1175,6 +1240,7 @@
 				A0FDDF6221BA94970078FCAA /* CustomChecklistCheckedDao.swift */,
 				A0E87D07229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift */,
 				A0E87D09229C2EFD00BD8802 /* PathwayDao.swift */,
+				A081C2D222B7CFC700EE725F /* UserMatrixDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -1205,6 +1271,8 @@
 				A0B8F40D2199DE9200ACDEEC /* Umbrella.entitlements */,
 				A0B9D45E20AAE1CF00B2B796 /* AppDelegate */,
 				A0B9D45C20AAE1CF00B2B796 /* Storyboards */,
+				A081C2C022B787C600EE725F /* Services */,
+				A081C2C122B787D200EE725F /* Networking */,
 				A0B9D45320AAE1CD00B2B796 /* Extensions */,
 				A0B9D45720AAE1CE00B2B796 /* Helpers */,
 				A0B9D45A20AAE1CE00B2B796 /* Protocols */,
@@ -1260,6 +1328,7 @@
 				A0C404A721A2C27A0068BDDD /* CustomPassword.swift */,
 				A0F6C39A21A4421100A0FE85 /* SettingItem.swift */,
 				A0E87D05229BFAD500BD8802 /* PathwayChecklistChecked.swift */,
+				A081C2D022B79FCC00EE725F /* UserMatrix.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1277,7 +1346,7 @@
 				A0B0AA8220EE709100933759 /* Checklist */,
 				A0B0AA8320EE709A00933759 /* Lesson */,
 				A0B0AA8420EE70A200933759 /* Account */,
-				A0AC2AD022AAAC4100A135D7 /* ChatViewController.swift */,
+				A04131EF22B3D8BD00DF1008 /* Chat */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1326,6 +1395,7 @@
 				A0D19D7C215E4A2A00B5F5FE /* Lesson */,
 				A0D19D7D215E4A3A00B5F5FE /* Checklist */,
 				A0B66B442190A5D900D46653 /* Account */,
+				A081C2CD22B78A9500EE725F /* Chat */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1929,6 +1999,7 @@
 				A002B6412173975100C180E9 /* FeedItem.swift in Sources */,
 				A0D19D81215E4A9600B5F5FE /* ChecklistReviewCell.swift in Sources */,
 				A0EEE63222B391BF0074AB77 /* NavigationItemCustom.swift in Sources */,
+				A081C2CA22B7887800EE725F /* NetworkClient.swift in Sources */,
 				A0EBC004220D930E006A0AC3 /* Log.swift in Sources */,
 				A0D170C120CE976700758A8D /* Array+Ext.swift in Sources */,
 				A0C404BC21A428B70068BDDD /* SettingIntervalViewController.swift in Sources */,
@@ -2004,6 +2075,7 @@
 				A01CC62321F7195B00E5D771 /* PDF.swift in Sources */,
 				A0C404A621A19FEC0068BDDD /* AskForPasswordView.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
+				A081C2C822B7885900EE725F /* UmbrellaRouter.swift in Sources */,
 				A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */,
 				A0325E8B22A02B1100C8B5FA /* SQLiteMigrationManager.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
@@ -2062,11 +2134,14 @@
 				A0EBC0112211BD1B006A0AC3 /* DeepLinkParser.swift in Sources */,
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
 				A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */,
+				A04131F322B3D8DE00DF1008 /* ChatSignInViewController.swift in Sources */,
 				A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
+				A081C2C322B787FD00EE725F /* Service.swift in Sources */,
 				A0EBC007220D930E006A0AC3 /* FileManager-Extensions.swift in Sources */,
+				A081C2D122B79FCD00EE725F /* UserMatrix.swift in Sources */,
 				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
 				A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */,
 				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
@@ -2092,6 +2167,7 @@
 				A0AE1A30214FE3AF0019F09B /* DifficultyRule.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */,
+				A081C2CC22B7888C00EE725F /* UmbrellaClient.swift in Sources */,
 				A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */,
 				A0B8F8052213066400780F97 /* ChecklistNavigation.swift in Sources */,
 				A064CE9320AC47E800CE99E1 /* SQLManager.swift in Sources */,
@@ -2105,20 +2181,24 @@
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
-				A0AC2AD122AAAC4100A135D7 /* ChatViewController.swift in Sources */,
 				A0C404AA21A2C4980068BDDD /* LoginViewController.swift in Sources */,
+				A081C2D322B7CFC700EE725F /* UserMatrixDao.swift in Sources */,
 				A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0F5B2662170CAC6008B2B6A /* SourceCell.swift in Sources */,
+				A0E3A88D22B544EB00C9F619 /* ChatRegisterViewController.swift in Sources */,
 				A0D8BCA920E246AD0052028F /* ItemFormDao.swift in Sources */,
+				A081C2D522B8D24E00EE725F /* UmbrellaMatrixUserService.swift in Sources */,
 				A099D09A214A73FF0064AD18 /* LessonViewModel.swift in Sources */,
 				A0848685214FFBA00099D669 /* SegmentCell.swift in Sources */,
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 				A0C7326B215B9CA0003087BC /* ChecklistChecked.swift in Sources */,
+				A081C2CF22B78ABA00EE725F /* ChatCredentialViewModel.swift in Sources */,
 				A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */,
 				A0AE1A32214FE5A90019F09B /* DifficultyRuleDao.swift in Sources */,
+				A04131F122B3D8BD00DF1008 /* ChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2334,7 +2414,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2506,7 +2586,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2540,7 +2620,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2672,7 +2752,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2780,9 +2860,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

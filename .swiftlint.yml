@@ -5,6 +5,8 @@ disabled_rules:
   - trailing_whitespace
   - file_length
   - empty_count
+  - identifier_name
+  - empty_enum_arguments
 
 opt_in_rules:
 

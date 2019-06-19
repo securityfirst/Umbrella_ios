@@ -17,6 +17,7 @@
 "Checklists" = "Listas de control";
 "Lessons" = "Lecciones";
 "Account" = "Cuenta";
+"Chat" = "Charla";
 
 // Loading
 "Updating the database" = "Actualizando la base de datos";
@@ -159,3 +160,22 @@
 "SHOW ME" = "MUÉSTRAME";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "NO GRACIAS, EXPLORARÉ EN MI PROPIO";
 "Do you really want to remove this item?" = "¿Realmente quieres eliminar este artículo?";
+
+//Chat
+"Username" = "Nombre de usuario";
+"Password" = "Contraseña";
+"Confirm" = "Confirmar";
+"Email (Optional)" = "Email (Opcional)";
+"SIGN IN" = "REGISTRARSE";
+"SIGN IN INSTEAD" = "INICIA SESIÓN";
+"REGISTER" = "REGISTRO";
+"CREATE ACCOUNT" = "CREAR UNA CUENTA";
+"Enter username, password and confirm." = "Introduzca su nombre de usuario, contraseña y confirme.";
+"Username or password is invalid" = "El nombre de usuario o la contraseña no son válidos";
+"Enter username and password." = "Introduzca su nombre de usuario y contraseña.";
+"User ID already taken." = "Identificación de usuario ya tomada.";
+"Do you really want to Chat log out?" = "¿Realmente quieres chatear sesión?";
+"Chat log out" = "Sesión de chat";
+"Not sure of your password?" = "¿No está seguro de su contraseña?";
+"Set a new one" = "Establecer uno nuevo";
+"Email is invalid." = "El correo electrónico es invalido.";

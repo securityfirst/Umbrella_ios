@@ -14,7 +14,6 @@ target 'Umbrella' do
   pod 'Yams'
   pod 'Toast-Swift', '~> 4.0.0'
   pod 'Zip', '~> 1.1'
-#  pod 'SQLiteMigrationManager.swift', '0.6.0'
 
   target 'UmbrellaTests' do
     inherit! :search_paths

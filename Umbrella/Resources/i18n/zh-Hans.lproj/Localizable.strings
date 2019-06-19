@@ -17,6 +17,7 @@
 "Checklists" = "清单";
 "Lessons" = "教训";
 "Account" = "帐户";
+"Chat" = "聊";
 
 // Loading
 "Updating the database" = "更新数据库";
@@ -159,3 +160,22 @@
 "SHOW ME" = "给我看看";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "不，谢谢，我会自己探索自己";
 "Do you really want to remove this item?" = "你真的想要删除这个项目吗？";
+
+//Chat
+"Username" = "用户名";
+"Password" = "密码";
+"Confirm" = "确认";
+"Email (Optional)" = "电子邮件（可选）";
+"SIGN IN" = "登入";
+"SIGN IN INSTEAD" = "登录INSTEAD";
+"REGISTER" = "寄存器";
+"CREATE ACCOUNT" = "创建帐号";
+"Enter username, password and confirm." = "输入用户名，密码并确认。";
+"Username or password is invalid" = "用户名或密码无效";
+"Enter username and password." = "输入用户名和密码。";
+"User ID already taken." = "已使用用户ID。";
+"Do you really want to Chat log out?" = "你真的想聊天退出吗？";
+"Chat log out" = "聊天注销";
+"Not sure of your password?" = "不确定你的密码？";
+"Set a new one" = "设置一个新的";
+"Email is invalid." = "电子邮件无效。";

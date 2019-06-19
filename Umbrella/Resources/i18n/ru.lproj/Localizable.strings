@@ -17,6 +17,7 @@
 "Checklists" = "Контрольные списки";
 "Lessons" = "Уроки";
 "Account" = "Учетная запись";
+"Chat" = "чат";
 
 // Loading
 "Updating the database" = "Обновление базы данных";
@@ -159,3 +160,22 @@
 "SHOW ME" = "ПОКАЖИ МНЕ";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "НЕТ СПАСИБО, Я ИЗУЧУ НА СВОЕМ";
 "Do you really want to remove this item?" = "Вы действительно хотите удалить этот элемент?";
+
+//Chat
+"Username" = "имя пользователя";
+"Password" = "пароль";
+"Confirm" = "подтвердить";
+"Email (Optional)" = "Электронная почта (необязательно)";
+"SIGN IN" = "ВОЙТИ В СИСТЕМУ";
+"SIGN IN INSTEAD" = "ВОЙТИ В ВМЕСТО";
+"REGISTER" = "РЕГИСТР";
+"CREATE ACCOUNT" = "СОЗДАТЬ УЧЕТНУЮ ЗАПИСЬ";
+"Enter username, password and confirm." = "Введите имя пользователя, пароль и подтвердите.";
+"Username or password is invalid" = "Имя пользователя или пароль неверны";
+"Enter username and password." = "Введите имя пользователя и пароль.";
+"User ID already taken." = "Идентификатор пользователя уже занят.";
+"Do you really want to Chat log out?" = "Вы действительно хотите выйти из чата?";
+"Chat log out" = "Выйти из чата";
+"Not sure of your password?" = "Не уверены в своем пароле?";
+"Set a new one" = "Установить новый";
+"Email is invalid." = "Адрес электронной почты недействителен.";
