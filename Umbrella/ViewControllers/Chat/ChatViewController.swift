@@ -19,6 +19,11 @@ class ChatViewController: UIViewController {
         let chatCredentialViewModel = ChatCredentialViewModel()
         return chatCredentialViewModel
     }()
+    lazy var chatGroupViewModel: ChatGroupViewModel = {
+        let chatGroupViewModel = ChatGroupViewModel()
+        return chatGroupViewModel
+    }()
+    @IBOutlet weak var chatGroupCollectionView: UICollectionView!
     
     //
     // MARK: - Life cycle
@@ -48,6 +53,14 @@ class ChatViewController: UIViewController {
         } else {
             let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
             self.navigationItem.rightBarButtonItem  = modeBarButton
+            
+            if let userMatrix = self.chatCredentialViewModel.getUserLogged() {
+                self.chatGroupViewModel.publicRooms(accessToken: userMatrix.accessToken, success: { (publicRoom) in
+                    self.chatGroupCollectionView.reloadData()
+                }, failure: { (response, object, error) in
+                    print(error ?? "")
+                })
+            }
         }
     }
     
@@ -78,6 +91,40 @@ class ChatViewController: UIViewController {
         self.navigationItem.rightBarButtonItem  = modeBarButton
     }
     
+    @objc func chatGroupHeaderDidSelect(gesture: UIGestureRecognizer) {
+        let view:ChatGroupReusableView = (gesture.view as? ChatGroupReusableView)!
+        print(print(view.indexPath))
+    }
+    
     //
     // MARK: - Actions
+}
+
+extension ChatViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+    }
+}
+
+extension ChatViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.chatGroupViewModel.rooms.count > 5 ? 5 : self.chatGroupViewModel.rooms.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: ChatGroupCell = (collectionView.dequeueReusableCell(withReuseIdentifier: "ChatGroupCell", for: indexPath) as? ChatGroupCell)!
+        cell.configure(withViewModel: self.chatGroupViewModel, indexPath: indexPath)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeaderView = (collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ChatGroupReusableView", for: indexPath) as? ChatGroupReusableView)!
+        sectionHeaderView.indexPath = indexPath
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.chatGroupHeaderDidSelect(gesture:)))
+        sectionHeaderView.addGestureRecognizer(tap)
+            return sectionHeaderView
+    }
+
 }

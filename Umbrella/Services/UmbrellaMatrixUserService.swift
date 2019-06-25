@@ -10,15 +10,27 @@ import Foundation
 
 class UmbrellaMatrixUserService: Service {
     
-    var client: NetworkClient
+    //
+    // MARK: - Properties
+    fileprivate var client: NetworkClient
     
+    //
+    // MARK: - Init
     required init(client: NetworkClient) {
         self.client = client
     }
     
+    /// Login an user on Matrix Chat
+    ///
+    /// - Parameters:
+    ///   - username: String
+    ///   - password: String
+    ///   - type: String
+    ///   - success: Closure
+    ///   - failure: Closure
     func login(username: String, password: String, type: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         
-        client.request(router: UmbrellaRouter.login(username: username, password: password, type: type), success: { (response) in
+        client.request(router: UmbrellaUserRouter.login(username: username, password: password, type: type), success: { (response) in
             do {
                 guard let data = response as? String else {
                     print("Error cast response to String")
@@ -42,9 +54,15 @@ class UmbrellaMatrixUserService: Service {
         })
     }
     
+    /// Logout an user on Matrix Chat
+    ///
+    /// - Parameters:
+    ///   - accessToken: String
+    ///   - success: Closure
+    ///   - failure: Closure
     func logout(accessToken: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
 
-        client.request(router: UmbrellaRouter.logout(accessToken: accessToken), success: { (response) in
+        client.request(router: UmbrellaUserRouter.logout(accessToken: accessToken), success: { (response) in
             success("" as AnyObject)
         }, failure: { (response, object, error) in
             do {
@@ -58,9 +76,17 @@ class UmbrellaMatrixUserService: Service {
         })
     }
     
+    /// Create an user
+    ///
+    /// - Parameters:
+    ///   - username: String
+    ///   - password: String
+    ///   - email: String
+    ///   - success: Closure
+    ///   - failure: Closure
     func createUser(username: String, password: String, email: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         
-        client.request(router: UmbrellaRouter.createUser(username: username, password: password, email: email), success: { (response) in
+        client.request(router: UmbrellaUserRouter.createUser(username: username, password: password, email: email), success: { (response) in
             do {
                 guard let data = response as? String else {
                     print("Error cast response to String")
@@ -84,9 +110,16 @@ class UmbrellaMatrixUserService: Service {
         })
     }
     
+    /// Update profile from an user with email
+    ///
+    /// - Parameters:
+    ///   - token: String
+    ///   - email: String
+    ///   - success: Closure
+    ///   - failure: Closure
     func requestEmailToken(token: String, email: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         
-        client.request(router: UmbrellaRouter.requestEmailToken(token: token, email: email), success: { (response) in
+        client.request(router: UmbrellaUserRouter.requestEmailToken(token: token, email: email), success: { (response) in
                 success("")
         }, failure: { (response, object, error) in
             do {

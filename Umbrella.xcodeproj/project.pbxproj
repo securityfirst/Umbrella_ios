@@ -90,13 +90,15 @@
 		A075248C20C8290300E91A4A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075248B20C8290300E91A4A /* Language.swift */; };
 		A07C08FB20D029B700A6F606 /* GitManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */; };
 		A081C2C322B787FD00EE725F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2C222B787FD00EE725F /* Service.swift */; };
-		A081C2C822B7885900EE725F /* UmbrellaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2C722B7885900EE725F /* UmbrellaRouter.swift */; };
 		A081C2CA22B7887800EE725F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2C922B7887800EE725F /* NetworkClient.swift */; };
 		A081C2CC22B7888C00EE725F /* UmbrellaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2CB22B7888C00EE725F /* UmbrellaClient.swift */; };
 		A081C2CF22B78ABA00EE725F /* ChatCredentialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */; };
-		A081C2D122B79FCD00EE725F /* UserMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D022B79FCC00EE725F /* UserMatrix.swift */; };
 		A081C2D322B7CFC700EE725F /* UserMatrixDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D222B7CFC700EE725F /* UserMatrixDao.swift */; };
 		A081C2D522B8D24E00EE725F /* UmbrellaMatrixUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D422B8D24D00EE725F /* UmbrellaMatrixUserService.swift */; };
+		A081C2D722BD0DD800EE725F /* UmbrellaUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D622BD0DD800EE725F /* UmbrellaUserRouter.swift */; };
+		A081C2D922BD0EC600EE725F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2D822BD0EC600EE725F /* Router.swift */; };
+		A081C2DB22BD123E00EE725F /* UmbrellaMatrixRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2DA22BD123E00EE725F /* UmbrellaMatrixRoomService.swift */; };
+		A081C2DD22BD128000EE725F /* UmbrellaRoomRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081C2DC22BD128000EE725F /* UmbrellaRoomRouter.swift */; };
 		A083881C2228489000EAAA42 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A083881B2228488F00EAAA42 /* ModelProtocol.swift */; };
 		A0848685214FFBA00099D669 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0848684214FFBA00099D669 /* SegmentCell.swift */; };
 		A0848687214FFD6E0099D669 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0848686214FFD6E0099D669 /* CheckListCell.swift */; };
@@ -183,6 +185,12 @@
 		A0B9D42D20AAE03900B2B796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B9D42C20AAE03900B2B796 /* Assets.xcassets */; };
 		A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45620AAE1CE00B2B796 /* LoadingViewController.swift */; };
 		A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */; };
+		A0C12C7222C0EA15001479AE /* UserMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C12C7022C0EA15001479AE /* UserMatrix.swift */; };
+		A0C12C7322C0EA15001479AE /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C12C7122C0EA15001479AE /* Room.swift */; };
+		A0C12C7722C114BD001479AE /* ChatGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C12C7622C114BD001479AE /* ChatGroupCell.swift */; };
+		A0C12C7922C11655001479AE /* ChatGroupReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C12C7822C11655001479AE /* ChatGroupReusableView.swift */; };
+		A0C12C7D22C1215D001479AE /* ChatGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C12C7C22C1215D001479AE /* ChatGroupViewModel.swift */; };
+		A0C12C7F22C1273F001479AE /* PublicRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C12C7E22C1273F001479AE /* PublicRoom.swift */; };
 		A0C404A221A17C200068BDDD /* icon-imported-document.png in Resources */ = {isa = PBXBuildFile; fileRef = A0C404A121A17C1F0068BDDD /* icon-imported-document.png */; };
 		A0C404A421A19FCF0068BDDD /* AskForPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0C404A321A19FCF0068BDDD /* AskForPasswordView.xib */; };
 		A0C404A621A19FEC0068BDDD /* AskForPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C404A521A19FEC0068BDDD /* AskForPasswordView.swift */; };
@@ -466,13 +474,15 @@
 		A075248B20C8290300E91A4A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		A07C08FA20D029B700A6F606 /* GitManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitManagerSpec.swift; sourceTree = "<group>"; };
 		A081C2C222B787FD00EE725F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		A081C2C722B7885900EE725F /* UmbrellaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRouter.swift; sourceTree = "<group>"; };
 		A081C2C922B7887800EE725F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		A081C2CB22B7888C00EE725F /* UmbrellaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaClient.swift; sourceTree = "<group>"; };
 		A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCredentialViewModel.swift; sourceTree = "<group>"; };
-		A081C2D022B79FCC00EE725F /* UserMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMatrix.swift; sourceTree = "<group>"; };
 		A081C2D222B7CFC700EE725F /* UserMatrixDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMatrixDao.swift; sourceTree = "<group>"; };
 		A081C2D422B8D24D00EE725F /* UmbrellaMatrixUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UmbrellaMatrixUserService.swift; sourceTree = "<group>"; };
+		A081C2D622BD0DD800EE725F /* UmbrellaUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UmbrellaUserRouter.swift; sourceTree = "<group>"; };
+		A081C2D822BD0EC600EE725F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		A081C2DA22BD123E00EE725F /* UmbrellaMatrixRoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMatrixRoomService.swift; sourceTree = "<group>"; };
+		A081C2DC22BD128000EE725F /* UmbrellaRoomRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRoomRouter.swift; sourceTree = "<group>"; };
 		A083881B2228488F00EAAA42 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		A0848684214FFBA00099D669 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
 		A0848686214FFD6E0099D669 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
@@ -566,6 +576,12 @@
 		A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0BAC1492289617E00D884F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		A0BAC14A2289617E00D884F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A0C12C7022C0EA15001479AE /* UserMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMatrix.swift; sourceTree = "<group>"; };
+		A0C12C7122C0EA15001479AE /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		A0C12C7622C114BD001479AE /* ChatGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupCell.swift; sourceTree = "<group>"; };
+		A0C12C7822C11655001479AE /* ChatGroupReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupReusableView.swift; sourceTree = "<group>"; };
+		A0C12C7C22C1215D001479AE /* ChatGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupViewModel.swift; sourceTree = "<group>"; };
+		A0C12C7E22C1273F001479AE /* PublicRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicRoom.swift; sourceTree = "<group>"; };
 		A0C404A121A17C1F0068BDDD /* icon-imported-document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-imported-document.png"; sourceTree = "<group>"; };
 		A0C404A321A19FCF0068BDDD /* AskForPasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AskForPasswordView.xib; sourceTree = "<group>"; };
 		A0C404A521A19FEC0068BDDD /* AskForPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForPasswordView.swift; sourceTree = "<group>"; };
@@ -971,6 +987,7 @@
 			children = (
 				A081C2C222B787FD00EE725F /* Service.swift */,
 				A081C2D422B8D24D00EE725F /* UmbrellaMatrixUserService.swift */,
+				A081C2DA22BD123E00EE725F /* UmbrellaMatrixRoomService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -978,7 +995,9 @@
 		A081C2C122B787D200EE725F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A081C2C722B7885900EE725F /* UmbrellaRouter.swift */,
+				A081C2D622BD0DD800EE725F /* UmbrellaUserRouter.swift */,
+				A081C2DC22BD128000EE725F /* UmbrellaRoomRouter.swift */,
+				A081C2D822BD0EC600EE725F /* Router.swift */,
 				A081C2C922B7887800EE725F /* NetworkClient.swift */,
 				A081C2C422B7880A00EE725F /* Clients */,
 			);
@@ -997,6 +1016,7 @@
 			isa = PBXGroup;
 			children = (
 				A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */,
+				A0C12C7C22C1215D001479AE /* ChatGroupViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1172,6 +1192,7 @@
 				A099D09B214A7BDE0064AD18 /* Lesson */,
 				A0D19D78215E49D800B5F5FE /* Checklist */,
 				A0B66B432190A5D100D46653 /* Account */,
+				A0C12C7522C1149B001479AE /* Chat */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1325,10 +1346,10 @@
 				A0D19D83215E4AE600B5F5FE /* Feed-RSS */,
 				A0D19D82215E4ADC00B5F5FE /* Lesson */,
 				A0FFE50220CEEB010026C0C7 /* Checklist */,
+				A0C12C6F22C0EA15001479AE /* Matrix */,
 				A0C404A721A2C27A0068BDDD /* CustomPassword.swift */,
 				A0F6C39A21A4421100A0FE85 /* SettingItem.swift */,
 				A0E87D05229BFAD500BD8802 /* PathwayChecklistChecked.swift */,
-				A081C2D022B79FCC00EE725F /* UserMatrix.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1437,6 +1458,25 @@
 				A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A0C12C6F22C0EA15001479AE /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				A0C12C7022C0EA15001479AE /* UserMatrix.swift */,
+				A0C12C7122C0EA15001479AE /* Room.swift */,
+				A0C12C7E22C1273F001479AE /* PublicRoom.swift */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		A0C12C7522C1149B001479AE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A0C12C7622C114BD001479AE /* ChatGroupCell.swift */,
+				A0C12C7822C11655001479AE /* ChatGroupReusableView.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		A0C6CEA320B5ADF3005BC111 /* Managers */ = {
@@ -2008,6 +2048,7 @@
 				A0F6C39921A42F0900A0FE85 /* SettingIntervalViewModel.swift in Sources */,
 				A0A391A721B546AA0067A04D /* NewChecklistViewModel.swift in Sources */,
 				A003810B20FE2AA500CDA44D /* StepperView.swift in Sources */,
+				A081C2D722BD0DD800EE725F /* UmbrellaUserRouter.swift in Sources */,
 				A0D8BCA520E246930052028F /* FormDao.swift in Sources */,
 				A0AE0C7221B83C62005EA2A8 /* CustomCheckItem.swift in Sources */,
 				A0F6C3A521A569C100A0FE85 /* SettingSourcesViewController.swift in Sources */,
@@ -2075,7 +2116,6 @@
 				A01CC62321F7195B00E5D771 /* PDF.swift in Sources */,
 				A0C404A621A19FEC0068BDDD /* AskForPasswordView.swift in Sources */,
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
-				A081C2C822B7885900EE725F /* UmbrellaRouter.swift in Sources */,
 				A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */,
 				A0325E8B22A02B1100C8B5FA /* SQLiteMigrationManager.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
@@ -2095,19 +2135,24 @@
 				A0F6C3A921A56AB100A0FE85 /* SettingCellProtocol.swift in Sources */,
 				A01CC61F21F717FD00E5D771 /* Export.swift in Sources */,
 				A0E87D03229BEBD000BD8802 /* PathwayViewModel.swift in Sources */,
+				A081C2DD22BD128000EE725F /* UmbrellaRoomRouter.swift in Sources */,
 				A0B0AA2A20EAC6FB00933759 /* SQLProtocol.swift in Sources */,
 				A0B66B402190A4F400D46653 /* AccountViewModel.swift in Sources */,
 				A0FFE50420CEEB1B0026C0C7 /* CheckItem.swift in Sources */,
 				A0FDDF5F21BA94780078FCAA /* CustomChecklistDao.swift in Sources */,
+				A0C12C7F22C1273F001479AE /* PublicRoom.swift in Sources */,
+				A0C12C7322C0EA15001479AE /* Room.swift in Sources */,
 				A0CC7B512137F53700C28C3B /* FeedViewModel.swift in Sources */,
 				A0EBC0182211CECC006A0AC3 /* FormNavigation.swift in Sources */,
 				A0E81BFF210F38F100FB73FF /* ChoiceButton.swift in Sources */,
+				A0C12C7D22C1215D001479AE /* ChatGroupViewModel.swift in Sources */,
 				A083881C2228489000EAAA42 /* ModelProtocol.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
 				A01CC62521F7196700E5D771 /* HTML.swift in Sources */,
 				A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */,
 				A02E5EFA2148185200DEFBFB /* LocationViewModel.swift in Sources */,
+				A081C2D922BD0EC600EE725F /* Router.swift in Sources */,
 				A0D19D85215E51A000B5F5FE /* ChecklistReviewHeaderView.swift in Sources */,
 				A0DFF38020F3C1F0008F3E43 /* FormViewModel.swift in Sources */,
 				A01CC62121F7187C00E5D771 /* ExportProtocol.swift in Sources */,
@@ -2135,13 +2180,13 @@
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
 				A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */,
 				A04131F322B3D8DE00DF1008 /* ChatSignInViewController.swift in Sources */,
+				A0C12C7222C0EA15001479AE /* UserMatrix.swift in Sources */,
 				A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
 				A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */,
 				A0FFE4F820CED3A20026C0C7 /* Form.swift in Sources */,
 				A081C2C322B787FD00EE725F /* Service.swift in Sources */,
 				A0EBC007220D930E006A0AC3 /* FileManager-Extensions.swift in Sources */,
-				A081C2D122B79FCD00EE725F /* UserMatrix.swift in Sources */,
 				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
 				A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */,
 				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
@@ -2180,12 +2225,14 @@
 				A0EBC003220D930E006A0AC3 /* SwiftyTimer.swift in Sources */,
 				A0D170C320CE97F200758A8D /* File+Ext.swift in Sources */,
 				A075248820C824B300E91A4A /* Segment.swift in Sources */,
+				A0C12C7722C114BD001479AE /* ChatGroupCell.swift in Sources */,
 				A003812B2107418300CDA44D /* TextFieldCell.swift in Sources */,
 				A0C404AA21A2C4980068BDDD /* LoginViewController.swift in Sources */,
 				A081C2D322B7CFC700EE725F /* UserMatrixDao.swift in Sources */,
 				A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */,
+				A081C2DB22BD123E00EE725F /* UmbrellaMatrixRoomService.swift in Sources */,
 				A0B0AA6920EE575500933759 /* TabBar.swift in Sources */,
 				A0F5B2662170CAC6008B2B6A /* SourceCell.swift in Sources */,
 				A0E3A88D22B544EB00C9F619 /* ChatRegisterViewController.swift in Sources */,
@@ -2196,6 +2243,7 @@
 				A0FFE4F220CEA7BB0026C0C7 /* CheckListParser.swift in Sources */,
 				A0C7326B215B9CA0003087BC /* ChecklistChecked.swift in Sources */,
 				A081C2CF22B78ABA00EE725F /* ChatCredentialViewModel.swift in Sources */,
+				A0C12C7922C11655001479AE /* ChatGroupReusableView.swift in Sources */,
 				A0AA1568216E577F003753E5 /* SideScrollProtocol.swift in Sources */,
 				A0AE1A32214FE5A90019F09B /* DifficultyRuleDao.swift in Sources */,
 				A04131F122B3D8BD00DF1008 /* ChatViewController.swift in Sources */,

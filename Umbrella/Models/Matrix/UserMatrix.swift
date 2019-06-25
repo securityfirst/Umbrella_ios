@@ -10,7 +10,9 @@ import Foundation
 
 class UserMatrix: Codable, TableProtocol {
     
-    var userId: String
+    var username: String
+    var password: String
+    var userId: String  
     var accessToken: String
     var homeServer: String
     var deviceId: String
@@ -18,6 +20,8 @@ class UserMatrix: Codable, TableProtocol {
     //
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
+        case username = "username"
+        case password = "password"
         case userId = "user_id"
         case accessToken = "access_token"
         case homeServer = "home_server"
@@ -25,6 +29,8 @@ class UserMatrix: Codable, TableProtocol {
     }
     
     init() {
+        self.username = ""
+        self.password = ""
         self.userId = ""
         self.accessToken = ""
         self.homeServer = ""
@@ -33,6 +39,18 @@ class UserMatrix: Codable, TableProtocol {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.username) {
+            self.username = try container.decode(String.self, forKey: .username)
+        } else {
+            self.username = ""
+        }
+        
+        if container.contains(.password) {
+            self.password = try container.decode(String.self, forKey: .password)
+        } else {
+            self.password = ""
+        }
         
         if container.contains(.userId) {
             self.userId = try container.decode(String.self, forKey: .userId)
@@ -69,6 +87,8 @@ class UserMatrix: Codable, TableProtocol {
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
+            Column(name: "username", type: .string),
+            Column(name: "password", type: .string),
             Column(name: "user_id", type: .string),
             Column(name: "access_token", type: .string),
             Column(name: "home_server", type: .string),

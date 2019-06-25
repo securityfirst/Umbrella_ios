@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NetworkClient {
-    func request(router: UmbrellaRouter, success: @escaping SuccessHandler, failure: @escaping FailureHandler)
+    func request(router: Router, success: @escaping SuccessHandler, failure: @escaping FailureHandler)
 }

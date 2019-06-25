@@ -53,7 +53,7 @@ struct UserMatrixDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: UserMatrix) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(UserMatrix.table) ('user_id', 'access_token', 'home_server', 'device_id') VALUES (\"\(object.userId)\", \"\(object.accessToken)\", \"\(object.homeServer)\", \"\(object.deviceId)\")")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(UserMatrix.table) ('username', 'password', 'user_id', 'access_token', 'home_server', 'device_id') VALUES (\"\(object.username)\", \"\(object.password)\", \"\(object.userId)\", \"\(object.accessToken)\", \"\(object.homeServer)\", \"\(object.deviceId)\")")
         return rowId
     }
     

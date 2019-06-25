@@ -1,5 +1,5 @@
 //
-//  UmbrellaRouter.swift
+//  UmbrellaUserRouter.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 17/06/2019.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum UmbrellaRouter {
+enum UmbrellaUserRouter: Router {
     case login(username: String, password: String, type: String)
     case logout(accessToken: String)
     case createUser(username: String, password: String, email: String)
     case requestEmailToken(token: String, email: String)
 }
 
-extension UmbrellaRouter {
+extension UmbrellaUserRouter {
     
     var method: String {
         switch self {
@@ -32,7 +32,7 @@ extension UmbrellaRouter {
     
     var path: String {
         switch self {
-        case .login(_, _, _):
+        case .login:
             return "login"
         case .logout(let accessToken):
             return "logout?access_token=\(accessToken)"
@@ -56,7 +56,7 @@ extension UmbrellaRouter {
                 "user": "@\(username):comms.secfirst.org",
                 "password": password
             ]
-        case .logout(_):
+        case .logout:
             return nil
         case .createUser(let username , let password, _):
             return [

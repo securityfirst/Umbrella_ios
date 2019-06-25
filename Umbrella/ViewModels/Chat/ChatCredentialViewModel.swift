@@ -11,7 +11,7 @@ import Foundation
 class ChatCredentialViewModel {
     
     var service: UmbrellaMatrixUserService
-    var userMatrix: UserMatrix!
+    fileprivate var userMatrix: UserMatrix!
     
     var sqlManager: SQLManager
     lazy var userMatrixDao: UserMatrixDao = {
@@ -36,6 +36,8 @@ class ChatCredentialViewModel {
     func login(username: String, password: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         service.login(username: username, password: password, type: "m.login.password", success: { (user) in
             self.userMatrix = (user as? UserMatrix)!
+            self.userMatrix.username = username
+            self.userMatrix.password = password
             _ = self.userMatrixDao.insert(self.userMatrix)
             success(user as AnyObject)
         }, failure: { (response, object, error) in
@@ -79,5 +81,10 @@ class ChatCredentialViewModel {
     func isLogged() -> Bool {
         let users = userMatrixDao.list()
         return users.count > 0
+    }
+    
+    func getUserLogged() -> UserMatrix? {
+        let users = userMatrixDao.list()
+        return users.first
     }
 }

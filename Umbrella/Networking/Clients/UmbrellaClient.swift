@@ -27,7 +27,7 @@ public typealias FailureHandler = (URLResponse?, Any?, Error?) -> Void
 
 class UmbrellaClient: NetworkClient {
     
-    func request(router: UmbrellaRouter, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+    func request(router: Router, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         var urlRequest = URLRequest(url: router.url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)
         urlRequest.httpMethod = router.method
         
