@@ -23,9 +23,47 @@ class NavigationItemCustom: NSObject {
         self.addButtons()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sync(_:)), name: NSNotification.Name("SyncMatrix"), object: nil)
+        
+        let syncHasNewItem = UserDefaults.standard.bool(forKey: "SyncHasNewItem")
+        
+        if syncHasNewItem {
+            let badgeNumber = UserDefaults.standard.integer(forKey: "BadgeNumber")
+            updateNotificationBell(number: badgeNumber)
+        }
+        
     }
     
-    func addButtons() {
+    @objc func sync(_ notification:Notification) {
+        let sync = (notification.object as? Sync)!
+        updateNotificationBell(number: sync.rooms.invite.keys.count)
+    }
+    
+    func updateNotificationBell(number: Int) {
+        
+        let badgeLabel = self.notificationButton.viewWithTag(666)
+        
+        if (badgeLabel == nil) {
+            let badgeLabel = UILabel(frame: CGRect(x: 18, y: 5, width: 20, height: 20))
+            badgeLabel.font = UIFont(name: "Helvetica", size: 10)
+            badgeLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            badgeLabel.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            badgeLabel.textAlignment = .center
+            badgeLabel.minimumScaleFactor = 0.5
+            badgeLabel.layer.cornerRadius = badgeLabel.frame.size.height / 2
+            badgeLabel.clipsToBounds = true
+            badgeLabel.tag = 666
+            badgeLabel.text = "\(number)"
+            self.notificationButton.addSubview(badgeLabel)
+        } else {
+            let badgeLabel = (badgeLabel as? UILabel)!
+            badgeLabel.text = "\(number)"
+        }
+        self.notificationButton.imageView!.tintColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
+    }
+    
+    fileprivate func addButtons() {
         
         if (self.notificationButton != nil) {
             self.notificationButton.removeFromSuperview()

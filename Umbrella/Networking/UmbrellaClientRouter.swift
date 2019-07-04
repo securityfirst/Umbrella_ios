@@ -1,5 +1,5 @@
 //
-//  UmbrellaUserRouter.swift
+//  UmbrellaClientRouter.swift
 //  Umbrella
 //
 //  Created by Lucas Correa on 17/06/2019.
@@ -8,14 +8,15 @@
 
 import Foundation
 
-enum UmbrellaUserRouter: Router {
+enum UmbrellaClientRouter: Router {
     case login(username: String, password: String, type: String)
     case logout(accessToken: String)
     case createUser(username: String, password: String, email: String)
     case requestEmailToken(token: String, email: String)
+    case sync(token: String)
 }
 
-extension UmbrellaUserRouter {
+extension UmbrellaClientRouter {
     
     var method: String {
         switch self {
@@ -27,6 +28,8 @@ extension UmbrellaUserRouter {
             return "POST"
         case .requestEmailToken:
             return "POST"
+        case .sync:
+            return "GET"
         }
     }
     
@@ -40,6 +43,8 @@ extension UmbrellaUserRouter {
             return "register"
         case .requestEmailToken(let accessToken, _):
             return "logout?access_token=\(accessToken)"
+        case .sync(let accessToken):
+            return "sync?access_token=\(accessToken)"
         }
     }
     
@@ -73,19 +78,15 @@ extension UmbrellaUserRouter {
                 "id_server": "vector.im",
                 "client_secret": "secret"
             ]
+        case .sync:
+            return nil
         }
     }
     
     var url: URL {
         switch self {
-        case .login:
-            return URL(string: "\(Matrix.baseUrlString)\(path)")!
-        case .logout:
-            return URL(string: "\(Matrix.baseUrlString)\(path)")!
-        case .createUser:
-            return URL(string: "\(Matrix.baseUrlString)\(path)")!
-        case .requestEmailToken:
-            return URL(string: "\(Matrix.baseUrlString)\(path)")!
+        case .login, .logout, .createUser, .requestEmailToken, .sync:
+            return URL(string: "\(Matrix.baseUrlString)client/r0/\(path)")!
         }
     }
 }

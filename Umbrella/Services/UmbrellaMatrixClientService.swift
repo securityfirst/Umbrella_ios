@@ -1,14 +1,14 @@
 //
-//  UmbrellaMatrixRoomService.swift
+//  UmbrellaMatrixClientService.swift
 //  Umbrella
 //
-//  Created by Lucas Correa on 21/06/2019.
+//  Created by Lucas Correa on 17/06/2019.
 //  Copyright © 2019 Security First. All rights reserved.
 //
 
 import Foundation
 
-class UmbrellaMatrixRoomService: Service {
+class UmbrellaMatrixClientService: Service {
     
     //
     // MARK: - Properties
@@ -20,23 +20,24 @@ class UmbrellaMatrixRoomService: Service {
         self.client = client
     }
     
-    /// Create a room on Matrix Chat
+    /// Login an user on Matrix Chat
     ///
     /// - Parameters:
-    ///   - accessToken: String
-    ///   - room: Room
+    ///   - username: String
+    ///   - password: String
+    ///   - type: String
     ///   - success: Closure
     ///   - failure: Closure
-    func createRoom(accessToken: String, room: Room, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+    func login(username: String, password: String, type: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         
-        client.request(router: UmbrellaRoomRouter.createRoom(accessToken: accessToken, room: room), success: { (response) in
+        client.request(router: UmbrellaClientRouter.login(username: username, password: password, type: type), success: { (response) in
             do {
                 guard let data = response as? String else {
                     print("Error cast response to String")
                     return
                 }
-                let room = try JSONDecoder().decode(RoomResponse.self, from: data.data(using: .utf8)!)
-                success(room as AnyObject)
+                let userMatrix = try JSONDecoder().decode(UserMatrix.self, from: data.data(using: .utf8)!)
+                success(userMatrix as AnyObject)
             } catch let error {
                 print(error)
                 failure(nil, nil, error)
@@ -57,84 +58,25 @@ class UmbrellaMatrixRoomService: Service {
         })
     }
     
-    /// List of Public Rooms
+    /// Logout an user on Matrix Chat
     ///
     /// - Parameters:
     ///   - accessToken: String
     ///   - success: Closure
     ///   - failure: Closure
-    func publicRooms(accessToken: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
-        
-        client.request(router: UmbrellaRoomRouter.publicRooms(accessToken: accessToken), success: { (response) in
-            do {
-                guard let data = response as? String else {
-                    print("Error cast response to String")
-                    return
-                }
-                let publicRoom = try JSONDecoder().decode(PublicRoom.self, from: data.data(using: .utf8)!)
-                success(publicRoom as AnyObject)
-            } catch let error {
-                print(error)
-                failure(nil, nil, error)
-            }
-        }, failure: { (response, object, error) in
-            do {
-                if let object = object {
-                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
-                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
-                    failure(response, object, matrixError)
-                } else {
-                    failure(response, object, MatrixError("error", error: "error"))
-                }
-            } catch let error {
-                print(error)
-                failure(nil, nil, error)
-            }
-        })
-    }
-    
-    /// Get Message from a room on Matrix Chat
-    ///
-    /// - Parameters:
-    ///   - accessToken: String
-    ///   - success: Closure
-    ///   - failure: Closure
-    func getMessages(accessToken: String, roomId: String, dir: String, from: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
-        
-        client.request(router: UmbrellaRoomRouter.getMessages(accessToken: accessToken, roomId: roomId, dir: dir, from: from), success: { (response) in
-            do {
-                guard let data = response as? String else {
-                    print("Error cast response to String")
-                    return
-                }
-                let chatMessage = try JSONDecoder().decode(ChatMessage.self, from: data.data(using: .utf8)!)
-                
-                let pagination = UserDefaults.standard.object(forKey: roomId)
-                
-                if pagination == nil {
-                    let pag = chatMessage.start + ";" + chatMessage.end + ";" + "1"
-                    UserDefaults.standard.set(pag, forKey: roomId)
-                } else {
-                    let pag = chatMessage.start + ";" + chatMessage.end + ";" + "2"
-                    UserDefaults.standard.set(pag, forKey: roomId)
-                }
-                
-                success(chatMessage as AnyObject)
-            } catch let error {
-                print(error)
-                failure(nil, nil, error)
-            }
-        }, failure: { (response, object, error) in
-            do {
-                
-                if let object = object {
-                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
-                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
-                    failure(response, object, matrixError)
-                } else {
-                    failure(response, object, MatrixError("error", error: "error"))
-                }
+    func logout(accessToken: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
 
+        client.request(router: UmbrellaClientRouter.logout(accessToken: accessToken), success: { (response) in
+            success("" as AnyObject)
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
             } catch let error {
                 print(error)
                 failure(nil, nil, error)
@@ -142,16 +84,91 @@ class UmbrellaMatrixRoomService: Service {
         })
     }
     
-    /// Get Message from a room on Matrix Chat
+    /// Create an user
     ///
     /// - Parameters:
-    ///   - accessToken: String
+    ///   - username: String
+    ///   - password: String
+    ///   - email: String
     ///   - success: Closure
     ///   - failure: Closure
-    func sendMessage(accessToken: String, roomId: String, type: RoomTypeMessage, message: String, url: String = "", success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+    func createUser(username: String, password: String, email: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         
-        client.request(router: UmbrellaRoomRouter.sendMessage(accessToken: accessToken, roomId: roomId, type: type.self.rawValue, message: message, url: url), success: { (response) in
-            success("")
+        client.request(router: UmbrellaClientRouter.createUser(username: username, password: password, email: email), success: { (response) in
+            do {
+                guard let data = response as? String else {
+                    print("Error cast response to String")
+                    return
+                }
+                let userMatrix = try JSONDecoder().decode(UserMatrix.self, from: data.data(using: .utf8)!)
+                success(userMatrix as AnyObject)
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        })
+    }
+    
+    /// Update profile from an user with email
+    ///
+    /// - Parameters:
+    ///   - token: String
+    ///   - email: String
+    ///   - success: Closure
+    ///   - failure: Closure
+    func requestEmailToken(token: String, email: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        client.request(router: UmbrellaClientRouter.requestEmailToken(token: token, email: email), success: { (response) in
+                success("")
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        })
+    }
+    
+    /// Sync
+    ///
+    /// - Parameters:
+    ///   - token: String
+    ///   - success: Closure
+    ///   - failure: Closure
+    func sync(token: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        client.request(router: UmbrellaClientRouter.sync(token: token), success: { (response) in
+            do {
+                guard let data = response as? String else {
+                    print("Error cast response to String")
+                    return
+                }
+                let sync = try JSONDecoder().decode(Sync.self, from: data.data(using: .utf8)!)
+                success(sync as AnyObject)
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
         }, failure: { (response, object, error) in
             do {
                 if let object = object {

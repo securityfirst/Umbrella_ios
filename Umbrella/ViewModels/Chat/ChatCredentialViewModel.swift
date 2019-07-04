@@ -10,7 +10,7 @@ import Foundation
 
 class ChatCredentialViewModel {
     
-    var service: UmbrellaMatrixUserService
+    var service: UmbrellaMatrixClientService
     fileprivate var userMatrix: UserMatrix!
     
     var sqlManager: SQLManager
@@ -20,13 +20,13 @@ class ChatCredentialViewModel {
     }()
     
     init() {
-        self.service = UmbrellaMatrixUserService(client: UmbrellaClient())
+        self.service = UmbrellaMatrixClientService(client: UmbrellaClient())
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
         _ = self.userMatrixDao.createTable()
     }
     //
     // MARK: - Initializer
-    init(service: UmbrellaMatrixUserService = UmbrellaMatrixUserService(client: UmbrellaClient())) {
+    init(service: UmbrellaMatrixClientService = UmbrellaMatrixClientService(client: UmbrellaClient())) {
         self.service = service
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
     }

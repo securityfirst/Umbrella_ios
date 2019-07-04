@@ -55,5 +55,5 @@ enum Feed {
 }
 
 enum Matrix {
-    static let baseUrlString = "https://comms.secfirst.org/_matrix/client/r0/"
+    static let baseUrlString = "https://comms.secfirst.org/_matrix/"
 }

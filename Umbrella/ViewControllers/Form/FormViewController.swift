@@ -215,7 +215,7 @@ class FormViewController: UIViewController {
             
             for item in screen.items {
                 html += "<p></p> \n"
-                html += "<h5>\(item.name)</h5> \n"
+                html += "<h5>\(item.label)</h5> \n"
                 
                 switch item.formType {
                     

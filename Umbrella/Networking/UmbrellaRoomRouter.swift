@@ -8,9 +8,16 @@
 
 import Foundation
 
+enum RoomTypeMessage: String {
+    case text = "m.text"
+    case file = "m.file"
+}
+
 enum UmbrellaRoomRouter: Router {
     case createRoom(accessToken: String, room: Room)
     case publicRooms(accessToken: String)
+    case getMessages(accessToken: String, roomId: String, dir: String, from: String)
+    case sendMessage(accessToken: String, roomId: String, type: String, message: String, url: String)
 }
 
 extension UmbrellaRoomRouter {
@@ -21,6 +28,10 @@ extension UmbrellaRoomRouter {
             return "POST"
         case .publicRooms:
             return "GET"
+        case .getMessages:
+            return "GET"
+        case .sendMessage:
+            return "POST"
         }
     }
     
@@ -30,6 +41,15 @@ extension UmbrellaRoomRouter {
             return "createRoom?access_token=\(accessToken)"
         case .publicRooms(let accessToken):
             return "publicRooms?access_token=\(accessToken)&limit=10"
+        case .getMessages(let accessToken, let roomId, let dir, let from):
+            
+            if from.count > 0 {
+                return "rooms/\(roomId)/messages?access_token=\(accessToken)&dir=\(dir)&from=\(from)&limit=100"
+            }
+            
+            return "rooms/\(roomId)/messages?access_token=\(accessToken)&dir=\(dir)&limit=100"
+        case .sendMessage(let accessToken, let roomId, _, _, _):
+            return "rooms/\(roomId)/send/m.room.message?access_token=\(accessToken)"
         }
     }
     
@@ -51,15 +71,29 @@ extension UmbrellaRoomRouter {
             ]
         case .publicRooms:
             return nil
+        case .getMessages:
+            return nil
+        case .sendMessage(_, _, let type, let message, let url):
+            
+            if url.count > 0 {
+                return [
+                    "msgtype": type,
+                    "body": message,
+                    "url": url
+                ]
+            }
+            
+            return [
+                "msgtype": type,
+                "body": message
+            ]
         }
     }
     
     var url: URL {
         switch self {
-        case .createRoom:
-            return URL(string: "\(Matrix.baseUrlString)\(path)")!
-        case .publicRooms:
-            return URL(string: "\(Matrix.baseUrlString)\(path)")!
+        case .createRoom, .publicRooms, .getMessages, .sendMessage:
+            return URL(string: "\(Matrix.baseUrlString)client/r0/\(path)")!
         }
     }
 }

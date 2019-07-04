@@ -41,6 +41,16 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(removeCredentialScreen), name: NSNotification.Name("RemoveCredentialScreen"), object: nil)
     }
     
+    fileprivate func loadPublicRooms() {
+        if let userMatrix = self.chatCredentialViewModel.getUserLogged() {
+            self.chatGroupViewModel.publicRooms(accessToken: userMatrix.accessToken, success: { (publicRoom) in
+                self.chatGroupCollectionView.reloadData()
+            }, failure: { (response, object, error) in
+                print(error ?? "")
+            })
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItemCustom.showItems(true)
@@ -54,13 +64,7 @@ class ChatViewController: UIViewController {
             let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
             self.navigationItem.rightBarButtonItem  = modeBarButton
             
-            if let userMatrix = self.chatCredentialViewModel.getUserLogged() {
-                self.chatGroupViewModel.publicRooms(accessToken: userMatrix.accessToken, success: { (publicRoom) in
-                    self.chatGroupCollectionView.reloadData()
-                }, failure: { (response, object, error) in
-                    print(error ?? "")
-                })
-            }
+            loadPublicRooms()
         }
     }
     
@@ -89,11 +93,22 @@ class ChatViewController: UIViewController {
         
         let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
         self.navigationItem.rightBarButtonItem  = modeBarButton
+        
+        loadPublicRooms()
     }
     
     @objc func chatGroupHeaderDidSelect(gesture: UIGestureRecognizer) {
         let view:ChatGroupReusableView = (gesture.view as? ChatGroupReusableView)!
-        print(print(view.indexPath))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "messageSegue" {
+            let chatMessageViewController = (segue.destination as? ChatMessageViewController)!
+            
+            let publicChunk = (sender as? PublicChunk)!
+            chatMessageViewController.chatMessageViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
+            chatMessageViewController.chatMessageViewModel.room = publicChunk
+        }
     }
     
     //
@@ -102,7 +117,9 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        
+        let publicChunk = self.chatGroupViewModel.rooms[indexPath.row]
+        self.performSegue(withIdentifier: "messageSegue", sender: publicChunk)
     }
 }
 

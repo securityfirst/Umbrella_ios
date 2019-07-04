@@ -16,6 +16,7 @@ class ChatGroupViewModel {
     init() {
         self.service = UmbrellaMatrixRoomService(client: UmbrellaClient())
     }
+    
     //
     // MARK: - Initializer
     init(service: UmbrellaMatrixRoomService = UmbrellaMatrixRoomService(client: UmbrellaClient())) {
