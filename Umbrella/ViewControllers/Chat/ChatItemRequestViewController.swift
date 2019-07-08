@@ -73,7 +73,7 @@ class ChatItemRequestViewController: UIViewController {
         case .answers:
             break
         default:
-         break
+            break
         }
     }
     
@@ -102,7 +102,7 @@ class ChatItemRequestViewController: UIViewController {
                                                               message: filename,
                                                               url: url,
                                                               success: { _ in
-                                                                
+                                                                NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
                         }, failure: { (response, object, error) in
                             print(error ?? "")
                         })
@@ -165,7 +165,7 @@ class ChatItemRequestViewController: UIViewController {
                                                                   message: filename,
                                                                   url: url,
                                                                   success: { _ in
-                                                                    
+                                                                    NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
                             }, failure: { (response, object, error) in
                                 print(error ?? "")
                             })

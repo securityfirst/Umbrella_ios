@@ -43,9 +43,17 @@ class ChatViewController: UIViewController {
     
     fileprivate func loadPublicRooms() {
         if let userMatrix = self.chatCredentialViewModel.getUserLogged() {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+            if self.view.tag != 999 {
+                controller.showLoading(view: self.view)
+            }
             self.chatGroupViewModel.publicRooms(accessToken: userMatrix.accessToken, success: { (publicRoom) in
+                controller.closeLoading()
                 self.chatGroupCollectionView.reloadData()
             }, failure: { (response, object, error) in
+                controller.closeLoading()
                 print(error ?? "")
             })
         }
@@ -53,6 +61,7 @@ class ChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationItemCustom.showItems(true)
         
         if !self.chatCredentialViewModel.isLogged() {
@@ -66,6 +75,8 @@ class ChatViewController: UIViewController {
             
             loadPublicRooms()
         }
+        
+        self.view.tag = 999
     }
     
     override func viewWillDisappear(_ animated: Bool) {

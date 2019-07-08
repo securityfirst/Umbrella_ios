@@ -34,11 +34,12 @@ class ChatMessageViewController: UIViewController {
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMessages), name: NSNotification.Name("UpdateMessages"), object: nil)
         
         self.title = self.chatMessageViewModel.room.name
         self.loadMessages()
         
-        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,6 +50,10 @@ class ChatMessageViewController: UIViewController {
             self.timer?.invalidate()
             self.timer = nil
         }
+    }
+    
+    @objc func updateMessages() {
+        self.loadMessages()
     }
     
     @objc func loadMessages() {

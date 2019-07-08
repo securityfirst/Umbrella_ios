@@ -9,12 +9,22 @@
 import UIKit
 
 class ChatRequestViewController: UIViewController {
-
+    
     //
     // MARK: - Properties
     lazy var chatRequestViewModel: ChatRequestViewModel = {
         let chatRequestViewModel = ChatRequestViewModel()
         return chatRequestViewModel
+    }()
+    
+    lazy var chatItemRequestViewModel: ChatItemRequestViewModel = {
+        let chatItemRequestViewModel = ChatItemRequestViewModel()
+        return chatItemRequestViewModel
+    }()
+    
+    lazy var chatMessageViewModel: ChatMessageViewModel = {
+        let chatMessageViewModel = ChatMessageViewModel()
+        return chatMessageViewModel
     }()
     
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
@@ -25,6 +35,9 @@ class ChatRequestViewController: UIViewController {
         self.preferredContentSize = CGSize(width: 300, height: 250)
         self.navigationController!.navigationBar.tintColor = UIColor.white
         self.chatRequestViewModel.loadItems()
+        self.chatItemRequestViewModel.userLogged = self.chatRequestViewModel.userLogged
+        self.chatMessageViewModel.userLogged = self.chatRequestViewModel.userLogged
+        self.chatMessageViewModel.room = self.chatRequestViewModel.room
     }
     
     // MARK: - UIStoryboardSegue
@@ -56,7 +69,7 @@ extension ChatRequestViewController: UITableViewDataSource {
         let cell: ChatRequestCell = (tableView.dequeueReusableCell(withIdentifier: "ChatRequestCell", for: indexPath) as? ChatRequestCell)!
         
         cell.configure(withViewModel: self.chatRequestViewModel, indexPath: indexPath)
-     return cell
+        return cell
     }
     
 }
@@ -87,6 +100,28 @@ extension ChatRequestViewController: UITableViewDelegate {
 // MARK: - UIDocumentPickerDelegate
 extension ChatRequestViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        
+        print(url)
+        print(url.lastPathComponent)
+        let filename = url.lastPathComponent
+        DispatchQueue.global(qos: .background).async {
+            self.chatItemRequestViewModel.uploadFile(filename: filename, fileURL: url, success: { (response) in
+                
+                guard let url = response as? String else {
+                    print("Error cast response to String")
+                    return
+                }
+                
+                self.chatMessageViewModel.sendMessage(messageType: .file,
+                                                      message: filename,
+                                                      url: url,
+                                                      success: { _ in
+                                                        NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
+                }, failure: { (response, object, error) in
+                    print(error ?? "")
+                })
+            }, failure: { (response, object, error) in
+                print(error ?? "")
+            })
+        }
     }
 }
