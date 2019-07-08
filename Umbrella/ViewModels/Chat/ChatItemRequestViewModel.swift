@@ -15,7 +15,8 @@ class ChatItemRequestViewModel {
     var item: (name: String, type: ChatRequestType, icon: UIImage)!
     var sqlManager: SQLManager
     var umbrella: Umbrella = UmbrellaDatabase.umbrellaStatic
-    var checklists: [CheckList] = [CheckList]()
+    var checklistChecked: [ChecklistChecked] = [ChecklistChecked]()
+    var favouriteChecklistChecked: [ChecklistChecked] = [ChecklistChecked]()
     var service: MediaService
     var userLogged: UserMatrix!
     

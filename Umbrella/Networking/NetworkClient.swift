@@ -11,4 +11,5 @@ import Foundation
 protocol NetworkClient {
     func request(router: Router, success: @escaping SuccessHandler, failure: @escaping FailureHandler)
     func requestUpload(router: Router, fileURL: URL, success: @escaping SuccessHandler, failure: @escaping FailureHandler)
+    func requestDownload(router: Router, success: @escaping SuccessHandler, failure: @escaping FailureHandler)
 }

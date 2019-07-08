@@ -19,7 +19,7 @@ force_cast: warning
 force_try:
   severity: warning
 
-line_length: 400
+line_length: 450
 
 cyclomatic_complexity: 14
 
@@ -28,7 +28,7 @@ function_body_length:
     - 100 # error
 
 type_body_length:
-  - 400
+  - 450
   - 500
 
 file_length:

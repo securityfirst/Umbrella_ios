@@ -859,6 +859,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
                     <size key="freeformSize" width="300" height="300"/>
                     <connections>
+                        <outlet property="chatItemRequestTableView" destination="shH-QP-4V0" id="p6r-Fk-19G"/>
                         <outlet property="sendBottomConstraint" destination="8AA-a6-GSs" id="xA6-b5-8lJ"/>
                         <outlet property="sendButton" destination="tRj-4f-txN" id="tbF-If-4QV"/>
                     </connections>

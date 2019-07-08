@@ -154,11 +154,13 @@ class Content: Codable, NSCopying {
     var displayname: String?
     var topic, name: String?
     var alias: String?
+    var url: String?
     
     enum CodingKeys: String, CodingKey {
         case membership, msgtype, body, aliases, displayname
         case topic, name
         case alias
+        case url
     }
     
     //
@@ -172,12 +174,12 @@ class Content: Codable, NSCopying {
         self.topic = ""
         self.name = ""
         self.alias = ""
+        self.url = ""
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
     
-        
         if container.contains(.membership) {
             self.membership = try container.decode(String.self, forKey: .membership)
         } else {
@@ -225,6 +227,12 @@ class Content: Codable, NSCopying {
         } else {
             self.alias = ""
         }
+        
+        if container.contains(.url) {
+            self.url = try container.decode(String.self, forKey: .url)
+        } else {
+            self.url = ""
+        }
     }
     
     //
@@ -239,6 +247,7 @@ class Content: Codable, NSCopying {
         copy.topic = self.topic
         copy.name = self.name
         copy.alias = self.alias
+        copy.url = self.url
         return copy
     }
 }

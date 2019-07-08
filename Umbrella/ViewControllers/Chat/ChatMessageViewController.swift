@@ -111,7 +111,6 @@ class ChatMessageViewController: UIViewController {
                                               message: message,
                                               url: "",
                                               success: { _ in
-                                                
                                                 //to do a request to update the list of message
                                                 self.loadMessages()
         }, failure: { (response, object, error) in
@@ -187,6 +186,57 @@ extension ChatMessageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+    
+    fileprivate func openFile(_ fileURL: URL) {
+        let dc = UIDocumentInteractionController(url: fileURL)
+        dc.delegate = self
+        dc.presentPreview(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let item = self.chatMessageViewModel.messages[indexPath.section][indexPath.row]
+    
+        if let msgtype = item.content.msgtype {
+            let type = RoomTypeMessage(rawValue: msgtype)
+
+            switch type {
+            case .text?:
+                break
+            case .file?:
+
+                if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    
+                    let url = URL(string: item.content.url ?? "")!
+                    let uri = url.lastPathComponent
+                    
+                    let filename = uri + (item.content.body ?? "")
+                    let fileURL = documentDirectory.appendingPathComponent(filename)
+                    
+                    if FileManager.default.fileExists(atPath: fileURL.path) {
+                        openFile(fileURL)
+                    } else {
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                        controller.showLoading(view: self.view)
+                        
+                        self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
+                            let fileURL = (response as? URL)!
+                            controller.closeLoading()
+                            self.openFile(fileURL)
+                        }, failure: { (response, object, error) in
+                            controller.closeLoading()
+                            print(error ?? "")
+                        })
+                    }
+                }
+
+            default:
+                break
+            }
+        }
+    }
 }
 
 //
@@ -200,5 +250,11 @@ extension ChatMessageViewController: UIScrollViewDelegate {
         } else {
             self.isScrollBottom = false
         }
+    }
+}
+
+extension ChatMessageViewController: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
     }
 }

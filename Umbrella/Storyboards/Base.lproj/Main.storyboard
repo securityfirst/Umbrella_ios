@@ -272,17 +272,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBeginner" translatesAutoresizingMaskIntoConstraints="NO" id="qHr-DP-E8H">
+                                <rect key="frame" x="142.5" y="288.5" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="GkB-LD-5cb"/>
+                                    <constraint firstAttribute="width" constant="90" id="b3e-bn-i1N"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.45905565693430656" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="76A-4f-Rcx" firstAttribute="centerY" secondItem="2ZU-ei-AeR" secondAttribute="centerY" id="Z0B-R1-lKg"/>
+                            <constraint firstItem="qHr-DP-E8H" firstAttribute="centerY" secondItem="2ZU-ei-AeR" secondAttribute="centerY" id="ecf-Kd-sUo"/>
                             <constraint firstItem="76A-4f-Rcx" firstAttribute="centerX" secondItem="2ZU-ei-AeR" secondAttribute="centerX" id="n0h-gS-dAB"/>
+                            <constraint firstItem="qHr-DP-E8H" firstAttribute="centerX" secondItem="2ZU-ei-AeR" secondAttribute="centerX" id="ySI-Fi-J2h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s2e-ld-haF"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="d6y-wM-WHq" id="gUI-x8-wza"/>
                         <outlet property="closeButton" destination="4Hy-2a-c4B" id="zic-tj-21M"/>
+                        <outlet property="dialogView" destination="76A-4f-Rcx" id="DPE-gV-60J"/>
+                        <outlet property="iconImageView" destination="qHr-DP-E8H" id="FXz-Td-rkc"/>
                         <outlet property="messageLabel" destination="9du-fN-06n" id="15l-7H-h0R"/>
                         <outlet property="progressView" destination="tJ6-0c-0ll" id="1Ym-iK-N7d"/>
                         <outlet property="retryButton" destination="xhZ-VD-W19" id="jwJ-pE-uJ9"/>
@@ -662,5 +673,6 @@
     <resources>
         <image name="icAccountBox" width="24" height="24"/>
         <image name="icStarBorder" width="20" height="19"/>
+        <image name="iconBeginner" width="65" height="65"/>
     </resources>
 </document>

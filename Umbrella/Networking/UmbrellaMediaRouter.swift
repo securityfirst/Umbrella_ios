@@ -10,6 +10,7 @@ import Foundation
 
 enum UmbrellaMediaRouter: Router {
     case upload(accessToken: String, filename: String)
+    case download(uri: String)
 }
 
 extension UmbrellaMediaRouter {
@@ -18,6 +19,8 @@ extension UmbrellaMediaRouter {
         switch self {
         case .upload:
             return "POST"
+        case .download:
+            return "GET"
         }
     }
     
@@ -25,6 +28,9 @@ extension UmbrellaMediaRouter {
         switch self {
         case .upload(let accessToken, let filename):
             return "upload?access_token=\(accessToken)&filename=\(filename)"
+        case .download(let uri):
+            return "download/comms.secfirst.org/\(uri)"
+            
         }
     }
     
@@ -37,12 +43,14 @@ extension UmbrellaMediaRouter {
         switch self {
         case .upload:
             return nil
+        case .download:
+            return nil
         }
     }
     
     var url: URL {
         switch self {
-        case .upload:
+        case .upload, .download:
             return URL(string: "\(Matrix.baseUrlString)media/r0/\(path)")!
         }
     }

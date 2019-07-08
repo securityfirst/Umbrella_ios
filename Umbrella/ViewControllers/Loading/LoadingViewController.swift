@@ -28,9 +28,10 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tipsLabel: UILabel!
-    
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var dialogView: UIView!
     var completion: (() -> Void)?
     
     lazy var loadingViewModel: LoadingViewModel = {
@@ -56,10 +57,22 @@ class LoadingViewController: UIViewController {
     
     func showLoading(view: UIView) {
         view.addSubview(self.view)
+        let images = [#imageLiteral(resourceName: "iconBeginner"), #imageLiteral(resourceName: "iconAdvanced"), #imageLiteral(resourceName: "iconExpert")] // use of #imageLiterals here
+        let animation = UIImage.animatedImage(with: images, duration: 1.2)
+        self.iconImageView.image = animation
+        self.iconImageView.isHidden = false
+        self.dialogView.isHidden = true
         self.viewHeightConstraint.constant = 130
         self.tipsLabel.text = ""
         self.messageLabel.text = ""
         self.progressView.isHidden = true
+        
+        self.iconImageView.layer.masksToBounds = false
+        self.iconImageView.layer.shadowColor = UIColor.black.cgColor
+        self.iconImageView.layer.shadowOpacity = 0.4
+        self.iconImageView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.iconImageView.layer.shadowRadius = 10
+        self.iconImageView.layer.shouldRasterize = true
     }
     
     func closeLoading() {

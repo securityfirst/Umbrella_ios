@@ -88,11 +88,14 @@ class UmbrellaClient: NSObject, NetworkClient {
                         
                         if let httpResponse = response as? HTTPURLResponse {
                             if httpResponse.statusCode == 200 {
-//                                {"content_uri":"mxc://comms.secfirst.org/bnLRvVAUhvACyUgWHwTrBuDC"}
+                                do {
+                                    let json: [String: String] = try (JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : String])!
+                                    success(json["content_uri"] ?? "")
+                                } catch {
+                                    failure(response, data, error)
+                                    print(error)
+                                }
                                 
-                                let json: [String: String] = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String : String]
-                                
-                                success(json["content_uri"] ?? "")
                             } else {
                                 failure(response, data, error)
                             }
@@ -102,6 +105,37 @@ class UmbrellaClient: NSObject, NetworkClient {
             }
         }
         task.resume()
+    }
+    
+    func requestDownload(router: Router, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        var urlRequest = URLRequest(url: router.url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)
+        urlRequest.httpMethod = router.method
+        
+        for (key, value) in router.headers {
+            urlRequest.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        if let parameters = router.parameters {
+            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        }
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if (error != nil) {
+                failure(response, data, error)
+            } else {
+                DispatchQueue.main.async {
+                    
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            success(data)
+                        } else {
+                            failure(response, data, error)
+                        }
+                    }
+                }
+                
+            }
+            }.resume()
     }
 }
 

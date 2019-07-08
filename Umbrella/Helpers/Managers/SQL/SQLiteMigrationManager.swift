@@ -247,9 +247,11 @@ extension FileMigration {
 }
 
 extension FileMigration {
+    // swiftlint:disable:next force_try
     static fileprivate let regex = try! NSRegularExpression(pattern: "^(\\d+)_?([\\w\\s-]*)\\.sql$", options: .caseInsensitive)
     
     static fileprivate func extractVersion(_ filename: String) -> Int64? {
+        // swiftlint:disable:next legacy_constructor
         if let result = regex.firstMatch(in: filename, options: .reportProgress, range: NSMakeRange(0, filename.distance(from: filename.startIndex, to: filename.endIndex))), result.numberOfRanges == 3 {
             return Int64((filename as NSString).substring(with: result.range(at: 1)))
         }

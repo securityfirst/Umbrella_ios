@@ -13,6 +13,7 @@ class ChatMessageViewModel {
     //
     // MARK: - Properties
     var service: UmbrellaMatrixRoomService
+    var mediaService: MediaService
     
     var messages: [[ChatMessageChunk]]!
     var userLogged: UserMatrix!
@@ -23,12 +24,7 @@ class ChatMessageViewModel {
     init() {
         self.messages = [[ChatMessageChunk]]()
         self.service = UmbrellaMatrixRoomService(client: UmbrellaClient())
-    }
-    
-    //
-    // MARK: - Initializer
-    init(service: UmbrellaMatrixRoomService = UmbrellaMatrixRoomService(client: UmbrellaClient())) {
-        self.service = service
+        self.mediaService = MediaService(client: UmbrellaClient())
     }
     
     //
@@ -89,6 +85,15 @@ class ChatMessageViewModel {
             }
 
             success(chatMessage as AnyObject)
+        }, failure: { (response, object, error) in
+            failure(response, object, error)
+        })
+    }
+    
+    func downloadFile(filename: String, uri: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        mediaService.downloadFile(filename: filename, uri: uri, success: { (response) in
+            success(response)
         }, failure: { (response, object, error) in
             failure(response, object, error)
         })

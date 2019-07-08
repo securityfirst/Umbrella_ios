@@ -44,12 +44,26 @@ class ChatMessageCell: UITableViewCell {
     func configure(withViewModel viewModel:ChatMessageViewModel, indexPath: IndexPath) {
         
         let item = viewModel.messages[indexPath.section][indexPath.row]
+        
         self.messageLabel.text = item.content.body
         self.timeLabel.text = item.hourFromMilliseconds()
         self.usernameLabel.text = item.username()
         self.usernameLabel.isHidden = item.isUserLogged
         self.bubbleBackgroundView.backgroundColor = item.isUserLogged ? #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1) : #colorLiteral(red: 0.8861995408, green: 0.8861995408, blue: 0.8861995408, alpha: 1)
-        //        self.messageLabel.textColor = item.isUserLogged ? .black : .black
+        
+        if let msgtype = item.content.msgtype {
+            let type = RoomTypeMessage(rawValue: msgtype)
+            
+            switch type {
+            case .text?:
+                break
+            case .file?:
+                self.messageLabel.attributedText = NSAttributedString(string: item.content.body ?? "", attributes:
+                    [.underlineStyle: NSUnderlineStyle.single.rawValue])
+            default:
+                break
+            }
+        }
         
         if item.isUserLogged {
             leadingConstraint.isActive = false

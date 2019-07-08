@@ -41,9 +41,16 @@ class ChatItemRequestCell: UITableViewCell {
                 let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
                 self.nameLabel.text = form.name
             }
-        case .checklists: 
-            let item = viewModel.checklists[indexPath.row]
-            self.nameLabel.text = item.name
+        case .checklists:
+            
+            if indexPath.section == 0 {
+                let item = viewModel.favouriteChecklistChecked[indexPath.row]
+                self.nameLabel.text = item.subCategoryName
+            } else if indexPath.section == 1 {
+                let item = viewModel.checklistChecked[indexPath.row]
+                self.nameLabel.text = item.subCategoryName
+            }
+            
         case .answers: break
         case .file: break
             

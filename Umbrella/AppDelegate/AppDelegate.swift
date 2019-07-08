@@ -56,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        window?.addGestureRecognizer(tapGesture)
         
 //        SyncManager.shared.sync()
-//        uploadFile()
         return true
     }
     
@@ -153,93 +152,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
-    }
-    
-    func uploadFile() {
-        
-        guard var URL = URL(string: "https://comms.secfirst.org/_matrix/media/r0/upload") else {return}
-
-        let URLParams = [
-            "access_token": "MDAyMGxvY2F0aW9uIGNvbW1zLnNlY2ZpcnN0Lm9yZwowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMmJjaWQgdXNlcl9pZCA9IEBhc2RvOmNvbW1zLnNlY2ZpcnN0Lm9yZwowMDE2Y2lkIHR5cGUgPSBhY2Nlc3MKMDAyMWNpZCBub25jZSA9ICsmNyswbWFZbDh4dm8jcDIKMDAyZnNpZ25hdHVyZSDjJQRNnffKzDPuh3_oV-wboaYcClhrPzqxKzSiAZ9G4wo",
-            "filename": "form.pdf"
-        ]
-        URL = URL.appendingQueryParameters(URLParams)
-        
-        var request = URLRequest(url: URL)
-        request.httpMethod = "POST"
-        request.addValue("application/pdf", forHTTPHeaderField: "Content-Type")
-//        request.setValue(file.lastPathComponent, forHTTPHeaderField: "filename")
-        
-        let urlFile = Bundle.main.url(forResource: "documentation_display", withExtension: "pdf")
-        
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.isDiscretionary = false
-        sessionConfig.networkServiceType = .video
-        let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: OperationQueue.main)
-        
-        let task = session.uploadTask(with: request, fromFile: urlFile!) { (data, response, error) in
-            if (error == nil) {
-                // Success
-                let statusCode = (response as? HTTPURLResponse)!.statusCode
-                print("URL Session Task Succeeded: HTTP \(statusCode)")
-            
-                let json = String(data: data!, encoding: .utf8)
-                if statusCode == 200 {
-                    print(json)
-                } else {
-                    print(json)
-                }
-                
-            } else {
-                // Failure
-                print("URL Session Task Failed: %@", error!.localizedDescription);
-            }
-        }
-        task.resume()
-    }
-}
-
-protocol URLQueryParameterStringConvertible {
-    var queryParameters: String {get}
-}
-
-extension Dictionary : URLQueryParameterStringConvertible {
-    /**
-     This computed property returns a query parameters string from the given NSDictionary. For
-     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
-     string will be @"day=Tuesday&month=January".
-     @return The computed parameters string.
-     */
-    var queryParameters: String {
-        var parts: [String] = []
-        for (key, value) in self {
-            let part = String(format: "%@=%@",
-                              String(describing: key).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!,
-                              String(describing: value).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-            parts.append(part as String)
-        }
-        return parts.joined(separator: "&")
-    }
-    
-}
-
-extension URL {
-    /**
-     Creates a new URL by adding the given query parameters.
-     @param parametersDictionary The query parameter dictionary to add.
-     @return A new URL.
-     */
-    func appendingQueryParameters(_ parametersDictionary : Dictionary<String, String>) -> URL {
-        let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
-        return URL(string: URLString)!
-    }
-}
-
-extension AppDelegate: URLSessionTaskDelegate {
-    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-        print("didSendBodyData")
-        let uploadProgress:Float = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
-        print(uploadProgress)
     }
 }
 

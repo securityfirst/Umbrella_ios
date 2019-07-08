@@ -9,9 +9,9 @@
 import UIKit
 
 class ChatItemRequestViewController: UIViewController {
-    
     //
     // MARK: - Properties
+    @IBOutlet weak var chatItemRequestTableView: UITableView!
     @IBOutlet weak var sendBottomConstraint: NSLayoutConstraint!
     lazy var chatItemRequestViewModel: ChatItemRequestViewModel = {
         let chatItemRequestViewModel = ChatItemRequestViewModel()
@@ -21,6 +21,11 @@ class ChatItemRequestViewController: UIViewController {
     lazy var chatMessageViewModel: ChatMessageViewModel = {
         let chatMessageViewModel = ChatMessageViewModel()
         return chatMessageViewModel
+    }()
+    
+    lazy var checklistViewModel: ChecklistViewModel = {
+        let checklistViewModel = ChecklistViewModel()
+        return checklistViewModel
     }()
     
     @IBOutlet weak var sendButton: UIButton!
@@ -48,6 +53,28 @@ class ChatItemRequestViewController: UIViewController {
         self.preferredContentSize = CGSize(width: 300, height: 250)
         
         self.title = self.chatItemRequestViewModel.item.name
+        
+        switch self.chatItemRequestViewModel.item.type {
+        case .forms:
+            break
+        case .checklists:
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+            controller.showLoading(view: self.view)
+            DispatchQueue.global(qos: .default).async {
+                self.checklistViewModel.reportOfItemsChecked()
+                self.chatItemRequestViewModel.checklistChecked = self.checklistViewModel.checklistChecked
+                self.chatItemRequestViewModel.favouriteChecklistChecked = self.checklistViewModel.favouriteChecklistChecked
+                DispatchQueue.main.async {
+                    controller.closeLoading()
+                    self.chatItemRequestTableView.reloadData()
+                }
+            }
+        case .answers:
+            break
+        default:
+         break
+        }
     }
     
     @IBAction func sendAction(_ sender: Any) {
@@ -85,7 +112,69 @@ class ChatItemRequestViewController: UIViewController {
                 }
             }
         case .checklists:
-            break
+            
+            if itemSelected.count > 0 {
+                var checklistChecked: ChecklistChecked? = ChecklistChecked()
+                if itemSelected[0].section == 0 {
+                    checklistChecked = self.chatItemRequestViewModel.favouriteChecklistChecked[itemSelected[0].row]
+                } else if itemSelected[0].section == 1 {
+                    checklistChecked = self.chatItemRequestViewModel.checklistChecked[itemSelected[0].row]
+                }
+                
+                if let checklistChecked = checklistChecked {
+                    let checklist = self.checklistViewModel.getChecklist(checklistId: checklistChecked.checklistId)
+                    
+                    var content: String = ""
+                    
+                    content += """
+                    <html>
+                    <head>
+                    <meta charset="UTF-8"> \n
+                    """
+                    content += "<title>Checklist</title> \n"
+                    content += "</head> \n"
+                    content += "<body style=\"display:block;width:100%;\"> \n"
+                    content += "<h1>Checklist</h1> \n"
+                    
+                    for checkItem in checklist.items {
+                        content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
+                    }
+                    
+                    content += """
+                    </form>
+                    </body>
+                    </html>
+                    """
+                    
+                    let name = checklistChecked.subCategoryName.replacingOccurrences(of: " ", with: "_")
+                    //PDF
+                    let filename = "\(name)_Checklist.pdf"
+                    let pdf = PDF(nameFile: filename, content: content)
+                    let export = Export(pdf)
+                    let url = export.makeExport()
+                    
+                    DispatchQueue.global(qos: .background).async {
+                        self.chatItemRequestViewModel.uploadFile(filename: filename, fileURL: url, success: { (response) in
+                            
+                            guard let url = response as? String else {
+                                print("Error cast response to String")
+                                return
+                            }
+                            
+                            self.chatMessageViewModel.sendMessage(messageType: .file,
+                                                                  message: filename,
+                                                                  url: url,
+                                                                  success: { _ in
+                                                                    
+                            }, failure: { (response, object, error) in
+                                print(error ?? "")
+                            })
+                        }, failure: { (response, object, error) in
+                            print(error ?? "")
+                        })
+                    }
+                }
+            }
         case .answers:
             break
         default:
@@ -237,7 +326,7 @@ extension ChatItemRequestViewController: UITableViewDataSource {
             }
             return 1
         case .checklists:
-            return 1
+            return 2
         case .answers:
             return 1
         default:
@@ -258,7 +347,12 @@ extension ChatItemRequestViewController: UITableViewDataSource {
             
             return self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage().count
         case .checklists:
-            return self.chatItemRequestViewModel.checklists.count
+            if section == 0 {
+                return self.chatItemRequestViewModel.favouriteChecklistChecked.count
+            } else if section == 1 {
+                return self.chatItemRequestViewModel.checklistChecked.count
+            }
+            return 0
         case .answers:
             return 0
         default:
@@ -288,7 +382,7 @@ extension ChatItemRequestViewController: UITableViewDelegate {
         case .forms:
             return 30
         case .checklists:
-            return 0
+            return 30
         case .answers:
             return 0
         default:
@@ -303,17 +397,32 @@ extension ChatItemRequestViewController: UITableViewDelegate {
         label.font = UIFont.init(name: "SFProText-SemiBold", size: 12)
         label.textColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)
         
-        if self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
-            if section == 0 {
+        switch self.chatItemRequestViewModel.item.type {
+        case .forms:
+            if self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
+                if section == 0 {
+                    label.text = "Available forms".localized()
+                } else if section == 1 {
+                    label.text = "Active".localized()
+                }
+            } else {
                 label.text = "Available forms".localized()
-            } else if section == 1 {
-                label.text = "Active".localized()
             }
-        } else {
-            label.text = "Available forms".localized()
+            
+            view.addSubview(label)
+        case .checklists:
+            if section == 0 {
+                label.text = "Favourites".localized()
+            } else if section == 1 {
+                label.text = "My Checklists".localized()
+            }
+            
+            view.addSubview(label)
+        case .answers:
+            break
+        default:
+            break
         }
-        
-        view.addSubview(label)
         
         return view
     }

@@ -98,7 +98,7 @@ class ChatViewController: UIViewController {
     }
     
     @objc func chatGroupHeaderDidSelect(gesture: UIGestureRecognizer) {
-        let view:ChatGroupReusableView = (gesture.view as? ChatGroupReusableView)!
+//        let view:ChatGroupReusableView = (gesture.view as? ChatGroupReusableView)!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

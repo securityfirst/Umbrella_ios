@@ -23,7 +23,7 @@ extension Copying {
 //Array extension for elements conforms the Copying protocol
 extension Array where Element: Copying {
     func clone() -> Array {
-        var copiedArray = Array<Element>()
+        var copiedArray = [Element]()
         for element in self {
             copiedArray.append(element.copy())
         }
