@@ -28,6 +28,7 @@ class ChatRequestViewController: UIViewController {
     }()
     
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
+    var isAllChat: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,12 @@ class ChatRequestViewController: UIViewController {
 extension ChatRequestViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.chatRequestViewModel.items.count
+        if isAllChat {
+            return self.chatRequestViewModel.items.count
+        } else {
+            return self.chatRequestViewModel.items.count - 1
+        }
+        
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,6 +97,14 @@ extension ChatRequestViewController: UITableViewDelegate {
             let documentPicker = UIDocumentPickerViewController(documentTypes: ["com.adobe.pdf"], in: .import)
             documentPicker.delegate = self
             UIApplication.shared.delegate!.window?!.rootViewController!.present(documentPicker, animated: true, completion: nil)
+        } else if item.type == ChatRequestType.invite {
+//            NavigationChatInviteUser
+            self.dismiss(animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+            let navigationChatInviteUser = (storyboard.instantiateViewController(withIdentifier: "NavigationChatInviteUser") as? UINavigationController)!
+            
+            let chatInviteUserViewController = (navigationChatInviteUser.viewControllers.first! as? ChatInviteUserViewController)!
+            UIApplication.shared.keyWindow?.rootViewController!.present(navigationChatInviteUser, animated: true)
         } else {
             self.performSegue(withIdentifier: "itemRequestSegue", sender: indexPath.row)
         }

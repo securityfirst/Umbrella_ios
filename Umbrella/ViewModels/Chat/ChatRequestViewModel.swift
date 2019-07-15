@@ -13,6 +13,7 @@ enum ChatRequestType : String {
     case checklists
     case answers
     case file
+    case invite
 }
 
 class ChatRequestViewModel {
@@ -32,7 +33,8 @@ class ChatRequestViewModel {
             (name: "Forms".localized(), type: ChatRequestType.forms, icon: #imageLiteral(resourceName: "icMap")),
             (name: "Checklists".localized(), type: ChatRequestType.checklists, icon: #imageLiteral(resourceName: "icDoneAll")),
 //            (name: "Answers".localized(), type: ChatRequestType.answers, icon: #imageLiteral(resourceName: "iconFavourite")),
-            (name: "File".localized(), type: ChatRequestType.file, icon: #imageLiteral(resourceName: "rssListChoice"))
+            (name: "File".localized(), type: ChatRequestType.file, icon: #imageLiteral(resourceName: "rssListChoice")),
+            (name: "Invite".localized(), type: ChatRequestType.invite, icon: UIImage()),
         ]
     }
 }

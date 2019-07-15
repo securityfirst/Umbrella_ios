@@ -175,7 +175,7 @@
 "Username or password is invalid" = "اسم المستخدم او كلمة المرور غير صحيحة";
 "Enter username and password." = "أدخل اسم المستخدم وكلمة المرور.";
 "User ID already taken." = "معرف المستخدم مأخوذ بالفعل.";
-"Do you really want to Chat log out?" = "هل تريد حقًا تسجيل الدخول إلى الدردشة؟";
+"Are you sure you want to log out of your Matrix account?" = "هل تريد بالتأكيد تسجيل الخروج من حساب Matrix الخاص بك؟";
 "Chat log out" = "دردشة تسجيل الخروج";
 "Not sure of your password?" = "لست متأكدا من كلمة مرورك؟";
 "Set a new one" = "تعيين واحدة جديدة";

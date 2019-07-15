@@ -12,9 +12,9 @@ class SyncManager {
     
     static let shared = SyncManager()
     
-    fileprivate lazy var chatSyncViewModel: ChatSyncViewModel = {
-        let chatSyncViewModel = ChatSyncViewModel()
-        return chatSyncViewModel
+    fileprivate lazy var chatClientViewModel: ChatClientViewModel = {
+        let chatClientViewModel = ChatClientViewModel()
+        return chatClientViewModel
     }()
     
     fileprivate var timer: Timer?
@@ -25,15 +25,15 @@ class SyncManager {
     }
     
     @objc func sync() {
-        self.chatSyncViewModel.sync(success: { (sync) in
+        self.chatClientViewModel.sync(success: { (sync) in
             
             let sync = (sync as? Sync)!
-            if sync.rooms.invite.keys.count > 0 {
-                UserDefaults.standard.set(true, forKey: "SyncHasNewItem")
-                UserDefaults.standard.set(sync.rooms.invite.keys.count, forKey: "BadgeNumber")
-                UserDefaults.standard.synchronize()
-                NotificationCenter.default.post(name: Notification.Name("SyncMatrix"), object: sync)
-            }
+//            if sync.rooms.invite.keys.count > 0 {
+//                UserDefaults.standard.set(true, forKey: "SyncHasNewItem")
+//                UserDefaults.standard.set(sync.rooms.invite.keys.count, forKey: "BadgeNumber")
+//                UserDefaults.standard.synchronize()
+//                NotificationCenter.default.post(name: Notification.Name("SyncMatrix"), object: sync)
+//            }
         }, failure: { (response, object, error) in
             print(error ?? "")
         })

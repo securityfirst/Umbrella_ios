@@ -57,3 +57,9 @@ enum Feed {
 enum Matrix {
     static let baseUrlString = "https://comms.secfirst.org/_matrix/"
 }
+
+struct Constants {
+    static let TEXT_FIELD_HSPACE: CGFloat = 6.0
+    static let MINIMUM_TEXTFIELD_WIDTH: CGFloat = 56.0
+    static let STANDARD_ROW_HEIGHT: CGFloat = 25.0
+}

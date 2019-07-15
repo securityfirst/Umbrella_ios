@@ -111,8 +111,7 @@ class ChatSignInViewController: UIViewController {
             if endFrameY >= UIScreen.main.bounds.size.height {
                 self.bottomConstraint?.constant = 0.0
             } else {
-                // Number 50 is to navigation view (Back - Next)
-                self.bottomConstraint?.constant = (endFrame?.size.height)! - 48 - 50
+                self.bottomConstraint?.constant = (endFrame?.size.height)! - 48 
             }
             UIView.animate(withDuration: duration,
                            delay: 0,

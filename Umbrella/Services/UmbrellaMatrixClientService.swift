@@ -184,4 +184,40 @@ class UmbrellaMatrixClientService: Service {
             }
         })
     }
+    
+    /// Search user
+    ///
+    /// - Parameters:
+    ///   - token: String
+    ///   - success: Closure
+    ///   - failure: Closure
+    func searchUser(token: String, text: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        client.request(router: UmbrellaClientRouter.searchUser(token: token, searchText: text), success: { (response) in
+            do {
+                guard let data = response as? String else {
+                    print("Error cast response to String")
+                    return
+                }
+                let searchUsers = try JSONDecoder().decode(SearchUser.self, from: data.data(using: .utf8)!)
+                success(searchUsers as AnyObject)
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        })
+    }
 }

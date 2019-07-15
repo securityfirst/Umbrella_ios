@@ -37,10 +37,10 @@ extension UmbrellaRoomRouter {
     
     var path: String {
         switch self {
-        case .createRoom(let accessToken):
+        case .createRoom(let accessToken, _):
             return "createRoom?access_token=\(accessToken)"
         case .publicRooms(let accessToken):
-            return "publicRooms?access_token=\(accessToken)&limit=10"
+            return "publicRooms?access_token=\(accessToken)"
         case .getMessages(let accessToken, let roomId, let dir, let from):
             
             if from.count > 0 {
@@ -93,6 +93,7 @@ extension UmbrellaRoomRouter {
     var url: URL {
         switch self {
         case .createRoom, .publicRooms, .getMessages, .sendMessage:
+            print("\(Matrix.baseUrlString)client/r0/\(path)")
             return URL(string: "\(Matrix.baseUrlString)client/r0/\(path)")!
         }
     }

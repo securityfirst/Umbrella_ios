@@ -8,8 +8,6 @@ platform :ios do
     if !File.exists? "../DerivedData"
       Dir.mkdir "../DerivedData"
     end
-
-    #ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   end
 
 
@@ -33,28 +31,12 @@ platform :ios do
   end
 
 
-
   after_all do |lane|
     if File.exists? "../DerivedData"
       FileUtils.rm_rf("../DerivedData")
     end
 
     if lane == :beta
-      version = get_version_number()
-      build = get_build_number()
-
-      #message = "Umbrella iOS version #{version} build #{build} successfully sent to Testflight."
-
-      #slack(
-      #  message: message
-      #)
-
-      #error do |lane, exception|
-      #  slack(
-      #    message: exception.message,
-      #    success: false
-      #  )
-      #end
     end
   end
 

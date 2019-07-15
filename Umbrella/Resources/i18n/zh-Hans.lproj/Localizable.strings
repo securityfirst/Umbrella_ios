@@ -174,7 +174,7 @@
 "Username or password is invalid" = "用户名或密码无效";
 "Enter username and password." = "输入用户名和密码。";
 "User ID already taken." = "已使用用户ID。";
-"Do you really want to Chat log out?" = "你真的想聊天退出吗？";
+"Are you sure you want to log out of your Matrix account?" = "您确定要退出Matrix帐户吗？";
 "Chat log out" = "聊天注销";
 "Not sure of your password?" = "不确定你的密码？";
 "Set a new one" = "设置一个新的";

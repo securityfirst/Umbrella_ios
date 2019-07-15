@@ -178,7 +178,7 @@ extension AccountViewController: UITableViewDelegate {
             let app = (UIApplication.shared.delegate as? AppDelegate)!
             app.show()
         case AccountItem.matrixLogout:
-            let alertController = UIAlertController(title: "Alert".localized(), message: "Do you really want to Chat log out?".localized(), preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Alert".localized(), message: "Are you sure you want to log out of your Matrix account?".localized(), preferredStyle: UIAlertController.Style.alert)
             let saveAction = UIAlertAction(title: "YES".localized(), style: UIAlertAction.Style.default, handler: { (action) in
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)

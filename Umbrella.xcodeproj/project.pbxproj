@@ -110,6 +110,15 @@
 		A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D0A0214A83CC0064AD18 /* CategoryCell.swift */; };
 		A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; };
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0A2E32A22DC7B2E0054439C /* ChatNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */; };
+		A0A2E32C22DCE4010054439C /* ChatGroupExtendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */; };
+		A0A2E34322DD30EB0054439C /* ChatInviteUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E34222DD30EB0054439C /* ChatInviteUserViewController.swift */; };
+		A0A2E34422DD31AC0054439C /* BackspaceDetectingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E33E22DD2F0E0054439C /* BackspaceDetectingTextField.swift */; };
+		A0A2E34522DD31AC0054439C /* WSTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E34022DD2F0F0054439C /* WSTag.swift */; };
+		A0A2E34622DD31AC0054439C /* WSTagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E33F22DD2F0F0054439C /* WSTagsField.swift */; };
+		A0A2E34722DD31AC0054439C /* WSTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E34122DD2F0F0054439C /* WSTagView.swift */; };
+		A0A2E34922DD33810054439C /* ChatInviteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E34822DD33810054439C /* ChatInviteUserViewModel.swift */; };
+		A0A2E34B22DD3E7F0054439C /* SearchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E34A22DD3E7F0054439C /* SearchUser.swift */; };
 		A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */; };
 		A0A31E6F2154FCE50056D170 /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */; };
 		A0A364852195C11F00448A7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A364842195C11E00448A7A /* SettingsViewController.swift */; };
@@ -163,6 +172,7 @@
 		A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */; };
 		A0B0AA7D20EE6ED300933759 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */; };
 		A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */; };
+		A0B12CF622D391BA00F2638F /* ChatNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B12CF522D391BA00F2638F /* ChatNewItemViewController.swift */; };
 		A0B1AF4C21E3A3EF00ADD6CB /* MarkdownWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */; };
 		A0B65AA5229D3BB6001A3903 /* PathwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B65AA2229D3BB5001A3903 /* PathwayCell.swift */; };
 		A0B65AA6229D3BB6001A3903 /* PathwayChecklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B65AA3229D3BB5001A3903 /* PathwayChecklistCell.swift */; };
@@ -185,7 +195,7 @@
 		A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9D45F20AAE1CF00B2B796 /* AppDelegate.swift */; };
 		A0BE04FE22C4B5DB00D23306 /* UmbrellaMatrixClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE04FD22C4B5DB00D23306 /* UmbrellaMatrixClientService.swift */; };
 		A0BE050022C4B6AC00D23306 /* UmbrellaClientRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE04FF22C4B6AC00D23306 /* UmbrellaClientRouter.swift */; };
-		A0BE050222C4BA3600D23306 /* ChatSyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE050122C4BA3600D23306 /* ChatSyncViewModel.swift */; };
+		A0BE050222C4BA3600D23306 /* ChatClientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE050122C4BA3600D23306 /* ChatClientViewModel.swift */; };
 		A0BE050422C4BDA300D23306 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE050322C4BDA300D23306 /* Sync.swift */; };
 		A0BE050622C4C3D800D23306 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE050522C4C3D800D23306 /* SyncManager.swift */; };
 		A0BE050A22C6535A00D23306 /* bird.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A0BE050922C6535A00D23306 /* bird.pdf */; };
@@ -510,6 +520,15 @@
 		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNewGroupViewController.swift; sourceTree = "<group>"; };
+		A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupExtendedCell.swift; sourceTree = "<group>"; };
+		A0A2E33E22DD2F0E0054439C /* BackspaceDetectingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackspaceDetectingTextField.swift; sourceTree = "<group>"; };
+		A0A2E33F22DD2F0F0054439C /* WSTagsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTagsField.swift; sourceTree = "<group>"; };
+		A0A2E34022DD2F0F0054439C /* WSTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTag.swift; sourceTree = "<group>"; };
+		A0A2E34122DD2F0F0054439C /* WSTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTagView.swift; sourceTree = "<group>"; };
+		A0A2E34222DD30EB0054439C /* ChatInviteUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInviteUserViewController.swift; sourceTree = "<group>"; };
+		A0A2E34822DD33810054439C /* ChatInviteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInviteUserViewModel.swift; sourceTree = "<group>"; };
+		A0A2E34A22DD3E7F0054439C /* SearchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUser.swift; sourceTree = "<group>"; };
 		A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		A0A31E6E2154FCE50056D170 /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
 		A0A364842195C11E00448A7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -565,6 +584,7 @@
 		A0B0AA7A20EE6EB500933759 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7C20EE6ED300933759 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		A0B0AA7E20EE6EDE00933759 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		A0B12CF522D391BA00F2638F /* ChatNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNewItemViewController.swift; sourceTree = "<group>"; };
 		A0B1AF4B21E3A3EF00ADD6CB /* MarkdownWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownWebView.swift; sourceTree = "<group>"; };
 		A0B65AA2229D3BB5001A3903 /* PathwayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathwayCell.swift; sourceTree = "<group>"; };
 		A0B65AA3229D3BB5001A3903 /* PathwayChecklistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathwayChecklistCell.swift; sourceTree = "<group>"; };
@@ -594,7 +614,7 @@
 		A0BAC14A2289617E00D884F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0BE04FD22C4B5DB00D23306 /* UmbrellaMatrixClientService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UmbrellaMatrixClientService.swift; sourceTree = "<group>"; };
 		A0BE04FF22C4B6AC00D23306 /* UmbrellaClientRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UmbrellaClientRouter.swift; sourceTree = "<group>"; };
-		A0BE050122C4BA3600D23306 /* ChatSyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSyncViewModel.swift; sourceTree = "<group>"; };
+		A0BE050122C4BA3600D23306 /* ChatClientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatClientViewModel.swift; sourceTree = "<group>"; };
 		A0BE050322C4BDA300D23306 /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		A0BE050522C4C3D800D23306 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		A0BE050922C6535A00D23306 /* bird.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bird.pdf; sourceTree = "<group>"; };
@@ -968,6 +988,9 @@
 				A0C12CB022C284B9001479AE /* ChatMessageViewController.swift */,
 				A0BE051122CA3BAE00D23306 /* ChatRequestViewController.swift */,
 				A0BE051322CA475700D23306 /* ChatItemRequestViewController.swift */,
+				A0B12CF522D391BA00F2638F /* ChatNewItemViewController.swift */,
+				A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */,
+				A0A2E34222DD30EB0054439C /* ChatInviteUserViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1057,11 +1080,12 @@
 			isa = PBXGroup;
 			children = (
 				A081C2CE22B78ABA00EE725F /* ChatCredentialViewModel.swift */,
-				A0BE050122C4BA3600D23306 /* ChatSyncViewModel.swift */,
+				A0BE050122C4BA3600D23306 /* ChatClientViewModel.swift */,
 				A0C12C7C22C1215D001479AE /* ChatGroupViewModel.swift */,
 				A0C12CAE22C28496001479AE /* ChatMessageViewModel.swift */,
 				A0BE051722CA605B00D23306 /* ChatRequestViewModel.swift */,
 				A0BE051922CA607000D23306 /* ChatItemRequestViewModel.swift */,
+				A0A2E34822DD33810054439C /* ChatInviteUserViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1096,6 +1120,17 @@
 				A0AA1564216E5767003753E5 /* SideScrollLesson */,
 			);
 			path = Lesson;
+			sourceTree = "<group>";
+		};
+		A0A2E33D22DD2EF00054439C /* TagsFleld */ = {
+			isa = PBXGroup;
+			children = (
+				A0A2E33E22DD2F0E0054439C /* BackspaceDetectingTextField.swift */,
+				A0A2E34022DD2F0F0054439C /* WSTag.swift */,
+				A0A2E33F22DD2F0F0054439C /* WSTagsField.swift */,
+				A0A2E34122DD2F0F0054439C /* WSTagView.swift */,
+			);
+			path = TagsFleld;
 			sourceTree = "<group>";
 		};
 		A0A3C9AE224BC36D007471C4 /* Content */ = {
@@ -1421,6 +1456,7 @@
 		A0B9D45720AAE1CE00B2B796 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A0A2E33D22DD2EF00054439C /* TagsFleld */,
 				A0C6CE9F20B5ABB6005BC111 /* Constants.swift */,
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
@@ -1517,6 +1553,7 @@
 				A0C12C7E22C1273F001479AE /* PublicRoom.swift */,
 				A0C12CB222C28574001479AE /* ChatMessage.swift */,
 				A0BE050322C4BDA300D23306 /* Sync.swift */,
+				A0A2E34A22DD3E7F0054439C /* SearchUser.swift */,
 			);
 			path = Matrix;
 			sourceTree = "<group>";
@@ -1529,6 +1566,7 @@
 				A0C12C7822C11655001479AE /* ChatGroupReusableView.swift */,
 				A0BE051522CA4A6800D23306 /* ChatRequestCell.swift */,
 				A0BE051B22CA6DAC00D23306 /* ChatItemRequestCell.swift */,
+				A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -2112,6 +2150,7 @@
 				A0CF27FC221B24770076976F /* UIViewController+Ext.swift in Sources */,
 				A003810A20FE2AA500CDA44D /* StepperProtocol.swift in Sources */,
 				A0F6C39721A42DCB00A0FE85 /* SettingItemCell.swift in Sources */,
+				A0A2E34422DD31AC0054439C /* BackspaceDetectingTextField.swift in Sources */,
 				A02115B9213EC106004B5B73 /* FeedCell.swift in Sources */,
 				A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */,
 				A0BE050422C4BDA300D23306 /* Sync.swift in Sources */,
@@ -2119,6 +2158,7 @@
 				A0AA1561216E4686003753E5 /* ReviewLessonViewController.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0BE04FE22C4B5DB00D23306 /* UmbrellaMatrixClientService.swift in Sources */,
+				A0A2E34622DD31AC0054439C /* WSTagsField.swift in Sources */,
 				A0EBC01A2211E9E6006A0AC3 /* FeedNavigation.swift in Sources */,
 				A0B0AA7B20EE6EB500933759 /* ChecklistViewController.swift in Sources */,
 				A0A391AB21B54CA50067A04D /* CustomChecklistViewController.swift in Sources */,
@@ -2130,7 +2170,7 @@
 				A05BA80120E1408600482003 /* SegmentDao.swift in Sources */,
 				A05BA7FD20E11F6D00482003 /* LanguageDao.swift in Sources */,
 				A003810C20FE2AA500CDA44D /* TitleFormView.swift in Sources */,
-				A0BE050222C4BA3600D23306 /* ChatSyncViewModel.swift in Sources */,
+				A0BE050222C4BA3600D23306 /* ChatClientViewModel.swift in Sources */,
 				A0F6C3AD21A6BB5000A0FE85 /* SettingLocationViewController.swift in Sources */,
 				A0E87D08229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift in Sources */,
 				A0D8BCA120E243120052028F /* CheckListDao.swift in Sources */,
@@ -2155,12 +2195,14 @@
 				A0AE0C6D21B83BFD005EA2A8 /* CustomChecklistViewModel.swift in Sources */,
 				A0E87CFC2296F32900BD8802 /* PathwayViewController.swift in Sources */,
 				A003812D2107419200CDA44D /* TextAreaCell.swift in Sources */,
+				A0A2E32A22DC7B2E0054439C /* ChatNewGroupViewController.swift in Sources */,
 				A0B8CC7121AC076600AEAF50 /* SettingLanguageViewModel.swift in Sources */,
 				A0EBC0162211CEB9006A0AC3 /* LessonNavigation.swift in Sources */,
 				A02115AF213D8133004B5B73 /* RssItemDao.swift in Sources */,
 				A0AE0C7021B83C51005EA2A8 /* CustomChecklist.swift in Sources */,
 				A0E87D06229BFAD500BD8802 /* PathwayChecklistChecked.swift in Sources */,
 				A0F5B2642170C80F008B2B6A /* SourceViewController.swift in Sources */,
+				A0A2E34922DD33810054439C /* ChatInviteUserViewModel.swift in Sources */,
 				A0CC7B4F2136E12B00C28C3B /* CardRssCell.swift in Sources */,
 				A0FFE4F620CEAD700026C0C7 /* String+Ext.swift in Sources */,
 				A0FE4EE62238225A0048E591 /* UITableView+Ext.swift in Sources */,
@@ -2223,6 +2265,7 @@
 				A01CC62121F7187C00E5D771 /* ExportProtocol.swift in Sources */,
 				A0C6CEA620B6D14C005BC111 /* CategoryParser.swift in Sources */,
 				A0BE051222CA3BAE00D23306 /* ChatRequestViewController.swift in Sources */,
+				A0A2E34B22DD3E7F0054439C /* SearchUser.swift in Sources */,
 				A0325E8722A019F200C8B5FA /* MigrationManager.swift in Sources */,
 				A0C6CEAA20B70CC0005BC111 /* LoadingViewModel.swift in Sources */,
 				A006B5D421721AAF00B68309 /* DemoSettingViewController.swift in Sources */,
@@ -2235,6 +2278,7 @@
 				A0A391A521B18D5D0067A04D /* NewChecklistViewController.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
 				A0BE051C22CA6DAD00D23306 /* ChatItemRequestCell.swift in Sources */,
+				A0A2E34722DD31AC0054439C /* WSTagView.swift in Sources */,
 				A0EBC0122211BD1B006A0AC3 /* DeepLinkManager.swift in Sources */,
 				A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
@@ -2245,6 +2289,7 @@
 				A003812721073CDB00CDA44D /* DynamicFormView.swift in Sources */,
 				A0E81BFD2108EC9100FB73FF /* LabelCell.swift in Sources */,
 				A0EBC0112211BD1B006A0AC3 /* DeepLinkParser.swift in Sources */,
+				A0A2E32C22DCE4010054439C /* ChatGroupExtendedCell.swift in Sources */,
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
 				A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */,
 				A04131F322B3D8DE00DF1008 /* ChatSignInViewController.swift in Sources */,
@@ -2260,6 +2305,7 @@
 				A0C12CAD22C28473001479AE /* ChatMessageCell.swift in Sources */,
 				A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */,
 				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
+				A0A2E34522DD31AC0054439C /* WSTag.swift in Sources */,
 				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
 				A0C7326D215B9F80003087BC /* ChecklistCheckedDao.swift in Sources */,
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
@@ -2268,6 +2314,7 @@
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0C12CB522C285D2001479AE /* DateHeaderLabel.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
+				A0B12CF622D391BA00F2638F /* ChatNewItemViewController.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
 				A0B1AF4C21E3A3EF00ADD6CB /* MarkdownWebView.swift in Sources */,
@@ -2282,6 +2329,7 @@
 				A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */,
 				A0AE1A30214FE3AF0019F09B /* DifficultyRule.swift in Sources */,
 				A0BE051422CA475700D23306 /* ChatItemRequestViewController.swift in Sources */,
+				A0A2E34322DD30EB0054439C /* ChatInviteUserViewController.swift in Sources */,
 				A0D8BCA720E2469F0052028F /* ScreenDao.swift in Sources */,
 				A0FDDF6121BA94860078FCAA /* CustomCheckItemDao.swift in Sources */,
 				A081C2CC22B7888C00EE725F /* UmbrellaClient.swift in Sources */,
@@ -2534,7 +2582,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2706,7 +2754,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2740,7 +2788,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2872,7 +2920,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2982,7 +3030,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

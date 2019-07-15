@@ -17,10 +17,6 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
-	<string>15</string>
-=======
-	<string>1</string>
->>>>>>> Chat - create method to login and create an user
+	<string>2</string>
 </dict>
 </plist>

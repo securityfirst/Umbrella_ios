@@ -10,6 +10,7 @@ import Foundation
 
 class ChatGroupViewModel {
     
+    var userLogged: UserMatrix!
     var service: UmbrellaMatrixRoomService
     var rooms: [PublicChunk] = [PublicChunk]()
     
@@ -25,11 +26,20 @@ class ChatGroupViewModel {
     
     //
     // MARK: - Public Functions
-    func publicRooms(accessToken: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
-        service.publicRooms(accessToken: accessToken, success: { (object) in
+    func publicRooms(success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        service.publicRooms(accessToken: userLogged.accessToken, success: { (object) in
             let publicRoom = (object as? PublicRoom)!
             self.rooms = publicRoom.rooms
             success(publicRoom as AnyObject)
+        }, failure: { (response, object, error) in
+            failure(response, object, error)
+        })
+    }
+    
+    func createRoom(room: Room, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        service.createRoom(accessToken: userLogged.accessToken, room: room, success: { (object) in
+            print(object)
+            success(object as AnyObject)
         }, failure: { (response, object, error) in
             failure(response, object, error)
         })

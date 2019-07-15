@@ -37,7 +37,7 @@ class NavigationItemCustom: NSObject {
     
     @objc func sync(_ notification:Notification) {
         let sync = (notification.object as? Sync)!
-        updateNotificationBell(number: sync.rooms.invite.keys.count)
+//        updateNotificationBell(number: sync.rooms.invite.keys.count)
     }
     
     func updateNotificationBell(number: Int) {

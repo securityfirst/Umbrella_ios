@@ -174,7 +174,7 @@
 "Username or password is invalid" = "Имя пользователя или пароль неверны";
 "Enter username and password." = "Введите имя пользователя и пароль.";
 "User ID already taken." = "Идентификатор пользователя уже занят.";
-"Do you really want to Chat log out?" = "Вы действительно хотите выйти из чата?";
+"Are you sure you want to log out of your Matrix account?" = "Вы уверены, что хотите выйти из своей учетной записи Matrix?";
 "Chat log out" = "Выйти из чата";
 "Not sure of your password?" = "Не уверены в своем пароле?";
 "Set a new one" = "Установить новый";

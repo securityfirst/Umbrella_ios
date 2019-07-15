@@ -14,6 +14,7 @@ enum UmbrellaClientRouter: Router {
     case createUser(username: String, password: String, email: String)
     case requestEmailToken(token: String, email: String)
     case sync(token: String)
+    case searchUser(token: String, searchText: String)
 }
 
 extension UmbrellaClientRouter {
@@ -30,6 +31,8 @@ extension UmbrellaClientRouter {
             return "POST"
         case .sync:
             return "GET"
+        case .searchUser:
+            return "POST"
         }
     }
     
@@ -45,6 +48,8 @@ extension UmbrellaClientRouter {
             return "logout?access_token=\(accessToken)"
         case .sync(let accessToken):
             return "sync?access_token=\(accessToken)"
+        case .searchUser(let accessToken, _):
+            return "user_directory/search?access_token=\(accessToken)"
         }
     }
     
@@ -80,12 +85,16 @@ extension UmbrellaClientRouter {
             ]
         case .sync:
             return nil
+        case .searchUser(_, let searchText):
+            return [
+                "search_term": searchText
+            ]
         }
     }
     
     var url: URL {
         switch self {
-        case .login, .logout, .createUser, .requestEmailToken, .sync:
+        case .login, .logout, .createUser, .requestEmailToken, .sync, .searchUser:
             return URL(string: "\(Matrix.baseUrlString)client/r0/\(path)")!
         }
     }

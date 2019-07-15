@@ -190,6 +190,12 @@ class FeedViewController: UIViewController {
         loadSetup()
         
         self.navigationItemCustom = NavigationItemCustom(viewController: self)
+        
+        let storyboard2 = UIStoryboard(name: "Chat", bundle: Bundle.main)
+        let navigationChatInviteUser = (storyboard2.instantiateViewController(withIdentifier: "NavigationChatInviteUser") as? UINavigationController)!
+        
+        let chatInviteUserViewController = (navigationChatInviteUser.viewControllers.first! as? ChatInviteUserViewController)!
+        UIApplication.shared.keyWindow?.rootViewController!.present(navigationChatInviteUser, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -53,6 +53,7 @@ class ChatItemRequestCell: UITableViewCell {
             
         case .answers: break
         case .file: break
+        case .invite: break
             
         }
     }

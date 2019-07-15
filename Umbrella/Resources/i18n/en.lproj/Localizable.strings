@@ -174,7 +174,7 @@
 "Username or password is invalid" = "Username or password is invalid";
 "Enter username and password." = "Enter username and password.";
 "User ID already taken." = "User ID already taken.";
-"Do you really want to Chat log out?" = "Do you really want to Chat log out?";
+"Are you sure you want to log out of your Matrix account?" = "Are you sure you want to log out of your Matrix account?";
 "Chat log out" = "Chat log out";
 "Not sure of your password?" = "Not sure of your password?";
 "Set a new one" = "Set a new one";

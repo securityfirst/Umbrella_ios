@@ -19,7 +19,12 @@ struct PublicRoom: Codable {
 }
 
 //Public room
-struct PublicChunk: Codable {
+struct PublicChunk: Codable, Hashable {
+    
+    static func ==(lhs: PublicChunk, rhs: PublicChunk) -> Bool {
+        return lhs.roomId == rhs.roomId
+    }
+    
     var roomId: String
     var name: String
     var topic: String

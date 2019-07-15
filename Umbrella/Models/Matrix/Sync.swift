@@ -20,6 +20,50 @@ struct Sync: Codable {
 // MARK: - Rooms
 struct Rooms: Codable {
     let invite: [String: Invite]
+    let join: [String: Join]
+}
+
+// MARK: - Invite
+struct Join: Codable {
+    let timeline: Timeline
+    
+    enum CodingKeys: String, CodingKey {
+        case timeline
+    }
+}
+
+struct Timeline: Codable {
+    let joinEvent: [JoinEvent]
+    
+    enum CodingKeys: String, CodingKey {
+        case joinEvent = "events"
+    }
+}
+
+struct JoinEvent: Codable {
+    let type: String
+    let eventID: String
+    let originServerTs: Int
+    let content: JoinEventContent
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case eventID = "event_id"
+        case originServerTs = "origin_server_ts"
+        case content
+    }
+}
+
+// MARK: - TentacledContent
+struct JoinEventContent: Codable {
+    let alias, joinRule, name, membership: String?
+    let displayname: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case alias
+        case joinRule = "join_rule"
+        case name, membership, displayname
+    }
 }
 
 // MARK: - Invite

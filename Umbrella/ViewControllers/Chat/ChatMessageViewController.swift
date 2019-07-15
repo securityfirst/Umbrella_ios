@@ -21,6 +21,7 @@ class ChatMessageViewController: UIViewController {
     var chatRequestNavigationController: UINavigationController!
     var timer: Timer?
     var isScrollBottom: Bool = false
+    var isAllChat: Bool = false
     
     lazy var chatMessageViewModel: ChatMessageViewModel = {
         let chatMessageViewModel = ChatMessageViewModel()
@@ -35,6 +36,9 @@ class ChatMessageViewController: UIViewController {
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateMessages), name: NSNotification.Name("UpdateMessages"), object: nil)
+        
+        // TODO: Remover after create the database
+        UserDefaults.standard.set(nil, forKey: self.chatMessageViewModel.room.roomId)
         
         self.title = self.chatMessageViewModel.room.name
         self.loadMessages()
@@ -132,6 +136,7 @@ class ChatMessageViewController: UIViewController {
         let chatRequestViewController = (chatRequestNavigationController.viewControllers.first! as? ChatRequestViewController)!
         chatRequestViewController.chatRequestViewModel.userLogged = self.chatMessageViewModel.userLogged
         chatRequestViewController.chatRequestViewModel.room = self.chatMessageViewModel.room
+        chatRequestViewController.isAllChat = self.isAllChat
         let presentationController = (self.chatRequestNavigationController.presentationController as? UIPopoverPresentationController)!
         presentationController.delegate = self
         presentationController.backgroundColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
@@ -139,6 +144,7 @@ class ChatMessageViewController: UIViewController {
         presentationController.sourceRect = (sender as? UIView)!.bounds
         presentationController.permittedArrowDirections = [.down, .up]
         self.present(self.chatRequestNavigationController, animated: true)
+    
     }
 }
 
@@ -261,5 +267,15 @@ extension ChatMessageViewController: UIScrollViewDelegate {
 extension ChatMessageViewController: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return self
+    }
+}
+
+//
+// MARK: - UITextFieldDelegate
+extension ChatMessageViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
