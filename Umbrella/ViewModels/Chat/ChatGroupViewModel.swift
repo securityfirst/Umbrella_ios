@@ -30,6 +30,7 @@ class ChatGroupViewModel {
         service.publicRooms(accessToken: userLogged.accessToken, success: { (object) in
             let publicRoom = (object as? PublicRoom)!
             self.rooms = publicRoom.rooms
+            self.rooms.sort(by: {$0.name < $1.name })
             success(publicRoom as AnyObject)
         }, failure: { (response, object, error) in
             failure(response, object, error)
@@ -38,7 +39,6 @@ class ChatGroupViewModel {
     
     func createRoom(room: Room, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         service.createRoom(accessToken: userLogged.accessToken, room: room, success: { (object) in
-            print(object)
             success(object as AnyObject)
         }, failure: { (response, object, error) in
             failure(response, object, error)

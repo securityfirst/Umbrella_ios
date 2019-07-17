@@ -26,6 +26,8 @@ class NavigationItemCustom: NSObject {
         
         NotificationCenter.default.addObserver(self, selector: #selector(sync(_:)), name: NSNotification.Name("SyncMatrix"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(clearNotification(_:)), name: NSNotification.Name("ClearNotification"), object: nil)
+        
         let syncHasNewItem = UserDefaults.standard.bool(forKey: "SyncHasNewItem")
         
         if syncHasNewItem {
@@ -37,30 +39,42 @@ class NavigationItemCustom: NSObject {
     
     @objc func sync(_ notification:Notification) {
         let sync = (notification.object as? Sync)!
-//        updateNotificationBell(number: sync.rooms.invite.keys.count)
+        updateNotificationBell(number: sync.rooms.invite.keys.count)
+    }
+    
+    @objc func clearNotification(_ notification:Notification) {
+        self.notificationButton.imageView!.tintColor = #colorLiteral(red: 0.3607843137, green: 0.3882352941, blue: 0.4039215686, alpha: 1)
+        self.notificationButton.viewWithTag(666)?.removeFromSuperview()
+        
+        UserDefaults.standard.set(false, forKey: "SyncHasNewItem")
+        UserDefaults.standard.set(0, forKey: "BadgeNumber")
+        UserDefaults.standard.synchronize()
     }
     
     func updateNotificationBell(number: Int) {
         
-        let badgeLabel = self.notificationButton.viewWithTag(666)
+        var badgeLabel = (self.notificationButton.viewWithTag(666) as? UILabel)
         
         if (badgeLabel == nil) {
-            let badgeLabel = UILabel(frame: CGRect(x: 18, y: 5, width: 20, height: 20))
-            badgeLabel.font = UIFont(name: "Helvetica", size: 10)
-            badgeLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            badgeLabel.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-            badgeLabel.textAlignment = .center
-            badgeLabel.minimumScaleFactor = 0.5
-            badgeLabel.layer.cornerRadius = badgeLabel.frame.size.height / 2
-            badgeLabel.clipsToBounds = true
-            badgeLabel.tag = 666
-            badgeLabel.text = "\(number)"
-            self.notificationButton.addSubview(badgeLabel)
-        } else {
-            let badgeLabel = (badgeLabel as? UILabel)!
-            badgeLabel.text = "\(number)"
+            badgeLabel = UILabel(frame: CGRect(x: 18, y: 5, width: 20, height: 20))
+            badgeLabel!.font = UIFont(name: "Helvetica", size: 10)
+            badgeLabel!.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            badgeLabel!.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            badgeLabel!.textAlignment = .center
+            badgeLabel!.minimumScaleFactor = 0.5
+            badgeLabel!.layer.cornerRadius = badgeLabel!.frame.size.height / 2
+            badgeLabel!.clipsToBounds = true
+            badgeLabel!.tag = 666
+            self.notificationButton.addSubview(badgeLabel!)
         }
-        self.notificationButton.imageView!.tintColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
+        
+        if number == 0 {
+            self.notificationButton.imageView!.tintColor = #colorLiteral(red: 0.3607843137, green: 0.3882352941, blue: 0.4039215686, alpha: 1)
+            self.notificationButton.viewWithTag(666)?.removeFromSuperview()
+        } else {
+            badgeLabel!.text = "\(number)"
+            self.notificationButton.imageView!.tintColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
+        }
     }
     
     fileprivate func addButtons() {
@@ -129,6 +143,10 @@ class NavigationItemCustom: NSObject {
     }
     
     @objc func showNotification() {
+        let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+        let navigationNotification = (storyboard.instantiateViewController(withIdentifier: "NavigationNotification") as? UINavigationController)!
+//        let notificationViewController = (navigationNotification.viewControllers.first! as? NotificationViewController)!
+        UIApplication.shared.keyWindow?.rootViewController!.present(navigationNotification, animated: true)
     }
     
     @objc func showAccount() {

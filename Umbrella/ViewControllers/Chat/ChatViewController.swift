@@ -54,15 +54,18 @@ class ChatViewController: UIViewController {
         
         self.navigationItemCustom.showItems(true)
         
+        self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
+        self.navigationItem.rightBarButtonItem  = self.addBarButtonItem
+        
         if !self.chatCredentialViewModel.isLogged() {
             let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
             self.chatSignInViewController = (storyboard.instantiateViewController(withIdentifier: "ChatSignInViewController") as? ChatSignInViewController)!
             self.add(self.chatSignInViewController)
-            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem!.isEnabled = false
+            self.navigationItem.rightBarButtonItem!.tintColor = UIColor.clear
         } else {
-            self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
-            self.navigationItem.rightBarButtonItem  = self.addBarButtonItem
-            
+            self.navigationItem.rightBarButtonItem!.isEnabled = true
+            self.navigationItem.rightBarButtonItem!.tintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
             self.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
             loadRooms()
         }
@@ -79,20 +82,23 @@ class ChatViewController: UIViewController {
     //
     // MARK: - Functions
     
-    fileprivate func loadPublicRooms() {
+    fileprivate func loadPublicRooms(loading: LoadingViewController) {
         self.chatGroupViewModel.publicRooms(success: { (publicRoom) in
-            self.loadRoomsCount+=1
+            self.loadJoinedRooms(loading: loading)
+            self.chatGroupCollectionView.reloadData()
         }, failure: { (response, object, error) in
-            self.loadRoomsCount+=1
+            loading.closeLoading()
             print(error ?? "")
         })
     }
     
-    fileprivate func loadJoinedRooms() {
+    fileprivate func loadJoinedRooms(loading: LoadingViewController) {
         self.chatClientViewModel.sync(success: { (joinedRooms) in
-            self.loadRoomsCount+=1
+            loading.closeLoading()
+            self.chatClientViewModel.removePublicRooms(publicRoomList: self.chatGroupViewModel.rooms)
+            self.chatGroupCollectionView.reloadData()
         }, failure: { (response, object, error) in
-            self.loadRoomsCount+=1
+            loading.closeLoading()
             print(error ?? "")
         })
     }
@@ -103,31 +109,16 @@ class ChatViewController: UIViewController {
         if self.view.tag != 999 {
             controller.showLoading(view: self.view)
         }
-        
-        let concurrent = DispatchQueue(label: "Concurrent Queue", attributes: .concurrent)
-        concurrent.async {
-            self.loadPublicRooms()
-            self.loadJoinedRooms()
-            
-            while self.loadRoomsCount < 2 {
-                if self.loadRoomsCount == 2 {
-                    DispatchQueue.main.async {
-                        
-                        print(self.chatClientViewModel.rooms.count)
-                        print(self.chatGroupViewModel.rooms.count)
-                        self.chatClientViewModel.removePublicRooms(publicRoomList: self.chatGroupViewModel.rooms)
-                        controller.closeLoading()
-                        self.chatGroupCollectionView.reloadData()
-                    }
-                    self.loadRoomsCount = 0
-                    break
-                }
-            }
-        }
+        self.loadPublicRooms(loading: controller)
     }
     
     @objc func newMessage() {
         self.title = "Chat".localized()
+        
+        let buttonItemView = self.addBarButtonItem.value(forKey: "view") as? UIView
+        var buttonItemSize = buttonItemView?.frame
+        
+        print(buttonItemSize)
         
         let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
         let chatNewItemViewController = (storyboard.instantiateViewController(withIdentifier: "ChatNewItemViewController") as? ChatNewItemViewController)!
@@ -162,9 +153,9 @@ class ChatViewController: UIViewController {
             $0.removeFromParent()
         })
         
-        let modeBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
-        self.navigationItem.rightBarButtonItem  = modeBarButton
-        
+        self.navigationItem.rightBarButtonItem!.isEnabled = true
+        self.navigationItem.rightBarButtonItem!.tintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+    
         self.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
         loadRooms()
     }

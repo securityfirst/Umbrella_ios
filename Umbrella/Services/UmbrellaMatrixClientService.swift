@@ -176,7 +176,7 @@ class UmbrellaMatrixClientService: Service {
                     let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
                     failure(response, object, matrixError)
                 } else {
-                    failure(response, object, MatrixError("error", error: "error"))
+                    failure(response, object, MatrixError("error", error: error!.localizedDescription))
                 }
             } catch let error {
                 print(error)

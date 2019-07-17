@@ -10,7 +10,6 @@ import UIKit
 
 class ChatGroupExtendedCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var ovalView: UIView!
     @IBOutlet weak var firstLetterLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!

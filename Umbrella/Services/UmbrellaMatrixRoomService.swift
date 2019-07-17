@@ -142,7 +142,7 @@ class UmbrellaMatrixRoomService: Service {
         })
     }
     
-    /// Get Message from a room on Matrix Chat
+    /// Send a message from a room on Matrix Chat
     ///
     /// - Parameters:
     ///   - accessToken: String
@@ -152,6 +152,84 @@ class UmbrellaMatrixRoomService: Service {
         
         client.request(router: UmbrellaRoomRouter.sendMessage(accessToken: accessToken, roomId: roomId, type: type.self.rawValue, message: message, url: url), success: { (response) in
             success("")
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        })
+    }
+    
+    /// Invite an user from a room on Matrix Chat
+    ///
+    /// - Parameters:
+    ///   - accessToken: String
+    ///   - success: Closure
+    ///   - failure: Closure
+    func inviteAnUserToRoom(accessToken: String, roomId: String, userId: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        client.request(router: UmbrellaRoomRouter.inviteUserToRoom(accessToken: accessToken, roomId: roomId, userId: userId), success: { (response) in
+            success(response as AnyObject)
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        })
+    }
+    
+    /// Join to a room on Matrix Chat
+    ///
+    /// - Parameters:
+    ///   - accessToken: String
+    ///   - success: Closure
+    ///   - failure: Closure
+    func joinRoom(accessToken: String, roomId: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        client.request(router: UmbrellaRoomRouter.joinRoom(accessToken: accessToken, roomId: roomId), success: { (response) in
+            success(response as AnyObject)
+        }, failure: { (response, object, error) in
+            do {
+                if let object = object {
+                    let json = try (JSONSerialization.jsonObject(with: (object as? Data)!, options: .allowFragments) as? [String:Any])!
+                    let matrixError = MatrixError((json["errcode"] as? String)!, error: (json["error"] as? String)!)
+                    failure(response, object, matrixError)
+                } else {
+                    failure(response, object, MatrixError("error", error: "error"))
+                }
+            } catch let error {
+                print(error)
+                failure(nil, nil, error)
+            }
+        })
+    }
+    
+    /// Leave to a room on Matrix Chat
+    ///
+    /// - Parameters:
+    ///   - accessToken: String
+    ///   - success: Closure
+    ///   - failure: Closure
+    func leaveRoom(accessToken: String, roomId: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        
+        client.request(router: UmbrellaRoomRouter.leaveRoom(accessToken: accessToken, roomId: roomId), success: { (response) in
+            success(response as AnyObject)
         }, failure: { (response, object, error) in
             do {
                 if let object = object {

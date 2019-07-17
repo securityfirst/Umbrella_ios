@@ -267,8 +267,7 @@ open class WSTagsField: UIScrollView {
                 }
             }
             return layoutWidth
-        }
-        else {
+        } else {
             for constraint in constraints where constraint.firstAttribute == .width {
                 return constraint.constant
             }
@@ -369,8 +368,7 @@ open class WSTagsField: UIScrollView {
     open func addTag(_ tag: WSTag) {
         if let onValidateTag = onValidateTag, !onValidateTag(tag, self.tags) {
             return
-        }
-        else if self.tags.contains(tag) {
+        } else if self.tags.contains(tag) {
             return
         }
 
@@ -636,8 +634,7 @@ extension WSTagsField {
         enumerateItemRects(layoutWidth: layoutWidth) { (_, tagRect: CGRect?, textFieldRect: CGRect?) in
             if let tagRect = tagRect {
                 totalRect = tagRect.union(totalRect)
-            }
-            else if let textFieldRect = textFieldRect {
+            } else if let textFieldRect = textFieldRect {
                 totalRect = textFieldRect.union(totalRect)
             }
         }
@@ -712,8 +709,7 @@ extension WSTagsField {
                 tagView.frame = tagRect
                 tagView.setNeedsLayout()
                 contentRect = tagRect.union(contentRect)
-            }
-            else if let textFieldRect = textFieldRect {
+            } else if let textFieldRect = textFieldRect {
                 textField.frame = textFieldRect
                 contentRect = textFieldRect.union(contentRect)
             }

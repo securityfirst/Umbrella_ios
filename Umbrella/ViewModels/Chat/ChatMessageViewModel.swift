@@ -99,6 +99,14 @@ class ChatMessageViewModel {
         })
     }
     
+    func joinRoom(success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
+        service.joinRoom(accessToken: self.userLogged.accessToken, roomId: self.room.roomId, success: { _ in
+            success("")
+        }, failure: { (response, object, error) in
+            failure(response, object, error)
+        })
+    }
+    
     //
     // MARK: - Private Functions
     fileprivate func groupMessagesByDate(messages: [ChatMessageChunk]) {

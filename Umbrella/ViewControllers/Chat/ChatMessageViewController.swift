@@ -44,6 +44,7 @@ class ChatMessageViewController: UIViewController {
         self.loadMessages()
         
         self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)
+        self.view.tag = 999
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,13 +62,29 @@ class ChatMessageViewController: UIViewController {
     }
     
     @objc func loadMessages() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+        if self.view.tag != 999 {
+            controller.showLoading(view: self.view)
+        }
+        
         self.chatMessageViewModel.getMessages(success: { (messages) in
+            controller.closeLoading()
             if self.isScrollBottom {
                 self.chatTableView.scrollToBottomRow()
             }
             self.chatTableView.reloadData()
         }, failure: { (response, object, error) in
-            print(error ?? "")
+            controller.closeLoading()
+            let matrixError = error as? MatrixError
+            if matrixError?.error == "Guest access not allowed" {
+                self.chatMessageViewModel.joinRoom(success: { _ in
+                    self.loadMessages()
+                }, failure: { (response, object, error) in
+                    
+                })
+            }
         })
     }
     

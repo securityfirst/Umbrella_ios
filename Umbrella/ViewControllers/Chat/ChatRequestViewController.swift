@@ -104,6 +104,7 @@ extension ChatRequestViewController: UITableViewDelegate {
             let navigationChatInviteUser = (storyboard.instantiateViewController(withIdentifier: "NavigationChatInviteUser") as? UINavigationController)!
             
             let chatInviteUserViewController = (navigationChatInviteUser.viewControllers.first! as? ChatInviteUserViewController)!
+            chatInviteUserViewController.chatInviteUserViewModel.roomId = self.chatRequestViewModel.room.roomId
             UIApplication.shared.keyWindow?.rootViewController!.present(navigationChatInviteUser, animated: true)
         } else {
             self.performSegue(withIdentifier: "itemRequestSegue", sender: indexPath.row)

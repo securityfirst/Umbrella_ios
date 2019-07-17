@@ -13,6 +13,7 @@ class ChatNewGroupViewController: UIViewController {
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var typeText: UITextField!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var inviteUserLabel: UILabel!
     
     lazy var chatGroupViewModel: ChatGroupViewModel = {
         let chatGroupViewModel = ChatGroupViewModel()
@@ -74,7 +75,18 @@ class ChatNewGroupViewController: UIViewController {
             
             roomAliasName = self.nameText.text!.replacingOccurrences(of: " ", with: "").lowercased()
             
-            let room = Room(preset: preset, roomAliasName: roomAliasName, name: self.nameText.text!, topic: self.nameText.text!, visibility: visibility, invite: [])
+            var inviteUser = [String]()
+            if self.inviteUserLabel.text != "Optional Invite users" {
+                
+                if let users = self.inviteUserLabel.text?.components(separatedBy: " ") {
+                    for user in users {
+                        inviteUser.append("@\(user):comms.secfirst.org")
+                    }
+                }
+
+            }
+            
+            let room = Room(preset: preset, roomAliasName: roomAliasName, name: self.nameText.text!, topic: self.nameText.text!, visibility: visibility, invite: inviteUser)
             
             self.chatGroupViewModel.createRoom(room: room, success: { (publicRoom) in
                 controller.closeLoading()
@@ -84,6 +96,32 @@ class ChatNewGroupViewController: UIViewController {
                 print(error ?? "")
             })
         }
+    }
+    
+    @IBAction func inviteUserAction(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+        let navigationChatInviteUser = (storyboard.instantiateViewController(withIdentifier: "NavigationChatInviteUser") as? UINavigationController)!
+        
+        let chatInviteUserViewController = (navigationChatInviteUser.viewControllers.first! as? ChatInviteUserViewController)!
+       
+       chatInviteUserViewController.sendBarButtonItem.title = "OK"
+        chatInviteUserViewController.onInviteUser = { tags in
+            
+            var users = ""
+            for (index, tag) in tags.enumerated() {
+                if index == 0 {
+                    users += "\(tag.text)"
+                } else {
+                    users += " \(tag.text)"
+                }
+            }
+            
+            self.inviteUserLabel.text = users
+            self.nameText.becomeFirstResponder()
+        }
+        self.present(navigationChatInviteUser, animated: true)
+        
     }
     
 }

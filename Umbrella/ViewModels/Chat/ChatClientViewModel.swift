@@ -39,19 +39,20 @@ class ChatClientViewModel {
         let user = getUserLogged()
         
         if let user = user {
-            self.rooms.removeAll()
             service.sync(token: user.accessToken, success: { (object) in
                 self.sync = (object as? Sync)!
-                
+                self.rooms.removeAll()
                 for dic in (self.sync?.rooms.join)! {
                     
                     let joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
                     
                     for joinEvent in joinEvents {
-                    let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
+                        let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
                         self.rooms.append(publicChunk)
                     }
                 }
+                
+                self.rooms.sort(by: {$0.name < $1.name })
                 success(object as AnyObject)
             }, failure: { (response, object, error) in
                 failure(response, object, error)
@@ -73,5 +74,5 @@ class ChatClientViewModel {
         let users = userMatrixDao.list()
         return users.first
     }
-
+    
 }
