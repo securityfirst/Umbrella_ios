@@ -45,11 +45,53 @@ class ChatClientViewModel {
                 for dic in (self.sync?.rooms.join)! {
                     
                     let joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
-                    
-                    for joinEvent in joinEvents {
-                        let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
-                        self.rooms.append(publicChunk)
+                    let memberEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.member" }
+                    let aliasEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.canonical_alias" }
+
+                    if aliasEvents.count > 0 {
+                        var nameAlias = ""
+                        for aliasEvent in aliasEvents {
+                            nameAlias = self.normalizeName(identifier: "#", text: aliasEvent.content.alias ?? "")
+                        }
+                        
+                        if nameAlias == "contact_room" {
+                            if memberEvents.count == 2 {
+                                var nameInvite = ""
+                                var nameJoin = ""
+                                for joinEvent in memberEvents {
+                                    
+                                    if joinEvent.content.membership == "invite" {
+                                        nameInvite = self.normalizeName(identifier: "@", text: joinEvent.sender)
+                                    } else if joinEvent.content.membership == "join" {
+                                        nameJoin = self.normalizeName(identifier: "@", text: joinEvent.sender)
+                                    }
+                                }
+                                
+                                var name = ""
+                                
+                                if user.username == nameInvite {
+                                    name = nameJoin
+                                } else {
+                                    name = nameInvite
+                                }
+                                
+                                let publicChunk = PublicChunk(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
+                                self.rooms.append(publicChunk)
+                            }
+                        } else {
+                            for joinEvent in joinEvents {
+                                let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
+                                self.rooms.append(publicChunk)
+                            }
+                        }
+
+                    } else {
+                        for joinEvent in joinEvents {
+                            let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
+                            self.rooms.append(publicChunk)
+                        }
                     }
+                    
                 }
                 
                 self.rooms.sort(by: {$0.name < $1.name })
@@ -67,6 +109,28 @@ class ChatClientViewModel {
                 self.rooms.removeObject(obj: local)
                 break
             }
+        }
+    }
+    
+    func normalizeName(identifier: String, text: String) -> String {
+        do {
+            
+            let regex = try NSRegularExpression(pattern:"(\(identifier)[a-z])\\w+", options: [])
+            var found = ""
+            let matches = regex.matches(in: text, options: [], range: NSRange(location: 0, length: text.count))
+            
+            if (matches.count > 0) {
+                let range = matches[0].range(at: 0)
+                var index = text.index(text.startIndex, offsetBy: range.location + range.length)
+                found = String(text[..<index])
+                index = text.index(text.startIndex, offsetBy: range.location)
+                found = String(found[index...])
+                return found.replacingOccurrences(of: "\(identifier)", with: "")
+            }
+            
+            return ""
+        } catch {
+            return ""
         }
     }
     

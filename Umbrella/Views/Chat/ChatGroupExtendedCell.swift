@@ -25,6 +25,7 @@ class ChatGroupExtendedCell: UICollectionViewCell {
     func configure(withViewModel viewModel:ChatClientViewModel, indexPath: IndexPath) {
         
         let item = viewModel.rooms[indexPath.row]
+        
         self.firstLetterLabel.text = item.name.first?.uppercased()
         self.usernameLabel.text = item.name
         self.ovalView.backgroundColor = Lessons.colors[indexPath.row % Lessons.colors.count]

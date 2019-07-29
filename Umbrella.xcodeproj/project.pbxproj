@@ -113,6 +113,7 @@
 		A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D0A0214A83CC0064AD18 /* CategoryCell.swift */; };
 		A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; };
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0A2A6F522E5DA960050267B /* ChatNewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2A6F422E5DA960050267B /* ChatNewContactViewController.swift */; };
 		A0A2E32A22DC7B2E0054439C /* ChatNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */; };
 		A0A2E32C22DCE4010054439C /* ChatGroupExtendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */; };
 		A0A2E34322DD30EB0054439C /* ChatInviteUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E34222DD30EB0054439C /* ChatInviteUserViewController.swift */; };
@@ -527,6 +528,7 @@
 		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A0A2A6F422E5DA960050267B /* ChatNewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNewContactViewController.swift; sourceTree = "<group>"; };
 		A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNewGroupViewController.swift; sourceTree = "<group>"; };
 		A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupExtendedCell.swift; sourceTree = "<group>"; };
 		A0A2E33E22DD2F0E0054439C /* BackspaceDetectingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackspaceDetectingTextField.swift; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 				A0BE051322CA475700D23306 /* ChatItemRequestViewController.swift */,
 				A0B12CF522D391BA00F2638F /* ChatNewItemViewController.swift */,
 				A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */,
+				A0A2A6F422E5DA960050267B /* ChatNewContactViewController.swift */,
 				A0A2E34222DD30EB0054439C /* ChatInviteUserViewController.swift */,
 				A087011822DE263C00241676 /* NotificationViewController.swift */,
 			);
@@ -2320,6 +2323,7 @@
 				A0CC7B4A2136D91700C28C3B /* ListRssViewController.swift in Sources */,
 				A0C12CAD22C28473001479AE /* ChatMessageCell.swift in Sources */,
 				A0ACE2822292B4C200068385 /* ReleaseNoteViewController.swift in Sources */,
+				A0A2A6F522E5DA960050267B /* ChatNewContactViewController.swift in Sources */,
 				A0AE1A28214BDC600019F09B /* DifficultyCell.swift in Sources */,
 				A0A2E34522DD31AC0054439C /* WSTag.swift in Sources */,
 				A00381352107424E00CDA44D /* FillFormViewModel.swift in Sources */,
@@ -2598,7 +2602,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2770,7 +2774,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2804,7 +2808,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2936,7 +2940,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3046,7 +3050,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

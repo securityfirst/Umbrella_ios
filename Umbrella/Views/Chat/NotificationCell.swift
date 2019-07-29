@@ -56,7 +56,7 @@ class NotificationCell: UITableViewCell {
                 }
             }
             
-            self.messageLabel.text = "\(invitedBy) has sent an invitation to join group \(group)."
+            self.messageLabel.text = "\(invitedBy) has sent an invitation to join \(group)."
         }
     }
 

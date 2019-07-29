@@ -42,12 +42,14 @@ struct Timeline: Codable {
 
 struct JoinEvent: Codable {
     let type: String
+    let sender: String
     let eventID: String
     let originServerTs: Int
     let content: JoinEventContent
     
     enum CodingKeys: String, CodingKey {
         case type
+        case sender
         case eventID = "event_id"
         case originServerTs = "origin_server_ts"
         case content

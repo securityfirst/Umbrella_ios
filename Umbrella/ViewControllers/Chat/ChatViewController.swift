@@ -115,11 +115,6 @@ class ChatViewController: UIViewController {
     @objc func newMessage() {
         self.title = "Chat".localized()
         
-        let buttonItemView = self.addBarButtonItem.value(forKey: "view") as? UIView
-        var buttonItemSize = buttonItemView?.frame
-        
-        print(buttonItemSize)
-        
         let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
         let chatNewItemViewController = (storyboard.instantiateViewController(withIdentifier: "ChatNewItemViewController") as? ChatNewItemViewController)!
         chatNewItemViewController.modalPresentationStyle = .popover
@@ -127,7 +122,6 @@ class ChatViewController: UIViewController {
         
         let presentationController = (chatNewItemViewController.presentationController as? UIPopoverPresentationController)!
         presentationController.delegate = self
-        //        presentationController.backgroundColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
         presentationController.barButtonItem = self.addBarButtonItem
         presentationController.permittedArrowDirections = [.down, .up]
         self.present(chatNewItemViewController, animated: true)
@@ -137,7 +131,14 @@ class ChatViewController: UIViewController {
             let navigationController = (storyboard.instantiateViewController(withIdentifier: "NavigationChatNewGroup") as? UINavigationController)!
             let chatNewGroupViewController = (navigationController.viewControllers.first! as? ChatNewGroupViewController)!
             chatNewGroupViewController.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
-            
+            self.present(navigationController, animated: true, completion: nil)
+        }
+        
+        chatNewItemViewController.onNewContact = {
+            let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+            let navigationController = (storyboard.instantiateViewController(withIdentifier: "NavigationChatNewContact") as? UINavigationController)!
+            let chatNewContactViewController = (navigationController.viewControllers.first! as? ChatNewContactViewController)!
+            chatNewContactViewController.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
             self.present(navigationController, animated: true, completion: nil)
         }
     }
@@ -247,6 +248,18 @@ extension ChatViewController: UICollectionViewDataSource {
         return sectionHeaderView
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize.zero
+        } else if section == 1 {
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        } else if section == 2 {
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        }
+        
+        return CGSize(width: collectionView.bounds.width, height: 50)
+    }
+    
 }
 
 extension ChatViewController: UICollectionViewDelegateFlowLayout {
@@ -254,7 +267,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
         if indexPath.section == 0 {
-            return CGSize(width: 72, height: 75)
+            return CGSize.zero
         } else if indexPath.section == 1 {
             return CGSize(width: 72, height: 75)
         } else if indexPath.section == 2 {

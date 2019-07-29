@@ -19,8 +19,9 @@ class ChatNewItemViewController: UIViewController {
     }
     
     @IBAction func newContactAction(_ sender: Any) {
-        onNewContact?()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.onNewContact?()
+        }
     }
     
     @IBAction func newGroupAction(_ sender: Any) {
