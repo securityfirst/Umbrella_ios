@@ -54,7 +54,7 @@ class ChatViewController: UIViewController {
         
         self.navigationItemCustom.showItems(true)
         
-        self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newMessage))
+        self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newRoom))
         self.navigationItem.rightBarButtonItem  = self.addBarButtonItem
         
         if !self.chatCredentialViewModel.isLogged() {
@@ -112,13 +112,14 @@ class ChatViewController: UIViewController {
         self.loadPublicRooms(loading: controller)
     }
     
-    @objc func newMessage() {
+    @objc func newRoom() {
         self.title = "Chat".localized()
         
         let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
         let chatNewItemViewController = (storyboard.instantiateViewController(withIdentifier: "ChatNewItemViewController") as? ChatNewItemViewController)!
         chatNewItemViewController.modalPresentationStyle = .popover
-        chatNewItemViewController.preferredContentSize = CGSize(width: 200, height: 135)
+//        chatNewItemViewController.preferredContentSize = CGSize(width: 200, height: 135)
+        chatNewItemViewController.preferredContentSize = CGSize(width: 200, height: 100)
         
         let presentationController = (chatNewItemViewController.presentationController as? UIPopoverPresentationController)!
         presentationController.delegate = self
@@ -170,10 +171,10 @@ class ChatViewController: UIViewController {
             let chatMessageViewController = (segue.destination as? ChatMessageViewController)!
             
             let dic = (sender as? [String: Any])!
-            let publicChunk = (dic["publicChunk"] as? PublicChunk)!
+            let room = (dic["room"] as? Room)!
             let allChat = (dic["allChat"] as? Bool)!
             chatMessageViewController.chatMessageViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
-            chatMessageViewController.chatMessageViewModel.room = publicChunk
+            chatMessageViewController.chatMessageViewModel.room = room
             chatMessageViewController.isAllChat = allChat
         }
     }
@@ -187,11 +188,11 @@ extension ChatViewController: UICollectionViewDelegate {
         if indexPath.section == 0 {
             
         } else if indexPath.section == 1 {
-            let publicChunk = self.chatGroupViewModel.rooms[indexPath.row]
-            self.performSegue(withIdentifier: "messageSegue", sender: ["publicChunk": publicChunk, "allChat": false])
+            let room = self.chatGroupViewModel.rooms[indexPath.row]
+            self.performSegue(withIdentifier: "messageSegue", sender: ["room": room, "allChat": false])
         } else if indexPath.section == 2 {
-            let publicChunk = self.chatClientViewModel.rooms[indexPath.row]
-            self.performSegue(withIdentifier: "messageSegue", sender: ["publicChunk": publicChunk, "allChat": true])
+            let room = self.chatClientViewModel.rooms[indexPath.row]
+            self.performSegue(withIdentifier: "messageSegue", sender: ["room": room, "allChat": true])
         }
     }
 }

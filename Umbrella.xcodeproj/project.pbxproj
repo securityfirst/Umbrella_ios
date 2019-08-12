@@ -113,6 +113,10 @@
 		A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D0A0214A83CC0064AD18 /* CategoryCell.swift */; };
 		A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; };
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0A2310623015F6C005346D6 /* RoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2310523015F6C005346D6 /* RoomDao.swift */; };
+		A0A23108230175A5005346D6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A23107230175A5005346D6 /* Reachability.swift */; };
+		A0A2310A23017B98005346D6 /* PublicRoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2310923017B98005346D6 /* PublicRoomDao.swift */; };
+		A0A2310C23019D8F005346D6 /* MessageDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2310B23019D8F005346D6 /* MessageDao.swift */; };
 		A0A2A6F522E5DA960050267B /* ChatNewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2A6F422E5DA960050267B /* ChatNewContactViewController.swift */; };
 		A0A2E32A22DC7B2E0054439C /* ChatNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */; };
 		A0A2E32C22DCE4010054439C /* ChatGroupExtendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */; };
@@ -528,6 +532,10 @@
 		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A0A2310523015F6C005346D6 /* RoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDao.swift; sourceTree = "<group>"; };
+		A0A23107230175A5005346D6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A0A2310923017B98005346D6 /* PublicRoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRoomDao.swift; sourceTree = "<group>"; };
+		A0A2310B23019D8F005346D6 /* MessageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDao.swift; sourceTree = "<group>"; };
 		A0A2A6F422E5DA960050267B /* ChatNewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNewContactViewController.swift; sourceTree = "<group>"; };
 		A0A2E32922DC7B2D0054439C /* ChatNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNewGroupViewController.swift; sourceTree = "<group>"; };
 		A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupExtendedCell.swift; sourceTree = "<group>"; };
@@ -1050,6 +1058,7 @@
 		A064CE9420AC497D00CE99E1 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				A0325E8822A01DD900C8B5FA /* Migrations.bundle */,
 				A0CBC5AF224CC8B900C6C159 /* database.db */,
 				A064CE9520AC497D00CE99E1 /* _database.db_ */,
 			);
@@ -1355,6 +1364,9 @@
 				A0E87D07229BFC2300BD8802 /* PathwayChecklistCheckedDao.swift */,
 				A0E87D09229C2EFD00BD8802 /* PathwayDao.swift */,
 				A081C2D222B7CFC700EE725F /* UserMatrixDao.swift */,
+				A0A2310523015F6C005346D6 /* RoomDao.swift */,
+				A0A2310923017B98005346D6 /* PublicRoomDao.swift */,
+				A0A2310B23019D8F005346D6 /* MessageDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -1479,6 +1491,7 @@
 				A0EEE63122B391BF0074AB77 /* NavigationItemCustom.swift */,
 				A0C12CB422C285D2001479AE /* DateHeaderLabel.swift */,
 				A0BE050522C4C3D800D23306 /* SyncManager.swift */,
+				A0A23107230175A5005346D6 /* Reachability.swift */,
 				A01CC61D21F717DC00E5D771 /* Export */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
@@ -1537,7 +1550,6 @@
 			children = (
 				A0BE050922C6535A00D23306 /* bird.pdf */,
 				A0C404A121A17C1F0068BDDD /* icon-imported-document.png */,
-				A0325E8822A01DD900C8B5FA /* Migrations.bundle */,
 				A0A3C9AE224BC36D007471C4 /* Content */,
 				A00386F220F394F7004FAC8A /* Fonts */,
 				A064CE9420AC497D00CE99E1 /* Database */,
@@ -2172,6 +2184,7 @@
 				A0BE050422C4BDA300D23306 /* Sync.swift in Sources */,
 				A0FDDF5D21BA8B5A0078FCAA /* CustomChecklistChecked.swift in Sources */,
 				A0AA1561216E4686003753E5 /* ReviewLessonViewController.swift in Sources */,
+				A0A23108230175A5005346D6 /* Reachability.swift in Sources */,
 				A0D8BCA320E246840052028F /* CheckItemDao.swift in Sources */,
 				A0BE04FE22C4B5DB00D23306 /* UmbrellaMatrixClientService.swift in Sources */,
 				A0A2E34622DD31AC0054439C /* WSTagsField.swift in Sources */,
@@ -2227,6 +2240,7 @@
 				A05BA7FF20E12F1100482003 /* UmbrellaDatabase.swift in Sources */,
 				A0C12CAF22C28496001479AE /* ChatMessageViewModel.swift in Sources */,
 				A0AE0C7421B8420C005EA2A8 /* CustomChecklistCell.swift in Sources */,
+				A0A2310A23017B98005346D6 /* PublicRoomDao.swift in Sources */,
 				A0B65AA7229D3BB6001A3903 /* PathwaySeeAllCell.swift in Sources */,
 				A0E87D0A229C2EFD00BD8802 /* PathwayDao.swift in Sources */,
 				A0F6C39B21A4421100A0FE85 /* SettingItem.swift in Sources */,
@@ -2273,6 +2287,7 @@
 				A0C12C7D22C1215D001479AE /* ChatGroupViewModel.swift in Sources */,
 				A083881C2228489000EAAA42 /* ModelProtocol.swift in Sources */,
 				A0C6CEA020B5ABB6005BC111 /* Constants.swift in Sources */,
+				A0A2310623015F6C005346D6 /* RoomDao.swift in Sources */,
 				A0B0AA7720EE6E8D00933759 /* FeedViewController.swift in Sources */,
 				A01CC62521F7196700E5D771 /* HTML.swift in Sources */,
 				A0AA156A216E577F003753E5 /* TitleLessonView.swift in Sources */,
@@ -2312,6 +2327,7 @@
 				A0B0AA7F20EE6EDE00933759 /* AccountViewController.swift in Sources */,
 				A0CC7B5C2138058900C28C3B /* UIImageView+Ext.swift in Sources */,
 				A04131F322B3D8DE00DF1008 /* ChatSignInViewController.swift in Sources */,
+				A0A2310C23019D8F005346D6 /* MessageDao.swift in Sources */,
 				A0C12C7222C0EA15001479AE /* UserMatrix.swift in Sources */,
 				A00386FA20F39664004FAC8A /* UIView+Ext.swift in Sources */,
 				A0FFE50120CEEADD0026C0C7 /* OptionItem.swift in Sources */,
@@ -2602,7 +2618,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2774,7 +2790,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2808,7 +2824,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2940,7 +2956,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3050,7 +3066,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

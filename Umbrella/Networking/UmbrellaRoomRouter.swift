@@ -77,12 +77,12 @@ extension UmbrellaRoomRouter {
         switch self {
         case .createRoom(_, let room):
             return [
-                "preset": room.preset,
-                "room_alias_name": room.roomAliasName,
+                "preset": room.preset!,
+                "room_alias_name": room.roomAliasName!,
                 "name": room.name,
                 "topic": room.topic,
-                "visibility": room.visibility,
-                "invite": room.invite
+                "visibility": room.visibility!,
+                "invite": room.invite!
             ]
         case .publicRooms:
             return nil

@@ -22,7 +22,7 @@ class ChatRequestViewModel {
     // MARK: - Properties
     var items: [(name: String, type: ChatRequestType, icon: UIImage)]!
     var userLogged: UserMatrix!
-    var room: PublicChunk!
+    var room: Room!
     
     init() {
         
@@ -34,7 +34,7 @@ class ChatRequestViewModel {
             (name: "Checklists".localized(), type: ChatRequestType.checklists, icon: #imageLiteral(resourceName: "icDoneAll")),
 //            (name: "Answers".localized(), type: ChatRequestType.answers, icon: #imageLiteral(resourceName: "iconFavourite")),
             (name: "File".localized(), type: ChatRequestType.file, icon: #imageLiteral(resourceName: "rssListChoice")),
-            (name: "Invite user".localized(), type: ChatRequestType.invite, icon: UIImage()),
+            (name: "Invite user".localized(), type: ChatRequestType.invite, icon: UIImage())
         ]
     }
 }

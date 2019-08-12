@@ -192,14 +192,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar userInteractionEnabled="NO" contentMode="redraw" searchBarStyle="minimal" placeholder="Search people and groups" translatesAutoresizingMaskIntoConstraints="NO" id="uZN-Ml-LeF">
-                                <rect key="frame" x="0.0" y="111" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="prE-Ri-eQG"/>
+                                    <constraint firstAttribute="height" id="prE-Ri-eQG"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HfE-1b-biI">
-                                <rect key="frame" x="0.0" y="155" width="320" height="364"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="1" id="2R3-1i-lXu">
                                     <size key="itemSize" width="72" height="75"/>
@@ -400,7 +400,7 @@
                                     <action selector="newGroupAction:" destination="9bE-Dn-N9M" eventType="touchUpInside" id="WmZ-Nf-Geh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-FO-NBu">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-FO-NBu">
                                 <rect key="frame" x="16" y="105" width="288" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="VfF-UV-D4U"/>
@@ -471,7 +471,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Wz-Rf-MPO">
                                 <rect key="frame" x="20" y="272" width="280" height="44"/>
-                                <color key="backgroundColor" red="0.52941176469999995" green="0.74117647060000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.52941176470588236" green="0.74117647058823533" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="x5T-BW-Tqr"/>
                                 </constraints>
@@ -896,6 +896,8 @@
                         <outlet property="bottomConstraint" destination="2lC-Dc-rBx" id="sRo-Qk-146"/>
                         <outlet property="chatTableView" destination="lFu-Pk-scd" id="ANq-De-TRX"/>
                         <outlet property="messageText" destination="OmP-r8-7ze" id="c4s-cT-kxR"/>
+                        <outlet property="plusButton" destination="X1R-4Y-0Xl" id="upS-ix-Ixz"/>
+                        <outlet property="sendButton" destination="yl4-Ad-azs" id="nYU-8v-gxS"/>
                         <outlet property="sendButtonWidthConstraint" destination="HeM-Kw-62S" id="kzl-wP-C2Z"/>
                     </connections>
                 </viewController>
@@ -1401,7 +1403,7 @@
                                     <constraint firstAttribute="height" constant="44" id="McY-Bw-afd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="SAVE">
+                                <state key="normal" title="CREATE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1480,6 +1482,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="C3h-KI-ppp" id="NiY-iM-MQ3"/>
                         <outlet property="bottomConstraint" destination="qpl-zB-syl" id="DqY-EU-4fS"/>
+                        <outlet property="saveButton" destination="JvH-rl-Jkn" id="kt6-yz-gvM"/>
                         <outlet property="userTableView" destination="obL-pr-eF8" id="fxc-lU-dam"/>
                         <outlet property="usernameText" destination="SGO-ZV-Mcm" id="qwH-C8-XdO"/>
                     </connections>

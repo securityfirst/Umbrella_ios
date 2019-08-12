@@ -28,6 +28,11 @@ class SyncManager {
     
     @objc func sync() {
         self.chatClientViewModel.sync(success: { (sync) in
+            
+            guard let sync = sync else {
+                return
+            }
+            
             self.syncObject = (sync as? Sync)!
             self.invite.removeAll()
             

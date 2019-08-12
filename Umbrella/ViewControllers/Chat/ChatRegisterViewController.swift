@@ -10,7 +10,7 @@ import UIKit
 import Localize_Swift
 
 class ChatRegisterViewController: UIViewController {
-
+    
     //
     // MARK: - Properties
     lazy var chatCredentialViewModel: ChatCredentialViewModel = {
@@ -170,7 +170,7 @@ class ChatRegisterViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
             controller.showLoading(view: self.view)
-
+            
             self.chatCredentialViewModel.createUser(username: self.usernameText.text!, password: self.passwordText.text!, email: self.emailText.text!, success: { (user) in
                 DispatchQueue.main.async {
                     controller.closeLoading()
@@ -178,8 +178,10 @@ class ChatRegisterViewController: UIViewController {
                 }
             }, failure: { (response, object, error) in
                 controller.closeLoading()
-                let matrixError = error as? MatrixError
-                UIApplication.shared.keyWindow!.makeToast(matrixError?.error.localized(), duration: 2.5, position: .center)
+                DispatchQueue.main.async {
+                    let matrixError = error as? MatrixError
+                    UIApplication.shared.keyWindow!.makeToast(matrixError?.error.localized(), duration: 2.5, position: .center)
+                }
             })
         }
     }

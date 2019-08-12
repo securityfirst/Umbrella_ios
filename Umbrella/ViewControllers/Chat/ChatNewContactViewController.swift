@@ -13,6 +13,7 @@ class ChatNewContactViewController: UIViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     lazy var chatGroupViewModel: ChatGroupViewModel = {
@@ -33,6 +34,25 @@ class ChatNewContactViewController: UIViewController {
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
+        self.checkInternet()
+    }
+    
+    func checkInternet() {
+        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
+        Reachability().monitorReachabilityChanges()
+    }
+    
+    @objc func networkStatusChanged(_ notification: Notification) {
+        let status = Reachability().connectionStatus()
+        switch status {
+        case .unknown, .offline:
+            self.saveButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            self.saveButton.isEnabled = false
+            UIApplication.shared.keyWindow!.makeToast("You have no internet connection.".localized(), duration: 3.0, position: .center)
+        case .online(.wwan), .online(.wiFi):
+            self.saveButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.7411764706, blue: 0.2039215686, alpha: 1)
+            self.saveButton.isEnabled = true
+        }
     }
     
     func validateForm() -> Bool {
@@ -56,7 +76,10 @@ class ChatNewContactViewController: UIViewController {
             self.activityIndicator.isHidden = (self.chatInviteUserViewModel.usersArray.count == 0)
             self.userTableView.reloadData()
         }, failure: { (response, object, error) in
-            self.userTableView.isHidden = true
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.userTableView.isHidden = true
+            }
             print(error ?? "")
         })
     }
@@ -168,7 +191,6 @@ extension ChatNewContactViewController: UITextFieldDelegate {
                 self.userTableView.isHidden = true
                 self.activityIndicator.isHidden = true
             }
-            
             
         }
         

@@ -164,7 +164,9 @@ class ChatSignInViewController: UIViewController {
                 }
             }, failure: { (response, object, error) in
                 controller.closeLoading()
-                UIApplication.shared.keyWindow!.makeToast("Username or password is invalid".localized(), duration: 2.5, position: .center)
+                DispatchQueue.main.async {
+                    UIApplication.shared.keyWindow!.makeToast("Username or password is invalid".localized(), duration: 2.5, position: .center)
+                }
                 print(error ?? "")
             })
         }

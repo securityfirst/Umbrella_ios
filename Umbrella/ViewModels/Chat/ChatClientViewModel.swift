@@ -13,11 +13,16 @@ class ChatClientViewModel {
     var service: UmbrellaMatrixClientService
     var sqlManager: SQLManager
     var sync: Sync?
-    var rooms: [PublicChunk] = [PublicChunk]()
+    var rooms: [Room] = [Room]()
     
     lazy var userMatrixDao: UserMatrixDao = {
         let userMatrixDao = UserMatrixDao(sqlProtocol: self.sqlManager)
         return userMatrixDao
+    }()
+    
+    lazy var roomDao: RoomDao = {
+        let roomDao = RoomDao(sqlProtocol: self.sqlManager)
+        return roomDao
     }()
     
     init() {
@@ -36,76 +41,88 @@ class ChatClientViewModel {
     // MARK: - Public Functions
     func sync(success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         
-        let user = getUserLogged()
-        
-        if let user = user {
-            service.sync(token: user.accessToken, success: { (object) in
-                self.sync = (object as? Sync)!
-                self.rooms.removeAll()
-                for dic in (self.sync?.rooms.join)! {
-                    
-                    let joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
-                    let memberEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.member" }
-                    let aliasEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.canonical_alias" }
-
-                    if aliasEvents.count > 0 {
-                        var nameAlias = ""
-                        for aliasEvent in aliasEvents {
-                            nameAlias = self.normalizeName(identifier: "#", text: aliasEvent.content.alias ?? "")
-                        }
+        let status = Reachability().connectionStatus()
+        if status.description == "Offline" {
+            self.rooms.removeAll()
+            self.rooms = self.roomDao.list()
+            self.rooms.sort(by: {$0.name < $1.name })
+            success(nil)
+        } else {
+            
+            let user = getUserLogged()
+            
+            if let user = user {
+                service.sync(token: user.accessToken, success: { (object) in
+                    self.sync = (object as? Sync)!
+                    self.rooms.removeAll()
+                    for dic in (self.sync?.rooms.join)! {
                         
-                        if nameAlias == "contact_room" {
-                            if memberEvents.count == 2 {
-                                var nameInvite = ""
-                                var nameJoin = ""
-                                for joinEvent in memberEvents {
-                                    
-                                    if joinEvent.content.membership == "invite" {
-                                        nameInvite = self.normalizeName(identifier: "@", text: joinEvent.sender)
-                                    } else if joinEvent.content.membership == "join" {
-                                        nameJoin = self.normalizeName(identifier: "@", text: joinEvent.sender)
-                                    }
-                                }
-                                
-                                var name = ""
-                                
-                                if user.username == nameInvite {
-                                    name = nameJoin
-                                } else {
-                                    name = nameInvite
-                                }
-                                
-                                let publicChunk = PublicChunk(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
-                                self.rooms.append(publicChunk)
+                        let joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
+                        let memberEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.member" }
+                        let aliasEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.canonical_alias" }
+                        
+                        if aliasEvents.count > 0 {
+                            var nameAlias = ""
+                            for aliasEvent in aliasEvents {
+                                nameAlias = self.normalizeName(identifier: "#", text: aliasEvent.content.alias ?? "")
                             }
+                            
+                            if nameAlias == "contact_room" {
+                                if memberEvents.count == 2 {
+                                    var nameInvite = ""
+                                    var nameJoin = ""
+                                    for joinEvent in memberEvents {
+                                        
+                                        if joinEvent.content.membership == "invite" {
+                                            nameInvite = self.normalizeName(identifier: "@", text: joinEvent.sender)
+                                        } else if joinEvent.content.membership == "join" {
+                                            nameJoin = self.normalizeName(identifier: "@", text: joinEvent.sender)
+                                        }
+                                    }
+                                    
+                                    var name = ""
+                                    
+                                    if user.username == nameInvite {
+                                        name = nameJoin
+                                    } else {
+                                        name = nameInvite
+                                    }
+                                    
+                                    let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
+                                    self.rooms.append(room)
+                                    _ = self.roomDao.insert(room)
+                                }
+                            } else {
+                                for joinEvent in joinEvents {
+                                    let room = Room(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
+                                    self.rooms.append(room)
+                                    _ = self.roomDao.insert(room)
+                                }
+                            }
+                            
                         } else {
                             for joinEvent in joinEvents {
-                                let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
-                                self.rooms.append(publicChunk)
+                                let room = Room(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
+                                self.rooms.append(room)
+                                _ = self.roomDao.insert(room)
                             }
                         }
-
-                    } else {
-                        for joinEvent in joinEvents {
-                            let publicChunk = PublicChunk(roomId: dic.key, name: joinEvent.content.name!, topic: "", canonicalAlias: "")
-                            self.rooms.append(publicChunk)
-                        }
+                        
                     }
                     
-                }
-                
-                self.rooms.sort(by: {$0.name < $1.name })
-                success(object as AnyObject)
-            }, failure: { (response, object, error) in
-                failure(response, object, error)
-            })
+                    self.rooms.sort(by: {$0.name < $1.name })
+                    success(object as AnyObject)
+                }, failure: { (response, object, error) in
+                    failure(response, object, error)
+                })
+            }
         }
     }
     
-    func removePublicRooms(publicRoomList: [PublicChunk]) {
+    func removePublicRooms(publicRoomList: [Room]) {
         
-        for publiChunk in publicRoomList {
-            for local in self.rooms where publiChunk.roomId == local.roomId {
+        for room in publicRoomList {
+            for local in self.rooms where room.roomId == local.roomId {
                 self.rooms.removeObject(obj: local)
                 break
             }

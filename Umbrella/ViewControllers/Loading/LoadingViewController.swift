@@ -76,7 +76,9 @@ class LoadingViewController: UIViewController {
     }
     
     func closeLoading() {
-        self.view.removeFromSuperview()
+        DispatchQueue.main.async {
+            self.view.removeFromSuperview()
+        }
     }
     
     /// Load the tent, do a clone, parse and add on database

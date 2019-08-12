@@ -17,10 +17,12 @@ class ChatMessageViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var sendButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
     
     var chatRequestNavigationController: UINavigationController!
     var timer: Timer?
-    var isScrollBottom: Bool = false
+    var isScrollBottom: Bool = true
     var isAllChat: Bool = false
     
     lazy var chatMessageViewModel: ChatMessageViewModel = {
@@ -38,22 +40,43 @@ class ChatMessageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateMessages), name: NSNotification.Name("UpdateMessages"), object: nil)
         
         // TODO: Remover after create the database
-        UserDefaults.standard.set(nil, forKey: self.chatMessageViewModel.room.roomId)
+        UserDefaults.standard.set(nil, forKey: self.chatMessageViewModel.room.roomId!)
         
         self.title = self.chatMessageViewModel.room.name
         self.loadMessages()
         
         self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)
+        
+        self.checkInternet()
         self.view.tag = 999
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParent {
-            UserDefaults.standard.set(nil, forKey: self.chatMessageViewModel.room.roomId)
+            UserDefaults.standard.set(nil, forKey: self.chatMessageViewModel.room.roomId!)
             self.timer?.invalidate()
             self.timer = nil
+        }
+    }
+    
+    func checkInternet() {
+        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: NSNotification.Name(rawValue: ReachabilityStatusChangedNotification), object: nil)
+        Reachability().monitorReachabilityChanges()
+    }
+    
+    @objc func networkStatusChanged(_ notification: Notification) {
+        let status = Reachability().connectionStatus()
+        switch status {
+        case .unknown, .offline:
+            self.plusButton.isEnabled = false
+            self.sendButton.isEnabled = false
+            UIApplication.shared.keyWindow!.makeToast("You have no internet connection.".localized(), duration: 3.0, position: .center)
+        case .online(.wwan), .online(.wiFi):
+            self.plusButton.isEnabled = true
+            self.sendButton.isEnabled = true
         }
     }
     
@@ -161,7 +184,7 @@ class ChatMessageViewController: UIViewController {
         presentationController.sourceRect = (sender as? UIView)!.bounds
         presentationController.permittedArrowDirections = [.down, .up]
         self.present(self.chatRequestNavigationController, animated: true)
-    
+        
     }
 }
 
@@ -224,42 +247,48 @@ extension ChatMessageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let item = self.chatMessageViewModel.messages[indexPath.section][indexPath.row]
-    
+        
         if let msgtype = item.content.msgtype {
             let type = RoomTypeMessage(rawValue: msgtype)
-
+            
             switch type {
             case .text?:
                 break
             case .file?:
-
-                if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                
+                let status = Reachability().connectionStatus()
+                if status.description == "Offline" {
                     
-                    let url = URL(string: item.content.url ?? "")!
-                    let uri = url.lastPathComponent
+                } else {
                     
-                    let filename = uri + (item.content.body ?? "")
-                    let fileURL = documentDirectory.appendingPathComponent(filename)
-                    
-                    if FileManager.default.fileExists(atPath: fileURL.path) {
-                        openFile(fileURL)
-                    } else {
+                    if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                         
-                        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                        let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
-                        controller.showLoading(view: self.view)
+                        let url = URL(string: item.content.url ?? "")!
+                        let uri = url.lastPathComponent
                         
-                        self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
-                            let fileURL = (response as? URL)!
-                            controller.closeLoading()
-                            self.openFile(fileURL)
-                        }, failure: { (response, object, error) in
-                            controller.closeLoading()
-                            print(error ?? "")
-                        })
+                        let filename = uri + (item.content.body ?? "")
+                        let fileURL = documentDirectory.appendingPathComponent(filename)
+                        
+                        if FileManager.default.fileExists(atPath: fileURL.path) {
+                            openFile(fileURL)
+                        } else {
+                            
+                            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                            controller.showLoading(view: self.view)
+                            
+                            self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
+                                let fileURL = (response as? URL)!
+                                controller.closeLoading()
+                                self.openFile(fileURL)
+                            }, failure: { (response, object, error) in
+                                controller.closeLoading()
+                                print(error ?? "")
+                            })
+                        }
                     }
                 }
-
+                
             default:
                 break
             }

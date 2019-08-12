@@ -8,34 +8,40 @@
 
 import Foundation
 
-struct PublicRoom: Codable {
-    let rooms: [PublicChunk]
+struct PublicRoom: Codable, TableProtocol {
+    var roomId: String?
+    let rooms: [Room]
     let totalRoomCountEstimate: Int
     
+    init() {
+        self.roomId = ""
+        self.rooms = []
+        self.totalRoomCountEstimate = 0
+    }
+    
+    init(roomId: String) {
+        self.roomId = roomId
+        self.rooms = []
+        self.totalRoomCountEstimate = 0
+    }
+    
     enum CodingKeys: String, CodingKey {
+        case roomId = "room_id"
         case rooms = "chunk"
         case totalRoomCountEstimate = "total_room_count_estimate"
     }
-}
-
-//Public room
-struct PublicChunk: Codable, Hashable {
-    
-    static func ==(lhs: PublicChunk, rhs: PublicChunk) -> Bool {
-        return lhs.roomId == rhs.roomId
-    }
-    
-    var roomId: String
-    var name: String
-    var topic: String
-    var canonicalAlias: String
     
     //
-    // MARK: - Codable
-    enum CodingKeys: String, CodingKey {
-        case roomId = "room_id"
-        case name = "name"
-        case topic = "topic"
-        case canonicalAlias = "canonical_alias"
+    // MARK: - TableProtocol
+    static var table: String = "public_room"
+    var tableName: String {
+        return PublicRoom.table
+    }
+    
+    func columns() -> [Column] {
+        let array = [
+            Column(name: "room_id", type: .primaryKey)
+        ]
+        return array
     }
 }

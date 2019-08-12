@@ -191,8 +191,11 @@ extension AccountViewController: UITableViewDelegate {
                     self.accountTableView.reloadData()
                 }, failure: { (response, object, error) in
                     controller.closeLoading()
-                    self.accountViewModel.loadItems()
-                    self.accountTableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.accountViewModel.loadItems()
+                        self.accountTableView.reloadData()
+                        UIApplication.shared.keyWindow!.makeToast("You have no internet connection.".localized(), duration: 3.0, position: .center)
+                    }
                 })
             })
             

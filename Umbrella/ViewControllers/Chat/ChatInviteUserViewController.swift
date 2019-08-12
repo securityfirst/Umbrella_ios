@@ -41,7 +41,7 @@ class ChatInviteUserViewController: UIViewController {
         tagsField.placeholder = "Username"
         tagsField.placeholderColor = .lightGray
         tagsField.placeholderAlwaysVisible = true
-        tagsField.returnKeyType = .next
+        tagsField.returnKeyType = .done
         tagsField.delimiter = ""
         tagsField.tintColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
         tagsField.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -75,7 +75,10 @@ class ChatInviteUserViewController: UIViewController {
             
             self.inviteTableView.reloadData()
         }, failure: { (response, object, error) in
-            self.inviteTableView.isHidden = true
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.inviteTableView.isHidden = true
+            }
             print(error ?? "")
         })
     }

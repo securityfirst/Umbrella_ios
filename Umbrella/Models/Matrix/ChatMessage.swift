@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SQLite
 
 struct ChatMessage: Codable {
-    let messages: [ChatMessageChunk]
+    let messages: [Message]
     let start, end: String
     
     enum CodingKeys: String, CodingKey {
@@ -18,8 +19,9 @@ struct ChatMessage: Codable {
     }
 }
 
-class ChatMessageChunk: Codable, NSCopying {
+class Message: Codable, NSCopying, Copying, TableProtocol, Equatable {
     
+    var eventId: String
     var type: String
     var roomId: String
     var originTime: Int
@@ -29,6 +31,7 @@ class ChatMessageChunk: Codable, NSCopying {
     var isUserLogged: Bool = false
     
     enum CodingKeys: String, CodingKey {
+        case eventId = "event_id"
         case type
         case roomId = "room_id"
         case content
@@ -40,6 +43,7 @@ class ChatMessageChunk: Codable, NSCopying {
     //
     // MARK: - Initializers
     init() {
+        self.eventId = ""
         self.type = ""
         self.roomId = ""
         self.originTime = 0
@@ -49,8 +53,25 @@ class ChatMessageChunk: Codable, NSCopying {
         self.isUserLogged = false
     }
     
+    init(eventId: String, roomId: String, userId: String, type: String = "", originTime: Int, content: Content) {
+        self.eventId = eventId
+        self.type = type
+        self.roomId = roomId
+        self.originTime = originTime
+        self.content = content
+        self.age = 0
+        self.userId = userId
+        self.isUserLogged = false
+    }
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.eventId) {
+            self.eventId = try container.decode(String.self, forKey: .eventId)
+        } else {
+            self.eventId = ""
+        }
         
         if container.contains(.age) {
             self.age = try container.decode(Int.self, forKey: .age)
@@ -90,18 +111,7 @@ class ChatMessageChunk: Codable, NSCopying {
     }
     
     //
-    // MARK: - NSCopying
-    func copy(with zone: NSZone? = nil) -> Any {
-        let copy = ChatMessageChunk()
-        copy.type = self.type
-        copy.roomId = self.roomId
-        copy.originTime = self.originTime
-        copy.content = self.content
-        copy.age = self.age
-        copy.userId = self.userId
-        copy.isUserLogged = self.isUserLogged
-        return copy
-    }
+    // MARK: - Methods
     
     func millisecondsToDate() -> Date {
         let date = Date(timeIntervalSince1970: Double(originTime) / 1000)
@@ -145,6 +155,62 @@ class ChatMessageChunk: Codable, NSCopying {
             return ""
         }
     }
+    
+    //
+    // MARK: - NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Message()
+        copy.eventId = self.eventId
+        copy.type = self.type
+        copy.roomId = self.roomId
+        copy.originTime = self.originTime
+        copy.content = self.content
+        copy.age = self.age
+        copy.userId = self.userId
+        copy.isUserLogged = self.isUserLogged
+        return copy
+    }
+    
+    //
+    // MARK: - Copying
+    required init(original: Message) {
+        eventId = original.eventId
+        type = original.type
+        roomId = original.roomId
+        originTime = original.originTime
+        content = original.content
+        age = original.age
+        userId = original.userId
+        isUserLogged = original.isUserLogged
+    }
+    
+    //
+    // MARK: - Equatable
+    static func == (lhs: Message, rhs: Message) -> Bool {
+        return lhs.eventId == rhs.eventId
+    }
+    
+    //
+    // MARK: - TableProtocol
+    static var table: String = "message"
+    var tableName: String {
+        return Message.table
+    }
+    
+    func columns() -> [Column] {
+        let array = [
+            Column(name: "event_id", type: .primaryKey),
+            Column(name: "room_id", type: .string),
+            Column(name: "user_id", type: .string),
+            Column(name: "type", type: .string),
+            Column(name: "text", type: .string),
+            Column(name: "url", type: .string),
+            Column(name: "timestamp", type: .int),
+            Column(foreignKey: ForeignKey(key: "room_id", table: Table("room"), tableKey: "room_id"))
+        ]
+        return array
+    }
+
 }
 
 // MARK: - Content
@@ -175,6 +241,18 @@ class Content: Codable, NSCopying {
         self.name = ""
         self.alias = ""
         self.url = ""
+    }
+    
+    init(text: String, type: String, url: String) {
+        self.membership = ""
+        self.msgtype = type
+        self.body = text
+        self.aliases = []
+        self.displayname = ""
+        self.topic = ""
+        self.name = ""
+        self.alias = ""
+        self.url = url
     }
     
     required init(from decoder: Decoder) throws {
