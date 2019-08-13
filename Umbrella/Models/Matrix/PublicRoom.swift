@@ -40,7 +40,7 @@ struct PublicRoom: Codable, TableProtocol {
     
     func columns() -> [Column] {
         let array = [
-            Column(name: "room_id", type: .primaryKey)
+            Column(name: "room_id", type: .primaryStringKey)
         ]
         return array
     }

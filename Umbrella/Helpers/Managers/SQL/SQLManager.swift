@@ -156,17 +156,25 @@ class SQLManager: SQLProtocol {
                     case .primaryKey?:
                         let exp = Expression<Int64>(column.name!)
                         tableColumn.column(exp, primaryKey: .autoincrement)
+                    case .primaryStringKey?:
+                        let exp = Expression<String>(column.name!)
+                        tableColumn.column(exp, primaryKey: true)
                     case .foreignKey?:
                         let foreignKey = Expression<Int64>((column.foreignKey?.key)!)
                         tableColumn.column(foreignKey)
                         let key = Expression<Int64>((column.foreignKey?.tableKey)!)
+                        tableColumn.foreignKey(foreignKey, references: (column.foreignKey?.table)!, key, delete: .setNull)
+                    case .foreignStringKey?:
+                        let foreignKey = Expression<String>((column.foreignKey?.key)!)
+                        tableColumn.column(foreignKey)
+                        let key = Expression<String>((column.foreignKey?.tableKey)!)
                         tableColumn.foreignKey(foreignKey, references: (column.foreignKey?.table)!, key, delete: .setNull)
                     default:
                         break
                     }
                 }
             }
-            //            print(tableSQL.asSQL())
+//            print(tableSQL.asSQL())
             try db?.run(tableSQL)
             
             return true
@@ -206,7 +214,7 @@ class SQLManager: SQLProtocol {
             try db?.prepare(query).run()
             return (db?.lastInsertRowid)!
         } catch {
-            print(query)
+//            print(query)
             print(error)
             return -1
         }

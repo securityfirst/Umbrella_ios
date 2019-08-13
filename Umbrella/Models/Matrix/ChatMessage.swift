@@ -199,14 +199,13 @@ class Message: Codable, NSCopying, Copying, TableProtocol, Equatable {
     
     func columns() -> [Column] {
         let array = [
-            Column(name: "event_id", type: .primaryKey),
-            Column(name: "room_id", type: .string),
+            Column(name: "event_id", type: .primaryStringKey),
             Column(name: "user_id", type: .string),
             Column(name: "type", type: .string),
             Column(name: "text", type: .string),
             Column(name: "url", type: .string),
             Column(name: "timestamp", type: .int),
-            Column(foreignKey: ForeignKey(key: "room_id", table: Table("room"), tableKey: "room_id"))
+            Column(foreignStringKey: ForeignKey(key: "room_id", table: Table("room"), tableKey: "room_id"))
         ]
         return array
     }

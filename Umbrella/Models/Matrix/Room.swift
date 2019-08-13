@@ -62,11 +62,8 @@ struct Room: Codable, Hashable, TableProtocol {
     
     func columns() -> [Column] {
         let array = [
-            Column(name: "room_id", type: .primaryKey),
-            Column(name: "preset", type: .string),
-            Column(name: "room_alias_name", type: .string),
+            Column(name: "room_id", type: .primaryStringKey),
             Column(name: "name", type: .string),
-            Column(name: "visibility", type: .string),
             Column(name: "topic", type: .string),
             Column(name: "canonical_alias", type: .string)
         ]

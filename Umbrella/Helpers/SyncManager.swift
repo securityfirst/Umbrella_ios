@@ -22,8 +22,21 @@ class SyncManager {
     var invite: [[String: Invite]] = [[String: Invite]]()
     
     init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.startSync), name: Notification.Name("UmbrellaTent"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.stopSync), name: Notification.Name("ResetRepository"), object: nil)
+        
+    }
+    
+    @objc func startSync() {
+        self.stopSync()
         self.timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sync), userInfo: nil, repeats: true)
         sync()
+    }
+    
+    @objc func stopSync() {
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
     @objc func sync() {

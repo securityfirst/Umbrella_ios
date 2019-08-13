@@ -446,7 +446,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="Y5m-I2-p4k" id="Dmc-rd-4H9"/>
                                 </connections>
@@ -506,7 +506,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1Wz-Rf-MPO" firstAttribute="top" secondItem="vD1-wM-66O" secondAttribute="bottom" constant="18" id="16U-MJ-MKq"/>
                             <constraint firstItem="uOh-N9-IVa" firstAttribute="leading" secondItem="aCH-3I-MUL" secondAttribute="leading" constant="20" id="1DL-DV-cIi"/>
                             <constraint firstItem="uOh-N9-IVa" firstAttribute="top" secondItem="HOh-OD-9JQ" secondAttribute="bottom" constant="21" id="4F6-Od-Lk9"/>
                             <constraint firstItem="gNp-Ro-bvI" firstAttribute="height" secondItem="uOh-N9-IVa" secondAttribute="height" id="4tL-0o-mh6"/>
@@ -526,6 +525,7 @@
                             <constraint firstItem="HOh-OD-9JQ" firstAttribute="top" secondItem="aCH-3I-MUL" secondAttribute="top" constant="20" id="rK2-Sv-872"/>
                             <constraint firstItem="1Wz-Rf-MPO" firstAttribute="leading" secondItem="aCH-3I-MUL" secondAttribute="leading" constant="20" id="x1O-jy-Ap7"/>
                             <constraint firstItem="aCH-3I-MUL" firstAttribute="trailing" secondItem="uOh-N9-IVa" secondAttribute="trailing" constant="20" id="xF8-Tm-LdA"/>
+                            <constraint firstItem="aCH-3I-MUL" firstAttribute="bottom" secondItem="1Wz-Rf-MPO" secondAttribute="bottom" constant="252" id="xzp-Bs-LW1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aCH-3I-MUL"/>
                     </view>
@@ -537,6 +537,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomConstraint" destination="xzp-Bs-LW1" id="TEy-mo-DU8"/>
                         <outlet property="createButton" destination="1Wz-Rf-MPO" id="Lsj-EU-qwd"/>
                         <outlet property="inviteUserLabel" destination="wZE-3h-Z8O" id="tGY-E5-IGx"/>
                         <outlet property="nameText" destination="HOh-OD-9JQ" id="OCa-b1-j0E"/>

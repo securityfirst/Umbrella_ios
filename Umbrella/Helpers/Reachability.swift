@@ -6,10 +6,8 @@
 //  Copyright © 2019 Security First. All rights reserved.
 //
 
-
 import Foundation
 import SystemConfiguration
-
 
 let ReachabilityStatusChangedNotification = "ReachabilityStatusChangedNotification"
 
@@ -61,7 +59,6 @@ public class Reachability {
         
         return ReachabilityStatus(reachabilityFlags: flags)
     }
-    
     
     func monitorReachabilityChanges() {
         let host = "google.com"

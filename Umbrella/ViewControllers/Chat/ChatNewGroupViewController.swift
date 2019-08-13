@@ -15,6 +15,7 @@ class ChatNewGroupViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var inviteUserLabel: UILabel!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     lazy var chatGroupViewModel: ChatGroupViewModel = {
         let chatGroupViewModel = ChatGroupViewModel()
         return chatGroupViewModel
@@ -24,6 +25,11 @@ class ChatNewGroupViewController: UIViewController {
         super.viewDidLoad()
         self.nameText.becomeFirstResponder()
         self.checkInternet()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
     }
     
     func checkInternet() {
@@ -41,6 +47,36 @@ class ChatNewGroupViewController: UIViewController {
         case .online(.wwan), .online(.wiFi):
             self.createButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.7411764706, blue: 0.2039215686, alpha: 1)
             self.createButton.isEnabled = true
+        }
+    }
+    
+    ///
+    /// - Parameter notification: NSNotification
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame?.origin.y ?? 0
+            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                self.bottomConstraint?.constant = 0.0
+            } else {
+                // 812 on iPhone X, XS
+                // 896 on iPhone XS Max or XR
+                if UIScreen.main.bounds.height >= 812 {
+                    self.bottomConstraint?.constant = (endFrame?.size.height)! - 30
+                } else {
+                    self.bottomConstraint?.constant = (endFrame?.size.height)! + 5
+                }
+            }
+            
+            UIView.animate(withDuration: duration,
+                           delay: 0,
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
         }
     }
     

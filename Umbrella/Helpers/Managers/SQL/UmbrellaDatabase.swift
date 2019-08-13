@@ -34,6 +34,11 @@ struct UmbrellaDatabase {
     
     let pathwayChecklistCheckedDao: PathwayChecklistCheckedDao
     
+    let userMatrixDao: UserMatrixDao
+    let roomDao: RoomDao
+    let publicRoomDao: PublicRoomDao
+    let messageDao: MessageDao
+    
     static var languagesStatic: [Language] = [Language]()
     static var umbrellaStatic: Umbrella = Umbrella()
     static var loadedContent: Bool = false
@@ -73,6 +78,11 @@ struct UmbrellaDatabase {
         self.customCheckItemDao = CustomCheckItemDao(sqlProtocol: self.sqlProtocol)
         self.customChecklistCheckedDao = CustomChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
         self.pathwayChecklistCheckedDao = PathwayChecklistCheckedDao(sqlProtocol: self.sqlProtocol)
+        
+        self.userMatrixDao = UserMatrixDao(sqlProtocol: self.sqlProtocol)
+        self.roomDao = RoomDao(sqlProtocol: self.sqlProtocol)
+        self.publicRoomDao = PublicRoomDao(sqlProtocol: self.sqlProtocol)
+        self.messageDao = MessageDao(sqlProtocol: self.sqlProtocol)
     }
     
     //
@@ -99,6 +109,11 @@ struct UmbrellaDatabase {
         let customChecklistCheckedSuccess = self.customChecklistCheckedDao.createTable()
         let pathwayChecklistCheckedSuccess = self.pathwayChecklistCheckedDao.createTable()
         
+        _ = self.userMatrixDao.createTable()
+        _ = self.roomDao.createTable()
+        _ = self.publicRoomDao.createTable()
+        _ = self.messageDao.createTable()
+        
         if languageSuccess && categorySuccess && segmentSuccess && checkListSuccess && checkItemSuccess && formSuccess && screenSuccess && itemFormSuccess && optionItemSuccess && formAnswerSuccess && difficultyRuleSuccess && rssItemSuccess && checklistCheckedSuccess && favouriteSegmentSuccess && customChecklistSuccess && customCheckItemSuccess && customChecklistCheckedSuccess && pathwayChecklistCheckedSuccess {
             return true
         } else {
@@ -110,6 +125,12 @@ struct UmbrellaDatabase {
     ///
     /// - Returns: Bool
     func dropTables() -> Bool {
+        
+        _ = self.messageDao.dropTable()
+        _ = self.publicRoomDao.dropTable()
+        _ = self.roomDao.dropTable()
+        _ = self.userMatrixDao.dropTable()
+        
         let pathwayChecklistCheckedSuccess = self.pathwayChecklistCheckedDao.dropTable()
         let customChecklistCheckedSuccess = self.customChecklistCheckedDao.dropTable()
         let customCheckItemSuccess = self.customCheckItemDao.dropTable()

@@ -14,7 +14,9 @@ enum ColumnType {
     case int
     case real
     case primaryKey
+    case primaryStringKey
     case foreignKey
+    case foreignStringKey
 }
 
 struct Column {
@@ -45,5 +47,10 @@ struct Column {
     init(foreignKey: ForeignKey) {
         self.type = .foreignKey
         self.foreignKey = foreignKey
+    }
+    
+    init(foreignStringKey: ForeignKey) {
+        self.type = .foreignStringKey
+        self.foreignKey = foreignStringKey
     }
 }
