@@ -27,7 +27,7 @@ class ChatGroupExtendedCell: UICollectionViewCell {
         let item = viewModel.rooms[indexPath.row]
         
         self.firstLetterLabel.text = item.name.first?.uppercased()
-        self.usernameLabel.text = item.name
+        self.usernameLabel.text = item.name.capitalized
         self.ovalView.backgroundColor = Lessons.colors[indexPath.row % Lessons.colors.count]
     }
 }

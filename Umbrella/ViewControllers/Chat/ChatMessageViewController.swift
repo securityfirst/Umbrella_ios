@@ -42,7 +42,7 @@ class ChatMessageViewController: UIViewController {
         // TODO: Remover after create the database
         UserDefaults.standard.set(nil, forKey: self.chatMessageViewModel.room.roomId!)
         
-        self.title = self.chatMessageViewModel.room.name
+        self.title = self.chatMessageViewModel.room.name.capitalized
         self.loadMessages()
         
         self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(loadMessages), userInfo: nil, repeats: true)

@@ -82,7 +82,7 @@
 
 // Lessons
 "Favourites" = "Favoritos";
-"You do not have any Segment yet." = "Aún no tiene ningún Segmento.";
+"You do not have any Segment yet." = "No tienes lecciones marcadas.";
 "Beginner" = "Principiante";
 "Advanced" = "Avanzado";
 "Expert" = "Experto";
@@ -175,7 +175,7 @@
 "Enter username and password." = "Introduzca su nombre de usuario y contraseña.";
 "User ID already taken." = "Identificación de usuario ya tomada.";
 "Are you sure you want to log out of your Matrix account?" = "¿Está seguro de que desea cerrar sesión en su cuenta de Matrix?";
-"Chat log out" = "Sesión de chat";
+"Chat log out" = "Salir del chat";
 "Not sure of your password?" = "¿No está seguro de su contraseña?";
 "Set a new one" = "Establecer uno nuevo";
 "Email is invalid." = "El correo electrónico es invalido.";

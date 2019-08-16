@@ -44,25 +44,68 @@ struct JoinEvent: Codable {
     let type: String
     let sender: String
     let eventID: String
+    let stateKey: String
     let originServerTs: Int
     let content: JoinEventContent
     
     enum CodingKeys: String, CodingKey {
         case type
         case sender
+        case stateKey = "state_key"
         case eventID = "event_id"
         case originServerTs = "origin_server_ts"
         case content
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if container.contains(.type) {
+            self.type = try container.decode(String.self, forKey: .type)
+        } else {
+            self.type = ""
+        }
+        
+        if container.contains(.sender) {
+            self.sender = try container.decode(String.self, forKey: .sender)
+        } else {
+            self.sender = ""
+        }
+        
+        if container.contains(.stateKey) {
+            self.stateKey = try container.decode(String.self, forKey: .stateKey)
+        } else {
+            self.stateKey = ""
+        }
+        
+        if container.contains(.eventID) {
+            self.eventID = try container.decode(String.self, forKey: .eventID)
+        } else {
+            self.eventID = ""
+        }
+        
+        if container.contains(.originServerTs) {
+            self.originServerTs = try container.decode(Int.self, forKey: .originServerTs)
+        } else {
+            self.originServerTs = 0
+        }
+        
+        if container.contains(.content) {
+            self.content = try container.decode(JoinEventContent.self, forKey: .content)
+        } else {
+            self.content = JoinEventContent(joinRule: "", name: "", membership: "", displayname: "", aliases: [])
+        }
     }
 }
 
 // MARK: - TentacledContent
 struct JoinEventContent: Codable {
-    let alias, joinRule, name, membership: String?
+    let joinRule, name, membership: String?
     let displayname: String?
+    let aliases: [String]?
     
     enum CodingKeys: String, CodingKey {
-        case alias
+        case aliases
         case joinRule = "join_rule"
         case name, membership, displayname
     }

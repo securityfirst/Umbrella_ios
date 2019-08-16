@@ -47,6 +47,8 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(removeCredentialScreen), name: NSNotification.Name("RemoveCredentialScreen"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(logoutChat), name: NSNotification.Name("LogoutChat"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,6 +144,12 @@ class ChatViewController: UIViewController {
             chatNewContactViewController.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
             self.present(navigationController, animated: true, completion: nil)
         }
+    }
+    
+    @objc func logoutChat() {
+        self.chatGroupViewModel.rooms.removeAll()
+        self.chatClientViewModel.rooms.removeAll()
+        self.chatGroupCollectionView.reloadData()
     }
     
     @objc func updateLanguage() {

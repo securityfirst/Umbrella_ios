@@ -82,7 +82,7 @@
 
 // Lessons
 "Favourites" = "Favourites";
-"You do not have any Segment yet." = "You do not have any Segment yet.";
+"You do not have any Segment yet." = "You have no bookmarked lessons.";
 "Beginner" = "Beginner";
 "Advanced" = "Advanced";
 "Expert" = "Expert";
@@ -175,7 +175,7 @@
 "Enter username and password." = "Enter username and password.";
 "User ID already taken." = "User ID already taken.";
 "Are you sure you want to log out of your Matrix account?" = "Are you sure you want to log out of your Matrix account?";
-"Chat log out" = "Chat log out";
+"Chat log out" = "Sign out of chat";
 "Not sure of your password?" = "Not sure of your password?";
 "Set a new one" = "Set a new one";
 "Email is invalid." = "Email is invalid.";

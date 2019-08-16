@@ -186,7 +186,10 @@ extension AccountViewController: UITableViewDelegate {
                 controller.showLoading(view: self.view)
                 self.chatCredentialViewModel.logout(success: { (success) in
                     controller.closeLoading()
+                    
                     NotificationCenter.default.post(name: Notification.Name("ClearNotification"), object: nil)
+                    NotificationCenter.default.post(name: Notification.Name("LogoutChat"), object: nil)
+                    
                     self.accountViewModel.loadItems()
                     self.accountTableView.reloadData()
                 }, failure: { (response, object, error) in

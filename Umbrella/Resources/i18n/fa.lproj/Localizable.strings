@@ -82,7 +82,7 @@
 
 // Lessons
 "Favourites" = "مورد علاقه های شما";
-"You do not have any Segment yet." = "شما هنوز هیچ بخشی ندارید";
+"You do not have any Segment yet." = "شما هیچ مورد نشانک ندارید.";
 "Beginner" = "مبتدی";
 "Advanced" = "پیشرفته";
 "Expert" = "کارشناس";

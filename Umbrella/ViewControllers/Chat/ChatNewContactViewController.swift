@@ -124,7 +124,7 @@ class ChatNewContactViewController: UIViewController {
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
             controller.showLoading(view: self.view)
             
-            let room = Room(preset: "private_chat", roomAliasName: "contact_room", name: self.usernameText.text!, topic: self.usernameText.text!, visibility: "private", invite: ["@\(self.usernameText.text!):comms.secfirst.org"])
+            let room = Room(preset: "private_chat", roomAliasName: "contact_room-\(self.usernameText.text!.lowercased().replacingOccurrences(of: " ", with: ""))", name: self.usernameText.text!, topic: self.usernameText.text!, visibility: "private", invite: ["@\(self.usernameText.text!):comms.secfirst.org"])
             
             self.chatGroupViewModel.createRoom(room: room, success: { (publicRoom) in
                 controller.closeLoading()

@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 enum Config {
-        static let gitBaseURL: URL = URL(string: "https://github.com/securityfirst/umbrella-content")!
-//    static var gitBaseURL: URL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
-//    static var gitBaseURL: URL = URL(string: "https://github.com/lucascorrea/umbrella-content")!
+    static let gitBaseURL: URL = URL(string: "https://github.com/securityfirst/umbrella-content")!
+    //    static var gitBaseURL: URL = URL(string: "https://github.com/klaidliadon/umbrella-content")!
+    //    static var gitBaseURL: URL = URL(string: "https://github.com/lucascorrea/umbrella-content")!
     
     //Test the GitManager
     static var debug: Bool = false
@@ -42,7 +42,7 @@ enum Lessons {
 enum Sources {
     static let list = [
         (name: "ReliefWeb / United Nations", code: 0),
-//        (name: "United Nations", code: 1),
+        //        (name: "United Nations", code: 1),
         (name: "UK Foreign Office Country Warnings", code: 2),
         (name: "Centres for Disease Control (CDC)", code: 3),
         (name: "Global Disaster and Alert Coordination System", code: 4),

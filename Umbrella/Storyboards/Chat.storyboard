@@ -451,7 +451,7 @@
                                     <outlet property="delegate" destination="Y5m-I2-p4k" id="Dmc-rd-4H9"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uOh-N9-IVa">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Public or private group?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uOh-N9-IVa">
                                 <rect key="frame" x="20" y="149" width="280" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dc1-4t-PeD"/>
@@ -488,7 +488,7 @@
                                     <action selector="createAction:" destination="Y5m-I2-p4k" eventType="touchUpInside" id="dLU-ht-5tu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optional Invite users" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="wZE-3h-Z8O">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite additional members" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="wZE-3h-Z8O">
                                 <rect key="frame" x="20" y="211" width="280" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="KAe-dc-v8B"/>

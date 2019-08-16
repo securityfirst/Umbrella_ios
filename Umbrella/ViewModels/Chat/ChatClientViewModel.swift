@@ -58,26 +58,23 @@ class ChatClientViewModel {
                     for dic in (self.sync?.rooms.join)! {
                         
                         let joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
+                        
                         let memberEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.member" }
-                        let aliasEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.canonical_alias" }
+                        let aliasEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.aliases" }
                         
                         if aliasEvents.count > 0 {
                             var nameAlias = ""
                             for aliasEvent in aliasEvents {
-                                nameAlias = self.normalizeName(identifier: "#", text: aliasEvent.content.alias ?? "")
+                                nameAlias = self.normalizeName(identifier: "#", text: aliasEvent.content.aliases?.first ?? "")
                             }
                             
-                            if nameAlias == "contact_room" {
+                            if nameAlias.contains("contact_room") {
                                 if memberEvents.count == 2 {
                                     var nameInvite = ""
                                     var nameJoin = ""
-                                    for joinEvent in memberEvents {
-                                        
-                                        if joinEvent.content.membership == "invite" {
-                                            nameInvite = self.normalizeName(identifier: "@", text: joinEvent.sender)
-                                        } else if joinEvent.content.membership == "join" {
-                                            nameJoin = self.normalizeName(identifier: "@", text: joinEvent.sender)
-                                        }
+                                    for joinEvent in memberEvents where joinEvent.content.membership == "invite" {
+                                        nameInvite = self.normalizeName(identifier: "@", text: joinEvent.sender)
+                                        nameJoin = self.normalizeName(identifier: "@", text: joinEvent.stateKey)
                                     }
                                     
                                     var name = ""
@@ -87,6 +84,10 @@ class ChatClientViewModel {
                                     } else {
                                         name = nameInvite
                                     }
+                                    
+                                    print("UserLogged: \(user.username)")
+                                    print("Invite: \(nameInvite) Join: \(nameJoin)")
+                                    print("Name Room is \(name)")
                                     
                                     let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
                                     self.rooms.append(room)
