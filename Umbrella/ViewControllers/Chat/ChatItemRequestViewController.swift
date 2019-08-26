@@ -77,6 +77,78 @@ class ChatItemRequestViewController: UIViewController {
         }
     }
     
+    fileprivate func exportFormJSON() -> (url: URL, filename: String) {
+        do {
+            var formAnswer = FormAnswer()
+            var form = Form()
+            var formAnswers: [FormAnswer] = [FormAnswer]()
+            
+            let indexPath = self.itemSelected.first!
+            
+            if indexPath.section == 0 {
+                form = self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
+            } else if indexPath.section == 1 {
+                formAnswer = self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+                
+                for formResult in self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == formResult.id {
+                    form = formResult
+                }
+                
+                formAnswers = self.chatItemRequestViewModel.loadFormAnswersTo(formAnswerId: formAnswer.formAnswerId, formId: form.id)
+            }
+            
+            for screen in form.screens {
+                
+                for item in screen.items {
+                    
+                    switch item.formType {
+                        
+                    case .textInput:
+                        for formAnswer in formAnswers where formAnswer.itemFormId == item.id {
+                            item.answer = formAnswer.text
+                        }
+                    case .textArea:
+                        for formAnswer in formAnswers where formAnswer.itemFormId == item.id {
+                            item.answer = formAnswer.text
+                        }
+                    case .multiChoice:
+                        for optionItem in item.options {
+                            for formAnswer in formAnswers where formAnswer.itemFormId == item.id && formAnswer.optionItemId == optionItem.id {
+                                optionItem.answer = 1
+                            }
+                        }
+                    case .singleChoice:
+                        for optionItem in item.options {
+                            for formAnswer in formAnswers where formAnswer.itemFormId == item.id && formAnswer.optionItemId == optionItem.id {
+                                optionItem.answer = 1
+                            }
+                        }
+                    case .label:
+                        break
+                    case .none:
+                        break
+                    }
+                }
+            }
+            
+            let data = try JSONEncoder().encode(form)
+            let jsonString = String(data: data, encoding: String.Encoding.utf16)!
+            
+            if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let fileURL = documentDirectory.appendingPathComponent(form.name)
+                
+                try jsonString.write(to: fileURL, atomically: true, encoding: .utf16)
+                
+                return (url: fileURL, filename: form.name)
+            }
+        
+        } catch {
+            print(error)
+        }
+        
+        return (url: URL(string: "")!, filename: "")
+    }
+    
     @IBAction func sendAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         
@@ -84,22 +156,24 @@ class ChatItemRequestViewController: UIViewController {
         case .forms:
             if itemSelected.count > 0 {
                 
-                let shareItem = self.prepareHtml(indexPath: self.itemSelected.first!)
-                let filename = shareItem.nameFile + ".pdf"
-                let pdf = PDF(nameFile: filename, content: shareItem.content)
-                let export = Export(pdf)
-                let url = export.makeExport()
+                let json = exportFormJSON()
                 
+//                let shareItem = self.prepareHtml(indexPath: self.itemSelected.first!)
+//                let filename = shareItem.nameFile + ".pdf"
+//                let pdf = PDF(nameFile: filename, content: shareItem.content)
+//                let export = Export(pdf)
+//                let url = export.makeExport()
+//
                 DispatchQueue.global(qos: .background).async {
-                    self.chatItemRequestViewModel.uploadFile(filename: filename, fileURL: url, success: { (response) in
-                        
+                    self.chatItemRequestViewModel.uploadFile(filename: json.filename, fileURL: json.url, success: { (response) in
+
                         guard let url = response as? String else {
                             print("Error cast response to String")
                             return
                         }
-                        
+
                         self.chatMessageViewModel.sendMessage(messageType: .file,
-                                                              message: filename,
+                                                              message: json.filename,
                                                               url: url,
                                                               success: { _ in
                                                                 NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)

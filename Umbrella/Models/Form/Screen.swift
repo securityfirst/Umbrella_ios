@@ -47,30 +47,16 @@ class Screen: Codable, TableProtocol {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.formId) {
-            self.formId = try container.decode(Int.self, forKey: .formId)
-        } else {
-            self.formId = -1
-        }
-        
-        if container.contains(.name) {
-            self.name = try container.decode(String.self, forKey: .name)
-        } else {
-            self.name = ""
-        }
-        
-        if container.contains(.items) {
-            self.items = try container.decode([ItemForm].self, forKey: .items)
-        } else {
-            self.items = []
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.formId = try container.decodeIfPresent(Int.self, forKey: .formId) ?? -1
+        self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
+        self.items = try container.decodeIfPresent([ItemForm].self, forKey: .items) ?? []
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(items, forKey: .items)
     }
     
     //

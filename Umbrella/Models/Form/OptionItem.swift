@@ -19,6 +19,7 @@ class OptionItem: Codable, TableProtocol {
     // MARK: - Properties
     let label: String
     let value: String
+    var answer: Int
     
     //
     // MARK: - Initializers
@@ -27,6 +28,7 @@ class OptionItem: Codable, TableProtocol {
         self.itemFormId = -1
         self.label = ""
         self.value = ""
+        self.answer = 0
     }
     
     init(label: String, value: String) {
@@ -34,6 +36,7 @@ class OptionItem: Codable, TableProtocol {
         self.itemFormId = -1
         self.label = label
         self.value = value
+        self.answer = 0
     }
     
     //
@@ -43,34 +46,23 @@ class OptionItem: Codable, TableProtocol {
         case itemFormId = "item_form_id"
         case label
         case value
+        case answer
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.itemFormId) {
-            self.itemFormId = try container.decode(Int.self, forKey: .itemFormId)
-        } else {
-            self.itemFormId = -1
-        }
-        
-        if container.contains(.label) {
-            self.label = try container.decode(String.self, forKey: .label)
-        } else {
-            self.label = ""
-        }
-        
-        if container.contains(.value) {
-            self.value = try container.decode(String.self, forKey: .value)
-        } else {
-            self.value = ""
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.itemFormId = try container.decodeIfPresent(Int.self, forKey: .itemFormId) ?? -1
+        self.label = try container.decodeIfPresent(String.self, forKey: .label) ?? ""
+        self.value = try container.decodeIfPresent(String.self, forKey: .value) ?? ""
+        self.answer = try container.decodeIfPresent(Int.self, forKey: .answer) ?? 0
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(value, forKey: .value)
+        try container.encode(label, forKey: .label)
+        try container.encode(answer, forKey: .answer)
     }
     
     //

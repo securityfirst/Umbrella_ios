@@ -67,54 +67,14 @@ class FormAnswer: Codable, TableProtocol, Equatable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.formAnswerId) {
-            self.formAnswerId = try container.decode(Int.self, forKey: .formAnswerId)
-        } else {
-            self.formAnswerId = -1
-        }
-        
-        if container.contains(.formId) {
-            self.formId = try container.decode(Int.self, forKey: .formId)
-        } else {
-            self.formId = -1
-        }
-        
-        if container.contains(.itemFormId) {
-            self.itemFormId = try container.decode(Int.self, forKey: .itemFormId)
-        } else {
-            self.itemFormId = -1
-        }
-        
-        if container.contains(.optionItemId) {
-            self.optionItemId = try container.decode(Int.self, forKey: .optionItemId)
-        } else {
-            self.optionItemId = -1
-        }
-        
-        if container.contains(.text) {
-            self.text = try container.decode(String.self, forKey: .text)
-        } else {
-            self.text = ""
-        }
-        
-        if container.contains(.choice) {
-            self.choice = try container.decode(Int.self, forKey: .choice)
-        } else {
-            self.choice = -1
-        }
-        
-        if container.contains(.createdAt) {
-            self.createdAt = try container.decode(String.self, forKey: .createdAt)
-        } else {
-            self.createdAt = ""
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.formAnswerId = try container.decodeIfPresent(Int.self, forKey: .formAnswerId) ?? -1
+        self.formId = try container.decodeIfPresent(Int.self, forKey: .formId) ?? -1
+        self.itemFormId = try container.decodeIfPresent(Int.self, forKey: .itemFormId) ?? -1
+        self.optionItemId = try container.decodeIfPresent(Int.self, forKey: .optionItemId) ?? -1
+        self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
+        self.choice = try container.decodeIfPresent(Int.self, forKey: .choice) ?? -1
+        self.createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt) ?? ""
     }
     
     //

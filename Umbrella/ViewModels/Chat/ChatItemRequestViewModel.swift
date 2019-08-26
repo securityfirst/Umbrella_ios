@@ -28,6 +28,7 @@ class ChatItemRequestViewModel {
     init() {
         self.sqlManager = SQLManager(databaseName: Database.name, password: Database.password)
         self.service = MediaService(client: UmbrellaClient())
+        self.umbrella.formAnswers = formAnswerDao.listFormActive()
     }
     
     /// Load the formAnswers

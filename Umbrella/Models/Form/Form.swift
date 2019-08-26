@@ -53,42 +53,18 @@ class Form: Codable, TableProtocol {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.languageId) {
-            self.languageId = try container.decode(Int.self, forKey: .languageId)
-        } else {
-            self.languageId = -1
-        }
-        
-        if container.contains(.language) {
-            self.language = try container.decode(String.self, forKey: .language)
-        } else {
-            self.language = ""
-        }
-        
-        if container.contains(.name) {
-            self.name = try container.decode(String.self, forKey: .name)
-        } else {
-            self.name = ""
-        }
-        
-        if container.contains(.file) {
-            self.file = try container.decode(String.self, forKey: .file)
-        } else {
-            self.file = ""
-        }
-        
-        if container.contains(.screens) {
-            self.screens = try container.decode([Screen].self, forKey: .screens)
-        } else {
-            self.screens = []
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.languageId = try container.decodeIfPresent(Int.self, forKey: .languageId) ?? -1
+        self.language = try container.decodeIfPresent(String.self, forKey: .language) ?? ""
+        self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
+        self.file = try container.decodeIfPresent(String.self, forKey: .file) ?? ""
+        self.screens = try container.decodeIfPresent([Screen].self, forKey: .screens) ?? []
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(screens, forKey: .screens)
     }
     
     //

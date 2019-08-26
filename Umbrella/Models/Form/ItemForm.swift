@@ -49,6 +49,7 @@ class ItemForm: Codable, TableProtocol {
     let label: String
     let hint: String
     var options: [OptionItem]
+    var answer: String
     
     var formType: FormType {
         switch type {
@@ -76,6 +77,7 @@ class ItemForm: Codable, TableProtocol {
         self.type = ""
         self.label = ""
         self.hint = ""
+        self.answer = ""
         self.options = []
     }
     
@@ -87,6 +89,7 @@ class ItemForm: Codable, TableProtocol {
         self.label = label
         self.hint = hint
         self.options = options
+        self.answer = ""
     }
     
     //
@@ -99,51 +102,34 @@ class ItemForm: Codable, TableProtocol {
         case label
         case hint
         case options
+        case answer
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.screenId = try container.decodeIfPresent(Int.self, forKey: .screenId) ?? -1
+        self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
+        self.type = try container.decodeIfPresent(String.self, forKey: .type) ?? ""
+        self.hint = try container.decodeIfPresent(String.self, forKey: .hint) ?? ""
+        self.label = try container.decodeIfPresent(String.self, forKey: .label) ?? ""
+        self.options = try container.decodeIfPresent([OptionItem].self, forKey: .options) ?? []
+        self.answer = try container.decodeIfPresent(String.self, forKey: .answer) ?? ""
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(type, forKey: .type)
+        try container.encode(label, forKey: .label)
+        try container.encode(answer, forKey: .answer)
         
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
+        if hint.count > 0 {
+            try container.encode(hint, forKey: .hint)
         }
         
-        if container.contains(.screenId) {
-            self.screenId = try container.decode(Int.self, forKey: .screenId)
-        } else {
-            self.screenId = -1
-        }
-        
-        if container.contains(.name) {
-            self.name = try container.decode(String.self, forKey: .name)
-        } else {
-            self.name = ""
-        }
-        
-        if container.contains(.type) {
-            self.type = try container.decode(String.self, forKey: .type)
-        } else {
-            self.type = ""
-        }
-        
-        if container.contains(.hint) {
-            self.hint = try container.decode(String.self, forKey: .hint)
-        } else {
-            self.hint = ""
-        }
-        
-        if container.contains(.label) {
-            self.label = try container.decode(String.self, forKey: .label)
-        } else {
-            self.label = ""
-        }
-        
-        if container.contains(.options) {
-            self.options = try container.decode([OptionItem].self, forKey: .options)
-        } else {
-            self.options = []
+        if options.count > 0 {
+            try container.encode(options, forKey: .options)
         }
     }
     
