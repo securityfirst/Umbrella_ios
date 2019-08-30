@@ -100,9 +100,7 @@ class ChatItemRequestViewController: UIViewController {
             for screen in form.screens {
                 
                 for item in screen.items {
-                    
                     switch item.formType {
-                        
                     case .textInput:
                         for formAnswer in formAnswers where formAnswer.itemFormId == item.id {
                             item.answer = formAnswer.text
@@ -132,16 +130,14 @@ class ChatItemRequestViewController: UIViewController {
             }
             
             let data = try JSONEncoder().encode(form)
-            let jsonString = String(data: data, encoding: String.Encoding.utf16)!
+            let jsonString = String(data: data, encoding: String.Encoding.utf8)!
             
-            if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = documentDirectory.appendingPathComponent(form.name)
-                
-                try jsonString.write(to: fileURL, atomically: true, encoding: .utf16)
-                
-                return (url: fileURL, filename: form.name)
-            }
-        
+            let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
+                                            isDirectory: true)
+            let filename = form.name.replacingOccurrences(of: " ", with: "_")   + ".json"
+            let fileURL = temporaryDirectoryURL.appendingPathComponent(filename)
+            try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
+            return (url: fileURL, filename: filename)
         } catch {
             print(error)
         }
@@ -163,15 +159,15 @@ class ChatItemRequestViewController: UIViewController {
 //                let pdf = PDF(nameFile: filename, content: shareItem.content)
 //                let export = Export(pdf)
 //                let url = export.makeExport()
-//
+                //
                 DispatchQueue.global(qos: .background).async {
                     self.chatItemRequestViewModel.uploadFile(filename: json.filename, fileURL: json.url, success: { (response) in
-
+                        
                         guard let url = response as? String else {
                             print("Error cast response to String")
                             return
                         }
-
+                        
                         self.chatMessageViewModel.sendMessage(messageType: .file,
                                                               message: json.filename,
                                                               url: url,

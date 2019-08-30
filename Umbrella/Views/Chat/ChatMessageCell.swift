@@ -58,8 +58,17 @@ class ChatMessageCell: UITableViewCell {
             case .text?:
                 break
             case .file?:
-                self.messageLabel.attributedText = NSAttributedString(string: item.content.body ?? "", attributes:
-                    [.underlineStyle: NSUnderlineStyle.single.rawValue])
+                
+                if var body = item.content.body, body.contains(".json") {
+                    body = body.replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: ".json", with: "")
+                    
+                    self.messageLabel.attributedText = NSAttributedString(string: body, attributes:
+                        [.underlineStyle: NSUnderlineStyle.single.rawValue])
+                } else {
+                    self.messageLabel.attributedText = NSAttributedString(string: item.content.body ?? "", attributes:
+                        [.underlineStyle: NSUnderlineStyle.single.rawValue])
+                }
+                
             default:
                 break
             }

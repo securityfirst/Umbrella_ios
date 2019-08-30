@@ -21,25 +21,27 @@ class SyncManager {
     var syncObject: Sync?
     var invite: [[String: Invite]] = [[String: Invite]]()
     
-    init() {
+    func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.startSync), name: Notification.Name("UmbrellaTent"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.stopSync), name: Notification.Name("ResetRepository"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.sync), name: Notification.Name("StartSyncMatrix"), object: nil)
     }
     
-    @objc func startSync() {
+    @objc fileprivate func startSync() {
         self.stopSync()
         self.timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sync), userInfo: nil, repeats: true)
         sync()
     }
     
-    @objc func stopSync() {
+    @objc fileprivate func stopSync() {
         self.timer?.invalidate()
         self.timer = nil
     }
     
-    @objc func sync() {
+    @objc fileprivate func sync() {
+        print("Sync Matrix")
         self.chatClientViewModel.sync(success: { (sync) in
             
             guard let sync = sync else {
@@ -59,7 +61,7 @@ class SyncManager {
                 UserDefaults.standard.set(self.syncObject?.rooms.invite.keys.count, forKey: "BadgeNumber")
             }
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name("SyncMatrix"), object: sync)
+            NotificationCenter.default.post(name: Notification.Name("SyncedMatrix"), object: sync)
             
         }, failure: { (response, object, error) in
             print(error ?? "")

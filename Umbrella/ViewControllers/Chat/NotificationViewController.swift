@@ -20,7 +20,7 @@ class NotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateList(_:)), name: NSNotification.Name("SyncMatrix"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateList(_:)), name: NSNotification.Name("SyncedMatrix"), object: nil)
         self.tableHidden()
     }
 
@@ -78,7 +78,7 @@ extension NotificationViewController: NotificationCellDelegate {
     func onAccept(roomId: String) {
         self.notificationViewModel.joinRoom(roomId: roomId, success: { (response) in
             print(response ?? "")
-            SyncManager.shared.sync()
+            NotificationCenter.default.post(name: Notification.Name("StartSyncMatrix"), object: nil)
         }, failure: { (response, object, error) in
             print(error ?? "")
         })
@@ -87,7 +87,7 @@ extension NotificationViewController: NotificationCellDelegate {
     func onReject(roomId: String) {
         self.notificationViewModel.leaveRoom(roomId: roomId, success: { (response) in
             print(response ?? "")
-            SyncManager.shared.sync()
+            NotificationCenter.default.post(name: Notification.Name("StartSyncMatrix"), object: nil)
         }, failure: { (response, object, error) in
             print(error ?? "")
         })

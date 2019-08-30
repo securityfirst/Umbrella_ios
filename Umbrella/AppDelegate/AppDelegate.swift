@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        tapGesture.delegate = self
         //        window?.addGestureRecognizer(tapGesture)
         
-        SyncManager.shared.sync()
+        SyncManager.shared.setup()
         return true
     }
     

@@ -61,7 +61,8 @@ class SQLManager: SQLProtocol {
                     var dictionary = [String:Any]()
                     
                     for (index, name) in stmt.columnNames.enumerated() {
-                        dictionary.updateValue(row[index]!, forKey: name)
+                        let value = row[index] ?? ""
+                        dictionary.updateValue(value, forKey: name)
                     }
                     array.append(dictionary)
                 }

@@ -24,7 +24,7 @@ class NavigationItemCustom: NSObject {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(sync(_:)), name: NSNotification.Name("SyncMatrix"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sync(_:)), name: NSNotification.Name("SyncedMatrix"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(clearNotification(_:)), name: NSNotification.Name("ClearNotification"), object: nil)
         

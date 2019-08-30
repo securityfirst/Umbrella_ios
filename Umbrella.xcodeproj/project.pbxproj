@@ -111,6 +111,12 @@
 		A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */; };
 		A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */; };
 		A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D0A0214A83CC0064AD18 /* CategoryCell.swift */; };
+		A09DC35623157BE5007A6879 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC35523157BE5007A6879 /* Data+Ext.swift */; };
+		A09DC35923158143007A6879 /* MatrixConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC35823158143007A6879 /* MatrixConverter.swift */; };
+		A09DC35D2315853D007A6879 /* FormMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC35C2315853D007A6879 /* FormMatrix.swift */; };
+		A09DC35F2315855E007A6879 /* ChecklistMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC35E2315855E007A6879 /* ChecklistMatrix.swift */; };
+		A0A166F42152B2EC00A91B53 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; };
+		A0A166F52152B2EC00A91B53 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; };
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0A2310623015F6C005346D6 /* RoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2310523015F6C005346D6 /* RoomDao.swift */; };
@@ -532,6 +538,10 @@
 		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		A099D0A0214A83CC0064AD18 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A09DC35523157BE5007A6879 /* Data+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Ext.swift"; sourceTree = "<group>"; };
+		A09DC35823158143007A6879 /* MatrixConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixConverter.swift; sourceTree = "<group>"; };
+		A09DC35C2315853D007A6879 /* FormMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMatrix.swift; sourceTree = "<group>"; };
+		A09DC35E2315855E007A6879 /* ChecklistMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistMatrix.swift; sourceTree = "<group>"; };
 		A0A2310523015F6C005346D6 /* RoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDao.swift; sourceTree = "<group>"; };
 		A0A23107230175A5005346D6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A0A2310923017B98005346D6 /* PublicRoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicRoomDao.swift; sourceTree = "<group>"; };
@@ -1144,6 +1154,16 @@
 			path = Lesson;
 			sourceTree = "<group>";
 		};
+		A09DC357231580FB007A6879 /* MatrixConverter */ = {
+			isa = PBXGroup;
+			children = (
+				A09DC35823158143007A6879 /* MatrixConverter.swift */,
+				A09DC35C2315853D007A6879 /* FormMatrix.swift */,
+				A09DC35E2315855E007A6879 /* ChecklistMatrix.swift */,
+			);
+			path = MatrixConverter;
+			sourceTree = "<group>";
+		};
 		A0A2E33D22DD2EF00054439C /* TagsFleld */ = {
 			isa = PBXGroup;
 			children = (
@@ -1439,6 +1459,7 @@
 				A0CF27FB221B24760076976F /* UIViewController+Ext.swift */,
 				A0FE4EE52238225A0048E591 /* UITableView+Ext.swift */,
 				A0C12CAA22C2842E001479AE /* Date+Ext.swift */,
+				A09DC35523157BE5007A6879 /* Data+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1481,7 +1502,6 @@
 		A0B9D45720AAE1CE00B2B796 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A0A2E33D22DD2EF00054439C /* TagsFleld */,
 				A0C6CE9F20B5ABB6005BC111 /* Constants.swift */,
 				A0C6CE9B20B1EBB8005BC111 /* Global.swift */,
 				A0D8BCB220E508190052028F /* InputFileReader.swift */,
@@ -1492,8 +1512,10 @@
 				A0C12CB422C285D2001479AE /* DateHeaderLabel.swift */,
 				A0BE050522C4C3D800D23306 /* SyncManager.swift */,
 				A0A23107230175A5005346D6 /* Reachability.swift */,
+				A09DC357231580FB007A6879 /* MatrixConverter */,
 				A01CC61D21F717DC00E5D771 /* Export */,
 				A0C6CEA420B6D135005BC111 /* Parsers */,
+				A0A2E33D22DD2EF00054439C /* TagsFleld */,
 				A0C6CEA320B5ADF3005BC111 /* Managers */,
 				A0EBBFFB220D930E006A0AC3 /* HTMLPDFRenderer */,
 			);
@@ -2207,6 +2229,7 @@
 				A0FFE4FF20CEEAB70026C0C7 /* ItemForm.swift in Sources */,
 				A0848687214FFD6E0099D669 /* CheckListCell.swift in Sources */,
 				A0B65AA5229D3BB6001A3903 /* PathwayCell.swift in Sources */,
+				A09DC35923158143007A6879 /* MatrixConverter.swift in Sources */,
 				A003812F210741A500CDA44D /* MultiChoiceCell.swift in Sources */,
 				A087011922DE263C00241676 /* NotificationViewController.swift in Sources */,
 				A0EBC0142211CB69006A0AC3 /* DeepLinkNavigationProtocol.swift in Sources */,
@@ -2314,6 +2337,7 @@
 				A0BE051C22CA6DAD00D23306 /* ChatItemRequestCell.swift in Sources */,
 				A0A2E34722DD31AC0054439C /* WSTagView.swift in Sources */,
 				A0EBC0122211BD1B006A0AC3 /* DeepLinkManager.swift in Sources */,
+				A09DC35F2315855E007A6879 /* ChecklistMatrix.swift in Sources */,
 				A0AA1569216E577F003753E5 /* SideScrollLessonView.swift in Sources */,
 				A0B9D46020AAE1CF00B2B796 /* LoadingViewController.swift in Sources */,
 				A00386FC20F398C4004FAC8A /* FormCell.swift in Sources */,
@@ -2347,6 +2371,7 @@
 				A0659CD220C0353D0060F812 /* UmbrellaParser.swift in Sources */,
 				A05BA7FA20E1188700482003 /* ForeignKey.swift in Sources */,
 				A0240485216231F5004057B5 /* FavouriteLesson.swift in Sources */,
+				A09DC35D2315853D007A6879 /* FormMatrix.swift in Sources */,
 				A0E81C042110B1C400FB73FF /* FormAnswerDao.swift in Sources */,
 				A0C12CB522C285D2001479AE /* DateHeaderLabel.swift in Sources */,
 				A0E81BFB2108D37200FB73FF /* UITextField+Ext.swift in Sources */,
@@ -2387,6 +2412,7 @@
 				A0C404AA21A2C4980068BDDD /* LoginViewController.swift in Sources */,
 				A081C2D322B7CFC700EE725F /* UserMatrixDao.swift in Sources */,
 				A0FDDF6321BA94970078FCAA /* CustomChecklistCheckedDao.swift in Sources */,
+				A09DC35623157BE5007A6879 /* Data+Ext.swift in Sources */,
 				A064CE9820AC883900CE99E1 /* Category.swift in Sources */,
 				A0B8F40C219872E300ACDEEC /* SettingCell.swift in Sources */,
 				A081C2DB22BD123E00EE725F /* UmbrellaMatrixRoomService.swift in Sources */,

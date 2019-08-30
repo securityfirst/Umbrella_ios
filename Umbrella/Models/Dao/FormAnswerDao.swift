@@ -53,9 +53,9 @@ struct FormAnswerDao: DaoProtocol {
         
         var sql = ""
         if object.id == -1 {
-            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at') VALUES (\(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\")"
+            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at', 'matrix_url_id') VALUES (\(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\", \"\(object.matrixUrlId)\")"
         } else {
-            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('id','form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at') VALUES (\(object.id), \(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\")"
+            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('id','form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at', 'matrix_url_id') VALUES (\(object.id), \(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\", \"\(object.matrixUrlId)\")"
         }
         
         let rowId = self.sqlProtocol.insert(withQuery: sql)

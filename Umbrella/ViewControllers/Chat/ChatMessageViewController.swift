@@ -85,7 +85,6 @@ class ChatMessageViewController: UIViewController {
     }
     
     @objc func loadMessages() {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
         if self.view.tag != 999 {
@@ -143,6 +142,40 @@ class ChatMessageViewController: UIViewController {
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
         }
+    }
+    
+    func convertJsonToObject(url: URL) {
+        //Check the object is a form or checklist
+        
+        do {
+            let string = try String(contentsOf: url)
+            
+            let object = convertStringToObject(string: string)
+            
+            if object is Form {
+                let form = (object as? Form)!
+            } else if object is CheckList {
+                let checklist = (object as? CheckList)!
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func convertStringToObject(string: String) -> Any? {
+        
+        do {
+            let object = try JSONDecoder().decode(Form.self, from: string.data(using: .utf8)!)
+            return object
+        } catch {
+//            do {
+//                let object = try JSONDecoder().decode(CheckList.self, from: string.data(using: .utf8)!)
+//                return object
+//            } catch {
+                print(error)
+//            }
+        }
+        return nil
     }
     
     @IBAction func sendAction(_ sender: Any) {
@@ -269,22 +302,48 @@ extension ChatMessageViewController: UITableViewDelegate {
                         let filename = uri + (item.content.body ?? "")
                         let fileURL = documentDirectory.appendingPathComponent(filename)
                         
-                        if FileManager.default.fileExists(atPath: fileURL.path) {
-                            openFile(fileURL)
+                        if filename.contains(".json") {
+                            if FileManager.default.fileExists(atPath: fileURL.path) {
+//                                self.convertJsonToObject(url:fileURL)
+                                var matrixConverter = MatrixConverter(url: fileURL)
+                                matrixConverter.convert()
+                                matrixConverter.updateDB()
+                                matrixConverter.openFile()
+                            } else {
+                                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                                controller.showLoading(view: self.view)
+                                
+                                self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
+                                    let fileURL = (response as? URL)!
+                                    controller.closeLoading()
+                                    var matrixConverter = MatrixConverter(url: fileURL)
+                                    matrixConverter.convert()
+                                    matrixConverter.updateDB()
+                                    matrixConverter.openFile()
+                                }, failure: { (response, object, error) in
+                                    controller.closeLoading()
+                                    print(error ?? "")
+                                })
+                            }
                         } else {
                             
-                            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                            let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
-                            controller.showLoading(view: self.view)
-                            
-                            self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
-                                let fileURL = (response as? URL)!
-                                controller.closeLoading()
-                                self.openFile(fileURL)
-                            }, failure: { (response, object, error) in
-                                controller.closeLoading()
-                                print(error ?? "")
-                            })
+                            if FileManager.default.fileExists(atPath: fileURL.path) {
+                                openFile(fileURL)
+                            } else {
+                                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
+                                controller.showLoading(view: self.view)
+                                
+                                self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
+                                    let fileURL = (response as? URL)!
+                                    controller.closeLoading()
+                                    self.openFile(fileURL)
+                                }, failure: { (response, object, error) in
+                                    controller.closeLoading()
+                                    print(error ?? "")
+                                })
+                            }
                         }
                     }
                 }
