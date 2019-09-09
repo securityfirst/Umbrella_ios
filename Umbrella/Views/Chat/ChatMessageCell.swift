@@ -61,7 +61,6 @@ class ChatMessageCell: UITableViewCell {
                 
                 if var body = item.content.body, body.contains(".json") {
                     body = body.replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: ".json", with: "")
-                    
                     self.messageLabel.attributedText = NSAttributedString(string: body, attributes:
                         [.underlineStyle: NSUnderlineStyle.single.rawValue])
                 } else {

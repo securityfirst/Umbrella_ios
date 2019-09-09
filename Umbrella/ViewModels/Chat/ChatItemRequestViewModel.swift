@@ -49,4 +49,21 @@ class ChatItemRequestViewModel {
             failure(response, object, error)
         })
     }
+    
+    /// Search recursive for whole the categories
+    ///
+    /// - Parameter id: Int
+    /// - Returns: Category?
+    func searchCategoryBy(id: Int) -> Category? {
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+        
+        for cat in (language?.categories)! {
+            let found = cat.searchCategoryBy(id: id)
+            if (found != nil) {
+                return found
+            }
+        }
+        return nil
+    }
 }

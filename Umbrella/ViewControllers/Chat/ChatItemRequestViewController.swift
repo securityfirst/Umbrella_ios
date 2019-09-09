@@ -129,7 +129,15 @@ class ChatItemRequestViewController: UIViewController {
                 }
             }
             
-            let data = try JSONEncoder().encode(form)
+            let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+            
+            var matrixFile = MatrixFile()
+            matrixFile.matrixType = "form"
+            matrixFile.language = languageName
+            matrixFile.name = form.name
+            matrixFile.object = form
+            
+            let data = try JSONEncoder().encode(matrixFile)
             let jsonString = String(data: data, encoding: String.Encoding.utf8)!
             
             let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
@@ -207,6 +215,7 @@ class ChatItemRequestViewController: UIViewController {
                     content += "<h1>Checklist</h1> \n"
                     
                     for checkItem in checklist.items {
+                        checkItem.answer = checkItem.checked ? 1 : 0
                         content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
                     }
                     
@@ -216,15 +225,36 @@ class ChatItemRequestViewController: UIViewController {
                     </html>
                     """
                     
-                    let name = checklistChecked.subCategoryName.replacingOccurrences(of: " ", with: "_")
-                    //PDF
-                    let filename = "\(name)_Checklist.pdf"
-                    let pdf = PDF(nameFile: filename, content: content)
-                    let export = Export(pdf)
-                    let url = export.makeExport()
+//                    let name = checklistChecked.subCategoryName.replacingOccurrences(of: " ", with: "_")
+//                    //PDF
+//                    let filename = "\(name)_Checklist.pdf"
+//                    let pdf = PDF(nameFile: filename, content: content)
+//                    let export = Export(pdf)
+//                    let url = export.makeExport()
+
+                    let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+                    
+                    var matrixFile = MatrixFile()
+                    matrixFile.matrixType = "checklist"
+                    matrixFile.language = languageName
+                    matrixFile.name = checklistChecked.subCategoryName
+                    
+                    let difficulty = self.chatItemRequestViewModel.searchCategoryBy(id: checklistChecked.difficultyId)
+                    matrixFile.extra = difficulty?.name ?? ""
+                    
+                    matrixFile.object = checklist
+                    
+                    let data = try! JSONEncoder().encode(matrixFile)
+                    let jsonString = String(data: data, encoding: String.Encoding.utf8)!
+                    
+                    let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
+                                                    isDirectory: true)
+                    let filename = checklistChecked.subCategoryName.replacingOccurrences(of: " ", with: "_")   + ".json"
+                    let fileURL = temporaryDirectoryURL.appendingPathComponent(filename)
+                    try! jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
                     
                     DispatchQueue.global(qos: .background).async {
-                        self.chatItemRequestViewModel.uploadFile(filename: filename, fileURL: url, success: { (response) in
+                        self.chatItemRequestViewModel.uploadFile(filename: filename, fileURL: fileURL, success: { (response) in
                             
                             guard let url = response as? String else {
                                 print("Error cast response to String")

@@ -107,6 +107,7 @@
 		A08F58BE212AC07E00BEF571 /* DynamicFormSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */; };
 		A08F58C1212AE54000BEF571 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F58C0212AE53F00BEF571 /* TourViewController.swift */; };
 		A08F58C3212B05C500BEF571 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = A08F58C2212B05C400BEF571 /* terms.html */; };
+		A092CE7B231D4B58007ED3D2 /* MatrixFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092CE7A231D4B58007ED3D2 /* MatrixFile.swift */; };
 		A099D09A214A73FF0064AD18 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D099214A73FF0064AD18 /* LessonViewModel.swift */; };
 		A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */; };
 		A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */; };
@@ -141,6 +142,7 @@
 		A0A391A721B546AA0067A04D /* NewChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391A621B546AA0067A04D /* NewChecklistViewModel.swift */; };
 		A0A391A921B54C6D0067A04D /* BaseChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391A821B54C6C0067A04D /* BaseChecklistViewController.swift */; };
 		A0A391AB21B54CA50067A04D /* CustomChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A391AA21B54CA50067A04D /* CustomChecklistViewController.swift */; };
+		A0A960BD2320016400BC3676 /* MatrixConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A960BC2320016400BC3676 /* MatrixConverterViewModel.swift */; };
 		A0AA090B21591CB7007C0327 /* LessonCheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */; };
 		A0AA090D21591F1F007C0327 /* FillCheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */; };
 		A0AA090F21591FE8007C0327 /* LessonCheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */; };
@@ -534,6 +536,7 @@
 		A08F58BD212AC07E00BEF571 /* DynamicFormSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFormSpec.swift; sourceTree = "<group>"; };
 		A08F58C0212AE53F00BEF571 /* TourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		A08F58C2212B05C400BEF571 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
+		A092CE7A231D4B58007ED3D2 /* MatrixFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixFile.swift; sourceTree = "<group>"; };
 		A099D099214A73FF0064AD18 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
@@ -564,6 +567,7 @@
 		A0A391A621B546AA0067A04D /* NewChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChecklistViewModel.swift; sourceTree = "<group>"; };
 		A0A391A821B54C6C0067A04D /* BaseChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChecklistViewController.swift; sourceTree = "<group>"; };
 		A0A391AA21B54CA50067A04D /* CustomChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChecklistViewController.swift; sourceTree = "<group>"; };
+		A0A960BC2320016400BC3676 /* MatrixConverterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixConverterViewModel.swift; sourceTree = "<group>"; };
 		A0AA090A21591CB7007C0327 /* LessonCheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewController.swift; sourceTree = "<group>"; };
 		A0AA090C21591F1F007C0327 /* FillCheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCheckListCell.swift; sourceTree = "<group>"; };
 		A0AA090E21591FE8007C0327 /* LessonCheckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCheckListViewModel.swift; sourceTree = "<group>"; };
@@ -1118,6 +1122,7 @@
 				A0BE051922CA607000D23306 /* ChatItemRequestViewModel.swift */,
 				A0A2E34822DD33810054439C /* ChatInviteUserViewModel.swift */,
 				A087011C22DE4FDC00241676 /* NotificationViewModel.swift */,
+				A0A960BC2320016400BC3676 /* MatrixConverterViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1157,6 +1162,7 @@
 		A09DC357231580FB007A6879 /* MatrixConverter */ = {
 			isa = PBXGroup;
 			children = (
+				A092CE7A231D4B58007ED3D2 /* MatrixFile.swift */,
 				A09DC35823158143007A6879 /* MatrixConverter.swift */,
 				A09DC35C2315853D007A6879 /* FormMatrix.swift */,
 				A09DC35E2315855E007A6879 /* ChecklistMatrix.swift */,
@@ -2334,6 +2340,7 @@
 				A0BE051822CA605B00D23306 /* ChatRequestViewModel.swift in Sources */,
 				A0A391A521B18D5D0067A04D /* NewChecklistViewController.swift in Sources */,
 				A0D170BF20CE93C000758A8D /* FolderProtocol.swift in Sources */,
+				A0A960BD2320016400BC3676 /* MatrixConverterViewModel.swift in Sources */,
 				A0BE051C22CA6DAD00D23306 /* ChatItemRequestCell.swift in Sources */,
 				A0A2E34722DD31AC0054439C /* WSTagView.swift in Sources */,
 				A0EBC0122211BD1B006A0AC3 /* DeepLinkManager.swift in Sources */,
@@ -2378,6 +2385,7 @@
 				A0B12CF622D391BA00F2638F /* ChatNewItemViewController.swift in Sources */,
 				A0B0AA7920EE6EA000933759 /* FormViewController.swift in Sources */,
 				A02115BB214163DD004B5B73 /* LocationViewController.swift in Sources */,
+				A092CE7B231D4B58007ED3D2 /* MatrixFile.swift in Sources */,
 				A0B1AF4C21E3A3EF00ADD6CB /* MarkdownWebView.swift in Sources */,
 				A02404872162327F004057B5 /* FavouriteLessonDao.swift in Sources */,
 				A02115B1213D816A004B5B73 /* RssItem.swift in Sources */,

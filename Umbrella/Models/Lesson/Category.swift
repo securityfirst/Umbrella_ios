@@ -210,4 +210,24 @@ class Category: Codable, TableProtocol, FolderProtocol, NSCopying {
         
         return nil
     }
+    
+    /// Search for a list recursive the folderName and return the category with same path
+    ///
+    /// - Parameter folderName: path of file
+    /// - Return: a category
+    func searchCategoryBy(name: String) -> Category? {
+        
+        if self.name == name {
+            return self
+        } else {
+            for cat in self.categories {
+                let category = cat.searchCategoryBy(name: name)
+                if category != nil {
+                    return category
+                }
+            }
+        }
+        
+        return nil
+    }
 }

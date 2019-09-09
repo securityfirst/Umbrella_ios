@@ -144,40 +144,6 @@ class ChatMessageViewController: UIViewController {
         }
     }
     
-    func convertJsonToObject(url: URL) {
-        //Check the object is a form or checklist
-        
-        do {
-            let string = try String(contentsOf: url)
-            
-            let object = convertStringToObject(string: string)
-            
-            if object is Form {
-                let form = (object as? Form)!
-            } else if object is CheckList {
-                let checklist = (object as? CheckList)!
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
-    func convertStringToObject(string: String) -> Any? {
-        
-        do {
-            let object = try JSONDecoder().decode(Form.self, from: string.data(using: .utf8)!)
-            return object
-        } catch {
-//            do {
-//                let object = try JSONDecoder().decode(CheckList.self, from: string.data(using: .utf8)!)
-//                return object
-//            } catch {
-                print(error)
-//            }
-        }
-        return nil
-    }
-    
     @IBAction func sendAction(_ sender: Any) {
         
         let message = self.messageText.text!
@@ -304,8 +270,7 @@ extension ChatMessageViewController: UITableViewDelegate {
                         
                         if filename.contains(".json") {
                             if FileManager.default.fileExists(atPath: fileURL.path) {
-//                                self.convertJsonToObject(url:fileURL)
-                                var matrixConverter = MatrixConverter(url: fileURL)
+                                var matrixConverter = MatrixConverter(url: fileURL, isUserLogged: item.isUserLogged)
                                 matrixConverter.convert()
                                 matrixConverter.updateDB()
                                 matrixConverter.openFile()
@@ -317,7 +282,7 @@ extension ChatMessageViewController: UITableViewDelegate {
                                 self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
                                     let fileURL = (response as? URL)!
                                     controller.closeLoading()
-                                    var matrixConverter = MatrixConverter(url: fileURL)
+                                    var matrixConverter = MatrixConverter(url: fileURL, isUserLogged: item.isUserLogged)
                                     matrixConverter.convert()
                                     matrixConverter.updateDB()
                                     matrixConverter.openFile()

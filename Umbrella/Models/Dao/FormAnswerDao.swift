@@ -105,6 +105,13 @@ struct FormAnswerDao: DaoProtocol {
         return self.sqlProtocol.select(withQuery: "SELECT * FROM \(FormAnswer.table) WHERE form_answer_id = \(id) and form_id = \(formId)")
     }
     
+    /// List of object to screen Form Active
+    ///
+    /// - Returns: a list of object
+    func listFormId(at formId:Int) -> [FormAnswer] {
+        return self.sqlProtocol.select(withQuery: "SELECT * FROM \(FormAnswer.table) WHERE form_id = \(formId)")
+    }
+    
     /// Get the last number of the formAnswer
     ///
     /// - Returns: Int

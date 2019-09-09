@@ -8,40 +8,46 @@
 
 import Foundation
 
-protocol MatrixFile {
-    mutating func convert() -> Bool
-    func updateDB()
+protocol MatrixConverterProtocol {
+    mutating func updateDB()
     func openFile()
 }
 
 struct MatrixConverter {
     
     let url: URL!
-    var matrixFile: MatrixFile?
+    var matrixProtocol: MatrixConverterProtocol?
+    var isUserLogged: Bool
     
-    init(url: URL) {
-         self.url = url
+    init(url: URL, isUserLogged: Bool) {
+        self.url = url
+        self.isUserLogged = isUserLogged
     }
     
     mutating func convert() {
-        
-        var formMatrix = FormMatrix(url: self.url)
-        var checklistMatrix = ChecklistMatrix(url: self.url)
-        
-        if checklistMatrix.convert() {
-            self.matrixFile = checklistMatrix
-        }
-        
-        if formMatrix.convert() {
-            self.matrixFile = formMatrix
+        do {
+            let json = try String(contentsOf: self.url)
+            let matrixFile = try JSONDecoder().decode(MatrixFile.self, from: json.data(using: .utf8)!)
+            
+            switch matrixFile.matrixType {
+            case "form":
+                self.matrixProtocol = FormMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged)
+            case "checklist":
+                self.matrixProtocol = ChecklistMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged)
+            default:
+                fatalError("Type not supported")
+            }
+            
+        } catch {
+            print(error)
         }
     }
     
-    func updateDB() {
-        self.matrixFile?.updateDB()
+    mutating func updateDB() {
+        self.matrixProtocol?.updateDB()
     }
     
     func openFile() {
-        self.matrixFile?.openFile()
+        self.matrixProtocol?.openFile()
     }
 }

@@ -23,6 +23,7 @@ class CheckItem: Codable, TableProtocol, NSCopying {
     private var label: String
     var isLabel: Bool = false
     var checked: Bool = false
+    var answer: Int
     
     //
     // MARK: - Initializers
@@ -32,6 +33,7 @@ class CheckItem: Codable, TableProtocol, NSCopying {
         self.name = ""
         self.label = ""
         self.isLabel = false
+        self.answer = 0
     }
     
     init(name: String) {
@@ -40,6 +42,7 @@ class CheckItem: Codable, TableProtocol, NSCopying {
         self.name = name
         self.label = ""
         self.isLabel = false
+        self.answer = 0
     }
     
     //
@@ -50,28 +53,15 @@ class CheckItem: Codable, TableProtocol, NSCopying {
         case name = "check"
         case label = "label"
         case isLabel = "is_label"
+        case answer
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.checkListId) {
-            self.checkListId = try container.decode(Int.self, forKey: .checkListId)
-        } else {
-            self.checkListId = -1
-        }
-        
-        if container.contains(.name) {
-            self.name = try container.decode(String.self, forKey: .name)
-        } else {
-            self.name = ""
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.checkListId = try container.decodeIfPresent(Int.self, forKey: .checkListId) ?? -1
+        self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
         
         // This attribute is used when it is decoding from the database
         if container.contains(.isLabel) {
@@ -88,6 +78,22 @@ class CheckItem: Codable, TableProtocol, NSCopying {
         } else {
             self.label = ""
         }
+        
+        self.answer = try container.decodeIfPresent(Int.self, forKey: .answer) ?? 0
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if name.count > 0 && !isLabel {
+            try container.encode(name, forKey: .name)
+        }
+        
+        if isLabel {
+            try container.encode(name, forKey: .label)
+        }
+        
+        try container.encode(answer, forKey: .answer)
     }
     
     //
