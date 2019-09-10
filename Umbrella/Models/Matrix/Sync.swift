@@ -26,13 +26,23 @@ struct Rooms: Codable {
 // MARK: - Invite
 struct Join: Codable {
     let timeline: Timeline
+    let state: State
     
     enum CodingKeys: String, CodingKey {
         case timeline
+        case state
     }
 }
 
 struct Timeline: Codable {
+    let joinEvent: [JoinEvent]
+    
+    enum CodingKeys: String, CodingKey {
+        case joinEvent = "events"
+    }
+}
+
+struct State: Codable {
     let joinEvent: [JoinEvent]
     
     enum CodingKeys: String, CodingKey {

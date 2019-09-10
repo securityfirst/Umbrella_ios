@@ -30,16 +30,8 @@ class ChatItemRequestCell: UITableViewCell {
         switch viewModel.item.type {
         case .forms:
             if viewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 && indexPath.row <= viewModel.umbrella.loadFormAnswersByCurrentLanguage().count - 1 {
-                if indexPath.section == 0 {
-                    let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-                    self.nameLabel.text = form.name
-                } else if indexPath.section == 1 {
-                    let form = viewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
-                    self.nameLabel.text = loadForm(formId: form.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage()).name
-                }
-            } else if viewModel.umbrella.loadFormByCurrentLanguage().count > 0 && indexPath.row <= viewModel.umbrella.loadFormByCurrentLanguage().count - 1 {
-                let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-                self.nameLabel.text = form.name
+                let form = viewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+                self.nameLabel.text = loadForm(formId: form.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage()).name
             }
         case .checklists:
             

@@ -9,10 +9,14 @@
 import UIKit
 
 class ChatItemRequestViewController: UIViewController {
+    
     //
     // MARK: - Properties
     @IBOutlet weak var chatItemRequestTableView: UITableView!
     @IBOutlet weak var sendBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var emptyLabel: UILabel!
+    
     lazy var chatItemRequestViewModel: ChatItemRequestViewModel = {
         let chatItemRequestViewModel = ChatItemRequestViewModel()
         return chatItemRequestViewModel
@@ -56,7 +60,12 @@ class ChatItemRequestViewController: UIViewController {
         
         switch self.chatItemRequestViewModel.item.type {
         case .forms:
-            break
+            if self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count == 0 {
+                delay(0.5) {
+                    self.chatItemRequestTableView.isHidden = true
+                    self.emptyLabel.text = "You do not have forms filled."
+                }
+            }
         case .checklists:
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
@@ -67,6 +76,12 @@ class ChatItemRequestViewController: UIViewController {
                 self.chatItemRequestViewModel.favouriteChecklistChecked = self.checklistViewModel.favouriteChecklistChecked
                 DispatchQueue.main.async {
                     controller.closeLoading()
+                    
+                    if self.chatItemRequestViewModel.checklistChecked.count == 0 && self.chatItemRequestViewModel.favouriteChecklistChecked.count == 0 {
+                        self.chatItemRequestTableView.isHidden = true
+                        self.emptyLabel.text = "You do not have checklist filled."
+                    }
+                    
                     self.chatItemRequestTableView.reloadData()
                 }
             }
@@ -86,8 +101,6 @@ class ChatItemRequestViewController: UIViewController {
             let indexPath = self.itemSelected.first!
             
             if indexPath.section == 0 {
-                form = self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-            } else if indexPath.section == 1 {
                 formAnswer = self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
                 
                 for formResult in self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == formResult.id {
@@ -355,8 +368,6 @@ class ChatItemRequestViewController: UIViewController {
         var formAnswers: [FormAnswer] = [FormAnswer]()
         
         if indexPath.section == 0 {
-            form = self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
-        } else if indexPath.section == 1 {
             formAnswer = self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
             
             for formResult in self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == formResult.id {
@@ -421,9 +432,6 @@ extension ChatItemRequestViewController: UITableViewDataSource {
         
         switch self.chatItemRequestViewModel.item.type {
         case .forms:
-            if self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
-                return 2
-            }
             return 1
         case .checklists:
             return 2
@@ -437,15 +445,7 @@ extension ChatItemRequestViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.chatItemRequestViewModel.item.type {
         case .forms:
-            if self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
-                if section == 0 {
-                    return self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage().count
-                } else if section == 1 {
-                    return self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count
-                }
-            }
-            
-            return self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage().count
+            return self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count
         case .checklists:
             if section == 0 {
                 return self.chatItemRequestViewModel.favouriteChecklistChecked.count
@@ -499,16 +499,7 @@ extension ChatItemRequestViewController: UITableViewDelegate {
         
         switch self.chatItemRequestViewModel.item.type {
         case .forms:
-            if self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
-                if section == 0 {
-                    label.text = "Available forms".localized()
-                } else if section == 1 {
-                    label.text = "Active".localized()
-                }
-            } else {
-                label.text = "Available forms".localized()
-            }
-            
+            label.text = "Active".localized()
             view.addSubview(label)
         case .checklists:
             if section == 0 {

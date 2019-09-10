@@ -57,7 +57,12 @@ class ChatClientViewModel {
                     self.rooms.removeAll()
                     for dic in (self.sync?.rooms.join)! {
                         
-                        let joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
+                        var joinEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.name" }
+                        if joinEvents.count == 0 {
+                            print("")
+                            joinEvents = dic.value.state.joinEvent.filter { $0.type == "m.room.name" }
+                        }
+                        
                         let memberEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.member" }
                         let aliasEvents: [JoinEvent] = dic.value.timeline.joinEvent.filter { $0.type == "m.room.aliases" }
                         
