@@ -48,6 +48,8 @@ extension MatrixFile: Codable {
             self.object = try container.decodeIfPresent(Form.self, forKey: .object) ?? Form()
         } else if self.matrixType == "checklist" {
             self.object = try container.decodeIfPresent(CheckList.self, forKey: .object) ?? CheckList()
+        } else if self.matrixType == "customChecklist" {
+            self.object = try container.decodeIfPresent(CustomChecklist.self, forKey: .object) ?? CheckList()
         }
     }
     
@@ -62,6 +64,8 @@ extension MatrixFile: Codable {
             try container.encode(object as? Form, forKey: .object)
         } else if self.matrixType == "checklist" {
             try container.encode(object as? CheckList, forKey: .object)
+        } else if self.matrixType == "customChecklist" {
+            try container.encode(object as? CustomChecklist, forKey: .object)
         }
         
     }

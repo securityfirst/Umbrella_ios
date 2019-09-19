@@ -32,6 +32,16 @@ class ChatItemRequestViewController: UIViewController {
         return checklistViewModel
     }()
     
+    lazy var customChecklistViewModel: CustomChecklistViewModel = {
+        let customChecklistViewModel = CustomChecklistViewModel()
+        return customChecklistViewModel
+    }()
+    
+    lazy var pathwayViewModel: PathwayViewModel = {
+        let pathwayViewModel = PathwayViewModel()
+        return pathwayViewModel
+    }()
+    
     @IBOutlet weak var sendButton: UIButton!
     var itemSelected: [IndexPath] = [IndexPath]() {
         didSet {
@@ -72,12 +82,29 @@ class ChatItemRequestViewController: UIViewController {
             controller.showLoading(view: self.view)
             DispatchQueue.global(qos: .default).async {
                 self.checklistViewModel.reportOfItemsChecked()
+                self.customChecklistViewModel.loadCustomChecklist()
+                
                 self.chatItemRequestViewModel.checklistChecked = self.checklistViewModel.checklistChecked
                 self.chatItemRequestViewModel.favouriteChecklistChecked = self.checklistViewModel.favouriteChecklistChecked
+                self.chatItemRequestViewModel.customChecklistChecked = self.customChecklistViewModel.customChecklistChecked
+                self.chatItemRequestViewModel.customChecklists = self.customChecklistViewModel.customChecklists
+                
+                let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+                let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first
+                
+                if let language = language {
+                    let success = self.pathwayViewModel.listPathways(languageId: language.id)
+                    if success {
+                        self.pathwayViewModel.updatePathways()
+                    }
+                    
+                    self.chatItemRequestViewModel.pathways = self.pathwayViewModel.pathwayFavorite()
+                }
+                
                 DispatchQueue.main.async {
                     controller.closeLoading()
                     
-                    if self.chatItemRequestViewModel.checklistChecked.count == 0 && self.chatItemRequestViewModel.favouriteChecklistChecked.count == 0 {
+                    if self.chatItemRequestViewModel.checklistChecked.count == 0 && self.chatItemRequestViewModel.favouriteChecklistChecked.count == 0 && self.chatItemRequestViewModel.customChecklists.count == 0 {
                         self.chatItemRequestTableView.isHidden = true
                         self.emptyLabel.text = "You do not have checklist filled."
                     }
@@ -175,12 +202,6 @@ class ChatItemRequestViewController: UIViewController {
                 
                 let json = exportFormJSON()
                 
-//                let shareItem = self.prepareHtml(indexPath: self.itemSelected.first!)
-//                let filename = shareItem.nameFile + ".pdf"
-//                let pdf = PDF(nameFile: filename, content: shareItem.content)
-//                let export = Export(pdf)
-//                let url = export.makeExport()
-                //
                 DispatchQueue.global(qos: .background).async {
                     self.chatItemRequestViewModel.uploadFile(filename: json.filename, fileURL: json.url, success: { (response) in
                         
@@ -205,88 +226,45 @@ class ChatItemRequestViewController: UIViewController {
         case .checklists:
             
             if itemSelected.count > 0 {
-                var checklistChecked: ChecklistChecked? = ChecklistChecked()
+                var shareItem = (filename: "", fileURL: URL(string: "file://")!)
                 if itemSelected[0].section == 0 {
+                    var checklistChecked: ChecklistChecked? = ChecklistChecked()
                     checklistChecked = self.chatItemRequestViewModel.favouriteChecklistChecked[itemSelected[0].row]
+                    if let checklistChecked = checklistChecked {
+                        shareItem = self.shareChecklist(checked: checklistChecked)
+                    }
+                    
                 } else if itemSelected[0].section == 1 {
+                    var checklistChecked: ChecklistChecked? = ChecklistChecked()
                     checklistChecked = self.chatItemRequestViewModel.checklistChecked[itemSelected[0].row]
+                    if let checklistChecked = checklistChecked {
+                        shareItem = self.shareChecklist(checked: checklistChecked)
+                    }
+                } else if itemSelected[0].section == 2 {
+                    var customChecklist = self.chatItemRequestViewModel.customChecklists[itemSelected[0].row]
+                    shareItem = self.shareCustomChecklist(customChecklist: customChecklist)
                 }
                 
-                if let checklistChecked = checklistChecked {
-                    let checklist = self.checklistViewModel.getChecklist(checklistId: checklistChecked.checklistId)
-                    
-                    var content: String = ""
-                    
-                    content += """
-                    <html>
-                    <head>
-                    <meta charset="UTF-8"> \n
-                    """
-                    content += "<title>Checklist</title> \n"
-                    content += "</head> \n"
-                    content += "<body style=\"display:block;width:100%;\"> \n"
-                    content += "<h1>Checklist</h1> \n"
-                    
-                    for checkItem in checklist.items {
-                        checkItem.answer = checkItem.checked ? 1 : 0
-                        content += "<label><input type=\"checkbox\"\(checkItem.checked ? "checked" : "") readonly onclick=\"return false;\">\(checkItem.name)</label><br> \n"
-                    }
-                    
-                    content += """
-                    </form>
-                    </body>
-                    </html>
-                    """
-                    
-//                    let name = checklistChecked.subCategoryName.replacingOccurrences(of: " ", with: "_")
-//                    //PDF
-//                    let filename = "\(name)_Checklist.pdf"
-//                    let pdf = PDF(nameFile: filename, content: content)
-//                    let export = Export(pdf)
-//                    let url = export.makeExport()
-
-                    let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
-                    
-                    var matrixFile = MatrixFile()
-                    matrixFile.matrixType = "checklist"
-                    matrixFile.language = languageName
-                    matrixFile.name = checklistChecked.subCategoryName
-                    
-                    let difficulty = self.chatItemRequestViewModel.searchCategoryBy(id: checklistChecked.difficultyId)
-                    matrixFile.extra = difficulty?.name ?? ""
-                    
-                    matrixFile.object = checklist
-                    
-                    let data = try! JSONEncoder().encode(matrixFile)
-                    let jsonString = String(data: data, encoding: String.Encoding.utf8)!
-                    
-                    let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
-                                                    isDirectory: true)
-                    let filename = checklistChecked.subCategoryName.replacingOccurrences(of: " ", with: "_")   + ".json"
-                    let fileURL = temporaryDirectoryURL.appendingPathComponent(filename)
-                    try! jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
-                    
-                    DispatchQueue.global(qos: .background).async {
-                        self.chatItemRequestViewModel.uploadFile(filename: filename, fileURL: fileURL, success: { (response) in
-                            
-                            guard let url = response as? String else {
-                                print("Error cast response to String")
-                                return
-                            }
-                            
-                            self.chatMessageViewModel.sendMessage(messageType: .file,
-                                                                  message: filename,
-                                                                  url: url,
-                                                                  success: { _ in
-                                                                    NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
-                            }, failure: { (response, object, error) in
-                                print(error ?? "")
-                            })
-                        }, failure: { (response, object, error) in
-                            print(error ?? "")
-                        })
-                    }
-                }
+//                DispatchQueue.global(qos: .background).async {
+//                    self.chatItemRequestViewModel.uploadFile(filename: shareItem.filename, fileURL: shareItem.fileURL, success: { (response) in
+//
+//                        guard let url = response as? String else {
+//                            print("Error cast response to String")
+//                            return
+//                        }
+//
+//                        self.chatMessageViewModel.sendMessage(messageType: .file,
+//                                                              message: shareItem.filename,
+//                                                              url: url,
+//                                                              success: { _ in
+//                                                                NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
+//                        }, failure: { (response, object, error) in
+//                            print(error ?? "")
+//                        })
+//                    }, failure: { (response, object, error) in
+//                        print(error ?? "")
+//                    })
+//                }
             }
         case .answers:
             break
@@ -296,133 +274,74 @@ class ChatItemRequestViewController: UIViewController {
         
     }
     
-    /// Add the text tag html on string
-    ///
-    /// - Parameters:
-    ///   - item: ItemForm
-    ///   - html: String
-    ///   - formAnswers: Array of FormAnswer
-    fileprivate func htmlAddTextInput(_ item: ItemForm, _ html: inout String, _ formAnswers: [FormAnswer]) {
-        var text = ""
-        for formAnswer in formAnswers where formAnswer.itemFormId == item.id {
-            text = formAnswer.text
-        }
-        html += "<input type=\"text\" value=\"\(text)\" readonly /> \n"
-    }
-    
-    /// Add the textarea tag html on string
-    ///
-    /// - Parameters:
-    ///   - item: ItemForm
-    ///   - html: String
-    ///   - formAnswers: Array of FormAnswer
-    fileprivate func htmlAddTextArea(_ item: ItemForm, _ html: inout String, _ formAnswers: [FormAnswer]) {
-        var text = ""
-        for formAnswer in formAnswers where formAnswer.itemFormId == item.id {
-            text = formAnswer.text
-        }
-        html += "<textarea rows=\"4\" cols=\"50\" readonly>\(text)</textarea> \n"
-    }
-    
-    /// Add the checkbox tag html on string
-    ///
-    /// - Parameters:
-    ///   - item: ItemForm
-    ///   - html: String
-    ///   - formAnswers: Array of FormAnswer
-    fileprivate func htmlAddMultiChoice(_ item: ItemForm, _ html: inout String, _ formAnswers: [FormAnswer]) {
-        for optionItem in item.options {
-            var boolean = false
-            for formAnswer in formAnswers where formAnswer.itemFormId == item.id && formAnswer.optionItemId == optionItem.id {
-                boolean = true
-            }
-            html += "<label><input type=\"checkbox\"\(boolean ? "checked" : "") readonly onclick=\"return false;\">\(optionItem.label)</label><br> \n"
-        }
-    }
-    
-    /// Add the radio tag html on string
-    ///
-    /// - Parameters:
-    ///   - item: ItemForm
-    ///   - html: String
-    ///   - formAnswers: Array of FormAnswer
-    fileprivate func htmlAddSingleChoice(_ item: ItemForm, _ html: inout String, _ formAnswers: [FormAnswer]) {
-        for optionItem in item.options {
-            var boolean = false
-            for formAnswer in formAnswers where formAnswer.itemFormId == item.id && formAnswer.optionItemId == optionItem.id {
-                boolean = true
-            }
-            html += "<label><input type=\"radio\"\(boolean ? "checked" : "") readonly onclick=\"return false;\">\(optionItem.label)</label><br> \n"
-        }
-    }
-    
-    /// Prepare the File.html to be share
-    ///
-    /// - Parameters:
-    ///   - indexPath: IndexPath
-    /// - Returns: String
-    func prepareHtml(indexPath: IndexPath) -> (nameFile: String, content: String) {
+    func shareChecklist(checked: ChecklistChecked) -> (filename: String, fileURL: URL) {
         
-        var formAnswer = FormAnswer()
-        var form = Form()
-        var formAnswers: [FormAnswer] = [FormAnswer]()
+        let checklist = self.checklistViewModel.getChecklist(checklistId: checked.checklistId)
         
-        if indexPath.section == 0 {
-            formAnswer = self.chatItemRequestViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+        for checkItem in checklist.items {
+            checkItem.answer = checkItem.checked ? 1 : 0
+        }
+        
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        
+        var matrixFile = MatrixFile()
+        matrixFile.matrixType = "checklist"
+        matrixFile.language = languageName
+        matrixFile.name = checked.subCategoryName
+        
+        let difficulty = self.chatItemRequestViewModel.searchCategoryBy(id: checked.difficultyId)
+        matrixFile.extra = difficulty?.name ?? ""
+        matrixFile.object = checklist
+        
+        do {
+            let data = try JSONEncoder().encode(matrixFile)
+            let jsonString = String(data: data, encoding: String.Encoding.utf8)!
             
-            for formResult in self.chatItemRequestViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == formResult.id {
-                form = formResult
-            }
-            
-            formAnswers = self.chatItemRequestViewModel.loadFormAnswersTo(formAnswerId: formAnswer.formAnswerId, formId: form.id)
+            let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
+                                            isDirectory: true)
+            let filename = checked.subCategoryName.replacingOccurrences(of: " ", with: "_")   + ".json"
+            let fileURL = temporaryDirectoryURL.appendingPathComponent(filename)
+            try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
+            return (filename, fileURL)
+        } catch {
+            print(error)
         }
         
-        var html: String = ""
-        
-        html += """
-        <html>
-        <head>
-        <meta charset="UTF-8"> \n
-        """
-        html += "<title>\(form.name)</title> \n"
-        html += "</head> \n"
-        html += "<body style=\"display:block;width:100%;\"> \n"
-        html += "<h1>\(form.name)</h1> \n"
-        
-        for screen in form.screens {
-            html += "<h3>\(screen.name)</h3> \n"
-            html += "<form> \n"
-            
-            for item in screen.items {
-                html += "<p></p> \n"
-                html += "<h5>\(item.label)</h5> \n"
-                
-                switch item.formType {
-                    
-                case .textInput:
-                    htmlAddTextInput(item, &html, formAnswers)
-                case .textArea:
-                    htmlAddTextArea(item, &html, formAnswers)
-                case .multiChoice:
-                    htmlAddMultiChoice(item, &html, formAnswers)
-                case .singleChoice:
-                    htmlAddSingleChoice(item, &html, formAnswers)
-                case .label:
-                    break
-                case .none:
-                    break
-                }
-            }
-        }
-        
-        html += """
-        </form>
-        </body>
-        </html>
-        """
-        return (form.name.replacingOccurrences(of: " ", with: "_"), html)
+        return (filename: "", fileURL: URL(string: "")!)
     }
     
+    func shareCustomChecklist(customChecklist: CustomChecklist) -> (filename: String, fileURL: URL) {
+        
+        let checklist = self.customChecklistViewModel.getCustomChecklist(checklistId: customChecklist.id)
+        
+        for checkItem in checklist.items {
+            checkItem.answer = checkItem.checked ? 1 : 0
+        }
+        
+        let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
+        
+        var matrixFile = MatrixFile()
+        matrixFile.matrixType = "customChecklist"
+        matrixFile.language = languageName
+        matrixFile.name = checklist.name
+        matrixFile.object = checklist
+        
+        do {
+            let data = try JSONEncoder().encode(matrixFile)
+            let jsonString = String(data: data, encoding: String.Encoding.utf8)!
+            
+            let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
+                                            isDirectory: true)
+            let filename = checklist.name.replacingOccurrences(of: " ", with: "_")   + ".json"
+            let fileURL = temporaryDirectoryURL.appendingPathComponent(filename)
+            try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
+            return (filename, fileURL)
+        } catch {
+            print(error)
+        }
+        
+        return (filename: "", fileURL: URL(string: "")!)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -434,7 +353,7 @@ extension ChatItemRequestViewController: UITableViewDataSource {
         case .forms:
             return 1
         case .checklists:
-            return 2
+            return 4
         case .answers:
             return 1
         default:
@@ -451,7 +370,12 @@ extension ChatItemRequestViewController: UITableViewDataSource {
                 return self.chatItemRequestViewModel.favouriteChecklistChecked.count
             } else if section == 1 {
                 return self.chatItemRequestViewModel.checklistChecked.count
+            } else if section == 2 {
+                return self.chatItemRequestViewModel.customChecklists.count
+            } else if section == 3 {
+                return self.chatItemRequestViewModel.pathways.count
             }
+            
             return 0
         case .answers:
             return 0
@@ -506,6 +430,10 @@ extension ChatItemRequestViewController: UITableViewDelegate {
                 label.text = "Favourites".localized()
             } else if section == 1 {
                 label.text = "My Checklists".localized()
+            } else if section == 2 {
+                label.text = "Custom Checklists".localized()
+            } else if section == 3 {
+                label.text = "Pathways".localized()
             }
             
             view.addSubview(label)

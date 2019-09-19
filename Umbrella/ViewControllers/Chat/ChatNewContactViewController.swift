@@ -130,7 +130,7 @@ class ChatNewContactViewController: UIViewController {
                 controller.closeLoading()
                 self.dismiss(animated: true, completion: nil)
             }, failure: { (response, object, error) in
-                UIAlertController.alert(title: "Alert".localized(), message: "You are only able to add as a contact someone you've already shared a conversation with.".localized(), cancelButtonTitle: "OK".localized())
+                UIAlertController.alert(title: "Alert".localized(), message: "This contact already exists.".localized(), cancelButtonTitle: "OK".localized())
                 controller.closeLoading()
                 print(error ?? "")
             })

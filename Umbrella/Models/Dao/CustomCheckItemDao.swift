@@ -38,7 +38,7 @@ struct CustomCheckItemDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func list() -> [CustomCheckItem] {
-        return self.sqlProtocol.select(withQuery: "SELECT * FROM \(CustomCheckItem.table)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as [check], custom_checklist_id FROM \(CustomCheckItem.table)")
     }
     
     /// Drop the table
@@ -72,7 +72,7 @@ struct CustomCheckItemDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func listOfChecklist(checkListId: Int) -> [CustomCheckItem] {
-        return self.sqlProtocol.select(withQuery: "SELECT * FROM \(CustomCheckItem.table) WHERE custom_checklist_id = \(checkListId)")
+        return self.sqlProtocol.select(withQuery: "SELECT id, name as [check], custom_checklist_id FROM \(CustomCheckItem.table) WHERE custom_checklist_id = \(checkListId)")
     }
     
     /// Delete CustomCheckItem of the database
@@ -92,4 +92,5 @@ struct CustomCheckItemDao: DaoProtocol {
         let sql = "DELETE FROM \(CustomCheckItem.table) WHERE custom_checklist_id = \(customChecklistId)"
         return self.sqlProtocol.remove(withQuery: sql)
     }
+    
 }

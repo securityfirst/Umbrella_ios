@@ -39,6 +39,33 @@ class CustomChecklistViewModel {
         _ = customChecklistCheckedDao.createTable()
     }
     
+    /// Get checklist by id
+    ///
+    /// - Parameter checklistId: Int
+    /// - Returns: Checklist
+    func getCustomChecklist(checklistId: Int) -> CustomChecklist {
+        
+        let checklist = self.customChecklistDao.getCustomChecklist(id: checklistId)
+        
+        if let checklist = checklist {
+            let checkItems = self.customCheckItemDao.listOfChecklist(checkListId: checklistId)
+            checklist.items = checkItems
+            
+            let checkedList = self.customChecklistCheckedDao.listOfCustomChecklist(checklistId)
+            
+            for item in checklist.items {
+                
+                let checked = checkedList.filter {$0.itemId == item.id}.first
+                
+                item.checked = (checked != nil)
+            }
+            
+            return checklist
+        }
+        
+        return CustomChecklist()
+    }
+    
     func loadCustomChecklist() {
         let languageName: String = UserDefaults.standard.object(forKey: "Language") as? String ?? "en"
         let language = UmbrellaDatabase.languagesStatic.filter { $0.name == languageName }.first

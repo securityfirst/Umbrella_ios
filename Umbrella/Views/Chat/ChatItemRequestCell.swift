@@ -41,6 +41,12 @@ class ChatItemRequestCell: UITableViewCell {
             } else if indexPath.section == 1 {
                 let item = viewModel.checklistChecked[indexPath.row]
                 self.nameLabel.text = item.subCategoryName
+            } else if indexPath.section == 2 {
+                let item = viewModel.customChecklists[indexPath.row]
+                self.nameLabel.text = item.name
+            } else if indexPath.section == 3 {
+                let item = viewModel.pathways[indexPath.row]
+                self.nameLabel.text = item.name
             }
             
         case .answers: break

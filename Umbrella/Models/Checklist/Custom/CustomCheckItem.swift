@@ -19,6 +19,7 @@ class CustomCheckItem: Codable, TableProtocol {
     // MARK: - Properties
     var name: String
     var checked: Bool = false
+    var answer: Int
     
     //
     // MARK: - Initializers
@@ -26,18 +27,21 @@ class CustomCheckItem: Codable, TableProtocol {
         self.id = -1
         self.customChecklistId = -1
         self.name = ""
+        self.answer = 0
     }
     
     init(name: String) {
         self.id = -1
         self.customChecklistId = -1
         self.name = name
+        self.answer = 0
     }
     
     init(name: String, checklistId: Int) {
         self.id = -1
         self.customChecklistId = checklistId
         self.name = name
+        self.answer = 0
     }
     
     //
@@ -45,29 +49,23 @@ class CustomCheckItem: Codable, TableProtocol {
     enum CodingKeys: String, CodingKey {
         case id
         case customChecklistId = "custom_checklist_id"
-        case name = "name"
+        case name = "check"
+        case answer
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.customChecklistId) {
-            self.customChecklistId = try container.decode(Int.self, forKey: .customChecklistId)
-        } else {
-            self.customChecklistId = -1
-        }
-        
-        if container.contains(.name) {
-            self.name = try container.decode(String.self, forKey: .name)
-        } else {
-            self.name = ""
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.customChecklistId = try container.decodeIfPresent(Int.self, forKey: .customChecklistId) ?? -1
+        self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
+        self.answer = try container.decodeIfPresent(Int.self, forKey: .answer) ?? 0
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(answer, forKey: .answer)
     }
     
     //

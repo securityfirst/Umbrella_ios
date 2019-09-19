@@ -87,6 +87,11 @@ class CustomChecklist: Codable, TableProtocol {
         }
     }
     
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(items, forKey: .items)
+    }
+    
     //
     // MARK: - TableProtocol
     static var table: String = "custom_checklist"

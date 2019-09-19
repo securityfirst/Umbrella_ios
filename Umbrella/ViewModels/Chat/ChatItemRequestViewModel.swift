@@ -17,6 +17,10 @@ class ChatItemRequestViewModel {
     var umbrella: Umbrella = UmbrellaDatabase.umbrellaStatic
     var checklistChecked: [ChecklistChecked] = [ChecklistChecked]()
     var favouriteChecklistChecked: [ChecklistChecked] = [ChecklistChecked]()
+    var customChecklists: [CustomChecklist] = [CustomChecklist]()
+    var customChecklistChecked: [CustomChecklistChecked] = [CustomChecklistChecked]()
+    var pathways: [CheckList] = [CheckList]()
+    
     var service: MediaService
     var userLogged: UserMatrix!
     
