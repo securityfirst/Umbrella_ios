@@ -15,7 +15,7 @@ class DeepLinkParser {
     
     func parseDeepLink(_ url: URL) -> ResultDeepLink {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true), let host = components.host else {
-            return ResultDeepLink(type: .none)
+            return ResultDeepLink(type: DeepLinkType.none)
         }
         
         var pathComponents = components.path.components(separatedBy: "/")
@@ -81,6 +81,6 @@ class DeepLinkParser {
             }
         }
         
-        return ResultDeepLink(type: .none)
+        return ResultDeepLink(type: DeepLinkType.none)
     }
 }

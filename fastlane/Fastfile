@@ -9,7 +9,7 @@ platform :ios do
       Dir.mkdir "../DerivedData"
     end
 
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    #ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   end
 
 
@@ -43,18 +43,18 @@ platform :ios do
       version = get_version_number()
       build = get_build_number()
 
-      message = "Umbrella iOS version #{version} build #{build} successfully sent to Testflight."
+      #message = "Umbrella iOS version #{version} build #{build} successfully sent to Testflight."
 
-      slack(
-        message: message
-      )
+      #slack(
+      #  message: message
+      #)
 
-      error do |lane, exception|
-        slack(
-          message: exception.message,
-          success: false
-        )
-      end
+      #error do |lane, exception|
+      #  slack(
+      #    message: exception.message,
+      #    success: false
+      #  )
+      #end
     end
   end
 

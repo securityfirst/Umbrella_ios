@@ -246,6 +246,7 @@ class FeedViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "ShowPathway")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             self.pathwayViewController = (storyboard.instantiateViewController(withIdentifier: "PathwayViewController") as? PathwayViewController)!
+            self.pathwayViewController.modalPresentationStyle = .fullScreen
             self.present(self.pathwayViewController, animated: true, completion: nil)
             return false
         } else {

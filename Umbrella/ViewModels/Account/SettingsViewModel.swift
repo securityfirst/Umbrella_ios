@@ -43,8 +43,7 @@ class SettingsViewModel {
             languageSelected = "Farsi".localized()
         } else if language == "fr" {
             languageSelected = "French".localized()
-        }
-        else if language == "ru" {
+        } else if language == "ru" {
             languageSelected = "Russian".localized()
         }
         
