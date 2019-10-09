@@ -1,23 +1,23 @@
 {
     "en": {
-        "releasenote": "- Added pathways, a tool that helps you quickly react to security challenges.\n- Bugfixes"
+        "releasenote": "- Added French language. \n- Bugfixes."
     },
     "es": {
-        "releasenote": "- Rutas adicionales, una herramienta que le ayuda a reaccionar rápidamente ante los desafíos de seguridad.\n- Corrección de errores"
+        "releasenote": "- Añadido idioma francés. \n- Corrección de errores."
     },
     "zh-Hant": {
-        "releasenote": " - 添加了路徑，這是一種可以幫助您快速應對安全挑戰的工具。\n- Bug修復"
+        "releasenote": "-添加了法語。 \n-錯誤修正."
     },
     "fa": {
-        "releasenote": "- مسیرهای اضافه شده، یک ابزار است که به شما کمک می کند به سرعت به چالش های امنیتی واکنش نشان دهید. \n - رفع اشکالات"
+        "releasenote": "- اضافه شدن زبان فرانسوی. \n- رفع اشکالات"
     },
     "ar": {
-        "releasenote": "- مسارات مضافة ، وهي أداة تساعدك على الاستجابة السريعة للتحديات الأمنية. \n - الأخطاء"
+        "releasenote": "- أضيفت اللغة الفرنسية. \n- الأخطاء"
     },
     "ru": {
-        "releasenote": "- Добавлены пути, инструмент, который поможет вам быстро реагировать на проблемы безопасности.\n- Исправления"
+        "releasenote": "- Добавлен французский язык. \n- Исправления."
     },
     "fr": {
-        "releasenote": "- Des itinéraires supplémentaires, un outil qui vous permet de réagir rapidement aux problèmes de sécurité.\n- Corrections de bugs"
+        "releasenote": "- Ajout de la langue française. \n- Correction de bugs."
     }
 }

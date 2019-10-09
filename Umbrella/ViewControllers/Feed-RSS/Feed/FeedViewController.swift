@@ -106,6 +106,11 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+           // Always adopt a light interface style.
+           overrideUserInterfaceStyle = .light
+        }
+        
         // Show release note just first time.
         // I'm checking whether the version and build are different, if yes, show release note.
         var showReleaseNote = false

@@ -53,6 +53,9 @@ class TitleFormView: UIView, StepperProtocol {
             frame?.size.width = widthOfText
             titleLabel?.frame = frame!
         }
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        titleLabel?.numberOfLines = 0
+        titleLabel?.minimumScaleFactor = 0.4
         
         //Separator
         viewSeparator = UIView(frame: CGRect(x: (titleLabel?.frame.origin.x)! + (titleLabel?.frame.size.width)! + 5, y: self.frame.size.height/2, width:0, height: 1))

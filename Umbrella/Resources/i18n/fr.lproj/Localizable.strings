@@ -1,0 +1,161 @@
+/* 
+  Localizable.strings
+  Umbrella
+
+  Created by Lucas Correa on 16/08/2018.
+  Copyright © 2018 Security First. All rights reserved.
+*/
+
+// Accessibility
+"selected" = "sélectionné";
+"deselected" = "désélectionné";
+"This is form %d of %d forms to fill out. Swipe three fingers on left to next or right back form." = "Il s’agit du formulaire %d du formulaire %d à remplir. Balayez trois doigts à gauche pour passer au formulaire suivant ou à droite pour revenir au formulaire précédent.";
+
+// Menu
+"Feeds" = "Flux";
+"Forms" = "Formulaires";
+"Checklists" = "Listes de contrôle";
+"Lessons" = "Leçons";
+"Account" = "Compte";
+
+// Loading
+"Updating the database" = "Mise à jour de la base de données";
+"Error in load the tent" = "Erreur lors du chargement du contenu";
+"Getting the database" = "Obtention de la base de données";
+"Fetching Data" = "Récupération des données";
+"Umbrella has lots of lessons and content. The first time you use the app these are downloaded so that they work offline. The process should take about 3 minutes at most." = "Umbrella possède beaucoup de leçons et de contenus. La première fois que vous utilisez l’application, ces derniers seront téléchargés afin d’être utilisé hors ligne. Le processus devrait prendre environ 3 minutes.";
+"Loading the content" = "Téléchargement du contenu";
+
+// Form
+"Active" = "Actif";
+"Available forms" = "Formulaires disponibles";
+"REMOVE" = "SUPPRIMER";
+"EDIT" = "MODIFIER";
+"SHARE" = "PARTAGER";
+"Do you really want to remove this form?" = "Voulez-vous réellement supprimer ce formulaire ?";
+"No" = "Non";
+"Yes" = "Oui";
+"Choose the format." = "Choisissez le format.";
+
+// Tour
+"Get advice on everything from sending a secure email to safe travel" = "Obtenez des conseils sur tout, que ce soit de l’envoi de courriels sécurisés jusqu’aux voyages en toute sécurité";
+"Umbrella makes your security simple" = "Umbrella facilite votre sécurité";
+"Use checklists to mark your progress" = "Utilisez des listes de contrôle pour marquer vos progrès";
+"Stay up to date with the latest information on where you are" = "Restez au courant des dernières actualités concernant le lieu où vous vous trouvez";
+"Terms and Conditions" = "Conditions Générales";
+"ACCEPT" = "ACCEPTER";
+"Downloading content can take a few minutes. Please wait." = "Le téléchargement du contenu peut prendre quelques minutes. Veuillez patienter.";
+
+// RSS
+"You chose the Card mode view" = "Vous avez choisi le mode Carte";
+"You chose the List mode view" = "Vous avez choisi le mode Liste";
+"Save" = "Enregistrer";
+"Cancel" = "Annuler";
+"Feed Sources" = "Sources de flux";
+"There was an error when attempting to create the RSS feed. Please make sure you're using the correct address and try again." = "Une erreur est survenue lors de la création du flux RSS. Veuillez vous assurer d’utiliser la bonne adresse et réessayez.";
+
+// Feed
+"Enter the country you want to see the feed for" = "Entrez le pays pour lequel vous désirez voir le flux.";
+"You haven’t set the location and the sources for the feed yet. You have to do that to get the latest security news for your country. You can change it anytime later in the settings." = "Vous n’avez pas encore défini la localisation et les sources de flux. Vous devez le faire afin d’obtenir les dernières actualités en terme de sécurité dans le pays. Vous pouvez les changer ultérieurement dans les paramètres.";
+"Set how often you want Umbrella to check for the latest security news." = "Définissez la fréquence de vérification par Umbrella des dernières actualités en matière de sécurité.";
+"We do not store your location for longer than necessary. Feed providers do not know you are receiving data from them." = "Nous ne mémorisons pas votre position plus longtemps que nécessaire. Les fournisseurs de flux ne savent pas que vous recevez des données de leur part.";
+"Set the sources that you want updates from. The feed sources cannot see that you are requesting information from them." = "Définissez les sources dont vous désirez obtenir les mises à jour. Les sources de flux ne peuvent pas voir que vous leur demandez des informations.";
+"Location:" = "Localisation :";
+"CHANGE LOCATION" = "CHANGER DE LOCALISATION";
+"Set your Feed" = "Définissez votre Flux";
+"SET NOW" = "DÉFINIR MAINTENANT";
+"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "Il n’y a aucun événement à afficher pour votre position géographique. Nous les afficherons quand il y en aura. Tirez vers le bas pour actualiser.";
+"Security feed set to:" = "Le flux de sécurité est défini sur :";
+"Interval" = "Intervalle";
+"SET" = "DÉFINIR";
+"Location" = "Localisation";
+"Security Feed Sources" = "Sources des flux de sécurité";
+"The city or country is not available or you have no internet connection." = "La ville ou le pays n’est pas disponible ou vous n’avez pas de connexion Internet.";
+"Alert" = "Alerte";
+"Enter interval in minutes (one day = 1440 minutes)" = "Entrez un intervalle en minutes (un jour = 1440 minutes)";
+"Sources" = "Sources";
+"Select The Feed Sources" = "Sélectionnez les sources de flux";
+"Change repository" = "Changer le répertoire";
+"Please select one country of the list." = "Veuillez sélectionner un pays dans la liste.";
+"Select All" = "Tout sélectionner";
+
+// Lessons
+"Favourites" = "Favoris";
+"You do not have any Segment yet." = "Aucun segment.";
+"Beginner" = "Débutant";
+"Advanced" = "Avancé";
+"Expert" = "Expert";
+"Checklist" = "Liste de contrôle";
+
+//Checklists
+"Checklists total" = "Total de listes de contrôle";
+"Favourites" = "Favoris";
+"My Checklists" = "Mes listes de contrôle";
+"Total done" = "Total terminé";
+"Overview" = "Aperçu";
+"Custom" = "Personnaliser";
+"Go to lessons and discover recommended checklists or create your own custom checklists." = "Allez dans leçons et découvrez les listes de contrôle recommandées ou créez vos propres listes de contrôle.";
+"New Checklist" = "Nouvelle liste de contrôle";
+"Name of Checklist" = "Nom de la liste de contrôle";
+"Press + button to create your custom checklist." = "Appuyez sur le bouton + afin de créer une liste de contrôle personnalisée.";
+"Delete" = "Supprimer";
+"Item" = "Élément";
+
+// Account
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Votre mot de passe doit comporter au moins 8 caractères et contenir au moins un chiffre et une majuscule";
+"Password" = "Mot de passe";
+"Confirm" = "Confirmer";
+"Passwords do not match." = "Les mots de passe ne correspondent pas.";
+"Password too short." = "Mot de passe trop court";
+"Password must have at least one digit." = "Le mot de passe doit contenir au moins un chiffre";
+"Password must have at least one capital letter." = "Le mot de passe doit contenir au moins une majuscule";
+"Skip setting password" = "Ignorer la saisie du mot de passe";
+"Are you sure you want to continue using the app without setting the password? \n\nThis significantly diminishes your safely in regards with any identifiable data you input into Umbrella." = "Voulez-vous vraiment continuer à utiliser cette application sans définir un mot de passe ?\n\nCela diminue substantiellement votre sécurité par rapport aux données identifiables que vous saisirez dans Umbrella.";
+"YES" = "OUI";
+"NO" = "NON";
+"Settings" = "Paramètres";
+"Set password" = "Définir un mot de passe";
+"Set your password" = "Définissez votre mot de passe";
+"Your password must be at least 8 characters long and must contain at least one digit and one capital letter." = "Votre mot de passe doit comporter au moins 8 caractères et contenir au moins un chiffre et une majuscule";
+"Skip" = "Ignorer";
+"Skip password" = "Ignorer le mot de passe";
+"Don't ask for password again" = "Ne plus demander le mot de passe";
+"Refresh from the server" = "Rafraîchir à partir du serveur";
+"Select Language" = "Sélectionnez la langue";
+"Import your data" = "Importez vos données";
+"Export your data" = "Exportez vos données";
+"Refresh interval for custom feeds" = "Rafraîchir les intervalles pour les flux personnalisés";
+"Your location" = "Votre localisation";
+"Security feed sources" = "Sources des flux de sécurité";
+"Show updates as notification" = "Afficher les mises à jour en tant que notifications";
+"GENERAL" = "GÉNÉRAL";
+"FEED" = "FLUX";
+"English" = "Anglais";
+"Spanish" = "Espagnol";
+"Chinese" = "Chinois";
+"Arabic" = "Arabe";
+"Farsi" = "Farsi";
+"French" = "Français";
+"Russian" = "Russe";
+"hour" = "heure";
+"hour(s)" = "heure(s)";
+"hours" = "heures";
+"Manually" = "Manuellement";
+"Dashboard" = "Tableau de bord";
+"new customFeeds." = "Nouveaux Flux personnalisés.";
+"You can enable access in Settings> Umbrela> Notifications" = "Vous pouvez activer l’accès aux Paramètres > Umbrella > Notifications";
+"Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Le chargement de données à partir d'un nouveau référentiel réinitialisera tous les progrès accomplis. Sauvegardez avant de le faire!";
+"Secondary" = "Secondaire";
+"Change" = "Changer";
+
+//Release note
+"What is new?" = "Quoi de neuf?";
+
+//Pathways
+"Top Tips" = "Meilleurs conseils";
+"See all" = "Voir tous";
+"What do you need most?" = "De quoi avez-vous le plus besoin?";
+"Select a guide to start your security journey, or bookmark any guide for later." = "Sélectionnez un guide pour commencer votre aventure de sécurité ou marquez un guide pour plus tard.";
+"SHOW ME" = "SHOW ME";
+"NO THANKS, I'LL EXPLORE ON MY OWN" = "NO MERCI, J'EXPLOREZ SUR MON PROPRE";
+"Do you really want to remove this item?" = "Voulez-vous vraiment supprimer cet élément?";

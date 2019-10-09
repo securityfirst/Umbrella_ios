@@ -98,8 +98,6 @@
 		A099D09D214A7C130064AD18 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D09C214A7C130064AD18 /* CategoryHeaderView.swift */; };
 		A099D09F214A7DE20064AD18 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A099D09E214A7DE20064AD18 /* CategoryHeaderView.xib */; };
 		A099D0A1214A83CC0064AD18 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099D0A0214A83CC0064AD18 /* CategoryCell.swift */; };
-		A0A166F42152B2EC00A91B53 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; };
-		A0A166F52152B2EC00A91B53 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9320B1E5D6005BC111 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; };
 		A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0A31E6D2154FBD40056D170 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A31E6C2154FBD40056D170 /* MarkdownViewController.swift */; };
@@ -348,7 +346,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A0A166F72152B2EC00A91B53 /* SwiftGit2.framework in Embed Frameworks */,
-				A0A166F52152B2EC00A91B53 /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +435,7 @@
 		A05BA7FC20E11F6D00482003 /* LanguageDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDao.swift; sourceTree = "<group>"; };
 		A05BA7FE20E12F1100482003 /* UmbrellaDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaDatabase.swift; sourceTree = "<group>"; };
 		A05BA80020E1408600482003 /* SegmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentDao.swift; sourceTree = "<group>"; };
+		A05D30B6234B8DFC005EA610 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A064107920D81F960044ADAB /* UmbrellaParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaParserSpec.swift; sourceTree = "<group>"; };
 		A0641EE420D903040044ADAB /* Tent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Tent.bundle; sourceTree = "<group>"; };
 		A0641EE720D90E9D0044ADAB /* f_digital-security-incident.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "f_digital-security-incident.yml"; sourceTree = "<group>"; };
@@ -558,7 +556,6 @@
 		A0C404B921A319020068BDDD /* AccountViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelSpec.swift; sourceTree = "<group>"; };
 		A0C404BB21A428B60068BDDD /* SettingIntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIntervalViewController.swift; sourceTree = "<group>"; };
 		A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftGit2.framework; sourceTree = "<group>"; };
-		A0C6CE9320B1E5D6005BC111 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		A0C6CE9B20B1EBB8005BC111 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A0C6CE9D20B5AB3A005BC111 /* GitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitManager.swift; sourceTree = "<group>"; };
 		A0C6CE9F20B5ABB6005BC111 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -713,7 +710,6 @@
 			files = (
 				3BB472962D5E529D96075E59 /* Pods_Umbrella.framework in Frameworks */,
 				A0A166F62152B2EC00A91B53 /* SwiftGit2.framework in Frameworks */,
-				A0A166F42152B2EC00A91B53 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,7 +748,6 @@
 		6BD42E5E7F88D3A165B659C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0C6CE9320B1E5D6005BC111 /* Result.framework */,
 				A0C6CE9220B1E5D6005BC111 /* SwiftGit2.framework */,
 				98E22A2D801A595634B54EAE /* Pods_Umbrella.framework */,
 				F8A451277F7D2051F95F3ED5 /* Pods_UmbrellaTests.framework */,
@@ -1770,6 +1765,7 @@
 				fa,
 				ar,
 				ru,
+				fr,
 			);
 			mainGroup = A0B9D41920AAE03600B2B796;
 			productRefGroup = A0B9D42320AAE03600B2B796 /* Products */;
@@ -1893,7 +1889,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		E9E6A98A10749655FC8F9303 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2237,6 +2233,7 @@
 				A016A34A2277347B00B55A15 /* fa */,
 				A0ABA14822773782001CDEA8 /* ar */,
 				A0BAC14A2289617E00D884F9 /* ru */,
+				A05D30B6234B8DFC005EA610 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2325,7 +2322,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2339,6 +2336,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2496,7 +2494,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2510,6 +2508,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS $(inherited) -DSQLITE_SWIFT_SQLCIPHER -Onone -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2529,7 +2528,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2542,6 +2541,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2660,7 +2660,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2673,6 +2673,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Umbrella_adhoc;
@@ -2769,7 +2770,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2782,6 +2783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = org.secfirst.umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
