@@ -107,8 +107,10 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         if #available(iOS 13.0, *) {
-           // Always adopt a light interface style.
-           overrideUserInterfaceStyle = .light
+           segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+           segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
+        } else {
+           segmentedControl.tintColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
         }
         
         // Show release note just first time.

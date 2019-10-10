@@ -43,6 +43,13 @@ class BaseChecklistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+           segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+           segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
+        } else {
+           segmentedControl.tintColor = #colorLiteral(red: 0.7787129283, green: 0.3004907668, blue: 0.4151412845, alpha: 1)
+        }
+        
         self.addBarButtonItem.isEnabled = false
         self.addBarButtonItem.tintColor = self.addBarButtonItem.isEnabled ? #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1) : UIColor.clear
         self.segmentedControl.setTitle("Overview".localized(), forSegmentAt: 0)

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GPu-lm-ksX">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GPu-lm-ksX">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,16 +34,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OvV-ZG-5Oq">
-                                <rect key="frame" x="20" y="189" width="280" height="33"/>
+                                <rect key="frame" x="20" y="169" width="280" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Jjz-tK-i9p"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="namePhonePad"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="b9p-30-6MV">
-                                <rect key="frame" x="126.5" y="123" width="67" height="57"/>
+                                <rect key="frame" x="126.5" y="103" width="67" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="6Dq-SI-pJB"/>
                                     <constraint firstAttribute="width" constant="67" id="Nak-LO-Qhc"/>
@@ -70,14 +67,14 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p6U-oq-FjN">
-                                <rect key="frame" x="20" y="235" width="280" height="110"/>
+                                <rect key="frame" x="20" y="215" width="280" height="130"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="9sK-7l-dBF"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" textLabel="J40-YV-Hml" style="IBUITableViewCellStyleDefault" id="Mbo-kt-tye">
-                                        <rect key="frame" x="0.0" y="28" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="280" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mbo-kt-tye" id="yCW-2r-djf">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
@@ -137,19 +134,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2U-0I-zK3" userLabel="Rss" customClass="RssView" customModule="Umbrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="157" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="137" width="320" height="431"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Tc2-fs-t9J">
-                                        <rect key="frame" x="150" y="195.5" width="20" height="20"/>
+                                        <rect key="frame" x="150" y="205.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdM-re-zGM">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-YZ-qry">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RssCell" rowHeight="106" id="1il-Jp-Fgp" customClass="RssCell" customModule="Umbrella" customModuleProvider="target">
@@ -226,16 +223,16 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akU-Ma-kkd" userLabel="Feed" customClass="FeedView" customModule="Umbrella" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="157" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="137" width="320" height="431"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcD-lK-grc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Udb-zC-jUb">
-                                        <rect key="frame" x="150" y="195.5" width="20" height="20"/>
+                                        <rect key="frame" x="150" y="205.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eai-Wk-kTi" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                         <rect key="frame" x="20" y="5" width="280" height="69"/>
@@ -343,7 +340,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-ae-tgy">
-                                        <rect key="frame" x="0.0" y="94" width="320" height="317"/>
+                                        <rect key="frame" x="0.0" y="94" width="320" height="337"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedCell" rowHeight="160" id="lDF-mI-Nym" customClass="FeedCell" customModule="Umbrella" customModuleProvider="target">
@@ -414,7 +411,7 @@
                                         </connections>
                                     </tableView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E07-6l-Gkr">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRa-1m-94H" customClass="UmbrellaView" customModule="Umbrella" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="280" height="150"/>
@@ -714,10 +711,10 @@
                                 </connections>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPB-pG-1lE">
-                                <rect key="frame" x="99.5" y="121" width="121" height="29"/>
+                                <rect key="frame" x="80" y="101" width="160" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="PN9-bv-eAp"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="121" id="U6n-aN-bfd"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="U6n-aN-bfd"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Feed"/>
@@ -800,7 +797,7 @@
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a77-LC-vks">
-                                <rect key="frame" x="0.0" y="111" width="320" height="457"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListRssCell" rowHeight="106" id="HG9-FJ-UPn" customClass="ListRssCell" customModule="Umbrella" customModuleProvider="target">
@@ -978,7 +975,7 @@
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2J-4t-qSq">
-                                <rect key="frame" x="0.0" y="111" width="320" height="413"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="433"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1015,7 +1012,7 @@
                     <tabBarItem key="tabBarItem" title="Feed" image="icViewDay" id="GPR-DU-2iK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Wgh-u3-pfg">
-                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="27"/>
@@ -1039,16 +1036,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="y3n-Ws-c2n">
-                                <rect key="frame" x="20" y="220" width="280" height="33"/>
+                                <rect key="frame" x="20" y="200" width="280" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="gec-Qd-Jq5"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intervalIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xr3-bX-VC7">
-                                <rect key="frame" x="126.5" y="123" width="67" height="57"/>
+                                <rect key="frame" x="126.5" y="103" width="67" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="J9o-k7-Dt7"/>
                                     <constraint firstAttribute="height" constant="57" id="xV8-5Y-Utt"/>
@@ -1123,7 +1119,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select The Feed Sources" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="NVP-xb-jYl">
-                                <rect key="frame" x="20" y="124" width="280" height="21"/>
+                                <rect key="frame" x="20" y="104" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="lGT-99-xvQ"/>
                                 </constraints>
@@ -1132,7 +1128,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gdv-W0-snt">
-                                <rect key="frame" x="0.0" y="161" width="320" height="343"/>
+                                <rect key="frame" x="0.0" y="141" width="320" height="363"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SourceCell" rowHeight="50" id="NS0-BI-1z3" customClass="SourceCell" customModule="Umbrella" customModuleProvider="target">
