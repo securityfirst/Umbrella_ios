@@ -6,12 +6,12 @@ PODS:
   - Localize-Swift (2.0.0)
   - Nimble (8.0.1)
   - Quick (2.0.0)
-  - SQLCipher (4.1.0):
-    - SQLCipher/standard (= 4.1.0)
-  - SQLCipher/common (4.1.0)
-  - SQLCipher/standard (4.1.0):
+  - SQLCipher (4.2.0):
+    - SQLCipher/standard (= 4.2.0)
+  - SQLCipher/common (4.2.0)
+  - SQLCipher/standard (4.2.0):
     - SQLCipher/common
-  - SQLite.swift/SQLCipher (0.11.6):
+  - SQLite.swift/SQLCipher (0.12.2):
     - SQLCipher (>= 3.4.0)
   - SwiftLint (0.30.1)
   - Toast-Swift (4.0.0)
@@ -26,7 +26,7 @@ DEPENDENCIES:
   - Localize-Swift (~> 2.0)
   - Nimble
   - Quick
-  - SQLite.swift/SQLCipher (from `https://github.com/stephencelis/SQLite.swift.git`, tag `0.11.6`)
+  - SQLite.swift/SQLCipher
   - SwiftLint
   - Toast-Swift (~> 4.0.0)
   - Yams
@@ -40,6 +40,7 @@ SPEC REPOS:
     - Nimble
     - Quick
     - SQLCipher
+    - SQLite.swift
     - SwiftLint
     - Toast-Swift
     - Yams
@@ -50,9 +51,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/lucascorrea/BTNavigationDropdownMenu.git
   Files:
     :git: https://github.com/clayellis/Files.git
-  SQLite.swift:
-    :git: https://github.com/stephencelis/SQLite.swift.git
-    :tag: 0.11.6
 
 CHECKOUT OPTIONS:
   BTNavigationDropdownMenu:
@@ -61,9 +59,6 @@ CHECKOUT OPTIONS:
   Files:
     :commit: 06f95bd1bf4f8d5f50bc6bb30b808c253acd4c88
     :git: https://github.com/clayellis/Files.git
-  SQLite.swift:
-    :git: https://github.com/stephencelis/SQLite.swift.git
-    :tag: 0.11.6
 
 SPEC CHECKSUMS:
   BTNavigationDropdownMenu: 4c0b75f83317d300156ffcc8434bf411b05f5cd2
@@ -73,13 +68,13 @@ SPEC CHECKSUMS:
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
   Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
   Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
-  SQLCipher: efbdb52cdbe340bcd892b1b14297df4e07241b7f
-  SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
+  SQLCipher: 0187a2180ac288ea686b670b7141da62cd013b16
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: 2b9b86abac1f9d6ed79325ee11d88963ffbdb816
+PODFILE CHECKSUM: 0db3ac910714fd513bcd9f92139e8d4c8e0639f7
 
 COCOAPODS: 1.7.0

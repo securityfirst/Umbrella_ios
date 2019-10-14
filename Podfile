@@ -7,7 +7,7 @@ target 'Umbrella' do
 
   pod 'SwiftLint'
   pod 'Localize-Swift', '~> 2.0'
-  pod 'SQLite.swift/SQLCipher', :git => 'https://github.com/stephencelis/SQLite.swift.git', :tag => '0.11.6'
+  pod 'SQLite.swift/SQLCipher'
   pod 'Files', :git => 'https://github.com/clayellis/Files.git'
   pod 'FeedKit', '~> 8.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/lucascorrea/BTNavigationDropdownMenu.git'
