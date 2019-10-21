@@ -112,7 +112,9 @@ class DynamicFormView: UIView {
     fileprivate func saveTextField(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
         let formCell = (cell as? TextFieldCell)!
         
-        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.valueText.text!, choice: -1)
+        let formAnswerOld = self.dynamicFormViewModel.formAnswers.first
+        
+        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.valueText.text!, choice: -1, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
         
         for answer in dynamicFormViewModel.formAnswers where (answer.itemFormId == itemForm.id && answer.formId == formId) {
             formAnswer.id = answer.id
@@ -130,7 +132,9 @@ class DynamicFormView: UIView {
     fileprivate func saveTextArea(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
         let formCell = (cell as? TextAreaCell)!
         
-        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.textView.text!, choice: -1)
+        let formAnswerOld = self.dynamicFormViewModel.formAnswers.first
+        
+        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.textView.text!, choice: -1, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
         
         for answer in dynamicFormViewModel.formAnswers where (answer.itemFormId == itemForm.id && answer.formId == formId) {
             formAnswer.id = answer.id
@@ -148,10 +152,12 @@ class DynamicFormView: UIView {
     fileprivate func saveMultiChoice(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
         let formCell = (cell as? MultiChoiceCell)!
         
+        let formAnswerOld = self.dynamicFormViewModel.formAnswers.first
+        
         for view in formCell.subviews where view is ChoiceButton {
             let button = (view as? ChoiceButton)!
             
-            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index)
+            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
             
             for answer in dynamicFormViewModel.formAnswers where (answer.formId == formId && answer.itemFormId == itemForm.id && answer.optionItemId == button.index) {
                 formAnswer.id = answer.id
@@ -176,10 +182,12 @@ class DynamicFormView: UIView {
     fileprivate func saveSingleChoice(_ cell: BaseFormCell, _ formAnswerId: Int64, _ formId: Int, _ itemForm: ItemForm) {
         let formCell = (cell as? SingleChoiceCell)!
         
+        let formAnswerOld = self.dynamicFormViewModel.formAnswers.first
+        
         for view in formCell.subviews where view is ChoiceButton {
             let button = (view as? ChoiceButton)!
             
-            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index)
+            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
             
             for answer in dynamicFormViewModel.formAnswers where (answer.formId == formId && answer.itemFormId == itemForm.id && answer.optionItemId == button.index) {
                 formAnswer.id = answer.id

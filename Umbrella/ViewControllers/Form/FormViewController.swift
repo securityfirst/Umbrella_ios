@@ -52,12 +52,13 @@ class FormViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationItemCustom.showItems(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        super.viewDidAppear(animated)
+        
+        self.navigationItemCustom.showItems(true)
+        
         // If user fill any form this function will update the umbrella.formAnswers
         self.loadFormActive()
         self.formTableView.reloadData()
@@ -188,7 +189,14 @@ class FormViewController: UIViewController {
     ///   - indexPath: IndexPath
     /// - Returns: String
     func prepareHtml(indexPath: IndexPath) -> (nameFile: String, content: String) {
-        let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+        
+        var formAnswer:FormAnswer = FormAnswer()
+        
+        if indexPath.section == 1 {
+            formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 0 })[indexPath.row]
+        } else if indexPath.section == 2 {
+            formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 1 })[indexPath.row]
+        }
         
         var form = Form()
         for formResult in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == formResult.id {
@@ -265,10 +273,19 @@ class FormViewController: UIViewController {
 extension FormViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 {
-            return 2
+        
+        var count = 1
+        let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()
+        
+        if formAnswer.filter({ $0.isMatrix == 0 }).count > 0 {
+            count = 2
         }
-        return 1
+        
+        if formAnswer.filter({ $0.isMatrix == 1 }).count > 0 {
+            count = 3
+        }
+        
+        return count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -277,7 +294,11 @@ extension FormViewController: UITableViewDataSource {
             if section == 0 {
                 return self.formViewModel.umbrella.loadFormByCurrentLanguage().count
             } else if section == 1 {
-                return self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().count
+                let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()
+                return formAnswer.filter({ $0.isMatrix == 0 }).count
+            } else if section == 2 {
+                let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()
+                return formAnswer.filter({ $0.isMatrix == 1 }).count
             }
         }
         
@@ -301,6 +322,8 @@ extension FormViewController: UITableViewDelegate {
                 return 106.0
             } else if indexPath.section == 1 {
                 return 140.0
+            } else if indexPath.section == 2 {
+                return 140.0
             }
         }
         
@@ -323,6 +346,8 @@ extension FormViewController: UITableViewDelegate {
                 label.text = "Available forms".localized()
             } else if section == 1 {
                 label.text = "Active".localized()
+            } else if section == 2 {
+                label.text = "Received Forms".localized()
             }
         } else {
             label.text = "Available forms".localized()
@@ -350,7 +375,15 @@ extension FormViewController: FormCellDelegate {
     
     func removeAction(indexPath: IndexPath) {
         UIAlertController.alert(title: "Alert".localized(), message: "Do you really want to remove this form?".localized(), cancelButtonTitle: "No".localized(), otherButtons: ["Yes".localized()], dismiss: { _ in
-            let formAnswer:FormAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+            
+            var formAnswer:FormAnswer = FormAnswer()
+            
+            if indexPath.section == 1 {
+                formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 0 })[indexPath.row]
+            } else if indexPath.section == 2 {
+                formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 1 })[indexPath.row]
+            }
+            
             self.formViewModel.umbrella.formAnswers.removeObject(obj: formAnswer)
             self.formViewModel.remove(formAnswerId: formAnswer.formAnswerId)
             self.formTableView.reloadData()
@@ -360,8 +393,13 @@ extension FormViewController: FormCellDelegate {
     }
     
     func editAction(indexPath: IndexPath) {
-        // Active
-        let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+        var formAnswer:FormAnswer = FormAnswer()
+        
+        if indexPath.section == 1 {
+            formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 0 })[indexPath.row]
+        } else if indexPath.section == 2 {
+            formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 1 })[indexPath.row]
+        }
         
         for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == form.id {
             self.performSegue(withIdentifier: "fillFormSegue", sender: ["form": form, "formAnswer": formAnswer])
@@ -423,7 +461,16 @@ extension FormViewController: UIViewControllerPreviewingDelegate {
                     fillFormViewController.fillFormViewModel.form = form
                 } else if indexPath.section == 1 {
                     // Active
-                    let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
+                    let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 0 })[indexPath.row]
+                    
+                    for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == form.id {
+                        fillFormViewController.fillFormViewModel.form = form
+                        fillFormViewController.fillFormViewModel.formAnswer = formAnswer
+                        fillFormViewController.isNewForm = false
+                    }
+                } else if indexPath.section == 2 {
+                    // Received Forms
+                    let formAnswer = self.formViewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 1 })[indexPath.row]
                     
                     for form in self.formViewModel.umbrella.loadFormByCurrentLanguage() where formAnswer.formId == form.id {
                         fillFormViewController.fillFormViewModel.form = form

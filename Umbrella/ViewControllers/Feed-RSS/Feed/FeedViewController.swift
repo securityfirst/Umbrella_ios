@@ -192,6 +192,11 @@ class FeedViewController: UIViewController {
         self.navigationItemCustom = NavigationItemCustom(viewController: self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationItemCustom.showItems(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -200,8 +205,6 @@ class FeedViewController: UIViewController {
         }
         
         self.continueWizard = false
-        
-        self.navigationItemCustom.showItems(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

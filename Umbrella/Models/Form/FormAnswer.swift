@@ -18,7 +18,8 @@ class FormAnswer: Codable, TableProtocol, Equatable {
     var itemFormId: Int
     var optionItemId: Int
     var createdAt: String
-    var matrixUrlId: String
+    var isMatrix: Int
+    var userMatrix: String
     
     //
     // MARK: - Properties
@@ -36,7 +37,8 @@ class FormAnswer: Codable, TableProtocol, Equatable {
         self.text = ""
         self.choice = -1
         self.createdAt = ""
-        self.matrixUrlId = ""
+        self.isMatrix = -1
+        self.userMatrix = ""
     }
     
     init(formAnswerId: Int, formId: Int, itemFormId: Int, optionItemId: Int, text: String, choice: Int) {
@@ -52,7 +54,25 @@ class FormAnswer: Codable, TableProtocol, Equatable {
         dateFormatter.dateFormat = "MM/dd/YYYY HH:mm a"
         let date = dateFormatter.string(from: Date())
         self.createdAt = date
-        self.matrixUrlId = ""
+        self.isMatrix = 0
+        self.userMatrix = ""
+    }
+    
+    init(formAnswerId: Int, formId: Int, itemFormId: Int, optionItemId: Int, text: String, choice: Int, isMatrix: Int, userMatrix: String) {
+        self.id = -1
+        self.formAnswerId = formAnswerId
+        self.formId = formId
+        self.itemFormId = itemFormId
+        self.optionItemId = optionItemId
+        self.text = text
+        self.choice = choice
+        
+        let dateFormatter = Global.dateFormatter
+        dateFormatter.dateFormat = "MM/dd/YYYY HH:mm a"
+        let date = dateFormatter.string(from: Date())
+        self.createdAt = date
+        self.isMatrix = isMatrix
+        self.userMatrix = userMatrix
     }
     
     //
@@ -66,7 +86,8 @@ class FormAnswer: Codable, TableProtocol, Equatable {
         case text
         case choice
         case createdAt = "created_at"
-        case matrixUrlId = "matrix_url_id"
+        case isMatrix = "is_matrix"
+        case userMatrix = "user_matrix"
     }
     
     required init(from decoder: Decoder) throws {
@@ -79,7 +100,8 @@ class FormAnswer: Codable, TableProtocol, Equatable {
         self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
         self.choice = try container.decodeIfPresent(Int.self, forKey: .choice) ?? -1
         self.createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt) ?? ""
-        self.matrixUrlId = try container.decodeIfPresent(String.self, forKey: .matrixUrlId) ?? ""
+        self.isMatrix = try container.decodeIfPresent(Int.self, forKey: .isMatrix) ?? -1
+        self.userMatrix = try container.decodeIfPresent(String.self, forKey: .userMatrix) ?? ""
     }
     
     //
@@ -99,7 +121,8 @@ class FormAnswer: Codable, TableProtocol, Equatable {
             Column(name: "form_id", type: .int),
             Column(name: "item_form_id", type: .int, isNotNull: false),
             Column(name: "option_item_id", type: .int, isNotNull: false),
-            Column(name: "matrix_url_id", type: .string)
+            Column(name: "is_matrix", type: .int),
+            Column(name: "user_matrix", type: .string)
         ]
         return array
     }

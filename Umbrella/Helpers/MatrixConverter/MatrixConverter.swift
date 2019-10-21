@@ -18,10 +18,12 @@ struct MatrixConverter {
     let url: URL!
     var matrixProtocol: MatrixConverterProtocol?
     var isUserLogged: Bool
+    var userMatrix: String
     
-    init(url: URL, isUserLogged: Bool) {
+    init(url: URL, isUserLogged: Bool, userMatrix: String) {
         self.url = url
         self.isUserLogged = isUserLogged
+        self.userMatrix = userMatrix
     }
     
     mutating func convert() {
@@ -31,7 +33,7 @@ struct MatrixConverter {
             
             switch matrixFile.matrixType {
             case "form":
-                self.matrixProtocol = FormMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged)
+                self.matrixProtocol = FormMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged, userMatrix: self.userMatrix)
             case "checklist":
                 self.matrixProtocol = ChecklistMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged)
             default:

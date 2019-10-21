@@ -53,9 +53,9 @@ struct FormAnswerDao: DaoProtocol {
         
         var sql = ""
         if object.id == -1 {
-            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at', 'matrix_url_id') VALUES (\(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\", \"\(object.matrixUrlId)\")"
+            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at', 'is_matrix', 'user_matrix') VALUES (\(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\", \(object.isMatrix), \"\(object.userMatrix)\")"
         } else {
-            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('id','form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at', 'matrix_url_id') VALUES (\(object.id), \(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\", \"\(object.matrixUrlId)\")"
+            sql = "INSERT OR REPLACE INTO \(FormAnswer.table) ('id','form_answer_id', 'text', 'choice', 'form_id', 'item_form_id', 'option_item_id', 'created_at', 'is_matrix', 'user_matrix') VALUES (\(object.id), \(object.formAnswerId), \"\(object.text)\", \(object.choice), \(object.formId), \(object.itemFormId), \(object.optionItemId), \"\(object.createdAt)\", \(object.isMatrix),\"\(object.userMatrix)\")"
         }
         
         let rowId = self.sqlProtocol.insert(withQuery: sql)
@@ -95,7 +95,7 @@ struct FormAnswerDao: DaoProtocol {
     ///
     /// - Returns: a list of object
     func listFormActive() -> [FormAnswer] {
-        return self.sqlProtocol.select(withQuery: "SELECT form_id, form_answer_id, created_at FROM \(FormAnswer.table) group by form_answer_id")
+        return self.sqlProtocol.select(withQuery: "SELECT form_id, form_answer_id, created_at, is_matrix, user_matrix FROM \(FormAnswer.table) group by form_answer_id")
     }
     
     /// List of object to screen Form Active

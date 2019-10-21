@@ -270,7 +270,7 @@ extension ChatMessageViewController: UITableViewDelegate {
                         
                         if filename.contains(".json") {
                             if FileManager.default.fileExists(atPath: fileURL.path) {
-                                var matrixConverter = MatrixConverter(url: fileURL, isUserLogged: item.isUserLogged)
+                                var matrixConverter = MatrixConverter(url: fileURL, isUserLogged: item.isUserLogged, userMatrix: item.username())
                                 matrixConverter.convert()
                                 matrixConverter.updateDB()
                                 matrixConverter.openFile()
@@ -282,7 +282,7 @@ extension ChatMessageViewController: UITableViewDelegate {
                                 self.chatMessageViewModel.downloadFile(filename: filename, uri: uri, success: { (response) in
                                     let fileURL = (response as? URL)!
                                     controller.closeLoading()
-                                    var matrixConverter = MatrixConverter(url: fileURL, isUserLogged: item.isUserLogged)
+                                    var matrixConverter = MatrixConverter(url: fileURL, isUserLogged: item.isUserLogged, userMatrix: item.username())
                                     matrixConverter.convert()
                                     matrixConverter.updateDB()
                                     matrixConverter.openFile()

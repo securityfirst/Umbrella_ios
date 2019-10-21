@@ -14,7 +14,7 @@ protocol FormCellDelegate: class {
 }
 
 class FormCell: UITableViewCell {
-
+    
     //
     // MARK: - Properties
     @IBOutlet weak var formBackgroundView: UIView!
@@ -41,7 +41,7 @@ class FormCell: UITableViewCell {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -67,8 +67,17 @@ class FormCell: UITableViewCell {
                 titleLabel.text = form.name
                 accessibility(enable: false)
             } else if indexPath.section == 1 {
-                let form = viewModel.umbrella.loadFormAnswersByCurrentLanguage()[indexPath.row]
-                titleLabel.text = loadForm(formId: form.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage()).name
+                let formAnswer = viewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 0 })[indexPath.row]
+                let form = loadForm(formId: formAnswer.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage())
+                let userMatrix = formAnswer.userMatrix.count > 0 ? "\(formAnswer.userMatrix) - " : ""
+                titleLabel.text = "\(userMatrix)\(form.name)"
+                self.editHeightConstraint.constant = 30
+                accessibility(enable: true)
+            } else if indexPath.section == 2 {
+                let formAnswer = viewModel.umbrella.loadFormAnswersByCurrentLanguage().filter({ $0.isMatrix == 1 })[indexPath.row]
+                let form = loadForm(formId: formAnswer.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage())
+                let userMatrix = formAnswer.userMatrix.count > 0 ? "\(formAnswer.userMatrix) - " : ""
+                titleLabel.text = "\(userMatrix)\(form.name)"
                 self.editHeightConstraint.constant = 30
                 accessibility(enable: true)
             }

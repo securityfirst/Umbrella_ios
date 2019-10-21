@@ -63,7 +63,10 @@ class LessonViewController: UIViewController {
             self.loadingActivity.isHidden = true
             self.lessonTableView.isHidden = false
         }
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.navigationItemCustom.showItems(true)
     }
     

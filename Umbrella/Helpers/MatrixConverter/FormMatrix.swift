@@ -13,25 +13,23 @@ struct FormMatrix: MatrixConverterProtocol {
     
     var matrixFile: MatrixFile
     var isUserLogged: Bool
+    var userMatrix: String
     var form: Form?
     var formAnswer: FormAnswer?
     var formAnswerId: Int = -1
     var matrixConverterViewModel: MatrixConverterViewModel!
     
-    init(matrixFile: MatrixFile, isUserLogged: Bool) {
+    init(matrixFile: MatrixFile, isUserLogged: Bool, userMatrix: String) {
         self.matrixFile = matrixFile
         self.isUserLogged = isUserLogged
         self.matrixConverterViewModel = MatrixConverterViewModel()
+        self.userMatrix = userMatrix
     }
     
     mutating func updateDB() {
         print("Form UpdateDB")
         
         let forms = UmbrellaDatabase.umbrellaStatic.forms
-        let languages = UmbrellaDatabase.languagesStatic
-        
-//        //Language
-//        let languageDB = languages.filter { $0.name == matrixFile.language }.first
         
         //FormDB complete
         let formDB = forms.filter { $0.name == matrixFile.name }.first
@@ -138,7 +136,8 @@ struct FormMatrix: MatrixConverterProtocol {
                     formDB?.screens.forEach({ (screen) in
                         if let itemFilter = (screen.items.filter { $0.name == item.name }.first) {
                             print(itemFilter.id)
-                            let formAnswer = FormAnswer(formAnswerId: formAnswerId, formId: formDB?.id ?? -1, itemFormId: itemFilter.id, optionItemId: -1, text: item.answer, choice: -1)
+                            let formAnswer = FormAnswer(formAnswerId: formAnswerId, formId: formDB?.id ?? -1, itemFormId: itemFilter.id, optionItemId: -1, text: item.answer, choice: -1, isMatrix: 1, userMatrix: self.userMatrix)
+                            
                             let id = matrixConverterViewModel.insertFormAnswer(formAnswer: formAnswer)
                             formAnswer.id = Int(id)
                             self.formAnswer = formAnswer
@@ -153,7 +152,7 @@ struct FormMatrix: MatrixConverterProtocol {
                             if let optionFilter = (item.options.filter { $0.label == option.label }.first) {
                                 optionId = optionFilter.id
                                 print(optionId)
-                                let formAnswer = FormAnswer(formAnswerId: formAnswerId, formId: formDB?.id ?? -1, itemFormId: item.id, optionItemId: optionId, text: "", choice: optionId)
+                                let formAnswer = FormAnswer(formAnswerId: formAnswerId, formId: formDB?.id ?? -1, itemFormId: item.id, optionItemId: optionId, text: "", choice: optionId, isMatrix: 1, userMatrix: self.userMatrix)
                                 let id = matrixConverterViewModel.insertFormAnswer(formAnswer: formAnswer)
                                 formAnswer.id = Int(id)
                                 self.formAnswer = formAnswer

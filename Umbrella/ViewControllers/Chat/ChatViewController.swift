@@ -51,10 +51,13 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(logoutChat), name: NSNotification.Name("LogoutChat"), object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationItemCustom.showItems(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationItemCustom.showItems(true)
         
         self.addBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.newRoom))
         self.navigationItem.rightBarButtonItem  = self.addBarButtonItem
