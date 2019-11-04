@@ -23,6 +23,8 @@ class FormCell: UITableViewCell {
     var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     weak var delegate: FormCellDelegate?
     
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
@@ -61,6 +63,13 @@ class FormCell: UITableViewCell {
             self.editHeightConstraint.constant = 0
         }
         
+        self.titleLabel.font = UIFont(name: "Roboto", size: 24)
+        self.dateLabel.text = ""
+        
+        if (self.titleTopConstraint != nil) {
+            self.titleTopConstraint.constant = 17
+        }
+        
         if viewModel.umbrella.loadFormAnswersByCurrentLanguage().count > 0 && indexPath.row <= viewModel.umbrella.loadFormAnswersByCurrentLanguage().count - 1 {
             if indexPath.section == 0 {
                 let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]
@@ -78,8 +87,11 @@ class FormCell: UITableViewCell {
                 let form = loadForm(formId: formAnswer.formId, forms: viewModel.umbrella.loadFormByCurrentLanguage())
                 let userMatrix = formAnswer.userMatrix.count > 0 ? "\(formAnswer.userMatrix) - " : ""
                 titleLabel.text = "\(userMatrix)\(form.name)"
-                self.editHeightConstraint.constant = 30
+                self.editHeightConstraint.constant = 40
                 accessibility(enable: true)
+                self.titleTopConstraint.constant = 2
+                self.titleLabel.font = UIFont(name: "Roboto", size: 18)
+                self.dateLabel.text = formAnswer.createdAt
             }
         } else if viewModel.umbrella.loadFormByCurrentLanguage().count > 0 && indexPath.row <= viewModel.umbrella.loadFormByCurrentLanguage().count - 1 {
             let form = viewModel.umbrella.loadFormByCurrentLanguage()[indexPath.row]

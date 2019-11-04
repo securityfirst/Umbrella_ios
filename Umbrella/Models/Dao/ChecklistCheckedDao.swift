@@ -53,7 +53,7 @@ struct ChecklistCheckedDao: DaoProtocol {
     /// - Parameter object: object
     /// - Returns: rowId of object inserted
     func insert(_ object: ChecklistChecked) -> Int64 {
-        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(ChecklistChecked.table) ('subcategory_name', 'subcategory_id', 'difficulty_id', 'checklist_id', 'item_id', 'total_items_checklist', 'language_id') VALUES (\"\(object.subCategoryName)\", \(object.subCategoryId), \(object.difficultyId), \(object.checklistId), \(object.itemId), \(object.totalItemsChecklist), \(object.languageId))")
+        let rowId = self.sqlProtocol.insert(withQuery: "INSERT INTO \(ChecklistChecked.table) ('subcategory_name', 'subcategory_id', 'difficulty_id', 'checklist_id', 'item_id', 'total_items_checklist', 'language_id', 'created_at', 'is_matrix', 'user_matrix') VALUES (\"\(object.subCategoryName)\", \(object.subCategoryId), \(object.difficultyId), \(object.checklistId), \(object.itemId), \(object.totalItemsChecklist), \(object.languageId), \"\(object.createdAt)\", \(object.isMatrix), \"\(object.userMatrix)\")")
         return rowId
     }
     
@@ -95,6 +95,6 @@ struct ChecklistCheckedDao: DaoProtocol {
     ///
     /// - Returns: [ChecklistChecked]
     func reportOfItemsChecked() -> [ChecklistChecked] {
-        return self.sqlProtocol.select(withQuery: "SELECT subcategory_name, subcategory_id, difficulty_id, checklist_id, count(case when item_id > 0 then 1 else null end) as total_checked, total_items_checklist, language_id FROM \(ChecklistChecked.table) GROUP BY checklist_id ORDER BY subcategory_name desc;")
+        return self.sqlProtocol.select(withQuery: "SELECT subcategory_name, subcategory_id, difficulty_id, checklist_id, count(case when item_id > 0 then 1 else null end) as total_checked, total_items_checklist, language_id, created_at, is_matrix, user_matrix FROM \(ChecklistChecked.table) GROUP BY checklist_id ORDER BY subcategory_name desc;")
     }
 }

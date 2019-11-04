@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nYP-qr-hO5">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nYP-qr-hO5">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,6 +84,16 @@
                                                             <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/10/2019 7:00pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="6z8-bc-bP9">
+                                                            <rect key="frame" x="13" y="56" width="126" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="126" id="c7H-Z8-tfU"/>
+                                                                <constraint firstAttribute="height" constant="18" id="lrt-AG-VYo"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -96,10 +104,13 @@
                                                         <constraint firstItem="K0G-SA-5KS" firstAttribute="height" secondItem="Gbh-3R-ejq" secondAttribute="height" id="Rzl-HM-mc6"/>
                                                         <constraint firstItem="K0G-SA-5KS" firstAttribute="leading" secondItem="ui8-gA-Gtv" secondAttribute="leading" constant="11" id="YwS-Bj-MRl"/>
                                                         <constraint firstAttribute="trailing" secondItem="lxC-9u-VkU" secondAttribute="trailing" constant="11" id="b5P-rN-usB"/>
+                                                        <constraint firstItem="IzR-f5-1z2" firstAttribute="leading" secondItem="6z8-bc-bP9" secondAttribute="trailing" constant="-126" id="jt8-OM-vtm"/>
                                                         <constraint firstItem="Gbh-3R-ejq" firstAttribute="top" secondItem="IzR-f5-1z2" secondAttribute="bottom" constant="12" id="lX0-8W-fLd"/>
                                                         <constraint firstItem="Gbh-3R-ejq" firstAttribute="centerX" secondItem="ui8-gA-Gtv" secondAttribute="centerX" id="mhf-HO-CEK"/>
+                                                        <constraint firstItem="6z8-bc-bP9" firstAttribute="leading" secondItem="ui8-gA-Gtv" secondAttribute="leading" constant="13" id="nVl-bm-C6E"/>
                                                         <constraint firstAttribute="bottom" secondItem="Gbh-3R-ejq" secondAttribute="bottom" constant="6" id="py0-RH-maq"/>
                                                         <constraint firstAttribute="bottom" secondItem="lxC-9u-VkU" secondAttribute="bottom" constant="6" id="rHi-gh-MMs"/>
+                                                        <constraint firstItem="6z8-bc-bP9" firstAttribute="top" secondItem="IzR-f5-1z2" secondAttribute="bottom" constant="-8" id="sB2-oW-qSZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="K0G-SA-5KS" secondAttribute="bottom" constant="6" id="utN-h5-2V9"/>
                                                     </constraints>
                                                 </view>
@@ -112,12 +123,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="6z8-bc-bP9" id="0hc-4o-Ex0"/>
                                             <outlet property="editButton" destination="Gbh-3R-ejq" id="orm-81-cp8"/>
                                             <outlet property="editHeightConstraint" destination="QDU-J8-QWU" id="Zqk-eP-5he"/>
                                             <outlet property="formBackgroundView" destination="ui8-gA-Gtv" id="i6E-L2-2rl"/>
                                             <outlet property="removeButton" destination="K0G-SA-5KS" id="sBA-nt-6as"/>
                                             <outlet property="shareButton" destination="lxC-9u-VkU" id="r6i-ay-sdg"/>
                                             <outlet property="titleLabel" destination="IzR-f5-1z2" id="Oxc-ZO-IAh"/>
+                                            <outlet property="titleTopConstraint" destination="Do1-PZ-nIf" id="Ngh-H6-o78"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -147,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MQ-DJ-PfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1280.8" y="476.31184407796104"/>
+            <point key="canvasLocation" x="1280.8" y="475.86206896551727"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Fso-hJ-2Ih">
@@ -176,7 +189,6 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Y8f-WP-A7r">
                                                     <rect key="frame" x="15" y="16" width="345" height="33"/>
-                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textField>

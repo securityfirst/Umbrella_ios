@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VWH-wf-fXL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VWH-wf-fXL">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,9 +48,18 @@
                                                     <rect key="frame" x="18" y="13" width="284" height="70"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZMC-vH-WAN">
-                                                            <rect key="frame" x="63" y="8" width="131" height="54"/>
+                                                            <rect key="frame" x="63" y="8" width="131" height="47"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                             <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/10/2019 1pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRM-xk-fhr">
+                                                            <rect key="frame" x="63" y="55" width="131" height="11"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="11" id="nG9-uJ-1Vs"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-1p-of3">
@@ -92,12 +101,15 @@
                                                     <constraints>
                                                         <constraint firstItem="ZMC-vH-WAN" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="8" id="1ag-2O-I2W"/>
                                                         <constraint firstAttribute="trailing" secondItem="rLy-1p-of3" secondAttribute="trailing" constant="5" id="1kb-nW-5BQ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ZMC-vH-WAN" secondAttribute="bottom" constant="8" id="GS0-Uh-ofq"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZMC-vH-WAN" secondAttribute="bottom" constant="15" id="GS0-Uh-ofq"/>
                                                         <constraint firstItem="rLy-1p-of3" firstAttribute="leading" secondItem="DcP-R0-fGo" secondAttribute="trailing" id="I9h-HG-Rwh"/>
                                                         <constraint firstItem="TGl-Z1-ggt" firstAttribute="centerY" secondItem="a2q-SQ-Ggr" secondAttribute="centerY" id="LKW-VR-I4g"/>
                                                         <constraint firstItem="ZMC-vH-WAN" firstAttribute="leading" secondItem="TGl-Z1-ggt" secondAttribute="trailing" constant="8" id="ViB-xR-BBS"/>
                                                         <constraint firstItem="rLy-1p-of3" firstAttribute="top" secondItem="a2q-SQ-Ggr" secondAttribute="top" constant="20" id="Y2h-uq-tnA"/>
+                                                        <constraint firstItem="vRM-xk-fhr" firstAttribute="width" secondItem="ZMC-vH-WAN" secondAttribute="width" id="ajN-eb-nbZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="rLy-1p-of3" secondAttribute="bottom" constant="20" id="cbR-b8-MTC"/>
+                                                        <constraint firstItem="vRM-xk-fhr" firstAttribute="top" secondItem="ZMC-vH-WAN" secondAttribute="bottom" id="dg1-F5-w0z"/>
+                                                        <constraint firstItem="vRM-xk-fhr" firstAttribute="leading" secondItem="TGl-Z1-ggt" secondAttribute="trailing" constant="8" id="enI-3D-Lxp"/>
                                                         <constraint firstItem="DcP-R0-fGo" firstAttribute="leading" secondItem="ZMC-vH-WAN" secondAttribute="trailing" id="gtR-z3-vem"/>
                                                         <constraint firstItem="TGl-Z1-ggt" firstAttribute="leading" secondItem="a2q-SQ-Ggr" secondAttribute="leading" constant="11" id="qVI-ZU-WUK"/>
                                                         <constraint firstItem="DcP-R0-fGo" firstAttribute="centerY" secondItem="a2q-SQ-Ggr" secondAttribute="centerY" id="wL0-1S-CHK"/>
@@ -112,6 +124,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="vRM-xk-fhr" id="XgI-IJ-iBK"/>
                                             <outlet property="iconImageView" destination="TGl-Z1-ggt" id="OVu-8O-vEg"/>
                                             <outlet property="percentLabel" destination="rLy-1p-of3" id="YTM-lY-I7M"/>
                                             <outlet property="shareButton" destination="DcP-R0-fGo" id="Fyz-46-bGf"/>
@@ -252,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2f-Fi-voY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="834.33283358320841"/>
+            <point key="canvasLocation" x="1882.5" y="833.45070422535207"/>
         </scene>
         <!--New Checklist-->
         <scene sceneID="Evt-xB-qYL">

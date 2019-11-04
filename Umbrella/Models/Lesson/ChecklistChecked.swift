@@ -25,6 +25,9 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
     var itemId: Int
     var totalChecked: Int
     var totalItemsChecklist: Int
+    var createdAt: String
+    var isMatrix: Int
+    var userMatrix: String
     
     //
     // MARK: - Initializers
@@ -38,6 +41,9 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.totalChecked = -1
         self.totalItemsChecklist = -1
         self.languageId = -1
+        self.createdAt = ""
+        self.isMatrix = -1
+        self.userMatrix = ""
     }
     
     init(subCategoryName: String, totalChecked: Int, totalItemsChecklist: Int) {
@@ -50,6 +56,9 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.totalChecked = totalChecked
         self.totalItemsChecklist = totalItemsChecklist
         self.languageId = -1
+        self.createdAt = ""
+        self.isMatrix = -1
+        self.userMatrix = ""
     }
     
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalItemsChecklist: Int) {
@@ -62,6 +71,28 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.totalChecked = -1
         self.totalItemsChecklist = totalItemsChecklist
         self.languageId = -1
+        self.createdAt = ""
+        self.isMatrix = -1
+        self.userMatrix = ""
+    }
+    
+    init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalItemsChecklist: Int, isMatrix: Int, userMatrix: String) {
+        self.id = -1
+        self.subCategoryName = subCategoryName
+        self.subCategoryId = subCategoryId
+        self.difficultyId = difficultyId
+        self.checklistId = checklistId
+        self.itemId = itemId
+        self.totalChecked = -1
+        self.totalItemsChecklist = totalItemsChecklist
+        self.languageId = -1
+        
+        let dateFormatter = Global.dateFormatter
+        dateFormatter.dateFormat = "dd/MM/YYYY hh:mm a"
+        let date = dateFormatter.string(from: Date())
+        self.createdAt = date
+        self.isMatrix = isMatrix
+        self.userMatrix = userMatrix
     }
     
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, languageId: Int) {
@@ -74,6 +105,9 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.totalChecked = 0
         self.totalItemsChecklist = 0
         self.languageId = languageId
+        self.createdAt = ""
+        self.isMatrix = -1
+        self.userMatrix = ""
     }
     
     init(subCategoryName: String, subCategoryId: Int, difficultyId: Int, checklistId: Int, itemId: Int, totalChecked: Int, totalItemsChecklist: Int) {
@@ -86,6 +120,9 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         self.totalChecked = totalChecked
         self.totalItemsChecklist = totalItemsChecklist
         self.languageId = -1
+        self.createdAt = ""
+        self.isMatrix = -1
+        self.userMatrix = ""
     }
     
     //
@@ -100,64 +137,26 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
         case totalChecked = "total_checked"
         case totalItemsChecklist = "total_items_checklist"
         case languageId = "language_id"
+        case createdAt = "created_at"
+        case isMatrix = "is_matrix"
+        case userMatrix = "user_matrix"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        if container.contains(.id) {
-            self.id = try container.decode(Int.self, forKey: .id)
-        } else {
-            self.id = -1
-        }
-        
-        if container.contains(.languageId) {
-            self.languageId = try container.decode(Int.self, forKey: .languageId)
-        } else {
-            self.languageId = -1
-        }
-        
-        if container.contains(.subCategoryName) {
-            self.subCategoryName = try container.decode(String.self, forKey: .subCategoryName)
-        } else {
-            self.subCategoryName = ""
-        }
-        
-        if container.contains(.subCategoryId) {
-            self.subCategoryId = try container.decode(Int.self, forKey: .subCategoryId)
-        } else {
-            self.subCategoryId = -1
-        }
-        
-        if container.contains(.difficultyId) {
-            self.difficultyId = try container.decode(Int.self, forKey: .difficultyId)
-        } else {
-            self.difficultyId = -1
-        }
-        
-        if container.contains(.checklistId) {
-            self.checklistId = try container.decode(Int.self, forKey: .checklistId)
-        } else {
-            self.checklistId = -1
-        }
-        
-        if container.contains(.itemId) {
-            self.itemId = try container.decode(Int.self, forKey: .itemId)
-        } else {
-            self.itemId = -1
-        }
-        
-        if container.contains(.totalChecked) {
-            self.totalChecked = try container.decode(Int.self, forKey: .totalChecked)
-        } else {
-            self.totalChecked = -1
-        }
-        
-        if container.contains(.totalItemsChecklist) {
-            self.totalItemsChecklist = try container.decode(Int.self, forKey: .totalItemsChecklist)
-        } else {
-            self.totalItemsChecklist = -1
-        }
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id) ?? -1
+        self.languageId = try container.decodeIfPresent(Int.self, forKey: .languageId) ?? -1
+        self.subCategoryName = try container.decodeIfPresent(String.self, forKey: .subCategoryName) ?? ""
+        self.subCategoryId = try container.decodeIfPresent(Int.self, forKey: .subCategoryId) ?? -1
+        self.difficultyId = try container.decodeIfPresent(Int.self, forKey: .difficultyId) ?? -1
+        self.checklistId = try container.decodeIfPresent(Int.self, forKey: .checklistId) ?? -1
+        self.itemId = try container.decodeIfPresent(Int.self, forKey: .itemId) ?? -1
+        self.totalChecked = try container.decodeIfPresent(Int.self, forKey: .totalChecked) ?? -1
+        self.totalItemsChecklist = try container.decodeIfPresent(Int.self, forKey: .totalItemsChecklist) ?? -1
+        self.createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt) ?? ""
+        self.isMatrix = try container.decodeIfPresent(Int.self, forKey: .isMatrix) ?? -1
+        self.userMatrix = try container.decodeIfPresent(String.self, forKey: .userMatrix) ?? ""
     }
     
     //
@@ -166,7 +165,7 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
     var tableName: String {
         return ChecklistChecked.table
     }
-
+    
     func columns() -> [Column] {
         let array = [
             Column(name: "id", type: .primaryKey),
@@ -176,6 +175,9 @@ class ChecklistChecked: Codable, TableProtocol, Equatable {
             Column(name: "checklist_id", type: .int),
             Column(name: "item_id", type: .int),
             Column(name: "total_items_checklist", type: .int),
+            Column(name: "created_at", type: .string),
+            Column(name: "is_matrix", type: .int),
+            Column(name: "user_matrix", type: .string),
             Column(foreignKey: ForeignKey(key: "language_id", table: Table("language"), tableKey: "id"))
         ]
         return array

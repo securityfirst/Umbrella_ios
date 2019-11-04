@@ -146,7 +146,7 @@ class LessonCheckListViewController: UIViewController {
             item.checked = !item.checked
             let difficulty = self.lessonCheckListViewModel.category
             let checklist = self.lessonCheckListViewModel.checklist
-            let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck())
+            let checklistChecked = ChecklistChecked(subCategoryName: subCategory!.name ?? "", subCategoryId: subCategory!.id, difficultyId: difficulty!.id, checklistId: checklist!.id, itemId: item.id, totalItemsChecklist: checklist!.countItemCheck(), isMatrix: 0, userMatrix: "")
             checklistChecked.languageId = language!.id
             
             if item.checked {

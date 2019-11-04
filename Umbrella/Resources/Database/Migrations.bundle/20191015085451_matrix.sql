@@ -46,5 +46,6 @@ ALTER TABLE form_answer ADD is_matrix INTEGER DEFAULT 0;
 ALTER TABLE form_answer ADD user_matrix TEXT DEFAULT '';
 
 -- CHECKLIST_CHECKED
+ALTER TABLE checklist_checked ADD created_at TEXT DEFAULT '';
 ALTER TABLE checklist_checked ADD is_matrix INTEGER DEFAULT 0;
 ALTER TABLE checklist_checked ADD user_matrix TEXT DEFAULT '';

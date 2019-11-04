@@ -13,7 +13,7 @@ struct ChecklistMatrix: MatrixConverterProtocol {
     
     var matrixFile: MatrixFile
     var isUserLogged: Bool
-    
+    var userMatrix: String
     var category: String
     var subCategory: String
     var difficulty: String
@@ -21,7 +21,7 @@ struct ChecklistMatrix: MatrixConverterProtocol {
     
     var matrixConverterViewModel: MatrixConverterViewModel!
 
-    init(matrixFile: MatrixFile, isUserLogged: Bool) {
+    init(matrixFile: MatrixFile, isUserLogged: Bool, userMatrix: String) {
         self.matrixFile = matrixFile
         self.isUserLogged = isUserLogged
         self.matrixConverterViewModel = MatrixConverterViewModel()
@@ -29,6 +29,7 @@ struct ChecklistMatrix: MatrixConverterProtocol {
         self.subCategory = ""
         self.difficulty = ""
         self.checklistId = ""
+        self.userMatrix = userMatrix
     }
     
     fileprivate func insertDB(_ checklistMatrixFile: CheckList, _ checklistDB: CheckList?, _ subCategoryDB: Category?, _ difficultyDB: Category?, _ languageDB: Language?) {
@@ -40,7 +41,7 @@ struct ChecklistMatrix: MatrixConverterProtocol {
                     print(item.name)
                     print(item.id)
                     
-                    let checklistChecked = ChecklistChecked(subCategoryName: subCategoryDB!.name ?? "", subCategoryId: subCategoryDB!.id, difficultyId: difficultyDB!.id, checklistId: checklistDB!.id, itemId: item.id, totalItemsChecklist: checklistDB!.countItemCheck())
+                    let checklistChecked = ChecklistChecked(subCategoryName: subCategoryDB!.name ?? "", subCategoryId: subCategoryDB!.id, difficultyId: difficultyDB!.id, checklistId: checklistDB!.id, itemId: item.id, totalItemsChecklist: checklistDB!.countItemCheck(), isMatrix: 1, userMatrix: self.userMatrix)
                     checklistChecked.languageId = languageDB!.id
                     self.matrixConverterViewModel.insertChecklistChecked(checklistChecked)
                 }

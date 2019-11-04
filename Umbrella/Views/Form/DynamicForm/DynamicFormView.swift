@@ -114,7 +114,7 @@ class DynamicFormView: UIView {
         
         let formAnswerOld = self.dynamicFormViewModel.formAnswers.first
         
-        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.valueText.text!, choice: -1, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
+        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.valueText.text!, choice: -1, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "", date: formAnswerOld?.createdAt ?? "")
         
         for answer in dynamicFormViewModel.formAnswers where (answer.itemFormId == itemForm.id && answer.formId == formId) {
             formAnswer.id = answer.id
@@ -134,7 +134,7 @@ class DynamicFormView: UIView {
         
         let formAnswerOld = self.dynamicFormViewModel.formAnswers.first
         
-        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.textView.text!, choice: -1, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
+        let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: -1, text: formCell.textView.text!, choice: -1, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "", date: formAnswerOld?.createdAt ?? "")
         
         for answer in dynamicFormViewModel.formAnswers where (answer.itemFormId == itemForm.id && answer.formId == formId) {
             formAnswer.id = answer.id
@@ -157,7 +157,7 @@ class DynamicFormView: UIView {
         for view in formCell.subviews where view is ChoiceButton {
             let button = (view as? ChoiceButton)!
             
-            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
+            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "", date: formAnswerOld?.createdAt ?? "")
             
             for answer in dynamicFormViewModel.formAnswers where (answer.formId == formId && answer.itemFormId == itemForm.id && answer.optionItemId == button.index) {
                 formAnswer.id = answer.id
@@ -187,7 +187,7 @@ class DynamicFormView: UIView {
         for view in formCell.subviews where view is ChoiceButton {
             let button = (view as? ChoiceButton)!
             
-            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "")
+            let formAnswer = FormAnswer(formAnswerId: Int(formAnswerId), formId: formId, itemFormId: itemForm.id, optionItemId: button.index, text: "", choice: button.index, isMatrix: formAnswerOld?.isMatrix ?? 0, userMatrix: formAnswerOld?.userMatrix ?? "", date: formAnswerOld?.createdAt ?? "")
             
             for answer in dynamicFormViewModel.formAnswers where (answer.formId == formId && answer.itemFormId == itemForm.id && answer.optionItemId == button.index) {
                 formAnswer.id = answer.id

@@ -35,7 +35,7 @@ struct MatrixConverter {
             case "form":
                 self.matrixProtocol = FormMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged, userMatrix: self.userMatrix)
             case "checklist":
-                self.matrixProtocol = ChecklistMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged)
+                self.matrixProtocol = ChecklistMatrix(matrixFile: matrixFile, isUserLogged: self.isUserLogged, userMatrix: self.userMatrix)
             default:
                 fatalError("Type not supported")
             }

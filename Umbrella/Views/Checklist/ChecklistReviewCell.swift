@@ -23,6 +23,8 @@ class ChecklistReviewCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var shareWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var dateLabel: UILabel!
+    
     weak var delegate: ChecklistReviewCellDelegate?
     var indexPath: IndexPath = IndexPath(row: 0, section: 0)
     
@@ -52,6 +54,8 @@ class ChecklistReviewCell: UITableViewCell {
         self.widthConstraint.constant = 44
         self.shareWidthConstraint.constant = 40
         self.shareButton.isHidden = false
+        self.dateLabel.text = ""
+        
         if indexPath.section == 0 {
             let checklistChecked = viewModel.totalDoneChecklistChecked
             title = checklistChecked?.subCategoryName ?? ""
@@ -75,8 +79,20 @@ class ChecklistReviewCell: UITableViewCell {
             self.iconImageView.backgroundColor = iconAndColor.color
             title = checklistChecked.subCategoryName
             percent = String(format: "%.f%%", floor(Float(checklistChecked.totalChecked) / (Float(checklistChecked.totalItemsChecklist)) * 100))
+        } else if indexPath.section == 4 {
+            let checklistChecked = viewModel.checklistChecked.filter({ $0.isMatrix == 1 })[indexPath.row]
+            let iconAndColor = viewModel.difficultyIconBy(id: checklistChecked.difficultyId)
+            
+            self.iconImageView.image = iconAndColor.image
+            self.iconImageView.backgroundColor = iconAndColor.color
+            
+            let userMatrix = checklistChecked.userMatrix.count > 0 ? "\(checklistChecked.userMatrix) - " : ""
+            
+            title = "\(userMatrix)\(checklistChecked.subCategoryName)"
+            percent = String(format: "%.f%%", floor(Float(checklistChecked.totalChecked) / (Float(checklistChecked.totalItemsChecklist)) * 100))
+            self.dateLabel.text = checklistChecked.createdAt
         } else {
-            let checklistChecked = viewModel.checklistChecked[indexPath.row]
+            let checklistChecked = viewModel.checklistChecked.filter({ $0.isMatrix == 0 })[indexPath.row]
             let iconAndColor = viewModel.difficultyIconBy(id: checklistChecked.difficultyId)
             
             self.iconImageView.image = iconAndColor.image

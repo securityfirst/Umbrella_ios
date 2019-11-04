@@ -51,7 +51,7 @@ class FormAnswer: Codable, TableProtocol, Equatable {
         self.choice = choice
         
         let dateFormatter = Global.dateFormatter
-        dateFormatter.dateFormat = "MM/dd/YYYY HH:mm a"
+        dateFormatter.dateFormat = "dd/MM/YYYY hh:mm a"
         let date = dateFormatter.string(from: Date())
         self.createdAt = date
         self.isMatrix = 0
@@ -68,8 +68,21 @@ class FormAnswer: Codable, TableProtocol, Equatable {
         self.choice = choice
         
         let dateFormatter = Global.dateFormatter
-        dateFormatter.dateFormat = "MM/dd/YYYY HH:mm a"
+        dateFormatter.dateFormat = "dd/MM/YYYY hh:mm a"
         let date = dateFormatter.string(from: Date())
+        self.createdAt = date
+        self.isMatrix = isMatrix
+        self.userMatrix = userMatrix
+    }
+    
+    init(formAnswerId: Int, formId: Int, itemFormId: Int, optionItemId: Int, text: String, choice: Int, isMatrix: Int, userMatrix: String, date: String) {
+        self.id = -1
+        self.formAnswerId = formAnswerId
+        self.formId = formId
+        self.itemFormId = itemFormId
+        self.optionItemId = optionItemId
+        self.text = text
+        self.choice = choice
         self.createdAt = date
         self.isMatrix = isMatrix
         self.userMatrix = userMatrix

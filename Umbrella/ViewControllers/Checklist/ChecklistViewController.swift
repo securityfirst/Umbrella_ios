@@ -135,7 +135,7 @@ class ChecklistViewController: UIViewController {
 extension ChecklistViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -145,10 +145,12 @@ extension ChecklistViewController: UITableViewDataSource {
         } else if section == 1 {
             return self.checklistViewModel.favouriteChecklistChecked.count
         } else if section == 2 {
-            return self.checklistViewModel.checklistChecked.count
+            return self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 0 }).count
         } else if section == 3 {
             let checklists = self.pathwayViewModel.pathwayFavorite()
             return checklists.count + 1
+        } else if section == 4 {
+            return self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 1 }).count
         }
         
         return 0
@@ -208,6 +210,8 @@ extension ChecklistViewController: UITableViewDelegate {
                 headerView.titleLabel.text = "My Checklists".localized()
             } else if section == 3 {
                 headerView.titleLabel.text = "Top Tips".localized()
+            } else if section == 4 {
+                headerView.titleLabel.text = "Received Checklists".localized()
             }
             
             headerView.section = section
@@ -233,9 +237,14 @@ extension ChecklistViewController: UITableViewDelegate {
                 self.checklistViewModel.favouriteChecklistChecked.append(newChecklistChecked)
             } else if indexPath.section == 2 {
                 // My checklists
-                let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
-                self.checklistViewModel.checklistChecked.remove(at: indexPath.row)
+                let checklistChecked = self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 0 })[indexPath.row]
                 self.checklistViewModel.removelAllChecks(checklistChecked: checklistChecked)
+                self.checklistViewModel.checklistChecked.removeObject(obj: checklistChecked)
+            } else if indexPath.section == 4 {
+                // Received checklists
+                let checklistChecked = self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 1 })[indexPath.row]
+                self.checklistViewModel.removelAllChecks(checklistChecked: checklistChecked)
+                self.checklistViewModel.checklistChecked.removeObject(obj: checklistChecked)
             }
             
             self.emptyLabel.isHidden = !(self.checklistViewModel.checklistChecked.count == 0 && self.checklistViewModel.favouriteChecklistChecked.count == 0)
@@ -278,7 +287,10 @@ extension ChecklistViewController: UITableViewDelegate {
             let checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         } else if indexPath.section == 2 {
-            let checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
+            let checklistChecked = self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 0 })[indexPath.row]
+            item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
+        } else if indexPath.section == 4 {
+            let checklistChecked = self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 1 })[indexPath.row]
             item = self.checklistViewModel.getStructureOfObject(to: checklistChecked.checklistId)
         }
         
@@ -309,7 +321,9 @@ extension ChecklistViewController: ChecklistReviewCellDelegate {
         if indexPath.section == 1 {
             checklistChecked = self.checklistViewModel.favouriteChecklistChecked[indexPath.row]
         } else if indexPath.section == 2 {
-            checklistChecked = self.checklistViewModel.checklistChecked[indexPath.row]
+            checklistChecked = self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 0 })[indexPath.row]
+        } else if indexPath.section == 4 {
+            checklistChecked = self.checklistViewModel.checklistChecked.filter({ $0.isMatrix == 1 })[indexPath.row]
         }
         
         if let checklistChecked = checklistChecked {
