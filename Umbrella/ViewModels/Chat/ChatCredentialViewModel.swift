@@ -65,6 +65,8 @@ class ChatCredentialViewModel {
     func createUser(username: String, password: String, email: String, success: @escaping SuccessHandler, failure: @escaping FailureHandler) {
         service.createUser(username: username, password: password, email: email, success: { (user) in
             self.userMatrix = (user as? UserMatrix)!
+            self.userMatrix.username = username
+            self.userMatrix.password = password
             _ = self.userMatrixDao.insert(self.userMatrix)
             success(user as AnyObject)
             

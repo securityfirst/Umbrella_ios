@@ -115,6 +115,7 @@ class ChatViewController: UIViewController {
             controller.showLoading(view: self.view)
         }
         self.loadPublicRooms(loading: controller)
+        self.loadJoinedRooms(loading: controller)
     }
     
     @objc func newRoom() {
@@ -136,7 +137,9 @@ class ChatViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
             let navigationController = (storyboard.instantiateViewController(withIdentifier: "NavigationChatNewGroup") as? UINavigationController)!
             let chatNewGroupViewController = (navigationController.viewControllers.first! as? ChatNewGroupViewController)!
+            chatNewGroupViewController.chatGroupViewModel.roomsJoined = self.chatClientViewModel.rooms
             chatNewGroupViewController.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
+            navigationController.modalPresentationStyle = .fullScreen
             self.present(navigationController, animated: true, completion: nil)
         }
         
@@ -144,7 +147,9 @@ class ChatViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
             let navigationController = (storyboard.instantiateViewController(withIdentifier: "NavigationChatNewContact") as? UINavigationController)!
             let chatNewContactViewController = (navigationController.viewControllers.first! as? ChatNewContactViewController)!
+            chatNewContactViewController.chatGroupViewModel.roomsJoined = self.chatClientViewModel.rooms
             chatNewContactViewController.chatGroupViewModel.userLogged = self.chatCredentialViewModel.getUserLogged()
+            navigationController.modalPresentationStyle = .fullScreen
             self.present(navigationController, animated: true, completion: nil)
         }
     }

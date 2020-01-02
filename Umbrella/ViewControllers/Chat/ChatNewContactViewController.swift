@@ -62,6 +62,13 @@ class ChatNewContactViewController: UIViewController {
             check = false
         }
         
+        let existsRoom = chatGroupViewModel.roomsJoined.filter { $0.name.lowercased() == self.usernameText.text?.lowercased() }
+        if existsRoom.count > 0 {
+            check = false
+            UIAlertController.alert(title: "Alert".localized(), message: "This contact already exists.".localized(), cancelButtonTitle: "OK".localized())
+            return check
+        }
+        
         if !check {
             UIApplication.shared.keyWindow!.makeToast("Enter username".localized(), duration: 2.5, position: .center)
         }
@@ -124,7 +131,7 @@ class ChatNewContactViewController: UIViewController {
             let controller = (storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController)!
             controller.showLoading(view: self.view)
             
-            let room = Room(preset: "private_chat", roomAliasName: "contact_room-\(self.usernameText.text!.lowercased().replacingOccurrences(of: " ", with: ""))", name: self.usernameText.text!, topic: self.usernameText.text!, visibility: "private", invite: ["@\(self.usernameText.text!):comms.secfirst.org"])
+            let room = Room(preset: "private_chat", roomAliasName: "contact_room-\(self.usernameText.text!.lowercased().replacingOccurrences(of: " ", with: ""))-\(UUID().uuidString)", name: self.usernameText.text!, topic: self.usernameText.text!, visibility: "private", invite: ["@\(self.usernameText.text!):comms.secfirst.org"])
             
             self.chatGroupViewModel.createRoom(room: room, success: { (publicRoom) in
                 controller.closeLoading()

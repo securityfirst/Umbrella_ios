@@ -145,14 +145,13 @@ class NavigationItemCustom: NSObject {
     @objc func showNotification() {
         let storyboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
         let navigationNotification = (storyboard.instantiateViewController(withIdentifier: "NavigationNotification") as? UINavigationController)!
-//        let notificationViewController = (navigationNotification.viewControllers.first! as? NotificationViewController)!
         UIApplication.shared.keyWindow?.rootViewController!.present(navigationNotification, animated: true)
     }
     
     @objc func showAccount() {
         let storyboard = UIStoryboard(name: "Account", bundle: nil)
         self.accountNavigationController = (storyboard.instantiateViewController(withIdentifier: "AccountNavigationController") as? UINavigationController)!
+        self.accountNavigationController.modalPresentationStyle = .fullScreen
         self.viewController.present(self.accountNavigationController, animated: true, completion: nil)
-//        AccountNavigationController
     }
 }

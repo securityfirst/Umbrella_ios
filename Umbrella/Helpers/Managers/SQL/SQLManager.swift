@@ -294,7 +294,7 @@ extension SQLManager {
             }
             
             #if DEBUG
-            self.connect?.trace { print($0) }
+//            self.connect?.trace { print($0) }
             #endif
             return self.connect
         } catch {

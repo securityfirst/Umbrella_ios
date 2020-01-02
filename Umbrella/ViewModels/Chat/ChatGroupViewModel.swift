@@ -14,6 +14,7 @@ class ChatGroupViewModel {
     var sqlManager: SQLManager
     var service: UmbrellaMatrixRoomService
     var rooms: [Room] = [Room]()
+    var roomsJoined: [Room] = [Room]()
     
     lazy var publicRoomDao: PublicRoomDao = {
         let publicRoomDao = PublicRoomDao(sqlProtocol: self.sqlManager)

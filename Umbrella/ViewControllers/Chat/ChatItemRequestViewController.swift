@@ -241,30 +241,30 @@ class ChatItemRequestViewController: UIViewController {
                         shareItem = self.shareChecklist(checked: checklistChecked)
                     }
                 } else if itemSelected[0].section == 2 {
-                    var customChecklist = self.chatItemRequestViewModel.customChecklists[itemSelected[0].row]
+                    let customChecklist = self.chatItemRequestViewModel.customChecklists[itemSelected[0].row]
                     shareItem = self.shareCustomChecklist(customChecklist: customChecklist)
                 }
                 
-//                DispatchQueue.global(qos: .background).async {
-//                    self.chatItemRequestViewModel.uploadFile(filename: shareItem.filename, fileURL: shareItem.fileURL, success: { (response) in
-//
-//                        guard let url = response as? String else {
-//                            print("Error cast response to String")
-//                            return
-//                        }
-//
-//                        self.chatMessageViewModel.sendMessage(messageType: .file,
-//                                                              message: shareItem.filename,
-//                                                              url: url,
-//                                                              success: { _ in
-//                                                                NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
-//                        }, failure: { (response, object, error) in
-//                            print(error ?? "")
-//                        })
-//                    }, failure: { (response, object, error) in
-//                        print(error ?? "")
-//                    })
-//                }
+                DispatchQueue.global(qos: .background).async {
+                    self.chatItemRequestViewModel.uploadFile(filename: shareItem.filename, fileURL: shareItem.fileURL, success: { (response) in
+
+                        guard let url = response as? String else {
+                            print("Error cast response to String")
+                            return
+                        }
+
+                        self.chatMessageViewModel.sendMessage(messageType: .file,
+                                                              message: shareItem.filename,
+                                                              url: url,
+                                                              success: { _ in
+                                                                NotificationCenter.default.post(name: Notification.Name("UpdateMessages"), object: nil)
+                        }, failure: { (response, object, error) in
+                            print(error ?? "")
+                        })
+                    }, failure: { (response, object, error) in
+                        print(error ?? "")
+                    })
+                }
             }
         case .answers:
             break

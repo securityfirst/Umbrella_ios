@@ -96,6 +96,27 @@ class ChatClientViewModel {
                                     let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
                                     self.rooms.append(room)
                                     _ = self.roomDao.insert(room)
+                                } else if memberEvents.count == 1 {
+                                    var nameInvite = ""
+                                    var nameJoin = ""
+                                        nameInvite = self.normalizeName(identifier: "@", text: memberEvents.first!.sender)
+                                        nameJoin = self.normalizeName(identifier: "@", text: memberEvents.first!.stateKey)
+                                    
+                                    var name = ""
+                                    
+                                    if user.username == nameInvite {
+                                        name = nameJoin
+                                    } else {
+                                        name = nameInvite
+                                    }
+                                    
+                                    print("UserLogged: \(user.username)")
+                                    print("Invite: \(nameInvite) Join: \(nameJoin)")
+                                    print("Name Room is \(name)")
+                                    
+                                    let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
+                                    self.rooms.append(room)
+                                    _ = self.roomDao.insert(room)
                                 }
                             } else {
                                 for joinEvent in joinEvents {
