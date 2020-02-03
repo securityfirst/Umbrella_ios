@@ -114,6 +114,7 @@ class StepperView: UIView, UIScrollViewDelegate {
                     stepperItem?.stage = .done
                 } else {
                     stepperItem?.stage = .inactive
+                    stepperItem?.index = index
                 }
             }
         }
@@ -134,8 +135,8 @@ class StepperView: UIView, UIScrollViewDelegate {
             let itemView = dataSource.viewAtIndex(index)
             
             if var view = itemView as? StepperProtocol {
-                view.stage = index == 0 ? .active : .inactive
                 view.index = index
+                view.stage = index == 0 ? .active : .inactive
             } else {
                 fatalError("CustomView must implement the StepperProtocol")
             }

@@ -37,6 +37,9 @@
 "No" = "否";
 "Yes" = "是";
 "Choose the format." = "選擇格式。";
+"< Back" = "< 返回";
+"Save" = "保存";
+"Next >" = "下一個 >";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "獲得一切的安全忠告，從傳送安全電子郵件，到安全出行。";
@@ -180,3 +183,4 @@
 "Set a new one" = "設置一個新的";
 "Email is invalid." = "電子郵件無效。";
 "You have no internet connection." = "You have no internet connection.";
+"Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group." = "您的個人資料當前對其他用戶不可見。 如果您希望您的朋友和同事能夠找到您，請加入任何公共團體。";

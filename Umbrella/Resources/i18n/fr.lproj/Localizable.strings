@@ -36,6 +36,9 @@
 "No" = "Non";
 "Yes" = "Oui";
 "Choose the format." = "Choisissez le format.";
+"< Back" = "< Retour";
+"Save" = "Sauvegarder";
+"Next >" = "Suivant >";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "Obtenez des conseils sur tout, que ce soit de l’envoi de courriels sécurisés jusqu’aux voyages en toute sécurité";
@@ -159,3 +162,24 @@
 "SHOW ME" = "SHOW ME";
 "NO THANKS, I'LL EXPLORE ON MY OWN" = "NO MERCI, J'EXPLOREZ SUR MON PROPRE";
 "Do you really want to remove this item?" = "Voulez-vous vraiment supprimer cet élément?";
+
+//Chat
+"Username" = "Username";
+"Password" = "Password";
+"Confirm" = "Confirm";
+"Email (Optional)" = "Email (Optional)";
+"SIGN IN" = "SIGN IN";
+"SIGN IN INSTEAD" = "SIGN IN INSTEAD";
+"REGISTER" = "REGISTER";
+"CREATE ACCOUNT" = "CREATE ACCOUNT";
+"Enter username, password and confirm." = "Enter username, password and confirm.";
+"Username or password is invalid" = "Username or password is invalid";
+"Enter username and password." = "Enter username and password.";
+"User ID already taken." = "User ID already taken.";
+"Are you sure you want to log out of your Matrix account?" = "Are you sure you want to log out of your Matrix account?";
+"Chat log out" = "Sign out of chat";
+"Not sure of your password?" = "Not sure of your password?";
+"Set a new one" = "Set a new one";
+"Email is invalid." = "Email is invalid.";
+"You have no internet connection." = "You have no internet connection.";
+"Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group." = "Votre profil est actuellement invisible pour les autres utilisateurs. Si vous voulez que vos amis et collègues puissent vous trouver, veuillez rejoindre n'importe quel groupe public.";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class FillFormViewController: UIViewController {
     
@@ -22,6 +23,7 @@ class FillFormViewController: UIViewController {
     @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var isNewForm: Bool = true
     var currentPage: CGFloat = 0
@@ -34,6 +36,10 @@ class FillFormViewController: UIViewController {
         
         self.title = fillFormViewModel.form.name
         self.stepperView.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
+        
+        updateLanguage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -124,6 +130,12 @@ class FillFormViewController: UIViewController {
     
     //
     // MARK: - Functions
+    
+    @objc func updateLanguage() {
+        backButton.setTitle("< Back".localized(), for: .normal)
+        saveButton.setTitle("Save".localized(), for: .normal)
+        nextButton.setTitle("Next >".localized(), for: .normal)
+    }
     
     /// Check password
     func checkPassword() {
@@ -261,7 +273,7 @@ extension FillFormViewController: StepperViewDataSource {
         
         //ViewMain
         let titleFormView = TitleFormView(frame: CGRect(x: CGFloat(index) * self.stepperView.visivelPercentualSize, y: 2, width: self.stepperView.viewWidth(index: index), height: self.stepperView.frame.size.height-5))
-        
+        titleFormView.delegate = self
         // View of the Index
         titleFormView.indexView = UIView(frame: CGRect(x: 10, y: self.stepperView.frame.size.height/2-20/2, width: 20, height: 20))
         titleFormView.indexView?.backgroundColor = #colorLiteral(red: 0.5934140086, green: 0.7741840482, blue: 0.2622931898, alpha: 1)
@@ -289,4 +301,16 @@ extension FillFormViewController: StepperViewDataSource {
     func numberOfTitles() -> Int {
         return fillFormViewModel.form.screens.count
     }
+}
+
+extension FillFormViewController: TitleFormViewDelegate {
+    func changePage(page: Int) {
+        
+        currentPage = CGFloat(page)
+        self.view.endEditing(true)
+        self.backButton.isHidden = (currentPage == 0)
+        
+        self.formScrollView.contentOffset.x = currentPage * self.formScrollView.frame.size.width
+    }
+
 }

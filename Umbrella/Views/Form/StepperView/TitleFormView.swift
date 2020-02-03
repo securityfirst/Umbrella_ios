@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol TitleFormViewDelegate: class {
+    func changePage(page: Int)
+}
+
 class TitleFormView: UIView, StepperProtocol {
     
     //
@@ -16,11 +21,13 @@ class TitleFormView: UIView, StepperProtocol {
     var titleLabel: UILabel?
     var indexLabel: UILabel?
     var viewSeparator: UIView?
+    weak var delegate: TitleFormViewDelegate?
     
     //
     // MARK: - StepperProtocol
     var index: Int = 0
     var stage: StepperStage = .active {
+        
         didSet {
             switch stage {
             case .active:
@@ -34,11 +41,16 @@ class TitleFormView: UIView, StepperProtocol {
                 titleLabel?.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
                 titleLabel?.font = UIFont(name: "Roboto-Bold", size: 12)
             case .inactive:
+                indexLabel?.text = "\(index+1)"
                 indexView?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 titleLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 titleLabel?.font = UIFont(name: "Roboto-Regular", size: 12)
             }
         }
+    }
+    
+    @objc func changePage() {
+        self.delegate?.changePage(page: index)
     }
     
     /// Set title and add a separator
@@ -52,6 +64,13 @@ class TitleFormView: UIView, StepperProtocol {
             var frame = titleLabel?.frame
             frame?.size.width = widthOfText
             titleLabel?.frame = frame!
+            
+            let button = UIButton(frame: CGRect(x: frame!.origin.x - 30, y: frame!.origin.y - 5, width: frame!.size.width + 30, height: frame!.size.height + 10))
+//            button.backgroundColor = .yellow
+//            button.alpha = 0.3
+            
+            button.addTarget(self, action: #selector(changePage), for: .touchUpInside)
+            addSubview(button)
         }
         titleLabel?.adjustsFontSizeToFitWidth = true
         titleLabel?.numberOfLines = 0

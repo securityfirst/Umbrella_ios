@@ -37,6 +37,9 @@
 "No" = "خیر";
 "Yes" = "بله";
 "Choose the format." = "فرمت مورد نظر را انتخاب کنید";
+"< Back" = "<برگشت";
+"Save" = "صرفه جویی";
+"Next >" = "بعدی>";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "از ارسال یک ایمیل ایمن به سفر ایمن در مورد همه چی توصیه دریافت کنید";
@@ -180,3 +183,4 @@
 "Set a new one" = "یک جدید را تنظیم کنید";
 "Email is invalid." = "ایمیل نامعتبر است.";
 "You have no internet connection." = "You have no internet connection.";
+"Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group." = "نمایه شما در حال حاضر برای سایر کاربران نامرئی است. اگر می خواهید دوستان و همکارانتان بتوانند شما را پیدا کنند ، لطفا به هر گروه عمومی ملحق شوید.";

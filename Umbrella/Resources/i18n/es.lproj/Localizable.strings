@@ -37,6 +37,9 @@
 "No" = "No";
 "Yes" = "Sí";
 "Choose the format." = "Elija el formato.";
+"< Back" = "< Volver";
+"Save" = "Salvar";
+"Next >" = "Siguiente >";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "Consiga asesoramiento en muchos temas, desde enviar un correo electrónico privado hasta viajar seguro";
@@ -180,3 +183,4 @@
 "Set a new one" = "Establecer uno nuevo";
 "Email is invalid." = "El correo electrónico es invalido.";
 "You have no internet connection." = "You have no internet connection.";
+"Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group." = "Su perfil es actualmente invisible para otros usuarios. Si quieres que tus amigos y colegas puedan encontrarte, únete a cualquier grupo público.";

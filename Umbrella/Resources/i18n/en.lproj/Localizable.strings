@@ -37,6 +37,9 @@
 "No" = "No";
 "Yes" = "Yes";
 "Choose the format." = "Choose the format.";
+"< Back" = "< Back";
+"Save" = "Save";
+"Next >" = "Next >";
 
 // Tour
 "Get advice on everything from sending a secure email to safe travel" = "Get advice on everything from sending a secure email to safe travel";
@@ -180,3 +183,4 @@
 "Set a new one" = "Set a new one";
 "Email is invalid." = "Email is invalid.";
 "You have no internet connection." = "You have no internet connection.";
+"Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group." = "Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group.";

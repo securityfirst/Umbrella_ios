@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class RuleCell: UITableViewCell {
     
@@ -21,6 +22,10 @@ class RuleCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        self.messageLabel.text = "Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group.".localized()
     }
 
     @IBAction func okAction(_ sender: Any) {
