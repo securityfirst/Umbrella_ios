@@ -9,7 +9,7 @@
 import UIKit
 
 class NotificationViewController: UIViewController {
-
+    
     @IBOutlet weak var notificationTableView: UITableView!
     
     lazy var notificationViewModel: NotificationViewModel = {
@@ -21,9 +21,10 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateList(_:)), name: NSNotification.Name("SyncedMatrix"), object: nil)
+        
         self.tableHidden()
     }
-
+    
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -35,7 +36,19 @@ class NotificationViewController: UIViewController {
     }
     
     func tableHidden() {
+        
+        print(SyncManager.shared.invite.count)
         self.notificationTableView.isHidden = (SyncManager.shared.invite.count == 0)
+        
+        if let _ = notificationViewModel.getUserLogged() {
+            
+            let rule = UserDefaults.standard.bool(forKey: "ruleFirstLogin")
+            let syncHasNewItem = UserDefaults.standard.bool(forKey: "SyncHasNewItem")
+            
+            if rule == false && syncHasNewItem {
+                self.notificationTableView.isHidden = false
+            }
+        }
     }
 }
 
@@ -43,17 +56,43 @@ class NotificationViewController: UIViewController {
 extension NotificationViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if let _ = notificationViewModel.getUserLogged() {
+            let rule = UserDefaults.standard.bool(forKey: "ruleFirstLogin")
+            if rule == false {
+                return 2
+            }
+        }
         return 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SyncManager.shared.invite.count
+        
+        if section == 0 {
+            return SyncManager.shared.invite.count
+        }
+        
+        if section == 1 {
+            return 1
+        }
+        
+        return 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: NotificationCell = (tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as? NotificationCell)!
-
+        print("\(indexPath)")
+        if indexPath.section == 0 && SyncManager.shared.invite.count == 0 {
+            let cell: RuleCell = (tableView.dequeueReusableCell(withIdentifier: "RuleCell", for: indexPath) as? RuleCell)!
+            return cell
+        }
+        
+        if indexPath.section == 1 {
+            let cell: RuleCell = (tableView.dequeueReusableCell(withIdentifier: "RuleCell", for: indexPath) as? RuleCell)!
+            return cell
+        }
+        
+       let cell: NotificationCell = (tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as? NotificationCell)!
+        
         cell.configure(invite: SyncManager.shared.invite, indexPath: indexPath)
         cell.delegate = self
         

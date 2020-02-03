@@ -28,18 +28,20 @@ class NavigationItemCustom: NSObject {
         
         NotificationCenter.default.addObserver(self, selector: #selector(clearNotification(_:)), name: NSNotification.Name("ClearNotification"), object: nil)
         
-        let syncHasNewItem = UserDefaults.standard.bool(forKey: "SyncHasNewItem")
+//        let syncHasNewItem = UserDefaults.standard.bool(forKey: "SyncHasNewItem")
+//
+//        if syncHasNewItem {
+//            let badgeNumber = UserDefaults.standard.integer(forKey: "BadgeNumber")
+//            updateNotificationBell(number: badgeNumber)
+//        }
         
-        if syncHasNewItem {
-            let badgeNumber = UserDefaults.standard.integer(forKey: "BadgeNumber")
-            updateNotificationBell(number: badgeNumber)
-        }
+        UserDefaults.standard.set(false, forKey: "SyncHasNewItem")
         
     }
     
     @objc func sync(_ notification:Notification) {
-        let sync = (notification.object as? Sync)!
-        updateNotificationBell(number: sync.rooms.invite.keys.count)
+        let number = (notification.object as? Int) ?? 0
+        updateNotificationBell(number: number)
     }
     
     @objc func clearNotification(_ notification:Notification) {

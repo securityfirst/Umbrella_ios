@@ -161,6 +161,7 @@ class ChatSignInViewController: UIViewController {
                 DispatchQueue.main.async {
                     controller.closeLoading()
                     NotificationCenter.default.post(name: Notification.Name("RemoveCredentialScreen"), object: nil)
+                    NotificationCenter.default.post(name: Notification.Name("StartSyncMatrix"), object: nil)
                 }
             }, failure: { (response, object, error) in
                 controller.closeLoading()

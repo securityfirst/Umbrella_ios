@@ -93,14 +93,14 @@ class ChatClientViewModel {
                                     print("Invite: \(nameInvite) Join: \(nameJoin)")
                                     print("Name Room is \(name)")
                                     
-                                    let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
+                                    let room = Room(roomId: dic.key, name: "I:\(nameInvite) J:\(nameJoin) F: \(name.capitalized)", topic: "", canonicalAlias: nameAlias)
                                     self.rooms.append(room)
                                     _ = self.roomDao.insert(room)
                                 } else if memberEvents.count == 1 {
                                     var nameInvite = ""
                                     var nameJoin = ""
-                                        nameInvite = self.normalizeName(identifier: "@", text: memberEvents.first!.sender)
-                                        nameJoin = self.normalizeName(identifier: "@", text: memberEvents.first!.stateKey)
+                                    nameInvite = self.normalizeName(identifier: "@", text: memberEvents.first!.sender)
+                                    nameJoin = self.normalizeName(identifier: "@", text: memberEvents.first!.stateKey)
                                     
                                     var name = ""
                                     
@@ -141,6 +141,8 @@ class ChatClientViewModel {
                 }, failure: { (response, object, error) in
                     failure(response, object, error)
                 })
+            } else {
+                success(nil)
             }
         }
     }

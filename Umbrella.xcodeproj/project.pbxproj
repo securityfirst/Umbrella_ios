@@ -37,6 +37,7 @@
 		A006B5D421721AAF00B68309 /* DemoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006B5D321721AAE00B68309 /* DemoSettingViewController.swift */; };
 		A007B3BE2124314B00B3D8C9 /* FormAnswerDaoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007B3BD2124314B00B3D8C9 /* FormAnswerDaoSpec.swift */; };
 		A007B3C221256D4000B3D8C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007B3C421256D4000B3D8C9 /* Localizable.strings */; };
+		A01B88D423E821D9006DAE76 /* RuleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B88D323E821D9006DAE76 /* RuleCell.swift */; };
 		A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */; };
 		A01CC61C21F61AA500E5D771 /* PDFFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61B21F61AA300E5D771 /* PDFFactory.swift */; };
 		A01CC61F21F717FD00E5D771 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01CC61E21F717FD00E5D771 /* Export.swift */; };
@@ -463,6 +464,7 @@
 		A007B3C721256D9E00B3D8C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A016A3492277347A00B55A15 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Main.strings; sourceTree = "<group>"; };
 		A016A34A2277347B00B55A15 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01B88D323E821D9006DAE76 /* RuleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleCell.swift; sourceTree = "<group>"; };
 		A01CC61921ECF36D00E5D771 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A01CC61B21F61AA300E5D771 /* PDFFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFactory.swift; sourceTree = "<group>"; };
 		A01CC61E21F717FD00E5D771 /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
@@ -1620,6 +1622,7 @@
 				A0A2E32B22DCE4010054439C /* ChatGroupExtendedCell.swift */,
 				A0A2E34C22DDCEFA0054439C /* ChatInviteUserCell.swift */,
 				A087011A22DE269A00241676 /* NotificationCell.swift */,
+				A01B88D323E821D9006DAE76 /* RuleCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -2283,6 +2286,7 @@
 				A0B9D46120AAE1CF00B2B796 /* AppDelegate.swift in Sources */,
 				A01CC61A21ECF36D00E5D771 /* UINavigationController+Ext.swift in Sources */,
 				A0325E8B22A02B1100C8B5FA /* SQLiteMigrationManager.swift in Sources */,
+				A01B88D423E821D9006DAE76 /* RuleCell.swift in Sources */,
 				A0038133210741F700CDA44D /* DynamicFormViewModel.swift in Sources */,
 				A0B9787720ADC7D100A287C8 /* DaoProtocol.swift in Sources */,
 				A0CC7B462135AEBC00C28C3B /* RssView.swift in Sources */,
@@ -2650,7 +2654,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2822,7 +2826,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
@@ -2856,7 +2860,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2988,7 +2992,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3098,7 +3102,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A24RJ2RN38;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

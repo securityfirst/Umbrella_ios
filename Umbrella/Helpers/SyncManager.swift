@@ -27,6 +27,8 @@ class SyncManager {
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.stopSync), name: Notification.Name("ResetRepository"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.sync), name: Notification.Name("StartSyncMatrix"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(logoutChat), name: NSNotification.Name("LogoutChat"), object: nil)
     }
     
     @objc fileprivate func startSync() {
@@ -40,11 +42,31 @@ class SyncManager {
         self.timer = nil
     }
     
+    @objc func logoutChat() {
+        UserDefaults.standard.set(false, forKey: "ruleFirstLogin")
+        clear()
+    }
+    
+    func clear() {
+        syncObject = nil
+        invite = [[String: Invite]]()
+    }
+    
     @objc fileprivate func sync() {
+        
+        guard self.chatClientViewModel.getUserLogged() != nil else {
+            return
+        }
+        
         print("Sync Matrix")
+        
         self.chatClientViewModel.sync(success: { (sync) in
             
             guard let sync = sync else {
+                UserDefaults.standard.synchronize()
+                UserDefaults.standard.set(true, forKey: "SyncHasNewItem")
+                UserDefaults.standard.set(0, forKey: "BadgeNumber")
+                NotificationCenter.default.post(name: Notification.Name("SyncedMatrix"), object: 0)
                 return
             }
             
@@ -60,8 +82,18 @@ class SyncManager {
                 }
                 UserDefaults.standard.set(self.syncObject?.rooms.invite.keys.count, forKey: "BadgeNumber")
             }
+            
+            var number = (self.syncObject?.rooms.invite.keys.count ?? 0)
+            
+            let rule = UserDefaults.standard.bool(forKey: "ruleFirstLogin")
+            
+            if rule == false {
+                number += 1
+                UserDefaults.standard.set(number, forKey: "BadgeNumber")
+            }
+            
             UserDefaults.standard.synchronize()
-            NotificationCenter.default.post(name: Notification.Name("SyncedMatrix"), object: sync)
+            NotificationCenter.default.post(name: Notification.Name("SyncedMatrix"), object: number)
             
         }, failure: { (response, object, error) in
             print(error ?? "")
