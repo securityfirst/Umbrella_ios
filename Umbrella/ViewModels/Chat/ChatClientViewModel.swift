@@ -83,7 +83,7 @@ class ChatClientViewModel {
                                     
                                     var name = ""
                                     
-                                    if user.username == nameInvite {
+                                    if user.username.lowercased() == nameInvite.lowercased() {
                                         name = nameJoin
                                     } else {
                                         name = nameInvite
@@ -104,7 +104,7 @@ class ChatClientViewModel {
                                     
                                     var name = ""
                                     
-                                    if user.username == nameInvite {
+                                    if user.username.lowercased() == nameInvite.lowercased() {
                                         name = nameJoin
                                     } else {
                                         name = nameInvite
