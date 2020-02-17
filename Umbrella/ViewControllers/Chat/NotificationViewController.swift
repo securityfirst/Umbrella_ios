@@ -80,7 +80,6 @@ extension NotificationViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("\(indexPath)")
         if indexPath.section == 0 && SyncManager.shared.invite.count == 0 {
             let cell: RuleCell = (tableView.dequeueReusableCell(withIdentifier: "RuleCell", for: indexPath) as? RuleCell)!
             return cell

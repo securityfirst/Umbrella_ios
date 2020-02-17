@@ -10,6 +10,7 @@ import UIKit
 import SQLite
 import Localize_Swift
 import UserNotifications
+import SwiftyBeaver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -56,6 +57,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        window?.addGestureRecognizer(tapGesture)
         
         SyncManager.shared.setup()
+        
+        let log = SwiftyBeaver.self
+        let console = ConsoleDestination()
+        let cloud = SBPlatformDestination(appID: "PVnB6v", appSecret: "iwQ79bRl4e1OlmEhungLkfxhvXeoxf0c", encryptionKey: "02jbQatkUrGngfdfylgy2SlaviCgxgYh") // to cloud
+        let file = FileDestination()
+        log.addDestination(file)
+        log.addDestination(console)
+        log.addDestination(cloud)
+        
         return true
     }
     

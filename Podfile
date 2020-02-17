@@ -14,6 +14,7 @@ target 'Umbrella' do
   pod 'Yams'
   pod 'Toast-Swift', '~> 4.0.0'
   pod 'Zip', '~> 1.1'
+  pod 'SwiftyBeaver'
 
   target 'UmbrellaTests' do
     inherit! :search_paths

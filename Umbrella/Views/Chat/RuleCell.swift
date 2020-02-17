@@ -25,7 +25,7 @@ class RuleCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.messageLabel.text = "Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group.".localized()
+        self.messageLabel.text = "Welcome to Umbrella Chat! Your profile is currently invisible to other users. If you want your friends and colleagues to be able find you, please join any public group.".localized()
     }
 
     @IBAction func okAction(_ sender: Any) {

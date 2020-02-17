@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyBeaver
 
 class ChatClientViewModel {
     
@@ -14,6 +15,7 @@ class ChatClientViewModel {
     var sqlManager: SQLManager
     var sync: Sync?
     var rooms: [Room] = [Room]()
+    let log = SwiftyBeaver.self
     
     lazy var userMatrixDao: UserMatrixDao = {
         let userMatrixDao = UserMatrixDao(sqlProtocol: self.sqlManager)
@@ -89,11 +91,20 @@ class ChatClientViewModel {
                                         name = nameInvite
                                     }
                                     
-                                    print("UserLogged: \(user.username)")
-                                    print("Invite: \(nameInvite) Join: \(nameJoin)")
-                                    print("Name Room is \(name)")
+                                    self.log.info("""
+                                        UserLogged: \"\(user.username)\"
+                                        Invite: \"\(nameInvite)\"
+                                        Join: \"\(nameJoin)\"
+                                        Check userlogged == nameInvite: \(user.username.lowercased() == nameInvite.lowercased())
+                                        if true
+                                            Room Name is \"\(nameJoin)\"
+                                        if false
+                                            Room Name is \"\(nameInvite)\"
+                                        
+                                        Final name: \"\(name)\"
+                                    """)
                                     
-                                    let room = Room(roomId: dic.key, name: "I:\(nameInvite) J:\(nameJoin) F: \(name.capitalized)", topic: "", canonicalAlias: nameAlias)
+                                    let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
                                     self.rooms.append(room)
                                     _ = self.roomDao.insert(room)
                                 } else if memberEvents.count == 1 {
@@ -110,9 +121,18 @@ class ChatClientViewModel {
                                         name = nameInvite
                                     }
                                     
-                                    print("UserLogged: \(user.username)")
-                                    print("Invite: \(nameInvite) Join: \(nameJoin)")
-                                    print("Name Room is \(name)")
+                                    self.log.info("""
+                                        UserLogged: \"\(user.username)\"
+                                        Invite: \"\(nameInvite)\"
+                                        Join: \"\(nameJoin)\"
+                                        Check userlogged == nameInvite: \(user.username.lowercased() == nameInvite.lowercased())
+                                        if true
+                                            Room Name is \"\(nameJoin)\"
+                                        if false
+                                            Room Name is \"\(nameInvite)\"
+                                        
+                                        Final name: \"\(name)\"
+                                    """)
                                     
                                     let room = Room(roomId: dic.key, name: name.capitalized, topic: "", canonicalAlias: nameAlias)
                                     self.rooms.append(room)

@@ -43,7 +43,7 @@ class SyncManager {
     }
     
     @objc func logoutChat() {
-        UserDefaults.standard.set(false, forKey: "ruleFirstLogin")
+//        UserDefaults.standard.set(false, forKey: "ruleFirstLogin")
         clear()
     }
     

@@ -14,6 +14,7 @@ PODS:
   - SQLite.swift/SQLCipher (0.12.2):
     - SQLCipher (>= 3.4.0)
   - SwiftLint (0.30.1)
+  - SwiftyBeaver (1.7.1)
   - Toast-Swift (4.0.0)
   - Yams (1.0.1)
   - Zip (1.1.0)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - Quick
   - SQLite.swift/SQLCipher
   - SwiftLint
+  - SwiftyBeaver
   - Toast-Swift (~> 4.0.0)
   - Yams
   - Zip (~> 1.1)
@@ -42,6 +44,7 @@ SPEC REPOS:
     - SQLCipher
     - SQLite.swift
     - SwiftLint
+    - SwiftyBeaver
     - Toast-Swift
     - Yams
     - Zip
@@ -71,10 +74,11 @@ SPEC CHECKSUMS:
   SQLCipher: 0187a2180ac288ea686b670b7141da62cd013b16
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+  SwiftyBeaver: da5e573ad583586c18236324c36900990afe1733
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
   Yams: 572f625a8b719b73e0b57fd313c680f3e2161fe9
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: a17b338b42f9dddc677d4c3473206101424f708d
+PODFILE CHECKSUM: 908d6e02baa9e461944fbe73756905c6e3d9ecf8
 
 COCOAPODS: 1.7.0
