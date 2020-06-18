@@ -153,7 +153,7 @@ class SettingCell: UITableViewCell {
                 DispatchQueue.main.async {
                     if permissionGranted == false {
                         sender.isOn = false
-                        UIAlertController.alert(title: "Alert".localized(), message: "You can enable access in Settings> Umbrela> Notifications", cancelButtonTitle: "OK".localized())
+                        UIAlertController.alert(title: "Alert".localized(), message: "You can enable access in Settings> Umbrella> Notifications", cancelButtonTitle: "OK".localized())
                         
                     } else {
                         UserDefaults.standard.set(sender.isOn, forKey: "showUpdateAsNotification")
