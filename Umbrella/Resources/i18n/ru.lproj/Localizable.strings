@@ -64,7 +64,7 @@
 "CHANGE LOCATION" = "ИЗМЕНИТЬ МЕСТОПОЛОЖЕНИЕ";
 "Set your Feed" = "Настройте свой канал";
 "SET NOW" = "УСТАНОВИТЬ СЕЙЧАС";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "Для вашего местоположения нет событий. Мы покажем их, когда они появятся. Потяните вниз, чтобы обновить данные.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "Для вашего местоположения нет событий. Мы покажем их, когда они появятся. Потяните вниз, чтобы обновить данные.";
 "Security feed set to:" = "Новости безопасности заданы для:";
 "Interval" = "Интервал";
 "SET" = "ЗАДАТЬ";
