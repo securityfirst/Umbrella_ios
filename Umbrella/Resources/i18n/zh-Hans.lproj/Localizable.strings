@@ -64,7 +64,7 @@
 "CHANGE FEED SETTINGS" = "更改饲料设置";
 "Set your Feed" = "設置Feed";
 "SET NOW" = "現在設定";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "您的位置無法顯示任何事件。 我們會在它們出現時顯示它們。 拉動刷新以再次檢查。";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "您的位置無法顯示任何事件。 我們會在它們出現時顯示它們。 拉動刷新以再次檢查。";
 "Security feed set to:" = "安全Feed設置為：";
 "Interval" = "間隔";
 "SET" = "組";
