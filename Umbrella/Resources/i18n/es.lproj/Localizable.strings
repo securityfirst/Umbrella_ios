@@ -64,7 +64,7 @@
 "CHANGE FEED SETTINGS" = "CAMBIAR LOS AJUSTES DE FEED";
 "Set your Feed" = "Establezca su Feed";
 "SET NOW" = "ESTABLECER AHORA";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "No hay eventos para mostrar para su ubicación. Los mostraremos cuando ocurran. Tire para actualizar para comprobar de nuevo.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "No hay eventos para mostrar para su ubicación. Los mostraremos cuando ocurran. Tire para actualizar para comprobar de nuevo.";
 "Security feed set to:" = "Feed de seguridad establecido en:";
 "Interval" = "Intervalo";
 "SET" = "ESTABLECER";
