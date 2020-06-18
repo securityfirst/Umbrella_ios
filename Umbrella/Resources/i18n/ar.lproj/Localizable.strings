@@ -64,7 +64,7 @@
 "CHANGE LOCATION" = "تغيير الموقع";
 "Set your Feed" = "تعيين الخلاصة";
 "SET NOW" = "أعد الآن";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "لا توجد أحداث لعرضها لموقعك. سنقوم بعرضها عند حدوثها. سحب لتحديث للتحقق مرة أخرى.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "لا توجد أحداث لعرضها لموقعك. سنقوم بعرضها عند حدوثها. سحب لتحديث للتحقق مرة أخرى.";
 "Security feed set to:" = "تم تعيين خلاصة الأمان على:";
 "Interval" = "فترة";
 "SET" = "عيّن";
