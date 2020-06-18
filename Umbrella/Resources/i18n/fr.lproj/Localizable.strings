@@ -64,7 +64,7 @@
 "CHANGE LOCATION" = "CHANGER DE LOCALISATION";
 "Set your Feed" = "Définissez votre Flux";
 "SET NOW" = "DÉFINIR MAINTENANT";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "Il n’y a aucun événement à afficher pour votre position géographique. Nous les afficherons quand il y en aura. Tirez vers le bas pour actualiser.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "Il n’y a aucun événement à afficher pour votre position géographique. Nous les afficherons quand il y en aura. Tirez vers le bas pour actualiser.";
 "Security feed set to:" = "Le flux de sécurité est défini sur :";
 "Interval" = "Intervalle";
 "SET" = "DÉFINIR";
