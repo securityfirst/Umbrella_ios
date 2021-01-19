@@ -64,7 +64,7 @@
 "CHANGE FEED SETTINGS" = "CHANGE FEED SETTINGS";
 "Set your Feed" = "Set your Feed";
 "SET NOW" = "SET NOW";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again.";
 "Security feed set to:" = "Security feed set to:";
 "Interval" = "Interval";
 "SET" = "SET";
@@ -143,7 +143,7 @@
 "Manually" = "Manually";
 "Dashboard" = "Dashboard";
 "new customFeeds." = "new customFeeds.";
-"You can enable access in Settings> Umbrela> Notifications" = "You can enable access in Settings> Umbrela> Notifications";
+"You can enable access in Settings> Umbrella> Notifications" = "You can enable access in Settings> Umbrella> Notifications";
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Loading data from new repository will reset all the progress you made. Back up before you do it!";
 "Secondary" = "Secondary";
 "Change" = "Change";

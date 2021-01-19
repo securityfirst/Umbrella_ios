@@ -64,7 +64,7 @@
 "CHANGE LOCATION" = "تغییر موقعیت";
 "Set your Feed" = "خوراک خود را تنظیم کنید";
 "SET NOW" = "حالا تنظیم کن";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "هیچ رویدادی برای نمایش مکان شما وجود ندارد. ما آنها را هنگامی که رخ دهند،نمایش خواهیم داد. برای بازنشانی دوباره بکشید تا دوباره بررسی شود.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "هیچ رویدادی برای نمایش مکان شما وجود ندارد. ما آنها را هنگامی که رخ دهند،نمایش خواهیم داد. برای بازنشانی دوباره بکشید تا دوباره بررسی شود.";
 "Security feed set to:" = "خوراک امنیتی تنظیم شده است:";
 "Interval" = "فاصله";
 "SET" = "تنظیم";
@@ -143,7 +143,7 @@
 "Manually" = "به صورت دستی";
 "Dashboard" = "پنل";
 "new customFeeds." = "خوراک سفارشی جدید";
-"You can enable access in Settings> Umbrela> Notifications" = "شما می توانید دسترسی را در تنظیمات> چتر> اعلان ها فعال کنید";
+"You can enable access in Settings> Umbrella> Notifications" = "شما می توانید دسترسی را در تنظیمات> چتر> اعلان ها فعال کنید";
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "بارگیری داده ها از مخزن جدید تمام پیشرفت هایی را که ایجاد کرده اید تنظیم مجدد می کند. قبل از انجام این کار از قبل پشتیبان بگیرید";
 "Secondary" = "ثانوی";
 "Change" = "تغییر دادن";

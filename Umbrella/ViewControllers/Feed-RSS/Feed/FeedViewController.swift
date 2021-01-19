@@ -280,7 +280,7 @@ class FeedViewController: UIViewController {
         self.setNowLabel.text = "SET NOW".localized()
         
         self.securityFeedToLabel.text = "Security feed set to:".localized()
-        self.emptyDisplayLebLabel.text = "There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again.".localized()
+        self.emptyDisplayLebLabel.text = "There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again.".localized()
         self.emptyChangeLocationLabel.setTitle("CHANGE FEED SETTINGS".localized(), for: .normal)
         
         self.intervalLabel.text = "Interval".localized()

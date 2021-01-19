@@ -64,7 +64,7 @@
 "CHANGE FEED SETTINGS" = "更改飼料設置";
 "Set your Feed" = "設置訊息來源";
 "SET NOW" = "現在設定";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "沒有可顯示您所在位置的活動。我們會在它們出現時顯示它們。向上或向下拉動以刷新畫面並再次檢測。";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "沒有可顯示您所在位置的活動。我們會在它們出現時顯示它們。向上或向下拉動以刷新畫面並再次檢測。";
 "Security feed set to:" = "關於安全訊息的訂閲設置為：";
 "Interval" = "間隔";
 "SET" = "設置";
@@ -143,7 +143,7 @@
 "Manually" = "手動";
 "Dashboard" = "儀表板";
 "new customFeeds." = "新的自定義訂閲。";
-"You can enable access in Settings> Umbrela> Notifications" = "您可以在“設置”>“Umbrela”>“通知”中啟用訪問權限";
+"You can enable access in Settings> Umbrella> Notifications" = "您可以在“設置”>“Umbrella”>“通知”中啟用訪問權限";
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "從新存儲庫加載數據將重置您所做的所有進度。 在你做之前備份！";
 "Secondary" = "次要";
 "Change" = "更改";

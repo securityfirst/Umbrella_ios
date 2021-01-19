@@ -64,7 +64,7 @@
 "CHANGE LOCATION" = "ИЗМЕНИТЬ МЕСТОПОЛОЖЕНИЕ";
 "Set your Feed" = "Настройте свой канал";
 "SET NOW" = "УСТАНОВИТЬ СЕЙЧАС";
-"There are no events to display for your location. We’ll display them when they will occour. Pull to refresh to check again." = "Для вашего местоположения нет событий. Мы покажем их, когда они появятся. Потяните вниз, чтобы обновить данные.";
+"There are no events to display for your location. We’ll display them when they will occur. Pull to refresh to check again." = "Для вашего местоположения нет событий. Мы покажем их, когда они появятся. Потяните вниз, чтобы обновить данные.";
 "Security feed set to:" = "Новости безопасности заданы для:";
 "Interval" = "Интервал";
 "SET" = "ЗАДАТЬ";
@@ -143,7 +143,7 @@
 "Manually" = "Вручную";
 "Dashboard" = "Панель управления";
 "new customFeeds." = "новые пользовательские каналы.";
-"You can enable access in Settings> Umbrela> Notifications" = "Вы можете включить доступ через Настройки> Umbrela> Уведомления";
+"You can enable access in Settings> Umbrella> Notifications" = "Вы можете включить доступ через Настройки> Umbrella> Уведомления";
 "Loading data from new repository will reset all the progress you made. Back up before you do it!" = "Загрузка данных из нового репозитория сбросит весь достигнутый вами прогресс. Сделайте резервную копию, прежде чем сделать это!";
 "Secondary" = "второстепенный";
 "Change" = "+ Изменить";
