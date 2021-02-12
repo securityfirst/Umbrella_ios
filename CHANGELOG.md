@@ -15,8 +15,9 @@ Dates and release notes for all production releases of the Umbrella iOS app.
 2019-05-22
 - Added Arabic, Farsi, and Russian languages
 - Added share button on the checklist tab
-- Added flag, added Fastlane beta (tool that automate the process of sending beta builds to Crashlytics, TestFlight, the App Store, and much more) Added release note notification
-- Bugfixes (load feed, and more) 
+- Added language flag
+- Added Fastlane beta
+- Bugfix for feed loading
 
 ### 1.2
 2019-05-03
@@ -26,9 +27,9 @@ Dates and release notes for all production releases of the Umbrella iOS app.
 2019-04-18
 - First release
 - Lessons, forms, feeds, RSS
-- Forms, export to PDF and HTML
-- Checklists (custom checklists, export to PDF and HTML)
+- Export to PDF and HTML of forms and checklists
+- Default and custom checklists (custom checklists, export to PDF and HTML)
 - Settings (language, interval, sources, location, import data, export data, ask for password)
-- Account (Set password) 
+- Account page and set password feature
 - Languages (English, Chinese, Spanish)
 
