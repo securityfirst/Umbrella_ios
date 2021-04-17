@@ -203,8 +203,6 @@ Any browser on any device!
 
 Thank you for your interest in contributing to Umbrella. See our [contributing guide](https://github.com/securityfirst/Umbrella_android/blob/5fd3847f6b716d750f42080983353a3a87f307dd/CONTRIBUTING.md).
 
----
-
 ### Contributors
 
 Thanks to everyone who has contributed code to Umbrella. It wouldn’t
