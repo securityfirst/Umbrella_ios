@@ -43,12 +43,18 @@ This is the part the user sees first. It explains briefly how the app works and 
 The feed contains security feeds from places like the UN Relief Web and the US Centers for Disease Control. You enter your location (and how often you want to be updated). Every a new update is released (e.g a disease outbreak in your location), the information comes up on the dashboard.
 
 **Lessons:**
+
+![](/LESSONS.jpg)
+
 Lessons are where users can learn about topics and things that they can do to improve their security. Some of the lessons have different levels (Beginner, Advanced, Expert) depending on your needs, ability, and risk. Each module is broken down into sections. At the end of each module is a list of other resources and further reading.
 
 **Tool Guides:**
 These are detailed guides about how to use software and apps mentioned in the lessons.
 
 **Checklists:**
+
+![](/CHECKLISTS.jpg)
+
 Checklists are quick and easy references to help users implement the advice in the lessons. You can tick them off as you complete each item. Items can be edited. You may also create custom checklists. If you start ticking a checklist, you will then see them on the Checklists page. Checklists can also be shared through other apps such as your email.
 
 **Forms:**
@@ -193,59 +199,9 @@ Navigate to the "Account" from the menu on th left of the screen. Here you can:
 
 Any browser on any device!
 
-## Contributing Bug reports
+## Contributing
 
-Unfortunately stuff breaks sometimes. If you are in a hurry and have found a code or content problem then please email it to <support@secfirst.org>. If you have a little more time we generally try to manage any bugs using GitHub. Please search the existing issues for your bug and create a new one if the issue is not yet tracked.
-
-<https://github.com/securityfirst/Umbrella_iOS/issues>
-
-If the issue you have identified is a security risk to users, please
-read the documentation about our responsible disclosure policy here:
-
-<https://secfirst.org/legal.html>
-
-If you wish to contact us via PGP, please drop a mail to
-<rory@secfirst.org> (2C1D3B4D)
-
-<https://pgp.mit.edu/pks/lookup?op=vindex&search=0xFFB9B5BE2C1D3B4D>
-
-**Contributing Ideas**
-
-Ideas are powerful things! If you have any about what we could do
-better or things which you think we should do in the future, please email us
-at <info@secfirst.org>.
-
-## Contributing Code
-
-We have a really big development plan of functionality we want to
-include in the future and are currently in the process of building a way
-to manage contributions from the open source community. Until we have
-that up please drop us a mail at <info@secfirst.org> if you are
-interested in contributing a specific part of future code. If there is
-something you want to help out within the interim, then here is some
-basic advice:
-
-1.  Fork it!
-2.  Create your feature branch: git checkout -b my-new-feature
-3.  Commit your changes: git commit -am 'Add some feature'
-4.  Push to the branch: git push origin my-new-feature
-5.  Submit a pull request :D
-
-**Build Instructions**
-
-Setup environment file based upon the README.env environment file and use the following commands to start your local server:
-
-```
-npm install
-npm install forever -g
-npm run dev // runs development server with nodemon listening for server changes
-// export all environment variables here in command line before building, for production instances
-npm run build // builds the next js app
-npm run start // to run production on local
-forever start -a -o out.log -e err.log server.js // for production instances
-```
-
-If you'd like to use a different branch for Umbrella content, in your terminal change directory to `/static/assets/content` (root dir for content git) and run `git checkout YOUR_BRANCH`. You will also need to change the branch in the repo fetch in `/server/api/github`.
+Thank you for your interest in contributing to Umbrella. See our [contributing guide](https://github.com/securityfirst/Umbrella_android/blob/5fd3847f6b716d750f42080983353a3a87f307dd/CONTRIBUTING.md).
 
 ---
 
